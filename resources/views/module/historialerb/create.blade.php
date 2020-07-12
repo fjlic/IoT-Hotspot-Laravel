@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'API ESP32')
+@section('title', 'Hotspot-Hitorial-Erb')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop
@@ -14,56 +14,69 @@
         </ul>
       </div><br />
   @endif
+
+@if ($message = Session::get('success'))
+
+<div class="alert alert-success">
+
+    <p>{{ $message }}</p>
+
+</div>
+@endif
+
  <!-- Main content -->
  <section class="content">
       <div class="row">
-        <div class="col-xs-12">
-            <div class="box box-success">
-            <div class="box-header">
-              <h3 class="box-title">Crear Historial Esp32</h3>
+        <div class="col-12">
+            <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Crear Historial Erb</h3>
             </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-            <!--'esp32_id', 'num_serie', 'nick_name', 'password', 'api_token', -->
-            <form role="form" action="{{ route('historialesp32.store')}}" method="POST">
+            <!-- /.card-header -->
+            <div class="card-body">
+            <!-- form start -->
+            <form role="form" action="{{ route('historialerb.store')}}" method="POST">
               @csrf
-              <div class="box-body">
+              <div class="card-body">
               <div class="form-group">
-                  <label for="esp32_id">Asignar Esp32</label>
-                  <select class="form-control" name="esp32_id" id="esp32_id"> 
-                    @foreach($esp32s as $esp32)
-                    <option>{{ $esp32->id }}</option>
-                    @endforeach
-                    </select>
-                </div>
-              <div class="form-group">
-                  <label for="num_serie">Esp32 serie</label>
-                  <input type="text" class="form-control" name="num_serie" id="num_serie"  placeholder="Introduce serie" required>
+                    <label for="erb_id">Erb para asignar</label>
+                        <select class="form-control" name="erb_id" id="erb_id"> 
+                          {{--<option selected="true">{{ $historialerb->erb_asign }}</option>--}}
+                          @foreach($erbs as $erb)
+                          <option>{{ $erb->id }}</option>
+                          @endforeach
+                        </select>
               </div>
-              <div class="form-group">
+                <div class="form-group">
+                  <label for="name_machine">Nombre</label>
+                  <input type="text" class="form-control" name="name_machine" id="name_machine"  placeholder="Introduce alias" required>
+                </div>
+                <div class="form-group">
+                  <label for="num_serie">Num Serie</label>
+                  <input type="text" class="form-control" name="num_serie" id="num_serie"  placeholder="Introduce serie" required>
+                </div>
+                <div class="form-group">
                   <label for="nick_name">Alias</label>
                   <input type="text" class="form-control" name="nick_name" id="nick_name"  placeholder="Introduce alias" required>
+                </div>
+                <div class="form-group">
+                  <label for="password">Password</label>
+                  <input type="password" class="form-control" name="password" id="password" placeholder="Introduce contraseña" required>
+                </div>
               </div>
-              <div class="form-group">
-                  <label for="password">Passw</label>
-                  <input type="text" class="form-control" name="password" id="password"  placeholder="Introduce password" required>
-              </div>
-              </div>
-              <!-- /.box-body -->
+              <!-- /.card-body -->
 
-              <div class="box-footer">
-                <a href="{{ route('historialesp32.index') }}" class="btn btn-default">Cancelar</a>
+              <div class="card-footer">
+                <a href="{{ route('historialerb.index') }}" class="btn btn-default">Cancelar</a>
                 <button type="submit" class="btn btn-success pull-right" >Enviar</button>
               </div>
             </form>
-          </div>
-          <!-- /.box -->
-          <!-- form-->
- 
             </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
+            <!-- /.card -->
+            <!-- form-->
+            <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
         </div>
         <!-- /.col -->
       </div>
@@ -72,9 +85,15 @@
     <!-- /.content -->   
 @stop
 
+@section('footer') 
+<div class="pull-right hidden-xs"><b>Version</b> 2.0.0<strong>  Copyright &copy; 2020 <a href="http://hotspot.local/home" target="_blank">Hotspot</a>.</strong>  Todo los derechos Reservados.</div> 
+@stop
+
 @section('css')
-    
+@toastr_css    
 @stop
 
 @section('js')
+@toastr_js
+@toastr_render
 @stop

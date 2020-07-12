@@ -1,11 +1,11 @@
 @extends('adminlte::page')
-@section('title', 'API ESP32')
+@section('title', 'Hotspot-Hitorial-Erb')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop
 
 @section('content')
-@if ($errors->any())
+ @if ($errors->any())
       <div class="alert alert-danger">
         <ul>
             @foreach ($errors->all() as $error)
@@ -27,58 +27,61 @@
  <!-- Main content -->
  <section class="content">
       <div class="row">
-        <div class="col-xs-12">
-            <div class="box box-primary">
-            <div class="box-header">
-              <h3 class="box-title">Tabla Histoprial Esp32</h3>
-              <a class="btn btn-success btn-xs pull-right"  href="{{ route('historialesp32.create') }}" ><span class="glyphicon glyphicon-plus"></span></a>
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Tabla Historial Erb</h3>
+              <a class="btn btn-xs btn-success float-right" href="{{ route('historialerb.create') }}" role="button"><span class="fas fa-plus"></span></a>
             </div>
-            <!-- /.box-header --> 
-            <!--//'user_id', 'num_serie', 'nick_name', 'password', 'api_token', -->
-            <div class="box-body">
-              <table id="historiaEsp32Table" class="table table-bordered table-striped">
-                <thead>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table id="historialerbTable" class="table table-bordered table-striped">
+              <thead>
                 <tr>
                   <th>Id</th>
-                  <th>Esp32 Id</th>
+                  <th>Erb_Id</th>
                   <th>Serie</th>
+                  <th>Nombre</th>
                   <th>Alias</th>
-                  <th>Passw</th>
-                  <th>Api Token</th>
+                  <th>Password</th>
+                  <th>ApiToken</th>
                   <th>FechaCreacion</th>
                   <th>FechaMoficiacion</th>
                   <th>Acciones</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($historialesp32s as $historialesp32)
+                @foreach($historialerbs as $historialerb)
                 <tr>
-                    <td>{{ $historialesp32->id }}</td>
-                    <td>{{ $historialesp32->esp32_id }}</td>
-                    <td>{{ $historialesp32->num_serie }}</td>
-                    <td>{{ $historialesp32->nick_name }}</td>
-                    <td>{{ $historialesp32->password }}</td>
-                    <td>{{ $historialesp32->api_token }}</td>
-                    <td>{{ $historialesp32->created_at }}</td>
-                    <td>{{ $historialesp32->updated_at }}</td>
+                    <td>{{ $historialerb->id }}</td>
+                    <td>{{ $historialerb->erb_id }}</td>
+                    <td>{{ $historialerb->num_serie }}</td>
+                    <td>{{ $historialerb->name_machine }}</td>      
+                    <td>{{ $historialerb->nick_name }}</td>
+                    <td>{{ $historialerb->password }}</td>
+                    <td>{{ $historialerb->api_token }}</td>
+                    <td>{{ $historialerb->created_at }}</td>
+                    <td>{{ $historialerb->updated_at }}</td>
                     <td>
-                      <form role="form" action="{{ route('historialesp32.destroy',$historialesp32->id) }}" method="POST">
-                      <a class="btn btn-info btn-xs" href="{{ route('historialesp32.show',$historialesp32->id) }}"><span class="glyphicon glyphicon-eye-open"></span></a> 
-                      <a class="btn btn-warning btn-xs"  href="{{ route('historialesp32.edit',$historialesp32->id) }}" ><span class="glyphicon glyphicon-pencil"></span></a>
+                      <form role="form" action="{{ route('historialerb.destroy',$historialerb->id) }}" method="POST">
+                      <a class="btn btn-info btn-xs" href="{{ route('historialerb.show',$historialerb->id) }}" role="button"><span class="fas fa-eye"></span></a> 
+                      <a class="btn btn-warning btn-xs"  href="{{ route('historialerb.edit',$historialerb->id) }}" role="button"><span class="fas fa-pen"></span></a>
                       @csrf
                       @method('DELETE')
-                      <button class="btn btn-danger btn-xs" type="submit"><span class="glyphicon glyphicon-trash"></span></button>
+                      <button class="btn btn-danger btn-xs" type="submit"><span class="fas fa-trash"></span></button>
                       </form>
                     </td>
                 </tr>
                 @endforeach
                 </tbody>
                <!-- <tfoot>
-                <tr>
-                  <th>Id</th>
-                  <th>Nombre</th>
-                  <th>Email</th>
+                 <tr>
+                 <th>Id</th>
+                  <th>User Id</th>
+                  <th>NumSerie</th>
+                  <th>Alias</th>
                   <th>Password</th>
+                  <th>ApiToken</th>
                   <th>FechaCreacion</th>
                   <th>FechaMoficiacion</th>
                   <th>Acciones</th>
@@ -86,26 +89,31 @@
                 </tfoot>-->
               </table>
             </div>
-            <!-- /.box-body -->
+            <!-- /.card-body -->
           </div>
-          <!-- /.box -->
+          <!-- /.card -->
         </div>
         <!-- /.col -->
       </div>
       <!-- /.row -->
     </section>
-    <!-- /.content -->  
-    
+    <!-- /.content --> 
+@stop
+
+@section('footer') 
+<div class="pull-right hidden-xs"><b>Version</b> 2.0.0<strong>  Copyright &copy; 2020 <a href="http://hotspot.local/home" target="_blank">Hotspot</a>.</strong>  Todo los derechos Reservados.</div> 
 @stop
 
 @section('css')
-    
+@toastr_css 
 @stop
 
 @section('js')
+@toastr_js
+@toastr_render
 <script>
   $(function () {
-     $('#historiaEsp32Table').DataTable({
+     $('#historialerbTable').DataTable({  
       'paging'      : true,
       'lengthChange': true,
       'searching'   : true,
@@ -115,8 +123,8 @@
       'scrollX'     : true,
       'scrollY'     : false,
       'scrollCollapse': false,
-      'language': {'url': '//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json'}
+      'language': {'url': '//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json'}   
     })
-  })
+  });
 </script>
 @stop

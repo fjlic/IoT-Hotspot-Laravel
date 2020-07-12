@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\ApiToken;
 use App\Crd;
-use App\User;
 use App\HistorialCrd;
 use Crypt;
 use Illuminate\Http\Request;
@@ -50,16 +49,16 @@ class HistorialCrdController extends Controller
         $request->validate([
             'crd_id'=>'required|string|max:100',
             'num_serie'=>'required|string|max:100',
+            'name_machine'=>'required|string|max:100',
             'nick_name'=>'required|string|max:100',
-            'password'=>'required|string|max:100',
-            //'api_token'=>'required|string|max:100',
+            'password'=>'required|string|max:100'
         ]);
         $historialcrd = new HistorialCrd([
             'crd_id' => $request->get('crd_id'),
+            'name_machine' => $request->get('name_machine'),
             'num_serie' => $request->get('num_serie'),
             'nick_name' => $request->get('nick_name'),
-            //'password' => $request->get('password'),
-            //'api_token' => $request->get('api_token')
+            'password' => $request->get('password'),
             ]);
         $historialcrd->password = Crypt::encrypt($request->get('password'));
         $historialcrd->api_token = ApiToken::GenerateToken32();
@@ -108,6 +107,7 @@ class HistorialCrdController extends Controller
         $request->validate([
             'crd_id'=>'required|string|max:100',
             'num_serie'=>'required|string|max:100',
+            'name_machine'=>'required|string|max:100',
             'nick_name'=>'required|string|max:100',
             'password'=>'required|string|max:100',
             'api_token'=>'required|string|max:100',
@@ -115,6 +115,7 @@ class HistorialCrdController extends Controller
         $historialcrd_request = $request->all();
         $historialcrd_request['crd_id'] =  $request->get('crd_id');
         $historialcrd_request['num_serie'] =  $request->get('num_serie');
+        $historialcrd_request['name_machine'] =  $request->get('name_machine');
         $historialcrd_request['nick_name'] =  $request->get('nick_name');
         $historialcrd_request['password'] = Crypt::encrypt($request->get('password'));
         $historialcrd_request['api_token'] =  $request->get('api_token');

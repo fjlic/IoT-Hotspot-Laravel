@@ -1,11 +1,11 @@
 @extends('adminlte::page')
-@section('title', 'API ESP32')
+@section('title', 'Hotspot-Hitorial-historialCrd')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop
 
 @section('content')
-@if ($errors->any())
+ @if ($errors->any())
       <div class="alert alert-danger">
         <ul>
             @foreach ($errors->all() as $error)
@@ -13,67 +13,85 @@
             @endforeach
         </ul>
       </div><br />
-  @endif
+@endif
+
+@if ($message = Session::get('success'))
+
+<div class="alert alert-success">
+
+    <p>{{ $message }}</p>
+
+</div>
+@endif
+
  <!-- Main content -->
  <section class="content">
       <div class="row">
-        <div class="col-xs-12">
-            <div class="box box-info">
-            <div class="box-header">
-              <h3 class="box-title">Ver HIstorial Esp32</h3>
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Tabla Historial Crd</h3>
             </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-                  <!-- form start -->
-                  <!--'esp32_id', 'num_serie', 'nick_name', 'password', 'api_token', -->
+            <!-- /.card-header -->
+            <div class="card-body">
             <form role="form">
-              <div class="box-body">
+              <div class="card-body">
                 <div class="form-group">
-                  <label for="esp32_id">Id Esp32</label>
-                  <input type="text" class="form-control" value="{{ $historialesp32->esp32_id }}" readonly="readonly"/>
+                  <label for="id">Id</label>
+                  <input type="text" class="form-control" value="{{ $historialcrd->id }}" readonly="readonly"/>
+                </div>
+                <div class="form-group">
+                  <label for="crd_id">Id Crd</label>
+                  <input type="text" class="form-control" value="{{ $historialcrd->crd_id }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
                   <label for="num_serie">Serie</label>
-                  <input type="text" class="form-control" value="{{ $historialesp32->num_serie }}" readonly="readonly"/>
+                  <input type="text" class="form-control" value="{{ $historialcrd->num_serie }}" readonly="readonly"/>
+                </div>
+                <div class="form-group">
+                  <label for="name_machine">Nombre</label>
+                  <input type="text" class="form-control" value="{{ $historialcrd->name_machine }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
                   <label for="nick_name">Alias</label>
-                  <input type="text" class="form-control" value="{{ $historialesp32->nick_name }}" readonly="readonly"/>
+                  <input type="text" class="form-control" value="{{ $historialcrd->nick_name }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
-                  <label for="password">Passw</label>
-                  <input type="text" class="form-control" value="{{ $historialesp32->password }}" readonly="readonly"/>
+                  <label for="password">Password</label>
+                  <input type="text" class="form-control" value="{{ $historialcrd->password }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
-                  <label for="api_token">Api Token</label>
-                  <input type="text" class="form-control" value="{{ $historialesp32->api_token }}" readonly="readonly"/>
+                  <label for="api_token">Token</label>
+                  <input type="text" class="form-control" value="{{ $historialcrd->api_token }}" readonly="readonly"/>
                 </div>
               </div>
               <!-- /.box-body -->
 
               <div class="box-footer">
-                <a href="{{ route('historialesp32.index') }}" class="btn btn-info pull-right">Regresar</a>
+                <a href="{{ route('historialcrd.index') }}" class="btn btn-info pull-right">Regresar</a>
               </div>
             </form>
-          </div>
-          <!-- /.box -->
-          <!-- form-->
- 
             </div>
-            <!-- /.box-body -->
+            <!-- /.card-body -->
           </div>
-          <!-- /.box -->
+          <!-- /.card -->
         </div>
         <!-- /.col -->
       </div>
       <!-- /.row -->
     </section>
-    <!-- /.content -->   
+    <!-- /.content --> 
+@stop
+
+@section('footer') 
+<div class="pull-right hidden-xs"><b>Version</b> 2.0.0<strong>  Copyright &copy; 2020 <a href="http://hotspot.local/home" target="_blank">Hotspot</a>.</strong>  Todo los derechos Reservados.</div> 
 @stop
 
 @section('css')
-    
+@toastr_css
 @stop
 
 @section('js')
+@toastr_js
+@toastr_render
 @stop

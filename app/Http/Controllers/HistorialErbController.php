@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\ApiToken;
 use App\Erb;
-use App\User;
 use App\HistorialErb;
 use Crypt;
 use Illuminate\Http\Request;
@@ -47,8 +46,25 @@ class HistorialErbController extends Controller
     public function store(Request $request)
     {
         //
-        $erbs = Erb::all();
-        return view('module.historialerb.create',compact('erbs'));
+        $request->validate([
+            'erb_id'=>'required|string|max:100',
+            'num_serie'=>'required|string|max:100',
+            'name_machine'=>'required|string|max:100',
+            'nick_name'=>'required|string|max:100',
+            'password'=>'required|string|max:100',
+        ]);
+        $historialerb = new HistorialErb([
+            'erb_id' => $request->get('erb_id'),
+            'name_machine' => $request->get('name_machine'),
+            'num_serie' => $request->get('num_serie'),
+            'nick_name' => $request->get('nick_name'),
+            'password' => $request->get('password'),
+            ]);
+        $historialerb->password = Crypt::encrypt($request->get('password'));
+        $historialerb->api_token = ApiToken::GenerateToken32();
+        $historialerb->save();
+        toastr()->success('Historial erb Creado');
+        return redirect()->route('historialerb.index');
     }
 
     /**
@@ -91,6 +107,7 @@ class HistorialErbController extends Controller
         $request->validate([
             'erb_id'=>'required|string|max:100',
             'num_serie'=>'required|string|max:100',
+            'name_machine'=>'required|string|max:100',
             'nick_name'=>'required|string|max:100',
             'password'=>'required|string|max:100',
             'api_token'=>'required|string|max:100',
@@ -98,6 +115,7 @@ class HistorialErbController extends Controller
         $historialerb_request = $request->all();
         $historialerb_request['erb_id'] =  $request->get('erb_id');
         $historialerb_request['num_serie'] =  $request->get('num_serie');
+        $historialerb_request['name_machine'] =  $request->get('name_machine');
         $historialerb_request['nick_name'] =  $request->get('nick_name');
         $historialerb_request['password'] = Crypt::encrypt($request->get('password'));
         $historialerb_request['api_token'] =  $request->get('api_token');
