@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Hotspot')
+@section('title', 'Hotspot-User')
 
 @section('content_header')
     <!-- <h1>Dashboard</h1> -->
