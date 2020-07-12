@@ -27,15 +27,14 @@
  <!-- Main content -->
  <section class="content">
       <div class="row">
-        <div class="col-xs-12">
+        <div class="col-12">
             <div class="card">
             <div class="card-header">
               <h3 class="card-title">Crear Crd</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-                  <!-- form start -->
-                  <!-- 'id', 'user_id', 'num_serie', 'nick_name', 'password', 'api_token', -->
+            <!-- form start -->
             <form role="form" action="{{ route('crd.store')}}" method="POST">
               @csrf
               <div class="card-body">
@@ -68,14 +67,12 @@
                 <button type="submit" class="btn btn-success pull-right" >Enviar</button>
               </div>
             </form>
-          </div>
-          <!-- /.card -->
-          <!-- form-->
- 
             </div>
+            <!-- /.card -->
+            <!-- form-->
             <!-- /.card-body -->
-          </div>
-          <!-- /.card -->
+            </div>
+            <!-- /.card -->
         </div>
         <!-- /.col -->
       </div>

@@ -34,6 +34,7 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body">
+            <!-- form start -->
             <form role="form" action="{{ route('crd.update',$crd->id) }}" method="POST">
             @csrf
             @method('PUT')
