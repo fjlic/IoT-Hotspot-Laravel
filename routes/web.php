@@ -23,20 +23,17 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 
-Route::get('/home', function() {
-    return view('home');
-})->name('home')->middleware('auth');
-
-Route::resource('region', 'RegionController');
-Route::resource('user', 'UserController');
-Route::resource('role', 'RoleController');
-Route::resource('crd', 'CrdController');
-Route::resource('erb', 'ErbController');
-Route::resource('counter', 'CounterController');
-Route::resource('qr', 'QrController');
-Route::resource('nfc', 'NfcController');
-Route::resource('historialcounter', 'HistorialCounterController');
-Route::resource('historialcrd', 'HistorialCrdController');
-Route::resource('historialerb', 'HistorialErbController');
-Route::resource('historialqr', 'HistorialQrController');
-Route::resource('historialnfc', 'HistorialNfcController');
+Route::get('/home', function() { return view('home'); })->name('home')->middleware('auth');
+Route::resource('region', 'RegionController')->middleware('auth');
+Route::resource('user', 'UserController')->middleware('auth');
+Route::resource('role', 'RoleController')->middleware('auth');
+Route::resource('crd', 'CrdController')->middleware('auth');
+Route::resource('erb', 'ErbController')->middleware('auth');
+Route::resource('counter', 'CounterController')->middleware('auth');
+Route::resource('qr', 'QrController')->middleware('auth');
+Route::resource('nfc', 'NfcController')->middleware('auth');
+Route::resource('historialcounter', 'HistorialCounterController')->middleware('auth');
+Route::resource('historialcrd', 'HistorialCrdController')->middleware('auth');
+Route::resource('historialerb', 'HistorialErbController')->middleware('auth');
+Route::resource('historialqr', 'HistorialQrController')->middleware('auth');
+Route::resource('historialnfc', 'HistorialNfcController')->middleware('auth');
