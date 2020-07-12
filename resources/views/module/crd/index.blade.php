@@ -41,6 +41,7 @@
                   <th>Id</th>
                   <th>User Id</th>
                   <th>NumSerie</th>
+                  <th>Nombre</th>
                   <th>Alias</th>
                   <th>Password</th>
                   <th>ApiToken</th>
@@ -55,6 +56,7 @@
                     <td>{{ $crd->id }}</td>
                     <td>{{ $crd->user_id }}</td>
                     <td>{{ $crd->num_serie }}</td>
+                    <td>{{ $crd->name_machine }}</td>      
                     <td>{{ $crd->nick_name }}</td>
                     <td>{{ $crd->password }}</td>
                     <td>{{ $crd->api_token }}</td>

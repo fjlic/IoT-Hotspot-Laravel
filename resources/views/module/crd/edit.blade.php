@@ -49,19 +49,23 @@
               </div>
                 <div class="form-group">
                   <label for="num_serie">Num Serie</label>
-                  <input type="text" class="form-control" name="num_serie" id="num_serie"  placeholder="Introduce Num serie" required value={{ $crd->num_serie }} />
+                  <input type="text" class="form-control" name="num_serie" id="num_serie"  placeholder="Introduce Num serie" required value="{{ $crd->num_serie }}" />
+                </div>
+                <div class="form-group">
+                  <label for="name_machine">Nombre</label>
+                  <input type="text" class="form-control" name="name_machine" id="name_machine"  placeholder="Introduce alias" required value="{{ $crd->name_machine }}" />
                 </div>
                 <div class="form-group">
                   <label for="nick_name">Alias</label>
-                  <input type="text" class="form-control" name="nick_name" id="nick_name"  placeholder="Introduce alias" required value={{ $crd->nick_name }} />
+                  <input type="text" class="form-control" name="nick_name" id="nick_name"  placeholder="Introduce alias" required value="{{ $crd->nick_name }}" />
                 </div>
                 <div class="form-group">
                   <label for="password">Passw</label>
-                  <input type="text" class="form-control" name="password" id="password" placeholder="Introduce contraseña" required value={{ $crd->password }} />
+                  <input type="text" class="form-control" name="password" id="password" placeholder="Introduce contraseña" required value="{{ $crd->password }}" />
                 </div>
                 <div class="form-group">
                   <label for="api_token">Token</label>
-                  <input type="text" class="form-control" name="api_token" id="api_token" placeholder="Sin Token" readonly="readonly" value={{ $crd->api_token }} />
+                  <input type="text" class="form-control" name="api_token" id="api_token" placeholder="Sin Token" readonly="readonly" value="{{ $crd->api_token }}" />
                 </div>
               </div>
               <!-- /.card-body -->

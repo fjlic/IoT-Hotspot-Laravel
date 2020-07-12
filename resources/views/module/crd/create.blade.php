@@ -48,6 +48,10 @@
                         </select>
               </div>
                 <div class="form-group">
+                  <label for="name_machine">Nombre de la  Maquina</label>
+                  <input type="text" class="form-control" name="name_machine" id="name_machine"  placeholder="Introduce alias" required>
+                </div>
+                <div class="form-group">
                   <label for="num_serie">Num Serie</label>
                   <input type="text" class="form-control" name="num_serie" id="num_serie"  placeholder="Introduce serie" required>
                 </div>

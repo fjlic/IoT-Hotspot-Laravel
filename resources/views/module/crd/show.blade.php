@@ -49,6 +49,10 @@
                   <input type="text" class="form-control" value="{{ $crd->num_serie }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
+                  <label for="name_machine">Nombre de la Maquina</label>
+                  <input type="text" class="form-control" value="{{ $crd->name_machine }}" readonly="readonly"/>
+                </div>
+                <div class="form-group">
                   <label for="nick_name">Alias</label>
                   <input type="text" class="form-control" value="{{ $crd->nick_name }}" readonly="readonly"/>
                 </div>

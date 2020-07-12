@@ -49,6 +49,7 @@ class CrdController extends Controller
         $request->validate([
             'user_id'=>'required|string|max:100',
             'num_serie'=>'required|string|max:100',
+            'name_machine'=>'required|string|max:100',
             'nick_name'=>'required|string|max:100',
             'password'=>'required|string|max:100'
             
@@ -58,6 +59,7 @@ class CrdController extends Controller
          $crd->user_id = $request->get('user_id');
          $crd->num_serie = $request->get('num_serie');
          $crd->nick_name = $request->get('nick_name');
+         $crd->name_machine = $request->get('name_machine');
          $crd->password = Crypt::encrypt($request->get('password'));
          $crd->api_token = ApiToken::GenerateToken32();
          $crd->save();
@@ -106,6 +108,7 @@ class CrdController extends Controller
         $request->validate([
             'user_id'=>'required|string|max:100',
             'num_serie'=>'required|string|max:100',
+            'name_machine'=>'required|string|max:100',
             'nick_name'=>'required|string|max:100',
             'password'=>'required|string|max:100',
             'api_token'=>'required|string|max:100'
@@ -113,6 +116,7 @@ class CrdController extends Controller
         $crd_request = $request->all();
         $crd_request['user_id'] =  $request->get('user_id');
         $crd_request['num_serie'] =  $request->get('num_serie');
+        $crd_request['name_machine'] =  $request->get('name_machine');
         $crd_request['nick_name'] =  $request->get('nick_name');
         $crd_request['password'] = Crypt::encrypt($request->get('password'));
         $crd_request['api_token'] =  $request->get('api_token');
