@@ -58,7 +58,7 @@ class AddNfcTableSeeder extends Seeder
         $nfccoin->time_between_cuts = '145';
         $nfccoin->prizes_count = '115';
         $nfccoin->ssid = 'nfc_3';
-        $nfccoin->password = 'nfc23';
+        $nfccoin->password = 'nfc123';
         $nfccoin->ip_server = '192.168.0.100';
         $nfccoin->port = '13003';
         $nfccoin->text = 'Prueba Nfc 3 Ok';
@@ -75,7 +75,7 @@ class AddNfcTableSeeder extends Seeder
         $nfccoin->time_between_cuts = '145';
         $nfccoin->prizes_count = '115';
         $nfccoin->ssid = 'nfc_4';
-        $nfccoin->password = 'nfc23';
+        $nfccoin->password = 'nfc123';
         $nfccoin->ip_server = '192.168.0.100';
         $nfccoin->port = '13003';
         $nfccoin->text = 'Prueba Nfc 4 Ok';
@@ -92,7 +92,7 @@ class AddNfcTableSeeder extends Seeder
         $nfccoin->time_between_cuts = '155';
         $nfccoin->prizes_count = '105';
         $nfccoin->ssid = 'nfc_5';
-        $nfccoin->password = 'nfc23';
+        $nfccoin->password = 'nfc123';
         $nfccoin->ip_server = '192.168.0.100';
         $nfccoin->port = '13003';
         $nfccoin->text = 'Prueba Nfc 5 Ok';
@@ -109,7 +109,7 @@ class AddNfcTableSeeder extends Seeder
         $nfccoin->time_between_cuts = '1234';
         $nfccoin->prizes_count = '115';
         $nfccoin->ssid = 'nfc_6';
-        $nfccoin->password = 'nfc23';
+        $nfccoin->password = 'nfc123';
         $nfccoin->ip_server = '192.168.0.100';
         $nfccoin->port = '13003';
         $nfccoin->text = 'Prueba Nfc 6 Ok';
@@ -126,7 +126,7 @@ class AddNfcTableSeeder extends Seeder
         $nfccoin->time_between_cuts = '112';
         $nfccoin->prizes_count = '116';
         $nfccoin->ssid = 'nfc_7';
-        $nfccoin->password = 'nfc23';
+        $nfccoin->password = 'nfc123';
         $nfccoin->ip_server = '192.168.0.100';
         $nfccoin->port = '13003';
         $nfccoin->text = 'Prueba Nfc 7 Ok';
@@ -143,7 +143,7 @@ class AddNfcTableSeeder extends Seeder
         $nfccoin->time_between_cuts = '162';
         $nfccoin->prizes_count = '184';
         $nfccoin->ssid = 'nfc_8';
-        $nfccoin->password = 'nfc23';
+        $nfccoin->password = 'nfc123';
         $nfccoin->ip_server = '192.168.0.100';
         $nfccoin->port = '13003';
         $nfccoin->text = 'Prueba Nfc 8 Ok';
@@ -160,7 +160,7 @@ class AddNfcTableSeeder extends Seeder
         $nfccoin->time_between_cuts = '455';
         $nfccoin->prizes_count = '155';
         $nfccoin->ssid = 'nfc_9';
-        $nfccoin->password = 'nfc23';
+        $nfccoin->password = 'nfc123';
         $nfccoin->ip_server = '192.168.0.100';
         $nfccoin->port = '13003';
         $nfccoin->text = 'Prueba Nfc 9 Ok';
@@ -177,7 +177,7 @@ class AddNfcTableSeeder extends Seeder
         $nfccoin->time_between_cuts = '153';
         $nfccoin->prizes_count = '124';
         $nfccoin->ssid = 'nfc_10';
-        $nfccoin->password = 'nfc23';
+        $nfccoin->password = 'nfc123';
         $nfccoin->ip_server = '192.168.0.100';
         $nfccoin->port = '13003';
         $nfccoin->text = 'Prueba Nfc 10 Ok';

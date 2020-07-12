@@ -17,6 +17,7 @@ class AddErbTableSeeder extends Seeder
         $erb = new Erb();
         $erb->id = 1;
         $erb->user_id = 4;
+        $erb->num_serie = 222233331;
         $erb->name_machine = 'Angry birds';
         $erb->nick_name = 'Erb_1';
         $erb->password = Crypt::encrypt('erb123');
@@ -26,6 +27,7 @@ class AddErbTableSeeder extends Seeder
         $erb = new Erb();
         $erb->id = 2;
         $erb->user_id = 4;
+        $erb->num_serie = 222233332;
         $erb->name_machine = 'Bean bag toss';
         $erb->nick_name = 'Erb_2';
         $erb->password = Crypt::encrypt('erb123');
@@ -35,6 +37,7 @@ class AddErbTableSeeder extends Seeder
         $erb = new Erb();
         $erb->id = 3;
         $erb->user_id = 4;
+        $erb->num_serie = 222233333;
         $erb->name_machine = 'Black hole';
         $erb->nick_name = 'Erb_3';
         $erb->password = Crypt::encrypt('erb123');
@@ -44,6 +47,7 @@ class AddErbTableSeeder extends Seeder
         $erb = new Erb();
         $erb->id = 4;
         $erb->user_id = 4;
+        $erb->num_serie = 222233334;
         $erb->name_machine = 'Candy fall';
         $erb->nick_name = 'Erb_4';
         $erb->password = Crypt::encrypt('erb123');
@@ -53,6 +57,7 @@ class AddErbTableSeeder extends Seeder
         $erb = new Erb();
         $erb->id = 5;
         $erb->user_id = 4;
+        $erb->num_serie = 222233335;
         $erb->name_machine = 'Cartooon coaster';
         $erb->nick_name = 'Erb_5';
         $erb->password = Crypt::encrypt('erb123');
@@ -62,6 +67,7 @@ class AddErbTableSeeder extends Seeder
         $erb = new Erb();
         $erb->id = 6;
         $erb->user_id = 4;
+        $erb->num_serie = 222233336;
         $erb->name_machine = 'Crazy animals';
         $erb->nick_name = 'Erb_6';
         $erb->password = Crypt::encrypt('erb123');
@@ -71,6 +77,7 @@ class AddErbTableSeeder extends Seeder
         $erb = new Erb();
         $erb->id = 7;
         $erb->user_id = 4;
+        $erb->num_serie = 222233337;
         $erb->name_machine = 'Crazy Canoe';
         $erb->nick_name = 'Erb_7';
         $erb->password = Crypt::encrypt('erb123');
@@ -80,6 +87,7 @@ class AddErbTableSeeder extends Seeder
         $erb = new Erb();
         $erb->id = 8;
         $erb->user_id = 4;
+        $erb->num_serie = 222233338;
         $erb->name_machine = 'Cross y road';
         $erb->nick_name = 'Erb_8';
         $erb->password = Crypt::encrypt('erb123');
@@ -89,6 +97,7 @@ class AddErbTableSeeder extends Seeder
         $erb = new Erb();
         $erb->id = 9;
         $erb->user_id = 4;
+        $erb->num_serie = 222233339;
         $erb->name_machine = 'Deal or no Deal';
         $erb->nick_name = 'Erb_9';
         $erb->password = Crypt::encrypt('erb123');

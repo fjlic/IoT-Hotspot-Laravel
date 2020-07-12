@@ -40,7 +40,7 @@
                 <tr>
                   <th>Id</th>
                   <th>User Id</th>
-                  <th>NumSerie</th>
+                  <th>Serie</th>
                   <th>Nombre</th>
                   <th>Alias</th>
                   <th>Password</th>

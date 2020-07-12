@@ -49,6 +49,7 @@ class ErbController extends Controller
         $request->validate([
             'user_id'=>'required|string|max:100',
             'num_serie'=>'required|string|max:100',
+            'name_machine'=>'required|string|max:100',
             'nick_name'=>'required|string|max:100',
             'password'=>'required|string|max:100'
             
@@ -58,6 +59,7 @@ class ErbController extends Controller
          $erb->user_id = $request->get('user_id');
          $erb->num_serie = $request->get('num_serie');
          $erb->nick_name = $request->get('nick_name');
+         $erb->name_machine = $request->get('name_machine');
          $erb->password = Crypt::encrypt($request->get('password'));
          $erb->api_token = ApiToken::GenerateToken32();
          $erb->save();
@@ -106,6 +108,7 @@ class ErbController extends Controller
         $request->validate([
             'user_id'=>'required|string|max:100',
             'num_serie'=>'required|string|max:100',
+            'name_machine'=>'required|string|max:100',
             'nick_name'=>'required|string|max:100',
             'password'=>'required|string|max:100',
             'api_token'=>'required|string|max:100'
@@ -113,6 +116,7 @@ class ErbController extends Controller
         $erb_request = $request->all();
         $erb_request['user_id'] =  $request->get('user_id');
         $erb_request['num_serie'] =  $request->get('num_serie');
+        $erb_request['name_machine'] =  $request->get('name_machine');
         $erb_request['nick_name'] =  $request->get('nick_name');
         $erb_request['password'] = Crypt::encrypt($request->get('password'));
         $erb_request['api_token'] =  $request->get('api_token');

@@ -17,6 +17,7 @@ class AddCrdTableSeeder extends Seeder
         $crd = new Crd();
         $crd->id = 1;
         $crd->user_id = 4;
+        $crd->num_serie = 333344441;
         $crd->name_machine = 'Angry birds';
         $crd->nick_name = 'Crd_1';
         $crd->password = Crypt::encrypt('crd123');
@@ -26,6 +27,7 @@ class AddCrdTableSeeder extends Seeder
         $crd = new Crd();
         $crd->id = 2;
         $crd->user_id = 4;
+        $crd->num_serie = 333344442;
         $crd->name_machine = 'Bean bag toss';
         $crd->nick_name = 'Crd_2';
         $crd->password = Crypt::encrypt('crd123');
@@ -35,6 +37,7 @@ class AddCrdTableSeeder extends Seeder
         $crd = new Crd();
         $crd->id = 3;
         $crd->user_id = 4;
+        $crd->num_serie = 333344443;
         $crd->name_machine = 'Black hole';
         $crd->nick_name = 'Crd_3';
         $crd->password = Crypt::encrypt('crd123');
@@ -44,6 +47,7 @@ class AddCrdTableSeeder extends Seeder
         $crd = new Crd();
         $crd->id = 4;
         $crd->user_id = 4;
+        $crd->num_serie = 333344444;
         $crd->name_machine = 'Candy fall';
         $crd->nick_name = 'Crd_4';
         $crd->password = Crypt::encrypt('crd123');
@@ -53,6 +57,7 @@ class AddCrdTableSeeder extends Seeder
         $crd = new Crd();
         $crd->id = 5;
         $crd->user_id = 4;
+        $crd->num_serie = 333344445;
         $crd->name_machine = 'Cartooon coaster';
         $crd->nick_name = 'Crd_5';
         $crd->password = Crypt::encrypt('crd123');
@@ -62,6 +67,7 @@ class AddCrdTableSeeder extends Seeder
         $crd = new Crd();
         $crd->id = 6;
         $crd->user_id = 4;
+        $crd->num_serie = 333344446;
         $crd->name_machine = 'Crazy animals';
         $crd->nick_name = 'Crd_6';
         $crd->password = Crypt::encrypt('crd123');
@@ -71,6 +77,7 @@ class AddCrdTableSeeder extends Seeder
         $crd = new Crd();
         $crd->id = 7;
         $crd->user_id = 4;
+        $crd->num_serie = 333344447;
         $crd->name_machine = 'Crazy Canoe';
         $crd->nick_name = 'Crd_7';
         $crd->password = Crypt::encrypt('crd123');
@@ -80,6 +87,7 @@ class AddCrdTableSeeder extends Seeder
         $crd = new Crd();
         $crd->id = 8;
         $crd->user_id = 4;
+        $crd->num_serie = 333344448;
         $crd->name_machine = 'Cross y road';
         $crd->nick_name = 'Crd_8';
         $crd->password = Crypt::encrypt('crd123');
@@ -89,6 +97,7 @@ class AddCrdTableSeeder extends Seeder
         $crd = new Crd();
         $crd->id = 9;
         $crd->user_id = 4;
+        $crd->num_serie = 333344449;
         $crd->name_machine = 'Deal or no Deal';
         $crd->nick_name = 'Crd_9';
         $crd->password = Crypt::encrypt('crd123');

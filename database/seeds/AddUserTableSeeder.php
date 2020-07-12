@@ -16,10 +16,10 @@ class AddUserTableSeeder extends Seeder
         $hostpot = new User();
         $hostpot->id = 4;
         $hostpot->region_id = 1;
-        $hostpot->name = 'Hostpot_1';
-        $hostpot->email = 'hostpot_1@galex.com';
-        $hostpot->password = Hash::make('hostpot1@54321');
-        $hostpot->branch_office = 'Santa Anita';
+        $hostpot->name = 'Hotspot_1';
+        $hostpot->email = 'hotspot_1@local.com';
+        $hostpot->password = Hash::make('hotspot1@54321');
+        $hostpot->branch_office = 'Plaza Forum';
         $hostpot->serial_number = '000000000000001';
         $hostpot->save();
     }
