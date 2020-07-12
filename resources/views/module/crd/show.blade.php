@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Server-Crd')
+@section('title', 'Hotspot-Crd')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop
