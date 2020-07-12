@@ -84,7 +84,10 @@
 @stop
 
 @section('css')
+@toastr_css
 @stop
 
 @section('js')
+@toastr_js
+@toastr_render
 @stop
