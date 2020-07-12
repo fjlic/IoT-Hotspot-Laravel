@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'HOTSPOT-IOT',
+    'title' => 'SERVER-IOT',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -45,7 +45,7 @@ return [
     |
     */
 
-    'logo' => '<b>IOT</b>HOTSPOT',
+    'logo' => '<b>IOT</b>SERVER',
     //'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img' => 'vendor/adminlte/dist/img/logo-iot.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',

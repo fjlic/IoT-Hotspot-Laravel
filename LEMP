@@ -1,0 +1,510 @@
+# How To Install Nginx, MariaDB, PHP 7.4 (LEMP Stack) in Xubuntu/20.04
+
+[*] Tools
+-----------------------------------------------------------------------------------------------------
+---------------Empaquetar Carpetas Proyestos---------------------------------------------------------
+Empaquetar: tar -cvf paquete.tar /paquete
+Desempaquetar: tar -xvf paquete.tar
+------Open SSh---------------------------------------------------------------------------------------
+sudo apt update
+sudo apt install openssh-server
+sudo /etc/init.d/ssh start
+sudo /etc/init.d/ssh stop
+sudo /etc/init.d/ssh restart
+-----------------------------------------------------------------------------------------------------
+------Add User Linux----------------------------------------------------------------------------------
+adduser badboy
+usermod -aG sudo badboy
+# llenar los datos para el usuario
+------------------------------------------------------------------------------------------------------
+Instalacion de cerbot para SSL // pagina validadad para https /// pasos para instalacion
+https://www.digitalocean.com/community/tutorials/how-to-secure-apache-with-let-s-encrypt-on-debian-9
+------------------------------------------------------------------------------------------------------
+----------Config Git HUb-----------------------------------------------------------------------------
+sudo apt-get install git-core
+git config --global user.name "fjlic"
+git config --global user.email franc.javier.flores@gmail.com
+--------------Subir Cambios------------------
+git pull
+git add .
+git commit -m "Descripcion Actualizado"
+git push
+git push deploy master 
+mouspade ~/.ssh/id_rsa.pub
+---------------SSH-KEY-GitHub----------------------
+nano ~/.ssh/id_rsa.pub
+ssh-keygen -t rsa -b 4096 -C "franc.javier.flores@gmail.com"
+Enter click
+Enter passphrase : Fjfl@res291
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_rsa
+Enter passphrase : Fjfl@res291
+mousepad ~/.ssh/id_rsa.pub
+----------------------------------------------------------------------------------------------------
+
+sudo apt-get install curl
+# dpkg-reconfigure tzdata
+
+[*] Visual Code 
+sudo snap install --classic code
+
+[*] Nginx
+sudo apt-get install nginx -y
+# sudo systemctl status nginx.service
+
+[*] FIREWALL
+sudo ufw app list
+sudo ufw enable
+sudo ufw allow 'Nginx HTTP'
+sudo ufw allow OpenSSH
+sudo ufw status
+
+
+[*] MariaDB
+sudo apt install mariadb-server -y
+
+[*] Entrar a Mariadb
+sudo mariadb -u root -p
+CREATE USER 'fjlic'@'%' IDENTIFIED BY 'Fjlic123';
+GRANT ALL PRIVILEGES ON *.* TO 'fjlic'@'%' WITH GRANT OPTION;
+CREATE USER 'testing'@'%' IDENTIFIED BY 'Testing123';
+GRANT ALL PRIVILEGES ON *.* TO 'testing'@'%' WITH GRANT OPTION;
+exit;
+
+[*] Disable Strict Mode:
+Create File:
+sudo nano /etc/mysql/conf.d/disable_strict_mode.cnf
+
+Restart Service
+sudo service mariadb restart
+## mysql_secure_installation
+
+[*] PHP 7.4 Fpm
+sudo apt install php7.4-fpm php7.4-common php7.4-mysql php7.4-xml php7.4-xmlrpc php7.4-curl php7.4-gd php7.4-imagick php7.4-cli php7.4-dev php7.4-imap php7.4-mbstring php7.4-opcache php7.4-soap php7.4-zip php7.4-intl -y
+sudo php -v
+sudo nano /etc/php/7.4/fpm/php.ini
+
+[*] Configure PHP 7.4fpm
+Open
+sudo nano /etc/php/7.4/fpm/php.ini
+Edit as Follows:
+
+upload_max_filesize = 64M 
+post_max_size = 96M 
+memory_limit = 256M 
+max_execution_time = 600 
+max_input_vars = 3000 
+max_input_time = 1000
+display_errors = On
+error_reporting = E_WARNING & ~E_NOTICE & ~E_DEPRECATED & ~E_STRICT
+log_errors = off
+short_open_tag = On
+date.timezone = "America/Mexico_City"
+cgi.fix_pathinfo=0
+
+Restart Service
+sudo apt install net-tools
+sudo systemctl start php7.4-fpm
+sudo systemctl enable php7.4-fpm
+sudo netstat -pl | grep php7.4-fpm
+sudo systemctl restart php7.4-fpm
+sudo php-fpm7.4 -t 
+sudo service php7.4-fpm restart
+
+[*] Configure WWW Dir
+cd /var/www/html
+sudo mkdir dev
+sudo mkdir prod
+sudo usermod -aG www-data fjlic
+sudo chown -R www-data:www-data /var/www/
+sudo chmod -R 775 /var/www/
+
+** Necesitas Reiniciar tu Session Reboot **
+sudo reboot
+
+[*] Install Composer
+cd /var/www/html
+curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
+sudo chown fjlic /home/fjlic/.cache/composer/
+sudo chown fjlic /home/fjlic/.config/composer/
+sudo chown fjlic /home/fjlic/.local/share/composer/
+sudo sh -c "echo 'precedence ::ffff:0:0/96 100' >> /etc/gai.conf"
+
+[*] LARAVEL CONFIG
+composer global require "laravel/installer"
+composer global require "laravel/lumen-installer"
+nano ~/.bashrc
+alias laravel='$HOME/.config/composer/vendor/bin/laravel'
+alias lumen='$HOME/.config/composer/vendor/bin/lumen'
+source ~/.bashrc
+
+[*] CREATE PROYECT
+Custom  // composer create-project laravel/laravel proyect-name "7.0.*"
+laravel new proyect-name
+sudo chown -R www-data:www-data proyect-name
+sudo chmod -R 775 proyect-name
+sudo chmod -R 777 proyect-name/storage
+sudo chmod -R 777 proyect-name/bootstrap/cache
+
+[*] JAVA
+sudo apt-get install -y default-jre
+sudo apt-get install -y default-jdk
+
+[*] Create Laravel Nginx Virtual Host
+sudo nano /etc/nginx/sites-available/local_proyect-name
+
+server {
+    listen 80;
+    server_name proyect-name.dev;
+    root /var/www/html/dev/proyect-name/public;
+    
+    index index.html index.htm index.php;
+    
+    charset utf-8;
+
+    location / {
+        try_files $uri $uri/ /index.php$is_args$args;
+    }
+    
+    location = /favicon.ico { access_log off; log_not_found off; }
+    location = /robots.txt  { access_log off; log_not_found off; }
+
+    access_log off;
+    error_log  /var/log/nginx/myapp-error.log error;
+
+    sendfile off;
+
+    client_max_body_size 100m;
+
+    location ~ \.php$ {
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_pass unix:/run/php/php7.4-fpm.sock;
+        fastcgi_index index.php;
+        include fastcgi_params;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_intercept_errors off;
+        fastcgi_buffer_size 16k;
+        fastcgi_buffers 4 16k;
+    }
+
+    location ~ /\.ht {
+        deny all;
+    }
+}
+
+
+cd ../sites-enabled
+sudo ln -s /etc/nginx/sites-available/dev_proyect-name /etc/nginx/sites-enabled/
+sudo nano /etc/hosts
+///// Introduce//////
+127.0.1.1	proyect-name.dev
+/////////////////////
+sudo service nginx restart
+
+
+[*] NodeJs y Npm
+sudo apt-get install -y nodejs
+sudo apt install -y build-essential
+sudo apt-get install -y npm
+
+[*] Angular CLI
+## https://ubunlog.com/angular-cli-crea-aplicaciones-angular/  ##
+sudo npm install -g @angular/cli
+ng --version
+sudo ng new test-app
+cd test-app
+ng serve
+sudo ufw allow 4200/tcp
+sudo ufw reload
+ng help
+
+###npm install -g @angular/cli
+###ng new my-dream-app
+###cd my-dream-app
+###ng serve
+
+
+[*] PHPMYADMIN
+sudo apt-get install phpmyadmin
+-----Opcion 1 * Apache 2
+-----Opcion 2 <NO>
+
+[*] Create PhpMyadmin Nginx Virtual Host
+sudo nano /etc/nginx/sites-available/phpmyadmin
+
+
+server {
+    listen 80;
+    server_name phpmyadmin.dev;
+    root /usr/share/phpmyadmin;
+    
+    index index.html index.htm index.php;
+    
+    charset utf-8;
+
+    location / {
+        try_files $uri $uri/ /index.php$is_args$args;
+    }
+    
+    location = /favicon.ico { access_log off; log_not_found off; }
+    location = /robots.txt  { access_log off; log_not_found off; }
+
+    access_log off;
+    error_log  /var/log/nginx/myapp-error.log error;
+
+    sendfile off;
+
+    client_max_body_size 100m;
+
+    location ~ \.php$ {
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_pass unix:/run/php/php7.0-fpm.sock;
+        fastcgi_index index.php;
+        include fastcgi_params;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_intercept_errors off;
+        fastcgi_buffer_size 16k;
+        fastcgi_buffers 4 16k;
+    }
+
+    location ~ /\.ht {
+        deny all;
+    }
+}
+
+
+cd ../sites-enabled
+sudo ln -s /etc/nginx/sites-available/phpmyadmin /etc/nginx/sites-enabled/
+sudo nano /etc/hosts
+///// Introduce//////
+127.0.1.1	phpmyadmin.local
+///////////////////// 
+sudo service nginx restart
+
+[*] Configure WWW Dir
+sudo usermod -aG www-data user
+sudo chown -R www-data:www-data /var/www/
+sudo chmod -R 775 /var/www/
+
+[*] SupervisorCtl Laravel Jobs
+sudo apt-get install supervisor
+
+sudo nano /etc/supervisor/conf.d/laravel-worker.conf
+[program:laravel-worker]
+process_name=%(program_name)s_%(process_num)02d
+command=php /PATH/TO/LARAVEL/DIR/artisan queue:work sqs --sleep=3 --tries=3
+autostart=true
+autorestart=true
+user=LINUX_USER
+numprocs=8
+redirect_stderr=true
+stdout_logfile=/PATH/TO/LARAVEL/DIR/worker.log
+
+sudo supervisord -c /etc/supervisor/supervisord.conf
+sudo supervisorctl -c /etc/supervisor/supervisord.conf
+
+sudo supervisorctl reread
+sudo supervisorctl update
+sudo supervisorctl start laravel-worker:*
+
+
+
+[*] Deploy Laravel
+php artisan config:cache
+
+# Maintenance Mode
+php artisan down --message="Upgrading Database" --retry=60
+
+## To disable maintenance mode, use the up command:
+php artisan up
+
+
+[*] Laravel Apache Virtual Host 
+<VirtualHost *:80>
+  ServerName myapp.localhost.com
+  DocumentRoot "/home/vagrant/projects/myapp/public"
+  <Directory "/home/vagrant/projects/myapp/public">
+    AllowOverride all
+  </Directory>
+</VirtualHost>
+
+
+[*] Beanstalkd
+sudo apt-get install beanstalkd
+
+cd /var/www/html/
+composer create-project ptrofimov/beanstalk_console -s dev
+#php -S localhost:7654 -t public
+
+///--Configurar Laravel para usar Admin-lte--///
+-----------------------------------------------------
+-----------------Configure NPM-----------------------
+npm install 
+npm install node modules
+npm install admin-lte --save-dev
+npm install jquery-slimscroll --save
+npm run watch
+npm run dev
+-----------------------------------------------------
+-----------------assets/app.scss---------------------
+-----------------------------------------------------
+
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic");
+
+// Variables
+@import "variables";
+
+// Bootstrap - Sass
+//@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+
+// Others Libraries
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~font-awesome/css/font-awesome.min.css";
+@import "~ionicons/dist/css/ionicons.min.css";
+@import "~admin-lte/dist/css/AdminLTE.min.css";
+@import "~admin-lte/dist/css/skins/_all-skins.min.css";
+///@import "~morris.js/morris.css";
+@import "~jvectormap/jquery-jvectormap.css";
+@import "~bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css";
+@import "~bootstrap-daterangepicker/daterangepicker.css";
+//@import "~admin-lte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css";
+-----------------------------------------------------
+-----------------assets/bootstrap--------------------
+-----------------------------------------------------
+
+window._ = require('lodash');
+
+/**
+ * We'll load jQuery and the Bootstrap jQuery plugin which provides support
+ * for JavaScript based Bootstrap features such as modals and tabs. This
+ * code may be modified to fit the specific needs of your application.
+ */
+
+try {
+    window.$ = window.jQuery = require('jquery');
+    //require('bootstrap-sass');
+  } catch (e) {}
+
+    require('jquery/dist/jquery.min.js');
+    require('admin-lte/plugins/jQueryUI/jquery-ui.min.js');
+    require('bootstrap/dist/js/bootstrap.min.js');
+    require('raphael/raphael.min.js');
+    require('morris.js/morris.min.js');
+    require('jquery-sparkline/jquery.sparkline.min.js');
+    require('admin-lte/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js');
+    require('admin-lte/plugins/jvectormap/jquery-jvectormap-world-mill-en.js');
+    require('jquery-knob/dist/jquery.knob.min.js');
+    require('moment/moment.js');
+    require('bootstrap-daterangepicker/daterangepicker.js');
+    require('bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js');
+    //////require('admin-lte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js');
+    require('jquery-slimscroll/jquery.slimscroll.min.js');
+    require('fastclick/lib/fastclick.js');
+    require('chart.js/dist/Chart.min.js');
+    require('flot/jquery.flot.js');
+    require('flot/jquery.flot.pie.js');
+    require('flot/jquery.flot.categories.js');
+    require('admin-lte/dist/js/adminlte.min.js');
+    require('admin-lte/dist/js/pages/dashboard.js');
+    require('admin-lte/dist/js/pages/dashboard2.js');
+    require('admin-lte/dist/js/demo.js');
+-----------------------------------------------------
+-----------------------------------------------------
+//Configuracion para laravel Mix y VUE 2
+--------------------------------------------
+composer require laravel/ui --dev
+php artisan ui vue --auth
+npm install
+rm -rf node_modules
+rm package-lock.json yarn.lock
+npm cache clear --force
+npm install
+--------------------------------------------
+curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+sudo apt-get install -y nodejs
+npm install
+npm install vue-router
+npm install vue-axios
+npm run dev
+npm run watch
+npm install admin-lte@3.0.0-alpha.2 --save
+
+----------------------------------------------
+[*] Jeroennoten AdminLTE/Laravel 3.3
+## https://github.com/jeroennoten/Laravel-AdminLTE
+composer require laravel/ui
+php artisan ui vue --auth
+sudo npm install
+sudo npm run dev
+composer require jeroennoten/laravel-adminlte
+php artisan ui:controllers
+php artisan adminlte:install --with=auth_views --with=basic_routes
+php artisan adminlte:install --only=config
+php artisan adminlte:install --only=translations
+php artisan adminlte:plugins install
+php artisan adminlte:plugins install
+
+[*] Laratrust 6
+# https://laratrust.santigarcor.me/docs/6.x/installation.html
+composer require santigarcor/laratrust
+php artisan vendor:publish --tag="laratrust"
+php artisan laratrust:setup
+composer dump-autoload
+php artisan migrate:fresh
+php artisan laratrust:seeder
+composer dump-autoload
+Entra a --- config/laratrust.php
+Edita ----- panel.register value to true
+php artisan vendor:publish --tag=laratrust-assets --force
+
+[*] MicroWeber Proyect
+composer create-project microweber/microweber microweber.fjlic.local dev-master 
+sudo chown -R www-data:www-data Ecomerce.git/
+sudo chmod -R 775 Ecomerce.git
+sudo chmod -R 777 Ecomerce.git/config
+sudo chmod -R 777 Ecomerce.git/storage
+sudo chmod -R 777 Ecomerce.git/bootstrap/cache/
+sudo chmod -R 777 Ecomerce.git/userfiles
+###php artisan microweber:install admin@gmail.com admin admin123 localhost microweber testing Testing123 mariadb -p site_ -t liteness -d 1
+###php artisan microweber:install admin@gmail.com admin pass 127.0.0.1 site_db root secret -p site_
+###microweber:install [-p|--prefix[="..."]] [-t|--template[="..."]] [-d|--default-content[="..."]] email username password db_host db_name db_user [db_pass]
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+[---Git Hub----]
+git clone --bare https://github.com/fjlic/Ecomerce.git
+git init
+git add .
+git commit -m "Uploading local project to update it"
+git remote add origin https://github.com/fjlic/Ecomerce.git
+git push --mirror https://github.com/fjlic/Ecomerce.git
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+[---Git Hub----IOT-Hotspot]
+git clone --bare https://github.com/fjlic/IOT-Hotspot.git
+git init
+git pull https://github.com/fjlic/IOT-Hotspot.git
+git add .
+git commit -m "Aply package yoeunes/toastr in views crd"
+git push https://github.com/fjlic/IOT-Hotspot.git
+git remote add origin https://github.com/fjlic/IOT-Hotspot.git
+git push --mirror https://github.com/fjlic/IOT-Hotspot.git
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+[---Git Hub----IOT-Server]
+git clone --bare https://github.com/fjlic/IOT-Server.git
+git init
+git pull https://github.com/fjlic/IOT-Server.git
+git add .
+git commit -m "Aply package yoeunes/toastr in views crd"
+git push https://github.com/fjlic/IOT-Hotspot.git
+git remote add origin https://github.com/fjlic/IOT-Hotspot.git
+git push --mirror https://github.com/fjlic/IOT-Hotspot.git
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+git init
+git pull
+git add .
+git commit -m "Uploading local project to update it"
+git push
+git push deploy master
+------------------------------------------------------------------------------------------------------------------------------------------------------------
