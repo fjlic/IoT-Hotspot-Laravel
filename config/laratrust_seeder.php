@@ -12,20 +12,87 @@ return [
     'truncate_tables' => true,
 
     'roles_structure' => [
-        'superadministrator' => [
-            'users' => 'c,r,u,d',
-            'payments' => 'c,r,u,d',
-            'profile' => 'r,u'
+        'root' => [
+            'root' => 'c,r,u,d',
+            'admin' => 'c,r,u,d',
+            'super' => 'c,r,u,d',
+            'user' => 'c,r,u,d',
+            'crd' => 'c,r,u,d',
+            'erb' => 'c,r,u,d',
+            'nfc' => 'c,r,u,d',
+            'qr' => 'c,r,u,d',
+            'counter' => 'c,r,u,d',
+            'historialcrd' => 'c,r,u,d',
+            'historialerb' => 'c,r,u,d',
+            'historialnfc' => 'c,r,u,d',
+            'historialqr' => 'c,r,u,d',
+            'historialcounter' => 'c,r,u,d'
         ],
-        'administrator' => [
-            'users' => 'c,r,u,d',
-            'profile' => 'r,u'
+        'admin' => [
+            'admin' => 'r,u',
+            'super' => 'c,r,u,d',
+            'user' => 'c,r,u,d',
+            'crd' => 'c,r,u,d',
+            'erb' => 'c,r,u,d',
+            'nfc' => 'c,r,u,d',
+            'qr' => 'c,r,u,d',
+            'counter' => 'c,r,u,d',
+            'historialcrd' => 'c,r,u,d',
+            'historialerb' => 'c,r,u,d',
+            'historialnfc' => 'c,r,u,d',
+            'historialqr' => 'c,r,u,d',
+            'historialcounter' => 'c,r,u,d'
+        ],
+        'super' => [
+            'super' => 'r,u',
+            'user' => 'c,r,u',
+            'crd' => 'c,r,u,d',
+            'erb' => 'c,r,u,d',
+            'nfc' => 'c,r,u,d',
+            'qr' => 'c,r,u,d',
+            'counter' => 'c,r,u,d',
+            'historialcrd' => 'c,r,u,d',
+            'historialerb' => 'c,r,u,d',
+            'historialnfc' => 'c,r,u,d',
+            'historialqr' => 'c,r,u,d',
+            'historialcounter' => 'c,r,u,d'
         ],
         'user' => [
-            'profile' => 'r,u',
+            'user' => 'r,u',
+            'crd' => 'c,r,u',
+            'erb' => 'c,r,u',
+            'nfc' => 'c,r,u',
+            'qr' => 'c,r,u',
+            'counter' => 'c,r,u',
+            'historialcrd' => 'c,r,u',
+            'historialerb' => 'c,r,u',
+            'historialnfc' => 'c,r,u',
+            'historialqr' => 'c,r,u',
+            'historialcounter' => 'c,r,u'
         ],
-        'role_name' => [
-            'module_1_name' => 'c,r,u,d',
+        'crd' => [
+            'crd' => 'c,r,u',
+            'nfc' => 'c,r,u',
+            'qr' => 'c,r,u',
+            'counter' => 'c,r,u',
+            'historialcrd' => 'c,r,u',
+            'historialnfc' => 'c,r,u',
+            'historialqr' => 'c,r,u',
+            'historialcounter' => 'c,r,u'
+
+        ],
+        'erb' => [
+            'erb' => 'c,r,u',
+            'nfc' => 'c,r,u',
+            'qr' => 'c,r,u',
+            'counter' => 'c,r,u',
+            'historialerb' => 'c,r,u',
+            'historialnfc' => 'c,r,u',
+            'historialqr' => 'c,r,u',
+            'historialcounter' => 'c,r,u'
+
+        ],
+        'disable' => [
         ]
     ],
 

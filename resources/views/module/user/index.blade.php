@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'API ESP32')
+@section('title', 'Hotspot-User')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop
@@ -27,14 +27,14 @@
  <!-- Main content -->
  <section class="content">
       <div class="row">
-        <div class="col-xs-12">
-            <div class="box box-primary">
-            <div class="box-header">
-              <h3 class="box-title">Tabla Usuarios</h3>
-              <a class="btn btn-success btn-xs pull-right"  href="{{ route('user.create') }}" ><span class="glyphicon glyphicon-plus"></span></a>
+        <div class="col-12">
+            <div class="card ">
+            <div class="card-header">
+              <h3 class="card-title">Tabla Usuarios</h3>
+              <a class="btn btn-xs btn-success float-right" href="{{ route('user.create') }}" role="button"><span class="fas fa-plus"></span></a>
             </div>
-            <!-- /.box-header -->
-            <div class="box-body">
+            <!-- /.card-header -->
+            <div class="card-body">
               <table id="userTable" class="table table-bordered table-striped">
                 <thead>
                 <tr>
@@ -58,11 +58,11 @@
                     <td>{{ $user->updated_at }}</td>
                     <td>
                       <form role="form" action="{{ route('user.destroy',$user->id) }}" method="POST">
-                      <a class="btn btn-info btn-xs" href="{{ route('user.show',$user->id) }}"><span class="glyphicon glyphicon-eye-open"></span></a> 
-                      <a class="btn btn-warning btn-xs"  href="{{ route('user.edit',$user->id) }}" ><span class="glyphicon glyphicon-pencil"></span></a>
+                      <a class="btn btn-info btn-xs" href="{{ route('user.show',$user->id) }}" role="button"><span class="fas fa-eye"></span></a> 
+                      <a class="btn btn-warning btn-xs"  href="{{ route('user.edit',$user->id) }}" role="button"><span class="fas fa-pen"></span></a>
                       @csrf
                       @method('DELETE')
-                      <button class="btn btn-danger btn-xs" type="submit"><span class="glyphicon glyphicon-trash"></span></button>
+                      <button class="btn btn-danger btn-xs" type="submit"><span class="fas fa-trash"></span></button>
                       </form>
                     </td>
                 </tr>
@@ -81,9 +81,9 @@
                 </tfoot>-->
               </table>
             </div>
-            <!-- /.box-body -->
+            <!-- /.card-body -->
           </div>
-          <!-- /.box -->
+          <!-- /.card -->
         </div>
         <!-- /.col -->
       </div>
@@ -93,13 +93,20 @@
     
 @stop
 
+@section('footer') 
+<div class="pull-right hidden-xs"><b>Version</b> 2.0.0<strong>  Copyright &copy; 2020 <a href="http://hotspot.local/home" target="_blank">Hotspot</a>.</strong>  Todo los derechos Reservados.</div> 
+@stop
+
 @section('css')
+@toastr_css 
 @stop
 
 @section('js')
+@toastr_js
+@toastr_render
 <script>
   $(function () {
-     $('#userTable').DataTable({
+     $('#crdTable').DataTable({  
       'paging'      : true,
       'lengthChange': true,
       'searching'   : true,
@@ -109,8 +116,8 @@
       'scrollX'     : true,
       'scrollY'     : false,
       'scrollCollapse': false,
-      'language': {'url': '//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json'}
+      'language': {'url': '//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json'}   
     })
-  })
+  });
 </script>
 @stop
