@@ -133,7 +133,7 @@ class HistorialErbController extends Controller
     public function destroy(HistorialErb $historialerb)
     {
         //
-        $historialerd->delete();
+        $historialerb->delete();
         //return redirect('/historialerb')->with('success', 'Erb Eliminado!');
         toastr()->error('Erb Hitorial eliminado');
         return redirect()->route('historialerb.index');

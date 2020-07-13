@@ -13,7 +13,7 @@ class HistorialCrd extends Model
      * @var array
      */
     protected $fillable = [
-        'id','user_id', 'name_machine', 'nick_name', 'password', 'api_token',
+        'id','crd_id', 'num_serie', 'name_machine', 'nick_name', 'password', 'api_token',
      ];
  
      /**

@@ -40,10 +40,10 @@
             @method('PUT')
               <div class="card-body">
               <div class="form-group">
-                    <label for="erd_id">Usuario Asignado</label>
-                        <select class="form-control" name="erd_id" id="erd_id">
-                          @foreach($erds as $erd)
-                          <option>{{ $erd->id }}</option>
+                    <label for="crd_id">Crd asignada</label>
+                        <select class="form-control" name="crd_id" id="crd_id">
+                          @foreach($crds as $crd)
+                          <option>{{ $crd->id }}</option>
                           @endforeach
                         </select>
               </div>

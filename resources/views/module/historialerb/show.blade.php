@@ -41,7 +41,7 @@
                   <input type="text" class="form-control" value="{{ $historialerb->id }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
-                  <label for="erb_id">Id Erb</label>
+                  <label for="erb_id">Id_Erb</label>
                   <input type="text" class="form-control" value="{{ $historialerb->erb_id }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">

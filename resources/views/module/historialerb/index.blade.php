@@ -77,7 +77,7 @@
                <!-- <tfoot>
                  <tr>
                  <th>Id</th>
-                  <th>User Id</th>
+                  <th>Erb_Id</th>
                   <th>NumSerie</th>
                   <th>Alias</th>
                   <th>Password</th>
