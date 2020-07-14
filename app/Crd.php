@@ -3,10 +3,14 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Laratrust\Traits\LaratrustUserTrait;
 
 class Crd extends Model
 {
-    //
+    use LaratrustUserTrait;
+    use Notifiable;
+    
     /**
      * The attributes that are mass assignable.
      *
