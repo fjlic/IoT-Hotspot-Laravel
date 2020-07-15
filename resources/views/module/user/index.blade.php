@@ -106,7 +106,7 @@
 @toastr_render
 <script>
   $(function () {
-     $('#crdTable').DataTable({  
+     $('#userTable').DataTable({  
       'paging'      : true,
       'lengthChange': true,
       'searching'   : true,

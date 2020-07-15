@@ -18,7 +18,7 @@ class AddUserTableSeeder extends Seeder
         $root->region_id = 1;
         $root->name = 'Root';
         $root->email = 'root@local.com';
-        $root->password = Hash::make('admin@54321');
+        $root->password = Hash::make('root@54321');
         $root->branch_office = 'Sin Asignar';
         $root->serial_number = '0000000001';
         $root->save();

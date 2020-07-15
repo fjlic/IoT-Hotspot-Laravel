@@ -23,6 +23,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+    
     public function index()
     {
         $filter = Role::all();
@@ -38,6 +39,5 @@ class HomeController extends Controller
             }
         }
         return view('module.user.index', compact('users'));
-        
     }
 }

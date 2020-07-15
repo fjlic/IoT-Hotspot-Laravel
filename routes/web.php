@@ -19,11 +19,11 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 
 Auth::routes();
 
-Route::get('/home', function() { return view('home'); })->name('home')->middleware('auth');
+//Route::get('/home', function() { return view('home'); })->name('home')->middleware('auth');
 Route::resource('region', 'RegionController')->middleware('auth');
 Route::resource('user', 'UserController')->middleware('auth');
 Route::resource('role', 'RoleController')->middleware('auth');
