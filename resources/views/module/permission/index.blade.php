@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Hotspot-Role')
+@section('title', 'Hotspot-Permission')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop
@@ -30,12 +30,12 @@
         <div class="col-12">
             <div class="card ">
             <div class="card-header">
-              <h3 class="card-title">Tabla de Roles</h3>
-              <a class="btn btn-xs btn-success float-right" href="{{ route('role.create') }}" role="button"><span class="fas fa-plus"></span></a>
+              <h3 class="card-title">Tabla de Asignaciones</h3>
+              <a class="btn btn-xs btn-success float-right" href="{{ route('permission.create') }}" role="button"><span class="fas fa-plus"></span></a>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <table id="roleTable" class="table table-bordered table-striped">
+              <table id="permissionTable" class="table table-bordered table-striped">
                 <thead>
                 <tr>
                   <th>Id</th>
@@ -48,18 +48,18 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($roles as $role)
+                @foreach($permissions as $permission)
                 <tr>
-                    <td>{{ $role->id }}</td>
-                    <td>{{ $role->name }}</td>
-                    <td>{{ $role->display_name }}</td>
-                    <td>{{ $role->description }}</td>
-                    <td>{{ $role->created_at }}</td>
-                    <td>{{ $role->updated_at }}</td>
+                    <td>{{ $permission->id }}</td>
+                    <td>{{ $permission->name }}</td>
+                    <td>{{ $permission->display_name }}</td>
+                    <td>{{ $permission->description }}</td>
+                    <td>{{ $permission->created_at }}</td>
+                    <td>{{ $permission->updated_at }}</td>
                     <td>
-                      <form role="form" action="{{ route('role.destroy',$role->id) }}" method="POST">
-                      <a class="btn btn-info btn-xs" href="{{ route('role.show',$role->id) }}" role="button"><span class="fas fa-eye"></span></a> 
-                      <a class="btn btn-warning btn-xs"  href="{{ route('role.edit',$role->id) }}" role="button"><span class="fas fa-pen"></span></a>
+                      <form role="form" action="{{ route('permission.destroy',$permission->id) }}" method="POST">
+                      <a class="btn btn-info btn-xs" href="{{ route('permission.show',$permission->id) }}" role="button"><span class="fas fa-eye"></span></a> 
+                      <a class="btn btn-warning btn-xs"  href="{{ route('permission.edit',$permission->id) }}" role="button"><span class="fas fa-pen"></span></a>
                       @csrf
                       @method('DELETE')
                       <button class="btn btn-danger btn-xs" type="submit"><span class="fas fa-trash"></span></button>
@@ -106,7 +106,7 @@
 @toastr_render
 <script>
   $(function () {
-     $('#roleTable').DataTable({  
+     $('#permissionTable').DataTable({  
       'paging'      : true,
       'lengthChange': true,
       'searching'   : true,

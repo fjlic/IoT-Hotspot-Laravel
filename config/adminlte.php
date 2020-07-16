@@ -205,6 +205,7 @@ return [
     //-----------Custom Urls
     'dashboard_url' => 'user',
     'dashboard_url' => 'role',
+    'dashboard_url' => 'permission',
     'dashboard_url' => 'region',
     'dashboard_url' => 'crd',
     'dashboard_url' => 'erb',
@@ -287,16 +288,28 @@ return [
                     'url'  => 'user',
                 ],
                 [
-                    'text' => 'Tipos de Usuario',
+                    'text' => 'profile',
+                    'icon_color' => '',
+                    'icon'  => 'fas fa-fw fa-user',
+                    'url'  => 'profile',
+                ],
+                [
+                    'text' => 'Roles',
                     'icon_color' => '',
                     'icon'  => 'fas fa-address-card',
                     'url'  => 'role',
                 ],
                 [
-                    'text' => 'profile',
+                    'text' => 'Permisos',
                     'icon_color' => '',
-                    'icon'  => 'fas fa-fw fa-user',
-                    'url'  => 'profile',
+                    'icon'  => 'fas fa-address-card',
+                    'url'  => 'permission',
+                ],
+                [
+                    'text' => 'Asignaciones',
+                    'icon_color' => '',
+                    'icon'  => 'fas fa-address-card',
+                    'url'  => 'assignment',
                 ],
                 [
                     'text' => 'change_password',
@@ -308,7 +321,7 @@ return [
         ],
         //[
         //    'text'    => 'Rol-Perm',
-        //    'icon'    => 'fas fa-fw fa-share',
+        //    'icon'    => 'fas fa-fw fa-share', //
         //    'submenu' => [
         //        [
         //            'text' => 'profile',

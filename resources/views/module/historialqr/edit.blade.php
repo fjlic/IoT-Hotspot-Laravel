@@ -1,11 +1,11 @@
 @extends('adminlte::page')
-@section('title', 'API ESP32')
+@section('title', 'Hotspot-Hitorial-Crd')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop
 
 @section('content')
-@if ($errors->any())
+ @if ($errors->any())
       <div class="alert alert-danger">
         <ul>
             @foreach ($errors->all() as $error)
@@ -13,73 +13,91 @@
             @endforeach
         </ul>
       </div><br />
-  @endif
+@endif
+
+@if ($message = Session::get('success'))
+
+<div class="alert alert-success">
+
+    <p>{{ $message }}</p>
+
+</div>
+@endif
+
  <!-- Main content -->
  <section class="content">
       <div class="row">
-        <div class="col-xs-12">
-            <div class="box box-warning">
-            <div class="box-header">
-              <h3 class="box-title">Editar Historial Qr</h3>
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Editar Historial Crd</h3>
             </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-            <!--'qr_id', 'qr_serie', 'key_status', 'gone_down', -->
-            <form role="form" action="{{ route('historialqr.update',$historialqr->id) }}" method="POST">
+            <!-- /.card-header -->
+            <div class="card-body">
+            <!-- form start -->
+            <form role="form" action="{{ route('historialcrd.update',$historialcrd->id) }}" method="POST">
             @csrf
             @method('PUT')
-              <div class="box-body">
-                <div class="form-group">
-                  <label for="qr_id">Id QrL</label>
-                  <input type="text" class="form-control" name="qr_id" id="qr_id"  placeholder="Introduce id Qr" readonly="readonly" required value="{{ $historialqr->qr_id }}" />
-                </div>
-                <div class="form-group">
-                  <label for="qr_serie">Qr serie</label>
-                  <input type="text" class="form-control" name="qr_serie" id="qr_serie"  placeholder="Introduce Serie" required value="{{ $historialqr->qr_serie }}" />
-                </div>
-                <div class="form-group">
-                    <label for="key_status">Estatus</label>
-                        <select class="form-control" name="key_status" id="key_status"> 
-                        <option selected="true">{{ $historialqr->key_status }}</option>
-                          <option>True</option>
-                          <option>False</option>
+              <div class="card-body">
+              <div class="form-group">
+                    <label for="crd_id">Crd asignada</label>
+                        <select class="form-control" name="crd_id" id="crd_id">
+                          @foreach($crds as $crd)
+                          <option>{{ $crd->id }}</option>
+                          @endforeach
                         </select>
+              </div>
+                <div class="form-group">
+                  <label for="num_serie">Num Serie</label>
+                  <input type="text" class="form-control" name="num_serie" id="num_serie"  placeholder="Introduce Num serie" required value="{{ $historialcrd->num_serie }}" />
                 </div>
                 <div class="form-group">
-                    <label for="gone_down">Estatus</label>
-                        <select class="form-control" name="gone_down" id="gone_down"> 
-                        <option selected="true">{{ $historialqr->gone_down }}</option>
-                          <option>1</option>
-                          <option>0</option>
-                        </select>
+                  <label for="name_machine">Nombre</label>
+                  <input type="text" class="form-control" name="name_machine" id="name_machine"  placeholder="Introduce alias" required value="{{ $historialcrd->name_machine }}" />
+                </div>
+                <div class="form-group">
+                  <label for="nick_name">Alias</label>
+                  <input type="text" class="form-control" name="nick_name" id="nick_name"  placeholder="Introduce alias" required value="{{ $historialcrd->nick_name }}" />
+                </div>
+                <div class="form-group">
+                  <label for="password">Passw</label>
+                  <input type="text" class="form-control" name="password" id="password" placeholder="Introduce contraseña" required value="{{ $historialcrd->password }}" />
+                </div>
+                <div class="form-group">
+                  <label for="api_token">Token</label>
+                  <input type="text" class="form-control" name="api_token" id="api_token" placeholder="Sin Token" readonly="readonly" value="{{ $historialcrd->api_token }}" />
                 </div>
               </div>
-              <!-- /.box-body -->
+              <!-- /.card-body -->
 
-              <div class="box-footer">
-                <a href="{{ route('historialqr.index') }}" class="btn btn-default">Cancelar</a>
+              <div class="card-footer">
+                <a href="{{ route('historialcrd.index') }}" class="btn btn-default">Cancelar</a>
                 <button type="submit" class="btn btn-warning pull-right" >Enviar</button>
               </div>
             </form>
           </div>
-          <!-- /.box -->
+          <!-- /.card -->
           <!-- form-->
- 
-            </div>
-            <!-- /.box-body -->
+          <!-- /.card-body -->
           </div>
-          <!-- /.box -->
+          <!-- /.card -->
         </div>
         <!-- /.col -->
       </div>
       <!-- /.row -->
     </section>
-    <!-- /.content -->   
+    <!-- /.content --> 
+@stop
+
+@section('footer') 
+<div class="pull-right hidden-xs"><b>Version</b> 2.0.0<strong>  Copyright &copy; 2020 <a href="http://hotspot.local/home" target="_blank">Hotspot</a>.</strong>  Todo los derechos Reservados.</div> 
 @stop
 
 @section('css')
-    
+@toastr_css 
 @stop
 
 @section('js')
+@toastr_js
+@toastr_render
 @stop

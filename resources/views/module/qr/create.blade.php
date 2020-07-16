@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'API ESP32')
+@section('title', 'Hotspot-Qr')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop
@@ -14,62 +14,74 @@
         </ul>
       </div><br />
   @endif
+
+@if ($message = Session::get('success'))
+
+<div class="alert alert-success">
+
+    <p>{{ $message }}</p>
+
+</div>
+@endif
+
  <!-- Main content -->
  <section class="content">
       <div class="row">
-        <div class="col-xs-12">
-            <div class="box box-success">
-            <div class="box-header">
-              <h3 class="box-title">Crear Qr</h3>
+        <div class="col-12">
+            <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Crear Qr</h3>
             </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-                  <!-- form start -->
-                  <!-- 'qr_serie', 'key_status', 'gone_down', -->
-            <form role="form" action="{{ route('qr.store')}}" method="POST">
-                @csrf
-                <div class="form-group">
-                    <label for="esp32_id">Esp32 Asignado</label>
-                        <select class="form-control" name="esp32_id" id="esp32_id"> 
-                          {{--<option selected="true">{{ $esp32->esp32_asign }}</option>--}}
-                          @foreach($esp32s as $esp32)
-                          <option>{{ $esp32->id }}</option>
+            <!-- /.card-header 'id', 'crd_id', 'erb_id', 'qr_serie', 'coins', 'gone_down' -->
+            <div class="card-body">
+            <!-- form start -->
+            <form role="form" action="{{ route('erb.store')}}" method="POST">
+              @csrf
+              <div class="card-body">
+              <div class="form-group">
+                    <label for="crd_id">Crd Id</label>
+                        <select class="form-control" name="crd_id" id="crd_id"> 
+                          {{--<option selected="true">{{ $erb->user_asign }}</option>--}}
+                          @foreach($crds as $crd)
+                          <option>{{ $crd->id }}</option>
+                          @endforeach
+                        </select>
+              </div>
+              <div class="form-group">
+                    <label for="erb_id">Erb Id</label>
+                        <select class="form-control" name="erb_id" id="erb_id"> 
+                          {{--<option selected="true">{{ $erb->user_asign }}</option>--}}
+                          @foreach($erbs as $erb)
+                          <option>{{ $erb->id }}</option>
                           @endforeach
                         </select>
               </div>
                 <div class="form-group">
-                  <label for="qr_serie">Serie Qr</label>
-                  <input type="text" class="form-control" name="qr_serie" id="qr_serie"  placeholder="Introduce serie qr" required>
+                  <label for="qr_serie">Qr Serie</label>
+                  <input type="text" class="form-control" name="qr_serie" id="qr_serie"  placeholder="Introduce qr serie" required>
                 </div>
                 <div class="form-group">
-                    <label for="key_status">Estatus</label>
-                        <select class="form-control" name="key_status" id="key_status"> 
-                          <option>True</option>
-                          <option>False</option>
-                        </select>
+                  <label for="coins">Coins</label>
+                  <input type="text" class="form-control" name="coins" id="coins"  placeholder="Introduce coins" required>
+                </div>
+                <div class="form-group">
+                  <label for="gone_down">Actualido</label>
+                  <input type="text" class="form-control" name="gone_down" id="gone_down"  placeholder="Introduce 0-sin actualizar 1-actualizado" required>
+                </div>
               </div>
-              <div class="form-group">
-                    <label for="gone_down">Estatus</label>
-                        <select class="form-control" name="gone_down" id="gone_down"> 
-                          <option>0</option>
-                          <option>1</option>
-                        </select>
-              </div>
-              </div>
-              <!-- /.box-body -->
+              <!-- /.card-body -->
 
-              <div class="box-footer">
-                <a href="{{ route('qr.index') }}" class="btn btn-default">Cancelar</a>
+              <div class="card-footer">
+                <a href="{{ route('erb.index') }}" class="btn btn-default">Cancelar</a>
                 <button type="submit" class="btn btn-success pull-right" >Enviar</button>
               </div>
             </form>
-          <!-- /.box -->
-          <!-- form-->
- 
             </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
+            <!-- /.card -->
+            <!-- form-->
+            <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
         </div>
         <!-- /.col -->
       </div>
@@ -78,9 +90,15 @@
     <!-- /.content -->   
 @stop
 
+@section('footer') 
+<div class="pull-right hidden-xs"><b>Version</b> 2.0.0<strong>  Copyright &copy; 2020 <a href="http://hotspot.local/home" target="_blank">Hotspot</a>.</strong>  Todo los derechos Reservados.</div> 
+@stop
+
 @section('css')
-    
+@toastr_css    
 @stop
 
 @section('js')
+@toastr_js
+@toastr_render
 @stop

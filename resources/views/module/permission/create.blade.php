@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Hotspot-Role')
+@section('title', 'Hotspot-Permission')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop
@@ -29,17 +29,17 @@
         <div class="col-12">
             <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Crear Role</h3>
+              <h3 class="card-title">Crear Permison</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
                   <!-- form start -->
-            <form role="form" action="{{ route('role.store')}}" method="POST">
+            <form role="form" action="{{ route('permission.store')}}" method="POST">
               @csrf
               <div class="card-body">
                 <div class="form-group">
                   <label for="name">Nom-Codigo</label>
-                  <input type="text" class="form-control" name="name" id="name"  placeholder="Introduce un nombre del rol para codigo" required>
+                  <input type="text" class="form-control" name="name" id="name"  placeholder="Introduce un nombre de permiso para codigo" required>
                 </div>
                 <div class="form-group">
                   <label for="display_name">Nom-Vista</label>
@@ -47,13 +47,13 @@
                 </div>
                 <div class="form-group">
                   <label for="description">Descripcion</label>
-                  <input type="description" class="form-control" name="description" id="description" placeholder="Introduce descricpion del rol" required>
+                  <input type="description" class="form-control" name="description" id="description" placeholder="Introduce descricpion del permiso" required>
                 </div>
               </div>
               <!-- /.card-body -->
 
               <div class="card-footer">
-                <a href="{{ route('role.index') }}" class="btn btn-default">Cancelar</a>
+                <a href="{{ route('permission.index') }}" class="btn btn-default">Cancelar</a>
                 <button type="submit" class="btn btn-success pull-right" >Enviar</button>
               </div>
             </form>

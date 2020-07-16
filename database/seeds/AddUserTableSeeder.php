@@ -52,5 +52,15 @@ class AddUserTableSeeder extends Seeder
         $user->branch_office = 'Sin Asignar';
         $user->serial_number = '0000000004';
         $user->save();
+
+        $disable = new User();
+        $disable->id = 5;
+        $disable->region_id = 1;
+        $disable->name = 'Disable';
+        $disable->email = 'disable@local.com';
+        $disable->password = Hash::make('disable@54321');
+        $disable->branch_office = 'Sin Asignar';
+        $disable->serial_number = '0000000005';
+        $disable->save();
     }
 }

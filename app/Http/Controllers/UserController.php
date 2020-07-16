@@ -31,21 +31,36 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
-        /*$filter = Role::all();
-        $roles = $filter->filter(function ($role, $key) {
-            return $role->name != 'hostpot';
-        });
+    { 
+        $filter = Role::all();
+        if(auth()->user()->hasRole('root')){
+          $roles = $filter->filter(function ($role, $key) {
+              return $role->name != 'root';
+          });
+        }
+        else if(auth()->user()->hasRole('admin')){
+            $roles = $filter->filter(function ($role, $key) {
+                return $role->name != 'root' && $role->name != 'admin';
+            });
+        }
+        else if(auth()->user()->hasRole('super')){
+            $roles = $filter->filter(function ($role, $key) {
+                return $role->name != 'root' && $role->name != 'admin' && $role->name != 'super';
+            });
+        }
+        else if(auth()->user()->hasRole('user')){
+            $roles = $filter->filter(function ($role, $key) {
+                return $role->name != 'root' && $role->name != 'admin' && $role->name != 'super' && $role->name != 'user' && $role->name != 'disable';
+            });
+        }
         $users = collect();
-        foreach ($roles as $key => $role) {
-            foreach (User::whereRoleIs($role->name)->get() as $key => $value) {
-            $value->name_role = $role->name;  
-            $users->push($value); 
-            $users->all();
+            foreach ($roles as $key => $role) {
+                foreach (User::whereRoleIs($role->name)->get() as $key => $value) {
+                $value->name_role = $role->name;  
+                $users->push($value); 
+                $users->all();
+                }
             }
-        }*/
-        $users = User::all();
         return view('module.user.index', compact('users'));
     }
 
@@ -57,10 +72,10 @@ class UserController extends Controller
     public function create()
     {
         //
-        /*$filter = Role::all();
+        $filter = Role::all();
         $roles = $filter->filter(function ($role, $key) {
-            return $role->name != 'hostpot';
-        });*/
+            return $role->name != 'root';
+        });
         $roles = Role::all();
         return view('module.user.create',compact('roles'));
     }
