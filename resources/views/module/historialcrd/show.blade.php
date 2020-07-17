@@ -1,11 +1,11 @@
 @extends('adminlte::page')
-@section('title', 'Hotspot-Hitorial-Crd')
+@section('title', 'Hotspot-Historial-Crd')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop
 
 @section('content')
- @if ($errors->any())
+@if ($errors->any())
       <div class="alert alert-danger">
         <ul>
             @foreach ($errors->all() as $error)
@@ -30,7 +30,7 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Tabla Historial Crd</h3>
+              <h3 class="card-title">Ver Historial Crd</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">

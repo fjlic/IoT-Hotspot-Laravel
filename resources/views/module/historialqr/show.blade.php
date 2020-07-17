@@ -1,11 +1,11 @@
 @extends('adminlte::page')
-@section('title', 'Hotspot-Hitorial-Crd')
+@section('title', 'Hotspot-Historial-Qr')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop
 
 @section('content')
- @if ($errors->any())
+@if ($errors->any())
       <div class="alert alert-danger">
         <ul>
             @foreach ($errors->all() as $error)
@@ -30,7 +30,7 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Tabla Historial Crd</h3>
+              <h3 class="card-title">Tabla Historial Qr</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -38,37 +38,37 @@
               <div class="card-body">
                 <div class="form-group">
                   <label for="id">Id</label>
-                  <input type="text" class="form-control" value="{{ $historialcrd->id }}" readonly="readonly"/>
+                  <input type="text" class="form-control" value="{{ $historialqr->id }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
-                  <label for="crd_id">Id Crd</label>
-                  <input type="text" class="form-control" value="{{ $historialcrd->crd_id }}" readonly="readonly"/>
+                  <label for="qr_id">Qr Id</label>
+                  <input type="text" class="form-control" value="{{ $historialqr->qr_id }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
-                  <label for="num_serie">Serie</label>
-                  <input type="text" class="form-control" value="{{ $historialcrd->num_serie }}" readonly="readonly"/>
-                </div>
-                <div class="form-group">
-                  <label for="name_machine">Nombre</label>
-                  <input type="text" class="form-control" value="{{ $historialcrd->name_machine }}" readonly="readonly"/>
+                  <label for="name_machine">Maquina</label>
+                  <input type="text" class="form-control" value="{{ $historialqr->name_machine }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
                   <label for="nick_name">Alias</label>
-                  <input type="text" class="form-control" value="{{ $historialcrd->nick_name }}" readonly="readonly"/>
+                  <input type="text" class="form-control" value="{{ $historialqr->nick_name }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
-                  <label for="password">Password</label>
-                  <input type="text" class="form-control" value="{{ $historialcrd->password }}" readonly="readonly"/>
+                  <label for="qr_serie">Qr Serie</label>
+                  <input type="text" class="form-control" value="{{ $historialqr->qr_serie }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
-                  <label for="api_token">Token</label>
-                  <input type="text" class="form-control" value="{{ $historialcrd->api_token }}" readonly="readonly"/>
+                  <label for="coins">Coins</label>
+                  <input type="text" class="form-control" value="{{ $historialqr->coins }}" readonly="readonly"/>
+                </div>
+                <div class="form-group">
+                  <label for="uploaded">Actualizado</label>
+                  <input type="text" class="form-control" value="{{ $historialqr->uploaded }}" readonly="readonly"/>
                 </div>
               </div>
               <!-- /.box-body -->
 
               <div class="box-footer">
-                <a href="{{ route('historialcrd.index') }}" class="btn btn-info pull-right">Regresar</a>
+                <a href="{{ route('historialqr.index') }}" class="btn btn-info pull-right">Regresar</a>
               </div>
             </form>
             </div>

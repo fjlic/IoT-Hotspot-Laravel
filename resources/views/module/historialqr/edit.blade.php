@@ -1,11 +1,11 @@
 @extends('adminlte::page')
-@section('title', 'Hotspot-Hitorial-Crd')
+@section('title', 'Hotspot-Historial-Qr')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop
 
 @section('content')
- @if ($errors->any())
+@if ($errors->any())
       <div class="alert alert-danger">
         <ul>
             @foreach ($errors->all() as $error)
@@ -30,48 +30,48 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Editar Historial Crd</h3>
+              <h3 class="card-title">Editar Historial Qr</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
             <!-- form start -->
-            <form role="form" action="{{ route('historialcrd.update',$historialcrd->id) }}" method="POST">
+            <form role="form" action="{{ route('historialqr.update',$historialqr->id) }}" method="POST">
             @csrf
             @method('PUT')
               <div class="card-body">
               <div class="form-group">
-                    <label for="crd_id">Crd asignada</label>
-                        <select class="form-control" name="crd_id" id="crd_id">
-                          @foreach($crds as $crd)
-                          <option>{{ $crd->id }}</option>
+                    <label for="qr_id">Qr Id</label>
+                        <select class="form-control" name="qr_id" id="qr_id" value="{{ $historialqr->qr_id }}">
+                          @foreach($qrs as $qr)
+                          <option>{{ $qr->id }}</option>
                           @endforeach
                         </select>
               </div>
                 <div class="form-group">
-                  <label for="num_serie">Num Serie</label>
-                  <input type="text" class="form-control" name="num_serie" id="num_serie"  placeholder="Introduce Num serie" required value="{{ $historialcrd->num_serie }}" />
+                  <label for="name_machine">Maquina</label>
+                  <input type="text" class="form-control" name="name_machine" id="name_machine"  placeholder="Introduce Num serie" required value="{{ $historialqr->name_machine }}" />
                 </div>
                 <div class="form-group">
-                  <label for="name_machine">Nombre</label>
-                  <input type="text" class="form-control" name="name_machine" id="name_machine"  placeholder="Introduce alias" required value="{{ $historialcrd->name_machine }}" />
+                  <label for="nick_name">Nick</label>
+                  <input type="text" class="form-control" name="nick_name" id="nick_name"  placeholder="Introduce Num serie" required value="{{ $historialqr->nick_name }}" />
                 </div>
                 <div class="form-group">
-                  <label for="nick_name">Alias</label>
-                  <input type="text" class="form-control" name="nick_name" id="nick_name"  placeholder="Introduce alias" required value="{{ $historialcrd->nick_name }}" />
+                  <label for="qr_serie">Qr Serie</label>
+                  <input type="text" class="form-control" name="qr_serie" id="qr_serie"  placeholder="Introduce Num serie" required value="{{ $historialqr->qr_serie }}" />
                 </div>
                 <div class="form-group">
-                  <label for="password">Passw</label>
-                  <input type="text" class="form-control" name="password" id="password" placeholder="Introduce contraseña" required value="{{ $historialcrd->password }}" />
+                  <label for="coins">Coins</label>
+                  <input type="text" class="form-control" name="coins" id="coins"  placeholder="Introduce alias" required value="{{ $historialqr->coins }}" />
                 </div>
                 <div class="form-group">
-                  <label for="api_token">Token</label>
-                  <input type="text" class="form-control" name="api_token" id="api_token" placeholder="Sin Token" readonly="readonly" value="{{ $historialcrd->api_token }}" />
+                  <label for="uploaded">Actualizado</label>
+                  <input type="text" class="form-control" name="uploaded" id="uploaded"  placeholder="Introduce alias" required value="{{ $historialqr->uploaded }}" />
                 </div>
               </div>
               <!-- /.card-body -->
 
               <div class="card-footer">
-                <a href="{{ route('historialcrd.index') }}" class="btn btn-default">Cancelar</a>
+                <a href="{{ route('historialqr.index') }}" class="btn btn-default">Cancelar</a>
                 <button type="submit" class="btn btn-warning pull-right" >Enviar</button>
               </div>
             </form>

@@ -13,7 +13,7 @@
             @endforeach
         </ul>
       </div><br />
-  @endif
+@endif
 
 @if ($message = Session::get('success'))
 
@@ -32,16 +32,16 @@
             <div class="card-header">
               <h3 class="card-title">Crear Qr</h3>
             </div>
-            <!-- /.card-header 'id', 'crd_id', 'erb_id', 'qr_serie', 'coins', 'gone_down' -->
+            <!-- /.card-header 'id', 'crd_id', 'qr_id', 'qr_serie', 'coins', 'gone_down' -->
             <div class="card-body">
             <!-- form start -->
-            <form role="form" action="{{ route('erb.store')}}" method="POST">
+            <form role="form" action="{{ route('qr.store')}}" method="POST">
               @csrf
               <div class="card-body">
               <div class="form-group">
                     <label for="crd_id">Crd Id</label>
                         <select class="form-control" name="crd_id" id="crd_id"> 
-                          {{--<option selected="true">{{ $erb->user_asign }}</option>--}}
+                          {{--<option selected="true">{{ $qr->user_asign }}</option>--}}
                           @foreach($crds as $crd)
                           <option>{{ $crd->id }}</option>
                           @endforeach
@@ -72,7 +72,7 @@
               <!-- /.card-body -->
 
               <div class="card-footer">
-                <a href="{{ route('erb.index') }}" class="btn btn-default">Cancelar</a>
+                <a href="{{ route('qr.index') }}" class="btn btn-default">Cancelar</a>
                 <button type="submit" class="btn btn-success pull-right" >Enviar</button>
               </div>
             </form>

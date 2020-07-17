@@ -58,14 +58,14 @@ class QrController extends Controller
             'crd_id'=>'required|string|max:100',
             'erb_id'=>'required|string|max:100',
             'qr_serie'=>'required|string|max:100',
-            'key_status'=>'required|string|max:100',
+            'coins'=>'required|string|max:100',
             'gone_down'=>'required|string|max:100',
         ]);
         $qr = new Qr([
             'crd_id' => $request->get('crd_id'),
             'erb_id' => $request->get('erb_id'),
             'qr_serie' => $request->get('qr_serie'),
-            'key_status' => $request->get('key_status'),
+            'coins' => $request->get('coins'),
             'gone_down' => $request->get('gone_down')
             ]);
         $qr->save();
@@ -114,7 +114,7 @@ class QrController extends Controller
             'crd_id'=>'required|string|max:100',
             'erb_id'=>'required|string|max:100',
             'qr_serie'=>'required|string|max:100',
-            'key_status'=>'required|string|max:100',
+            'coins'=>'required|string|max:100',
             'gone_down'=>'required|string|max:100',
         ]);
         $qr_request = $request->all();

@@ -13,7 +13,7 @@ class HistorialQr extends Model
      * @var array
      */
     protected $fillable = [
-        'name_machine', 'nick_name', 'qr_link', 'coins',
+        'id', 'qr_id','name_machine', 'nick_name', 'qr_serie', 'coins', 'uploaded',
     ];
 
     /**

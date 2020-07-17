@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Hotspot-Hitorial-Crd')
+@section('title', 'Hotspot-Historial-Qr')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop
@@ -30,44 +30,48 @@
         <div class="col-12">
             <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Crear Historial Crd</h3>
+              <h3 class="card-title">Crear Historial Qr</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
             <!-- form start -->
-            <form role="form" action="{{ route('historialcrd.store')}}" method="POST">
+            <form role="form" action="{{ route('historialqr.store')}}" method="POST">
               @csrf
               <div class="card-body">
               <div class="form-group">
-                    <label for="crd_id">Crd para asignar</label>
-                        <select class="form-control" name="crd_id" id="crd_id"> 
-                          {{--<option selected="true">{{ $historialcrd->crd_asign }}</option>--}}
-                          @foreach($crds as $crd)
-                          <option>{{ $crd->id }}</option>
+                    <label for="qr_id">Qr Id</label>
+                        <select class="form-control" name="qr_id" id="qr_id"> 
+                          {{--<option selected="true">{{ $qr->qr_asign }}</option>--}}
+                          @foreach($qrs as $qr)
+                          <option>{{ $qr->id }}</option>
                           @endforeach
                         </select>
               </div>
                 <div class="form-group">
                   <label for="name_machine">Nombre</label>
-                  <input type="text" class="form-control" name="name_machine" id="name_machine"  placeholder="Introduce nombre" required>
-                </div>
-                <div class="form-group">
-                  <label for="num_serie">Num Serie</label>
-                  <input type="text" class="form-control" name="num_serie" id="num_serie"  placeholder="Introduce serie" required>
+                  <input type="text" class="form-control" name="name_machine" id="name_machine"  placeholder="Introduce maquina" required>
                 </div>
                 <div class="form-group">
                   <label for="nick_name">Alias</label>
                   <input type="text" class="form-control" name="nick_name" id="nick_name"  placeholder="Introduce alias" required>
                 </div>
                 <div class="form-group">
-                  <label for="password">Password</label>
-                  <input type="password" class="form-control" name="password" id="password" placeholder="Introduce contraseña" required>
+                  <label for="qr_serie">Qr Serie</label>
+                  <input type="text" class="form-control" name="qr_serie" id="qr_serie"  placeholder="Introduce alias" required>
+                </div>
+                <div class="form-group">
+                  <label for="coins">Coins</label>
+                  <input type="text" class="form-control" name="coins" id="coins"  placeholder="Introduce coins" required>
+                </div>
+                <div class="form-group">
+                  <label for="uploaded">Actualido</label>
+                  <input type="text" class="form-control" name="uploaded" id="uploaded"  placeholder="Introduce 0-sin actualizar 1-actualizado" required>
                 </div>
               </div>
               <!-- /.card-body -->
 
               <div class="card-footer">
-                <a href="{{ route('historialcrd.index') }}" class="btn btn-default">Cancelar</a>
+                <a href="{{ route('historialqr.index') }}" class="btn btn-default">Cancelar</a>
                 <button type="submit" class="btn btn-success pull-right" >Enviar</button>
               </div>
             </form>

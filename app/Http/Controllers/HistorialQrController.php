@@ -51,17 +51,21 @@ class HistorialQrController extends Controller
     public function store(Request $request)
     {
         //
-        $request->validate([
+        $request->validate([ 
             'qr_id'=>'required|string|max:100',
+            'name_machine'=>'required|string|max:100',
+            'nick_name'=>'required|string|max:100',
             'qr_serie'=>'required|string|max:100',
-            'key_status'=>'required|string|max:100',
-            'gone_down'=>'required|string|max:100',
+            'coins'=>'required|string|max:100',
+            'uploaded'=>'required|string|max:100',
         ]);
         $historialqr = new HistorialQr([
             'qr_id' => $request->get('qr_id'),
+            'name_machine' => $request->get('name_machine'),
+            'nick_name' => $request->get('nick_name'),
             'qr_serie' => $request->get('qr_serie'),
-            'key_status' => $request->get('key_status'),
-            'gone_down' => $request->get('gone_down')
+            'coins' => $request->get('coins'),
+            'uploaded' => $request->get('uploaded')
             ]);
         $historialqr->save();
         toastr()->success('Historial Qr Creado');
@@ -74,7 +78,7 @@ class HistorialQrController extends Controller
      * @param  \App\HistorialQr  $historialQr
      * @return \Illuminate\Http\Response
      */
-    public function show(HistorialQr $historialQr)
+    public function show(HistorialQr $historialqr)
     {
         //
         return view('module.historialqr.show',compact('historialqr'));
@@ -86,10 +90,11 @@ class HistorialQrController extends Controller
      * @param  \App\HistorialQr  $historialQr
      * @return \Illuminate\Http\Response
      */
-    public function edit(HistorialQr $historialQr)
+    public function edit(HistorialQr $historialqr)
     {
         //
-        return view('module.historialqr.edit', compact('historialqr'));
+        $qrs = Qr::all();
+        return view('module.historialqr.edit', compact('qrs','historialqr'));
     }
 
     /**
@@ -99,14 +104,16 @@ class HistorialQrController extends Controller
      * @param  \App\HistorialQr  $historialQr
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, HistorialQr $historialqr)
+    public function update(Request $request, HistorialQr $historialqr) 
     {
         //
         $request->validate([
             'qr_id'=>'required|string|max:100',
+            'name_machine'=>'required|string|max:1000',
+            'nick_name'=>'required|string|max:1000',
             'qr_serie'=>'required|string|max:1000',
-            'key_status'=>'required|string|max:100',
-            'gone_down'=>'required|string|max:100'
+            'coins'=>'required|string|max:100',
+            'uploaded'=>'required|string|max:100'
         ]);
         $historialqr_request = $request->all();
         $historialqr->update($historialqr_request);
@@ -125,7 +132,7 @@ class HistorialQrController extends Controller
         //
         $historialqr->delete();
         //return redirect('/historialqr')->with('success', 'Qr Eliminado!');
-        toastr()->error('Qr Hitorial eliminado');
+        toastr()->error('Qr Historial eliminado');
         return redirect()->route('historialqr.index');
     }
 }

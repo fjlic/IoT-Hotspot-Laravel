@@ -49,7 +49,7 @@
               </div>
                 <div class="form-group">
                   <label for="name_machine">Nombre</label>
-                  <input type="text" class="form-control" name="name_machine" id="name_machine"  placeholder="Introduce alias" required>
+                  <input type="text" class="form-control" name="name_machine" id="name_machine"  placeholder="Introduce maquina" required>
                 </div>
                 <div class="form-group">
                   <label for="num_serie">Num Serie</label>

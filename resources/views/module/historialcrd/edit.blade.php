@@ -1,11 +1,11 @@
 @extends('adminlte::page')
-@section('title', 'Hotspot-Hitorial-Crd')
+@section('title', 'Hotspot-Historial-Crd')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop
 
 @section('content')
- @if ($errors->any())
+@if ($errors->any())
       <div class="alert alert-danger">
         <ul>
             @foreach ($errors->all() as $error)

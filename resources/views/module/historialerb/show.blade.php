@@ -5,7 +5,7 @@
 @stop
 
 @section('content')
- @if ($errors->any())
+@if ($errors->any())
       <div class="alert alert-danger">
         <ul>
             @foreach ($errors->all() as $error)
@@ -30,7 +30,7 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Tabla Historial Erb</h3>
+              <h3 class="card-title">Ver Historial Erb</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">

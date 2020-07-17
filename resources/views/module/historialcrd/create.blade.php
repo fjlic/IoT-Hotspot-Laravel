@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Hotspot-Hitorial-Crd')
+@section('title', 'Hotspot-Hsitorial-Crd')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop
@@ -13,7 +13,7 @@
             @endforeach
         </ul>
       </div><br />
-  @endif
+@endif
 
 @if ($message = Session::get('success'))
 

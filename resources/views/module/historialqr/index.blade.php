@@ -1,11 +1,11 @@
 @extends('adminlte::page')
-@section('title', 'Hotspot-Hitorial-Crd')
+@section('title', 'Hotspot-Historial-Qr')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop
 
 @section('content')
- @if ($errors->any())
+@if ($errors->any())
       <div class="alert alert-danger">
         <ul>
             @foreach ($errors->all() as $error)
@@ -30,42 +30,42 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Tabla Historial Crd</h3>
-              <a class="btn btn-xs btn-success float-right" href="{{ route('historialcrd.create') }}" role="button"><span class="fas fa-plus"></span></a>
+              <h3 class="card-title">Tabla Historial Qr</h3>
+              <a class="btn btn-xs btn-success float-right" href="{{ route('historialqr.create') }}" role="button"><span class="fas fa-plus"></span></a>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <table id="historialcrdTable" class="table table-bordered table-striped">
+              <table id="historialqrTable" class="table table-bordered table-striped">
               <thead>
                 <tr>
                   <th>Id</th>
-                  <th>Crd_Id</th>
-                  <th>Serie</th>
-                  <th>Nombre</th>
+                  <th>Qr Id</th>
+                  <th>Maquina</th>
                   <th>Alias</th>
-                  <th>Password</th>
-                  <th>ApiToken</th>
+                  <th>QrSerie</th>
+                  <th>Coins</th>
+                  <th>Actualizado</th>
                   <th>FechaCreacion</th>
                   <th>FechaMoficiacion</th>
                   <th>Acciones</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($historialcrds as $historialcrd)
+                @foreach($historialqrs as $historialqr)
                 <tr>
-                    <td>{{ $historialcrd->id }}</td>
-                    <td>{{ $historialcrd->crd_id }}</td>
-                    <td>{{ $historialcrd->num_serie }}</td>
-                    <td>{{ $historialcrd->name_machine }}</td>      
-                    <td>{{ $historialcrd->nick_name }}</td>
-                    <td>{{ $historialcrd->password }}</td>
-                    <td>{{ $historialcrd->api_token }}</td>
-                    <td>{{ $historialcrd->created_at }}</td>
-                    <td>{{ $historialcrd->updated_at }}</td>
+                    <td>{{ $historialqr->id }}</td>
+                    <td>{{ $historialqr->qr_id }}</td>
+                    <td>{{ $historialqr->name_machine }}</td>
+                    <td>{{ $historialqr->nick_name }}</td>      
+                    <td>{{ $historialqr->qr_serie }}</td>
+                    <td>{{ $historialqr->coins }}</td>
+                    <td>{{ $historialqr->uploaded }}</td>
+                    <td>{{ $historialqr->created_at }}</td>
+                    <td>{{ $historialqr->updated_at }}</td>
                     <td>
-                      <form role="form" action="{{ route('historialcrd.destroy',$historialcrd->id) }}" method="POST">
-                      <a class="btn btn-info btn-xs" href="{{ route('historialcrd.show',$historialcrd->id) }}" role="button"><span class="fas fa-eye"></span></a> 
-                      <a class="btn btn-warning btn-xs"  href="{{ route('historialcrd.edit',$historialcrd->id) }}" role="button"><span class="fas fa-pen"></span></a>
+                      <form role="form" action="{{ route('historialqr.destroy',$historialqr->id) }}" method="POST">
+                      <a class="btn btn-info btn-xs" href="{{ route('historialqr.show',$historialqr->id) }}" role="button"><span class="fas fa-eye"></span></a> 
+                      <a class="btn btn-warning btn-xs"  href="{{ route('historialqr.edit',$historialqr->id) }}" role="button"><span class="fas fa-pen"></span></a>
                       @csrf
                       @method('DELETE')
                       <button class="btn btn-danger btn-xs" type="submit"><span class="fas fa-trash"></span></button>
@@ -77,11 +77,11 @@
                <!-- <tfoot>
                  <tr>
                  <th>Id</th>
-                  <th>Crd Id</th>
-                  <th>NumSerie</th>
-                  <th>Alias</th>
-                  <th>Password</th>
-                  <th>ApiToken</th>
+                  <th>Crd_Id</th>
+                  <th>Erb_id</th>
+                  <th>QrSerie</th>
+                  <th>Coins</th>
+                  <th>Actualizado</th>
                   <th>FechaCreacion</th>
                   <th>FechaMoficiacion</th>
                   <th>Acciones</th>
@@ -113,7 +113,7 @@
 @toastr_render
 <script>
   $(function () {
-     $('#historialcrdTable').DataTable({  
+     $('#historialqrTable').DataTable({  
       'paging'      : true,
       'lengthChange': true,
       'searching'   : true,
