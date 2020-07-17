@@ -24,6 +24,11 @@ class CreateHistorialNfcsTable extends Migration
             $table->string('time_global_between_cuts');
             $table->string('time_between_cuts');
             $table->bigInteger('prizes_count')->nullable();
+            $table->string('ssid')->nullable();
+            $table->string('password')->default('nfc123');
+            $table->string('ip_server')->nullable();
+            $table->string('port')->nullable();
+            $table->string('protocol')->nullable();
             $table->string('text')->nullable();
             $table->string('uploaded')->default('0');
             $table->timestamps();

@@ -16,7 +16,10 @@ class Nfc extends Model
      */
 
     protected $fillable = [
-        'id', 'crd_id', 'erb_id', 'num_serie', 'key_1', 'key_2', 'key_3', 'key_4', 'key_5', 'ssid', 'password', 'dns_server', 'ip_server', 'protocol', 'port', 'text',
+        'id', 'crd_id', 'erb_id', 'count_global', 'count_between_cuts',
+        'time_global_between_cuts', 'time_between_cuts', 'prizes_count',
+        'num_serie', 'ssid', 'password', 'dns_server', 'ip_server', 'protocol',
+        'port', 'text',
     ];
 
     /**

@@ -27,6 +27,7 @@ class CreateNfcsTable extends Migration
             $table->string('password')->default('nfc123');
             $table->string('ip_server')->nullable();
             $table->string('port')->nullable();
+            $table->string('protocol')->nullable();
             $table->string('text')->nullable();
             $table->timestamps();
             $table->foreign('crd_id')->references('id')->on('crds')->onUpdate('cascade')->onDelete('cascade')->nullable();

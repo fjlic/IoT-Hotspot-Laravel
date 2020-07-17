@@ -14,7 +14,7 @@
         </ul>
       </div><br />
   @endif
- <!--'id', 'esp32_id', 'num_serie', 'key_1', 'key_2', 'key_3', 'key_4', 'key_5', 'ssid', 'password', 'dns_server', 'ip_server', 'protocol', 'port', 'text',, -->
+<!-- Main content -->
  <section class="content">
       <div class="row">
         <div class="col-xs-12">

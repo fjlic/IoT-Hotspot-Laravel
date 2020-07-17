@@ -49,7 +49,7 @@
                   <input type="text" class="form-control" value="{{ $qr->erb_id }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
-                  <label for="qr_serie">QrSerie</label>
+                  <label for="qr_serie">Qr Serie</label>
                   <input type="text" class="form-control" value="{{ $qr->qr_serie }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">

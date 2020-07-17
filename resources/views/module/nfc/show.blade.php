@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'API ESP32')
+@section('title', 'Hotspot-Nfc')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop
@@ -13,48 +13,60 @@
             @endforeach
         </ul>
       </div><br />
-  @endif
+@endif
+
+@if ($message = Session::get('success'))
+
+<div class="alert alert-success">
+
+    <p>{{ $message }}</p>
+
+</div>
+@endif
+
  <!-- Main content -->
  <section class="content">
       <div class="row">
-        <div class="col-xs-12">
-            <div class="box box-info">
-            <div class="box-header">
-              <h3 class="box-title">Ver Nfc</h3>
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Ver Nfc</h3>
             </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-                  <!-- form start -->
+            <!-- /.card-header -->
+            <div class="card-body">
             <form role="form">
-              <!--'id', 'esp32_id', 'num_serie', 'key_1', 'key_2', 'key_3', 'key_4', 'key_5', 'ssid', 'password', 'dns_server', 'ip_server', 'protocol', 'port', 'text', -->
-              <div class="box-body">
+              <div class="card-body">
               <div class="form-group">
-                  <label for="esp32_id">Esp32 Asignado</label>
-                  <input type="text" class="form-control" name="esp32_id" id="esp32_id"  readonly="readonly" required value="{{ $nfc->esp32_id }}">
+                  <label for="crd_id">Crd Id</label>
+                  <input type="text" class="form-control" value="{{ $nfc->crd_id }}" readonly="readonly"/>
+                </div>
+                <div class="form-group">
+                  <label for="erb_id">Erb Id</label>
+                  <input type="text" class="form-control" value="{{ $nfc->erb_id }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
                   <label for="num_serie">Numero Serie</label>
                   <input type="text" class="form-control" name="num_serie" id="num_serie"  readonly="readonly" required value="{{ $nfc->num_serie }}">
                 </div>
                 <div class="form-group">
-                  <label for="key_1">Clave 1</label>
-                  <input type="text" class="form-control" name="key_1" id="key_1"  readonly="readonly" required value="{{ $nfc->key_1 }}">
+                  <label for="count_global">Contador Global</label>
+                  <input type="text" class="form-control" name="count_global" id="count_global"  readonly="readonly" required value="{{ $nfc->count_global }}">
                 </div>
                 <div class="form-group">
-                  <label for="key_2">Clave 2</label>
-                  <input type="text" class="form-control" name="key_2" id="key_2"  readonly="readonly" required value="{{ $nfc->key_2 }}">
+                  <label for="count_between_cuts">Contador entre Cortes</label>
+                  <input type="text" class="form-control" name="count_between_cuts" id="count_between_cuts"  readonly="readonly" required value="{{ $nfc->count_between_cuts }}">
                 </div>
                 <div class="form-group">
-                  <label for="key_3">Clave 3</label>
-                  <input type="text" class="form-control" name="key_3" id="key_3"  readonly="readonly" required value="{{ $nfc->key_3 }}">
+                  <label for="time_global_between_cuts">Tiempo Global entre Cortes</label>
+                  <input type="text" class="form-control" name="time_global_between_cuts" id="time_global_between_cuts"  readonly="readonly" required value="{{ $nfc->time_global_between_cuts }}">
                 </div>
                 <div class="form-group">
-                  <label for="key_4">Clave 4</label>
-                  <input type="text" class="form-control" name="key_4" id="key_4"  readonly="readonly" required value="{{ $nfc->key_4 }}">
+                  <label for="time_between_cuts">Tiempo entre Corte</label>
+                  <input type="text" class="form-control" name="time_between_cuts" id="time_between_cuts"  readonly="readonly" required value="{{ $nfc->time_between_cuts }}">
                 </div>
                 <div class="form-group">
-                  <label for="key_5">Clave 5</label>
-                  <input type="text" class="form-control" name="key_5" id="key_5"  readonly="readonly" required value="{{ $nfc->key_5 }}">
+                  <label for="prizes_count">Pzs</label>
+                  <input type="text" class="form-control" name="prizes_count" id="prizes_count"  readonly="readonly" required value="{{ $nfc->prizes_count }}">
                 </div>
                 <div class="form-group">
                   <label for="ssid">Ssid</label>
@@ -91,25 +103,27 @@
                 <a href="{{ route('nfc.index') }}" class="btn btn-info pull-right">Regresar</a>
               </div>
             </form>
-          </div>
-          <!-- /.box -->
-          <!-- form-->
- 
             </div>
-            <!-- /.box-body -->
+            <!-- /.card-body -->
           </div>
-          <!-- /.box -->
+          <!-- /.card -->
         </div>
         <!-- /.col -->
       </div>
       <!-- /.row -->
     </section>
-    <!-- /.content -->   
+    <!-- /.content --> 
+@stop
+
+@section('footer') 
+<div class="pull-right hidden-xs"><b>Version</b> 2.0.0<strong>  Copyright &copy; 2020 <a href="http://hotspot.local/home" target="_blank">Hotspot</a>.</strong>  Todo los derechos Reservados.</div> 
 @stop
 
 @section('css')
-    
+@toastr_css
 @stop
 
 @section('js')
+@toastr_js
+@toastr_render
 @stop

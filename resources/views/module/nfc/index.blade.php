@@ -1,10 +1,9 @@
 @extends('adminlte::page')
-@section('title', 'API ESP32')
+@section('title', 'Hotspot-Nfc')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop
 
-@section('content')
 @section('content')
 @if ($errors->any())
       <div class="alert alert-danger">
@@ -23,40 +22,40 @@
     <p>{{ $message }}</p>
 
 </div>
-@endif 
+@endif
 
  <!-- Main content -->
  <section class="content">
       <div class="row">
-        <div class="col-xs-12">
-            <div class="box box-primary">
-            <div class="box-header">
-              <h3 class="box-title">Tabla Nfc</h3>
-              <a class="btn btn-success btn-xs pull-right"  href="{{ route('nfc.create') }}" ><span class="glyphicon glyphicon-plus"></span></a>
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Tabla Nfc</h3>
+              <a class="btn btn-xs btn-success float-right" href="{{ route('nfc.create') }}" role="button"><span class="fas fa-plus"></span></a>
             </div>
-            <!-- /.box-header -->
-            <!--'id', 'esp32_id', 'num_serie', 'key_1', 'key_2', 'key_3', 'key_4', 'key_5', 'ssid', 'password', 'dns_server', 'ip_server', 'protocol', 'port', 'text',, -->
-            <div class="box-body">
+            <!-- /.card-header -->
+            <div class="card-body">
               <table id="nfcTable" class="table table-bordered table-striped">
-                <thead>
+              <thead>
                 <tr>
                   <th>Id</th>
-                  <th>Esp32 Id</th>
+                  <th>Crd</th>
+                  <th>Erb</th>
                   <th>Serie</th>
-                  <th>Clave 1</th>
-                  <th>Clave 2</th>
-                  <th>Clave 3</th>
-                  <th>Clave 4</th>
-                  <th>Clave 5</th>
+                  <th>C_Global</th>
+                  <th>C_Corte</th>
+                  <th>T_Global</th>
+                  <th>T_Corte</th>
+                  <th>Pzs</th>
                   <th>Ssid</th>
                   <th>Passw</th>
-                  <th>Ip Server</th>
                   <th>Dns Server</th>
+                  <th>Ip Server</th>
                   <th>Puerto</th>
                   <th>Protocol</th>
                   <th>Texto</th>
-                  <th>FechaModificacion</th>
-                  <th>FechaMoficiacion</th>
+                  <th>FechMod</th>
+                  <th>FechMod</th>
                   <th>Acciones</th>
                 </tr>
                 </thead>
@@ -64,13 +63,14 @@
                 @foreach($nfcs as $nfc)
                 <tr>
                     <td>{{ $nfc->id }}</td>
-                    <td>{{ $nfc->esp32_id }}</td>
+                    <td>{{ $nfc->crd_id }}</td>
+                    <td>{{ $nfc->erb_id }}</td>
                     <td>{{ $nfc->num_serie }}</td>
-                    <td>{{ $nfc->key_1 }}</td>
-                    <td>{{ $nfc->key_2 }}</td>
-                    <td>{{ $nfc->key_3 }}</td>
-                    <td>{{ $nfc->key_4 }}</td>
-                    <td>{{ $nfc->key_5 }}</td>
+                    <td>{{ $nfc->count_global }}</td>
+                    <td>{{ $nfc->count_between_cuts }}</td>
+                    <td>{{ $nfc->time_global_between_cuts }}</td>
+                    <td>{{ $nfc->time_between_cuts }}</td>
+                    <td>{{ $nfc->prizes_count }}</td>
                     <td>{{ $nfc->ssid }}</td>
                     <td>{{ $nfc->password }}</td>
                     <td>{{ $nfc->dns_server }}</td>
@@ -82,47 +82,66 @@
                     <td>{{ $nfc->updated_at }}</td>
                     <td>
                       <form role="form" action="{{ route('nfc.destroy',$nfc->id) }}" method="POST">
-                        <a class="btn btn-info btn-xs" href="{{ route('nfc.show',$nfc->id) }}"><span class="glyphicon glyphicon-eye-open"></span></a> 
-                        <a class="btn btn-warning btn-xs"  href="{{ route('nfc.edit',$nfc->id) }}" ><span class="glyphicon glyphicon-pencil"></span></a>
-                        @csrf
-                        @method('DELETE')
-                        <button class="btn btn-danger btn-xs" type="submit"><span class="glyphicon glyphicon-trash"></span></button>
+                      <a class="btn btn-info btn-xs" href="{{ route('nfc.show',$nfc->id) }}" role="button"><span class="fas fa-eye"></span></a> 
+                      <a class="btn btn-warning btn-xs"  href="{{ route('nfc.edit',$nfc->id) }}" role="button"><span class="fas fa-pen"></span></a>
+                      @csrf
+                      @method('DELETE')
+                      <button class="btn btn-danger btn-xs" type="submit"><span class="fas fa-trash"></span></button>
                       </form>
                     </td>
                 </tr>
                 @endforeach
                 </tbody>
-                <!-- <tfoot>
-                <tr>
-                  <th>Id</th>
-                  <th>LinkQr</th>
-                  <th>Monedas</th>
-                  <th>FechaCreacion</th>
-                  <th>FechaMoficiacion</th>
+               <!-- <tfoot>
+                 <tr>
+                 <th>Id</th>
+                  <th>Crd</th>
+                  <th>Erb</th>
+                  <th>Serie</th>
+                  <th>Clv1</th>
+                  <th>Clv2</th>
+                  <th>Clv3</th>
+                  <th>Clv4</th>
+                  <th>Clv5</th>
+                  <th>Ssid</th>
+                  <th>Passw</th>
+                  <th>Ip Server</th>
+                  <th>Dns Server</th>
+                  <th>Puerto</th>
+                  <th>Protocol</th>
+                  <th>Texto</th>
+                  <th>FechMod</th>
+                  <th>FechMod</th>
                   <th>Acciones</th>
                 </tr>
-                </tfoot> -->
+                </tfoot>-->
               </table>
             </div>
-            <!-- /.box-body -->
+            <!-- /.card-body -->
           </div>
-          <!-- /.box -->
+          <!-- /.card -->
         </div>
         <!-- /.col -->
       </div>
       <!-- /.row -->
     </section>
-    <!-- /.content -->   
+    <!-- /.content --> 
+@stop
+
+@section('footer') 
+<div class="pull-right hidden-xs"><b>Version</b> 2.0.0<strong>  Copyright &copy; 2020 <a href="http://hotspot.local/home" target="_blank">Hotspot</a>.</strong>  Todo los derechos Reservados.</div> 
 @stop
 
 @section('css')
-    
+@toastr_css 
 @stop
 
 @section('js')
+@toastr_js
+@toastr_render
 <script>
   $(function () {
-     $('#nfcTable').DataTable({
+     $('#nfcTable').DataTable({  
       'paging'      : true,
       'lengthChange': true,
       'searching'   : true,
@@ -132,8 +151,8 @@
       'scrollX'     : true,
       'scrollY'     : false,
       'scrollCollapse': false,
-      'language': {'url': '//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json'}
+      'language': {'url': '//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json'}   
     })
-  })
+  });
 </script>
 @stop
