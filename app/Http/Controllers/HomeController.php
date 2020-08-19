@@ -55,6 +55,6 @@ class HomeController extends Controller
                 $users->all();
                 }
             }
-        return view('module.user.index', compact('users'));
+        return view('home', compact('users'));
     }
 }

@@ -12,10 +12,10 @@
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^6.3",
-        "jeroennoten/laravel-adminlte": "^3.3",
+        "jeroennoten/laravel-adminlte": "^3.4",
         "laravel/framework": "^7.0",
         "laravel/tinker": "^2.0",
-        "laravel/ui": "^2.0",
+        "laravel/ui": "^2.1",
         "santigarcor/laratrust": "^6.1",
         "yoeunes/toastr": "^1.2"
     },

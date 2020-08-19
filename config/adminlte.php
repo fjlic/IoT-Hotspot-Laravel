@@ -46,7 +46,6 @@ return [
     */
 
     'logo' => '<b>IOT</b>HOTSPOT',
-    //'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img' => 'vendor/adminlte/dist/img/logo-iot.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
@@ -191,17 +190,6 @@ return [
 
     'dashboard_url' => 'home',
 
-    'logout_url' => 'logout',
-
-    'login_url' => 'login',
-
-    'register_url' => 'register',
-
-    'password_reset_url' => 'password/reset',
-
-    'password_email_url' => 'password/email',
-
-    'profile_url' => false,
     //-----------Custom Urls
     'dashboard_url' => 'user',
     'dashboard_url' => 'role',
@@ -219,6 +207,17 @@ return [
     'dashboard_url' => 'historialnfc',
     'dashboard_url' => 'historialcounter',
 
+    'logout_url' => 'logout',
+
+    'login_url' => 'login',
+
+    'register_url' => 'register',
+
+    'password_reset_url' => 'password/reset',
+
+    'password_email_url' => 'password/email',
+
+    'profile_url' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -249,49 +248,44 @@ return [
     */
 
     'menu' => [
-        //[
-        //    'text' => 'search',
-        //    'search' => true,
-        //    'topnav' => true,
-        //],
-        //[
-        //    'text' => 'blog',
-        //    'url'  => 'admin/blog',
-        //    'can'  => 'manage-blog',
-        //],
-        //[
-        //    'text'        => 'pages',
-        //    'url'         => 'admin/pages',
-        //    'icon'        => 'far fa-fw fa-file',
-        //    'label'       => 4,
-        //    'label_color' => 'success',
-        //],
+        /*[
+            'text' => 'search',
+            'search' => true,
+            'topnav' => true,
+        ],
+        [
+            'text' => 'blog',
+            'url'  => 'admin/blog',
+            'can'  => 'manage-blog',
+        ],
+        [
+            'text'        => 'pages',
+            'url'         => 'admin/pages',
+            'icon'        => 'far fa-fw fa-file',
+            'label'       => 4,
+            'label_color' => 'success',
+        ],*/
         ['header' => 'account_settings'],
-        //[
-        //    'text' => 'profile',
-        //    'url'  => 'admin/settings',
-        //    'icon' => 'fas fa-fw fa-user',
-        //],
-        //[
-        //    'text' => 'change_password',
-        //    'url'  => 'admin/settings',
-        //    'icon' => 'fas fa-fw fa-lock',
-        //],
+        /*[
+            'text' => 'profile',
+            'url'  => 'admin/settings',
+            'icon' => 'fas fa-fw fa-user',
+        ],
+        [
+            'text' => 'change_password',
+            'url'  => 'admin/settings',
+            'icon' => 'fas fa-fw fa-lock',
+        ],*/
         [
             'text'    => 'Usuarios',
             'icon'    => 'fas fa-user-astronaut',
+            'icon_color' => 'green',
             'submenu' => [
                 [
                     'text' => 'Listar',
                     'icon_color' => '',
                     'icon'  => 'fas fa-fw fa-users',
                     'url'  => 'user',
-                ],
-                [
-                    'text' => 'profile',
-                    'icon_color' => '',
-                    'icon'  => 'fas fa-fw fa-user',
-                    'url'  => 'profile',
                 ],
                 [
                     'text' => 'Roles',
@@ -333,7 +327,7 @@ return [
         //        ],
         //    ],
         //],
-        [
+        /*[
             'text'    => 'Regiones',
             'icon'    => 'fas fa-map-marked-alt',
             'submenu' => [
@@ -350,10 +344,11 @@ return [
                     'url'  => 'historialregion',
                 ],
             ],
-        ],
+        ],*/
         [
             'text'    => 'Crd',
             'icon'    => 'fas fa-space-shuttle',
+            'icon_color' => 'yellow',
             'submenu' => [
                 [
                     'text' => 'Listar',
@@ -367,11 +362,67 @@ return [
                     'icon'  => 'fas fa-route',
                     'url'  => 'historialcrd',
                 ],
+                [
+                    'text'    => 'Contadores',
+                    'icon'    => 'fas fa-camera-retro',
+                    'submenu' => [
+                        [
+                            'text' => 'Listar',
+                            'icon_color' => '',
+                            'icon'  => 'fas fa-fw fa-list',
+                            'url'  => 'counter',
+                        ],
+                        [
+                            'text' => 'Historial Contador',
+                            'icon_color' => '',
+                            'icon'  => 'fas fa-route',
+                            'url'  => 'historialcounter',
+                        ],
+                    ],
+                ],
+                [
+                    'text'    => 'Qr',
+                    'icon'    => 'fas fa-qrcode',
+                    'submenu' => [
+                        [
+                            'text' => 'Listar',
+                            'icon_color' => '',
+                            'icon'  => 'fas fa-fw fa-list',
+                            'url'  => 'qr',
+                        ],
+                        [
+                            'text' => 'Historial Qr',
+                            'icon_color' => '',
+                            'icon'  => 'fas fa-route',
+                            'url'  => 'historialqr',
+                        ],
+                    ],
+                ],
+                [
+                    'text'    => 'Nfc',
+                    'icon'    => 'fas fa-window-restore',
+                    'submenu' => [
+                        [
+                            'text' => 'Listar',
+                            'icon_color' => '',
+                            'icon'  => 'fas fa-fw fa-list',
+                            'url'  => 'nfc',
+                        ],
+                        [
+                            'text' => 'Historial Nfc',
+                            'icon_color' => '',
+                            'icon'  => 'fas fa-route',
+                            'url'  => 'historialnfc',
+                        ],
+                    ],
+                ],
             ],
+            
         ],
         [
             'text'    => 'Erb',
             'icon'    => 'fas fa-rocket',
+            'icon_color' => 'red',
             'submenu' => [
                 [
                     'text' => 'Listar',
@@ -387,114 +438,22 @@ return [
                 ],
             ],
         ],
+        /*['header' => 'labels'],
         [
-            'text'    => 'Contadores',
-            'icon'    => 'fas fa-camera-retro',
-            'submenu' => [
-                [
-                    'text' => 'Listar',
-                    'icon_color' => '',
-                    'icon'  => 'fas fa-fw fa-list',
-                    'url'  => 'counter',
-                ],
-                [
-                    'text' => 'Historial Contador',
-                    'icon_color' => '',
-                    'icon'  => 'fas fa-route',
-                    'url'  => 'historialcounter',
-                ],
-            ],
+            'text'       => 'important',
+            'icon_color' => 'red',
+            'url'        => '#',
         ],
         [
-            'text'    => 'Qr',
-            'icon'    => 'fas fa-qrcode',
-            'submenu' => [
-                [
-                    'text' => 'Listar',
-                    'icon_color' => '',
-                    'icon'  => 'fas fa-fw fa-list',
-                    'url'  => 'qr',
-                ],
-                [
-                    'text' => 'Historial Qr',
-                    'icon_color' => '',
-                    'icon'  => 'fas fa-route',
-                    'url'  => 'historialqr',
-                ],
-            ],
+            'text'       => 'warning',
+            'icon_color' => 'yellow',
+            'url'        => '#',
         ],
         [
-            'text'    => 'Nfc',
-            'icon'    => 'fas fa-window-restore',
-            'submenu' => [
-                [
-                    'text' => 'Listar',
-                    'icon_color' => '',
-                    'icon'  => 'fas fa-fw fa-list',
-                    'url'  => 'nfc',
-                ],
-                [
-                    'text' => 'Historial Nfc',
-                    'icon_color' => '',
-                    'icon'  => 'fas fa-route',
-                    'url'  => 'historialnfc',
-                ],
-            ],
-        ],
-        /*[
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
-            'submenu' => [
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-                [
-                    'text'    => 'level_one',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-            ],
+            'text'       => 'information',
+            'icon_color' => 'cyan',
+            'url'        => '#',
         ],*/
-        //['header' => 'labels'],
-        //[
-        //    'text'       => 'important',
-        //    'icon_color' => 'red',
-        //    'url'        => '#',
-        //],
-        //[
-        //    'text'       => 'warning',
-        //    'icon_color' => 'yellow',
-        //    'url'        => '#',
-        //],
-        //[
-        //    'text'       => 'information',
-        //    'icon_color' => 'cyan',
-        //    'url'        => '#',
-        //],
     ],
 
     /*
@@ -513,7 +472,6 @@ return [
         JeroenNoten\LaravelAdminLte\Menu\Filters\HrefFilter::class,
         JeroenNoten\LaravelAdminLte\Menu\Filters\SearchFilter::class,
         JeroenNoten\LaravelAdminLte\Menu\Filters\ActiveFilter::class,
-        JeroenNoten\LaravelAdminLte\Menu\Filters\SubmenuFilter::class,
         JeroenNoten\LaravelAdminLte\Menu\Filters\ClassesFilter::class,
         JeroenNoten\LaravelAdminLte\Menu\Filters\GateFilter::class,
         JeroenNoten\LaravelAdminLte\Menu\Filters\LangFilter::class,
@@ -533,8 +491,7 @@ return [
     */
 
     'plugins' => [
-        [
-            'name' => 'Datatables',
+        'Datatables' => [
             'active' => true,
             'files' => [
                 [
@@ -554,8 +511,7 @@ return [
                 ],
             ],
         ],
-        [
-            'name' => 'Select2',
+        'Select2' => [
             'active' => false,
             'files' => [
                 [
@@ -570,8 +526,7 @@ return [
                 ],
             ],
         ],
-        [
-            'name' => 'Chartjs',
+        'Chartjs' => [
             'active' => false,
             'files' => [
                 [
@@ -581,8 +536,7 @@ return [
                 ],
             ],
         ],
-        [
-            'name' => 'Sweetalert2',
+        'Sweetalert2' => [
             'active' => false,
             'files' => [
                 [
@@ -592,8 +546,7 @@ return [
                 ],
             ],
         ],
-        [
-            'name' => 'Pace',
+        'Pace' => [
             'active' => false,
             'files' => [
                 [

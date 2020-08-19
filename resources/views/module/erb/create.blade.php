@@ -23,7 +23,7 @@
 
 </div>
 @endif
-
+ <!-- aqui llega la modificacion -->
  <!-- Main content -->
  <section class="content">
       <div class="row">

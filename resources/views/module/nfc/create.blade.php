@@ -13,28 +13,99 @@
             @endforeach
         </ul>
       </div><br />
-  @endif
+@endif
+
+@if ($message = Session::get('success'))
+<div class="alert alert-success">
+    <p>{{ $message }}</p>
+</div>
+@endif
+<!-- Main content -->
+<section class="content">
+      <div class="row">
+        <div class="col-12">
+            <div class="card card-success card-outline">
+            <div class="card-header">
+              <h3 class="card-title">Crear Nfc</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                  <!-- form start -->
+            <form role="form" action="{{ route('user.store')}}" method="POST">
+              @csrf
+              <div class="card-body">
+                <div class="form-group">
+                  <label for="name">Nombre</label>
+                  <input type="text" class="form-control" name="name" id="name"  placeholder="Introduce nombre" required>
+                </div>
+                <div class="form-group">
+                  <label for="email">E-mail</label>
+                  <input type="text" class="form-control" name="email" id="email"  placeholder="Introduce e-mail" required>
+                </div>
+                <div class="form-group">
+                  <label for="password">Password</label>
+                  <input type="password" class="form-control" name="password" id="password" placeholder="Introduce contraseña" required>
+                </div>
+                <div class="form-group">
+                    <label for="name_role">Asignar tipo de usuario</label>
+                        <select class="form-control" name="name_role" id="name_role"> 
+                          @foreach($roles as $role)
+                          <option>{{ $role->name }}</option>
+                          @endforeach
+                        </select>
+              </div>
+              </div>
+              <!-- /.card-body -->
+
+              <div class="card-footer">
+                <a href="{{ route('user.index') }}" class="btn btn-default">Cancelar</a>
+                <button type="submit" class="btn btn-success pull-right" >Enviar</button>
+              </div>
+            </form>
+            </div>
+          <!-- /.card -->
+          <!-- form-->
+          <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content --> 
+@stop
+
+
 <!-- Main content -->
  <section class="content">
       <div class="row">
         <div class="col-xs-12">
-            <div class="box box-success">
-            <div class="box-header">
-              <h3 class="box-title">Crear Nfc</h3>
+            <div class="card card-success card-outline">
+            <div class="card-header">
+              <h3 class="card-title">Crear Nfc</h3>
             </div>
-            <!-- /.box-header -->
-            <div class="box-body">
+            <!-- /.card-header -->
+            <div class="card-body">
                   <!-- form start -->
             <form role="form" action="{{ route('nfc.store')}}" method="POST">
                 @csrf
                 <div class="form-group">
-                    <label for="esp32_id">Esp32 Asignar</label>
-                        <select class="form-control" name="esp32_id" id="esp32_id"> 
-                          @foreach($esp32s as $esp32)
-                          <option>{{ $esp32->id }}</option>
+                    <label for="crd_id">Crd Asignar</label>
+                        <select class="form-control" name="crd_id" id="crd_id"> 
+                          @foreach($crds as $crd)
+                          <option>{{ $crd->id }}</option>
                           @endforeach
                         </select>
-              </div>
+                </div>
+                <div class="form-group">
+                    <label for="erb_id">Erb Asignar</label>
+                        <select class="form-control" name="erb_id" id="erb_id"> 
+                          @foreach($erbs as $erb)
+                          <option>{{ $erb->id }}</option>
+                          @endforeach
+                        </select>
+                </div>
                 <div class="form-group">
                   <label for="num_serie">Numero serie</label>
                   <input type="text" class="form-control" name="num_serie" id="num_serie"  placeholder="Introduce Numero de Serie" required>
@@ -91,20 +162,20 @@
                   <input type="text" min="0" class="form-control" name="text" id="text"  placeholder="Introduce text" required>
                 </div>
                 </div>
-              <!-- /.box-body -->
+              <!-- /.card-body -->
 
-              <div class="box-footer">
+              <div class="card-footer">
                 <a href="{{ route('nfc.index') }}" class="btn btn-default">Cancelar</a>
                 <button type="submit" class="btn btn-success pull-right" >Enviar</button>
               </div>
             </form>
-          <!-- /.box -->
+          <!-- /.card -->
           <!-- form-->
  
             </div>
-            <!-- /.box-body -->
+            <!-- /.card-body -->
           </div>
-          <!-- /.box -->
+          <!-- /.card -->
         </div>
         <!-- /.col -->
       </div>

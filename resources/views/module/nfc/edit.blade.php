@@ -18,7 +18,7 @@
  <section class="content">
       <div class="row">
         <div class="col-xs-12">
-            <div class="box box-warning">
+            <div class="box card-warning card-outline">
             <div class="box-header">
               <h3 class="box-title">Editar Nfc</h3>
             </div>

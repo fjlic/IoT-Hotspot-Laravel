@@ -24,42 +24,44 @@
 </div>
 @endif
 
- <!-- Main content -->
- <section class="content">
+<!-- Main content -->
+<section class="content">
       <div class="row">
         <div class="col-12">
-            <div class="card">
+            <div class="card card-info card-outline">
             <div class="card-header">
               <h3 class="card-title">Ver Usuario</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-                  <!-- form start -->
-            <form role="form">
-              <div class="card-body">
-                <div class="form-group">
-                  <label for="name">Nombre</label>
-                  <input type="text" class="form-control" value="{{ $user->name }}" readonly="readonly"/>
+            <!-- Profile Image -->
+              <div class="card-body box-profile">
+                <div class="text-center">
+                  <img class="profile-user-img img-fluid img-circle"
+                       src="vendor/adminlte/dist/img/logo-iot.png"
+                       alt="Picture User">
                 </div>
-                <div class="form-group">
-                  <label for="email">E-mail</label>
-                  <input type="text" class="form-control" value="{{ $user->email }}" readonly="readonly"/>
-                </div>
-                <div class="form-group">
-                  <label for="password">Contraseña</label>
-                  <input type="text" class="form-control" value="{{ $user->password }}" readonly="readonly"/>
-                </div>
-                <div class="form-group">
-                  <label for="role_name">Tipo de usuario</label>
-                  <input type="text" class="form-control" value="{{ $user->name_role }}" readonly="readonly"/>
-                </div>
-              </div>
-              <!-- /.card-body -->
 
-              <div class="card-footer">
+                <h3 class="profile-username text-center">{{ $user->name }}</h3>
+
+                <p class="text-muted text-center">{{ $user->name_role }}</p>
+            <ul class="list-group list-group-unbordered mb-3">
+                  <li class="list-group-item">
+                    <b>Nombre</b> <a class="float-right">{{ $user->name }}</a>
+                  </li>
+                  <li class="list-group-item">
+                    <b>E-mail</b> <a class="float-right">{{ $user->email }}</a>
+                  </li>
+                  <li class="list-group-item">
+                    <b>Contraseña</b> <a class="float-right">{{ $user->password }}</a>
+                  </li>
+                  <li class="list-group-item">
+                    <b>Tipo de usuario</b> <a class="float-right">{{ $user->name_role }}</a>
+                  </li>
+                </ul>
+                <div class="card-footer">
                 <a href="{{ route('user.index') }}" class="btn btn-info pull-right">Regresar</a>
-                </div>
-            </form>
+              </div>
             </div>
             <!-- /.card-body -->
           </div>

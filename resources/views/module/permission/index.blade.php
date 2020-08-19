@@ -28,7 +28,7 @@
  <section class="content">
       <div class="row">
         <div class="col-12">
-            <div class="card ">
+            <div class="card card-primary card-outline">
             <div class="card-header">
               <h3 class="card-title">Tabla de Asignaciones</h3>
               <a class="btn btn-xs btn-success float-right" href="{{ route('permission.create') }}" role="button"><span class="fas fa-plus"></span></a>

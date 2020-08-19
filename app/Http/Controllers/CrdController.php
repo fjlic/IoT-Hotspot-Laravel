@@ -36,6 +36,21 @@ class CrdController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function testertuck()
+    {
+        //
+        $crds = Crd::all();
+        foreach ($crds as $key => $crd) {
+        $crd->password = Crypt::decrypt($crd->password);
+        }
+        return view('module.crd.index',compact('crds'));
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
