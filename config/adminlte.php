@@ -200,12 +200,16 @@ return [
     'dashboard_url' => 'qr',
     'dashboard_url' => 'nfc',
     'dashboard_url' => 'counter',
+    'dashboard_url' => 'sensor',
+    'dashboard_url' => 'estadistico',
     'dashboard_url' => 'historialregion',
     'dashboard_url' => 'historialcrd',
     'dashboard_url' => 'historialerb',
     'dashboard_url' => 'historialqr',
     'dashboard_url' => 'historialnfc',
     'dashboard_url' => 'historialcounter',
+    'dashboard_url' => 'historialsensor',
+    'dashboard_url' => 'historialestadistico',
 
     'logout_url' => 'logout',
 
@@ -248,34 +252,7 @@ return [
     */
 
     'menu' => [
-        /*[
-            'text' => 'search',
-            'search' => true,
-            'topnav' => true,
-        ],
-        [
-            'text' => 'blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
-        ],
-        [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
-        ],*/
-        ['header' => 'account_settings'],
-        /*[
-            'text' => 'profile',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
-        ],
-        [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-        ],*/
+        ['header' => 'Panel de Opciones'],
         [
             'text'    => 'Usuarios',
             'icon'    => 'fas fa-user-astronaut',
@@ -313,54 +290,28 @@ return [
                 ],
             ],
         ],
-        //[
-        //    'text'    => 'Rol-Perm',
-        //    'icon'    => 'fas fa-fw fa-share', //
-        //    'submenu' => [
-        //        [
-        //            'text' => 'profile',
-        //            'url'  => 'fas fa-fw fa-lock',
-        //        ],
-        //        [
-        //            'text' => 'change_password',
-        //            'url'  => '#',
-        //        ],
-        //    ],
-        //],
-        /*[
-            'text'    => 'Regiones',
-            'icon'    => 'fas fa-map-marked-alt',
-            'submenu' => [
-                [
-                    'text' => 'Listar',
-                    'icon_color' => '',
-                    'icon'  => 'fas fa-fw fa-list',
-                    'url'  => 'region',
-                ],
-                [
-                    'text' => 'Historial Region',
-                    'icon_color' => '',
-                    'icon'  => 'fas fa-route',
-                    'url'  => 'historialregion',
-                ],
-            ],
-        ],*/
         [
-            'text'    => 'Crd',
+            'text'    => 'Crd Modulos',
             'icon'    => 'fas fa-space-shuttle',
             'icon_color' => 'yellow',
             'submenu' => [
                 [
-                    'text' => 'Listar',
-                    'icon_color' => '',
-                    'icon'  => 'fas fa-fw fa-list',
-                    'url'  => 'crd',
-                ],
-                [
-                    'text' => 'Historial Crd',
-                    'icon_color' => '',
-                    'icon'  => 'fas fa-route',
-                    'url'  => 'historialcrd',
+                    'text'    => 'Info Crd',
+                    'icon'    => 'fas fa-bezier-curve',
+                    'submenu' => [
+                        [
+                            'text' => 'Listar',
+                            'icon_color' => '',
+                            'icon'  => 'fas fa-fw fa-list',
+                            'url'  => 'crd',
+                        ],
+                        [
+                            'text' => 'Historial Crd',
+                            'icon_color' => '',
+                            'icon'  => 'fas fa-route',
+                            'url'  => 'historialcrd',
+                        ],
+                    ],
                 ],
                 [
                     'text'    => 'Contadores',
@@ -420,40 +371,66 @@ return [
             
         ],
         [
-            'text'    => 'Erb',
+            'text'    => 'Erb Modulos',
             'icon'    => 'fas fa-rocket',
             'icon_color' => 'red',
             'submenu' => [
                 [
-                    'text' => 'Listar',
-                    'icon_color' => '',
-                    'icon'  => 'fas fa-fw fa-list',
-                    'url'  => 'erb',
+                    'text'    => 'Info Erb',
+                    'icon'    => 'fas fa-bezier-curve',
+                    'submenu' => [
+                        [
+                            'text' => 'Listar',
+                            'icon_color' => '',
+                            'icon'  => 'fas fa-fw fa-list',
+                            'url'  => 'erb',
+                        ],
+                        [
+                            'text' => 'Historial Erb',
+                            'icon_color' => '',
+                            'icon'  => 'fas fa-route',
+                            'url'  => 'historialerb',
+                        ],
+                    ],
                 ],
                 [
-                    'text' => 'Historial Erb',
-                    'icon_color' => '',
-                    'icon'  => 'fas fa-route',
-                    'url'  => 'historialerb',
+                    'text'    => 'Sensores',
+                    'icon'    => 'fas fa-cogs',
+                    'submenu' => [
+                        [
+                            'text' => 'Listar',
+                            'icon_color' => '',
+                            'icon'  => 'fas fa-fw fa-list',
+                            'url'  => 'sensores',
+                        ],
+                        [
+                            'text' => 'Historial Sensores',
+                            'icon_color' => '',
+                            'icon'  => 'fas fa-route',
+                            'url'  => 'historialsensores',
+                        ],
+                    ],
+                ],
+                [
+                    'text'    => 'Estadistico',
+                    'icon'    => 'fas fa-chart-bar',
+                    'submenu' => [
+                        [
+                            'text' => 'Listar',
+                            'icon_color' => '',
+                            'icon'  => 'fas fa-fw fa-list',
+                            'url'  => 'estadistico',
+                        ],
+                        [
+                            'text' => 'Historial Estadistico',
+                            'icon_color' => '',
+                            'icon'  => 'fas fa-route',
+                            'url'  => 'historialestadistico',
+                        ],
+                    ],
                 ],
             ],
         ],
-        /*['header' => 'labels'],
-        [
-            'text'       => 'important',
-            'icon_color' => 'red',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-            'url'        => '#',
-        ],*/
     ],
 
     /*
