@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
         $this->call(AddRoleGlobalTableSeeder::class);
         $this->call(AddQrTableSeeder::class);
         $this->call(AddNfcTableSeeder::class);
+        $this->call(AddSensorTableSeeder::class);
         $this->call(AddHistorialQrTableSeeder::class);
         $this->call(AddHistorialNfcTableSeeder::class);
     }

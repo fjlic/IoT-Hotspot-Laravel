@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Hotspot-Qr')
+@section('title', 'Hotspot-User')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop
@@ -13,7 +13,7 @@
             @endforeach
         </ul>
       </div><br />
-@endif
+  @endif
 
 @if ($message = Session::get('success'))
 
@@ -24,49 +24,44 @@
 </div>
 @endif
 
- <!-- Main content -->
- <section class="content">
+<!-- Main content -->
+<section class="content">
       <div class="row">
         <div class="col-12">
-          <div class="card card-info card-outline">
+            <div class="card card-info card-outline">
             <div class="card-header">
-              <h3 class="card-title">Ver Qr</h3>
+              <h3 class="card-title">Ver Usuario</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-            <form role="form">
-              <div class="card-body">
-                <div class="form-group">
-                  <label for="id">Id</label>
-                  <input type="text" class="form-control" value="{{ $qr->id }}" readonly="readonly"/>
+            <!-- Profile Image -->
+              <div class="card-body box-profile">
+                <div class="text-center">
+                  <img class="profile-user-img img-fluid img-circle"
+                       src="vendor/adminlte/dist/img/logo-iot.png"
+                       alt="Picture User">
                 </div>
-                <div class="form-group">
-                  <label for="crd_id">Crd Id</label>
-                  <input type="text" class="form-control" value="{{ $qr->crd_id }}" readonly="readonly"/>
-                </div>
-                <div class="form-group">
-                  <label for="erb_id">Erb Id</label>
-                  <input type="text" class="form-control" value="{{ $qr->erb_id }}" readonly="readonly"/>
-                </div>
-                <div class="form-group">
-                  <label for="qr_serie">Qr Serie</label>
-                  <input type="text" class="form-control" value="{{ $qr->qr_serie }}" readonly="readonly"/>
-                </div>
-                <div class="form-group">
-                  <label for="coins">Coins</label>
-                  <input type="text" class="form-control" value="{{ $qr->coins }}" readonly="readonly"/>
-                </div>
-                <div class="form-group">
-                  <label for="gone_down">Actualizado</label>
-                  <input type="text" class="form-control" value="{{ $qr->gone_down }}" readonly="readonly"/>
-                </div>
-              </div>
-              <!-- /.box-body -->
 
-              <div class="box-footer">
-                <a href="{{ route('qr.index') }}" class="btn btn-info pull-right">Regresar</a>
+                <h3 class="profile-username text-center">{{ $user->name }}</h3>
+
+                <p class="text-muted text-center">{{ $user->name_role }}</p>
+            <ul class="list-group list-group-unbordered mb-3">
+                  <li class="list-group-item">
+                    <b>Nombre</b> <a class="float-right">{{ $user->name }}</a>
+                  </li>
+                  <li class="list-group-item">
+                    <b>E-mail</b> <a class="float-right">{{ $user->email }}</a>
+                  </li>
+                  <li class="list-group-item">
+                    <b>Contraseña</b> <a class="float-right">{{ $user->password }}</a>
+                  </li>
+                  <li class="list-group-item">
+                    <b>Tipo de usuario</b> <a class="float-right">{{ $user->name_role }}</a>
+                  </li>
+                </ul>
+                <div class="card-footer">
+                <a href="{{ route('user.index') }}" class="btn btn-info pull-right">Regresar</a>
               </div>
-            </form>
             </div>
             <!-- /.card-body -->
           </div>
@@ -76,7 +71,7 @@
       </div>
       <!-- /.row -->
     </section>
-    <!-- /.content --> 
+    <!-- /.content -->   
 @stop
 
 @section('footer') 

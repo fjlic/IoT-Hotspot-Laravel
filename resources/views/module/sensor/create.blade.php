@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Hotspot-Qr')
+@section('title', 'Hotspot-User')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop
@@ -23,71 +23,60 @@
 
 </div>
 @endif
-
  <!-- Main content -->
  <section class="content">
       <div class="row">
         <div class="col-12">
             <div class="card card-success card-outline">
             <div class="card-header">
-              <h3 class="card-title">Crear Qr</h3>
+              <h3 class="card-title">Crear Usuario</h3>
             </div>
-            <!-- /.card-header 'id', 'crd_id', 'qr_id', 'qr_serie', 'coins', 'gone_down' -->
+            <!-- /.card-header -->
             <div class="card-body">
-            <!-- form start -->
-            <form role="form" action="{{ route('qr.store')}}" method="POST">
+                  <!-- form start -->
+            <form role="form" action="{{ route('user.store')}}" method="POST">
               @csrf
               <div class="card-body">
-              <div class="form-group">
-                    <label for="crd_id">Crd Id</label>
-                        <select class="form-control" name="crd_id" id="crd_id"> 
-                          {{--<option selected="true">{{ $qr->user_asign }}</option>--}}
-                          @foreach($crds as $crd)
-                          <option>{{ $crd->id }}</option>
+                <div class="form-group">
+                  <label for="name">Nombre</label>
+                  <input type="text" class="form-control" name="name" id="name"  placeholder="Introduce nombre" required>
+                </div>
+                <div class="form-group">
+                  <label for="email">E-mail</label>
+                  <input type="text" class="form-control" name="email" id="email"  placeholder="Introduce e-mail" required>
+                </div>
+                <div class="form-group">
+                  <label for="password">Password</label>
+                  <input type="password" class="form-control" name="password" id="password" placeholder="Introduce contraseña" required>
+                </div>
+                <div class="form-group">
+                    <label for="name_role">Asignar tipo de usuario</label>
+                        <select class="form-control" name="name_role" id="name_role"> 
+                          @foreach($roles as $role)
+                          <option>{{ $role->name }}</option>
                           @endforeach
                         </select>
               </div>
-              <div class="form-group">
-                    <label for="erb_id">Erb Id</label>
-                        <select class="form-control" name="erb_id" id="erb_id"> 
-                          {{--<option selected="true">{{ $erb->user_asign }}</option>--}}
-                          @foreach($erbs as $erb)
-                          <option>{{ $erb->id }}</option>
-                          @endforeach
-                        </select>
-              </div>
-                <div class="form-group">
-                  <label for="qr_serie">Qr Serie</label>
-                  <input type="text" class="form-control" name="qr_serie" id="qr_serie"  placeholder="Introduce qr serie" required>
-                </div>
-                <div class="form-group">
-                  <label for="coins">Coins</label>
-                  <input type="text" class="form-control" name="coins" id="coins"  placeholder="Introduce coins" required>
-                </div>
-                <div class="form-group">
-                  <label for="gone_down">Actualido</label>
-                  <input type="text" class="form-control" name="gone_down" id="gone_down"  placeholder="Introduce 0-sin actualizar 1-actualizado" required>
-                </div>
               </div>
               <!-- /.card-body -->
 
               <div class="card-footer">
-                <a href="{{ route('qr.index') }}" class="btn btn-default">Cancelar</a>
+                <a href="{{ route('user.index') }}" class="btn btn-default">Cancelar</a>
                 <button type="submit" class="btn btn-success pull-right" >Enviar</button>
               </div>
             </form>
             </div>
-            <!-- /.card -->
-            <!-- form-->
-            <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
+          <!-- /.card -->
+          <!-- form-->
+          <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
         </div>
         <!-- /.col -->
       </div>
       <!-- /.row -->
     </section>
-    <!-- /.content -->   
+    <!-- /.content --> 
 @stop
 
 @section('footer') 
@@ -95,7 +84,7 @@
 @stop
 
 @section('css')
-@toastr_css    
+@toastr_css 
 @stop
 
 @section('js')

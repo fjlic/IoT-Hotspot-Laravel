@@ -28,96 +28,55 @@
  <section class="content">
       <div class="row">
         <div class="col-12">
-          <div class="card card-primary card-outline">
+            <div class="card card-primary card-outline">
             <div class="card-header">
-              <h3 class="card-title">Tabla Sensor</h3>
+              <h3 class="card-title">Tabla de Sensores</h3>
               <a class="btn btn-xs btn-success float-right" href="{{ route('sensor.create') }}" role="button"><span class="fas fa-plus"></span></a>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
               <table id="sensorTable" class="table table-bordered table-striped">
-              <thead>
+                <thead>
                 <tr>
-                <th>Id</th>
-                  <th>Esp32 Id</th>
+                  <th>Id</th>
+                  <th>Id_Erb</th>
                   <th>NumSer</th>
                   <th>Passw</th>
                   <th>Vol1</th>
                   <th>Vol2</th>
                   <th>Vol3</th>
-                  <th>Puerta1</th>
-                  <th>Puerta2</th>
-                  <th>Puerta3</th>
-                  <th>Puerta4</th>
-                  <th>Rlay1</th>
-                  <th>Rlay2</th>
-                  <th>Rlay3</th>
-                  <th>Rlay4</th>
-                  <th>Txt</th>
-                  <th>FechaMod</th>
-                  <th>FechaCre</th>
+                  <th>Prt1</th>
+                  <th>Prt2</th>
+                  <th>Prt3</th>
+                  <th>Prt4</th>
+                  <th>Rly1</th>
+                  <th>Rly2</th>
+                  <th>Rly3</th>
+                  <th>Rly4</th>
+                  <th>Text</th>
+                  <th>FechaCreacion</th>
+                  <th>FechaMoficiacion</th>
                   <th>Acciones</th>
                 </tr>
                 </thead>
                 <tbody>
                 @foreach($sensors as $sensor)
                 <tr>
-                <td>{{ $sensor->id }}</td>
-                    <td>{{ $sensor->esp32_id }}</td>
-                    <td>{{ $sensor->raspberry_id }}</td>
+                    <td>{{ $sensor->id }}</td>
+                    <td>{{ $sensor->erb_id }}</td>
                     <td>{{ $sensor->num_serie }}</td>
                     <td>{{ $sensor->passw }}</td>
                     <td>{{ $sensor->vol_1 }}</td>
                     <td>{{ $sensor->vol_2 }}</td>
                     <td>{{ $sensor->vol_3 }}</td>
-                    @if($sensor->door_1 == 'On')
-                    <td><span class="label label-primary">Cerrado--<div class="glyphicon glyphicon-check"></div></span></td>
-                    @elseif($sensor->door_1 == 'Off')
-                    <td><span class="label label-warning">Abierto--<div class="glyphicon glyphicon-exclamation-sign"></div></span></td>
-                    @endif
-                    {{-- <td>{{ $sensor->door_2 }}</td> --}}
-                    @if($sensor->door_2 == 'On')
-                    <td><span class="label label-primary">Cerrado--<div class="glyphicon glyphicon-check"></div></span></td>
-                    @elseif($sensor->door_2 == 'Off')
-                    <td><span class="label label-warning">Abierto--<div class="glyphicon glyphicon-exclamation-sign"></div></span></td>
-                    @endif
-                    {{-- <td>{{ $sensor->door_3 }}</td> --}}
-                    @if($sensor->door_3 == 'On')
-                    <td><span class="label label-primary">Cerrado--<div class="glyphicon glyphicon-check"></div></span></td>
-                    @elseif($sensor->door_3 == 'Off')
-                    <td><span class="label label-warning">Abierto--<div class="glyphicon glyphicon-exclamation-sign"></div></span></td>
-                    @endif
-                    {{-- <td>{{ $sensor->door_4 }}</td> --}}
-                    @if($sensor->door_4 == 'On')
-                    <td><span class="label label-primary">Cerrado--<div class="glyphicon glyphicon-check"></div></span></td>
-                    @elseif($sensor->door_4 == 'Off')
-                    <td><span class="label label-warning">Abierto--<div class="glyphicon glyphicon-exclamation-sign"></div></span></td>
-                    @endif
-                    {{-- <td>{{ $sensor->door_4 }}</td> --}}
-                    @if($sensor->rlay_1 == 'On')
-                    <td><span class="label label-success">Activo-----<div class="glyphicon glyphicon-ok"></div></span></td>
-                    @elseif($sensor->rlay_1 == 'Off')
-                    <td><span class="label label-danger">Inactivo--<div class="glyphicon glyphicon-remove"></div></span></td>
-                    @endif
-                    {{--<td>{{ $sensor->rlay_1 }}</td>--}}
-                    @if($sensor->rlay_2 == 'On')
-                    <td><span class="label label-success">Activo-----<div class="glyphicon glyphicon-ok"></div></span></td>
-                    @elseif($sensor->rlay_2 == 'Off')
-                    <td><span class="label label-danger">Inactivo--<div class="glyphicon glyphicon-remove"></div></span></td>
-                    @endif
-                    {{-- <td>{{ $sensor->rlay_2 }}</td> --}}
-                    @if($sensor->rlay_3 == 'On')
-                    <td><span class="label label-success">Activo-----<div class="glyphicon glyphicon-ok"></div></span></td>
-                    @elseif($sensor->rlay_3 == 'Off')
-                    <td><span class="label label-danger">Inactivo--<div class="glyphicon glyphicon-remove"></div></span></td>
-                    @endif
-                    {{-- <td>{{ $sensor->rlay_3 }}</td> --}}
-                    @if($sensor->rlay_4 == 'On')
-                    <td><span class="label label-success">Activo-----<div class="glyphicon glyphicon-ok"></div></span></td>
-                    @elseif($sensor->rlay_4 == 'Off')
-                    <td><span class="label label-danger">Inactivo--<div class="glyphicon glyphicon-remove"></div></span></td>
-                    @endif
-                    {{-- <td>{{ $sensor->rlay_4 }}</td> --}}
+                    <td>{{ $sensor->door_1 }}</td>
+                    <td>{{ $sensor->door_2 }}</td>
+                    <td>{{ $sensor->door_3 }}</td>
+                    <td>{{ $sensor->door_4 }}</td>
+                    <td>{{ $sensor->rlay_1 }}</td>
+                    <td>{{ $sensor->rlay_2 }}</td>
+                    <td>{{ $sensor->rlay_3 }}</td>
+                    <td>{{ $sensor->rlay_4 }}</td>
                     <td>{{ $sensor->text }}</td>
                     <td>{{ $sensor->created_at }}</td>
                     <td>{{ $sensor->updated_at }}</td>
@@ -134,13 +93,11 @@
                 @endforeach
                 </tbody>
                <!-- <tfoot>
-                 <tr>
-                 <th>Id</th>
-                  <th>Crd_Id</th>
-                  <th>Erb_id</th>
-                  <th>sensorSerie</th>
-                  <th>Coins</th>
-                  <th>Actualizado</th>
+                <tr>
+                  <th>Id</th>
+                  <th>Nombre</th>
+                  <th>Email</th>
+                  <th>Password</th>
                   <th>FechaCreacion</th>
                   <th>FechaMoficiacion</th>
                   <th>Acciones</th>
@@ -156,7 +113,8 @@
       </div>
       <!-- /.row -->
     </section>
-    <!-- /.content --> 
+    <!-- /.content -->  
+    
 @stop
 
 @section('footer') 

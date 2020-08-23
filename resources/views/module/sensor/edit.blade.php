@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Hotspot-Qr')
+@section('title', 'Hotspot-User')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop
@@ -13,7 +13,7 @@
             @endforeach
         </ul>
       </div><br />
-@endif
+  @endif
 
 @if ($message = Session::get('success'))
 
@@ -28,54 +28,47 @@
  <section class="content">
       <div class="row">
         <div class="col-12">
-          <div class="card card-warning card-outline">
+            <div class="card card-warning card-outline">
             <div class="card-header">
-              <h3 class="card-title">Editar Qr</h3>
+              <h3 class="card-title">Editar Usuario</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-            <!-- form start -->
-            <form role="form" action="{{ route('qr.update',$qr->id) }}" method="POST">
+                  <!-- form start -->
+            <form role="form" action="{{ route('user.update',$user->id) }}" method="POST">
             @csrf
             @method('PUT')
               <div class="card-body">
-              <div class="form-group">
-                    <label for="crd_id">Crd Id</label>
-                        <select class="form-control" name="crd_id" id="crd_id" value="{{ $qr->crd_id }}">
-                          @foreach($crds as $crd)
-                          <option>{{ $crd->id }}</option>
-                          @endforeach
-                        </select>
-              </div>
-              <div class="form-group">
-                    <label for="erb_id">Erb Id</label>
-                        <select class="form-control" name="erb_id" id="erb_id" value="{{ $qr->erb_id }}">
-                          @foreach($erbs as $erb)
-                          <option>{{ $erb->id }}</option>
-                          @endforeach
-                        </select>
-              </div>
                 <div class="form-group">
-                  <label for="qr_serie">Qr serie</label>
-                  <input type="text" class="form-control" name="qr_serie" id="qr_serie"  placeholder="Introduce Num serie" required value="{{ $qr->qr_serie }}" />
+                  <label for="name">Nombre</label>
+                  <input type="text" class="form-control" name="name" id="name"  placeholder="Introduce un nombre" required value="{{ $user->name }}" />
                 </div>
                 <div class="form-group">
-                  <label for="coins">Coins</label>
-                  <input type="text" class="form-control" name="coins" id="coins"  placeholder="Introduce alias" required value="{{ $qr->coins }}" />
+                  <label for="email">E-mail</label>
+                  <input type="email" class="form-control" name="email" id="email"  placeholder="Introduce e-mail" required value="{{ $user->email }}" />
                 </div>
                 <div class="form-group">
-                  <label for="gone_down">Actualizado</label>
-                  <input type="text" class="form-control" name="gone_down" id="gone_down"  placeholder="Introduce alias" required value="{{ $qr->gone_down }}" />
+                  <label for="password">Password</label>
+                  <input type="password" class="form-control" name="password" id="password" placeholder="Nuevo contraseña"/>
+                </div>
+                <div class="form-group">
+                  <label for="name_role">Asignar tipo de usuario</label>
+                  <select class="form-control" name="name_role" id="name_role"> 
+                    <option selected="true">{{ $user->name_role }}</option>
+                    @foreach($roles as $role)
+                    <option>{{ $role->name }}</option>
+                    @endforeach
+                    </select>
                 </div>
               </div>
               <!-- /.card-body -->
 
               <div class="card-footer">
-                <a href="{{ route('qr.index') }}" class="btn btn-default">Cancelar</a>
+                <a href="{{ route('user.index') }}" class="btn btn-default">Cancelar</a>
                 <button type="submit" class="btn btn-warning pull-right" >Enviar</button>
               </div>
             </form>
-          </div>
+            </div>
           <!-- /.card -->
           <!-- form-->
           <!-- /.card-body -->

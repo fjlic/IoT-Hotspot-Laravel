@@ -201,7 +201,7 @@ return [
     'dashboard_url' => 'nfc',
     'dashboard_url' => 'counter',
     'dashboard_url' => 'sensor',
-    'dashboard_url' => 'estadistico',
+    'dashboard_url' => 'statistical',
     'dashboard_url' => 'historialregion',
     'dashboard_url' => 'historialcrd',
     'dashboard_url' => 'historialerb',
@@ -209,7 +209,7 @@ return [
     'dashboard_url' => 'historialnfc',
     'dashboard_url' => 'historialcounter',
     'dashboard_url' => 'historialsensor',
-    'dashboard_url' => 'historialestadistico',
+    'dashboard_url' => 'historialstatistical',
 
     'logout_url' => 'logout',
 
@@ -419,13 +419,13 @@ return [
                             'text' => 'Listar',
                             'icon_color' => '',
                             'icon'  => 'fas fa-fw fa-list',
-                            'url'  => 'estadistico',
+                            'url'  => 'statistical',
                         ],
                         [
                             'text' => 'Historial Estadistico',
                             'icon_color' => '',
                             'icon'  => 'fas fa-route',
-                            'url'  => 'historialestadistico',
+                            'url'  => 'historialstatistical',
                         ],
                     ],
                 ],
