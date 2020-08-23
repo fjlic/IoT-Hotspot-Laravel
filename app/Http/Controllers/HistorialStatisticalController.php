@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\HistorialEstadistico;
+use App\HistorialStatistical;
 use Illuminate\Http\Request;
 
-class HistorialEstadisticoController extends Controller
+class HistorialStatisticalController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class HistorialEstadisticoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\HistorialEstadistico  $historialEstadistico
+     * @param  \App\HistorialStatistical  $historialStatistical
      * @return \Illuminate\Http\Response
      */
-    public function show(HistorialEstadistico $historialEstadistico)
+    public function show(HistorialStatistical $historialStatistical)
     {
         //
     }
@@ -52,10 +52,10 @@ class HistorialEstadisticoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\HistorialEstadistico  $historialEstadistico
+     * @param  \App\HistorialStatistical  $historialStatistical
      * @return \Illuminate\Http\Response
      */
-    public function edit(HistorialEstadistico $historialEstadistico)
+    public function edit(HistorialStatistical $historialStatistical)
     {
         //
     }
@@ -64,10 +64,10 @@ class HistorialEstadisticoController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\HistorialEstadistico  $historialEstadistico
+     * @param  \App\HistorialStatistical  $historialStatistical
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, HistorialEstadistico $historialEstadistico)
+    public function update(Request $request, HistorialStatistical $historialStatistical)
     {
         //
     }
@@ -75,10 +75,10 @@ class HistorialEstadisticoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\HistorialEstadistico  $historialEstadistico
+     * @param  \App\HistorialStatistical  $historialStatistical
      * @return \Illuminate\Http\Response
      */
-    public function destroy(HistorialEstadistico $historialEstadistico)
+    public function destroy(HistorialStatistical $historialStatistical)
     {
         //
     }

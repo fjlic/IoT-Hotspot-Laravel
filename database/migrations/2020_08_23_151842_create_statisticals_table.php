@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateHistorialEstadisticosTable extends Migration
+class CreateStatisticalsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateHistorialEstadisticosTable extends Migration
      */
     public function up()
     {
-        Schema::create('historial_estadisticos', function (Blueprint $table) {
+        Schema::create('statisticals', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
         });
@@ -26,6 +26,6 @@ class CreateHistorialEstadisticosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('historial_estadisticos');
+        Schema::dropIfExists('statisticals');
     }
 }

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Estadistico;
+use App\Statistical;
 use Illuminate\Http\Request;
 
-class EstadisticoController extends Controller
+class StatisticalController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class EstadisticoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Estadistico  $estadistico
+     * @param  \App\Statistical  $statistical
      * @return \Illuminate\Http\Response
      */
-    public function show(Estadistico $estadistico)
+    public function show(Statistical $statistical)
     {
         //
     }
@@ -52,10 +52,10 @@ class EstadisticoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Estadistico  $estadistico
+     * @param  \App\Statistical  $statistical
      * @return \Illuminate\Http\Response
      */
-    public function edit(Estadistico $estadistico)
+    public function edit(Statistical $statistical)
     {
         //
     }
@@ -64,10 +64,10 @@ class EstadisticoController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Estadistico  $estadistico
+     * @param  \App\Statistical  $statistical
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Estadistico $estadistico)
+    public function update(Request $request, Statistical $statistical)
     {
         //
     }
@@ -75,10 +75,10 @@ class EstadisticoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Estadistico  $estadistico
+     * @param  \App\Statistical  $statistical
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Estadistico $estadistico)
+    public function destroy(Statistical $statistical)
     {
         //
     }

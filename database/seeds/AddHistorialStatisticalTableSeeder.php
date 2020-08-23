@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class AddEstadisticoTableSeeder extends Seeder
+class AddHistorialStatisticalTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
