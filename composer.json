@@ -16,6 +16,7 @@
         "laravel/framework": "^7.0",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.1",
+        "muhamadrezaar/highcharts": "dev-master",
         "santigarcor/laratrust": "^6.1",
         "yoeunes/toastr": "^1.2"
     },

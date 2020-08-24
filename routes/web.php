@@ -29,6 +29,7 @@ Route::resource('erb', 'ErbController')->middleware('auth');
 Route::resource('counter', 'CounterController')->middleware('auth');
 Route::resource('qr', 'QrController')->middleware('auth');
 Route::resource('nfc', 'NfcController')->middleware('auth');
+Route::get('sensor/chart/{id}', 'SensorController@chart')->name('sensor.chart')->middleware('auth');
 Route::resource('sensor', 'SensorController')->middleware('auth');
 Route::resource('statistical', 'StatisticalController')->middleware('auth');
 Route::resource('historialcounter', 'HistorialCounterController')->middleware('auth');

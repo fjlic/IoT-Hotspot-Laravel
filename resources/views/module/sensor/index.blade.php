@@ -31,7 +31,7 @@
             <div class="card card-primary card-outline">
             <div class="card-header">
               <h3 class="card-title">Tabla de Sensores</h3>
-              <a class="btn btn-xs btn-success float-right" href="{{ route('sensor.create') }}" role="button"><span class="fas fa-plus"></span></a>
+              <a class="btn btn-xs btn-success float-right" href="{{ route('sensor.create') }}" role="button"><span class="fa fa-plus"></span></a>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -69,24 +69,64 @@
                     <td>{{ $sensor->vol_1 }}</td>
                     <td>{{ $sensor->vol_2 }}</td>
                     <td>{{ $sensor->vol_3 }}</td>
-                    <td>{{ $sensor->door_1 }}</td>
-                    <td>{{ $sensor->door_2 }}</td>
-                    <td>{{ $sensor->door_3 }}</td>
-                    <td>{{ $sensor->door_4 }}</td>
-                    <td>{{ $sensor->rlay_1 }}</td>
-                    <td>{{ $sensor->rlay_2 }}</td>
-                    <td>{{ $sensor->rlay_3 }}</td>
-                    <td>{{ $sensor->rlay_4 }}</td>
+                    @if($sensor->door_1 == 'On')
+                    <td><span class="badge badge-primary">Close-<div class="fa fa-check-circle"></div></span></td>
+                    @elseif($sensor->door_1 == 'Off')
+                    <td><span class="badge badge-warning">Open-<div class="fa fa-exclamation-circle"></div></span></td>
+                    @endif
+                    {{-- <td>{{ $sensor->door_2 }}</td> --}}
+                    @if($sensor->door_2 == 'On')
+                    <td><span class="badge badge-primary">Close-<div class="fa fa-check-circle"></div></span></td>
+                    @elseif($sensor->door_2 == 'Off')
+                    <td><span class="badge badge-warning">Open-<div class="fa fa-exclamation-circle"></div></span></td>
+                    @endif
+                    {{-- <td>{{ $sensor->door_3 }}</td> --}}
+                    @if($sensor->door_3 == 'On')
+                    <td><span class="badge badge-primary">Close-<div class="fa fa-check-circle"></div></span></td>
+                    @elseif($sensor->door_3 == 'Off')
+                    <td><span class="badge badge-warning">Open-<div class="fa fa-exclamation-circle"></div></span></td>
+                    @endif
+                    {{-- <td>{{ $sensor->door_4 }}</td> --}}
+                    @if($sensor->door_4 == 'On')
+                    <td><span class="badge badge-primary">Close-<div class="fa fa-check-circle"></div></span></td>
+                    @elseif($sensor->door_4 == 'Off')
+                    <td><span class="badge badge-warning">Open-<div class="fa fa-exclamation-circle"></div></span></td>
+                    @endif
+                    {{-- <td>{{ $sensor->door_4 }}</td> --}}
+                    @if($sensor->rlay_1 == 'On')
+                    <td><span class="badge badge-success">On-<div class="fa fa-toggle-on"></div></span></td>
+                    @elseif($sensor->rlay_1 == 'Off')
+                    <td><span class="badge badge-danger">Off-<div class="fa fa-toggle-off"></div></span></td>
+                    @endif
+                    {{--<td>{{ $sensor->rlay_1 }}</td>--}}
+                    @if($sensor->rlay_2 == 'On')
+                    <td><span class="badge badge-success">On-<div class="fa fa-toggle-on"></div></span></td>
+                    @elseif($sensor->rlay_2 == 'Off')
+                    <td><span class="badge badge-danger">Off-<div class="fa fa-toggle-off"></div></span></td>
+                    @endif
+                    {{-- <td>{{ $sensor->rlay_2 }}</td> --}}
+                    @if($sensor->rlay_3 == 'On')
+                    <td><span class="badge badge-success">On-<div class="fa fa-toggle-on"></div></span></td>
+                    @elseif($sensor->rlay_3 == 'Off')
+                    <td><span class="badge badge-danger">Off-<div class="fa fa-toggle-off"></div></span></td>
+                    @endif
+                    {{-- <td>{{ $sensor->rlay_3 }}</td> --}}
+                    @if($sensor->rlay_4 == 'On')
+                    <td><span class="badge badge-success">On-<div class="fa fa-toggle-on"></div></span></td>
+                    @elseif($sensor->rlay_4 == 'Off')
+                    <td><span class="badge badge-danger">Off-<div class="fa fa-toggle-off"></div></span></td>
+                    @endif
                     <td>{{ $sensor->text }}</td>
                     <td>{{ $sensor->created_at }}</td>
                     <td>{{ $sensor->updated_at }}</td>
                     <td>
                       <form role="form" action="{{ route('sensor.destroy',$sensor->id) }}" method="POST">
-                      <a class="btn btn-info btn-xs" href="{{ route('sensor.show',$sensor->id) }}" role="button"><span class="fas fa-eye"></span></a> 
-                      <a class="btn btn-warning btn-xs"  href="{{ route('sensor.edit',$sensor->id) }}" role="button"><span class="fas fa-pen"></span></a>
+                        <a class="btn btn-primary btn-xs" href="{{ route('sensor.chart',$sensor->id) }}" role="button"><span class="fa fa-chart-pie"></span></a>   
+                      <a class="btn btn-info btn-xs" href="{{ route('sensor.show',$sensor->id) }}" role="button"><span class="fa fa-eye"></span></a> 
+                      <a class="btn btn-warning btn-xs"  href="{{ route('sensor.edit',$sensor->id) }}" role="button"><span class="fa fa-pen"></span></a>
                       @csrf
                       @method('DELETE')
-                      <button class="btn btn-danger btn-xs" type="submit"><span class="fas fa-trash"></span></button>
+                      <button class="btn btn-danger btn-xs" type="submit"><span class="fa fa-trash"></span></button>
                       </form>
                     </td>
                 </tr>
@@ -95,9 +135,21 @@
                <!-- <tfoot>
                 <tr>
                   <th>Id</th>
-                  <th>Nombre</th>
-                  <th>Email</th>
-                  <th>Password</th>
+                  <th>Id_Erb</th>
+                  <th>NumSer</th>
+                  <th>Passw</th>
+                  <th>Vol1</th>
+                  <th>Vol2</th>
+                  <th>Vol3</th>
+                  <th>Prt1</th>
+                  <th>Prt2</th>
+                  <th>Prt3</th>
+                  <th>Prt4</th>
+                  <th>Rly1</th>
+                  <th>Rly2</th>
+                  <th>Rly3</th>
+                  <th>Rly4</th>
+                  <th>Text</th>
                   <th>FechaCreacion</th>
                   <th>FechaMoficiacion</th>
                   <th>Acciones</th>
