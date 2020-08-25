@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Sensor;
 use App\Erb;
-use Chart;
 use Illuminate\Http\Request;
 
 class SensorController extends Controller

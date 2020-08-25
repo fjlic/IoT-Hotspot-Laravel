@@ -37,6 +37,7 @@ Route::resource('historialcrd', 'HistorialCrdController')->middleware('auth');
 Route::resource('historialerb', 'HistorialErbController')->middleware('auth');
 Route::resource('historialqr', 'HistorialQrController')->middleware('auth');
 Route::resource('historialnfc', 'HistorialNfcController')->middleware('auth');
+Route::get('historialsensor/chart/{id}', 'HistorialSensorController@chart')->name('historialsensor.chart')->middleware('auth');
 Route::resource('historialsensor', 'HistorialSensorController')->middleware('auth');
 Route::resource('historialstatistical', 'HistorialStatisticalController')->middleware('auth');
 Auth::routes();
