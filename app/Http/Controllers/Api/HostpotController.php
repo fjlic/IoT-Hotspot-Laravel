@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Api\BaseController as BaseController;
 //use App\Http\Controllers\Controller;
 use Crypt;
 use Validator;
@@ -10,7 +11,6 @@ use App\Role;
 use App\User;
 use App\Hostpot;
 use App\ApiToken;
-use App\Http\Controllers\Api\BaseController as BaseController;
 
 class HostpotController extends BaseController
 {
