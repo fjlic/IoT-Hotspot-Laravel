@@ -62,8 +62,31 @@
                     <td>{{ $qr->updated_at }}</td>
                     <td>
                       <form role="form" action="{{ route('qr.destroy',$qr->id) }}" method="POST">
+                      <a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#{{ $qr->qr_serie }}"><span class="fas fa-barcode"></span></a>
                       <a class="btn btn-info btn-xs" href="{{ route('qr.show',$qr->id) }}" role="button"><span class="fas fa-eye"></span></a> 
                       <a class="btn btn-warning btn-xs"  href="{{ route('qr.edit',$qr->id) }}" role="button"><span class="fas fa-pen"></span></a>
+                      <!--------------------------------------------------------------------------------->
+                      <!-- Modal -->
+                      <div class="modal fade" id="{{ $qr->qr_serie }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                             <h5 class="modal-title text-center" id="#">Codigo Qr ({{ $qr->qr_serie }})</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                               <span aria-hidden="true">&times;</span>
+                               </button>
+                               </div>
+                               <div class="modal-body" style="text-align: center">
+                                <div> {!!QrCode::size(300)->generate("$qr->qr_serie")!!}</div>
+                               </div>
+                               <div class="modal-footer">
+                              <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- /.Modal -->
+                      <!--------------------------------------------------------------------------------->
                       @csrf
                       @method('DELETE')
                       <button class="btn btn-danger btn-xs" type="submit"><span class="fas fa-trash"></span></button>

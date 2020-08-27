@@ -18,6 +18,7 @@
         "laravel/ui": "^2.1",
         "muhamadrezaar/highcharts": "dev-master",
         "santigarcor/laratrust": "^6.1",
+        "simplesoftwareio/simple-qrcode": "^3.0",
         "yoeunes/toastr": "^1.2"
     },
     "require-dev": {

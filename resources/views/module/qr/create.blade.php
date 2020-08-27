@@ -65,7 +65,7 @@
                   <input type="text" class="form-control" name="coins" id="coins"  placeholder="Introduce coins" required>
                 </div>
                 <div class="form-group">
-                  <label for="gone_down">Actualido</label>
+                  <label for="gone_down">Actualizado</label>
                   <input type="text" class="form-control" name="gone_down" id="gone_down"  placeholder="Introduce 0-sin actualizar 1-actualizado" required>
                 </div>
               </div>

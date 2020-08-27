@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Qr;
 use App\Erb;
 use App\Crd;
+use QrCode;
 use Illuminate\Http\Request;
 
 class QrController extends Controller
@@ -27,6 +28,7 @@ class QrController extends Controller
     public function index()
     {
         //
+        //QrCode::size(500)->generate('A tutorial of QR code!');
         $qrs = Qr::all();
         //return view('module.qr.index')->with('qrcoins',$qrs);
         return view('module.qr.index',compact('qrs'));
