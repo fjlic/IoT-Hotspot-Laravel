@@ -56,7 +56,7 @@
                         </select>
               </div>
                 <div class="form-group">
-                  <label for="qr_serie">Qr serie</label>
+                  <label for="qr_serie">Qr serie (sin espacios en blanco)</label>
                   <input type="text" class="form-control" name="qr_serie" id="qr_serie"  placeholder="Introduce Num serie" required value="{{ $qr->qr_serie }}" />
                 </div>
                 <div class="form-group">

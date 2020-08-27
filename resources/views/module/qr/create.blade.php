@@ -57,7 +57,7 @@
                         </select>
               </div>
                 <div class="form-group">
-                  <label for="qr_serie">Qr Serie</label>
+                  <label for="qr_serie">Qr Serie (sin espacios en blanco)</label>
                   <input type="text" class="form-control" name="qr_serie" id="qr_serie"  placeholder="Introduce qr serie" required>
                 </div>
                 <div class="form-group">
