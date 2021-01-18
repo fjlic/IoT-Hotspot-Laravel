@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 //Route::resource('user', 'UserController');
 //Route::resource('role', 'RoleController');updthistialsqr
 //Route::post('qr/updthistorialqr', 'API\QrController@historialqr')->name('qr.updthistorialqr');
+Route::post('cont/test', 'API\ContadorController@test')->name('cont.test');
 Route::post('qr/unblock', 'Api\QrController@unblock')->name('qr.unblock');
 Route::post('qr/modify', 'Api\QrController@modify')->name('qr.modify');
 Route::resource('qr', 'Api\QrController');

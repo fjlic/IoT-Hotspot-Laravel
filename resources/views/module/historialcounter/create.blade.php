@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Hotspot-Estadistico')
+@section('title', 'Hotspot-Historial-Counter')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop
@@ -24,34 +24,46 @@
 </div>
 @endif
 
- <!-- Main content Part Name : VST -->
- <!-- Part Size : 23.3 -->
+ <!-- Main content -->
  <section class="content">
       <div class="row">
         <div class="col-12">
             <div class="card card-success card-outline">
             <div class="card-header">
-              <h3 class="card-title">Crear Estadistico</h3>
+              <h3 class="card-title">Crear Historial Contador</h3>
             </div>
-            <!-- /.card-header 'id', 'estimate_proxy_size', 'development_hours' -->
+            <!-- /.card-header 'id', 'crd_id', 'erb_id', 'nfc_id', 'num_serie', 'cont_qr', 'cont_mon', -->
             <div class="card-body">
             <!-- form start -->
-            <form role="form" action="{{ route('statistical.store')}}" method="POST">
+            <form role="form" action="{{ route('historialcounter.store')}}" method="POST">
               @csrf
               <div class="card-body">
                 <div class="form-group">
-                  <label for="estimate_proxy_size">Tamaño Estimado</label>
-                  <input type="text" class="form-control" name="estimate_proxy_size" id="estimate_proxy_size"  placeholder="Introduce statistical serie" required>
+                  <label for="counter_id">Contador Id</label>
+                      <select class="form-control" name="counter_id" id="counter_id"> 
+                        {{--<option selected="true">{{ $counter->user_asign }}</option>--}}
+                        @foreach($counters as $counter)
+                        <option>{{ $counter->id }}</option>
+                        @endforeach
+                      </select>
                 </div>
                 <div class="form-group">
-                  <label for="development_hours">Horas Desarollo</label>
-                  <input type="text" class="form-control" name="development_hours" id="development_hours"  placeholder="Introduce desarollo de horas" required>
+                  <label for="num_serie">Numero de serie</label>
+                  <input type="text" class="form-control" name="num_serie" id="num_serie"  placeholder="Introduce numero de serie maquina" required>
+                </div>
+                <div class="form-group">
+                  <label for="cont_qr">Contador Qr</label>
+                  <input type="text" class="form-control" name="cont_qr" id="cont_qr"  placeholder="Introduce contador qr" required>
+                </div>
+                <div class="form-group">
+                  <label for="cont_mon">Contador Monedero</label>
+                  <input type="text" class="form-control" name="cont_mon" id="cont_mon"  placeholder="Introduce contador monedero" required>
                 </div>
               </div>
               <!-- /.card-body -->
 
               <div class="card-footer">
-                <a href="{{ route('statistical.index') }}" class="btn btn-default">Cancelar</a>
+                <a href="{{ route('historialcounter.index') }}" class="btn btn-default">Cancelar</a>
                 <button type="submit" class="btn btn-success pull-right" >Enviar</button>
               </div>
             </form>

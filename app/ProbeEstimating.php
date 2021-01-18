@@ -4,17 +4,17 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Statistical extends Model
+class ProbeEstimating extends Model
 {
-    //
+     //
     /**
      * The attributes that are mass assignable.
      * Part Name : MDL
-     * * Part Size : 15.1
+     * * Part Size : 15.
      * @var array
      */
     protected $fillable = [
-        'id', 'estimate_proxy_size', 'development_hours',
+        'id', 'prox_size', 'mod_size', 'stm_prox_size', 'act_dev_size',
     ];
 
     /**
@@ -33,5 +33,4 @@ class Statistical extends Model
      */
     protected $casts = [
     ];
-
 }

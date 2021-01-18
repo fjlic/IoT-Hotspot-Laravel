@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Crd;
+//use App\Crypt;
 use App\ApiToken;
 
 class AddCrdTableSeeder extends Seeder

@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Hotspot-Estadistico')
+@section('title', 'Hotspot-Historial-Counter')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop
@@ -24,37 +24,43 @@
 </div>
 @endif
 
- <!-- Main content Part Name : VST -->
- <!-- Part Size : 23.3 -->
+ <!-- Main content  'id', 'crd_id', 'erb_id', 'nfc_id', 'num_serie', 'cont_qr', 'cont_mon', -->
  <section class="content">
       <div class="row">
         <div class="col-12">
           <div class="card card-info card-outline">
             <div class="card-header">
-              <h3 class="card-title">Ver Id Estadistico</h3>
+              <h3 class="card-title">Ver Historial Contador</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
             <form role="form">
               <div class="card-body">
                 <div class="form-group">
-                   <!-- /.card-header 'id', 'estimate_proxy_size', 'development_hours' -->
                   <label for="id">Id</label>
-                  <input type="text" class="form-control" value="{{ $statistical->id }}" readonly="readonly"/>
+                  <input type="text" class="form-control" value="{{ $historialcounter->id }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
-                  <label for="statistical_serie">Tamaño Estimado</label>
-                  <input type="text" class="form-control" value="{{ $statistical->estimate_proxy_size }}" readonly="readonly"/>
+                  <label for="erb_id">Contador Id</label>
+                  <input type="text" class="form-control" value="{{ $historialcounter->counter_id }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
-                  <label for="coins">Horas Desarollo</label>
-                  <input type="text" class="form-control" value="{{ $statistical->development_hours }}" readonly="readonly"/>
+                  <label for="num_serie">Serie</label>
+                  <input type="text" class="form-control" value="{{ $historialcounter->num_serie }}" readonly="readonly"/>
+                </div>
+                <div class="form-group">
+                  <label for="cont_qr">Contador Qr</label>
+                  <input type="text" class="form-control" value="{{ $historialcounter->cont_qr }}" readonly="readonly"/>
+                </div>
+                <div class="form-group">
+                  <label for="cont_mon">Contador Monedero</label>
+                  <input type="text" class="form-control" value="{{ $historialcounter->cont_mon }}" readonly="readonly"/>
                 </div>
               </div>
               <!-- /.box-body -->
 
               <div class="box-footer">
-                <a href="{{ route('statistical.index') }}" class="btn btn-info pull-right">Regresar</a>
+                <a href="{{ route('historialcounter.index') }}" class="btn btn-info pull-right">Regresar</a>
               </div>
             </form>
             </div>

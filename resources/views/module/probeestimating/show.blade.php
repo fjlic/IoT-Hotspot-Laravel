@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Hotspot-Estadistico')
+@section('title', 'Hotspot-Probe-Estadistico')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop
@@ -24,37 +24,45 @@
 </div>
 @endif
 
- <!-- Main content Part Name : VST -->
+<!-- Main content Part Name : VST -->
  <!-- Part Size : 23.3 -->
  <section class="content">
       <div class="row">
         <div class="col-12">
           <div class="card card-info card-outline">
             <div class="card-header">
-              <h3 class="card-title">Ver Id Estadistico</h3>
+              <h3 class="card-title">Ver  Probe Estadistico</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
             <form role="form">
               <div class="card-body">
                 <div class="form-group">
-                   <!-- /.card-header 'id', 'estimate_proxy_size', 'development_hours' -->
+                    <!-- /.card-header 'id', 'prox_size', 'mod_size', 'stm_prox_size', 'act_dev_size', -->
                   <label for="id">Id</label>
-                  <input type="text" class="form-control" value="{{ $statistical->id }}" readonly="readonly"/>
+                  <input type="text" class="form-control" value="{{ $probeestimating->id }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
-                  <label for="statistical_serie">Tamaño Estimado</label>
-                  <input type="text" class="form-control" value="{{ $statistical->estimate_proxy_size }}" readonly="readonly"/>
+                  <label for="prox_size">Tamaño Proxi</label>
+                  <input type="text" class="form-control" value="{{ $probeestimating->prox_size }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
-                  <label for="coins">Horas Desarollo</label>
-                  <input type="text" class="form-control" value="{{ $statistical->development_hours }}" readonly="readonly"/>
+                  <label for="mod_size">Tamaño Mod</label>
+                  <input type="text" class="form-control" value="{{ $probeestimating->mod_size }}" readonly="readonly"/>
+                </div>
+                <div class="form-group">
+                  <label for="stm_prox_size">Estim Proxi</label>
+                  <input type="text" class="form-control" value="{{ $probeestimating->stm_prox_size }}" readonly="readonly"/>
+                </div>
+                <div class="form-group">
+                  <label for="act_dev_size">Act Dev</label>
+                  <input type="text" class="form-control" value="{{ $probeestimating->act_dev_size }}" readonly="readonly"/>
                 </div>
               </div>
               <!-- /.box-body -->
 
               <div class="box-footer">
-                <a href="{{ route('statistical.index') }}" class="btn btn-info pull-right">Regresar</a>
+                <a href="{{ route('probeestimating.index') }}" class="btn btn-info pull-right">Regresar</a>
               </div>
             </form>
             </div>

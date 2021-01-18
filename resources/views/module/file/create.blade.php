@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Hotspot-Estadistico')
+@section('title', 'Hotspot-Publicidad')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop
@@ -31,27 +31,35 @@
         <div class="col-12">
             <div class="card card-success card-outline">
             <div class="card-header">
-              <h3 class="card-title">Crear Estadistico</h3>
+              <h3 class="card-title">Agergar Video</h3>
             </div>
-            <!-- /.card-header 'id', 'estimate_proxy_size', 'development_hours' -->
+            <!-- /.card-header 'id', 'name_file', 'counter_lines' -->
             <div class="card-body">
             <!-- form start -->
-            <form role="form" action="{{ route('statistical.store')}}" method="POST">
-              @csrf
+            <form role="form" action="{{ route('file.store')}}" method="POST" accept-charset="UTF-8" enctype="multipart/form-data">
+              {{ csrf_field() }}
+              {{-- @csrf --}}
               <div class="card-body">
                 <div class="form-group">
-                  <label for="estimate_proxy_size">Tamaño Estimado</label>
-                  <input type="text" class="form-control" name="estimate_proxy_size" id="estimate_proxy_size"  placeholder="Introduce statistical serie" required>
+                  <label for="name_file">Cargar Video</label>
+                  <input type="file" class="form-control" name="name_file" id="name_file" placeholder="Introduce name file" required>
                 </div>
                 <div class="form-group">
-                  <label for="development_hours">Horas Desarollo</label>
-                  <input type="text" class="form-control" name="development_hours" id="development_hours"  placeholder="Introduce desarollo de horas" required>
+                  <label for="set">Conjunto</label>
+                  <input type="text" class="form-control" name="set" id="set"  placeholder="Introduce conjunto al que pertenece" required>
                 </div>
               </div>
+              {{--  
+                <div class="form-group">
+                  <label for="route">Ruta File</label>
+                  <input type="text" class="form-control" name="route" id="route"  placeholder="Introduce contador de horas" required>
+                </div>
+              </div>
+              --}}
               <!-- /.card-body -->
 
               <div class="card-footer">
-                <a href="{{ route('statistical.index') }}" class="btn btn-default">Cancelar</a>
+                <a href="{{ route('file.index') }}" class="btn btn-default">Cancelar</a>
                 <button type="submit" class="btn btn-success pull-right" >Enviar</button>
               </div>
             </form>

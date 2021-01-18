@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateStatisticalsTable extends Migration
+class CreateFilesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,10 +14,11 @@ class CreateStatisticalsTable extends Migration
      */
     public function up()
     {
-        Schema::create('statisticals', function (Blueprint $table) {
+        Schema::create('files', function (Blueprint $table) {
             $table->id();
-            $table->string('estimate_proxy_size')->nullable();
-            $table->string('development_hours')->nullable();
+            $table->string('name_file')->unique()->nullable();
+            $table->string('set')->nullable();
+            $table->string('route')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreateStatisticalsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('statisticals');
+        Schema::dropIfExists('files');
     }
 }

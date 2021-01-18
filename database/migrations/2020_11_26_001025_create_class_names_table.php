@@ -4,20 +4,20 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateStatisticalsTable extends Migration
+class CreateClassNamesTable extends Migration
 {
     /**
      * Run the migrations.
-     * Part Name : MTN
-     * * Part Size : 14.4
+     *
      * @return void
      */
     public function up()
     {
-        Schema::create('statisticals', function (Blueprint $table) {
+        Schema::create('class_names', function (Blueprint $table) {
             $table->id();
-            $table->string('estimate_proxy_size')->nullable();
-            $table->string('development_hours')->nullable();
+            $table->string('class_name')->nullable();
+            $table->string('class_loc')->nullable();
+            $table->string('num_method')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateStatisticalsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('statisticals');
+        Schema::dropIfExists('class_names');
     }
 }

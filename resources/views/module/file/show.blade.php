@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Hotspot-Estadistico')
+@section('title', 'Hotspot-File')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop
@@ -31,30 +31,37 @@
         <div class="col-12">
           <div class="card card-info card-outline">
             <div class="card-header">
-              <h3 class="card-title">Ver Id Estadistico</h3>
+              <h3 class="card-title">Ver Video</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
             <form role="form">
               <div class="card-body">
                 <div class="form-group">
-                   <!-- /.card-header 'id', 'estimate_proxy_size', 'development_hours' -->
+                   <!-- /.card-header 'id', 'set', 'name_file' -->
                   <label for="id">Id</label>
-                  <input type="text" class="form-control" value="{{ $statistical->id }}" readonly="readonly"/>
+                  <input type="text" class="form-control" value="{{ $file->id }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
-                  <label for="statistical_serie">Tamaño Estimado</label>
-                  <input type="text" class="form-control" value="{{ $statistical->estimate_proxy_size }}" readonly="readonly"/>
+                  <label for="name_file">Nombre Video</label>
+                  <input type="text" class="form-control" value="{{ $file->name_file }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
-                  <label for="coins">Horas Desarollo</label>
-                  <input type="text" class="form-control" value="{{ $statistical->development_hours }}" readonly="readonly"/>
+                  <label for="set">Conjunto</label>
+                  <input type="text" class="form-control" value="{{ $file->set }}" readonly="readonly"/>
                 </div>
+                <div class="form-group">
+                  <label for="route">Ruta Video</label>
+                  <input type="text" class="form-control" value="{{ $file->route }}" readonly="readonly"/>
+                </div>
+                <video controls>
+                  <source src="public\storage/public/files/KissMe.mp4" type="video/mp4">
+                </video>                
               </div>
               <!-- /.box-body -->
 
               <div class="box-footer">
-                <a href="{{ route('statistical.index') }}" class="btn btn-info pull-right">Regresar</a>
+                <a href="{{ route('file.index') }}" class="btn btn-info pull-right">Regresar</a>
               </div>
             </form>
             </div>

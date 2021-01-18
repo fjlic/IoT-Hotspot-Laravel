@@ -13,7 +13,7 @@ class Counter extends Model
      * @var array
      */
     protected $fillable = [
-        'id', 'crd_id', 'erb_id', 'nfc_id', 'qr_id', 'type_pcb', 'serie_nfc', 'count_global', 'count_between_cuts', 'time_global_between_cuts', 'time_between_cuts', 'prizes_count'
+        'id', 'crd_id', 'erb_id', 'nfc_id', 'num_serie', 'cont_qr', 'cont_mon',
     ];
 
     /**

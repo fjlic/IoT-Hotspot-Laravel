@@ -202,6 +202,9 @@ return [
     'dashboard_url' => 'counter',
     'dashboard_url' => 'sensor',
     'dashboard_url' => 'statistical',
+    'dashboard_url' => 'probeestimating',
+    'dashboard_url' => 'classname',
+    'dashboard_url' => 'file',
     'dashboard_url' => 'historialregion',
     'dashboard_url' => 'historialcrd',
     'dashboard_url' => 'historialerb',
@@ -367,6 +370,18 @@ return [
                         ],
                     ],
                 ],
+                [
+                    'text'    => 'Publicidad',
+                    'icon'    => 'fas fa-image',
+                    'submenu' => [
+                        [
+                            'text' => 'Listar',
+                            'icon_color' => '',
+                            'icon'  => 'fas fa-fw fa-list',
+                            'url'  => 'file',
+                        ],
+                    ],
+                ],
             ],
             
         ],
@@ -426,6 +441,30 @@ return [
                             'icon_color' => '',
                             'icon'  => 'fas fa-route',
                             'url'  => 'historialstatistical',
+                        ],
+                    ],
+                ],
+                [
+                    'text'    => 'Probe',
+                    'icon'    => 'fas fa-file',
+                    'submenu' => [
+                        [
+                            'text' => 'Listar',
+                            'icon_color' => '',
+                            'icon'  => 'fas fa-fw fa-list',
+                            'url'  => 'probeestimating',
+                        ],
+                    ],
+                ],
+                [
+                    'text'    => 'ClassName',
+                    'icon'    => 'fas fa-file',
+                    'submenu' => [
+                        [
+                            'text' => 'Listar',
+                            'icon_color' => '',
+                            'icon'  => 'fas fa-fw fa-list',
+                            'url'  => 'classname',
                         ],
                     ],
                 ],

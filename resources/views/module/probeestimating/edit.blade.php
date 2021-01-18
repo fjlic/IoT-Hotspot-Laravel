@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Hotspot-Estadistico')
+@section('title', 'Hotspot-Probe-Estadistico')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop
@@ -31,29 +31,37 @@
         <div class="col-12">
           <div class="card card-warning card-outline">
             <div class="card-header">
-              <h3 class="card-title">Editar Estadistico</h3>
+              <h3 class="card-title">Editar Probe Estadistico</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
             <!-- form start -->
-            <form role="form" action="{{ route('statistical.update',$statistical->id) }}" method="POST">
+            <form role="form" action="{{ route('probeestimating.update',$probeestimating->id) }}" method="POST">
             @csrf
             @method('PUT')
               <div class="card-body">
                 <div class="form-group">
-                   <!-- /.card-header 'id', 'estimate_proxy_size', 'development_hours' -->
-                  <label for="estimate_proxy_size">Tamaño Estimado</label>
-                  <input type="text" class="form-control" name="estimate_proxy_size" id="estimate_proxy_size"  placeholder="Introduce statistical serie" required value="{{ $statistical->estimate_proxy_size }}" />
+                   <!-- /.card-header 'id', 'prox_size', 'mod_size', 'stm_prox_size', 'act_dev_size', -->
+                  <label for="prox_size">Tamaño Proxi</label>
+                  <input type="text" class="form-control" name="prox_size" id="prox_size"  placeholder="Introduce tam prox" required value="{{ $probeestimating->prox_size }}" />
                 </div>
                 <div class="form-group">
-                  <label for="development_hours">Horas Desarollo</label>
-                  <input type="text" class="form-control" name="development_hours" id="development_hours"  placeholder="Introduce desarollo de horas" required value="{{ $statistical->development_hours }}" />
+                  <label for="mod_size">Tamaño Mod</label>
+                  <input type="text" class="form-control" name="mod_size" id="mod_size"  placeholder="Introduce tam mod" required value="{{ $probeestimating->mod_size }}" />
+                </div>
+                <div class="form-group">
+                  <label for="stm_prox_size">Estim Proxi</label>
+                  <input type="text" class="form-control" name="stm_prox_size" id="stm_prox_size"  placeholder="Introduce proxi estimado" required value="{{ $probeestimating->stm_prox_size }}" />
+                </div>
+                <div class="form-group">
+                  <label for="act_dev_size">Act Dev</label>
+                  <input type="text" class="form-control" name="act_dev_size" id="act_dev_size"  placeholder="Introduce proxi dev" required value="{{ $probeestimating->act_dev_size }}" />
                 </div>
               </div>
               <!-- /.card-body -->
 
               <div class="card-footer">
-                <a href="{{ route('statistical.index') }}" class="btn btn-default">Cancelar</a>
+                <a href="{{ route('probeestimating.index') }}" class="btn btn-default">Cancelar</a>
                 <button type="submit" class="btn btn-warning pull-right" >Enviar</button>
               </div>
             </form>

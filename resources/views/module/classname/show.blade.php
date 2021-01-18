@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Hotspot-Estadistico')
+@section('title', 'Hotspot-ClassName')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop
@@ -31,30 +31,34 @@
         <div class="col-12">
           <div class="card card-info card-outline">
             <div class="card-header">
-              <h3 class="card-title">Ver Id Estadistico</h3>
+              <h3 class="card-title">Ver Id ClassName</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
             <form role="form">
               <div class="card-body">
                 <div class="form-group">
-                   <!-- /.card-header 'id', 'estimate_proxy_size', 'development_hours' -->
+                   <!-- /.card-header (ClassName)'id', 'class_name', 'class_loc', 'num_method', -->
                   <label for="id">Id</label>
-                  <input type="text" class="form-control" value="{{ $statistical->id }}" readonly="readonly"/>
+                  <input type="text" class="form-control" value="{{ $classname->id }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
-                  <label for="statistical_serie">Tamaño Estimado</label>
-                  <input type="text" class="form-control" value="{{ $statistical->estimate_proxy_size }}" readonly="readonly"/>
+                  <label for="class_name">Name Class</label>
+                  <input type="text" class="form-control" value="{{ $classname->class_name }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
-                  <label for="coins">Horas Desarollo</label>
-                  <input type="text" class="form-control" value="{{ $statistical->development_hours }}" readonly="readonly"/>
+                  <label for="class_loc">Class Loc</label>
+                  <input type="text" class="form-control" value="{{ $classname->class_loc }}" readonly="readonly"/>
+                </div>
+                <div class="form-group">
+                  <label for="num_method">Num Method</label>
+                  <input type="text" class="form-control" value="{{ $classname->num_method }}" readonly="readonly"/>
                 </div>
               </div>
               <!-- /.box-body -->
 
               <div class="box-footer">
-                <a href="{{ route('statistical.index') }}" class="btn btn-info pull-right">Regresar</a>
+                <a href="{{ route('classname.index') }}" class="btn btn-info pull-right">Regresar</a>
               </div>
             </form>
             </div>

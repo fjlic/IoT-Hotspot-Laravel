@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Hotspot-Estadistico')
+@section('title', 'Hotspot-ClassName')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop
@@ -29,44 +29,48 @@
  <section class="content">
       <div class="row">
         <div class="col-12">
-          <div class="card card-info card-outline">
+            <div class="card card-success card-outline">
             <div class="card-header">
-              <h3 class="card-title">Ver Id Estadistico</h3>
+              <h3 class="card-title">Crear ClassName</h3>
             </div>
-            <!-- /.card-header -->
+            <!-- /.card-header (ClassName)'id', 'class_name', 'class_loc', 'num_method', -->
             <div class="card-body">
-            <form role="form">
+            <!-- form start -->
+            <form role="form" action="{{ route('classname.store')}}" method="POST">
+              @csrf
               <div class="card-body">
                 <div class="form-group">
-                   <!-- /.card-header 'id', 'estimate_proxy_size', 'development_hours' -->
-                  <label for="id">Id</label>
-                  <input type="text" class="form-control" value="{{ $statistical->id }}" readonly="readonly"/>
+                  <label for="class_name">Class Name</label>
+                  <input type="text" class="form-control" name="class_name" id="class_name"  placeholder="Introduce classname" required>
                 </div>
                 <div class="form-group">
-                  <label for="statistical_serie">Tamaño Estimado</label>
-                  <input type="text" class="form-control" value="{{ $statistical->estimate_proxy_size }}" readonly="readonly"/>
+                  <label for="class_loc">Class Loc</label>
+                  <input type="text" class="form-control" name="class_loc" id="class_loc"  placeholder="Introduce class loc" required>
                 </div>
                 <div class="form-group">
-                  <label for="coins">Horas Desarollo</label>
-                  <input type="text" class="form-control" value="{{ $statistical->development_hours }}" readonly="readonly"/>
+                  <label for="num_method">Num Method</label>
+                  <input type="text" class="form-control" name="num_method" id="num_method"  placeholder="Introduce num method" required>
                 </div>
               </div>
-              <!-- /.box-body -->
+              <!-- /.card-body -->
 
-              <div class="box-footer">
-                <a href="{{ route('statistical.index') }}" class="btn btn-info pull-right">Regresar</a>
+              <div class="card-footer">
+                <a href="{{ route('classname.index') }}" class="btn btn-default">Cancelar</a>
+                <button type="submit" class="btn btn-success pull-right" >Enviar</button>
               </div>
             </form>
             </div>
+            <!-- /.card -->
+            <!-- form-->
             <!-- /.card-body -->
-          </div>
-          <!-- /.card -->
+            </div>
+            <!-- /.card -->
         </div>
         <!-- /.col -->
       </div>
       <!-- /.row -->
     </section>
-    <!-- /.content --> 
+    <!-- /.content -->   
 @stop
 
 @section('footer') 
@@ -74,7 +78,7 @@
 @stop
 
 @section('css')
-@toastr_css
+@toastr_css    
 @stop
 
 @section('js')

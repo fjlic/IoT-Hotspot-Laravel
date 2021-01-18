@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Hotspot-Estadistico')
+@section('title', 'Hotspot-ClassName')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop
@@ -31,29 +31,33 @@
         <div class="col-12">
           <div class="card card-warning card-outline">
             <div class="card-header">
-              <h3 class="card-title">Editar Estadistico</h3>
+              <h3 class="card-title">Editar ClassName</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
             <!-- form start -->
-            <form role="form" action="{{ route('statistical.update',$statistical->id) }}" method="POST">
+            <form role="form" action="{{ route('classname.update',$classname->id) }}" method="POST">
             @csrf
             @method('PUT')
               <div class="card-body">
                 <div class="form-group">
-                   <!-- /.card-header 'id', 'estimate_proxy_size', 'development_hours' -->
-                  <label for="estimate_proxy_size">Tamaño Estimado</label>
-                  <input type="text" class="form-control" name="estimate_proxy_size" id="estimate_proxy_size"  placeholder="Introduce statistical serie" required value="{{ $statistical->estimate_proxy_size }}" />
+                   <!-- /.card-header (ClassName)'id', 'class_name', 'class_loc', 'num_method', -->
+                  <label for="class_name">Class Name</label>
+                  <input type="text" class="form-control" name="class_name" id="class_name"  placeholder="Introduce classname" required value="{{ $classname->class_name }}" />
                 </div>
                 <div class="form-group">
-                  <label for="development_hours">Horas Desarollo</label>
-                  <input type="text" class="form-control" name="development_hours" id="development_hours"  placeholder="Introduce desarollo de horas" required value="{{ $statistical->development_hours }}" />
+                  <label for="class_loc">Class Loc</label>
+                  <input type="text" class="form-control" name="class_loc" id="class_loc"  placeholder="Introduce class loc" required value="{{ $classname->class_loc }}" />
+                </div>
+                <div class="form-group">
+                  <label for="num_method">Class Method</label>
+                  <input type="text" class="form-control" name="num_method" id="num_method"  placeholder="Introduce class method" required value="{{ $classname->num_method }}" />
                 </div>
               </div>
               <!-- /.card-body -->
 
               <div class="card-footer">
-                <a href="{{ route('statistical.index') }}" class="btn btn-default">Cancelar</a>
+                <a href="{{ route('classname.index') }}" class="btn btn-default">Cancelar</a>
                 <button type="submit" class="btn btn-warning pull-right" >Enviar</button>
               </div>
             </form>

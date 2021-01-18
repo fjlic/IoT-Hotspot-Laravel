@@ -21,7 +21,14 @@ class DatabaseSeeder extends Seeder
         $this->call(AddQrTableSeeder::class);
         $this->call(AddNfcTableSeeder::class);
         $this->call(AddSensorTableSeeder::class);
+        $this->call(AddStatisticalTableSeeder::class);
+        $this->call(AddTableProbeStimatingSeeder::class);
+        $this->call(AddClassNameTableSeeder::class);
+        $this->call(AddChapterTableSeeder::class);
+        $this->call(AddFileTableSeeder::class);
+        $this->call(AddCounterTableSeeder::class);
         $this->call(AddHistorialQrTableSeeder::class);
         $this->call(AddHistorialNfcTableSeeder::class);
+        $this->call(AddHistorialCounterTableSeeder::class);
     }
 }

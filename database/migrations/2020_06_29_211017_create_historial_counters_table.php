@@ -16,14 +16,11 @@ class CreateHistorialCountersTable extends Migration
         Schema::create('historial_counters', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('counter_id')->nullable();
-            $table->string('serie_nfc')->unique()->nullable();
-            $table->bigInteger('count_global')->nullable();
-            $table->bigInteger('count_between_cuts')->nullable();
-            $table->string('time_global_between_cuts')->nullable();
-            $table->string('time_between_cuts')->nullable();
-            $table->bigInteger('prizes_count')->nullable();
+            $table->string('num_serie')->nullable();
+            $table->string('cont_qr')->nullable();
+            $table->string('cont_mon')->nullable();
             $table->timestamps();
-            $table->foreign('counter_id')->references('id')->on('counters')->onUpdate('cascade')->onDelete('cascade')->nullable();
+            $table->foreign('counter_id')->references('id')->on('counters')->onUpdate('cascade')->onDelete('cascade')->default(0)->nullable();
         });
     }
 

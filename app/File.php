@@ -4,18 +4,19 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Statistical extends Model
+class File extends Model
 {
     //
     /**
      * The attributes that are mass assignable.
      * Part Name : MDL
-     * * Part Size : 15.1
+     * * Part Size : 15.
      * @var array
      */
     protected $fillable = [
-        'id', 'estimate_proxy_size', 'development_hours',
+        'id', 'name_file', 'set', 'route',
     ];
+
 
     /**
      * The attributes that should be hidden for arrays.

@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Hotspot-Estadistico')
+@section('title', 'Hotspot-Probe-Estadistico')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop
@@ -31,35 +31,39 @@
         <div class="col-12">
           <div class="card card-primary card-outline">
             <div class="card-header">
-              <h3 class="card-title">Tabla Estadistico</h3>
-              <a class="btn btn-xs btn-success float-right" href="{{ route('statistical.create') }}" role="button"><span class="fas fa-plus"></span></a>
+              <h3 class="card-title">Tabla Probe Estadistico</h3>
+              <a class="btn btn-xs btn-success float-right" href="{{ route('probeestimating.create') }}" role="button"><span class="fas fa-plus"></span></a>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <table id="statisticalTable" class="table table-bordered table-striped">
+              <table id="probeestimatingTable" class="table table-bordered table-striped">
               <thead>
-                 <!-- /.card-header 'id', 'estimate_proxy_size', 'development_hours' -->
+                 <!-- /.card-header 'id', 'prox_size', 'mod_size', 'stm_prox_size', 'act_dev_size', -->
                 <tr>
                   <th>Id</th>
-                  <th>Tamaño Estimado</th>
-                  <th>Horas Desarollo</th>
+                  <th>Tamaño Proxi</th>
+                  <th>Tamaño Mod</th>
+                  <th>Estim Proxi</th>
+                  <th>Act Dev</th>
                   <th>FechaCreacion</th>
                   <th>FechaMoficiacion</th>
                   <th>Acciones</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($statisticals as $statistical)
+                @foreach($probeestimatings as $probeestimating)
                 <tr>
-                    <td>{{ $statistical->id }}</td>
-                    <td>{{ $statistical->estimate_proxy_size }}</td>
-                    <td>{{ $statistical->development_hours }}</td>
-                    <td>{{ $statistical->created_at }}</td>
-                    <td>{{ $statistical->updated_at }}</td>
+                    <td>{{ $probeestimating->id }}</td>
+                    <td>{{ $probeestimating->prox_size }}</td>
+                    <td>{{ $probeestimating->mod_size }}</td>
+                    <td>{{ $probeestimating->stm_prox_size }}</td>
+                    <td>{{ $probeestimating->act_dev_size }}</td>
+                    <td>{{ $probeestimating->created_at }}</td>
+                    <td>{{ $probeestimating->updated_at }}</td>
                     <td>
-                      <form role="form" action="{{ route('statistical.destroy',$statistical->id) }}" method="POST">
-                      <a class="btn btn-info btn-xs" href="{{ route('statistical.show',$statistical->id) }}" role="button"><span class="fas fa-eye"></span></a> 
-                      <a class="btn btn-warning btn-xs"  href="{{ route('statistical.edit',$statistical->id) }}" role="button"><span class="fas fa-pen"></span></a>
+                      <form role="form" action="{{ route('probeestimating.destroy',$probeestimating->id) }}" method="POST">
+                      <a class="btn btn-info btn-xs" href="{{ route('probeestimating.show',$probeestimating->id) }}" role="button"><span class="fas fa-eye"></span></a> 
+                      <a class="btn btn-warning btn-xs"  href="{{ route('probeestimating.edit',$probeestimating->id) }}" role="button"><span class="fas fa-pen"></span></a>
                       @csrf
                       @method('DELETE')
                       <button class="btn btn-danger btn-xs" type="submit"><span class="fas fa-trash"></span></button>
@@ -71,8 +75,11 @@
                <!-- <tfoot>
                  <tr>
                  <th>Id</th>
-                  <th>Tamaño Estimado</th>
-                  <th>Horas Desarollo</th>
+                  <th>Id</th>
+                  <th>Tamaño Proxi</th>
+                  <th>Tamaño Mod</th>
+                  <th>Estim Proxi</th>
+                  <th>Act Dev</th>
                   <th>FechaCreacion</th>
                   <th>FechaMoficiacion</th>
                   <th>Acciones</th>
@@ -106,26 +113,36 @@
              <!-- /.card-header 'id', 'estimate_proxy_size', 'development_hours' -->
             <thead>
              <tr>
-                <th>Pruebas</th>
-                <th COLSPAN=2>Valor Esperado</th>
-                <th COLSPAN=2>Valor Actual</th>
+                <th>Prueba</th>
+                <th COLSPAN=5>Valor Esperado</th>
+                <th COLSPAN=5>Valor Actual</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td></td> 
-                <td>Media</td> <td>Dev. Std</td>
-                <td>Media</td> <td>Dev. Std</td>
+                <td>B0</td> <td>B1</td> <td>r x,y</td> <td>r2</td> <td>Y k</td>
+                <td>B0</td> <td>B1</td> <td>r x,y</td> <td>r2</td> <td>Y k</td>
               </tr>
               <tr>
-                <td>Tabla 1: Columna 1</td> 
-                <td>550.6</td> <td>572.03</td>
-                <td>{{ $med1 }}</td> <td>{{ $dev1 }}</td>
+                <td>Prueba 1</td> 
+                <td>-22.55</td> <td>1.7279</td> <td>0.9545</td> <td>0.9111</td> <td>644.249</td>
+                <td>{{ $b10 }}</td> <td>{{ $b11 }}</td> <td>{{ $r11 }}</td> <td>{{ $r12 }}</td> <td>{{ $y1 }}</td>
               </tr>
               <tr>
-                <td>Tabla 1: Columna 2</td> 
-                <td>60.32</td> <td>62.26</td>
-                <td>{{ $med2 }}</td> <td>{{ $dev2 }}</td>
+                <td>Prueba 2</td> 
+                <td>-4.039</td> <td>0.1681</td> <td>0.9333</td> <td>0.8711</td> <td>60.858</td>
+                <td>{{ $b20 }}</td> <td>{{ $b21 }}</td> <td>{{ $r21 }}</td> <td>{{ $r22 }}</td> <td>{{ $y22 }}</td>
+              </tr>
+              <tr>
+                <td>Prueba 3</td> 
+                <td>-23.92</td> <td>1.43097</td> <td>0.9631</td> <td>0.9276</td> <td>528.4294</td>
+                <td>{{ $b30 }}</td> <td>{{ $b31 }}</td> <td>{{ $r31 }}</td> <td>{{ $r32 }}</td> <td>{{ $y3 }}</td>
+              </tr>
+              <tr>
+                <td>Prueba 4</td> 
+                <td>-4.604</td> <td>0.140164</td> <td>0.9480</td> <td>0.8988</td> <td>49.4994</td>
+                <td>{{ $b40 }}</td> <td>{{ $b41 }}</td> <td>{{ $r41 }}</td> <td>{{ $r42 }}</td> <td>{{ $y4 }}</td>
               </tr>
             </tbody>
           </table>
@@ -156,7 +173,7 @@
 @toastr_render
 <script>
   $(function () {
-     $('#statisticalTable').DataTable({  
+     $('#probeestimatingTable').DataTable({  
       'paging'      : true,
       'lengthChange': true,
       'searching'   : true,
