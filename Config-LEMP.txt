@@ -1,6 +1,6 @@
 # How To Install Nginx, MariaDB, PHP 7.4 (LEMP Stack) in Xubuntu/20.04
 
-[*] Tools for add config git hub local
+[*] Tools for add config git hub local DATA
 -----------------------------------------------------------------------------------------------------
 ---------------Empaquetar Carpetas Proyestos---------------------------------------------------------
 Empaquetar: tar -cvf paquete.tar /paquete
