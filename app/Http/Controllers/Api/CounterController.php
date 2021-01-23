@@ -6,9 +6,9 @@ use App\Counter;
 use App\HistorialCounter;
 use Validator;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Api\BaseController as BaseController;
 
-class ContadorController extends Controller
+class CounterController extends BaseController
 {
     /**
      * Update the specified resource in storage.
