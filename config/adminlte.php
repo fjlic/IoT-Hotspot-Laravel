@@ -470,6 +470,12 @@ return [
                 ],
             ],
         ],
+        [
+            'text'    => 'Documentacion',
+            'icon'    => 'fas fa-fw fa-file-code',
+            'icon_color' => 'blue',
+            'url'  => 'docs',
+        ],
     ],
 
     /*
