@@ -16,7 +16,7 @@
 <p><a name="section-erb"></a></p>
 <h2 id="migracion-sedder-modelo-controlador-y-vista">Migracion, Sedder, Modelo, Controlador y Vista</h2>
 <p>Estructura del modulo Erb.. 🦊
-Si gustas es posible crear la estructura MCV de forma manual.</p>
+Si gustas es posible crear la estructura MVC de forma manual.</p>
 <hr>
 <ul>
 <li><a href="#migrations">Migracion</a></li>
@@ -33,7 +33,8 @@ Si gustas es posible crear la estructura MCV de forma manual.</p>
 <blockquote>
 <p>{info} Directorio  <code>database/migrations/2014_10_12_000000_create_erbs_table.php</code>.</p>
 </blockquote>
-<pre><code class="lang-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CreateErbsTable</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Migration</span>
+<pre><code class="lang-php">
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CreateErbsTable</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Migration</span>
 </span>{
     <span class="hljs-comment">/**
      * Run the migrations.
@@ -72,7 +73,8 @@ Si gustas es posible crear la estructura MCV de forma manual.</p>
 <blockquote>
 <p>{info} Directorio  <code>database/seeders/AddErbTableSeeder.php</code>.</p>
 </blockquote>
-<pre><code class="lang-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AddErbTableSeeder</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Seeder</span>
+<pre><code class="lang-php">
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AddErbTableSeeder</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Seeder</span>
 </span>{
     <span class="hljs-comment">/**
      * Run the database seeds.
@@ -392,7 +394,8 @@ Si gustas es posible crear la estructura MCV de forma manual.</p>
 <blockquote>
 <p>{info} Directorio  <code>routes/web.php</code> agregar dentro del archivo.</p>
 </blockquote>
-<pre><code class="lang-php"><span class="hljs-comment">/*
+<pre><code class="lang-php">
+<span class="hljs-comment">/*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
@@ -414,11 +417,12 @@ Auth::routes();
 </code></pre>
 <p><a name="views"></a></p>
 <h2 id="vista">Vista</h2>
-<p>No se cuenta con comando pero crea un archivos index para modulo de usuario <code>index.blade.php</code> y pega este codigo.</p>
+<p>No se cuenta con comando pero crea un archivos index para modulo de erb <code>index.blade.php</code> y pega este codigo.</p>
 <blockquote>
-<p>{info} Directorio  <code>resources/module/erb/index.blade.php</code>.</p>
+<p>{info} Directorio  <code>resources/views/module/erb/index.blade.php</code>.</p>
 </blockquote>
-<pre><code class="lang-php"><span class="xml"><span class="hljs-comment">&lt;!-- Main content --&gt;</span>
+<pre><code class="lang-php"><span class="xml">
+<span class="hljs-comment">&lt;!-- Main content --&gt;</span>
  <span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"content"</span>&gt;</span>
       <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"row"</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-12"</span>&gt;</span>

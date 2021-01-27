@@ -2,7 +2,7 @@
 
 ---
 
-- [Usuario Role](#section-role)
+- [Role CRUD](#section-role)
 - [Migracion](#migrations)
 - [Seeder](#seeds)
 - [Modelo](#models)
@@ -15,7 +15,7 @@
 ## Migracion, Sedder, Modelo, Controlador y Vista
 
 Estructura del modulo Role.. 🦊
-Si gustas es posible crear la estructura MCV de forma manual.
+Si gustas es posible crear la estructura MVC de forma manual.
 
 ---
 
@@ -32,10 +32,11 @@ Si gustas es posible crear la estructura MCV de forma manual.
 
 Comando `php artisan make:migration Role` ejecutar en consola dentro del proyecto.
 
-> {info} Directorio  `database/migrations/2014_10_12_000000_create_roles_table.php`.
+> {info} Directorio  `vendor/santigarcor/laratrust/resources/views/migrations.blade.php`.
 
 ```php
-class CreateUsersTable extends Migration
+
+class LaratrustSetupTables extends Migration
 {
     /**
      * Run the migrations.
@@ -44,18 +45,90 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('region_id')->nullable();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->string('branch_office')->nullable();
-            $table->string('serial_number')->nullable();
-            $table->rememberToken();
+        // Create table for storing roles
+        Schema::create('{{ $laratrust['tables']['roles'] }}', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('name')->unique();
+            $table->string('display_name')->nullable();
+            $table->string('description')->nullable();
             $table->timestamps();
-            $table->foreign('region_id')->references('id')->on('regions')->onUpdate('cascade')->onDelete('cascade')->nullable();
+        });
+
+        // Create table for storing permissions
+        Schema::create('{{ $laratrust['tables']['permissions'] }}', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('name')->unique();
+            $table->string('display_name')->nullable();
+            $table->string('description')->nullable();
+            $table->timestamps();
+        });
+
+@if ($laratrust['teams']['enabled'])
+        // Create table for storing teams
+        Schema::create('{{ $laratrust['tables']['teams'] }}', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('name')->unique();
+            $table->string('display_name')->nullable();
+            $table->string('description')->nullable();
+            $table->timestamps();
+        });
+
+@endif
+        // Create table for associating roles to users and teams (Many To Many Polymorphic)
+        Schema::create('{{ $laratrust['tables']['role_user'] }}', function (Blueprint $table) {
+            $table->unsignedBigInteger('{{ $laratrust['foreign_keys']['role'] }}');
+            $table->unsignedBigInteger('{{ $laratrust['foreign_keys']['user'] }}');
+            $table->string('user_type');
+@if ($laratrust['teams']['enabled'])
+            $table->unsignedBigInteger('{{ $laratrust['foreign_keys']['team'] }}')->nullable();
+@endif
+
+            $table->foreign('{{ $laratrust['foreign_keys']['role'] }}')->references('id')->on('{{ $laratrust['tables']['roles'] }}')
+                ->onUpdate('cascade')->onDelete('cascade');
+@if ($laratrust['teams']['enabled'])
+            $table->foreign('{{ $laratrust['foreign_keys']['team'] }}')->references('id')->on('{{ $laratrust['tables']['teams'] }}')
+                ->onUpdate('cascade')->onDelete('cascade');
+
+            $table->unique(['{{ $laratrust['foreign_keys']['user'] }}', '{{ $laratrust['foreign_keys']['role'] }}', 'user_type', '{{ $laratrust['foreign_keys']['team'] }}']);
+@else
+
+            $table->primary(['{{ $laratrust['foreign_keys']['user'] }}', '{{ $laratrust['foreign_keys']['role'] }}', 'user_type']);
+@endif
+        });
+
+        // Create table for associating permissions to users (Many To Many Polymorphic)
+        Schema::create('{{ $laratrust['tables']['permission_user'] }}', function (Blueprint $table) {
+            $table->unsignedBigInteger('{{ $laratrust['foreign_keys']['permission'] }}');
+            $table->unsignedBigInteger('{{ $laratrust['foreign_keys']['user'] }}');
+            $table->string('user_type');
+@if ($laratrust['teams']['enabled'])
+            $table->unsignedBigInteger('{{ $laratrust['foreign_keys']['team'] }}')->nullable();
+@endif
+
+            $table->foreign('{{ $laratrust['foreign_keys']['permission'] }}')->references('id')->on('{{ $laratrust['tables']['permissions'] }}')
+                ->onUpdate('cascade')->onDelete('cascade');
+@if ($laratrust['teams']['enabled'])
+            $table->foreign('{{ $laratrust['foreign_keys']['team'] }}')->references('id')->on('{{ $laratrust['tables']['teams'] }}')
+                ->onUpdate('cascade')->onDelete('cascade');
+
+            $table->unique(['{{ $laratrust['foreign_keys']['user'] }}', '{{ $laratrust['foreign_keys']['permission'] }}', 'user_type', '{{ $laratrust['foreign_keys']['team'] }}']);
+@else
+
+            $table->primary(['{{ $laratrust['foreign_keys']['user'] }}', '{{ $laratrust['foreign_keys']['permission'] }}', 'user_type']);
+@endif
+        });
+
+        // Create table for associating permissions to roles (Many-to-Many)
+        Schema::create('{{ $laratrust['tables']['permission_role'] }}', function (Blueprint $table) {
+            $table->unsignedBigInteger('{{ $laratrust['foreign_keys']['permission'] }}');
+            $table->unsignedBigInteger('{{ $laratrust['foreign_keys']['role'] }}');
+
+            $table->foreign('{{ $laratrust['foreign_keys']['permission'] }}')->references('id')->on('{{ $laratrust['tables']['permissions'] }}')
+                ->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('{{ $laratrust['foreign_keys']['role'] }}')->references('id')->on('{{ $laratrust['tables']['roles'] }}')
+                ->onUpdate('cascade')->onDelete('cascade');
+
+            $table->primary(['{{ $laratrust['foreign_keys']['permission'] }}', '{{ $laratrust['foreign_keys']['role'] }}']);
         });
     }
 
@@ -66,20 +139,29 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('{{ $laratrust['tables']['permission_user'] }}');
+        Schema::dropIfExists('{{ $laratrust['tables']['permission_role'] }}');
+        Schema::dropIfExists('{{ $laratrust['tables']['permissions'] }}');
+        Schema::dropIfExists('{{ $laratrust['tables']['role_user'] }}');
+        Schema::dropIfExists('{{ $laratrust['tables']['roles'] }}');
+@if ($laratrust['teams']['enabled'])
+        Schema::dropIfExists('{{ $laratrust['tables']['teams'] }}');
+@endif
     }
 }
+
 ```
 
 <a name="seeds"></a>
 ## Seeder
 
-Comando `php artisan make:seeder AddUserTableSeeder` ejecutar en consola dentro del proyecto.
+Comando `php artisan make:seeder AddRoleGlobalTableSeeder` ejecutar en consola dentro del proyecto.
 
-> {info} Directorio  `database/seeders/AddUserTableSeeder.php`.
+> {info} Directorio  `database/seeders/AddRoleGlobalTableSeeder.php`.
 
 ```php
-class AddUserTableSeeder extends Seeder
+
+class AddRoleGlobalTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -89,55 +171,49 @@ class AddUserTableSeeder extends Seeder
     public function run()
     {
         //
-        $root = new User();
-        $root->id = 1;
-        $root->region_id = 1;
-        $root->name = 'Root';
-        $root->email = 'root@local.com';
-        $root->password = Hash::make('root@54321');
-        $root->branch_office = 'Sin Asignar';
-        $root->serial_number = '0000000001';
+        $users = User::all();
+        $crds = Crd::all();
+        $erbs = ERB::all();
+        $role_root = Role::where('name','root')->first();
+        $role_admin = Role::where('name','admin')->first();
+        $role_super = Role::where('name','super')->first();
+        $role_user = Role::where('name','user')->first();
+        $role_crd = Role::where('name','crd')->first();
+        $role_erb = Role::where('name','erb')->first();
+
+        /* Asign roles with users and micros*/
+
+        $root = $users->find(1);
+        $root->attachRole($role_root);
         $root->save();
 
-        $admin = new User();
-        $admin->id = 2;
-        $admin->region_id = 1;
-        $admin->name = 'Admin';
-        $admin->email = 'admin@local.com';
-        $admin->password = Hash::make('admin@54321');
-        $admin->branch_office = 'Sin Asignar';
-        $admin->serial_number = '0000000002';
+        $admin = $users->find(2);
+        $admin->attachRole($role_admin);
         $admin->save();
 
-        $super = new User();
-        $super->id = 3;
-        $super->region_id = 1;
-        $super->name = 'Super';
-        $super->email = 'super@local.com';
-        $super->password = Hash::make('super@54321');
-        $super->branch_office = 'Sin Asignar';
-        $super->serial_number = '0000000003';
+        $super = $users->find(3);
+        $super->attachRole($role_super);
         $super->save();
 
-        $user = new User();
-        $user->id = 4;
-        $user->region_id = 1;
-        $user->name = 'User';
-        $user->email = 'user@local.com';
-        $user->password = Hash::make('user@54321');
-        $user->branch_office = 'Sin Asignar';
-        $user->serial_number = '0000000004';
+        $user = $users->find(4);
+        $user->attachRole($role_user);
         $user->save();
 
-        $disable = new User();
-        $disable->id = 5;
-        $disable->region_id = 1;
-        $disable->name = 'Disable';
-        $disable->email = 'disable@local.com';
-        $disable->password = Hash::make('disable@54321');
-        $disable->branch_office = 'Sin Asignar';
-        $disable->serial_number = '0000000005';
+        $disable = $users->find(5);
+        $disable->attachRole($role_user);
         $disable->save();
+
+        for ($i = 1; $i <= 9; $i++) {
+            $crd = $crds->find($i);
+            $crd->attachRole($role_crd);
+            $crd->save();
+        }
+
+        for ($i = 1; $i <= 9; $i++) {
+            $erb = $erbs->find($i);
+            $erb->attachRole($role_erb);
+            $erb->save();
+        }
     }
 }
 
@@ -146,165 +222,123 @@ class AddUserTableSeeder extends Seeder
 <a name="models"></a>
 ## Modelo
 
-Comando `php artisan make:model User` ejecutar en consola dentro del proyecto.
+Comando `php artisan make:model Role` ejecutar en consola dentro del proyecto.
 
-> {info} Directorio  `app/User.php`.
+> {info} Directorio  `app/Role.php`.
 
 ```php
-class User extends Authenticatable
+
+class LaratrustRole extends Model implements LaratrustRoleInterface
 {
-    use LaratrustUserTrait;
-    use Notifiable;
+    use LaratrustRoleTrait;
 
     /**
-     * The attributes that are mass assignable.
+     * The database table used by the model.
      *
-     * @var array
+     * @var string
      */
-    protected $fillable = [
-        'region_id','name', 'email', 'password', 'branch_office', 'serial_number',
-    ];
+    protected $table;
 
     /**
-     * The attributes that should be hidden for arrays.
+     * Creates a new instance of the model.
      *
-     * @var array
+     * @param  array  $attributes
+     * @return void
      */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
-
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
-
-    /**
-     * Get the user record  type hostpot.
-     */
-    public function region()
+    public function __construct(array $attributes = [])
     {
-        return $this->belongsTo('App\Region', 'id');
-    }
-
-    /**
-     * Get the crd for the user.
-     */
-    public function crd()
-    {
-        return $this->hasMany('App\Crd','user_id');
-    }
-
-    /**
-     * Get the crd for the user.
-     */
-    public function erb()
-    {
-        return $this->hasMany('App\Erb','user_id');
+        parent::__construct($attributes);
+        $this->table = Config::get('laratrust.tables.roles');
     }
 }
+
 ```
 
 <a name="controllers"></a>
 ## Controlador
 
-Comando `php artisan make:controller User` ejecutar en consola dentro del proyecto.
+Comando `php artisan make:controller Role` ejecutar en consola dentro del proyecto.
 
-> {info} Directorio  `app/Http/Controllers/UserController.php`.
+> {info} Directorio  `app/Http/Controllers/RoleController.php`.
 
 ```php
 
-class RolesController
+class RoleController extends Controller
 {
-    protected $rolesModel;
-    protected $permissionModel;
-
+    //
     public function __construct()
     {
-        $this->rolesModel = Config::get('laratrust.models.role');
-        $this->permissionModel = Config::get('laratrust.models.permission');
+        $this->middleware('auth');
     }
 
+    /**
+     * Display a listing of the Role.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        return View::make('laratrust::panel.roles.index', [
-            'roles' => $this->rolesModel::withCount('permissions')
-                ->simplePaginate(10),
-        ]);
+        $roles = Role::all();
+        return view('module.role.index',compact('roles'));
     }
 
+    /**
+     * Show the form for creating a new resource for Role.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
-        return View::make('laratrust::panel.edit', [
-            'model' => null,
-            'permissions' => $this->permissionModel::all(['id', 'name']),
-            'type' => 'role',
-        ]);
+        //
+        return view('module.role.create');
     }
 
-    public function show(Request $request, $id)
-    {
-        $role = $this->rolesModel::query()
-            ->with('permissions:id,name,display_name')
-            ->findOrFail($id);
-
-        return View::make('laratrust::panel.roles.show', ['role' => $role]);
-    }
-
+    /**
+     * Store a newly created resource in storage for Role.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
-        $data = $request->validate([
-            'name' => 'required|string|unique:roles,name',
-            'display_name' => 'nullable|string',
-            'description' => 'nullable|string',
-        ]);
+        //
+        $createRole = Role::create([
+            'name' => $request->get('name'),
+            'display_name' => $request->get('display_name'), // optional
+            'description' => $request->get('description'), // optional
+            ]);
+        toastr()->success('Role creado');
+        return redirect()->route('role.index');
+    }
 
-        $role = $this->rolesModel::create($data);
-        $role->syncPermissions($request->get('permissions') ?? []);
-
-        Session::flash('laratrust-success', 'Role created successfully');
-        return redirect(route('laratrust.roles.index'));
+    /**
+     * Display the specified resource for Role.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Role $role)
+    {
+        //
+        return view('module.role.show', compact('role'));
     }
 
     public function edit($id)
     {
-        $role = $this->rolesModel::query()
-            ->with('permissions:id')
-            ->findOrFail($id);
-
-        if (!Helper::roleIsEditable($role)) {
-            Session::flash('laratrust-error', 'The role is not editable');
-            return redirect()->back();
-        }
-
-        $permissions = $this->permissionModel::all(['id', 'name', 'display_name'])
-            ->map(function ($permission) use ($role) {
-                $permission->assigned = $role->permissions
-                    ->pluck('id')
-                    ->contains($permission->id);
-
-                return $permission;
-            });
-
-        return View::make('laratrust::panel.edit', [
-            'model' => $role,
-            'permissions' => $permissions,
-            'type' => 'role',
-        ]);
+        $role = Role::findOrFail($id);
+        return view('module.role.edit',compact('role'));
     }
 
+    /**
+     * Update the specified resource in storage for Role.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function update(Request $request, $id)
     {
-        $role = $this->rolesModel::findOrFail($id);
-
-        if (!Helper::roleIsEditable($role)) {
-            Session::flash('laratrust-error', 'The role is not editable');
-            return redirect()->back();
-        }
+        $role = Role::findOrFail($id);
 
         $data = $request->validate([
             'display_name' => 'nullable|string',
@@ -312,32 +346,22 @@ class RolesController
         ]);
 
         $role->update($data);
-        $role->syncPermissions($request->get('permissions') ?? []);
-
-        Session::flash('laratrust-success', 'Role updated successfully');
-        return redirect(route('laratrust.roles.index'));
+        toastr()->warning('Role actualizado satisfactoriamente');
+        return redirect()->route('role.index');
     }
 
-    public function destroy($id)
+    /**
+     * Remove the specified resource from storage for Role.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Role $role)
     {
-        $usersAssignedToRole = DB::table(Config::get('laratrust.tables.role_user'))
-            ->where(Config::get('laratrust.foreign_keys.role'), $id)
-            ->count();
-        $role = $this->rolesModel::findOrFail($id);
-
-        if (!Helper::roleIsDeletable($role)) {
-            Session::flash('laratrust-error', 'The role is not deletable');
-            return redirect()->back();
-        }
-
-        if ($usersAssignedToRole > 0) {
-            Session::flash('laratrust-warning', 'Role is attached to one or more users. It can not be deleted');
-        } else {
-            Session::flash('laratrust-success', 'Role deleted successfully');
-            $this->rolesModel::destroy($id);
-        }
-
-        return redirect(route('laratrust.roles.index'));
+        $role->delete();
+        //return redirect('/role')->with('success', 'Role Eliminado!');
+        toastr()->error('Role eliminado');
+        return redirect()->route('role.index');
     }
 }
 
@@ -348,28 +372,20 @@ class RolesController
 
 No cuenta con comando artisan para esto dispones ya de un archivo de rutas web.
 
-> {info} Directorio  `routes/web.php` agregar dentro del archivo.
+> {info} Directorio  `vendor/santigarcor/laratrust/routes/web.php` agregar dentro del archivo.
 
 ```php
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
-Route::get('/', function () {
-    return view('auth.login');
-});
+use Illuminate\Support\Facades\Route;
 
-Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
-Route::resource('user', 'UserController')->middleware('auth');
-Auth::routes();
+Route::resource('/permissions', 'PermissionsController', ['as' => 'laratrust'])
+    ->only(['index', 'edit', 'update']);
+
+Route::resource('/roles', 'RolesController', ['as' => 'laratrust']);
+
+Route::resource('/roles-assignment', 'RolesAssignmentController', ['as' => 'laratrust'])
+    ->only(['index', 'edit', 'update']);
+
 ```
 
 <a name="views"></a>
@@ -377,45 +393,46 @@ Auth::routes();
 
 No se cuenta con comando pero crea un archivos index para modulo de usuario `index.blade.php` y pega este codigo.
 
-> {info} Directorio  `resources/module/user/index.blade.php`.
+> {info} Directorio  `resources/views/module/role/index.blade.php`.
 
 ```php
+
 <!-- Main content -->
  <section class="content">
       <div class="row">
         <div class="col-12">
             <div class="card card-primary card-outline">
             <div class="card-header">
-              <h3 class="card-title">Tabla Usuarios</h3>
-              <a class="btn btn-xs btn-success float-right" href="{{ route('user.create') }}" role="button"><span class="fas fa-plus"></span></a>
+              <h3 class="card-title">Tabla de Roles</h3>
+              <a class="btn btn-xs btn-success float-right" href="{{ route('role.create') }}" role="button"><span class="fas fa-plus"></span></a>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <table id="userTable" class="table table-bordered table-striped">
+              <table id="roleTable" class="table table-bordered table-striped">
                 <thead>
                 <tr>
                   <th>Id</th>
-                  <th>Nombre</th>
-                  <th>Email</th>
-                  <th>Password</th>
+                  <th>Nom-Codigo</th>
+                  <th>Nom-Vista</th>
+                  <th>Descripcion</th>
                   <th>FechaCreacion</th>
                   <th>FechaMoficiacion</th>
                   <th>Acciones</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($users as $user)
+                @foreach($roles as $role)
                 <tr>
-                    <td>{{ $user->id }}</td>
-                    <td>{{ $user->name }}</td>
-                    <td>{{ $user->email }}</td>
-                    <td>{{ $user->password }}</td>
-                    <td>{{ $user->created_at }}</td>
-                    <td>{{ $user->updated_at }}</td>
+                    <td>{{ $role->id }}</td>
+                    <td>{{ $role->name }}</td>
+                    <td>{{ $role->display_name }}</td>
+                    <td>{{ $role->description }}</td>
+                    <td>{{ $role->created_at }}</td>
+                    <td>{{ $role->updated_at }}</td>
                     <td>
-                      <form role="form" action="{{ route('user.destroy',$user->id) }}" method="POST">
-                      <a class="btn btn-info btn-xs" href="{{ route('user.show',$user->id) }}" role="button"><span class="fas fa-eye"></span></a> 
-                      <a class="btn btn-warning btn-xs"  href="{{ route('user.edit',$user->id) }}" role="button"><span class="fas fa-pen"></span></a>
+                      <form role="form" action="{{ route('role.destroy',$role->id) }}" method="POST">
+                      <a class="btn btn-info btn-xs" href="{{ route('role.show',$role->id) }}" role="button"><span class="fas fa-eye"></span></a> 
+                      <a class="btn btn-warning btn-xs"  href="{{ route('role.edit',$role->id) }}" role="button"><span class="fas fa-pen"></span></a>
                       @csrf
                       @method('DELETE')
                       <button class="btn btn-danger btn-xs" type="submit"><span class="fas fa-trash"></span></button>
@@ -427,9 +444,9 @@ No se cuenta con comando pero crea un archivos index para modulo de usuario `ind
                <!-- <tfoot>
                 <tr>
                   <th>Id</th>
-                  <th>Nombre</th>
-                  <th>Email</th>
-                  <th>Password</th>
+                  <th>Nom-Codigo</th>
+                  <th>Nom-Vista</th>
+                  <th>Descripcion</th>
                   <th>FechaCreacion</th>
                   <th>FechaMoficiacion</th>
                   <th>Acciones</th>
@@ -448,6 +465,7 @@ No se cuenta con comando pero crea un archivos index para modulo de usuario `ind
     <!-- /.content -->  
     
 @stop
+
 ```
 
 <a name="mcr"></a>
@@ -462,7 +480,7 @@ Tu puedes crear los archivos de forma automatica y sin tanta complejidad.
 
 ```
 
-✌️ Run the install command.
+✌️ Comando para crear Seeder.
 
 ```php
    php artisan make:seeder NameTableSeeder

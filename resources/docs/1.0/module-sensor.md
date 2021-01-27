@@ -15,7 +15,7 @@
 ## Migracion, Sedder, Modelo, Controlador y Vista
 
 Estructura del modulo Sensor.. 🦊
-Si gustas es posible crear la estructura MCV de forma manual.
+Si gustas es posible crear la estructura MVC de forma manual.
 
 ---
 
@@ -77,7 +77,6 @@ class CreateSensorsTable extends Migration
         Schema::dropIfExists('sensors');
     }
 }
-
 
 ```
 
@@ -355,6 +354,7 @@ No cuenta con comando artisan para esto dispones ya de un archivo de rutas web.
 > {info} Directorio  `routes/web.php` agregar dentro del archivo.
 
 ```php
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -375,6 +375,7 @@ Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 Route::get('sensor/chart/{id}', 'SensorController@chart')->name('sensor.chart')->middleware('auth');
 Route::resource('sensor', 'SensorController')->middleware('auth');
 Auth::routes();
+
 ```
 
 <a name="views"></a>
@@ -385,6 +386,7 @@ No se cuenta con comando pero crea un archivos index para modulo de sensor `inde
 > {info} Directorio  `resources/views/module/sensor/index.blade.php`.
 
 ```php
+
 <!-- Main content -->
  <section class="content">
       <div class="row">
@@ -497,7 +499,7 @@ Tu puedes crear los archivos de forma automatica y sin tanta complejidad.
 
 ```
 
-✌️ Run the install command.
+✌️ Comando para crear Seeder.
 
 ```php
    php artisan make:seeder NameTableSeeder

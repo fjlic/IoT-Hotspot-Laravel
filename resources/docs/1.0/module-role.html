@@ -1,0 +1,456 @@
+<html><head><style>body {
+   color: black;
+}
+</style></head><body><h1 id="modulo-role">Modulo Role</h1>
+<hr>
+<ul>
+<li><a href="#section-role">Role CRUD</a></li>
+<li><a href="#migrations">Migracion</a></li>
+<li><a href="#seeds">Seeder</a></li>
+<li><a href="#models">Modelo</a></li>
+<li><a href="#controllers">Controlador</a></li>
+<li><a href="#routes">RutaWeb</a></li>
+<li><a href="#views">Vista</a></li>
+<li><a href="#mcr">Comando</a></li>
+</ul>
+<p><a name="section-role"></a></p>
+<h2 id="migracion-sedder-modelo-controlador-y-vista">Migracion, Sedder, Modelo, Controlador y Vista</h2>
+<p>Estructura del modulo Role.. 🦊
+Si gustas es posible crear la estructura MVC de forma manual.</p>
+<hr>
+<ul>
+<li><a href="#migrations">Migracion</a></li>
+<li><a href="#seeds">Seeder</a></li>
+<li><a href="#models">Modelo</a></li>
+<li><a href="#controllers">Controlador</a></li>
+<li><a href="#routes">RutaWeb</a></li>
+<li><a href="#views">Vista</a></li>
+<li><a href="#mcr">Comando MCR</a></li>
+</ul>
+<p><a name="migrations"></a></p>
+<h2 id="migracion">Migracion</h2>
+<p>Comando <code>php artisan make:migration Role</code> ejecutar en consola dentro del proyecto.</p>
+<blockquote>
+<p>{info} Directorio  <code>vendor/santigarcor/laratrust/resources/views/migrations.blade.php</code>.</p>
+</blockquote>
+<pre><code class="lang-php">
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LaratrustSetupTables</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Migration</span>
+</span>{
+    <span class="hljs-comment">/**
+     * Run the migrations.
+     *
+     * <span class="hljs-doctag">@return</span> void
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">up</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-comment">// Create table for storing roles</span>
+        Schema::create(<span class="hljs-string">'{{ $laratrust['</span>tables<span class="hljs-string">']['</span>roles<span class="hljs-string">'] }}'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(Blueprint $table)</span> </span>{
+            $table-&gt;bigIncrements(<span class="hljs-string">'id'</span>);
+            $table-&gt;string(<span class="hljs-string">'name'</span>)-&gt;unique();
+            $table-&gt;string(<span class="hljs-string">'display_name'</span>)-&gt;nullable();
+            $table-&gt;string(<span class="hljs-string">'description'</span>)-&gt;nullable();
+            $table-&gt;timestamps();
+        });
+
+        <span class="hljs-comment">// Create table for storing permissions</span>
+        Schema::create(<span class="hljs-string">'{{ $laratrust['</span>tables<span class="hljs-string">']['</span>permissions<span class="hljs-string">'] }}'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(Blueprint $table)</span> </span>{
+            $table-&gt;bigIncrements(<span class="hljs-string">'id'</span>);
+            $table-&gt;string(<span class="hljs-string">'name'</span>)-&gt;unique();
+            $table-&gt;string(<span class="hljs-string">'display_name'</span>)-&gt;nullable();
+            $table-&gt;string(<span class="hljs-string">'description'</span>)-&gt;nullable();
+            $table-&gt;timestamps();
+        });
+
+@<span class="hljs-keyword">if</span> ($laratrust[<span class="hljs-string">'teams'</span>][<span class="hljs-string">'enabled'</span>])
+        <span class="hljs-comment">// Create table for storing teams</span>
+        Schema::create(<span class="hljs-string">'{{ $laratrust['</span>tables<span class="hljs-string">']['</span>teams<span class="hljs-string">'] }}'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(Blueprint $table)</span> </span>{
+            $table-&gt;bigIncrements(<span class="hljs-string">'id'</span>);
+            $table-&gt;string(<span class="hljs-string">'name'</span>)-&gt;unique();
+            $table-&gt;string(<span class="hljs-string">'display_name'</span>)-&gt;nullable();
+            $table-&gt;string(<span class="hljs-string">'description'</span>)-&gt;nullable();
+            $table-&gt;timestamps();
+        });
+
+@<span class="hljs-keyword">endif</span>
+        <span class="hljs-comment">// Create table for associating roles to users and teams (Many To Many Polymorphic)</span>
+        Schema::create(<span class="hljs-string">'{{ $laratrust['</span>tables<span class="hljs-string">']['</span>role_user<span class="hljs-string">'] }}'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(Blueprint $table)</span> </span>{
+            $table-&gt;unsignedBigInteger(<span class="hljs-string">'{{ $laratrust['</span>foreign_keys<span class="hljs-string">']['</span>role<span class="hljs-string">'] }}'</span>);
+            $table-&gt;unsignedBigInteger(<span class="hljs-string">'{{ $laratrust['</span>foreign_keys<span class="hljs-string">']['</span>user<span class="hljs-string">'] }}'</span>);
+            $table-&gt;string(<span class="hljs-string">'user_type'</span>);
+@<span class="hljs-keyword">if</span> ($laratrust[<span class="hljs-string">'teams'</span>][<span class="hljs-string">'enabled'</span>])
+            $table-&gt;unsignedBigInteger(<span class="hljs-string">'{{ $laratrust['</span>foreign_keys<span class="hljs-string">']['</span>team<span class="hljs-string">'] }}'</span>)-&gt;nullable();
+@<span class="hljs-keyword">endif</span>
+
+            $table-&gt;foreign(<span class="hljs-string">'{{ $laratrust['</span>foreign_keys<span class="hljs-string">']['</span>role<span class="hljs-string">'] }}'</span>)-&gt;references(<span class="hljs-string">'id'</span>)-&gt;on(<span class="hljs-string">'{{ $laratrust['</span>tables<span class="hljs-string">']['</span>roles<span class="hljs-string">'] }}'</span>)
+                -&gt;onUpdate(<span class="hljs-string">'cascade'</span>)-&gt;onDelete(<span class="hljs-string">'cascade'</span>);
+@<span class="hljs-keyword">if</span> ($laratrust[<span class="hljs-string">'teams'</span>][<span class="hljs-string">'enabled'</span>])
+            $table-&gt;foreign(<span class="hljs-string">'{{ $laratrust['</span>foreign_keys<span class="hljs-string">']['</span>team<span class="hljs-string">'] }}'</span>)-&gt;references(<span class="hljs-string">'id'</span>)-&gt;on(<span class="hljs-string">'{{ $laratrust['</span>tables<span class="hljs-string">']['</span>teams<span class="hljs-string">'] }}'</span>)
+                -&gt;onUpdate(<span class="hljs-string">'cascade'</span>)-&gt;onDelete(<span class="hljs-string">'cascade'</span>);
+
+            $table-&gt;unique([<span class="hljs-string">'{{ $laratrust['</span>foreign_keys<span class="hljs-string">']['</span>user<span class="hljs-string">'] }}'</span>, <span class="hljs-string">'{{ $laratrust['</span>foreign_keys<span class="hljs-string">']['</span>role<span class="hljs-string">'] }}'</span>, <span class="hljs-string">'user_type'</span>, <span class="hljs-string">'{{ $laratrust['</span>foreign_keys<span class="hljs-string">']['</span>team<span class="hljs-string">'] }}'</span>]);
+@<span class="hljs-keyword">else</span>
+
+            $table-&gt;primary([<span class="hljs-string">'{{ $laratrust['</span>foreign_keys<span class="hljs-string">']['</span>user<span class="hljs-string">'] }}'</span>, <span class="hljs-string">'{{ $laratrust['</span>foreign_keys<span class="hljs-string">']['</span>role<span class="hljs-string">'] }}'</span>, <span class="hljs-string">'user_type'</span>]);
+@<span class="hljs-keyword">endif</span>
+        });
+
+        <span class="hljs-comment">// Create table for associating permissions to users (Many To Many Polymorphic)</span>
+        Schema::create(<span class="hljs-string">'{{ $laratrust['</span>tables<span class="hljs-string">']['</span>permission_user<span class="hljs-string">'] }}'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(Blueprint $table)</span> </span>{
+            $table-&gt;unsignedBigInteger(<span class="hljs-string">'{{ $laratrust['</span>foreign_keys<span class="hljs-string">']['</span>permission<span class="hljs-string">'] }}'</span>);
+            $table-&gt;unsignedBigInteger(<span class="hljs-string">'{{ $laratrust['</span>foreign_keys<span class="hljs-string">']['</span>user<span class="hljs-string">'] }}'</span>);
+            $table-&gt;string(<span class="hljs-string">'user_type'</span>);
+@<span class="hljs-keyword">if</span> ($laratrust[<span class="hljs-string">'teams'</span>][<span class="hljs-string">'enabled'</span>])
+            $table-&gt;unsignedBigInteger(<span class="hljs-string">'{{ $laratrust['</span>foreign_keys<span class="hljs-string">']['</span>team<span class="hljs-string">'] }}'</span>)-&gt;nullable();
+@<span class="hljs-keyword">endif</span>
+
+            $table-&gt;foreign(<span class="hljs-string">'{{ $laratrust['</span>foreign_keys<span class="hljs-string">']['</span>permission<span class="hljs-string">'] }}'</span>)-&gt;references(<span class="hljs-string">'id'</span>)-&gt;on(<span class="hljs-string">'{{ $laratrust['</span>tables<span class="hljs-string">']['</span>permissions<span class="hljs-string">'] }}'</span>)
+                -&gt;onUpdate(<span class="hljs-string">'cascade'</span>)-&gt;onDelete(<span class="hljs-string">'cascade'</span>);
+@<span class="hljs-keyword">if</span> ($laratrust[<span class="hljs-string">'teams'</span>][<span class="hljs-string">'enabled'</span>])
+            $table-&gt;foreign(<span class="hljs-string">'{{ $laratrust['</span>foreign_keys<span class="hljs-string">']['</span>team<span class="hljs-string">'] }}'</span>)-&gt;references(<span class="hljs-string">'id'</span>)-&gt;on(<span class="hljs-string">'{{ $laratrust['</span>tables<span class="hljs-string">']['</span>teams<span class="hljs-string">'] }}'</span>)
+                -&gt;onUpdate(<span class="hljs-string">'cascade'</span>)-&gt;onDelete(<span class="hljs-string">'cascade'</span>);
+
+            $table-&gt;unique([<span class="hljs-string">'{{ $laratrust['</span>foreign_keys<span class="hljs-string">']['</span>user<span class="hljs-string">'] }}'</span>, <span class="hljs-string">'{{ $laratrust['</span>foreign_keys<span class="hljs-string">']['</span>permission<span class="hljs-string">'] }}'</span>, <span class="hljs-string">'user_type'</span>, <span class="hljs-string">'{{ $laratrust['</span>foreign_keys<span class="hljs-string">']['</span>team<span class="hljs-string">'] }}'</span>]);
+@<span class="hljs-keyword">else</span>
+
+            $table-&gt;primary([<span class="hljs-string">'{{ $laratrust['</span>foreign_keys<span class="hljs-string">']['</span>user<span class="hljs-string">'] }}'</span>, <span class="hljs-string">'{{ $laratrust['</span>foreign_keys<span class="hljs-string">']['</span>permission<span class="hljs-string">'] }}'</span>, <span class="hljs-string">'user_type'</span>]);
+@<span class="hljs-keyword">endif</span>
+        });
+
+        <span class="hljs-comment">// Create table for associating permissions to roles (Many-to-Many)</span>
+        Schema::create(<span class="hljs-string">'{{ $laratrust['</span>tables<span class="hljs-string">']['</span>permission_role<span class="hljs-string">'] }}'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(Blueprint $table)</span> </span>{
+            $table-&gt;unsignedBigInteger(<span class="hljs-string">'{{ $laratrust['</span>foreign_keys<span class="hljs-string">']['</span>permission<span class="hljs-string">'] }}'</span>);
+            $table-&gt;unsignedBigInteger(<span class="hljs-string">'{{ $laratrust['</span>foreign_keys<span class="hljs-string">']['</span>role<span class="hljs-string">'] }}'</span>);
+
+            $table-&gt;foreign(<span class="hljs-string">'{{ $laratrust['</span>foreign_keys<span class="hljs-string">']['</span>permission<span class="hljs-string">'] }}'</span>)-&gt;references(<span class="hljs-string">'id'</span>)-&gt;on(<span class="hljs-string">'{{ $laratrust['</span>tables<span class="hljs-string">']['</span>permissions<span class="hljs-string">'] }}'</span>)
+                -&gt;onUpdate(<span class="hljs-string">'cascade'</span>)-&gt;onDelete(<span class="hljs-string">'cascade'</span>);
+            $table-&gt;foreign(<span class="hljs-string">'{{ $laratrust['</span>foreign_keys<span class="hljs-string">']['</span>role<span class="hljs-string">'] }}'</span>)-&gt;references(<span class="hljs-string">'id'</span>)-&gt;on(<span class="hljs-string">'{{ $laratrust['</span>tables<span class="hljs-string">']['</span>roles<span class="hljs-string">'] }}'</span>)
+                -&gt;onUpdate(<span class="hljs-string">'cascade'</span>)-&gt;onDelete(<span class="hljs-string">'cascade'</span>);
+
+            $table-&gt;primary([<span class="hljs-string">'{{ $laratrust['</span>foreign_keys<span class="hljs-string">']['</span>permission<span class="hljs-string">'] }}'</span>, <span class="hljs-string">'{{ $laratrust['</span>foreign_keys<span class="hljs-string">']['</span>role<span class="hljs-string">'] }}'</span>]);
+        });
+    }
+
+    <span class="hljs-comment">/**
+     * Reverse the migrations.
+     *
+     * <span class="hljs-doctag">@return</span> void
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">down</span><span class="hljs-params">()</span>
+    </span>{
+        Schema::dropIfExists(<span class="hljs-string">'{{ $laratrust['</span>tables<span class="hljs-string">']['</span>permission_user<span class="hljs-string">'] }}'</span>);
+        Schema::dropIfExists(<span class="hljs-string">'{{ $laratrust['</span>tables<span class="hljs-string">']['</span>permission_role<span class="hljs-string">'] }}'</span>);
+        Schema::dropIfExists(<span class="hljs-string">'{{ $laratrust['</span>tables<span class="hljs-string">']['</span>permissions<span class="hljs-string">'] }}'</span>);
+        Schema::dropIfExists(<span class="hljs-string">'{{ $laratrust['</span>tables<span class="hljs-string">']['</span>role_user<span class="hljs-string">'] }}'</span>);
+        Schema::dropIfExists(<span class="hljs-string">'{{ $laratrust['</span>tables<span class="hljs-string">']['</span>roles<span class="hljs-string">'] }}'</span>);
+@<span class="hljs-keyword">if</span> ($laratrust[<span class="hljs-string">'teams'</span>][<span class="hljs-string">'enabled'</span>])
+        Schema::dropIfExists(<span class="hljs-string">'{{ $laratrust['</span>tables<span class="hljs-string">']['</span>teams<span class="hljs-string">'] }}'</span>);
+@<span class="hljs-keyword">endif</span>
+    }
+}
+</code></pre>
+<p><a name="seeds"></a></p>
+<h2 id="seeder">Seeder</h2>
+<p>Comando <code>php artisan make:seeder AddRoleGlobalTableSeeder</code> ejecutar en consola dentro del proyecto.</p>
+<blockquote>
+<p>{info} Directorio  <code>database/seeders/AddRoleGlobalTableSeeder.php</code>.</p>
+</blockquote>
+<pre><code class="lang-php">
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AddRoleGlobalTableSeeder</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Seeder</span>
+</span>{
+    <span class="hljs-comment">/**
+     * Run the database seeds.
+     *
+     * <span class="hljs-doctag">@return</span> void
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">run</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-comment">//</span>
+        $users = User::all();
+        $crds = Crd::all();
+        $erbs = ERB::all();
+        $role_root = Role::where(<span class="hljs-string">'name'</span>,<span class="hljs-string">'root'</span>)-&gt;first();
+        $role_admin = Role::where(<span class="hljs-string">'name'</span>,<span class="hljs-string">'admin'</span>)-&gt;first();
+        $role_super = Role::where(<span class="hljs-string">'name'</span>,<span class="hljs-string">'super'</span>)-&gt;first();
+        $role_user = Role::where(<span class="hljs-string">'name'</span>,<span class="hljs-string">'user'</span>)-&gt;first();
+        $role_crd = Role::where(<span class="hljs-string">'name'</span>,<span class="hljs-string">'crd'</span>)-&gt;first();
+        $role_erb = Role::where(<span class="hljs-string">'name'</span>,<span class="hljs-string">'erb'</span>)-&gt;first();
+
+        <span class="hljs-comment">/* Asign roles with users and micros*/</span>
+
+        $root = $users-&gt;find(<span class="hljs-number">1</span>);
+        $root-&gt;attachRole($role_root);
+        $root-&gt;save();
+
+        $admin = $users-&gt;find(<span class="hljs-number">2</span>);
+        $admin-&gt;attachRole($role_admin);
+        $admin-&gt;save();
+
+        $super = $users-&gt;find(<span class="hljs-number">3</span>);
+        $super-&gt;attachRole($role_super);
+        $super-&gt;save();
+
+        $user = $users-&gt;find(<span class="hljs-number">4</span>);
+        $user-&gt;attachRole($role_user);
+        $user-&gt;save();
+
+        $disable = $users-&gt;find(<span class="hljs-number">5</span>);
+        $disable-&gt;attachRole($role_user);
+        $disable-&gt;save();
+
+        <span class="hljs-keyword">for</span> ($i = <span class="hljs-number">1</span>; $i &lt;= <span class="hljs-number">9</span>; $i++) {
+            $crd = $crds-&gt;find($i);
+            $crd-&gt;attachRole($role_crd);
+            $crd-&gt;save();
+        }
+
+        <span class="hljs-keyword">for</span> ($i = <span class="hljs-number">1</span>; $i &lt;= <span class="hljs-number">9</span>; $i++) {
+            $erb = $erbs-&gt;find($i);
+            $erb-&gt;attachRole($role_erb);
+            $erb-&gt;save();
+        }
+    }
+}
+</code></pre>
+<p><a name="models"></a></p>
+<h2 id="modelo">Modelo</h2>
+<p>Comando <code>php artisan make:model Role</code> ejecutar en consola dentro del proyecto.</p>
+<blockquote>
+<p>{info} Directorio  <code>app/Role.php</code>.</p>
+</blockquote>
+<pre><code class="lang-php">
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LaratrustRole</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Model</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">LaratrustRoleInterface</span>
+</span>{
+    <span class="hljs-keyword">use</span> <span class="hljs-title">LaratrustRoleTrait</span>;
+
+    <span class="hljs-comment">/**
+     * The database table used by the model.
+     *
+     * <span class="hljs-doctag">@var</span> string
+     */</span>
+    <span class="hljs-keyword">protected</span> $table;
+
+    <span class="hljs-comment">/**
+     * Creates a new instance of the model.
+     *
+     * <span class="hljs-doctag">@param</span>  array  $attributes
+     * <span class="hljs-doctag">@return</span> void
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">(array $attributes = [])</span>
+    </span>{
+        <span class="hljs-keyword">parent</span>::__construct($attributes);
+        <span class="hljs-keyword">$this</span>-&gt;table = Config::get(<span class="hljs-string">'laratrust.tables.roles'</span>);
+    }
+}
+</code></pre>
+<p><a name="controllers"></a></p>
+<h2 id="controlador">Controlador</h2>
+<p>Comando <code>php artisan make:controller Role</code> ejecutar en consola dentro del proyecto.</p>
+<blockquote>
+<p>{info} Directorio  <code>app/Http/Controllers/RoleController.php</code>.</p>
+</blockquote>
+<pre><code class="lang-php">
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RoleController</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Controller</span>
+</span>{
+    <span class="hljs-comment">//</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">$this</span>-&gt;middleware(<span class="hljs-string">'auth'</span>);
+    }
+
+    <span class="hljs-comment">/**
+     * Display a listing of the Role.
+     *
+     * <span class="hljs-doctag">@return</span> \Illuminate\Http\Response
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">index</span><span class="hljs-params">()</span>
+    </span>{
+        $roles = Role::all();
+        <span class="hljs-keyword">return</span> view(<span class="hljs-string">'module.role.index'</span>,compact(<span class="hljs-string">'roles'</span>));
+    }
+
+    <span class="hljs-comment">/**
+     * Show the form for creating a new resource for Role.
+     *
+     * <span class="hljs-doctag">@return</span> \Illuminate\Http\Response
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">create</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-comment">//</span>
+        <span class="hljs-keyword">return</span> view(<span class="hljs-string">'module.role.create'</span>);
+    }
+
+    <span class="hljs-comment">/**
+     * Store a newly created resource in storage for Role.
+     *
+     * <span class="hljs-doctag">@param</span>  \Illuminate\Http\Request  $request
+     * <span class="hljs-doctag">@return</span> \Illuminate\Http\Response
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">store</span><span class="hljs-params">(Request $request)</span>
+    </span>{
+        <span class="hljs-comment">//</span>
+        $createRole = Role::create([
+            <span class="hljs-string">'name'</span> =&gt; $request-&gt;get(<span class="hljs-string">'name'</span>),
+            <span class="hljs-string">'display_name'</span> =&gt; $request-&gt;get(<span class="hljs-string">'display_name'</span>), <span class="hljs-comment">// optional</span>
+            <span class="hljs-string">'description'</span> =&gt; $request-&gt;get(<span class="hljs-string">'description'</span>), <span class="hljs-comment">// optional</span>
+            ]);
+        toastr()-&gt;success(<span class="hljs-string">'Role creado'</span>);
+        <span class="hljs-keyword">return</span> redirect()-&gt;route(<span class="hljs-string">'role.index'</span>);
+    }
+
+    <span class="hljs-comment">/**
+     * Display the specified resource for Role.
+     *
+     * <span class="hljs-doctag">@param</span>  int  $id
+     * <span class="hljs-doctag">@return</span> \Illuminate\Http\Response
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">show</span><span class="hljs-params">(Role $role)</span>
+    </span>{
+        <span class="hljs-comment">//</span>
+        <span class="hljs-keyword">return</span> view(<span class="hljs-string">'module.role.show'</span>, compact(<span class="hljs-string">'role'</span>));
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">edit</span><span class="hljs-params">($id)</span>
+    </span>{
+        $role = Role::findOrFail($id);
+        <span class="hljs-keyword">return</span> view(<span class="hljs-string">'module.role.edit'</span>,compact(<span class="hljs-string">'role'</span>));
+    }
+
+    <span class="hljs-comment">/**
+     * Update the specified resource in storage for Role.
+     *
+     * <span class="hljs-doctag">@param</span>  \Illuminate\Http\Request  $request
+     * <span class="hljs-doctag">@param</span>  int  $id
+     * <span class="hljs-doctag">@return</span> \Illuminate\Http\Response
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">update</span><span class="hljs-params">(Request $request, $id)</span>
+    </span>{
+        $role = Role::findOrFail($id);
+
+        $data = $request-&gt;validate([
+            <span class="hljs-string">'display_name'</span> =&gt; <span class="hljs-string">'nullable|string'</span>,
+            <span class="hljs-string">'description'</span> =&gt; <span class="hljs-string">'nullable|string'</span>,
+        ]);
+
+        $role-&gt;update($data);
+        toastr()-&gt;warning(<span class="hljs-string">'Role actualizado satisfactoriamente'</span>);
+        <span class="hljs-keyword">return</span> redirect()-&gt;route(<span class="hljs-string">'role.index'</span>);
+    }
+
+    <span class="hljs-comment">/**
+     * Remove the specified resource from storage for Role.
+     *
+     * <span class="hljs-doctag">@param</span>  int  $id
+     * <span class="hljs-doctag">@return</span> \Illuminate\Http\Response
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">destroy</span><span class="hljs-params">(Role $role)</span>
+    </span>{
+        $role-&gt;delete();
+        <span class="hljs-comment">//return redirect('/role')-&gt;with('success', 'Role Eliminado!');</span>
+        toastr()-&gt;error(<span class="hljs-string">'Role eliminado'</span>);
+        <span class="hljs-keyword">return</span> redirect()-&gt;route(<span class="hljs-string">'role.index'</span>);
+    }
+}
+</code></pre>
+<p><a name="routes"></a></p>
+<h2 id="ruta-web">Ruta Web</h2>
+<p>No cuenta con comando artisan para esto dispones ya de un archivo de rutas web.</p>
+<blockquote>
+<p>{info} Directorio  <code>vendor/santigarcor/laratrust/routes/web.php</code> agregar dentro del archivo.</p>
+</blockquote>
+<pre><code class="lang-php">
+<span class="hljs-keyword">use</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Support</span>\<span class="hljs-title">Facades</span>\<span class="hljs-title">Route</span>;
+
+Route::resource(<span class="hljs-string">'/permissions'</span>, <span class="hljs-string">'PermissionsController'</span>, [<span class="hljs-string">'as'</span> =&gt; <span class="hljs-string">'laratrust'</span>])
+    -&gt;only([<span class="hljs-string">'index'</span>, <span class="hljs-string">'edit'</span>, <span class="hljs-string">'update'</span>]);
+
+Route::resource(<span class="hljs-string">'/roles'</span>, <span class="hljs-string">'RolesController'</span>, [<span class="hljs-string">'as'</span> =&gt; <span class="hljs-string">'laratrust'</span>]);
+
+Route::resource(<span class="hljs-string">'/roles-assignment'</span>, <span class="hljs-string">'RolesAssignmentController'</span>, [<span class="hljs-string">'as'</span> =&gt; <span class="hljs-string">'laratrust'</span>])
+    -&gt;only([<span class="hljs-string">'index'</span>, <span class="hljs-string">'edit'</span>, <span class="hljs-string">'update'</span>]);
+</code></pre>
+<p><a name="views"></a></p>
+<h2 id="vista">Vista</h2>
+<p>No se cuenta con comando pero crea un archivos index para modulo de usuario <code>index.blade.php</code> y pega este codigo.</p>
+<blockquote>
+<p>{info} Directorio  <code>resources/views/module/role/index.blade.php</code>.</p>
+</blockquote>
+<pre><code class="lang-php"><span class="xml">
+<span class="hljs-comment">&lt;!-- Main content --&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"content"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"row"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-12"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"card card-primary card-outline"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"card-header"</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"card-title"</span>&gt;</span>Tabla de Roles<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-xs btn-success float-right"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"</span></span></span><span class="hljs-template-variable">{{ route('role.create') }}</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">"</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"button"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"fas fa-plus"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-comment">&lt;!-- /.card-header --&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"card-body"</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"roleTable"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"table table-bordered table-striped"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">thead</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Id<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Nom-Codigo<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Nom-Vista<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Descripcion<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>FechaCreacion<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>FechaMoficiacion<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Acciones<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">thead</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">tbody</span>&gt;</span>
+                @foreach($roles as $role)
+                <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span></span><span class="hljs-template-variable">{{ $role-&gt;id }}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span></span><span class="hljs-template-variable">{{ $role-&gt;name }}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span></span><span class="hljs-template-variable">{{ $role-&gt;display_name }}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span></span><span class="hljs-template-variable">{{ $role-&gt;description }}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span></span><span class="hljs-template-variable">{{ $role-&gt;created_at }}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span></span><span class="hljs-template-variable">{{ $role-&gt;updated_at }}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>
+                      <span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"form"</span> <span class="hljs-attr">action</span>=<span class="hljs-string">"</span></span></span><span class="hljs-template-variable">{{ route('role.destroy',$role-&gt;id) }}</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">"</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"POST"</span>&gt;</span>
+                      <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-info btn-xs"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"</span></span></span><span class="hljs-template-variable">{{ route('role.show',$role-&gt;id) }}</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">"</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"button"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"fas fa-eye"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span> 
+                      <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-warning btn-xs"</span>  <span class="hljs-attr">href</span>=<span class="hljs-string">"</span></span></span><span class="hljs-template-variable">{{ route('role.edit',$role-&gt;id) }}</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">"</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"button"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"fas fa-pen"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+                      @csrf
+                      @method('DELETE')
+                      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-danger btn-xs"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"fas fa-trash"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                      <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+                @endforeach
+                <span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span>
+               <span class="hljs-comment">&lt;!-- &lt;tfoot&gt;
+                &lt;tr&gt;
+                  &lt;th&gt;Id&lt;/th&gt;
+                  &lt;th&gt;Nom-Codigo&lt;/th&gt;
+                  &lt;th&gt;Nom-Vista&lt;/th&gt;
+                  &lt;th&gt;Descripcion&lt;/th&gt;
+                  &lt;th&gt;FechaCreacion&lt;/th&gt;
+                  &lt;th&gt;FechaMoficiacion&lt;/th&gt;
+                  &lt;th&gt;Acciones&lt;/th&gt;
+                &lt;/tr&gt;
+                &lt;/tfoot&gt;--&gt;</span>
+              <span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-comment">&lt;!-- /.card-body --&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+          <span class="hljs-comment">&lt;!-- /.card --&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- /.col --&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-comment">&lt;!-- /.row --&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- /.content --&gt;</span>  
+
+@stop</span>
+</code></pre>
+<p><a name="mcr"></a></p>
+<h2 id="comando-para-crear-migracion-modelo-controlador-seeder">Comando para crear Migracion, Modelo, Controlador + Seeder</h2>
+<p>Tu puedes crear los archivos de forma automatica y sin tanta complejidad.</p>
+<p>☝️ En un solo comando crearas migracion, modelo, controlador con recursos.</p>
+<pre><code class="lang-php">   <span class="hljs-selector-tag">php</span> <span class="hljs-selector-tag">artisan</span> <span class="hljs-selector-tag">make</span><span class="hljs-selector-pseudo">:model</span> <span class="hljs-selector-tag">NameModel</span> <span class="hljs-selector-tag">-mcr</span>
+</code></pre>
+<p>✌️ Run the install command.</p>
+<pre><code class="lang-php">   <span class="hljs-selector-tag">php</span> <span class="hljs-selector-tag">artisan</span> <span class="hljs-selector-tag">make</span><span class="hljs-selector-pseudo">:seeder</span> <span class="hljs-selector-tag">NameTableSeeder</span>
+</code></pre>
+</body></html>

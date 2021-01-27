@@ -1,104 +1,372 @@
-# Modulo CRD
+# Modulo CRD-API
 
 ---
 
-- [First Section](#section-1)
+- [Crd API](#section-crd-api)
+- [Controlador-API](#controller-api)
+- [Index](#index)
+- [Show](#show)
+- [Register](#register)
+- [Update](#update)
+- [Modify](#modify)
+- [Destroy](#destroy)
+- [Ruta](#route)
 
-<a name="section-1"></a>
-## First Section
+<a name="section-crd-api"></a>
+## Controlador, Metodos index(), register(), update(), modify(), destroy():
 
-Write something cool.. 🦊
-
-At [Binary Torch](https://binarytorch.com.my/) we use LaRecipe internally to write docs for our products/services and share the access with our developers. Here is an example of writing API docs in a nice human-readable way.
+Estructura del modulo API Crd.. 🦊
+Si gustas es posible consultar los metodos get por web.
 
 ---
 
-- [Login](#login)
+- [Controlador-API](#controller-api)
+- [Index](#index)
+- [Index](#show)
+- [Register](#register)
+- [Update](#update)
+- [Modify](#modify)
+- [Destroy](#destroy)
+- [Ruta](#route)
 
-<a name="login"></a>
-## Login
+<a name="controller-api"></a>
+## Controlador API
 
-Here you may add extra information about the section.
+Comando `php artisan make:controller API/Crd` ejecutar en consola dentro del proyecto.
 
-### Endpoint
-
-> {warning} Please note that the URI for this endpoint only should not include api/{$version} before oauth/token, which means that the url will be: `example.com/oauth/token`.
-
-|Method|URI|Headers|
-|:-|:-|:-|
-|POST|`/oauth/token`|Default|
-
-### URL Params
-
-```text
-None
-```
-
-### Data Params
-
-```json
-{
-    "grant_type"    : "password",
-    "client_id"     : "2",
-    "client_secret" : "{client_secret}",
-    "username"      : "string|email",
-    "password"      : "string",
-    "scope"         : "*"
-}
-```
-
-> {info} The `client_secret` is the token that the server needs in order to auth the request. See server config page for more details.
-
-For the `dev` server the
+> {info} Directorio  `app/Http/Controller/API/CrdController.php` respeta esta estructura en el controlador.
 
 ```php
-$client_secret = dev_client_secret_here
+
+<?php
+
+namespace App\Http\Controllers\API;
+
+use Illuminate\Http\Request;
+use App\Http\Controllers\Api\BaseController as BaseController;
+use App\Crd;
+use App\HistorialCrd;
+use App\ApiToken;
+use Validator;
+use Crypt;
+
+class CrdController extends BaseController
+
+{
+  
+}
+
 ```
 
-For the `production` server the
+<a name="index"></a>
+## Metodo Index
+
+Consulta url `http://domain/api/crd` te regresara un objeto tipo JSON.
+
+> {info} Directorio  `app/Http/Controller/API/CrdController.php`.
 
 ```php
-$client_secret = production_client_secret_here
+
+/**
+     * List all Crds.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    
+     public function index()
+    {
+       $crds = Crd::all();
+       foreach ($crds as $key => $crd) {
+        $crd->password = Crypt::decrypt($crd->password);
+        }
+       $data = $crds->toArray();
+       $response = [
+          'success' => true,
+          'data' => $data,
+          'message' => 'Crd retrieved successfully.'
+        ];
+        return response()->json($response, 200);
+    }
+
 ```
 
-> {primary} Login request example with development server
+<a name="show"></a>
+## Metodo Show
 
-```json
-{
-    "grant_type"    : "password",
-    "client_id"     : "2",
-    "client_secret" : "dev_client_secret_here",
-    "username"      : "test@test.com",
-    "password"      : "secret",
-    "scope"         : "*"
-}
+Consulta url `http://domain/api/crd/{#id}` te regresara un objeto tipo JSON.
+
+> {info} Directorio  `app/Http/Controller/API/CrdController.php`.
+
+```php
+
+/**
+     * Display the Cdr specified resource.
+     *
+     * @param  int  $id or name $name_machine
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $crd = Crd::where('id',$id)->first(); 
+        if (is_null($crd)) {
+            $response = [
+                'success' => false,
+                'data' => 'Empty',
+                'message' => 'Crd not Exist.'
+            ];
+            return response()->json($response, 404);
+        }
+        $data = $crd->toArray();
+        $response = [
+            'success' => true,
+            'data' => $data,
+            'message' => 'Crd retrieved successfully.'
+        ];
+        return response()->json($response, 200);
+
+        
+    }
+
 ```
 
-> {success} Success Response
+<a name="register"></a>
+## Metodo Register
 
-Code `200`
+Consulta url `http://domain/api/crd/register` te regresara un objeto tipo JSON.
 
-Content
+> {info} Directorio  `app/Http/Controller/API/CrdController.php`.
 
-```json
-{
-  "token_type"    : "Bearer",
-  "expires_in"    : "integer",
-  "access_token"  : "string|token",
-  "refresh_token" : "string|token"
-}
+```php
+
+/**
+     * Store a newly Crd created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function register(Request $request)
+    {
+        //
+        // 'id', 'user_id', 'num_serie', 'nick_name', 'password', 'api_token',
+       $validator = Validator::make($request->all(), [
+        'user_id'=>'required|string|max:100',
+        'num_serie'=>'required|string|max:100',
+        'nick_name'=>'required|string|max:100',
+        'password'=>'required|string|max:100',
+    ]);
+
+    if ($validator->fails()) {
+        $response = [
+            'success' => false,
+            'data' => 'Validation Error.',
+            'message' => $validator->errors()
+        ];
+        return response()->json($response, 404);
+    }
+    $data = 'Please register correctly crd';
+    if($request->get('password') == 'pi123'){
+    $nick_name = (Crd::all()->count() + 1);
+    $crd = new Crd;
+    $crd->user_id = null;
+    $crd->num_serie =  $request->get('num_serie');
+    $crd->nick_name = 'crd_'.$nick_name;
+    $crd->password = Crypt::encrypt($request->get('password'));
+    $crd->api_token = ApiToken::GenerateToken32();
+    $crd->save();
+    $crd->password = Crypt::decrypt($crd->password);
+    $data = $crd->toArray();
+    $response = [
+        'success' => true,
+        'data' => $data,
+        'message' => 'Crd register successfully.'
+    ]; 
+    return response()->json($response, 200);
+    }
+    else{
+    $data = 'Register_Error';
+    $response = [
+        'success' => true,
+        'data' => $data,
+        'message' => 'Crd not registered.'
+    ]; 
+    }
+    return response()->json($response, 200);
+    }
+
 ```
 
-> {danger} Error Response
+<a name="update"></a>
+## Metodo Update
 
-Code `422`
+Consulta url `http://domain/api/crd/update{#id}` te regresara un objeto tipo JSON.
 
-Reason `put description here`
+> {info} Directorio  `app/Http/Controller/API/CrdController.php`.
 
-Content
+```php
 
-```json
-...
+/**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Crd $crd)
+    {
+        // 'id', 'user_id', 'num_serie', 'nick_name', 'password', 'api_token',
+        $input = $request->all();
+        $validator = Validator::make($input, [
+            'user_id'=>'required|string|max:100',
+            'num_serie'=>'required|string|max:100',
+            'nick_name'=>'required|string|max:100',
+            'password'=>'required|string|max:100'
+        ]);
+
+        if ($validator->fails()) {
+            $response = [
+                'success' => false,
+                'data' => 'Validation Error.',
+                'message' => $validator->errors()
+            ];
+            return response()->json($response, 404);
+        }
+
+        $crd->user_id = $input['user_id'];
+        $crd->num_serie = $input['num_serie'];
+        $crd->nick_name = $input['nick_name'];
+        $crd->api_token = ApiToken::GenerateToken32();
+        $crd->save();
+        $data = $crd->toArray();
+        $response = [
+            'success' => true,
+            'data' => $data,
+            'message' => 'Crd updated successfully.'
+        ];
+        return response()->json($response, 200);
+    }
+
 ```
 
-<larecipe-newsletter></larecipe-newsletter>
+<a name="modify"></a>
+## Metodo Modify
+
+Consulta url `http://domain/api/crd/modify{#id}` te regresara un objeto tipo JSON.
+
+> {info} Directorio  `app/Http/Controller/API/CrdController.php`.
+
+```php
+
+/**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function modify(Request $request)
+    {
+        // 'id', 'user_id', 'num_serie', 'nick_name', 'password', 'api_token',
+        $input = $request->all();
+        $validator = Validator::make($input, [
+            'id'=>'required|string|max:100',
+            'user_id'=>'required|string|max:100',
+            'num_serie'=>'required|string|max:100',
+            'nick_name'=>'required|string|max:100',
+            'password'=>'required|string|max:100',
+            'api_token'=>'required|string|max:100'
+        ]);
+
+        if ($validator->fails()) {
+            $response = [
+                'success' => false,
+                'data' => 'Validation Error.',
+                'message' => $validator->errors()
+            ];
+            return response()->json($response, 404);
+        }
+        $crd = Crd::where('num_serie',$input['num_serie'])->first(); 
+        if (is_null($crd)) {
+            $response = [
+                'success' => false,
+                'data' => 'Empty',
+                'message' => 'Crd not Exist.'
+            ];
+            return response()->json($response, 404);
+        }
+        $crd->user_id = $input['user_id'];
+        $crd->num_serie = $input['num_serie'];
+        $crd->nick_name = $input['nick_name'];
+        $crd->nick_name = $input['password'];
+        $crd->api_token = $input['api_token'];
+        $crd->save();
+        $data = $crd->toArray();
+        $response = [
+            'success' => true,
+            'data' => $data,
+            'message' => 'Crd updated successfully.'
+        ];
+        return response()->json($response, 200);
+    }
+
+```
+
+<a name="destroy"></a>
+## Metodo Destroy
+
+Consulta url `http://domain/api/crd/destroy{#id}` te regresara un objeto tipo JSON.
+
+> {info} Directorio  `app/Http/Controller/API/CrdController.php`.
+
+```php
+
+ /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Crd $crd)
+    {
+        //
+        $crd->delete();
+        $data = $crd->toArray();
+
+        $response = [
+            'success' => true,
+            'data' => $data,
+            'message' => 'Crd deleted successfully.'
+        ];
+        return response()->json($response, 200);
+    }
+
+```
+
+<a name="route"></a>
+## Ruta API
+
+Se deben agregar las ruta necesario dentro de api rutas.
+
+> {info} Directorio  `routes/api.php`.
+
+```php
+
+ /*
+|--------------------------------------------------------------------------
+| API Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register API routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| is assigned the "api" middleware group. Enjoy building your API!
+|
+*/
+
+Route::post('crd/modify', 'API\CrdController@modify')->name('crd.modify');
+Route::post('crd/register', 'API\CrdController@register')->name('crd.register');
+Route::resource('crd', 'API\CrdController');
+
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
+});
+
+```

@@ -4,7 +4,7 @@
 </style></head><body><h1 id="modulo-sensor">Modulo Sensor</h1>
 <hr>
 <ul>
-<li><a href="#section-sensor">Crd CRUD</a></li>
+<li><a href="#section-sensor">Sensor CRUD</a></li>
 <li><a href="#migrations">Migracion</a></li>
 <li><a href="#seeds">Seeder</a></li>
 <li><a href="#models">Modelo</a></li>
@@ -16,7 +16,7 @@
 <p><a name="section-sensor"></a></p>
 <h2 id="migracion-sedder-modelo-controlador-y-vista">Migracion, Sedder, Modelo, Controlador y Vista</h2>
 <p>Estructura del modulo Sensor.. 🦊
-Si gustas es posible crear la estructura MCV de forma manual.</p>
+Si gustas es posible crear la estructura MVC de forma manual.</p>
 <hr>
 <ul>
 <li><a href="#migrations">Migracion</a></li>
@@ -33,7 +33,8 @@ Si gustas es posible crear la estructura MCV de forma manual.</p>
 <blockquote>
 <p>{info} Directorio  <code>database/migrations/2014_10_12_000000_create_sensors_table.php</code>.</p>
 </blockquote>
-<pre><code class="lang-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CreateSensorsTable</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Migration</span>
+<pre><code class="lang-php">
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CreateSensorsTable</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Migration</span>
 </span>{
     <span class="hljs-comment">/**
      * Run the migrations.
@@ -81,7 +82,8 @@ Si gustas es posible crear la estructura MCV de forma manual.</p>
 <blockquote>
 <p>{info} Directorio  <code>database/seeders/AddSensorTableSeeder.php</code>.</p>
 </blockquote>
-<pre><code class="lang-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AddSensorTableSeeder</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Seeder</span>
+<pre><code class="lang-php">
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AddSensorTableSeeder</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Seeder</span>
 </span>{
     <span class="hljs-comment">/**
      * Run the database seeds.
@@ -95,186 +97,6 @@ Si gustas es posible crear la estructura MCV de forma manual.</p>
         $sensor-&gt;id = <span class="hljs-number">1</span>;
         $sensor-&gt;erb_id = <span class="hljs-keyword">null</span>;
         $sensor-&gt;num_serie = <span class="hljs-number">1000000001</span>;
-        $sensor-&gt;passw = <span class="hljs-string">'sensor@321'</span>;
-        $sensor-&gt;vol_1 = <span class="hljs-string">'3.5'</span>;
-        $sensor-&gt;vol_2 = <span class="hljs-string">'2.1'</span>;
-        $sensor-&gt;vol_3 = <span class="hljs-string">'2.6'</span>;
-        $sensor-&gt;door_1 = <span class="hljs-string">'On'</span>;
-        $sensor-&gt;door_2 = <span class="hljs-string">'Off'</span>;
-        $sensor-&gt;door_3 = <span class="hljs-string">'On'</span>;
-        $sensor-&gt;door_4 = <span class="hljs-string">'On'</span>;
-        $sensor-&gt;rlay_1 = <span class="hljs-string">'On'</span>;
-        $sensor-&gt;rlay_2 = <span class="hljs-string">'Off'</span>;
-        $sensor-&gt;rlay_3 = <span class="hljs-string">'On'</span>;
-        $sensor-&gt;rlay_4 = <span class="hljs-string">'Off'</span>;
-        $sensor-&gt;text = <span class="hljs-string">'sensor demo'</span>;
-        $sensor-&gt;save();
-
-        <span class="hljs-comment">// Sensor Example #2</span>
-        $sensor = <span class="hljs-keyword">new</span> Sensor();
-        $sensor-&gt;id = <span class="hljs-number">2</span>;
-        $sensor-&gt;erb_id = <span class="hljs-keyword">null</span>;
-        $sensor-&gt;num_serie = <span class="hljs-number">1000000002</span>;
-        $sensor-&gt;passw = <span class="hljs-string">'sensor@321'</span>;
-        $sensor-&gt;vol_1 = <span class="hljs-string">'3.5'</span>;
-        $sensor-&gt;vol_2 = <span class="hljs-string">'2.1'</span>;
-        $sensor-&gt;vol_3 = <span class="hljs-string">'2.6'</span>;
-        $sensor-&gt;door_1 = <span class="hljs-string">'On'</span>;
-        $sensor-&gt;door_2 = <span class="hljs-string">'Off'</span>;
-        $sensor-&gt;door_3 = <span class="hljs-string">'On'</span>;
-        $sensor-&gt;door_4 = <span class="hljs-string">'On'</span>;
-        $sensor-&gt;rlay_1 = <span class="hljs-string">'On'</span>;
-        $sensor-&gt;rlay_2 = <span class="hljs-string">'Off'</span>;
-        $sensor-&gt;rlay_3 = <span class="hljs-string">'On'</span>;
-        $sensor-&gt;rlay_4 = <span class="hljs-string">'Off'</span>;
-        $sensor-&gt;text = <span class="hljs-string">'sensor demo'</span>;
-        $sensor-&gt;save();
-
-        <span class="hljs-comment">// Sensor Example #3</span>
-        $sensor = <span class="hljs-keyword">new</span> Sensor();
-        $sensor-&gt;id = <span class="hljs-number">3</span>;
-        $sensor-&gt;erb_id = <span class="hljs-keyword">null</span>;
-        $sensor-&gt;num_serie = <span class="hljs-number">1000000003</span>;
-        $sensor-&gt;passw = <span class="hljs-string">'sensor@321'</span>;
-        $sensor-&gt;vol_1 = <span class="hljs-string">'3.5'</span>;
-        $sensor-&gt;vol_2 = <span class="hljs-string">'2.1'</span>;
-        $sensor-&gt;vol_3 = <span class="hljs-string">'2.6'</span>;
-        $sensor-&gt;door_1 = <span class="hljs-string">'On'</span>;
-        $sensor-&gt;door_2 = <span class="hljs-string">'Off'</span>;
-        $sensor-&gt;door_3 = <span class="hljs-string">'On'</span>;
-        $sensor-&gt;door_4 = <span class="hljs-string">'On'</span>;
-        $sensor-&gt;rlay_1 = <span class="hljs-string">'On'</span>;
-        $sensor-&gt;rlay_2 = <span class="hljs-string">'Off'</span>;
-        $sensor-&gt;rlay_3 = <span class="hljs-string">'On'</span>;
-        $sensor-&gt;rlay_4 = <span class="hljs-string">'Off'</span>;
-        $sensor-&gt;text = <span class="hljs-string">'sensor demo'</span>;
-        $sensor-&gt;save();
-
-        <span class="hljs-comment">// Sensor Example #4</span>
-        $sensor = <span class="hljs-keyword">new</span> Sensor();
-        $sensor-&gt;id = <span class="hljs-number">4</span>;
-        $sensor-&gt;erb_id = <span class="hljs-keyword">null</span>;
-        $sensor-&gt;num_serie = <span class="hljs-number">1000000004</span>;
-        $sensor-&gt;passw = <span class="hljs-string">'sensor@321'</span>;
-        $sensor-&gt;vol_1 = <span class="hljs-string">'3.5'</span>;
-        $sensor-&gt;vol_2 = <span class="hljs-string">'2.1'</span>;
-        $sensor-&gt;vol_3 = <span class="hljs-string">'2.6'</span>;
-        $sensor-&gt;door_1 = <span class="hljs-string">'On'</span>;
-        $sensor-&gt;door_2 = <span class="hljs-string">'Off'</span>;
-        $sensor-&gt;door_3 = <span class="hljs-string">'On'</span>;
-        $sensor-&gt;door_4 = <span class="hljs-string">'On'</span>;
-        $sensor-&gt;rlay_1 = <span class="hljs-string">'On'</span>;
-        $sensor-&gt;rlay_2 = <span class="hljs-string">'Off'</span>;
-        $sensor-&gt;rlay_3 = <span class="hljs-string">'On'</span>;
-        $sensor-&gt;rlay_4 = <span class="hljs-string">'Off'</span>;
-        $sensor-&gt;text = <span class="hljs-string">'sensor demo'</span>;
-        $sensor-&gt;save();
-
-        <span class="hljs-comment">// Sensor Example #5</span>
-        $sensor = <span class="hljs-keyword">new</span> Sensor();
-        $sensor-&gt;id = <span class="hljs-number">5</span>;
-        $sensor-&gt;erb_id = <span class="hljs-keyword">null</span>;
-        $sensor-&gt;num_serie = <span class="hljs-number">1000000005</span>;
-        $sensor-&gt;passw = <span class="hljs-string">'sensor@321'</span>;
-        $sensor-&gt;vol_1 = <span class="hljs-string">'3.5'</span>;
-        $sensor-&gt;vol_2 = <span class="hljs-string">'2.1'</span>;
-        $sensor-&gt;vol_3 = <span class="hljs-string">'2.6'</span>;
-        $sensor-&gt;door_1 = <span class="hljs-string">'On'</span>;
-        $sensor-&gt;door_2 = <span class="hljs-string">'Off'</span>;
-        $sensor-&gt;door_3 = <span class="hljs-string">'On'</span>;
-        $sensor-&gt;door_4 = <span class="hljs-string">'On'</span>;
-        $sensor-&gt;rlay_1 = <span class="hljs-string">'On'</span>;
-        $sensor-&gt;rlay_2 = <span class="hljs-string">'Off'</span>;
-        $sensor-&gt;rlay_3 = <span class="hljs-string">'On'</span>;
-        $sensor-&gt;rlay_4 = <span class="hljs-string">'Off'</span>;
-        $sensor-&gt;text = <span class="hljs-string">'sensor demo'</span>;
-        $sensor-&gt;save();
-
-        <span class="hljs-comment">// Sensor Example #6</span>
-        $sensor = <span class="hljs-keyword">new</span> Sensor();
-        $sensor-&gt;id = <span class="hljs-number">6</span>;
-        $sensor-&gt;erb_id = <span class="hljs-keyword">null</span>;
-        $sensor-&gt;num_serie = <span class="hljs-number">1000000006</span>;
-        $sensor-&gt;passw = <span class="hljs-string">'sensor@321'</span>;
-        $sensor-&gt;vol_1 = <span class="hljs-string">'3.5'</span>;
-        $sensor-&gt;vol_2 = <span class="hljs-string">'2.1'</span>;
-        $sensor-&gt;vol_3 = <span class="hljs-string">'2.6'</span>;
-        $sensor-&gt;door_1 = <span class="hljs-string">'On'</span>;
-        $sensor-&gt;door_2 = <span class="hljs-string">'Off'</span>;
-        $sensor-&gt;door_3 = <span class="hljs-string">'On'</span>;
-        $sensor-&gt;door_4 = <span class="hljs-string">'On'</span>;
-        $sensor-&gt;rlay_1 = <span class="hljs-string">'On'</span>;
-        $sensor-&gt;rlay_2 = <span class="hljs-string">'Off'</span>;
-        $sensor-&gt;rlay_3 = <span class="hljs-string">'On'</span>;
-        $sensor-&gt;rlay_4 = <span class="hljs-string">'Off'</span>;
-        $sensor-&gt;text = <span class="hljs-string">'sensor demo'</span>;
-        $sensor-&gt;save();
-
-        <span class="hljs-comment">// Sensor Example #7</span>
-        $sensor = <span class="hljs-keyword">new</span> Sensor();
-        $sensor-&gt;id = <span class="hljs-number">7</span>;
-        $sensor-&gt;erb_id = <span class="hljs-keyword">null</span>;
-        $sensor-&gt;num_serie = <span class="hljs-number">1000000007</span>;
-        $sensor-&gt;passw = <span class="hljs-string">'sensor@321'</span>;
-        $sensor-&gt;vol_1 = <span class="hljs-string">'3.5'</span>;
-        $sensor-&gt;vol_2 = <span class="hljs-string">'2.1'</span>;
-        $sensor-&gt;vol_3 = <span class="hljs-string">'2.6'</span>;
-        $sensor-&gt;door_1 = <span class="hljs-string">'On'</span>;
-        $sensor-&gt;door_2 = <span class="hljs-string">'Off'</span>;
-        $sensor-&gt;door_3 = <span class="hljs-string">'On'</span>;
-        $sensor-&gt;door_4 = <span class="hljs-string">'On'</span>;
-        $sensor-&gt;rlay_1 = <span class="hljs-string">'On'</span>;
-        $sensor-&gt;rlay_2 = <span class="hljs-string">'Off'</span>;
-        $sensor-&gt;rlay_3 = <span class="hljs-string">'On'</span>;
-        $sensor-&gt;rlay_4 = <span class="hljs-string">'Off'</span>;
-        $sensor-&gt;text = <span class="hljs-string">'sensor demo'</span>;
-        $sensor-&gt;save();
-
-        <span class="hljs-comment">// Sensor Example #8</span>
-        $sensor = <span class="hljs-keyword">new</span> Sensor();
-        $sensor-&gt;id = <span class="hljs-number">8</span>;
-        $sensor-&gt;erb_id = <span class="hljs-keyword">null</span>;
-        $sensor-&gt;num_serie = <span class="hljs-number">1000000008</span>;
-        $sensor-&gt;passw = <span class="hljs-string">'sensor@321'</span>;
-        $sensor-&gt;vol_1 = <span class="hljs-string">'3.5'</span>;
-        $sensor-&gt;vol_2 = <span class="hljs-string">'2.1'</span>;
-        $sensor-&gt;vol_3 = <span class="hljs-string">'2.6'</span>;
-        $sensor-&gt;door_1 = <span class="hljs-string">'On'</span>;
-        $sensor-&gt;door_2 = <span class="hljs-string">'Off'</span>;
-        $sensor-&gt;door_3 = <span class="hljs-string">'On'</span>;
-        $sensor-&gt;door_4 = <span class="hljs-string">'On'</span>;
-        $sensor-&gt;rlay_1 = <span class="hljs-string">'On'</span>;
-        $sensor-&gt;rlay_2 = <span class="hljs-string">'Off'</span>;
-        $sensor-&gt;rlay_3 = <span class="hljs-string">'On'</span>;
-        $sensor-&gt;rlay_4 = <span class="hljs-string">'Off'</span>;
-        $sensor-&gt;text = <span class="hljs-string">'sensor demo'</span>;
-        $sensor-&gt;save();
-
-        <span class="hljs-comment">// Sensor Example #9</span>
-        $sensor = <span class="hljs-keyword">new</span> Sensor();
-        $sensor-&gt;id = <span class="hljs-number">9</span>;
-        $sensor-&gt;erb_id = <span class="hljs-keyword">null</span>;
-        $sensor-&gt;num_serie = <span class="hljs-number">1000000009</span>;
-        $sensor-&gt;passw = <span class="hljs-string">'sensor@321'</span>;
-        $sensor-&gt;vol_1 = <span class="hljs-string">'3.5'</span>;
-        $sensor-&gt;vol_2 = <span class="hljs-string">'2.1'</span>;
-        $sensor-&gt;vol_3 = <span class="hljs-string">'2.6'</span>;
-        $sensor-&gt;door_1 = <span class="hljs-string">'On'</span>;
-        $sensor-&gt;door_2 = <span class="hljs-string">'Off'</span>;
-        $sensor-&gt;door_3 = <span class="hljs-string">'On'</span>;
-        $sensor-&gt;door_4 = <span class="hljs-string">'On'</span>;
-        $sensor-&gt;rlay_1 = <span class="hljs-string">'On'</span>;
-        $sensor-&gt;rlay_2 = <span class="hljs-string">'Off'</span>;
-        $sensor-&gt;rlay_3 = <span class="hljs-string">'On'</span>;
-        $sensor-&gt;rlay_4 = <span class="hljs-string">'Off'</span>;
-        $sensor-&gt;text = <span class="hljs-string">'sensor demo'</span>;
-        $sensor-&gt;save();
-
-        <span class="hljs-comment">// Sensor Example #10</span>
-        $sensor = <span class="hljs-keyword">new</span> Sensor();
-        $sensor-&gt;id = <span class="hljs-number">10</span>;
-        $sensor-&gt;erb_id = <span class="hljs-keyword">null</span>;
-        $sensor-&gt;num_serie = <span class="hljs-number">1000000010</span>;
         $sensor-&gt;passw = <span class="hljs-string">'sensor@321'</span>;
         $sensor-&gt;vol_1 = <span class="hljs-string">'3.5'</span>;
         $sensor-&gt;vol_2 = <span class="hljs-string">'2.1'</span>;
@@ -385,190 +207,7 @@ Si gustas es posible crear la estructura MCV de forma manual.</p>
         $back2[<span class="hljs-number">0</span>][<span class="hljs-number">1</span>]= <span class="hljs-string">"#333"</span>;
         $back2[<span class="hljs-number">1</span>][<span class="hljs-number">0</span>]= <span class="hljs-string">"1"</span>;
         $back2[<span class="hljs-number">1</span>][<span class="hljs-number">1</span>]= <span class="hljs-string">"#FFF"</span>; 
-        $vol1 = \Chart::title([<span class="hljs-string">'text'</span> =&gt; <span class="hljs-string">'Voltaje(1)'</span>,])
-                        -&gt;chart([<span class="hljs-string">'type'</span>     =&gt; <span class="hljs-string">'gauge'</span>,<span class="hljs-string">'renderTo'</span> =&gt; <span class="hljs-string">'vol1'</span>,
-                                 <span class="hljs-string">'plotBackgroundColor'</span> =&gt; <span class="hljs-keyword">null</span>,
-                                 <span class="hljs-string">'plotBackgroundImage'</span> =&gt; <span class="hljs-keyword">null</span>,
-                                 <span class="hljs-string">'plotBorderWidth'</span> =&gt; <span class="hljs-number">0</span>,
-                                 <span class="hljs-string">'plotShadow'</span> =&gt; <span class="hljs-keyword">false</span>,])
-                        -&gt;credits([<span class="hljs-string">'enabled'</span> =&gt; <span class="hljs-keyword">false</span>])
-                        -&gt;pane([<span class="hljs-string">'startAngle'</span> =&gt; <span class="hljs-number">-150</span>,
-                                <span class="hljs-string">'endAngle'</span> =&gt; <span class="hljs-number">150</span>,
-                                <span class="hljs-string">'background'</span> =&gt; [[<span class="hljs-string">'backgroundColor'</span>=&gt; [<span class="hljs-string">'linearGradient'</span> =&gt; [<span class="hljs-string">'x1'</span> =&gt; <span class="hljs-number">0</span>,
-                                                                                            <span class="hljs-string">'y1'</span> =&gt; <span class="hljs-number">0</span>,
-                                                                                            <span class="hljs-string">'x2'</span> =&gt; <span class="hljs-number">0</span>,
-                                                                                            <span class="hljs-string">'y2'</span> =&gt; <span class="hljs-number">1</span>,],
-                                                                       <span class="hljs-string">'stops'</span>         =&gt; $back1
-                                                                      ],
-                                                  <span class="hljs-string">'borderWidth'</span> =&gt; <span class="hljs-number">0</span>,
-                                                  <span class="hljs-string">'outerRadius'</span> =&gt; <span class="hljs-string">'109%'</span>,],
-                                                 [<span class="hljs-string">'backgroundColor'</span>=&gt; [<span class="hljs-string">'linearGradient'</span> =&gt; [<span class="hljs-string">'x1'</span> =&gt; <span class="hljs-number">0</span>,
-                                                                                            <span class="hljs-string">'y1'</span> =&gt; <span class="hljs-number">0</span>,
-                                                                                            <span class="hljs-string">'x2'</span> =&gt; <span class="hljs-number">0</span>,
-                                                                                            <span class="hljs-string">'y2'</span> =&gt; <span class="hljs-number">1</span>,],
-                                                                       <span class="hljs-string">'stops'</span>         =&gt; $back2,
-                                                                      ],
-                                                  <span class="hljs-string">'borderWidth'</span> =&gt; <span class="hljs-number">1</span>,
-                                                  <span class="hljs-string">'outerRadius'</span> =&gt; <span class="hljs-string">'107%'</span>,],
-                                                  [<span class="hljs-string">''</span> =&gt; <span class="hljs-string">''</span>],
-                                                  [<span class="hljs-string">'backgroundColor'</span>=&gt; <span class="hljs-string">'#DDD'</span>,
-                                                  <span class="hljs-string">'borderWidth'</span> =&gt; <span class="hljs-number">0</span>,
-                                                  <span class="hljs-string">'outerRadius'</span> =&gt; <span class="hljs-string">'105%'</span>,
-                                                  <span class="hljs-string">'innerRadius'</span> =&gt; <span class="hljs-string">'103%'</span>,]], 
-
-                        ])
-                        -&gt;yaxis([<span class="hljs-string">'min'</span> =&gt; <span class="hljs-number">0</span>,
-                                 <span class="hljs-string">'max'</span> =&gt; <span class="hljs-number">5.2</span>,
-                                 <span class="hljs-string">'minorTickInterval'</span> =&gt; <span class="hljs-string">'auto'</span> ,
-                                 <span class="hljs-string">'minorTickWidth'</span> =&gt; <span class="hljs-number">1</span>,
-                                 <span class="hljs-string">'minorTickLength'</span> =&gt; <span class="hljs-number">5</span>,
-                                 <span class="hljs-string">'minorTickPosition'</span> =&gt; <span class="hljs-string">'inside'</span>,
-                                 <span class="hljs-string">'minorTickColor'</span> =&gt; <span class="hljs-string">'#666'</span>,
-                                 <span class="hljs-string">'tickPixelInterval'</span> =&gt; <span class="hljs-number">30</span>,
-                                 <span class="hljs-string">'tickWidth'</span> =&gt; <span class="hljs-number">2</span>,
-                                 <span class="hljs-string">'tickPosition'</span> =&gt; <span class="hljs-string">'inside'</span>,
-                                 <span class="hljs-string">'tickLength'</span> =&gt; <span class="hljs-number">5</span>,
-                                 <span class="hljs-string">'tickColor'</span> =&gt; <span class="hljs-string">'#666'</span>,
-                                 <span class="hljs-string">'labels'</span> =&gt; [<span class="hljs-string">'step'</span> =&gt; <span class="hljs-number">2</span>,
-                                              <span class="hljs-string">'rotation'</span> =&gt; <span class="hljs-string">'auto'</span>,],
-                                 <span class="hljs-string">'title'</span> =&gt; [<span class="hljs-string">'text'</span> =&gt; <span class="hljs-string">'Volt/DC'</span>,],
-                                 <span class="hljs-string">'plotBands'</span> =&gt; [[<span class="hljs-string">'from'</span> =&gt; <span class="hljs-number">0</span>,
-                                                 <span class="hljs-string">'to'</span> =&gt; <span class="hljs-number">3</span>,
-                                                 <span class="hljs-string">'color'</span> =&gt; <span class="hljs-string">'#55BF3B'</span>,],
-                                                 [<span class="hljs-string">'from'</span> =&gt; <span class="hljs-number">3</span>,
-                                                 <span class="hljs-string">'to'</span> =&gt; <span class="hljs-number">4</span>,
-                                                 <span class="hljs-string">'color'</span> =&gt; <span class="hljs-string">'#DDDF0D'</span>,],
-                                                 [<span class="hljs-string">'from'</span> =&gt; <span class="hljs-number">4</span>,
-                                                 <span class="hljs-string">'to'</span> =&gt; <span class="hljs-number">5.2</span>,
-                                                 <span class="hljs-string">'color'</span> =&gt; <span class="hljs-string">'#DF5353'</span>,]],
-                                    ])
-                         -&gt;series([[<span class="hljs-string">'name'</span>  =&gt; <span class="hljs-string">'Valor'</span>,
-                                   <span class="hljs-string">'data'</span>  =&gt; [$sensor-&gt;vol_1*<span class="hljs-number">1</span>],
-                                   <span class="hljs-string">'tooltip'</span> =&gt; [<span class="hljs-string">'valueSuffix'</span> =&gt; <span class="hljs-string">'-Volt/DC'</span>],]])
-                        -&gt;display();
-    $vol2 = \Chart::title([<span class="hljs-string">'text'</span> =&gt; <span class="hljs-string">'Voltaje(2)'</span>,])
-                        -&gt;chart([<span class="hljs-string">'type'</span>     =&gt; <span class="hljs-string">'gauge'</span>,<span class="hljs-string">'renderTo'</span> =&gt; <span class="hljs-string">'vol2'</span>,
-                                 <span class="hljs-string">'plotBackgroundColor'</span> =&gt; <span class="hljs-keyword">null</span>,
-                                 <span class="hljs-string">'plotBackgroundImage'</span> =&gt; <span class="hljs-keyword">null</span>,
-                                 <span class="hljs-string">'plotBorderWidth'</span> =&gt; <span class="hljs-number">0</span>,
-                                 <span class="hljs-string">'plotShadow'</span> =&gt; <span class="hljs-keyword">false</span>,])
-                        -&gt;credits([<span class="hljs-string">'enabled'</span> =&gt; <span class="hljs-keyword">false</span>])
-                        -&gt;pane([<span class="hljs-string">'startAngle'</span> =&gt; <span class="hljs-number">-150</span>,
-                                <span class="hljs-string">'endAngle'</span> =&gt; <span class="hljs-number">150</span>,
-                                <span class="hljs-string">'background'</span> =&gt; [[<span class="hljs-string">'backgroundColor'</span>=&gt; [<span class="hljs-string">'linearGradient'</span> =&gt; [<span class="hljs-string">'x1'</span> =&gt; <span class="hljs-number">0</span>,
-                                                                                            <span class="hljs-string">'y1'</span> =&gt; <span class="hljs-number">0</span>,
-                                                                                            <span class="hljs-string">'x2'</span> =&gt; <span class="hljs-number">0</span>,
-                                                                                            <span class="hljs-string">'y2'</span> =&gt; <span class="hljs-number">1</span>,],
-                                                                       <span class="hljs-string">'stops'</span>         =&gt; $back1
-                                                                      ],
-                                                  <span class="hljs-string">'borderWidth'</span> =&gt; <span class="hljs-number">0</span>,
-                                                  <span class="hljs-string">'outerRadius'</span> =&gt; <span class="hljs-string">'109%'</span>,],
-                                                 [<span class="hljs-string">'backgroundColor'</span>=&gt; [<span class="hljs-string">'linearGradient'</span> =&gt; [<span class="hljs-string">'x1'</span> =&gt; <span class="hljs-number">0</span>,
-                                                                                            <span class="hljs-string">'y1'</span> =&gt; <span class="hljs-number">0</span>,
-                                                                                            <span class="hljs-string">'x2'</span> =&gt; <span class="hljs-number">0</span>,
-                                                                                            <span class="hljs-string">'y2'</span> =&gt; <span class="hljs-number">1</span>,],
-                                                                       <span class="hljs-string">'stops'</span>         =&gt; $back2,
-                                                                      ],
-                                                  <span class="hljs-string">'borderWidth'</span> =&gt; <span class="hljs-number">1</span>,
-                                                  <span class="hljs-string">'outerRadius'</span> =&gt; <span class="hljs-string">'107%'</span>,],
-                                                  [<span class="hljs-string">''</span> =&gt; <span class="hljs-string">''</span>],
-                                                  [<span class="hljs-string">'backgroundColor'</span>=&gt; <span class="hljs-string">'#DDD'</span>,
-                                                  <span class="hljs-string">'borderWidth'</span> =&gt; <span class="hljs-number">0</span>,
-                                                  <span class="hljs-string">'outerRadius'</span> =&gt; <span class="hljs-string">'105%'</span>,
-                                                  <span class="hljs-string">'innerRadius'</span> =&gt; <span class="hljs-string">'103%'</span>,]], 
-
-                        ])
-                        -&gt;yaxis([<span class="hljs-string">'min'</span> =&gt; <span class="hljs-number">0</span>,
-                                 <span class="hljs-string">'max'</span> =&gt; <span class="hljs-number">5.2</span>,
-                                 <span class="hljs-string">'minorTickInterval'</span> =&gt; <span class="hljs-string">'auto'</span> ,
-                                 <span class="hljs-string">'minorTickWidth'</span> =&gt; <span class="hljs-number">1</span>,
-                                 <span class="hljs-string">'minorTickLength'</span> =&gt; <span class="hljs-number">5</span>,
-                                 <span class="hljs-string">'minorTickPosition'</span> =&gt; <span class="hljs-string">'inside'</span>,
-                                 <span class="hljs-string">'minorTickColor'</span> =&gt; <span class="hljs-string">'#666'</span>,
-                                 <span class="hljs-string">'tickPixelInterval'</span> =&gt; <span class="hljs-number">30</span>,
-                                 <span class="hljs-string">'tickWidth'</span> =&gt; <span class="hljs-number">2</span>,
-                                 <span class="hljs-string">'tickPosition'</span> =&gt; <span class="hljs-string">'inside'</span>,
-                                 <span class="hljs-string">'tickLength'</span> =&gt; <span class="hljs-number">5</span>,
-                                 <span class="hljs-string">'tickColor'</span> =&gt; <span class="hljs-string">'#666'</span>,
-                                 <span class="hljs-string">'labels'</span> =&gt; [<span class="hljs-string">'step'</span> =&gt; <span class="hljs-number">2</span>,
-                                              <span class="hljs-string">'rotation'</span> =&gt; <span class="hljs-string">'auto'</span>,],
-                                 <span class="hljs-string">'title'</span> =&gt; [<span class="hljs-string">'text'</span> =&gt; <span class="hljs-string">'Volt/DC'</span>,],
-                                 <span class="hljs-string">'plotBands'</span> =&gt; [[<span class="hljs-string">'from'</span> =&gt; <span class="hljs-number">0</span>,
-                                                 <span class="hljs-string">'to'</span> =&gt; <span class="hljs-number">3</span>,
-                                                 <span class="hljs-string">'color'</span> =&gt; <span class="hljs-string">'#55BF3B'</span>,],
-                                                 [<span class="hljs-string">'from'</span> =&gt; <span class="hljs-number">3</span>,
-                                                 <span class="hljs-string">'to'</span> =&gt; <span class="hljs-number">4</span>,
-                                                 <span class="hljs-string">'color'</span> =&gt; <span class="hljs-string">'#DDDF0D'</span>,],
-                                                 [<span class="hljs-string">'from'</span> =&gt; <span class="hljs-number">4</span>,
-                                                 <span class="hljs-string">'to'</span> =&gt; <span class="hljs-number">5.2</span>,
-                                                 <span class="hljs-string">'color'</span> =&gt; <span class="hljs-string">'#DF5353'</span>,]],
-                                    ])
-                         -&gt;series([[<span class="hljs-string">'name'</span>  =&gt; <span class="hljs-string">'Valor'</span>,
-                                   <span class="hljs-string">'data'</span>  =&gt; [$sensor-&gt;vol_2*<span class="hljs-number">1</span>],
-                                   <span class="hljs-string">'tooltip'</span> =&gt; [<span class="hljs-string">'valueSuffix'</span> =&gt; <span class="hljs-string">'-Volt/DC'</span>],]])
-                        -&gt;display();
-
-    $vol3 = \Chart::title([<span class="hljs-string">'text'</span> =&gt; <span class="hljs-string">'Voltaje(3)'</span>,])
-                        -&gt;chart([<span class="hljs-string">'type'</span>     =&gt; <span class="hljs-string">'gauge'</span>,<span class="hljs-string">'renderTo'</span> =&gt; <span class="hljs-string">'vol3'</span>,
-                                 <span class="hljs-string">'plotBackgroundColor'</span> =&gt; <span class="hljs-keyword">null</span>,
-                                 <span class="hljs-string">'plotBackgroundImage'</span> =&gt; <span class="hljs-keyword">null</span>,
-                                 <span class="hljs-string">'plotBorderWidth'</span> =&gt; <span class="hljs-number">0</span>,
-                                 <span class="hljs-string">'plotShadow'</span> =&gt; <span class="hljs-keyword">false</span>,])
-                        -&gt;credits([<span class="hljs-string">'enabled'</span> =&gt; <span class="hljs-keyword">false</span>])
-                        -&gt;pane([<span class="hljs-string">'startAngle'</span> =&gt; <span class="hljs-number">-150</span>,
-                                <span class="hljs-string">'endAngle'</span> =&gt; <span class="hljs-number">150</span>,
-                                <span class="hljs-string">'background'</span> =&gt; [[<span class="hljs-string">'backgroundColor'</span>=&gt; [<span class="hljs-string">'linearGradient'</span> =&gt; [<span class="hljs-string">'x1'</span> =&gt; <span class="hljs-number">0</span>,
-                                                                                            <span class="hljs-string">'y1'</span> =&gt; <span class="hljs-number">0</span>,
-                                                                                            <span class="hljs-string">'x2'</span> =&gt; <span class="hljs-number">0</span>,
-                                                                                            <span class="hljs-string">'y2'</span> =&gt; <span class="hljs-number">1</span>,],
-                                                                       <span class="hljs-string">'stops'</span>         =&gt; $back1
-                                                                      ],
-                                                  <span class="hljs-string">'borderWidth'</span> =&gt; <span class="hljs-number">0</span>,
-                                                  <span class="hljs-string">'outerRadius'</span> =&gt; <span class="hljs-string">'109%'</span>,],
-                                                 [<span class="hljs-string">'backgroundColor'</span>=&gt; [<span class="hljs-string">'linearGradient'</span> =&gt; [<span class="hljs-string">'x1'</span> =&gt; <span class="hljs-number">0</span>,
-                                                                                            <span class="hljs-string">'y1'</span> =&gt; <span class="hljs-number">0</span>,
-                                                                                            <span class="hljs-string">'x2'</span> =&gt; <span class="hljs-number">0</span>,
-                                                                                            <span class="hljs-string">'y2'</span> =&gt; <span class="hljs-number">1</span>,],
-                                                                       <span class="hljs-string">'stops'</span>         =&gt; $back2,
-                                                                      ],
-                                                  <span class="hljs-string">'borderWidth'</span> =&gt; <span class="hljs-number">1</span>,
-                                                  <span class="hljs-string">'outerRadius'</span> =&gt; <span class="hljs-string">'107%'</span>,],
-                                                  [<span class="hljs-string">''</span> =&gt; <span class="hljs-string">''</span>],
-                                                  [<span class="hljs-string">'backgroundColor'</span>=&gt; <span class="hljs-string">'#DDD'</span>,
-                                                  <span class="hljs-string">'borderWidth'</span> =&gt; <span class="hljs-number">0</span>,
-                                                  <span class="hljs-string">'outerRadius'</span> =&gt; <span class="hljs-string">'105%'</span>,
-                                                  <span class="hljs-string">'innerRadius'</span> =&gt; <span class="hljs-string">'103%'</span>,]], 
-
-                        ])
-                        -&gt;yaxis([<span class="hljs-string">'min'</span> =&gt; <span class="hljs-number">0</span>,
-                                 <span class="hljs-string">'max'</span> =&gt; <span class="hljs-number">5.2</span>,
-                                 <span class="hljs-string">'minorTickInterval'</span> =&gt; <span class="hljs-string">'auto'</span> ,
-                                 <span class="hljs-string">'minorTickWidth'</span> =&gt; <span class="hljs-number">1</span>,
-                                 <span class="hljs-string">'minorTickLength'</span> =&gt; <span class="hljs-number">5</span>,
-                                 <span class="hljs-string">'minorTickPosition'</span> =&gt; <span class="hljs-string">'inside'</span>,
-                                 <span class="hljs-string">'minorTickColor'</span> =&gt; <span class="hljs-string">'#666'</span>,
-                                 <span class="hljs-string">'tickPixelInterval'</span> =&gt; <span class="hljs-number">30</span>,
-                                 <span class="hljs-string">'tickWidth'</span> =&gt; <span class="hljs-number">2</span>,
-                                 <span class="hljs-string">'tickPosition'</span> =&gt; <span class="hljs-string">'inside'</span>,
-                                 <span class="hljs-string">'tickLength'</span> =&gt; <span class="hljs-number">5</span>,
-                                 <span class="hljs-string">'tickColor'</span> =&gt; <span class="hljs-string">'#666'</span>,
-                                 <span class="hljs-string">'labels'</span> =&gt; [<span class="hljs-string">'step'</span> =&gt; <span class="hljs-number">2</span>,
-                                              <span class="hljs-string">'rotation'</span> =&gt; <span class="hljs-string">'auto'</span>,],
-                                 <span class="hljs-string">'title'</span> =&gt; [<span class="hljs-string">'text'</span> =&gt; <span class="hljs-string">'Volt/DC'</span>,],
-                                 <span class="hljs-string">'plotBands'</span> =&gt; [[<span class="hljs-string">'from'</span> =&gt; <span class="hljs-number">0</span>,
-                                                 <span class="hljs-string">'to'</span> =&gt; <span class="hljs-number">3</span>,
-                                                 <span class="hljs-string">'color'</span> =&gt; <span class="hljs-string">'#55BF3B'</span>,],
-                                                 [<span class="hljs-string">'from'</span> =&gt; <span class="hljs-number">3</span>,
-                                                 <span class="hljs-string">'to'</span> =&gt; <span class="hljs-number">4</span>,
-                                                 <span class="hljs-string">'color'</span> =&gt; <span class="hljs-string">'#DDDF0D'</span>,],
-                                                 [<span class="hljs-string">'from'</span> =&gt; <span class="hljs-number">4</span>,
-                                                 <span class="hljs-string">'to'</span> =&gt; <span class="hljs-number">5.2</span>,
-                                                 <span class="hljs-string">'color'</span> =&gt; <span class="hljs-string">'#DF5353'</span>,]],
-                                    ])
-                         -&gt;series([[<span class="hljs-string">'name'</span>  =&gt; <span class="hljs-string">'Valor'</span>,
-                                   <span class="hljs-string">'data'</span>  =&gt; [$sensor-&gt;vol_3*<span class="hljs-number">1</span>],
-                                   <span class="hljs-string">'tooltip'</span> =&gt; [<span class="hljs-string">'valueSuffix'</span> =&gt; <span class="hljs-string">'-Volt/DC'</span>],]])
-                        -&gt;display();
+        $vol1 = \Chart::title([<span class="hljs-string">'text'</span> =&gt; <span class="hljs-string">'Voltaje(1)'</span>,])-&gt;display();
 
     <span class="hljs-comment">//return view('module.sensor.chart', ['vol1' =&gt; $vol1,]);</span>
     <span class="hljs-keyword">return</span> view(<span class="hljs-string">'module.sensor.chart'</span>)-&gt;with(<span class="hljs-string">'vol1'</span>,$vol1)
@@ -611,40 +250,6 @@ Si gustas es posible crear la estructura MCV de forma manual.</p>
     <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">store</span><span class="hljs-params">(Request $request)</span>
     </span>{
         <span class="hljs-comment">//</span>
-        $request-&gt;validate([
-            <span class="hljs-string">'erb_id'</span>=&gt;<span class="hljs-string">'required|string|max:100'</span>,
-            <span class="hljs-string">'num_serie'</span>=&gt;<span class="hljs-string">'required|string|max:100'</span>,
-            <span class="hljs-string">'passw'</span>=&gt;<span class="hljs-string">'required|string|max:100'</span>,
-            <span class="hljs-string">'vol_1'</span>=&gt;<span class="hljs-string">'required|string|max:100'</span>,
-            <span class="hljs-string">'vol_2'</span>=&gt;<span class="hljs-string">'required|string|max:100'</span>,
-            <span class="hljs-string">'vol_3'</span>=&gt;<span class="hljs-string">'required|string|max:100'</span>,
-            <span class="hljs-string">'door_1'</span>=&gt;<span class="hljs-string">'required|string|max:100'</span>,
-            <span class="hljs-string">'door_2'</span>=&gt;<span class="hljs-string">'required|string|max:100'</span>,
-            <span class="hljs-string">'door_3'</span>=&gt;<span class="hljs-string">'required|string|max:100'</span>,
-            <span class="hljs-string">'door_4'</span>=&gt;<span class="hljs-string">'required|string|max:100'</span>,
-            <span class="hljs-string">'rlay_1'</span>=&gt;<span class="hljs-string">'required|string|max:100'</span>,
-            <span class="hljs-string">'rlay_2'</span>=&gt;<span class="hljs-string">'required|string|max:100'</span>,
-            <span class="hljs-string">'rlay_3'</span>=&gt;<span class="hljs-string">'required|string|max:100'</span>,
-            <span class="hljs-string">'rlay_4'</span>=&gt;<span class="hljs-string">'required|string|max:100'</span>,
-            <span class="hljs-string">'text'</span>=&gt;<span class="hljs-string">'required|string|max:100'</span>,
-        ]);
-        $sensor = <span class="hljs-keyword">new</span> Sensor([
-            <span class="hljs-string">'erb_id'</span> =&gt; $request-&gt;get(<span class="hljs-string">'erb_id'</span>),
-            <span class="hljs-string">'num_serie'</span> =&gt; $request-&gt;get(<span class="hljs-string">'num_serie'</span>),
-            <span class="hljs-string">'passw'</span> =&gt; $request-&gt;get(<span class="hljs-string">'passw'</span>),
-            <span class="hljs-string">'vol_1'</span> =&gt; $request-&gt;get(<span class="hljs-string">'vol_1'</span>),
-            <span class="hljs-string">'vol_2'</span> =&gt; $request-&gt;get(<span class="hljs-string">'vol_2'</span>),
-            <span class="hljs-string">'vol_3'</span> =&gt; $request-&gt;get(<span class="hljs-string">'vol_3'</span>),
-            <span class="hljs-string">'door_1'</span> =&gt; $request-&gt;get(<span class="hljs-string">'door_1'</span>),
-            <span class="hljs-string">'door_2'</span> =&gt; $request-&gt;get(<span class="hljs-string">'door_2'</span>),
-            <span class="hljs-string">'door_3'</span> =&gt; $request-&gt;get(<span class="hljs-string">'door_3'</span>),
-            <span class="hljs-string">'door_4'</span> =&gt; $request-&gt;get(<span class="hljs-string">'door_4'</span>),
-            <span class="hljs-string">'rlay_1'</span> =&gt; $request-&gt;get(<span class="hljs-string">'rlay_1'</span>),
-            <span class="hljs-string">'rlay_2'</span> =&gt; $request-&gt;get(<span class="hljs-string">'rlay_2'</span>),
-            <span class="hljs-string">'rlay_3'</span> =&gt; $request-&gt;get(<span class="hljs-string">'rlay_3'</span>),
-            <span class="hljs-string">'rlay_4'</span> =&gt; $request-&gt;get(<span class="hljs-string">'rlay_4'</span>),
-            <span class="hljs-string">'text'</span> =&gt; $request-&gt;get(<span class="hljs-string">'text'</span>)
-            ]);   
         $sensor-&gt;save();
         <span class="hljs-comment">//return redirect(/sensor)-&gt;with('success','Sensor Generado Satisfactoriamente');</span>
         toastr()-&gt;success(<span class="hljs-string">'Sensor creado'</span>);
@@ -731,7 +336,8 @@ Si gustas es posible crear la estructura MCV de forma manual.</p>
 <blockquote>
 <p>{info} Directorio  <code>routes/web.php</code> agregar dentro del archivo.</p>
 </blockquote>
-<pre><code class="lang-php"><span class="hljs-comment">/*
+<pre><code class="lang-php">
+<span class="hljs-comment">/*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
@@ -754,11 +360,12 @@ Auth::routes();
 </code></pre>
 <p><a name="views"></a></p>
 <h2 id="vista">Vista</h2>
-<p>No se cuenta con comando pero crea un archivos index para modulo de usuario <code>index.blade.php</code> y pega este codigo.</p>
+<p>No se cuenta con comando pero crea un archivos index para modulo de sensor <code>index.blade.php</code> y pega este codigo.</p>
 <blockquote>
 <p>{info} Directorio  <code>resources/views/module/sensor/index.blade.php</code>.</p>
 </blockquote>
-<pre><code class="lang-php"><span class="xml"><span class="hljs-comment">&lt;!-- Main content --&gt;</span>
+<pre><code class="lang-php"><span class="xml">
+<span class="hljs-comment">&lt;!-- Main content --&gt;</span>
  <span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"content"</span>&gt;</span>
       <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"row"</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-12"</span>&gt;</span>
@@ -803,53 +410,6 @@ Auth::routes();
                     <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span></span><span class="hljs-template-variable">{{ $sensor-&gt;vol_1 }}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
                     <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span></span><span class="hljs-template-variable">{{ $sensor-&gt;vol_2 }}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
                     <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span></span><span class="hljs-template-variable">{{ $sensor-&gt;vol_3 }}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
-                    @if($sensor-&gt;door_1 == 'On')
-                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"badge badge-primary"</span>&gt;</span>Close-<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"fa fa-check-circle"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
-                    @elseif($sensor-&gt;door_1 == 'Off')
-                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"badge badge-warning"</span>&gt;</span>Open-<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"fa fa-exclamation-circle"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
-                    @endif
-                    </span><span class="hljs-template-variable">{{-- &lt;td&gt;{{ $sensor-&gt;door_2 }}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span> --}}
-                    @if($sensor-&gt;door_2 == 'On')
-                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"badge badge-primary"</span>&gt;</span>Close-<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"fa fa-check-circle"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
-                    @elseif($sensor-&gt;door_2 == 'Off')
-                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"badge badge-warning"</span>&gt;</span>Open-<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"fa fa-exclamation-circle"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
-                    @endif
-                    </span><span class="hljs-template-variable">{{-- &lt;td&gt;{{ $sensor-&gt;door_3 }}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span> --}}
-                    @if($sensor-&gt;door_3 == 'On')
-                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"badge badge-primary"</span>&gt;</span>Close-<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"fa fa-check-circle"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
-                    @elseif($sensor-&gt;door_3 == 'Off')
-                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"badge badge-warning"</span>&gt;</span>Open-<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"fa fa-exclamation-circle"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
-                    @endif
-                    </span><span class="hljs-template-variable">{{-- &lt;td&gt;{{ $sensor-&gt;door_4 }}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span> --}}
-                    @if($sensor-&gt;door_4 == 'On')
-                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"badge badge-primary"</span>&gt;</span>Close-<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"fa fa-check-circle"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
-                    @elseif($sensor-&gt;door_4 == 'Off')
-                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"badge badge-warning"</span>&gt;</span>Open-<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"fa fa-exclamation-circle"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
-                    @endif
-                    </span><span class="hljs-template-variable">{{-- &lt;td&gt;{{ $sensor-&gt;door_4 }}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span> --}}
-                    @if($sensor-&gt;rlay_1 == 'On')
-                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"badge badge-success"</span>&gt;</span>On-<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"fa fa-toggle-on"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
-                    @elseif($sensor-&gt;rlay_1 == 'Off')
-                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"badge badge-danger"</span>&gt;</span>Off-<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"fa fa-toggle-off"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
-                    @endif
-                    </span><span class="hljs-template-variable">{{--&lt;td&gt;{{ $sensor-&gt;rlay_1 }}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>--}}
-                    @if($sensor-&gt;rlay_2 == 'On')
-                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"badge badge-success"</span>&gt;</span>On-<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"fa fa-toggle-on"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
-                    @elseif($sensor-&gt;rlay_2 == 'Off')
-                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"badge badge-danger"</span>&gt;</span>Off-<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"fa fa-toggle-off"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
-                    @endif
-                    </span><span class="hljs-template-variable">{{-- &lt;td&gt;{{ $sensor-&gt;rlay_2 }}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span> --}}
-                    @if($sensor-&gt;rlay_3 == 'On')
-                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"badge badge-success"</span>&gt;</span>On-<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"fa fa-toggle-on"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
-                    @elseif($sensor-&gt;rlay_3 == 'Off')
-                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"badge badge-danger"</span>&gt;</span>Off-<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"fa fa-toggle-off"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
-                    @endif
-                    </span><span class="hljs-template-variable">{{-- &lt;td&gt;{{ $sensor-&gt;rlay_3 }}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span> --}}
-                    @if($sensor-&gt;rlay_4 == 'On')
-                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"badge badge-success"</span>&gt;</span>On-<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"fa fa-toggle-on"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
-                    @elseif($sensor-&gt;rlay_4 == 'Off')
-                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"badge badge-danger"</span>&gt;</span>Off-<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"fa fa-toggle-off"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
-                    @endif
                     <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span></span><span class="hljs-template-variable">{{ $sensor-&gt;text }}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
                     <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span></span><span class="hljs-template-variable">{{ $sensor-&gt;created_at }}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
                     <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span></span><span class="hljs-template-variable">{{ $sensor-&gt;updated_at }}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>

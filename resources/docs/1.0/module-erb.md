@@ -15,7 +15,7 @@
 ## Migracion, Sedder, Modelo, Controlador y Vista
 
 Estructura del modulo Erb.. 🦊
-Si gustas es posible crear la estructura MCV de forma manual.
+Si gustas es posible crear la estructura MVC de forma manual.
 
 ---
 
@@ -35,6 +35,7 @@ Comando `php artisan make:migration Erb` ejecutar en consola dentro del proyecto
 > {info} Directorio  `database/migrations/2014_10_12_000000_create_erbs_table.php`.
 
 ```php
+
 class CreateErbsTable extends Migration
 {
     /**
@@ -67,6 +68,7 @@ class CreateErbsTable extends Migration
         Schema::dropIfExists('erbs');
     }
 }
+
 ```
 
 <a name="seeds"></a>
@@ -77,6 +79,7 @@ Comando `php artisan make:seeder AddErbTableSeeder` ejecutar en consola dentro d
 > {info} Directorio  `database/seeders/AddErbTableSeeder.php`.
 
 ```php
+
 class AddErbTableSeeder extends Seeder
 {
     /**
@@ -409,6 +412,7 @@ No cuenta con comando artisan para esto dispones ya de un archivo de rutas web.
 > {info} Directorio  `routes/web.php` agregar dentro del archivo.
 
 ```php
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -428,6 +432,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 Route::resource('erb', 'ErbController')->middleware('auth');
 Auth::routes();
+
 ```
 
 <a name="views"></a>
@@ -438,6 +443,7 @@ No se cuenta con comando pero crea un archivos index para modulo de erb `index.b
 > {info} Directorio  `resources/views/module/erb/index.blade.php`.
 
 ```php
+
 <!-- Main content -->
  <section class="content">
       <div class="row">
@@ -528,7 +534,7 @@ Tu puedes crear los archivos de forma automatica y sin tanta complejidad.
 
 ```
 
-✌️ Run the install command.
+✌️ Comando para crear Seeder.
 
 ```php
    php artisan make:seeder NameTableSeeder

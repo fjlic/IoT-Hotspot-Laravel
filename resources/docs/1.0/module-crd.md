@@ -15,7 +15,7 @@
 ## Migracion, Sedder, Modelo, Controlador y Vista
 
 Estructura del modulo Crd.. 🦊
-Si gustas es posible crear la estructura MCV de forma manual.
+Si gustas es posible crear la estructura MVC de forma manual.
 
 ---
 
@@ -35,6 +35,7 @@ Comando `php artisan make:migration Crd` ejecutar en consola dentro del proyecto
 > {info} Directorio  `database/migrations/2014_10_12_000000_create_crds_table.php`.
 
 ```php
+
 class CreateCrdsTable extends Migration
 {
     /**
@@ -78,6 +79,7 @@ Comando `php artisan make:seeder AddCrdTableSeeder` ejecutar en consola dentro d
 > {info} Directorio  `database/seeders/AddCrdTableSeeder.php`.
 
 ```php
+
 class AddCrdTableSeeder extends Seeder
 {
     /**
@@ -425,6 +427,7 @@ No cuenta con comando artisan para esto dispones ya de un archivo de rutas web.
 > {info} Directorio  `routes/web.php` agregar dentro del archivo.
 
 ```php
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -444,6 +447,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 Route::resource('crd', 'CrdController')->middleware('auth');
 Auth::routes();
+
 ```
 
 <a name="views"></a>
@@ -454,6 +458,7 @@ No se cuenta con comando pero crea un archivos index para modulo de crd `index.b
 > {info} Directorio  `resources/views/module/crd/index.blade.php`.
 
 ```php
+
 <!-- Main content -->
  <section class="content">
       <div class="row">
@@ -544,7 +549,7 @@ Tu puedes crear los archivos de forma automatica y sin tanta complejidad.
 
 ```
 
-✌️ Run the install command.
+✌️ Comando para crear Seeder.
 
 ```php
    php artisan make:seeder NameTableSeeder

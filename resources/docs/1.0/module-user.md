@@ -15,7 +15,7 @@
 ## Migracion, Sedder, Modelo, Controlador y Vista
 
 Estructura del modulo Usuario.. 🦊
-Si gustas es posible crear la estructura MCV de forma manual.
+Si gustas es posible crear la estructura MVC de forma manual.
 
 ---
 
@@ -35,6 +35,7 @@ Comando `php artisan make:migration User` ejecutar en consola dentro del proyect
 > {info} Directorio  `database/migrations/2014_10_12_000000_create_users_table.php`.
 
 ```php
+
 class CreateUsersTable extends Migration
 {
     /**
@@ -69,6 +70,7 @@ class CreateUsersTable extends Migration
         Schema::dropIfExists('users');
     }
 }
+
 ```
 
 <a name="seeds"></a>
@@ -79,6 +81,7 @@ Comando `php artisan make:seeder AddUserTableSeeder` ejecutar en consola dentro 
 > {info} Directorio  `database/seeders/AddUserTableSeeder.php`.
 
 ```php
+
 class AddUserTableSeeder extends Seeder
 {
     /**
@@ -151,6 +154,7 @@ Comando `php artisan make:model User` ejecutar en consola dentro del proyecto.
 > {info} Directorio  `app/User.php`.
 
 ```php
+
 class User extends Authenticatable
 {
     use LaratrustUserTrait;
@@ -207,6 +211,7 @@ class User extends Authenticatable
         return $this->hasMany('App\Erb','user_id');
     }
 }
+
 ```
 
 <a name="controllers"></a>
@@ -217,6 +222,7 @@ Comando `php artisan make:controller User` ejecutar en consola dentro del proyec
 > {info} Directorio  `app/Http/Controllers/UserController.php`.
 
 ```php
+
 class UserController extends Controller
 {
     /**
@@ -398,6 +404,7 @@ class UserController extends Controller
         return redirect()->route('user.index');
     }
 }
+
 ```
 
 <a name="routes"></a>
@@ -408,6 +415,7 @@ No cuenta con comando artisan para esto dispones ya de un archivo de rutas web.
 > {info} Directorio  `routes/web.php` agregar dentro del archivo.
 
 ```php
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -427,6 +435,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 Route::resource('user', 'UserController')->middleware('auth');
 Auth::routes();
+
 ```
 
 <a name="views"></a>
@@ -437,6 +446,7 @@ No se cuenta con comando pero crea un archivos index para modulo de usuario `ind
 > {info} Directorio  `resources/views/module/user/index.blade.php`.
 
 ```php
+
 <!-- Main content -->
  <section class="content">
       <div class="row">
@@ -505,6 +515,7 @@ No se cuenta con comando pero crea un archivos index para modulo de usuario `ind
     <!-- /.content -->  
     
 @stop
+
 ```
 
 <a name="mcr"></a>
@@ -519,7 +530,7 @@ Tu puedes crear los archivos de forma automatica y sin tanta complejidad.
 
 ```
 
-✌️ Run the install command.
+✌️ Comando para crear Seeder.
 
 ```php
    php artisan make:seeder NameTableSeeder

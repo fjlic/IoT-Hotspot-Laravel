@@ -1,0 +1,342 @@
+<html><head><style>body {
+   color: black;
+}
+</style></head><body><h1 id="modulo-crd-api">Modulo CRD-API</h1>
+<hr>
+<ul>
+<li><a href="#section-crd-api">Crd API</a></li>
+<li><a href="#controller-api">Controlador-API</a></li>
+<li><a href="#index">Index</a></li>
+<li><a href="#show">Show</a></li>
+<li><a href="#register">Register</a></li>
+<li><a href="#update">Update</a></li>
+<li><a href="#modify">Modify</a></li>
+<li><a href="#destroy">Destroy</a></li>
+<li><a href="#route">Ruta</a></li>
+</ul>
+<p><a name="section-crd-api"></a></p>
+<h2 id="controlador-metodos-index-register-update-modify-destroy-">Controlador, Metodos index(), register(), update(), modify(), destroy():</h2>
+<p>Estructura del modulo API Crd.. 🦊
+Si gustas es posible consultar los metodos get por web.</p>
+<hr>
+<ul>
+<li><a href="#controller-api">Controlador-API</a></li>
+<li><a href="#index">Index</a></li>
+<li><a href="#show">Index</a></li>
+<li><a href="#register">Register</a></li>
+<li><a href="#update">Update</a></li>
+<li><a href="#modify">Modify</a></li>
+<li><a href="#destroy">Destroy</a></li>
+<li><a href="#route">Ruta</a></li>
+</ul>
+<p><a name="controller-api"></a></p>
+<h2 id="controlador-api">Controlador API</h2>
+<p>Comando <code>php artisan make:controller API/Crd</code> ejecutar en consola dentro del proyecto.</p>
+<blockquote>
+<p>{info} Directorio  <code>app/Http/Controller/API/CrdController.php</code> respeta esta estructura en el controlador.</p>
+</blockquote>
+<pre><code class="lang-php">
+<span class="php"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">App</span>\<span class="hljs-title">Http</span>\<span class="hljs-title">Controllers</span>\<span class="hljs-title">API</span>;
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Http</span>\<span class="hljs-title">Request</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Http</span>\<span class="hljs-title">Controllers</span>\<span class="hljs-title">Api</span>\<span class="hljs-title">BaseController</span> <span class="hljs-title">as</span> <span class="hljs-title">BaseController</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Crd</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">HistorialCrd</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">ApiToken</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Validator</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Crypt</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CrdController</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">BaseController</span>
+
+</span>{
+
+}</span>
+</code></pre>
+<p><a name="index"></a></p>
+<h2 id="metodo-index">Metodo Index</h2>
+<p>Consulta url <code>http://domain/api/crd</code> te regresara un objeto tipo JSON.</p>
+<blockquote>
+<p>{info} Directorio  <code>app/Http/Controller/API/CrdController.php</code>.</p>
+</blockquote>
+<pre><code class="lang-php">
+<span class="hljs-comment">/**
+     * List all Crds.
+     *
+     * <span class="hljs-doctag">@return</span> \Illuminate\Http\Response
+     */</span>
+
+     <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">index</span><span class="hljs-params">()</span>
+    </span>{
+       $crds = Crd::all();
+       <span class="hljs-keyword">foreach</span> ($crds <span class="hljs-keyword">as</span> $key =&gt; $crd) {
+        $crd-&gt;password = Crypt::decrypt($crd-&gt;password);
+        }
+       $data = $crds-&gt;toArray();
+       $response = [
+          <span class="hljs-string">'success'</span> =&gt; <span class="hljs-keyword">true</span>,
+          <span class="hljs-string">'data'</span> =&gt; $data,
+          <span class="hljs-string">'message'</span> =&gt; <span class="hljs-string">'Crd retrieved successfully.'</span>
+        ];
+        <span class="hljs-keyword">return</span> response()-&gt;json($response, <span class="hljs-number">200</span>);
+    }
+</code></pre>
+<p><a name="show"></a></p>
+<h2 id="metodo-show">Metodo Show</h2>
+<p>Consulta url <code>http://domain/api/crd/{#id}</code> te regresara un objeto tipo JSON.</p>
+<blockquote>
+<p>{info} Directorio  <code>app/Http/Controller/API/CrdController.php</code>.</p>
+</blockquote>
+<pre><code class="lang-php">
+<span class="hljs-comment">/**
+     * Display the Cdr specified resource.
+     *
+     * <span class="hljs-doctag">@param</span>  int  $id or name $name_machine
+     * <span class="hljs-doctag">@return</span> \Illuminate\Http\Response
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">show</span><span class="hljs-params">($id)</span>
+    </span>{
+        $crd = Crd::where(<span class="hljs-string">'id'</span>,$id)-&gt;first(); 
+        <span class="hljs-keyword">if</span> (is_null($crd)) {
+            $response = [
+                <span class="hljs-string">'success'</span> =&gt; <span class="hljs-keyword">false</span>,
+                <span class="hljs-string">'data'</span> =&gt; <span class="hljs-string">'Empty'</span>,
+                <span class="hljs-string">'message'</span> =&gt; <span class="hljs-string">'Crd not Exist.'</span>
+            ];
+            <span class="hljs-keyword">return</span> response()-&gt;json($response, <span class="hljs-number">404</span>);
+        }
+        $data = $crd-&gt;toArray();
+        $response = [
+            <span class="hljs-string">'success'</span> =&gt; <span class="hljs-keyword">true</span>,
+            <span class="hljs-string">'data'</span> =&gt; $data,
+            <span class="hljs-string">'message'</span> =&gt; <span class="hljs-string">'Crd retrieved successfully.'</span>
+        ];
+        <span class="hljs-keyword">return</span> response()-&gt;json($response, <span class="hljs-number">200</span>);
+
+
+    }
+</code></pre>
+<p><a name="register"></a></p>
+<h2 id="metodo-register">Metodo Register</h2>
+<p>Consulta url <code>http://domain/api/crd/register</code> te regresara un objeto tipo JSON.</p>
+<blockquote>
+<p>{info} Directorio  <code>app/Http/Controller/API/CrdController.php</code>.</p>
+</blockquote>
+<pre><code class="lang-php">
+<span class="hljs-comment">/**
+     * Store a newly Crd created resource in storage.
+     *
+     * <span class="hljs-doctag">@param</span>  \Illuminate\Http\Request  $request
+     * <span class="hljs-doctag">@return</span> \Illuminate\Http\Response
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">register</span><span class="hljs-params">(Request $request)</span>
+    </span>{
+        <span class="hljs-comment">//</span>
+        <span class="hljs-comment">// 'id', 'user_id', 'num_serie', 'nick_name', 'password', 'api_token',</span>
+       $validator = Validator::make($request-&gt;all(), [
+        <span class="hljs-string">'user_id'</span>=&gt;<span class="hljs-string">'required|string|max:100'</span>,
+        <span class="hljs-string">'num_serie'</span>=&gt;<span class="hljs-string">'required|string|max:100'</span>,
+        <span class="hljs-string">'nick_name'</span>=&gt;<span class="hljs-string">'required|string|max:100'</span>,
+        <span class="hljs-string">'password'</span>=&gt;<span class="hljs-string">'required|string|max:100'</span>,
+    ]);
+
+    <span class="hljs-keyword">if</span> ($validator-&gt;fails()) {
+        $response = [
+            <span class="hljs-string">'success'</span> =&gt; <span class="hljs-keyword">false</span>,
+            <span class="hljs-string">'data'</span> =&gt; <span class="hljs-string">'Validation Error.'</span>,
+            <span class="hljs-string">'message'</span> =&gt; $validator-&gt;errors()
+        ];
+        <span class="hljs-keyword">return</span> response()-&gt;json($response, <span class="hljs-number">404</span>);
+    }
+    $data = <span class="hljs-string">'Please register correctly crd'</span>;
+    <span class="hljs-keyword">if</span>($request-&gt;get(<span class="hljs-string">'password'</span>) == <span class="hljs-string">'pi123'</span>){
+    $nick_name = (Crd::all()-&gt;count() + <span class="hljs-number">1</span>);
+    $crd = <span class="hljs-keyword">new</span> Crd;
+    $crd-&gt;user_id = <span class="hljs-keyword">null</span>;
+    $crd-&gt;num_serie =  $request-&gt;get(<span class="hljs-string">'num_serie'</span>);
+    $crd-&gt;nick_name = <span class="hljs-string">'crd_'</span>.$nick_name;
+    $crd-&gt;password = Crypt::encrypt($request-&gt;get(<span class="hljs-string">'password'</span>));
+    $crd-&gt;api_token = ApiToken::GenerateToken32();
+    $crd-&gt;save();
+    $crd-&gt;password = Crypt::decrypt($crd-&gt;password);
+    $data = $crd-&gt;toArray();
+    $response = [
+        <span class="hljs-string">'success'</span> =&gt; <span class="hljs-keyword">true</span>,
+        <span class="hljs-string">'data'</span> =&gt; $data,
+        <span class="hljs-string">'message'</span> =&gt; <span class="hljs-string">'Crd register successfully.'</span>
+    ]; 
+    <span class="hljs-keyword">return</span> response()-&gt;json($response, <span class="hljs-number">200</span>);
+    }
+    <span class="hljs-keyword">else</span>{
+    $data = <span class="hljs-string">'Register_Error'</span>;
+    $response = [
+        <span class="hljs-string">'success'</span> =&gt; <span class="hljs-keyword">true</span>,
+        <span class="hljs-string">'data'</span> =&gt; $data,
+        <span class="hljs-string">'message'</span> =&gt; <span class="hljs-string">'Crd not registered.'</span>
+    ]; 
+    }
+    <span class="hljs-keyword">return</span> response()-&gt;json($response, <span class="hljs-number">200</span>);
+    }
+</code></pre>
+<p><a name="update"></a></p>
+<h2 id="metodo-update">Metodo Update</h2>
+<p>Consulta url <code>http://domain/api/crd/update{#id}</code> te regresara un objeto tipo JSON.</p>
+<blockquote>
+<p>{info} Directorio  <code>app/Http/Controller/API/CrdController.php</code>.</p>
+</blockquote>
+<pre><code class="lang-php">
+<span class="hljs-comment">/**
+     * Update the specified resource in storage.
+     *
+     * <span class="hljs-doctag">@param</span>  \Illuminate\Http\Request  $request
+     * <span class="hljs-doctag">@param</span>  int  $id
+     * <span class="hljs-doctag">@return</span> \Illuminate\Http\Response
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">update</span><span class="hljs-params">(Request $request, Crd $crd)</span>
+    </span>{
+        <span class="hljs-comment">// 'id', 'user_id', 'num_serie', 'nick_name', 'password', 'api_token',</span>
+        $input = $request-&gt;all();
+        $validator = Validator::make($input, [
+            <span class="hljs-string">'user_id'</span>=&gt;<span class="hljs-string">'required|string|max:100'</span>,
+            <span class="hljs-string">'num_serie'</span>=&gt;<span class="hljs-string">'required|string|max:100'</span>,
+            <span class="hljs-string">'nick_name'</span>=&gt;<span class="hljs-string">'required|string|max:100'</span>,
+            <span class="hljs-string">'password'</span>=&gt;<span class="hljs-string">'required|string|max:100'</span>
+        ]);
+
+        <span class="hljs-keyword">if</span> ($validator-&gt;fails()) {
+            $response = [
+                <span class="hljs-string">'success'</span> =&gt; <span class="hljs-keyword">false</span>,
+                <span class="hljs-string">'data'</span> =&gt; <span class="hljs-string">'Validation Error.'</span>,
+                <span class="hljs-string">'message'</span> =&gt; $validator-&gt;errors()
+            ];
+            <span class="hljs-keyword">return</span> response()-&gt;json($response, <span class="hljs-number">404</span>);
+        }
+
+        $crd-&gt;user_id = $input[<span class="hljs-string">'user_id'</span>];
+        $crd-&gt;num_serie = $input[<span class="hljs-string">'num_serie'</span>];
+        $crd-&gt;nick_name = $input[<span class="hljs-string">'nick_name'</span>];
+        $crd-&gt;api_token = ApiToken::GenerateToken32();
+        $crd-&gt;save();
+        $data = $crd-&gt;toArray();
+        $response = [
+            <span class="hljs-string">'success'</span> =&gt; <span class="hljs-keyword">true</span>,
+            <span class="hljs-string">'data'</span> =&gt; $data,
+            <span class="hljs-string">'message'</span> =&gt; <span class="hljs-string">'Crd updated successfully.'</span>
+        ];
+        <span class="hljs-keyword">return</span> response()-&gt;json($response, <span class="hljs-number">200</span>);
+    }
+</code></pre>
+<p><a name="modify"></a></p>
+<h2 id="metodo-modify">Metodo Modify</h2>
+<p>Consulta url <code>http://domain/api/crd/modify{#id}</code> te regresara un objeto tipo JSON.</p>
+<blockquote>
+<p>{info} Directorio  <code>app/Http/Controller/API/CrdController.php</code>.</p>
+</blockquote>
+<pre><code class="lang-php">
+<span class="hljs-comment">/**
+     * Update the specified resource in storage.
+     *
+     * <span class="hljs-doctag">@param</span>  \Illuminate\Http\Request  $request
+     * <span class="hljs-doctag">@param</span>  int  $id
+     * <span class="hljs-doctag">@return</span> \Illuminate\Http\Response
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">modify</span><span class="hljs-params">(Request $request)</span>
+    </span>{
+        <span class="hljs-comment">// 'id', 'user_id', 'num_serie', 'nick_name', 'password', 'api_token',</span>
+        $input = $request-&gt;all();
+        $validator = Validator::make($input, [
+            <span class="hljs-string">'id'</span>=&gt;<span class="hljs-string">'required|string|max:100'</span>,
+            <span class="hljs-string">'user_id'</span>=&gt;<span class="hljs-string">'required|string|max:100'</span>,
+            <span class="hljs-string">'num_serie'</span>=&gt;<span class="hljs-string">'required|string|max:100'</span>,
+            <span class="hljs-string">'nick_name'</span>=&gt;<span class="hljs-string">'required|string|max:100'</span>,
+            <span class="hljs-string">'password'</span>=&gt;<span class="hljs-string">'required|string|max:100'</span>,
+            <span class="hljs-string">'api_token'</span>=&gt;<span class="hljs-string">'required|string|max:100'</span>
+        ]);
+
+        <span class="hljs-keyword">if</span> ($validator-&gt;fails()) {
+            $response = [
+                <span class="hljs-string">'success'</span> =&gt; <span class="hljs-keyword">false</span>,
+                <span class="hljs-string">'data'</span> =&gt; <span class="hljs-string">'Validation Error.'</span>,
+                <span class="hljs-string">'message'</span> =&gt; $validator-&gt;errors()
+            ];
+            <span class="hljs-keyword">return</span> response()-&gt;json($response, <span class="hljs-number">404</span>);
+        }
+        $crd = Crd::where(<span class="hljs-string">'num_serie'</span>,$input[<span class="hljs-string">'num_serie'</span>])-&gt;first(); 
+        <span class="hljs-keyword">if</span> (is_null($crd)) {
+            $response = [
+                <span class="hljs-string">'success'</span> =&gt; <span class="hljs-keyword">false</span>,
+                <span class="hljs-string">'data'</span> =&gt; <span class="hljs-string">'Empty'</span>,
+                <span class="hljs-string">'message'</span> =&gt; <span class="hljs-string">'Crd not Exist.'</span>
+            ];
+            <span class="hljs-keyword">return</span> response()-&gt;json($response, <span class="hljs-number">404</span>);
+        }
+        $crd-&gt;user_id = $input[<span class="hljs-string">'user_id'</span>];
+        $crd-&gt;num_serie = $input[<span class="hljs-string">'num_serie'</span>];
+        $crd-&gt;nick_name = $input[<span class="hljs-string">'nick_name'</span>];
+        $crd-&gt;nick_name = $input[<span class="hljs-string">'password'</span>];
+        $crd-&gt;api_token = $input[<span class="hljs-string">'api_token'</span>];
+        $crd-&gt;save();
+        $data = $crd-&gt;toArray();
+        $response = [
+            <span class="hljs-string">'success'</span> =&gt; <span class="hljs-keyword">true</span>,
+            <span class="hljs-string">'data'</span> =&gt; $data,
+            <span class="hljs-string">'message'</span> =&gt; <span class="hljs-string">'Crd updated successfully.'</span>
+        ];
+        <span class="hljs-keyword">return</span> response()-&gt;json($response, <span class="hljs-number">200</span>);
+    }
+</code></pre>
+<p><a name="destroy"></a></p>
+<h2 id="metodo-destroy">Metodo Destroy</h2>
+<p>Consulta url <code>http://domain/api/crd/destroy{#id}</code> te regresara un objeto tipo JSON.</p>
+<blockquote>
+<p>{info} Directorio  <code>app/Http/Controller/API/CrdController.php</code>.</p>
+</blockquote>
+<pre><code class="lang-php">
+ <span class="hljs-comment">/**
+     * Remove the specified resource from storage.
+     *
+     * <span class="hljs-doctag">@param</span>  int  $id
+     * <span class="hljs-doctag">@return</span> \Illuminate\Http\Response
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">destroy</span><span class="hljs-params">(Crd $crd)</span>
+    </span>{
+        <span class="hljs-comment">//</span>
+        $crd-&gt;delete();
+        $data = $crd-&gt;toArray();
+
+        $response = [
+            <span class="hljs-string">'success'</span> =&gt; <span class="hljs-keyword">true</span>,
+            <span class="hljs-string">'data'</span> =&gt; $data,
+            <span class="hljs-string">'message'</span> =&gt; <span class="hljs-string">'Crd deleted successfully.'</span>
+        ];
+        <span class="hljs-keyword">return</span> response()-&gt;json($response, <span class="hljs-number">200</span>);
+    }
+</code></pre>
+<p><a name="route"></a></p>
+<h2 id="ruta-api">Ruta API</h2>
+<p>Se deben agregar las ruta necesario dentro de api rutas.</p>
+<blockquote>
+<p>{info} Directorio  <code>routes/api.php</code>.</p>
+</blockquote>
+<pre><code class="lang-php">
+ <span class="hljs-comment">/*
+|--------------------------------------------------------------------------
+| API Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register API routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| is assigned the "api" middleware group. Enjoy building your API!
+|
+*/</span>
+
+Route::post(<span class="hljs-string">'crd/modify'</span>, <span class="hljs-string">'API\CrdController@modify'</span>)-&gt;name(<span class="hljs-string">'crd.modify'</span>);
+Route::post(<span class="hljs-string">'crd/register'</span>, <span class="hljs-string">'API\CrdController@register'</span>)-&gt;name(<span class="hljs-string">'crd.register'</span>);
+Route::resource(<span class="hljs-string">'crd'</span>, <span class="hljs-string">'API\CrdController'</span>);
+
+Route::middleware(<span class="hljs-string">'auth:api'</span>)-&gt;get(<span class="hljs-string">'/user'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(Request $request)</span> </span>{
+    <span class="hljs-keyword">return</span> $request-&gt;user();
+});
+</code></pre>
+</body></html>

@@ -1,0 +1,510 @@
+<html><head><style>body {
+   color: black;
+}
+</style></head><body><h1 id="modulo-qr">Modulo Qr</h1>
+<hr>
+<ul>
+<li><a href="#section-qr">Qr CRUD</a></li>
+<li><a href="#migrations">Migracion</a></li>
+<li><a href="#seeds">Seeder</a></li>
+<li><a href="#models">Modelo</a></li>
+<li><a href="#controllers">Controlador</a></li>
+<li><a href="#routes">RutaWeb</a></li>
+<li><a href="#views">Vista</a></li>
+<li><a href="#mcr">Comando</a></li>
+</ul>
+<p><a name="section-qr"></a></p>
+<h2 id="migracion-sedder-modelo-controlador-y-vista">Migracion, Sedder, Modelo, Controlador y Vista</h2>
+<p>Estructura del modulo Qr.. 🦊
+Si gustas es posible crear la estructura MVC de forma manual.</p>
+<hr>
+<ul>
+<li><a href="#migrations">Migracion</a></li>
+<li><a href="#seeds">Seeder</a></li>
+<li><a href="#models">Modelo</a></li>
+<li><a href="#controllers">Controlador</a></li>
+<li><a href="#routes">RutaWeb</a></li>
+<li><a href="#views">Vista</a></li>
+<li><a href="#mcr">Comando MCR</a></li>
+</ul>
+<p><a name="migrations"></a></p>
+<h2 id="migracion">Migracion</h2>
+<p>Comando <code>php artisan make:migration Qr</code> ejecutar en consola dentro del proyecto.</p>
+<blockquote>
+<p>{info} Directorio  <code>database/migrations/2014_10_12_000000_create_qrs_table.php</code>.</p>
+</blockquote>
+<pre><code class="lang-php">
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CreateQrsTable</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Migration</span></span>
+{
+    <span class="hljs-comment">/**
+     * Run the migrations.
+     *
+     * @return void
+     */</span>
+    public <span class="hljs-keyword">function</span> up()
+    {
+        Schema::create(<span class="hljs-string">'qrs'</span>, <span class="hljs-keyword">function</span> (Blueprint $table) {
+            $table-&gt;id();
+            $table-&gt;unsignedBigInteger<span class="hljs-function"><span class="hljs-params">(<span class="hljs-string">'crd_id'</span>)</span>-&gt;</span>nullable();
+            $table-&gt;unsignedBigInteger<span class="hljs-function"><span class="hljs-params">(<span class="hljs-string">'erb_id'</span>)</span>-&gt;</span>nullable();
+            $table-&gt;string<span class="hljs-function"><span class="hljs-params">(<span class="hljs-string">'qr_serie'</span>)</span>-&gt;</span>unique();
+            $table-&gt;integer(<span class="hljs-string">'coins'</span>);
+            $table-&gt;integer<span class="hljs-function"><span class="hljs-params">(<span class="hljs-string">'gone_down'</span>)</span>-&gt;</span><span class="hljs-keyword">default</span>(<span class="hljs-string">'0'</span>);
+            $table-&gt;timestamps();
+            $table-&gt;foreign<span class="hljs-function"><span class="hljs-params">(<span class="hljs-string">'crd_id'</span>)</span>-&gt;</span>references<span class="hljs-function"><span class="hljs-params">(<span class="hljs-string">'id'</span>)</span>-&gt;</span><span class="hljs-literal">on</span><span class="hljs-function"><span class="hljs-params">(<span class="hljs-string">'crds'</span>)</span>-&gt;</span>onUpdate<span class="hljs-function"><span class="hljs-params">(<span class="hljs-string">'cascade'</span>)</span>-&gt;</span>onDelete<span class="hljs-function"><span class="hljs-params">(<span class="hljs-string">'cascade'</span>)</span>-&gt;</span>nullable();
+            $table-&gt;foreign<span class="hljs-function"><span class="hljs-params">(<span class="hljs-string">'erb_id'</span>)</span>-&gt;</span>references<span class="hljs-function"><span class="hljs-params">(<span class="hljs-string">'id'</span>)</span>-&gt;</span><span class="hljs-literal">on</span><span class="hljs-function"><span class="hljs-params">(<span class="hljs-string">'erbs'</span>)</span>-&gt;</span>onUpdate<span class="hljs-function"><span class="hljs-params">(<span class="hljs-string">'cascade'</span>)</span>-&gt;</span>onDelete<span class="hljs-function"><span class="hljs-params">(<span class="hljs-string">'cascade'</span>)</span>-&gt;</span>nullable();
+        });
+    }
+
+    <span class="hljs-comment">/**
+     * Reverse the migrations.
+     *
+     * @return void
+     */</span>
+    public <span class="hljs-keyword">function</span> down()
+    {
+        Schema::dropIfExists(<span class="hljs-string">'qrs'</span>);
+    }
+}
+</code></pre>
+<p><a name="seeds"></a></p>
+<h2 id="seeder">Seeder</h2>
+<p>Comando <code>php artisan make:seeder AddQrTableSeeder</code> ejecutar en consola dentro del proyecto.</p>
+<blockquote>
+<p>{info} Directorio  <code>database/seeders/AddQrTableSeeder.php</code>.</p>
+</blockquote>
+<pre><code class="lang-php">
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AddQrTableSeeder</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Seeder</span>
+</span>{
+    <span class="hljs-comment">/**
+     * Run the database seeds.
+     *
+     * <span class="hljs-doctag">@return</span> void
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">run</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-comment">//</span>
+        $qrcoin = <span class="hljs-keyword">new</span> Qr();
+        $qrcoin-&gt;id = <span class="hljs-number">1</span>;
+        $qrcoin-&gt;crd_id = <span class="hljs-keyword">null</span>;
+        $qrcoin-&gt;erb_id = <span class="hljs-keyword">null</span>;
+        $qrcoin-&gt;qr_serie = <span class="hljs-string">'ABDORT3467'</span>;
+        $qrcoin-&gt;coins = <span class="hljs-number">2000</span>;
+        $qrcoin-&gt;gone_down = <span class="hljs-number">0</span>;
+        $qrcoin-&gt;save();
+
+        $qrcoin = <span class="hljs-keyword">new</span> Qr();
+        $qrcoin-&gt;id = <span class="hljs-number">2</span>;
+        $qrcoin-&gt;crd_id = <span class="hljs-keyword">null</span>;
+        $qrcoin-&gt;erb_id = <span class="hljs-keyword">null</span>;
+        $qrcoin-&gt;qr_serie = <span class="hljs-string">'CDFHIKR359'</span>;
+        $qrcoin-&gt;coins = <span class="hljs-number">2000</span>;
+        $qrcoin-&gt;gone_down = <span class="hljs-number">0</span>;
+        $qrcoin-&gt;save();
+
+        $qrcoin = <span class="hljs-keyword">new</span> Qr();
+        $qrcoin-&gt;id = <span class="hljs-number">3</span>;
+        $qrcoin-&gt;crd_id = <span class="hljs-keyword">null</span>;
+        $qrcoin-&gt;erb_id = <span class="hljs-keyword">null</span>;
+        $qrcoin-&gt;qr_serie = <span class="hljs-string">'CDLQRWX145'</span>;
+        $qrcoin-&gt;coins = <span class="hljs-number">2000</span>;
+        $qrcoin-&gt;gone_down = <span class="hljs-number">0</span>;
+        $qrcoin-&gt;save();
+
+        $qrcoin = <span class="hljs-keyword">new</span> Qr();
+        $qrcoin-&gt;id = <span class="hljs-number">4</span>;
+        $qrcoin-&gt;crd_id = <span class="hljs-keyword">null</span>;
+        $qrcoin-&gt;erb_id = <span class="hljs-keyword">null</span>;
+        $qrcoin-&gt;qr_serie = <span class="hljs-string">'ACJOTWXY01'</span>;
+        $qrcoin-&gt;coins = <span class="hljs-number">2000</span>;
+        $qrcoin-&gt;gone_down = <span class="hljs-number">0</span>;
+        $qrcoin-&gt;save();
+
+        $qrcoin = <span class="hljs-keyword">new</span> Qr();
+        $qrcoin-&gt;id = <span class="hljs-number">5</span>;
+        $qrcoin-&gt;crd_id = <span class="hljs-keyword">null</span>;
+        $qrcoin-&gt;qr_serie = <span class="hljs-string">'HJKLOQXY06'</span>;
+        $qrcoin-&gt;coins = <span class="hljs-number">2000</span>;
+        $qrcoin-&gt;gone_down = <span class="hljs-number">0</span>;
+        $qrcoin-&gt;save();
+
+        $qrcoin = <span class="hljs-keyword">new</span> Qr();
+        $qrcoin-&gt;id = <span class="hljs-number">6</span>;
+        $qrcoin-&gt;crd_id = <span class="hljs-keyword">null</span>;
+        $qrcoin-&gt;erb_id = <span class="hljs-keyword">null</span>;
+        $qrcoin-&gt;qr_serie = <span class="hljs-string">'LPTUVXY134'</span>;
+        $qrcoin-&gt;coins = <span class="hljs-number">2000</span>;
+        $qrcoin-&gt;gone_down = <span class="hljs-number">0</span>;
+        $qrcoin-&gt;save();
+
+        $qrcoin = <span class="hljs-keyword">new</span> Qr();
+        $qrcoin-&gt;id = <span class="hljs-number">7</span>;
+        $qrcoin-&gt;crd_id = <span class="hljs-keyword">null</span>;
+        $qrcoin-&gt;erb_id = <span class="hljs-keyword">null</span>;
+        $qrcoin-&gt;qr_serie = <span class="hljs-string">'CGHKNOUYZ6'</span>;
+        $qrcoin-&gt;coins = <span class="hljs-number">2000</span>;
+        $qrcoin-&gt;gone_down = <span class="hljs-number">0</span>;
+        $qrcoin-&gt;save();
+
+        $qrcoin = <span class="hljs-keyword">new</span> Qr();
+        $qrcoin-&gt;id = <span class="hljs-number">8</span>;
+        $qrcoin-&gt;crd_id = <span class="hljs-keyword">null</span>;
+        $qrcoin-&gt;erb_id = <span class="hljs-keyword">null</span>;
+        $qrcoin-&gt;qr_serie = <span class="hljs-string">'CFJM012468'</span>;
+        $qrcoin-&gt;coins = <span class="hljs-number">2000</span>;
+        $qrcoin-&gt;gone_down = <span class="hljs-number">0</span>;
+        $qrcoin-&gt;save();
+
+        $qrcoin = <span class="hljs-keyword">new</span> Qr();
+        $qrcoin-&gt;id = <span class="hljs-number">9</span>;
+        $qrcoin-&gt;crd_id = <span class="hljs-keyword">null</span>;
+        $qrcoin-&gt;erb_id = <span class="hljs-keyword">null</span>;
+        $qrcoin-&gt;qr_serie = <span class="hljs-string">'BGHIJPVW07'</span>;
+        $qrcoin-&gt;coins = <span class="hljs-number">2000</span>;
+        $qrcoin-&gt;gone_down = <span class="hljs-number">0</span>;
+        $qrcoin-&gt;save();
+    }
+}
+</code></pre>
+<p><a name="models"></a></p>
+<h2 id="modelo">Modelo</h2>
+<p>Comando <code>php artisan make:model Qr</code> ejecutar en consola dentro del proyecto.</p>
+<blockquote>
+<p>{info} Directorio  <code>app/Qr.php</code>.</p>
+</blockquote>
+<pre><code class="lang-php">
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Qr</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Model</span>
+</span>{
+    <span class="hljs-comment">//</span>
+    <span class="hljs-comment">/**
+     * The attributes that are mass assignable.
+     *
+     * <span class="hljs-doctag">@var</span> array
+     */</span>
+    <span class="hljs-keyword">protected</span> $fillable = [
+        <span class="hljs-string">'id'</span>, <span class="hljs-string">'crd_id'</span>, <span class="hljs-string">'erb_id'</span>, <span class="hljs-string">'qr_serie'</span>, <span class="hljs-string">'coins'</span>, <span class="hljs-string">'gone_down'</span>,
+    ];
+
+    <span class="hljs-comment">/**
+     * The attributes that should be hidden for arrays.
+     *
+     * <span class="hljs-doctag">@var</span> array
+     */</span>
+    <span class="hljs-keyword">protected</span> $hidden = [
+
+    ];
+
+    <span class="hljs-comment">/**
+     * The attributes that should be cast to native types.
+     *
+     * <span class="hljs-doctag">@var</span> array
+     */</span>
+    <span class="hljs-keyword">protected</span> $casts = [
+    ];
+
+    <span class="hljs-comment">/**
+     * Get the user record associated with the hostpot.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">crd</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;belongsToMany(<span class="hljs-string">'App\Crd'</span>, <span class="hljs-string">'id'</span>);
+    }
+
+    <span class="hljs-comment">/**
+     * Get the user record associated with the hostpot.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">erb</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;belongsToMany(<span class="hljs-string">'App\Erb'</span>, <span class="hljs-string">'id'</span>);
+    }
+
+    <span class="hljs-comment">/**
+     * Get the hostpot for the blog crd.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">historialqr</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;hasMany(<span class="hljs-string">'App\HistorialQr'</span>,<span class="hljs-string">'qr_id'</span>);
+    }
+}
+</code></pre>
+<p><a name="controllers"></a></p>
+<h2 id="controlador">Controlador</h2>
+<p>Comando <code>php artisan make:controller Qr</code> ejecutar en consola dentro del proyecto.</p>
+<blockquote>
+<p>{info} Directorio  <code>app/Http/Controllers/QrController.php</code>.</p>
+</blockquote>
+<pre><code class="lang-php">
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">QrController</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Controller</span>
+</span>{
+    <span class="hljs-comment">/**
+     * Create a new controller instance.
+     *
+     * <span class="hljs-doctag">@return</span> void
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">$this</span>-&gt;middleware(<span class="hljs-string">'auth'</span>);
+    }
+
+    <span class="hljs-comment">/**
+     * Display a listing of the resource.
+     *
+     * <span class="hljs-doctag">@return</span> \Illuminate\Http\Response
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">index</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-comment">//</span>
+        <span class="hljs-comment">//QrCode::size(500)-&gt;generate('A tutorial of QR code!');</span>
+        $qrs = Qr::all();
+        <span class="hljs-comment">//return view('module.qr.index')-&gt;with('qrcoins',$qrs);</span>
+        <span class="hljs-keyword">return</span> view(<span class="hljs-string">'module.qr.index'</span>,compact(<span class="hljs-string">'qrs'</span>));
+    }
+
+    <span class="hljs-comment">/**
+     * Show the form for creating a new resource.
+     *
+     * <span class="hljs-doctag">@return</span> \Illuminate\Http\Response
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">create</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-comment">//</span>
+        $crds = Crd::all();
+        $erbs = Erb::all();
+        <span class="hljs-keyword">return</span> view(<span class="hljs-string">'module.qr.create'</span>,compact(<span class="hljs-string">'crds'</span>,<span class="hljs-string">'erbs'</span>));
+    }
+
+    <span class="hljs-comment">/**
+     * Store a newly created resource in storage.
+     *
+     * <span class="hljs-doctag">@param</span>  \Illuminate\Http\Request  $request
+     * <span class="hljs-doctag">@return</span> \Illuminate\Http\Response
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">store</span><span class="hljs-params">(Request $request)</span>
+    </span>{
+        <span class="hljs-comment">//</span>
+        $request-&gt;validate([
+            <span class="hljs-string">'crd_id'</span>=&gt;<span class="hljs-string">'required|string|max:100'</span>,
+            <span class="hljs-string">'erb_id'</span>=&gt;<span class="hljs-string">'required|string|max:100'</span>,
+            <span class="hljs-string">'qr_serie'</span>=&gt;<span class="hljs-string">'required|string|max:100'</span>,
+            <span class="hljs-string">'coins'</span>=&gt;<span class="hljs-string">'required|string|max:100'</span>,
+            <span class="hljs-string">'gone_down'</span>=&gt;<span class="hljs-string">'required|string|max:100'</span>,
+        ]);
+        $qr = <span class="hljs-keyword">new</span> Qr([
+            <span class="hljs-string">'crd_id'</span> =&gt; $request-&gt;get(<span class="hljs-string">'crd_id'</span>),
+            <span class="hljs-string">'erb_id'</span> =&gt; $request-&gt;get(<span class="hljs-string">'erb_id'</span>),
+            <span class="hljs-string">'qr_serie'</span> =&gt; $request-&gt;get(<span class="hljs-string">'qr_serie'</span>),
+            <span class="hljs-string">'coins'</span> =&gt; $request-&gt;get(<span class="hljs-string">'coins'</span>),
+            <span class="hljs-string">'gone_down'</span> =&gt; $request-&gt;get(<span class="hljs-string">'gone_down'</span>)
+            ]);
+        $qr-&gt;save();
+        <span class="hljs-comment">//return redirect(/coin)-&gt;with('success','Qr Generado Satisfactoriamente');</span>
+        toastr()-&gt;success(<span class="hljs-string">'Qr creado'</span>);
+        <span class="hljs-keyword">return</span> redirect()-&gt;route(<span class="hljs-string">'qr.index'</span>);
+    }
+
+    <span class="hljs-comment">/**
+     * Display the specified resource.
+     *
+     * <span class="hljs-doctag">@param</span>  \App\Qr  $qr
+     * <span class="hljs-doctag">@return</span> \Illuminate\Http\Response
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">show</span><span class="hljs-params">(Qr $qr)</span>
+    </span>{
+        <span class="hljs-comment">//</span>
+        <span class="hljs-keyword">return</span> view(<span class="hljs-string">'module.qr.show'</span>, compact(<span class="hljs-string">'qr'</span>));
+    }
+
+    <span class="hljs-comment">/**
+     * Show the form for editing the specified resource.
+     *
+     * <span class="hljs-doctag">@param</span>  \App\Qr  $qr
+     * <span class="hljs-doctag">@return</span> \Illuminate\Http\Response
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">edit</span><span class="hljs-params">(Qr $qr)</span>
+    </span>{
+        <span class="hljs-comment">//</span>
+        $crds = Crd::all();
+        $erbs = Erb::all();
+        <span class="hljs-keyword">return</span> view(<span class="hljs-string">'module.qr.edit'</span>,compact(<span class="hljs-string">'qr'</span>,<span class="hljs-string">'crds'</span>,<span class="hljs-string">'erbs'</span>));
+    }
+
+    <span class="hljs-comment">/**
+     * Update the specified resource in storage.
+     *
+     * <span class="hljs-doctag">@param</span>  \Illuminate\Http\Request  $request
+     * <span class="hljs-doctag">@param</span>  \App\Qr  $qr
+     * <span class="hljs-doctag">@return</span> \Illuminate\Http\Response
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">update</span><span class="hljs-params">(Request $request, Qr $qr)</span>
+    </span>{
+        <span class="hljs-comment">//</span>
+        $request-&gt;validate([
+            <span class="hljs-string">'crd_id'</span>=&gt;<span class="hljs-string">'required|string|max:100'</span>,
+            <span class="hljs-string">'erb_id'</span>=&gt;<span class="hljs-string">'required|string|max:100'</span>,
+            <span class="hljs-string">'qr_serie'</span>=&gt;<span class="hljs-string">'required|string|max:100'</span>,
+            <span class="hljs-string">'coins'</span>=&gt;<span class="hljs-string">'required|string|max:100'</span>,
+            <span class="hljs-string">'gone_down'</span>=&gt;<span class="hljs-string">'required|string|max:100'</span>,
+        ]);
+        $qr_request = $request-&gt;all();
+        $qr-&gt;update($qr_request);
+        toastr()-&gt;warning(<span class="hljs-string">'Qr actualizado'</span>);
+        <span class="hljs-keyword">return</span> redirect()-&gt;route(<span class="hljs-string">'qr.index'</span>);
+    }
+
+    <span class="hljs-comment">/**
+     * Remove the specified resource from storage.
+     *
+     * <span class="hljs-doctag">@param</span>  \App\Qr  $qr
+     * <span class="hljs-doctag">@return</span> \Illuminate\Http\Response
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">destroy</span><span class="hljs-params">(Qr $qr)</span>
+    </span>{
+        <span class="hljs-comment">//</span>
+        $qr-&gt;delete();
+        <span class="hljs-comment">//return reditec('/qr'-&gt;with('success','Qr Eliminado Satisfactoriamente'));</span>
+        toastr()-&gt;error(<span class="hljs-string">'Qr eliminado'</span>);
+        <span class="hljs-keyword">return</span> redirect()-&gt;route(<span class="hljs-string">'qr.index'</span>);
+    }
+}
+</code></pre>
+<p><a name="routes"></a></p>
+<h2 id="ruta-web">Ruta Web</h2>
+<p>No cuenta con comando artisan para esto dispones ya de un archivo de rutas web.</p>
+<blockquote>
+<p>{info} Directorio  <code>routes/web.php</code> agregar dentro del archivo.</p>
+</blockquote>
+<pre><code class="lang-php">
+<span class="hljs-comment">/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/</span>
+
+Route::get(<span class="hljs-string">'/'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">return</span> view(<span class="hljs-string">'auth.login'</span>);
+});
+
+Auth::routes();
+Route::get(<span class="hljs-string">'/home'</span>, <span class="hljs-string">'HomeController@index'</span>)-&gt;name(<span class="hljs-string">'home'</span>)-&gt;middleware(<span class="hljs-string">'auth'</span>);
+Route::resource(<span class="hljs-string">'qr'</span>, <span class="hljs-string">'QrController'</span>)-&gt;middleware(<span class="hljs-string">'auth'</span>);
+Auth::routes();
+</code></pre>
+<p><a name="views"></a></p>
+<h2 id="vista">Vista</h2>
+<p>No se cuenta con comando pero crea un archivos index para modulo de usuario <code>index.blade.php</code> y pega este codigo.</p>
+<blockquote>
+<p>{info} Directorio  <code>resources/views/module/qr/index.blade.php</code>.</p>
+</blockquote>
+<pre><code class="lang-php"><span class="xml">
+<span class="hljs-comment">&lt;!-- Main content --&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"content"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"row"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-12"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"card card-primary card-outline"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"card-header"</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"card-title"</span>&gt;</span>Tabla Qr<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-xs btn-success float-right"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"</span></span></span><span class="hljs-template-variable">{{ route('qr.create') }</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">}"</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"button"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"fas fa-plus"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-comment">&lt;!-- /.card-header --&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"card-body"</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"qrTable"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"table table-bordered table-striped"</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">thead</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Id<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Crd_Id<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Erb_id<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>QrSerie<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Coins<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Actualizado<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>FechaCreacion<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>FechaMoficiacion<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Acciones<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">thead</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">tbody</span>&gt;</span>
+                @foreach($qrs as $qr)
+                <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span></span><span class="hljs-template-variable">{{ $qr-&gt;id }</span><span class="xml">}<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span></span><span class="hljs-template-variable">{{ $qr-&gt;crd_id }</span><span class="xml">}<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span></span><span class="hljs-template-variable">{{ $qr-&gt;erb_id }</span><span class="xml">}<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span></span><span class="hljs-template-variable">{{ $qr-&gt;qr_serie }</span><span class="xml">}<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span></span><span class="hljs-template-variable">{{ $qr-&gt;coins }</span><span class="xml">}<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>      
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span></span><span class="hljs-template-variable">{{ $qr-&gt;gone_down }</span><span class="xml">}<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span></span><span class="hljs-template-variable">{{ $qr-&gt;created_at }</span><span class="xml">}<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span></span><span class="hljs-template-variable">{{ $qr-&gt;updated_at }</span><span class="xml">}<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>
+                      <span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"form"</span> <span class="hljs-attr">action</span>=<span class="hljs-string">"</span></span></span><span class="hljs-template-variable">{{ route('qr.destroy',$qr-&gt;id) }</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">}"</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"POST"</span>&gt;</span>
+                      <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-primary btn-xs"</span> <span class="hljs-attr">data-toggle</span>=<span class="hljs-string">"modal"</span> <span class="hljs-attr">data-target</span>=<span class="hljs-string">"#</span></span></span><span class="hljs-template-variable">{{ $qr-&gt;qr_serie }</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">}"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"fas fa-barcode"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+                      <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-info btn-xs"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"</span></span></span><span class="hljs-template-variable">{{ route('qr.show',$qr-&gt;id) }</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">}"</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"button"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"fas fa-eye"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span> 
+                      <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-warning btn-xs"</span>  <span class="hljs-attr">href</span>=<span class="hljs-string">"</span></span></span><span class="hljs-template-variable">{{ route('qr.edit',$qr-&gt;id) }</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">}"</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"button"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"fas fa-pen"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+                      <span class="hljs-comment">&lt;!---------------------------------------------------------------------------------&gt;</span>
+                      <span class="hljs-comment">&lt;!-- Modal --&gt;</span>
+                      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"modal fade"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"</span></span></span><span class="hljs-template-variable">{{ $qr-&gt;qr_serie }</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">}"</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">"-1"</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"dialog"</span> <span class="hljs-attr">aria-labelledby</span>=<span class="hljs-string">"</span></span></span><span class="hljs-template-variable">{{ $qr-&gt;qr_serie }</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">}"</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">"true"</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"modal-dialog modal-dialog-centered"</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"document"</span>&gt;</span>
+                          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"modal-content"</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"modal-header"</span>&gt;</span>
+                             <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"modal-title text-center"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"</span></span></span><span class="hljs-template-variable">{{ $qr-&gt;qr_serie }</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">}"</span>&gt;</span>Codigo Qr: </span><span class="hljs-template-variable">{{ $qr-&gt;qr_serie }</span><span class="xml">}<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+                              <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"close"</span> <span class="hljs-attr">data-dismiss</span>=<span class="hljs-string">"modal"</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">"Close"</span>&gt;</span>
+                               <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">"true"</span>&gt;</span>&amp;times;<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                               <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                               <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                               <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"modal-body"</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"text-align: center"</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span> </span><span class="hljs-template-variable">{!!QrCode::size(300)-&gt;generate("$qr-&gt;qr_serie")!!}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                               <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                               <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"modal-footer"</span>&gt;</span>
+                              <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-danger"</span> <span class="hljs-attr">data-dismiss</span>=<span class="hljs-string">"modal"</span>&gt;</span>Cerrar<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                          <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                      <span class="hljs-comment">&lt;!-- /.Modal --&gt;</span>
+                      <span class="hljs-comment">&lt;!---------------------------------------------------------------------------------&gt;</span>
+                      @csrf
+                      @method('DELETE')
+                      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-danger btn-xs"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"fas fa-trash"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                      <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+                @endforeach
+                <span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span>
+               <span class="hljs-comment">&lt;!-- &lt;tfoot&gt;
+                 &lt;tr&gt;
+                 &lt;th&gt;Id&lt;/th&gt;
+                  &lt;th&gt;Crd_Id&lt;/th&gt;
+                  &lt;th&gt;Erb_id&lt;/th&gt;
+                  &lt;th&gt;QrSerie&lt;/th&gt;
+                  &lt;th&gt;Coins&lt;/th&gt;
+                  &lt;th&gt;Actualizado&lt;/th&gt;
+                  &lt;th&gt;FechaCreacion&lt;/th&gt;
+                  &lt;th&gt;FechaMoficiacion&lt;/th&gt;
+                  &lt;th&gt;Acciones&lt;/th&gt;
+                &lt;/tr&gt;
+                &lt;/tfoot&gt;--&gt;</span>
+              <span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-comment">&lt;!-- /.card-body --&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+          <span class="hljs-comment">&lt;!-- /.card --&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- /.col --&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-comment">&lt;!-- /.row --&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- /.content --&gt;</span> 
+@stop</span>
+</code></pre>
+<p><a name="mcr"></a></p>
+<h2 id="comando-para-crear-migracion-modelo-controlador-seeder">Comando para crear Migracion, Modelo, Controlador + Seeder</h2>
+<p>Tu puedes crear los archivos de forma automatica y sin tanta complejidad.</p>
+<p>☝️ En un solo comando crearas migracion, modelo, controlador con recursos.</p>
+<pre><code class="lang-php">   <span class="hljs-selector-tag">php</span> <span class="hljs-selector-tag">artisan</span> <span class="hljs-selector-tag">make</span><span class="hljs-selector-pseudo">:model</span> <span class="hljs-selector-tag">NameModel</span> <span class="hljs-selector-tag">-mcr</span>
+</code></pre>
+<p>✌️ Run the install command.</p>
+<pre><code class="lang-php">   <span class="hljs-selector-tag">php</span> <span class="hljs-selector-tag">artisan</span> <span class="hljs-selector-tag">make</span><span class="hljs-selector-pseudo">:seeder</span> <span class="hljs-selector-tag">NameTableSeeder</span>
+</code></pre>
+</body></html>
