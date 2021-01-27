@@ -2,7 +2,7 @@
 
 ---
 
-- [Crd CRUD](#section-sensor)
+- [Sensor CRUD](#section-sensor)
 - [Migracion](#migrations)
 - [Seeder](#seeds)
 - [Modelo](#models)
@@ -35,6 +35,7 @@ Comando `php artisan make:migration Sensor` ejecutar en consola dentro del proye
 > {info} Directorio  `database/migrations/2014_10_12_000000_create_sensors_table.php`.
 
 ```php
+
 class CreateSensorsTable extends Migration
 {
     /**
@@ -77,6 +78,7 @@ class CreateSensorsTable extends Migration
     }
 }
 
+
 ```
 
 <a name="seeds"></a>
@@ -87,6 +89,7 @@ Comando `php artisan make:seeder AddSensorTableSeeder` ejecutar en consola dentr
 > {info} Directorio  `database/seeders/AddSensorTableSeeder.php`.
 
 ```php
+
 class AddSensorTableSeeder extends Seeder
 {
     /**
@@ -101,186 +104,6 @@ class AddSensorTableSeeder extends Seeder
         $sensor->id = 1;
         $sensor->erb_id = null;
         $sensor->num_serie = 1000000001;
-        $sensor->passw = 'sensor@321';
-        $sensor->vol_1 = '3.5';
-        $sensor->vol_2 = '2.1';
-        $sensor->vol_3 = '2.6';
-        $sensor->door_1 = 'On';
-        $sensor->door_2 = 'Off';
-        $sensor->door_3 = 'On';
-        $sensor->door_4 = 'On';
-        $sensor->rlay_1 = 'On';
-        $sensor->rlay_2 = 'Off';
-        $sensor->rlay_3 = 'On';
-        $sensor->rlay_4 = 'Off';
-        $sensor->text = 'sensor demo';
-        $sensor->save();
-
-        // Sensor Example #2
-        $sensor = new Sensor();
-        $sensor->id = 2;
-        $sensor->erb_id = null;
-        $sensor->num_serie = 1000000002;
-        $sensor->passw = 'sensor@321';
-        $sensor->vol_1 = '3.5';
-        $sensor->vol_2 = '2.1';
-        $sensor->vol_3 = '2.6';
-        $sensor->door_1 = 'On';
-        $sensor->door_2 = 'Off';
-        $sensor->door_3 = 'On';
-        $sensor->door_4 = 'On';
-        $sensor->rlay_1 = 'On';
-        $sensor->rlay_2 = 'Off';
-        $sensor->rlay_3 = 'On';
-        $sensor->rlay_4 = 'Off';
-        $sensor->text = 'sensor demo';
-        $sensor->save();
-
-        // Sensor Example #3
-        $sensor = new Sensor();
-        $sensor->id = 3;
-        $sensor->erb_id = null;
-        $sensor->num_serie = 1000000003;
-        $sensor->passw = 'sensor@321';
-        $sensor->vol_1 = '3.5';
-        $sensor->vol_2 = '2.1';
-        $sensor->vol_3 = '2.6';
-        $sensor->door_1 = 'On';
-        $sensor->door_2 = 'Off';
-        $sensor->door_3 = 'On';
-        $sensor->door_4 = 'On';
-        $sensor->rlay_1 = 'On';
-        $sensor->rlay_2 = 'Off';
-        $sensor->rlay_3 = 'On';
-        $sensor->rlay_4 = 'Off';
-        $sensor->text = 'sensor demo';
-        $sensor->save();
-
-        // Sensor Example #4
-        $sensor = new Sensor();
-        $sensor->id = 4;
-        $sensor->erb_id = null;
-        $sensor->num_serie = 1000000004;
-        $sensor->passw = 'sensor@321';
-        $sensor->vol_1 = '3.5';
-        $sensor->vol_2 = '2.1';
-        $sensor->vol_3 = '2.6';
-        $sensor->door_1 = 'On';
-        $sensor->door_2 = 'Off';
-        $sensor->door_3 = 'On';
-        $sensor->door_4 = 'On';
-        $sensor->rlay_1 = 'On';
-        $sensor->rlay_2 = 'Off';
-        $sensor->rlay_3 = 'On';
-        $sensor->rlay_4 = 'Off';
-        $sensor->text = 'sensor demo';
-        $sensor->save();
-
-        // Sensor Example #5
-        $sensor = new Sensor();
-        $sensor->id = 5;
-        $sensor->erb_id = null;
-        $sensor->num_serie = 1000000005;
-        $sensor->passw = 'sensor@321';
-        $sensor->vol_1 = '3.5';
-        $sensor->vol_2 = '2.1';
-        $sensor->vol_3 = '2.6';
-        $sensor->door_1 = 'On';
-        $sensor->door_2 = 'Off';
-        $sensor->door_3 = 'On';
-        $sensor->door_4 = 'On';
-        $sensor->rlay_1 = 'On';
-        $sensor->rlay_2 = 'Off';
-        $sensor->rlay_3 = 'On';
-        $sensor->rlay_4 = 'Off';
-        $sensor->text = 'sensor demo';
-        $sensor->save();
-
-        // Sensor Example #6
-        $sensor = new Sensor();
-        $sensor->id = 6;
-        $sensor->erb_id = null;
-        $sensor->num_serie = 1000000006;
-        $sensor->passw = 'sensor@321';
-        $sensor->vol_1 = '3.5';
-        $sensor->vol_2 = '2.1';
-        $sensor->vol_3 = '2.6';
-        $sensor->door_1 = 'On';
-        $sensor->door_2 = 'Off';
-        $sensor->door_3 = 'On';
-        $sensor->door_4 = 'On';
-        $sensor->rlay_1 = 'On';
-        $sensor->rlay_2 = 'Off';
-        $sensor->rlay_3 = 'On';
-        $sensor->rlay_4 = 'Off';
-        $sensor->text = 'sensor demo';
-        $sensor->save();
-
-        // Sensor Example #7
-        $sensor = new Sensor();
-        $sensor->id = 7;
-        $sensor->erb_id = null;
-        $sensor->num_serie = 1000000007;
-        $sensor->passw = 'sensor@321';
-        $sensor->vol_1 = '3.5';
-        $sensor->vol_2 = '2.1';
-        $sensor->vol_3 = '2.6';
-        $sensor->door_1 = 'On';
-        $sensor->door_2 = 'Off';
-        $sensor->door_3 = 'On';
-        $sensor->door_4 = 'On';
-        $sensor->rlay_1 = 'On';
-        $sensor->rlay_2 = 'Off';
-        $sensor->rlay_3 = 'On';
-        $sensor->rlay_4 = 'Off';
-        $sensor->text = 'sensor demo';
-        $sensor->save();
-
-        // Sensor Example #8
-        $sensor = new Sensor();
-        $sensor->id = 8;
-        $sensor->erb_id = null;
-        $sensor->num_serie = 1000000008;
-        $sensor->passw = 'sensor@321';
-        $sensor->vol_1 = '3.5';
-        $sensor->vol_2 = '2.1';
-        $sensor->vol_3 = '2.6';
-        $sensor->door_1 = 'On';
-        $sensor->door_2 = 'Off';
-        $sensor->door_3 = 'On';
-        $sensor->door_4 = 'On';
-        $sensor->rlay_1 = 'On';
-        $sensor->rlay_2 = 'Off';
-        $sensor->rlay_3 = 'On';
-        $sensor->rlay_4 = 'Off';
-        $sensor->text = 'sensor demo';
-        $sensor->save();
-
-        // Sensor Example #9
-        $sensor = new Sensor();
-        $sensor->id = 9;
-        $sensor->erb_id = null;
-        $sensor->num_serie = 1000000009;
-        $sensor->passw = 'sensor@321';
-        $sensor->vol_1 = '3.5';
-        $sensor->vol_2 = '2.1';
-        $sensor->vol_3 = '2.6';
-        $sensor->door_1 = 'On';
-        $sensor->door_2 = 'Off';
-        $sensor->door_3 = 'On';
-        $sensor->door_4 = 'On';
-        $sensor->rlay_1 = 'On';
-        $sensor->rlay_2 = 'Off';
-        $sensor->rlay_3 = 'On';
-        $sensor->rlay_4 = 'Off';
-        $sensor->text = 'sensor demo';
-        $sensor->save();
-
-        // Sensor Example #10
-        $sensor = new Sensor();
-        $sensor->id = 10;
-        $sensor->erb_id = null;
-        $sensor->num_serie = 1000000010;
         $sensor->passw = 'sensor@321';
         $sensor->vol_1 = '3.5';
         $sensor->vol_2 = '2.1';
@@ -399,190 +222,7 @@ class SensorController extends Controller
         $back2[0][1]= "#333";
         $back2[1][0]= "1";
         $back2[1][1]= "#FFF"; 
-        $vol1 = \Chart::title(['text' => 'Voltaje(1)',])
-                        ->chart(['type'     => 'gauge','renderTo' => 'vol1',
-                                 'plotBackgroundColor' => null,
-                                 'plotBackgroundImage' => null,
-                                 'plotBorderWidth' => 0,
-                                 'plotShadow' => false,])
-                        ->credits(['enabled' => false])
-                        ->pane(['startAngle' => -150,
-                                'endAngle' => 150,
-                                'background' => [['backgroundColor'=> ['linearGradient' => ['x1' => 0,
-                                                                                            'y1' => 0,
-                                                                                            'x2' => 0,
-                                                                                            'y2' => 1,],
-                                                                       'stops'         => $back1
-                                                                      ],
-                                                  'borderWidth' => 0,
-                                                  'outerRadius' => '109%',],
-                                                 ['backgroundColor'=> ['linearGradient' => ['x1' => 0,
-                                                                                            'y1' => 0,
-                                                                                            'x2' => 0,
-                                                                                            'y2' => 1,],
-                                                                       'stops'         => $back2,
-                                                                      ],
-                                                  'borderWidth' => 1,
-                                                  'outerRadius' => '107%',],
-                                                  ['' => ''],
-                                                  ['backgroundColor'=> '#DDD',
-                                                  'borderWidth' => 0,
-                                                  'outerRadius' => '105%',
-                                                  'innerRadius' => '103%',]], 
-
-                        ])
-                        ->yaxis(['min' => 0,
-                                 'max' => 5.2,
-                                 'minorTickInterval' => 'auto' ,
-                                 'minorTickWidth' => 1,
-                                 'minorTickLength' => 5,
-                                 'minorTickPosition' => 'inside',
-                                 'minorTickColor' => '#666',
-                                 'tickPixelInterval' => 30,
-                                 'tickWidth' => 2,
-                                 'tickPosition' => 'inside',
-                                 'tickLength' => 5,
-                                 'tickColor' => '#666',
-                                 'labels' => ['step' => 2,
-                                              'rotation' => 'auto',],
-                                 'title' => ['text' => 'Volt/DC',],
-                                 'plotBands' => [['from' => 0,
-                                                 'to' => 3,
-                                                 'color' => '#55BF3B',],
-                                                 ['from' => 3,
-                                                 'to' => 4,
-                                                 'color' => '#DDDF0D',],
-                                                 ['from' => 4,
-                                                 'to' => 5.2,
-                                                 'color' => '#DF5353',]],
-                                    ])
-                         ->series([['name'  => 'Valor',
-                                   'data'  => [$sensor->vol_1*1],
-                                   'tooltip' => ['valueSuffix' => '-Volt/DC'],]])
-                        ->display();
-    $vol2 = \Chart::title(['text' => 'Voltaje(2)',])
-                        ->chart(['type'     => 'gauge','renderTo' => 'vol2',
-                                 'plotBackgroundColor' => null,
-                                 'plotBackgroundImage' => null,
-                                 'plotBorderWidth' => 0,
-                                 'plotShadow' => false,])
-                        ->credits(['enabled' => false])
-                        ->pane(['startAngle' => -150,
-                                'endAngle' => 150,
-                                'background' => [['backgroundColor'=> ['linearGradient' => ['x1' => 0,
-                                                                                            'y1' => 0,
-                                                                                            'x2' => 0,
-                                                                                            'y2' => 1,],
-                                                                       'stops'         => $back1
-                                                                      ],
-                                                  'borderWidth' => 0,
-                                                  'outerRadius' => '109%',],
-                                                 ['backgroundColor'=> ['linearGradient' => ['x1' => 0,
-                                                                                            'y1' => 0,
-                                                                                            'x2' => 0,
-                                                                                            'y2' => 1,],
-                                                                       'stops'         => $back2,
-                                                                      ],
-                                                  'borderWidth' => 1,
-                                                  'outerRadius' => '107%',],
-                                                  ['' => ''],
-                                                  ['backgroundColor'=> '#DDD',
-                                                  'borderWidth' => 0,
-                                                  'outerRadius' => '105%',
-                                                  'innerRadius' => '103%',]], 
-
-                        ])
-                        ->yaxis(['min' => 0,
-                                 'max' => 5.2,
-                                 'minorTickInterval' => 'auto' ,
-                                 'minorTickWidth' => 1,
-                                 'minorTickLength' => 5,
-                                 'minorTickPosition' => 'inside',
-                                 'minorTickColor' => '#666',
-                                 'tickPixelInterval' => 30,
-                                 'tickWidth' => 2,
-                                 'tickPosition' => 'inside',
-                                 'tickLength' => 5,
-                                 'tickColor' => '#666',
-                                 'labels' => ['step' => 2,
-                                              'rotation' => 'auto',],
-                                 'title' => ['text' => 'Volt/DC',],
-                                 'plotBands' => [['from' => 0,
-                                                 'to' => 3,
-                                                 'color' => '#55BF3B',],
-                                                 ['from' => 3,
-                                                 'to' => 4,
-                                                 'color' => '#DDDF0D',],
-                                                 ['from' => 4,
-                                                 'to' => 5.2,
-                                                 'color' => '#DF5353',]],
-                                    ])
-                         ->series([['name'  => 'Valor',
-                                   'data'  => [$sensor->vol_2*1],
-                                   'tooltip' => ['valueSuffix' => '-Volt/DC'],]])
-                        ->display();
-    
-    $vol3 = \Chart::title(['text' => 'Voltaje(3)',])
-                        ->chart(['type'     => 'gauge','renderTo' => 'vol3',
-                                 'plotBackgroundColor' => null,
-                                 'plotBackgroundImage' => null,
-                                 'plotBorderWidth' => 0,
-                                 'plotShadow' => false,])
-                        ->credits(['enabled' => false])
-                        ->pane(['startAngle' => -150,
-                                'endAngle' => 150,
-                                'background' => [['backgroundColor'=> ['linearGradient' => ['x1' => 0,
-                                                                                            'y1' => 0,
-                                                                                            'x2' => 0,
-                                                                                            'y2' => 1,],
-                                                                       'stops'         => $back1
-                                                                      ],
-                                                  'borderWidth' => 0,
-                                                  'outerRadius' => '109%',],
-                                                 ['backgroundColor'=> ['linearGradient' => ['x1' => 0,
-                                                                                            'y1' => 0,
-                                                                                            'x2' => 0,
-                                                                                            'y2' => 1,],
-                                                                       'stops'         => $back2,
-                                                                      ],
-                                                  'borderWidth' => 1,
-                                                  'outerRadius' => '107%',],
-                                                  ['' => ''],
-                                                  ['backgroundColor'=> '#DDD',
-                                                  'borderWidth' => 0,
-                                                  'outerRadius' => '105%',
-                                                  'innerRadius' => '103%',]], 
-
-                        ])
-                        ->yaxis(['min' => 0,
-                                 'max' => 5.2,
-                                 'minorTickInterval' => 'auto' ,
-                                 'minorTickWidth' => 1,
-                                 'minorTickLength' => 5,
-                                 'minorTickPosition' => 'inside',
-                                 'minorTickColor' => '#666',
-                                 'tickPixelInterval' => 30,
-                                 'tickWidth' => 2,
-                                 'tickPosition' => 'inside',
-                                 'tickLength' => 5,
-                                 'tickColor' => '#666',
-                                 'labels' => ['step' => 2,
-                                              'rotation' => 'auto',],
-                                 'title' => ['text' => 'Volt/DC',],
-                                 'plotBands' => [['from' => 0,
-                                                 'to' => 3,
-                                                 'color' => '#55BF3B',],
-                                                 ['from' => 3,
-                                                 'to' => 4,
-                                                 'color' => '#DDDF0D',],
-                                                 ['from' => 4,
-                                                 'to' => 5.2,
-                                                 'color' => '#DF5353',]],
-                                    ])
-                         ->series([['name'  => 'Valor',
-                                   'data'  => [$sensor->vol_3*1],
-                                   'tooltip' => ['valueSuffix' => '-Volt/DC'],]])
-                        ->display();
+        $vol1 = \Chart::title(['text' => 'Voltaje(1)',])->display();
                        
     //return view('module.sensor.chart', ['vol1' => $vol1,]);
     return view('module.sensor.chart')->with('vol1',$vol1)
@@ -625,40 +265,6 @@ class SensorController extends Controller
     public function store(Request $request)
     {
         //
-        $request->validate([
-            'erb_id'=>'required|string|max:100',
-            'num_serie'=>'required|string|max:100',
-            'passw'=>'required|string|max:100',
-            'vol_1'=>'required|string|max:100',
-            'vol_2'=>'required|string|max:100',
-            'vol_3'=>'required|string|max:100',
-            'door_1'=>'required|string|max:100',
-            'door_2'=>'required|string|max:100',
-            'door_3'=>'required|string|max:100',
-            'door_4'=>'required|string|max:100',
-            'rlay_1'=>'required|string|max:100',
-            'rlay_2'=>'required|string|max:100',
-            'rlay_3'=>'required|string|max:100',
-            'rlay_4'=>'required|string|max:100',
-            'text'=>'required|string|max:100',
-        ]);
-        $sensor = new Sensor([
-            'erb_id' => $request->get('erb_id'),
-            'num_serie' => $request->get('num_serie'),
-            'passw' => $request->get('passw'),
-            'vol_1' => $request->get('vol_1'),
-            'vol_2' => $request->get('vol_2'),
-            'vol_3' => $request->get('vol_3'),
-            'door_1' => $request->get('door_1'),
-            'door_2' => $request->get('door_2'),
-            'door_3' => $request->get('door_3'),
-            'door_4' => $request->get('door_4'),
-            'rlay_1' => $request->get('rlay_1'),
-            'rlay_2' => $request->get('rlay_2'),
-            'rlay_3' => $request->get('rlay_3'),
-            'rlay_4' => $request->get('rlay_4'),
-            'text' => $request->get('text')
-            ]);   
         $sensor->save();
         //return redirect(/sensor)->with('success','Sensor Generado Satisfactoriamente');
         toastr()->success('Sensor creado');
@@ -824,53 +430,6 @@ No se cuenta con comando pero crea un archivos index para modulo de sensor `inde
                     <td>{{ $sensor->vol_1 }}</td>
                     <td>{{ $sensor->vol_2 }}</td>
                     <td>{{ $sensor->vol_3 }}</td>
-                    @if($sensor->door_1 == 'On')
-                    <td><span class="badge badge-primary">Close-<div class="fa fa-check-circle"></div></span></td>
-                    @elseif($sensor->door_1 == 'Off')
-                    <td><span class="badge badge-warning">Open-<div class="fa fa-exclamation-circle"></div></span></td>
-                    @endif
-                    {{-- <td>{{ $sensor->door_2 }}</td> --}}
-                    @if($sensor->door_2 == 'On')
-                    <td><span class="badge badge-primary">Close-<div class="fa fa-check-circle"></div></span></td>
-                    @elseif($sensor->door_2 == 'Off')
-                    <td><span class="badge badge-warning">Open-<div class="fa fa-exclamation-circle"></div></span></td>
-                    @endif
-                    {{-- <td>{{ $sensor->door_3 }}</td> --}}
-                    @if($sensor->door_3 == 'On')
-                    <td><span class="badge badge-primary">Close-<div class="fa fa-check-circle"></div></span></td>
-                    @elseif($sensor->door_3 == 'Off')
-                    <td><span class="badge badge-warning">Open-<div class="fa fa-exclamation-circle"></div></span></td>
-                    @endif
-                    {{-- <td>{{ $sensor->door_4 }}</td> --}}
-                    @if($sensor->door_4 == 'On')
-                    <td><span class="badge badge-primary">Close-<div class="fa fa-check-circle"></div></span></td>
-                    @elseif($sensor->door_4 == 'Off')
-                    <td><span class="badge badge-warning">Open-<div class="fa fa-exclamation-circle"></div></span></td>
-                    @endif
-                    {{-- <td>{{ $sensor->door_4 }}</td> --}}
-                    @if($sensor->rlay_1 == 'On')
-                    <td><span class="badge badge-success">On-<div class="fa fa-toggle-on"></div></span></td>
-                    @elseif($sensor->rlay_1 == 'Off')
-                    <td><span class="badge badge-danger">Off-<div class="fa fa-toggle-off"></div></span></td>
-                    @endif
-                    {{--<td>{{ $sensor->rlay_1 }}</td>--}}
-                    @if($sensor->rlay_2 == 'On')
-                    <td><span class="badge badge-success">On-<div class="fa fa-toggle-on"></div></span></td>
-                    @elseif($sensor->rlay_2 == 'Off')
-                    <td><span class="badge badge-danger">Off-<div class="fa fa-toggle-off"></div></span></td>
-                    @endif
-                    {{-- <td>{{ $sensor->rlay_2 }}</td> --}}
-                    @if($sensor->rlay_3 == 'On')
-                    <td><span class="badge badge-success">On-<div class="fa fa-toggle-on"></div></span></td>
-                    @elseif($sensor->rlay_3 == 'Off')
-                    <td><span class="badge badge-danger">Off-<div class="fa fa-toggle-off"></div></span></td>
-                    @endif
-                    {{-- <td>{{ $sensor->rlay_3 }}</td> --}}
-                    @if($sensor->rlay_4 == 'On')
-                    <td><span class="badge badge-success">On-<div class="fa fa-toggle-on"></div></span></td>
-                    @elseif($sensor->rlay_4 == 'Off')
-                    <td><span class="badge badge-danger">Off-<div class="fa fa-toggle-off"></div></span></td>
-                    @endif
                     <td>{{ $sensor->text }}</td>
                     <td>{{ $sensor->created_at }}</td>
                     <td>{{ $sensor->updated_at }}</td>
@@ -944,3 +503,4 @@ Tu puedes crear los archivos de forma automatica y sin tanta complejidad.
    php artisan make:seeder NameTableSeeder
 
 ```
+
