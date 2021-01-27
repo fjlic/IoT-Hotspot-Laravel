@@ -1,0 +1,521 @@
+<html><head><style>body {
+   color: black;
+}
+</style></head><body><h1 id="modulo-crd">Modulo Crd</h1>
+<hr>
+<ul>
+<li><a href="#section-crd">Crd CRUD</a></li>
+<li><a href="#migrations">Migracion</a></li>
+<li><a href="#seeds">Seeder</a></li>
+<li><a href="#models">Modelo</a></li>
+<li><a href="#controllers">Controlador</a></li>
+<li><a href="#routes">RutaWeb</a></li>
+<li><a href="#views">Vista</a></li>
+<li><a href="#mcr">Comando</a></li>
+</ul>
+<p><a name="section-crd"></a></p>
+<h2 id="migracion-sedder-modelo-controlador-y-vista">Migracion, Sedder, Modelo, Controlador y Vista</h2>
+<p>Estructura del modulo Crd.. 🦊
+Si gustas es posible crear la estructura MCV de forma manual.</p>
+<hr>
+<ul>
+<li><a href="#migrations">Migracion</a></li>
+<li><a href="#seeds">Seeder</a></li>
+<li><a href="#models">Modelo</a></li>
+<li><a href="#controllers">Controlador</a></li>
+<li><a href="#routes">RutaWeb</a></li>
+<li><a href="#views">Vista</a></li>
+<li><a href="#mcr">Comando MCR</a></li>
+</ul>
+<p><a name="migrations"></a></p>
+<h2 id="migracion">Migracion</h2>
+<p>Comando <code>php artisan make:migration Crd</code> ejecutar en consola dentro del proyecto.</p>
+<blockquote>
+<p>{info} Directorio  <code>database/migrations/2014_10_12_000000_create_crds_table.php</code>.</p>
+</blockquote>
+<pre><code class="lang-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CreateCrdsTable</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Migration</span>
+</span>{
+    <span class="hljs-comment">/**
+     * Run the migrations.
+     *
+     * <span class="hljs-doctag">@return</span> void
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">up</span><span class="hljs-params">()</span>
+    </span>{
+        Schema::create(<span class="hljs-string">'crds'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(Blueprint $table)</span> </span>{
+            $table-&gt;id();
+            $table-&gt;unsignedBigInteger(<span class="hljs-string">'user_id'</span>)-&gt;nullable();
+            $table-&gt;string(<span class="hljs-string">'num_serie'</span>)-&gt;unique()-&gt;nullable();
+            $table-&gt;string(<span class="hljs-string">'name_machine'</span>);
+            $table-&gt;string(<span class="hljs-string">'nick_name'</span>);
+            $table-&gt;string(<span class="hljs-string">'password'</span>)-&gt;default(<span class="hljs-string">'crd123'</span>);
+            $table-&gt;string(<span class="hljs-string">'api_token'</span>)-&gt;unique();
+            $table-&gt;timestamps();
+            $table-&gt;foreign(<span class="hljs-string">'user_id'</span>)-&gt;references(<span class="hljs-string">'id'</span>)-&gt;on(<span class="hljs-string">'users'</span>)-&gt;onUpdate(<span class="hljs-string">'cascade'</span>)-&gt;onDelete(<span class="hljs-string">'cascade'</span>)-&gt;nullable();
+        });
+    }
+
+    <span class="hljs-comment">/**
+     * Reverse the migrations.
+     *
+     * <span class="hljs-doctag">@return</span> void
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">down</span><span class="hljs-params">()</span>
+    </span>{
+        Schema::dropIfExists(<span class="hljs-string">'crds'</span>);
+    }
+}
+</code></pre>
+<p><a name="seeds"></a></p>
+<h2 id="seeder">Seeder</h2>
+<p>Comando <code>php artisan make:seeder AddCrdTableSeeder</code> ejecutar en consola dentro del proyecto.</p>
+<blockquote>
+<p>{info} Directorio  <code>database/seeders/AddCrdTableSeeder.php</code>.</p>
+</blockquote>
+<pre><code class="lang-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AddCrdTableSeeder</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Seeder</span>
+</span>{
+    <span class="hljs-comment">/**
+     * Run the database seeds.
+     *
+     * <span class="hljs-doctag">@return</span> void
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">run</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-comment">//</span>
+        $crd = <span class="hljs-keyword">new</span> Crd();
+        $crd-&gt;id = <span class="hljs-number">1</span>;
+        $crd-&gt;user_id = <span class="hljs-number">1</span>;
+        $crd-&gt;num_serie = <span class="hljs-number">333344441</span>;
+        $crd-&gt;name_machine = <span class="hljs-string">'Angry birds'</span>;
+        $crd-&gt;nick_name = <span class="hljs-string">'Crd_1'</span>;
+        $crd-&gt;password = Crypt::encrypt(<span class="hljs-string">'crd123'</span>);
+        $crd-&gt;api_token = ApiToken::GenerateToken32();
+        $crd-&gt;save();
+
+        $crd = <span class="hljs-keyword">new</span> Crd();
+        $crd-&gt;id = <span class="hljs-number">2</span>;
+        $crd-&gt;user_id = <span class="hljs-number">1</span>;
+        $crd-&gt;num_serie = <span class="hljs-number">333344442</span>;
+        $crd-&gt;name_machine = <span class="hljs-string">'Bean bag toss'</span>;
+        $crd-&gt;nick_name = <span class="hljs-string">'Crd_2'</span>;
+        $crd-&gt;password = Crypt::encrypt(<span class="hljs-string">'crd123'</span>);
+        $crd-&gt;api_token = ApiToken::GenerateToken32();
+        $crd-&gt;save();
+
+        $crd = <span class="hljs-keyword">new</span> Crd();
+        $crd-&gt;id = <span class="hljs-number">3</span>;
+        $crd-&gt;user_id = <span class="hljs-number">1</span>;
+        $crd-&gt;num_serie = <span class="hljs-number">333344443</span>;
+        $crd-&gt;name_machine = <span class="hljs-string">'Black hole'</span>;
+        $crd-&gt;nick_name = <span class="hljs-string">'Crd_3'</span>;
+        $crd-&gt;password = Crypt::encrypt(<span class="hljs-string">'crd123'</span>);
+        $crd-&gt;api_token = ApiToken::GenerateToken32();
+        $crd-&gt;save();
+
+        $crd = <span class="hljs-keyword">new</span> Crd();
+        $crd-&gt;id = <span class="hljs-number">4</span>;
+        $crd-&gt;user_id = <span class="hljs-number">1</span>;
+        $crd-&gt;num_serie = <span class="hljs-number">333344444</span>;
+        $crd-&gt;name_machine = <span class="hljs-string">'Candy fall'</span>;
+        $crd-&gt;nick_name = <span class="hljs-string">'Crd_4'</span>;
+        $crd-&gt;password = Crypt::encrypt(<span class="hljs-string">'crd123'</span>);
+        $crd-&gt;api_token = ApiToken::GenerateToken32();
+        $crd-&gt;save();
+
+        $crd = <span class="hljs-keyword">new</span> Crd();
+        $crd-&gt;id = <span class="hljs-number">5</span>;
+        $crd-&gt;user_id = <span class="hljs-number">1</span>;
+        $crd-&gt;num_serie = <span class="hljs-number">333344445</span>;
+        $crd-&gt;name_machine = <span class="hljs-string">'Cartooon coaster'</span>;
+        $crd-&gt;nick_name = <span class="hljs-string">'Crd_5'</span>;
+        $crd-&gt;password = Crypt::encrypt(<span class="hljs-string">'crd123'</span>);
+        $crd-&gt;api_token = ApiToken::GenerateToken32();
+        $crd-&gt;save();
+
+        $crd = <span class="hljs-keyword">new</span> Crd();
+        $crd-&gt;id = <span class="hljs-number">6</span>;
+        $crd-&gt;user_id = <span class="hljs-number">1</span>;
+        $crd-&gt;num_serie = <span class="hljs-number">333344446</span>;
+        $crd-&gt;name_machine = <span class="hljs-string">'Crazy animals'</span>;
+        $crd-&gt;nick_name = <span class="hljs-string">'Crd_6'</span>;
+        $crd-&gt;password = Crypt::encrypt(<span class="hljs-string">'crd123'</span>);
+        $crd-&gt;api_token = ApiToken::GenerateToken32();
+        $crd-&gt;save();
+
+        $crd = <span class="hljs-keyword">new</span> Crd();
+        $crd-&gt;id = <span class="hljs-number">7</span>;
+        $crd-&gt;user_id = <span class="hljs-number">1</span>;
+        $crd-&gt;num_serie = <span class="hljs-number">333344447</span>;
+        $crd-&gt;name_machine = <span class="hljs-string">'Crazy Canoe'</span>;
+        $crd-&gt;nick_name = <span class="hljs-string">'Crd_7'</span>;
+        $crd-&gt;password = Crypt::encrypt(<span class="hljs-string">'crd123'</span>);
+        $crd-&gt;api_token = ApiToken::GenerateToken32();
+        $crd-&gt;save();
+
+        $crd = <span class="hljs-keyword">new</span> Crd();
+        $crd-&gt;id = <span class="hljs-number">8</span>;
+        $crd-&gt;user_id = <span class="hljs-number">1</span>;
+        $crd-&gt;num_serie = <span class="hljs-number">333344448</span>;
+        $crd-&gt;name_machine = <span class="hljs-string">'Cross y road'</span>;
+        $crd-&gt;nick_name = <span class="hljs-string">'Crd_8'</span>;
+        $crd-&gt;password = Crypt::encrypt(<span class="hljs-string">'crd123'</span>);
+        $crd-&gt;api_token = ApiToken::GenerateToken32();
+        $crd-&gt;save();
+
+        $crd = <span class="hljs-keyword">new</span> Crd();
+        $crd-&gt;id = <span class="hljs-number">9</span>;
+        $crd-&gt;user_id = <span class="hljs-number">1</span>;
+        $crd-&gt;num_serie = <span class="hljs-number">333344449</span>;
+        $crd-&gt;name_machine = <span class="hljs-string">'Deal or no Deal'</span>;
+        $crd-&gt;nick_name = <span class="hljs-string">'Crd_9'</span>;
+        $crd-&gt;password = Crypt::encrypt(<span class="hljs-string">'crd123'</span>);
+        $crd-&gt;api_token = ApiToken::GenerateToken32();
+        $crd-&gt;save();
+    }
+}
+</code></pre>
+<p><a name="models"></a></p>
+<h2 id="modelo">Modelo</h2>
+<p>Comando <code>php artisan make:model Crd</code> ejecutar en consola dentro del proyecto.</p>
+<blockquote>
+<p>{info} Directorio  <code>app/Crd.php</code>.</p>
+</blockquote>
+<pre><code class="lang-php">
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Crd</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Model</span>
+</span>{
+    <span class="hljs-keyword">use</span> <span class="hljs-title">LaratrustUserTrait</span>;
+    <span class="hljs-keyword">use</span> <span class="hljs-title">Notifiable</span>;
+
+    <span class="hljs-comment">/**
+     * The attributes that are mass assignable.
+     *
+     * <span class="hljs-doctag">@var</span> array
+     */</span>
+    <span class="hljs-keyword">protected</span> $fillable = [
+       <span class="hljs-string">'id'</span>,<span class="hljs-string">'user_id'</span>, <span class="hljs-string">'name_machine'</span>, <span class="hljs-string">'nick_name'</span>, <span class="hljs-string">'password'</span>, <span class="hljs-string">'api_token'</span>,
+    ];
+
+    <span class="hljs-comment">/**
+     * The attributes that should be hidden for arrays.
+     *
+     * <span class="hljs-doctag">@var</span> array
+     */</span>
+    <span class="hljs-comment">//protected $hidden = [</span>
+    <span class="hljs-comment">//    'password', </span>
+    <span class="hljs-comment">//];</span>
+
+    <span class="hljs-comment">/**
+     * The attributes that should be cast to native types.
+     *
+     * <span class="hljs-doctag">@var</span> array
+     */</span>
+    <span class="hljs-keyword">protected</span> $casts = [
+    ];
+
+    <span class="hljs-comment">/**
+     * Get the user record  type hostpot.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">user</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;belongsTo(<span class="hljs-string">'App\User'</span>, <span class="hljs-string">'id'</span>);
+    }
+
+    <span class="hljs-comment">/**
+     * Get the hostpot for the blog crd.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">qr</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;belongsToMany(<span class="hljs-string">'App\Qr'</span>,<span class="hljs-string">'crd_id'</span>);
+    }
+
+    <span class="hljs-comment">/**
+     * Get the hostpot for the blog crd.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">nfc</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;belongsToMany(<span class="hljs-string">'App\Nfc'</span>,<span class="hljs-string">'crd_id'</span>);
+    }
+}
+</code></pre>
+<p><a name="controllers"></a></p>
+<h2 id="controlador">Controlador</h2>
+<p>Comando <code>php artisan make:controller Crd</code> ejecutar en consola dentro del proyecto.</p>
+<blockquote>
+<p>{info} Directorio  <code>app/Http/Controllers/CrdController.php</code>.</p>
+</blockquote>
+<pre><code class="lang-php">
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CrdController</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Controller</span>
+</span>{
+    <span class="hljs-comment">/**
+     * Create a new controller instance.
+     *
+     * <span class="hljs-doctag">@return</span> void
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">$this</span>-&gt;middleware(<span class="hljs-string">'auth'</span>);
+    }
+
+    <span class="hljs-comment">/**
+     * Display a listing of the resource.
+     *
+     * <span class="hljs-doctag">@return</span> \Illuminate\Http\Response
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">index</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-comment">//</span>
+        $crds = Crd::all();
+        <span class="hljs-keyword">foreach</span> ($crds <span class="hljs-keyword">as</span> $key =&gt; $crd) {
+        $crd-&gt;password = Crypt::decrypt($crd-&gt;password);
+        }
+        <span class="hljs-keyword">return</span> view(<span class="hljs-string">'module.crd.index'</span>,compact(<span class="hljs-string">'crds'</span>));
+    }
+
+    <span class="hljs-comment">/**
+     * Display a listing of the resource.
+     *
+     * <span class="hljs-doctag">@return</span> \Illuminate\Http\Response
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testertuck</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-comment">//</span>
+        $crds = Crd::all();
+        <span class="hljs-keyword">foreach</span> ($crds <span class="hljs-keyword">as</span> $key =&gt; $crd) {
+        $crd-&gt;password = Crypt::decrypt($crd-&gt;password);
+        }
+        <span class="hljs-keyword">return</span> view(<span class="hljs-string">'module.crd.index'</span>,compact(<span class="hljs-string">'crds'</span>));
+    }
+
+    <span class="hljs-comment">/**
+     * Show the form for creating a new resource.
+     *
+     * <span class="hljs-doctag">@return</span> \Illuminate\Http\Response
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">create</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-comment">//</span>
+        $users = User::all();
+        <span class="hljs-keyword">return</span> view(<span class="hljs-string">'module.crd.create'</span>,compact(<span class="hljs-string">'users'</span>));
+    }
+
+    <span class="hljs-comment">/**
+     * Store a newly created resource in storage.
+     *
+     * <span class="hljs-doctag">@param</span>  \Illuminate\Http\Request  $request
+     * <span class="hljs-doctag">@return</span> \Illuminate\Http\Response
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">store</span><span class="hljs-params">(Request $request)</span>
+    </span>{
+        <span class="hljs-comment">//</span>
+        $request-&gt;validate([
+            <span class="hljs-string">'user_id'</span>=&gt;<span class="hljs-string">'required|string|max:100'</span>,
+            <span class="hljs-string">'num_serie'</span>=&gt;<span class="hljs-string">'required|string|max:100'</span>,
+            <span class="hljs-string">'name_machine'</span>=&gt;<span class="hljs-string">'required|string|max:100'</span>,
+            <span class="hljs-string">'nick_name'</span>=&gt;<span class="hljs-string">'required|string|max:100'</span>,
+            <span class="hljs-string">'password'</span>=&gt;<span class="hljs-string">'required|string|max:100'</span>
+
+        ]);
+
+         $crd = <span class="hljs-keyword">new</span> Crd();
+         $crd-&gt;user_id = $request-&gt;get(<span class="hljs-string">'user_id'</span>);
+         $crd-&gt;num_serie = $request-&gt;get(<span class="hljs-string">'num_serie'</span>);
+         $crd-&gt;nick_name = $request-&gt;get(<span class="hljs-string">'nick_name'</span>);
+         $crd-&gt;name_machine = $request-&gt;get(<span class="hljs-string">'name_machine'</span>);
+         $crd-&gt;password = Crypt::encrypt($request-&gt;get(<span class="hljs-string">'password'</span>));
+         $crd-&gt;api_token = ApiToken::GenerateToken32();
+         $crd-&gt;save();
+        <span class="hljs-comment">//return redirect('/crd')-&gt;with('success', 'Crd Generado Satisfactoriamente!');</span>
+        toastr()-&gt;success(<span class="hljs-string">'Crd generado satisfactoriamente'</span>);
+        <span class="hljs-keyword">return</span> redirect()-&gt;route(<span class="hljs-string">'crd.index'</span>);
+    }
+
+    <span class="hljs-comment">/**
+     * Display the specified resource.
+     *
+     * <span class="hljs-doctag">@param</span>  \App\Crd  $crd
+     * <span class="hljs-doctag">@return</span> \Illuminate\Http\Response
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">show</span><span class="hljs-params">(Crd $crd)</span>
+    </span>{
+        <span class="hljs-comment">//</span>
+        $crd-&gt;password = Crypt::decrypt($crd-&gt;password);
+        <span class="hljs-keyword">return</span> view(<span class="hljs-string">'module.crd.show'</span>,compact(<span class="hljs-string">'crd'</span>));
+    }
+
+    <span class="hljs-comment">/**
+     * Show the form for editing the specified resource.
+     *
+     * <span class="hljs-doctag">@param</span>  \App\Crd  $crd
+     * <span class="hljs-doctag">@return</span> \Illuminate\Http\Response
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">edit</span><span class="hljs-params">(Crd $crd)</span>
+    </span>{
+        <span class="hljs-comment">//</span>
+        $users = User::all();
+        $crd-&gt;password = Crypt::decrypt($crd-&gt;password);
+        <span class="hljs-keyword">return</span> view(<span class="hljs-string">'module.crd.edit'</span>, compact(<span class="hljs-string">'crd'</span>,<span class="hljs-string">'users'</span>));
+    }
+
+    <span class="hljs-comment">/**
+     * Update the specified resource in storage.
+     *
+     * <span class="hljs-doctag">@param</span>  \Illuminate\Http\Request  $request
+     * <span class="hljs-doctag">@param</span>  \App\Crd  $crd
+     * <span class="hljs-doctag">@return</span> \Illuminate\Http\Response
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">update</span><span class="hljs-params">(Request $request, Crd $crd)</span>
+    </span>{
+        <span class="hljs-comment">//</span>
+        $request-&gt;validate([
+            <span class="hljs-string">'user_id'</span>=&gt;<span class="hljs-string">'required|string|max:100'</span>,
+            <span class="hljs-string">'num_serie'</span>=&gt;<span class="hljs-string">'required|string|max:100'</span>,
+            <span class="hljs-string">'name_machine'</span>=&gt;<span class="hljs-string">'required|string|max:100'</span>,
+            <span class="hljs-string">'nick_name'</span>=&gt;<span class="hljs-string">'required|string|max:100'</span>,
+            <span class="hljs-string">'password'</span>=&gt;<span class="hljs-string">'required|string|max:100'</span>,
+            <span class="hljs-string">'api_token'</span>=&gt;<span class="hljs-string">'required|string|max:100'</span>
+        ]);
+        $crd_request = $request-&gt;all();
+        $crd_request[<span class="hljs-string">'user_id'</span>] =  $request-&gt;get(<span class="hljs-string">'user_id'</span>);
+        $crd_request[<span class="hljs-string">'num_serie'</span>] =  $request-&gt;get(<span class="hljs-string">'num_serie'</span>);
+        $crd_request[<span class="hljs-string">'name_machine'</span>] =  $request-&gt;get(<span class="hljs-string">'name_machine'</span>);
+        $crd_request[<span class="hljs-string">'nick_name'</span>] =  $request-&gt;get(<span class="hljs-string">'nick_name'</span>);
+        $crd_request[<span class="hljs-string">'password'</span>] = Crypt::encrypt($request-&gt;get(<span class="hljs-string">'password'</span>));
+        $crd_request[<span class="hljs-string">'api_token'</span>] =  $request-&gt;get(<span class="hljs-string">'api_token'</span>);
+        $crd-&gt;update($crd_request);
+        toastr()-&gt;warning(<span class="hljs-string">'Crd Actualizado Satisfactoriamente'</span>);
+        <span class="hljs-keyword">return</span> redirect()-&gt;route(<span class="hljs-string">'crd.index'</span>);
+    }
+
+    <span class="hljs-comment">/**
+     * Remove the specified resource from storage.
+     *
+     * <span class="hljs-doctag">@param</span>  \App\Crd  $crd
+     * <span class="hljs-doctag">@return</span> \Illuminate\Http\Response
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">destroy</span><span class="hljs-params">(Crd $crd)</span>
+    </span>{
+        <span class="hljs-comment">//</span>
+        $crd-&gt;delete();
+        toastr()-&gt;error(<span class="hljs-string">'Crd eliminado satisfactoriamente'</span>);
+        <span class="hljs-keyword">return</span> redirect()-&gt;route(<span class="hljs-string">'crd.index'</span>);
+    }
+}
+</code></pre>
+<p><a name="routes"></a></p>
+<h2 id="ruta-web">Ruta Web</h2>
+<p>No cuenta con comando artisan para esto dispones ya de un archivo de rutas web.</p>
+<blockquote>
+<p>{info} Directorio  <code>routes/web.php</code> agregar dentro del archivo.</p>
+</blockquote>
+<pre><code class="lang-php"><span class="hljs-comment">/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/</span>
+
+Route::get(<span class="hljs-string">'/'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">return</span> view(<span class="hljs-string">'auth.login'</span>);
+});
+
+Auth::routes();
+Route::get(<span class="hljs-string">'/home'</span>, <span class="hljs-string">'HomeController@index'</span>)-&gt;name(<span class="hljs-string">'home'</span>)-&gt;middleware(<span class="hljs-string">'auth'</span>);
+Route::resource(<span class="hljs-string">'crd'</span>, <span class="hljs-string">'CrdController'</span>)-&gt;middleware(<span class="hljs-string">'auth'</span>);
+Auth::routes();
+</code></pre>
+<p><a name="views"></a></p>
+<h2 id="vista">Vista</h2>
+<p>No se cuenta con comando pero crea un archivos index para modulo de usuario <code>index.blade.php</code> y pega este codigo.</p>
+<blockquote>
+<p>{info} Directorio  <code>resources/module/crd/index.blade.php</code>.</p>
+</blockquote>
+<pre><code class="lang-php"><span class="xml"><span class="hljs-comment">&lt;!-- Main content --&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"content"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"row"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-12"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"card"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"card-header"</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"card-title"</span>&gt;</span>Tabla Crd<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-xs btn-success float-right"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"</span></span></span><span class="hljs-template-variable">{{ route('crd.create') }}</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">"</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"button"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"fas fa-plus"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-comment">&lt;!-- /.card-header --&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"card-body"</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"crdTable"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"table table-bordered table-striped"</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">thead</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Id<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>User Id<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Serie<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Nombre<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Alias<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Password<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>ApiToken<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>FechaCreacion<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>FechaMoficiacion<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Acciones<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">thead</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">tbody</span>&gt;</span>
+                @foreach($crds as $crd)
+                <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span></span><span class="hljs-template-variable">{{ $crd-&gt;id }}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span></span><span class="hljs-template-variable">{{ $crd-&gt;user_id }}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span></span><span class="hljs-template-variable">{{ $crd-&gt;num_serie }}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span></span><span class="hljs-template-variable">{{ $crd-&gt;name_machine }}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>      
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span></span><span class="hljs-template-variable">{{ $crd-&gt;nick_name }}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span></span><span class="hljs-template-variable">{{ $crd-&gt;password }}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span></span><span class="hljs-template-variable">{{ $crd-&gt;api_token }}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span></span><span class="hljs-template-variable">{{ $crd-&gt;created_at }}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span></span><span class="hljs-template-variable">{{ $crd-&gt;updated_at }}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>
+                      <span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"form"</span> <span class="hljs-attr">action</span>=<span class="hljs-string">"</span></span></span><span class="hljs-template-variable">{{ route('crd.destroy',$crd-&gt;id) }}</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">"</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"POST"</span>&gt;</span>
+                      <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-info btn-xs"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"</span></span></span><span class="hljs-template-variable">{{ route('crd.show',$crd-&gt;id) }}</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">"</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"button"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"fas fa-eye"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span> 
+                      <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-warning btn-xs"</span>  <span class="hljs-attr">href</span>=<span class="hljs-string">"</span></span></span><span class="hljs-template-variable">{{ route('crd.edit',$crd-&gt;id) }}</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">"</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"button"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"fas fa-pen"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+                      @csrf
+                      @method('DELETE')
+                      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-danger btn-xs"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"fas fa-trash"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                      <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+                @endforeach
+                <span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span>
+               <span class="hljs-comment">&lt;!-- &lt;tfoot&gt;
+                 &lt;tr&gt;
+                 &lt;th&gt;Id&lt;/th&gt;
+                  &lt;th&gt;User Id&lt;/th&gt;
+                  &lt;th&gt;NumSerie&lt;/th&gt;
+                  &lt;th&gt;Alias&lt;/th&gt;
+                  &lt;th&gt;Password&lt;/th&gt;
+                  &lt;th&gt;ApiToken&lt;/th&gt;
+                  &lt;th&gt;FechaCreacion&lt;/th&gt;
+                  &lt;th&gt;FechaMoficiacion&lt;/th&gt;
+                  &lt;th&gt;Acciones&lt;/th&gt;
+                &lt;/tr&gt;
+                &lt;/tfoot&gt;--&gt;</span>
+              <span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-comment">&lt;!-- /.card-body --&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+          <span class="hljs-comment">&lt;!-- /.card --&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- /.col --&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-comment">&lt;!-- /.row --&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- /.content --&gt;</span> 
+@stop</span>
+</code></pre>
+<p><a name="mcr"></a></p>
+<h2 id="comando-para-crear-migracion-modelo-controlador-seeder">Comando para crear Migracion, Modelo, Controlador + Seeder</h2>
+<p>Tu puedes crear los archivos de forma automatica y sin tanta complejidad.</p>
+<p>☝️ En un solo comando crearas migracion, modelo, controlador con recursos.</p>
+<pre><code class="lang-php">   <span class="hljs-selector-tag">php</span> <span class="hljs-selector-tag">artisan</span> <span class="hljs-selector-tag">make</span><span class="hljs-selector-pseudo">:model</span> <span class="hljs-selector-tag">NameModel</span> <span class="hljs-selector-tag">-mcr</span>
+</code></pre>
+<p>✌️ Run the install command.</p>
+<pre><code class="lang-php">   <span class="hljs-selector-tag">php</span> <span class="hljs-selector-tag">artisan</span> <span class="hljs-selector-tag">make</span><span class="hljs-selector-pseudo">:seeder</span> <span class="hljs-selector-tag">NameTableSeeder</span>
+</code></pre>
+</body></html>

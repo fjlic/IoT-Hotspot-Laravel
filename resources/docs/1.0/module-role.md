@@ -1,8 +1,8 @@
-# Modulo Usuario
+# Modulo Role
 
 ---
 
-- [Usuario CRUD](#section-user)
+- [Usuario Role](#section-role)
 - [Migracion](#migrations)
 - [Seeder](#seeds)
 - [Modelo](#models)
@@ -11,10 +11,10 @@
 - [Vista](#views)
 - [Comando](#mcr)
 
-<a name="section-user"></a>
+<a name="section-role"></a>
 ## Migracion, Sedder, Modelo, Controlador y Vista
 
-Estructura del modulo Usuario.. 🦊
+Estructura del modulo Role.. 🦊
 Si gustas es posible crear la estructura MCV de forma manual.
 
 ---
@@ -30,9 +30,9 @@ Si gustas es posible crear la estructura MCV de forma manual.
 <a name="migrations"></a>
 ## Migracion
 
-Comando `php artisan make:migration User` ejecutar en consola dentro del proyecto.
+Comando `php artisan make:migration Role` ejecutar en consola dentro del proyecto.
 
-> {info} Directorio  `database/migrations/2014_10_12_000000_create_users_table.php`.
+> {info} Directorio  `database/migrations/2014_10_12_000000_create_roles_table.php`.
 
 ```php
 class CreateUsersTable extends Migration
@@ -217,187 +217,130 @@ Comando `php artisan make:controller User` ejecutar en consola dentro del proyec
 > {info} Directorio  `app/Http/Controllers/UserController.php`.
 
 ```php
-class UserController extends Controller
+
+class RolesController
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
+    protected $rolesModel;
+    protected $permissionModel;
+
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->rolesModel = Config::get('laratrust.models.role');
+        $this->permissionModel = Config::get('laratrust.models.permission');
     }
 
-    /**
-     * Display a listing of the Users.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
-    { 
-        $filter = Role::all();
-        if(auth()->user()->hasRole('root')){
-          $roles = $filter->filter(function ($role, $key) {
-              return $role->name != 'root';
-          });
-        }
-        else if(auth()->user()->hasRole('admin')){
-            $roles = $filter->filter(function ($role, $key) {
-                return $role->name != 'root' && $role->name != 'admin';
-            });
-        }
-        else if(auth()->user()->hasRole('super')){
-            $roles = $filter->filter(function ($role, $key) {
-                return $role->name != 'root' && $role->name != 'admin' && $role->name != 'super';
-            });
-        }
-        else if(auth()->user()->hasRole('user')){
-            $roles = $filter->filter(function ($role, $key) {
-                return $role->name != 'root' && $role->name != 'admin' && $role->name != 'super' && $role->name != 'user' && $role->name != 'disable';
-            });
-        }
-        $users = collect();
-            foreach ($roles as $key => $role) {
-                foreach (User::whereRoleIs($role->name)->get() as $key => $value) {
-                $value->name_role = $role->name;  
-                $users->push($value); 
-                $users->all();
-                }
-            }
-        return view('module.user.index', compact('users'));
+    {
+        return View::make('laratrust::panel.roles.index', [
+            'roles' => $this->rolesModel::withCount('permissions')
+                ->simplePaginate(10),
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource for Users.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
-        $filter = Role::all();
-        $roles = $filter->filter(function ($role, $key) {
-            return $role->name != 'root';
-        });
-        $roles = Role::all();
-        return view('module.user.create',compact('roles'));
+        return View::make('laratrust::panel.edit', [
+            'model' => null,
+            'permissions' => $this->permissionModel::all(['id', 'name']),
+            'type' => 'role',
+        ]);
     }
 
-    /**
-     * Store a newly created resource in storage for Users.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    public function show(Request $request, $id)
+    {
+        $role = $this->rolesModel::query()
+            ->with('permissions:id,name,display_name')
+            ->findOrFail($id);
+
+        return View::make('laratrust::panel.roles.show', ['role' => $role]);
+    }
+
     public function store(Request $request)
     {
-        //
-        $request->validate([
-            'name'=>'required|string|max:50',
-            'email'=>'required|string|email|max:30|unique:users',
-            'password'=>'required|string|min:3',
-            'name_role'=>'required|string|max:50',
+        $data = $request->validate([
+            'name' => 'required|string|unique:roles,name',
+            'display_name' => 'nullable|string',
+            'description' => 'nullable|string',
         ]);
-        $user = new User([
-            'name' => $request->get('name'),
-            'email' => $request->get('email'),
-            'password' =>  Hash::make($request->get('password'))]);  
-        $user->save();
-        $user->attachRole($request->get('name_role'));
-        toastr()->success('Usuario creado');
-        return redirect()->route('user.index');
+
+        $role = $this->rolesModel::create($data);
+        $role->syncPermissions($request->get('permissions') ?? []);
+
+        Session::flash('laratrust-success', 'Role created successfully');
+        return redirect(route('laratrust.roles.index'));
     }
 
-    /**
-     * Display the specified resource for Users.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show(User $user)
+    public function edit($id)
     {
-        //
-        foreach (Role::all() as $key => $role) {
-            if($user->hasRole($role->name)){
-             $user->name_role = $role->name;        
-            }
+        $role = $this->rolesModel::query()
+            ->with('permissions:id')
+            ->findOrFail($id);
+
+        if (!Helper::roleIsEditable($role)) {
+            Session::flash('laratrust-error', 'The role is not editable');
+            return redirect()->back();
         }
-        return view('module.user.show',compact('user'));
-    }
 
-    /**
-     * Show the form for editing the specified resource for Users.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(User $user)
-    {
-        //
-        /*$filter = Role::all();
-        $roles = $filter->filter(function ($role, $key) {
-            return $role->name != 'hostpot';
-        });
-        foreach (Role::all() as $key => $role) {
-            if($user->hasRole($role->name)){
-             $user->name_role = $role->name; 
-             $roles = $roles->except($role->id);       
-            }
-        }*/
-        $roles = Role::all();
-        return view('module.user.edit', compact('user','roles'));
-    }
+        $permissions = $this->permissionModel::all(['id', 'name', 'display_name'])
+            ->map(function ($permission) use ($role) {
+                $permission->assigned = $role->permissions
+                    ->pluck('id')
+                    ->contains($permission->id);
 
-    /**
-     * Update the specified resource in storage for Users.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, User $user)
-    {
-        //
-        $request->validate([
-            'name'=>'required|string|max:50',
-            'email'=>'required|string|email|max:50',
-            'name_role'=>'required|string|max:30',
-            'password'=>'nullable'
+                return $permission;
+            });
+
+        return View::make('laratrust::panel.edit', [
+            'model' => $role,
+            'permissions' => $permissions,
+            'type' => 'role',
         ]);
-        if(!empty($request->get('password'))){
-           $request['password'] = Hash::make($request->get('password'));  
-        }
-        else{
-            $request['password'] = $user->password;  
-        }
-        $user_request = $request->all();
-        foreach (Role::all() as $key => $role) {
-            if($user->hasRole($role->name)){
-               $user->detachRole($role->name);       
-            }
-        }
-        $update_role = Role::where('name',$request->get('name_role'))->first();
-        $user->attachRole($update_role);
-        $user->update($user_request);
-        toastr()->warning('Usuario actualizado');
-        return redirect()->route('user.index');
     }
 
-    /**
-     * Remove the specified resource from storage for Users.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(User $user)
+    public function update(Request $request, $id)
     {
-        $user->delete();
-        //return redirect('/user')->with('success', 'Usuario Eliminado!');
-        toastr()->error('Usuario eliminado');
-        return redirect()->route('user.index');
+        $role = $this->rolesModel::findOrFail($id);
+
+        if (!Helper::roleIsEditable($role)) {
+            Session::flash('laratrust-error', 'The role is not editable');
+            return redirect()->back();
+        }
+
+        $data = $request->validate([
+            'display_name' => 'nullable|string',
+            'description' => 'nullable|string',
+        ]);
+
+        $role->update($data);
+        $role->syncPermissions($request->get('permissions') ?? []);
+
+        Session::flash('laratrust-success', 'Role updated successfully');
+        return redirect(route('laratrust.roles.index'));
+    }
+
+    public function destroy($id)
+    {
+        $usersAssignedToRole = DB::table(Config::get('laratrust.tables.role_user'))
+            ->where(Config::get('laratrust.foreign_keys.role'), $id)
+            ->count();
+        $role = $this->rolesModel::findOrFail($id);
+
+        if (!Helper::roleIsDeletable($role)) {
+            Session::flash('laratrust-error', 'The role is not deletable');
+            return redirect()->back();
+        }
+
+        if ($usersAssignedToRole > 0) {
+            Session::flash('laratrust-warning', 'Role is attached to one or more users. It can not be deleted');
+        } else {
+            Session::flash('laratrust-success', 'Role deleted successfully');
+            $this->rolesModel::destroy($id);
+        }
+
+        return redirect(route('laratrust.roles.index'));
     }
 }
+
 ```
 
 <a name="routes"></a>
@@ -434,7 +377,7 @@ Auth::routes();
 
 No se cuenta con comando pero crea un archivos index para modulo de usuario `index.blade.php` y pega este codigo.
 
-> {info} Directorio  `resources/views/module/user/index.blade.php`.
+> {info} Directorio  `resources/module/user/index.blade.php`.
 
 ```php
 <!-- Main content -->

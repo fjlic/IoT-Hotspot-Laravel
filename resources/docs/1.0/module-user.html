@@ -1,0 +1,519 @@
+<html><head><style>body {
+   color: black;
+}
+
+// Body
+$body-bg: #f8fafc;
+
+// Typography
+$font-family-sans-serif: 'Nunito', sans-serif;
+$font-size-base: 0.9rem;
+$line-height-base: 1.6;
+
+// Colors
+$blue: #3490dc;
+$indigo: #6574cd;
+$purple: #9561e2;
+$pink: #f66d9b;
+$red: #e3342f;
+$orange: #f6993f;
+$yellow: #ffed4a;
+$green: #38c172;
+$teal: #4dc0b5;
+$cyan: #6cb2eb;</style></head><body><h1 id="modulo-usuario">Modulo Usuario</h1>
+<hr>
+<ul>
+<li><a href="#section-user">Usuario CRUD</a></li>
+<li><a href="#migrations">Migracion</a></li>
+<li><a href="#seeds">Seeder</a></li>
+<li><a href="#models">Modelo</a></li>
+<li><a href="#controllers">Controlador</a></li>
+<li><a href="#routes">RutaWeb</a></li>
+<li><a href="#views">Vista</a></li>
+<li><a href="#mcr">Comando</a></li>
+</ul>
+<p><a name="section-user"></a></p>
+<h2 id="migracion-sedder-modelo-controlador-y-vista">Migracion, Sedder, Modelo, Controlador y Vista</h2>
+<p>Estructura del modulo Usuario.. 🦊
+Si gustas es posible crear la estructura MCV de forma manual.</p>
+<hr>
+<ul>
+<li><a href="#migrations">Migracion</a></li>
+<li><a href="#seeds">Seeder</a></li>
+<li><a href="#models">Modelo</a></li>
+<li><a href="#controllers">Controlador</a></li>
+<li><a href="#routes">RutaWeb</a></li>
+<li><a href="#views">Vista</a></li>
+<li><a href="#mcr">Comando MCR</a></li>
+</ul>
+<p><a name="migrations"></a></p>
+<h2 id="migracion">Migracion</h2>
+<p>Comando <code>php artisan make:migration User</code> ejecutar en consola dentro del proyecto.</p>
+<blockquote>
+<p>{info} Directorio  <code>database/migrations/2014_10_12_000000_create_users_table.php</code>.</p>
+</blockquote>
+<pre><code class="lang-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CreateUsersTable</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Migration</span>
+</span>{
+    <span class="hljs-comment">/**
+     * Run the migrations.
+     *
+     * <span class="hljs-doctag">@return</span> void
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">up</span><span class="hljs-params">()</span>
+    </span>{
+        Schema::create(<span class="hljs-string">'users'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(Blueprint $table)</span> </span>{
+            $table-&gt;id();
+            $table-&gt;unsignedBigInteger(<span class="hljs-string">'region_id'</span>)-&gt;nullable();
+            $table-&gt;string(<span class="hljs-string">'name'</span>);
+            $table-&gt;string(<span class="hljs-string">'email'</span>)-&gt;unique();
+            $table-&gt;timestamp(<span class="hljs-string">'email_verified_at'</span>)-&gt;nullable();
+            $table-&gt;string(<span class="hljs-string">'password'</span>);
+            $table-&gt;string(<span class="hljs-string">'branch_office'</span>)-&gt;nullable();
+            $table-&gt;string(<span class="hljs-string">'serial_number'</span>)-&gt;nullable();
+            $table-&gt;rememberToken();
+            $table-&gt;timestamps();
+            $table-&gt;foreign(<span class="hljs-string">'region_id'</span>)-&gt;references(<span class="hljs-string">'id'</span>)-&gt;on(<span class="hljs-string">'regions'</span>)-&gt;onUpdate(<span class="hljs-string">'cascade'</span>)-&gt;onDelete(<span class="hljs-string">'cascade'</span>)-&gt;nullable();
+        });
+    }
+
+    <span class="hljs-comment">/**
+     * Reverse the migrations.
+     *
+     * <span class="hljs-doctag">@return</span> void
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">down</span><span class="hljs-params">()</span>
+    </span>{
+        Schema::dropIfExists(<span class="hljs-string">'users'</span>);
+    }
+}
+</code></pre>
+<p><a name="seeds"></a></p>
+<h2 id="seeder">Seeder</h2>
+<p>Comando <code>php artisan make:seeder AddUserTableSeeder</code> ejecutar en consola dentro del proyecto.</p>
+<blockquote>
+<p>{info} Directorio  <code>database/seeders/AddUserTableSeeder.php</code>.</p>
+</blockquote>
+<pre><code class="lang-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AddUserTableSeeder</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Seeder</span>
+</span>{
+    <span class="hljs-comment">/**
+     * Run the database seeds.
+     *
+     * <span class="hljs-doctag">@return</span> void
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">run</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-comment">//</span>
+        $root = <span class="hljs-keyword">new</span> User();
+        $root-&gt;id = <span class="hljs-number">1</span>;
+        $root-&gt;region_id = <span class="hljs-number">1</span>;
+        $root-&gt;name = <span class="hljs-string">'Root'</span>;
+        $root-&gt;email = <span class="hljs-string">'root@local.com'</span>;
+        $root-&gt;password = Hash::make(<span class="hljs-string">'root@54321'</span>);
+        $root-&gt;branch_office = <span class="hljs-string">'Sin Asignar'</span>;
+        $root-&gt;serial_number = <span class="hljs-string">'0000000001'</span>;
+        $root-&gt;save();
+
+        $admin = <span class="hljs-keyword">new</span> User();
+        $admin-&gt;id = <span class="hljs-number">2</span>;
+        $admin-&gt;region_id = <span class="hljs-number">1</span>;
+        $admin-&gt;name = <span class="hljs-string">'Admin'</span>;
+        $admin-&gt;email = <span class="hljs-string">'admin@local.com'</span>;
+        $admin-&gt;password = Hash::make(<span class="hljs-string">'admin@54321'</span>);
+        $admin-&gt;branch_office = <span class="hljs-string">'Sin Asignar'</span>;
+        $admin-&gt;serial_number = <span class="hljs-string">'0000000002'</span>;
+        $admin-&gt;save();
+
+        $super = <span class="hljs-keyword">new</span> User();
+        $super-&gt;id = <span class="hljs-number">3</span>;
+        $super-&gt;region_id = <span class="hljs-number">1</span>;
+        $super-&gt;name = <span class="hljs-string">'Super'</span>;
+        $super-&gt;email = <span class="hljs-string">'super@local.com'</span>;
+        $super-&gt;password = Hash::make(<span class="hljs-string">'super@54321'</span>);
+        $super-&gt;branch_office = <span class="hljs-string">'Sin Asignar'</span>;
+        $super-&gt;serial_number = <span class="hljs-string">'0000000003'</span>;
+        $super-&gt;save();
+
+        $user = <span class="hljs-keyword">new</span> User();
+        $user-&gt;id = <span class="hljs-number">4</span>;
+        $user-&gt;region_id = <span class="hljs-number">1</span>;
+        $user-&gt;name = <span class="hljs-string">'User'</span>;
+        $user-&gt;email = <span class="hljs-string">'user@local.com'</span>;
+        $user-&gt;password = Hash::make(<span class="hljs-string">'user@54321'</span>);
+        $user-&gt;branch_office = <span class="hljs-string">'Sin Asignar'</span>;
+        $user-&gt;serial_number = <span class="hljs-string">'0000000004'</span>;
+        $user-&gt;save();
+
+        $disable = <span class="hljs-keyword">new</span> User();
+        $disable-&gt;id = <span class="hljs-number">5</span>;
+        $disable-&gt;region_id = <span class="hljs-number">1</span>;
+        $disable-&gt;name = <span class="hljs-string">'Disable'</span>;
+        $disable-&gt;email = <span class="hljs-string">'disable@local.com'</span>;
+        $disable-&gt;password = Hash::make(<span class="hljs-string">'disable@54321'</span>);
+        $disable-&gt;branch_office = <span class="hljs-string">'Sin Asignar'</span>;
+        $disable-&gt;serial_number = <span class="hljs-string">'0000000005'</span>;
+        $disable-&gt;save();
+    }
+}
+</code></pre>
+<p><a name="models"></a></p>
+<h2 id="modelo">Modelo</h2>
+<p>Comando <code>php artisan make:model User</code> ejecutar en consola dentro del proyecto.</p>
+<blockquote>
+<p>{info} Directorio  <code>app/User.php</code>.</p>
+</blockquote>
+<pre><code class="lang-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Authenticatable</span>
+</span>{
+    <span class="hljs-keyword">use</span> <span class="hljs-title">LaratrustUserTrait</span>;
+    <span class="hljs-keyword">use</span> <span class="hljs-title">Notifiable</span>;
+
+    <span class="hljs-comment">/**
+     * The attributes that are mass assignable.
+     *
+     * <span class="hljs-doctag">@var</span> array
+     */</span>
+    <span class="hljs-keyword">protected</span> $fillable = [
+        <span class="hljs-string">'region_id'</span>,<span class="hljs-string">'name'</span>, <span class="hljs-string">'email'</span>, <span class="hljs-string">'password'</span>, <span class="hljs-string">'branch_office'</span>, <span class="hljs-string">'serial_number'</span>,
+    ];
+
+    <span class="hljs-comment">/**
+     * The attributes that should be hidden for arrays.
+     *
+     * <span class="hljs-doctag">@var</span> array
+     */</span>
+    <span class="hljs-keyword">protected</span> $hidden = [
+        <span class="hljs-string">'password'</span>, <span class="hljs-string">'remember_token'</span>,
+    ];
+
+    <span class="hljs-comment">/**
+     * The attributes that should be cast to native types.
+     *
+     * <span class="hljs-doctag">@var</span> array
+     */</span>
+    <span class="hljs-keyword">protected</span> $casts = [
+        <span class="hljs-string">'email_verified_at'</span> =&gt; <span class="hljs-string">'datetime'</span>,
+    ];
+
+    <span class="hljs-comment">/**
+     * Get the user record  type hostpot.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">region</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;belongsTo(<span class="hljs-string">'App\Region'</span>, <span class="hljs-string">'id'</span>);
+    }
+
+    <span class="hljs-comment">/**
+     * Get the crd for the user.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">crd</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;hasMany(<span class="hljs-string">'App\Crd'</span>,<span class="hljs-string">'user_id'</span>);
+    }
+
+    <span class="hljs-comment">/**
+     * Get the crd for the user.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">erb</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;hasMany(<span class="hljs-string">'App\Erb'</span>,<span class="hljs-string">'user_id'</span>);
+    }
+}
+</code></pre>
+<p><a name="controllers"></a></p>
+<h2 id="controlador">Controlador</h2>
+<p>Comando <code>php artisan make:controller User</code> ejecutar en consola dentro del proyecto.</p>
+<blockquote>
+<p>{info} Directorio  <code>app/Http/Controllers/UserController.php</code>.</p>
+</blockquote>
+<pre><code class="lang-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserController</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Controller</span>
+</span>{
+    <span class="hljs-comment">/**
+     * Create a new controller instance.
+     *
+     * <span class="hljs-doctag">@return</span> void
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">$this</span>-&gt;middleware(<span class="hljs-string">'auth'</span>);
+    }
+
+    <span class="hljs-comment">/**
+     * Display a listing of the Users.
+     *
+     * <span class="hljs-doctag">@return</span> \Illuminate\Http\Response
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">index</span><span class="hljs-params">()</span>
+    </span>{ 
+        $filter = Role::all();
+        <span class="hljs-keyword">if</span>(auth()-&gt;user()-&gt;hasRole(<span class="hljs-string">'root'</span>)){
+          $roles = $filter-&gt;filter(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($role, $key)</span> </span>{
+              <span class="hljs-keyword">return</span> $role-&gt;name != <span class="hljs-string">'root'</span>;
+          });
+        }
+        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(auth()-&gt;user()-&gt;hasRole(<span class="hljs-string">'admin'</span>)){
+            $roles = $filter-&gt;filter(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($role, $key)</span> </span>{
+                <span class="hljs-keyword">return</span> $role-&gt;name != <span class="hljs-string">'root'</span> &amp;&amp; $role-&gt;name != <span class="hljs-string">'admin'</span>;
+            });
+        }
+        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(auth()-&gt;user()-&gt;hasRole(<span class="hljs-string">'super'</span>)){
+            $roles = $filter-&gt;filter(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($role, $key)</span> </span>{
+                <span class="hljs-keyword">return</span> $role-&gt;name != <span class="hljs-string">'root'</span> &amp;&amp; $role-&gt;name != <span class="hljs-string">'admin'</span> &amp;&amp; $role-&gt;name != <span class="hljs-string">'super'</span>;
+            });
+        }
+        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(auth()-&gt;user()-&gt;hasRole(<span class="hljs-string">'user'</span>)){
+            $roles = $filter-&gt;filter(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($role, $key)</span> </span>{
+                <span class="hljs-keyword">return</span> $role-&gt;name != <span class="hljs-string">'root'</span> &amp;&amp; $role-&gt;name != <span class="hljs-string">'admin'</span> &amp;&amp; $role-&gt;name != <span class="hljs-string">'super'</span> &amp;&amp; $role-&gt;name != <span class="hljs-string">'user'</span> &amp;&amp; $role-&gt;name != <span class="hljs-string">'disable'</span>;
+            });
+        }
+        $users = collect();
+            <span class="hljs-keyword">foreach</span> ($roles <span class="hljs-keyword">as</span> $key =&gt; $role) {
+                <span class="hljs-keyword">foreach</span> (User::whereRoleIs($role-&gt;name)-&gt;get() <span class="hljs-keyword">as</span> $key =&gt; $value) {
+                $value-&gt;name_role = $role-&gt;name;  
+                $users-&gt;push($value); 
+                $users-&gt;all();
+                }
+            }
+        <span class="hljs-keyword">return</span> view(<span class="hljs-string">'module.user.index'</span>, compact(<span class="hljs-string">'users'</span>));
+    }
+
+    <span class="hljs-comment">/**
+     * Show the form for creating a new resource for Users.
+     *
+     * <span class="hljs-doctag">@return</span> \Illuminate\Http\Response
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">create</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-comment">//</span>
+        $filter = Role::all();
+        $roles = $filter-&gt;filter(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($role, $key)</span> </span>{
+            <span class="hljs-keyword">return</span> $role-&gt;name != <span class="hljs-string">'root'</span>;
+        });
+        $roles = Role::all();
+        <span class="hljs-keyword">return</span> view(<span class="hljs-string">'module.user.create'</span>,compact(<span class="hljs-string">'roles'</span>));
+    }
+
+    <span class="hljs-comment">/**
+     * Store a newly created resource in storage for Users.
+     *
+     * <span class="hljs-doctag">@param</span>  \Illuminate\Http\Request  $request
+     * <span class="hljs-doctag">@return</span> \Illuminate\Http\Response
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">store</span><span class="hljs-params">(Request $request)</span>
+    </span>{
+        <span class="hljs-comment">//</span>
+        $request-&gt;validate([
+            <span class="hljs-string">'name'</span>=&gt;<span class="hljs-string">'required|string|max:50'</span>,
+            <span class="hljs-string">'email'</span>=&gt;<span class="hljs-string">'required|string|email|max:30|unique:users'</span>,
+            <span class="hljs-string">'password'</span>=&gt;<span class="hljs-string">'required|string|min:3'</span>,
+            <span class="hljs-string">'name_role'</span>=&gt;<span class="hljs-string">'required|string|max:50'</span>,
+        ]);
+        $user = <span class="hljs-keyword">new</span> User([
+            <span class="hljs-string">'name'</span> =&gt; $request-&gt;get(<span class="hljs-string">'name'</span>),
+            <span class="hljs-string">'email'</span> =&gt; $request-&gt;get(<span class="hljs-string">'email'</span>),
+            <span class="hljs-string">'password'</span> =&gt;  Hash::make($request-&gt;get(<span class="hljs-string">'password'</span>))]);  
+        $user-&gt;save();
+        $user-&gt;attachRole($request-&gt;get(<span class="hljs-string">'name_role'</span>));
+        toastr()-&gt;success(<span class="hljs-string">'Usuario creado'</span>);
+        <span class="hljs-keyword">return</span> redirect()-&gt;route(<span class="hljs-string">'user.index'</span>);
+    }
+
+    <span class="hljs-comment">/**
+     * Display the specified resource for Users.
+     *
+     * <span class="hljs-doctag">@param</span>  int  $id
+     * <span class="hljs-doctag">@return</span> \Illuminate\Http\Response
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">show</span><span class="hljs-params">(User $user)</span>
+    </span>{
+        <span class="hljs-comment">//</span>
+        <span class="hljs-keyword">foreach</span> (Role::all() <span class="hljs-keyword">as</span> $key =&gt; $role) {
+            <span class="hljs-keyword">if</span>($user-&gt;hasRole($role-&gt;name)){
+             $user-&gt;name_role = $role-&gt;name;        
+            }
+        }
+        <span class="hljs-keyword">return</span> view(<span class="hljs-string">'module.user.show'</span>,compact(<span class="hljs-string">'user'</span>));
+    }
+
+    <span class="hljs-comment">/**
+     * Show the form for editing the specified resource for Users.
+     *
+     * <span class="hljs-doctag">@param</span>  int  $id
+     * <span class="hljs-doctag">@return</span> \Illuminate\Http\Response
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">edit</span><span class="hljs-params">(User $user)</span>
+    </span>{
+        <span class="hljs-comment">//</span>
+        <span class="hljs-comment">/*$filter = Role::all();
+        $roles = $filter-&gt;filter(function ($role, $key) {
+            return $role-&gt;name != 'hostpot';
+        });
+        foreach (Role::all() as $key =&gt; $role) {
+            if($user-&gt;hasRole($role-&gt;name)){
+             $user-&gt;name_role = $role-&gt;name; 
+             $roles = $roles-&gt;except($role-&gt;id);       
+            }
+        }*/</span>
+        $roles = Role::all();
+        <span class="hljs-keyword">return</span> view(<span class="hljs-string">'module.user.edit'</span>, compact(<span class="hljs-string">'user'</span>,<span class="hljs-string">'roles'</span>));
+    }
+
+    <span class="hljs-comment">/**
+     * Update the specified resource in storage for Users.
+     *
+     * <span class="hljs-doctag">@param</span>  \Illuminate\Http\Request  $request
+     * <span class="hljs-doctag">@param</span>  int  $id
+     * <span class="hljs-doctag">@return</span> \Illuminate\Http\Response
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">update</span><span class="hljs-params">(Request $request, User $user)</span>
+    </span>{
+        <span class="hljs-comment">//</span>
+        $request-&gt;validate([
+            <span class="hljs-string">'name'</span>=&gt;<span class="hljs-string">'required|string|max:50'</span>,
+            <span class="hljs-string">'email'</span>=&gt;<span class="hljs-string">'required|string|email|max:50'</span>,
+            <span class="hljs-string">'name_role'</span>=&gt;<span class="hljs-string">'required|string|max:30'</span>,
+            <span class="hljs-string">'password'</span>=&gt;<span class="hljs-string">'nullable'</span>
+        ]);
+        <span class="hljs-keyword">if</span>(!<span class="hljs-keyword">empty</span>($request-&gt;get(<span class="hljs-string">'password'</span>))){
+           $request[<span class="hljs-string">'password'</span>] = Hash::make($request-&gt;get(<span class="hljs-string">'password'</span>));  
+        }
+        <span class="hljs-keyword">else</span>{
+            $request[<span class="hljs-string">'password'</span>] = $user-&gt;password;  
+        }
+        $user_request = $request-&gt;all();
+        <span class="hljs-keyword">foreach</span> (Role::all() <span class="hljs-keyword">as</span> $key =&gt; $role) {
+            <span class="hljs-keyword">if</span>($user-&gt;hasRole($role-&gt;name)){
+               $user-&gt;detachRole($role-&gt;name);       
+            }
+        }
+        $update_role = Role::where(<span class="hljs-string">'name'</span>,$request-&gt;get(<span class="hljs-string">'name_role'</span>))-&gt;first();
+        $user-&gt;attachRole($update_role);
+        $user-&gt;update($user_request);
+        toastr()-&gt;warning(<span class="hljs-string">'Usuario actualizado'</span>);
+        <span class="hljs-keyword">return</span> redirect()-&gt;route(<span class="hljs-string">'user.index'</span>);
+    }
+
+    <span class="hljs-comment">/**
+     * Remove the specified resource from storage for Users.
+     *
+     * <span class="hljs-doctag">@param</span>  int  $id
+     * <span class="hljs-doctag">@return</span> \Illuminate\Http\Response
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">destroy</span><span class="hljs-params">(User $user)</span>
+    </span>{
+        $user-&gt;delete();
+        <span class="hljs-comment">//return redirect('/user')-&gt;with('success', 'Usuario Eliminado!');</span>
+        toastr()-&gt;error(<span class="hljs-string">'Usuario eliminado'</span>);
+        <span class="hljs-keyword">return</span> redirect()-&gt;route(<span class="hljs-string">'user.index'</span>);
+    }
+}
+</code></pre>
+<p><a name="routes"></a></p>
+<h2 id="ruta-web">Ruta Web</h2>
+<p>No cuenta con comando artisan para esto dispones ya de un archivo de rutas web.</p>
+<blockquote>
+<p>{info} Directorio  <code>routes/web.php</code> agregar dentro del archivo.</p>
+</blockquote>
+<pre><code class="lang-php"><span class="hljs-comment">/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/</span>
+
+Route::get(<span class="hljs-string">'/'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">return</span> view(<span class="hljs-string">'auth.login'</span>);
+});
+
+Auth::routes();
+Route::get(<span class="hljs-string">'/home'</span>, <span class="hljs-string">'HomeController@index'</span>)-&gt;name(<span class="hljs-string">'home'</span>)-&gt;middleware(<span class="hljs-string">'auth'</span>);
+Route::resource(<span class="hljs-string">'user'</span>, <span class="hljs-string">'UserController'</span>)-&gt;middleware(<span class="hljs-string">'auth'</span>);
+Auth::routes();
+</code></pre>
+<p><a name="views"></a></p>
+<h2 id="vista">Vista</h2>
+<p>No se cuenta con comando pero crea un archivos index para modulo de usuario <code>index.blade.php</code> y pega este codigo.</p>
+<blockquote>
+<p>{info} Directorio  <code>resources/module/user/index.blade.php</code>.</p>
+</blockquote>
+<pre><code class="lang-php"><span class="xml"><span class="hljs-comment">&lt;!-- Main content --&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"content"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"row"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-12"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"card card-primary card-outline"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"card-header"</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"card-title"</span>&gt;</span>Tabla Usuarios<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-xs btn-success float-right"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"</span></span></span><span class="hljs-template-variable">{{ route('user.create') }}</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">"</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"button"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"fas fa-plus"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-comment">&lt;!-- /.card-header --&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"card-body"</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"userTable"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"table table-bordered table-striped"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">thead</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Id<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Nombre<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Email<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Password<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>FechaCreacion<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>FechaMoficiacion<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Acciones<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">thead</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">tbody</span>&gt;</span>
+                @foreach($users as $user)
+                <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span></span><span class="hljs-template-variable">{{ $user-&gt;id }}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span></span><span class="hljs-template-variable">{{ $user-&gt;name }}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span></span><span class="hljs-template-variable">{{ $user-&gt;email }}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span></span><span class="hljs-template-variable">{{ $user-&gt;password }}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span></span><span class="hljs-template-variable">{{ $user-&gt;created_at }}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span></span><span class="hljs-template-variable">{{ $user-&gt;updated_at }}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>
+                      <span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"form"</span> <span class="hljs-attr">action</span>=<span class="hljs-string">"</span></span></span><span class="hljs-template-variable">{{ route('user.destroy',$user-&gt;id) }}</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">"</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"POST"</span>&gt;</span>
+                      <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-info btn-xs"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"</span></span></span><span class="hljs-template-variable">{{ route('user.show',$user-&gt;id) }}</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">"</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"button"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"fas fa-eye"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span> 
+                      <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-warning btn-xs"</span>  <span class="hljs-attr">href</span>=<span class="hljs-string">"</span></span></span><span class="hljs-template-variable">{{ route('user.edit',$user-&gt;id) }}</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">"</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"button"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"fas fa-pen"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+                      @csrf
+                      @method('DELETE')
+                      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-danger btn-xs"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"fas fa-trash"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                      <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+                @endforeach
+                <span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span>
+               <span class="hljs-comment">&lt;!-- &lt;tfoot&gt;
+                &lt;tr&gt;
+                  &lt;th&gt;Id&lt;/th&gt;
+                  &lt;th&gt;Nombre&lt;/th&gt;
+                  &lt;th&gt;Email&lt;/th&gt;
+                  &lt;th&gt;Password&lt;/th&gt;
+                  &lt;th&gt;FechaCreacion&lt;/th&gt;
+                  &lt;th&gt;FechaMoficiacion&lt;/th&gt;
+                  &lt;th&gt;Acciones&lt;/th&gt;
+                &lt;/tr&gt;
+                &lt;/tfoot&gt;--&gt;</span>
+              <span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-comment">&lt;!-- /.card-body --&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+          <span class="hljs-comment">&lt;!-- /.card --&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- /.col --&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-comment">&lt;!-- /.row --&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- /.content --&gt;</span>  
+
+@stop</span>
+</code></pre>
+<p><a name="mcr"></a></p>
+<h2 id="comando-para-crear-migracion-modelo-controlador-seeder">Comando para crear Migracion, Modelo, Controlador + Seeder</h2>
+<p>Tu puedes crear los archivos de forma automatica y sin tanta complejidad.</p>
+<p>☝️ En un solo comando crearas migracion, modelo, controlador con recursos.</p>
+<pre><code class="lang-php">   <span class="hljs-selector-tag">php</span> <span class="hljs-selector-tag">artisan</span> <span class="hljs-selector-tag">make</span><span class="hljs-selector-pseudo">:model</span> <span class="hljs-selector-tag">NameModel</span> <span class="hljs-selector-tag">-mcr</span>
+</code></pre>
+<p>✌️ Run the install command.</p>
+<pre><code class="lang-php">   <span class="hljs-selector-tag">php</span> <span class="hljs-selector-tag">artisan</span> <span class="hljs-selector-tag">make</span><span class="hljs-selector-pseudo">:seeder</span> <span class="hljs-selector-tag">NameTableSeeder</span>
+</code></pre>
+</body></html>
