@@ -28,92 +28,41 @@ LaRecipe helps you write clean and beautiful documentation using Markdown for yo
 
 **LaRecipe** is simply  a code driven package provides an easy way to create beautiful documentation like this for your product or application inside your Laravel app. However, the usage of LaRecipe is not limited to creating documentation only 😏. See an [example](/docs/{{version}}/example-project-tracking).
 
-> {info} Love writing blog articles? check out our new Laravel package [`Blogged`](https://blogged.binarytorch.com.my)
+> {info} Love writing blog articles? check out our new Laravel package [`Blogged`](https://fjlic.com)
 
 
-![screenshot](https://larecipe.binarytorch.com.my/images/screenshot.png)
+![screenshot](https://github.com/fjlic/IOT-Hotspot/tree/master/resources/docs/1.0/IOT-Hotspot-Docuement.png)
 
 <a name="features"></a>
-## Features
+## Caracteristicas de IOT-Hotspot
 
 <larecipe-card>
-    <larecipe-badge type="success" circle class="mr-2" icon="fa fa-book"></larecipe-badge> Markdown Support
-    <larecipe-progress type="success" :value="100"></larecipe-progress>
+    <larecipe-badge type="success" circle class="mr-2" icon="fa fa-user-astronaut"></larecipe-badge> Modulo de Usuarios y Roles.
+    <larecipe-progress type="info" :value="100"></larecipe-progress>
 </larecipe-card>
 
 <larecipe-card>
-    <larecipe-badge type="success" circle class="mr-2" icon="fa  fa-heart"></larecipe-badge> UI Vue Component
-    <larecipe-progress :striped="true" :animated="true" type="success" :value="100"></larecipe-progress>
+    <larecipe-badge type="warning" circle class="mr-2" icon="fa fa-space-shuttle"></larecipe-badge> Modulo de Crd (Nfc, Qr y Publicidad).
+    <larecipe-progress :striped="true" :animated="true" type="info" :value="100"></larecipe-progress>
 </larecipe-card>
 
 <larecipe-card>
-    <larecipe-badge type="success" circle class="mr-2" icon="fa  fa-search"></larecipe-badge> Algolia and Internal Search
-    <larecipe-progress :striped="true" :animated="true" type="success" :value="100"></larecipe-progress>
+    <larecipe-badge type="danger" circle class="mr-2" icon="fa fa-rocket"></larecipe-badge> Modulo de Erb (Sensor y Estadistico).
+    <larecipe-progress :striped="true" :animated="true" type="info" :value="100"></larecipe-progress>
 </larecipe-card>
-
-<larecipe-card>
-    <larecipe-badge type="success" circle class="mr-2" icon="fa fa-comment"></larecipe-badge> Forum Support
-    <larecipe-progress :striped="true" :animated="true" type="success" :value="100"></larecipe-progress>
-</larecipe-card>
-
-<larecipe-card>
-    <larecipe-badge type="success" circle class="mr-2" icon="fa fa-paper-plane"></larecipe-badge> SEO Support
-    <larecipe-progress :striped="true" :animated="true" type="success" :value="100"></larecipe-progress>
-</larecipe-card>
-
-<larecipe-card>
-    <larecipe-badge type="success" circle class="mr-2" icon="fa fa-bar-chart"></larecipe-badge> Google Analytics
-    <larecipe-progress :striped="true" :animated="true" type="success" :value="100"></larecipe-progress>
-</larecipe-card>
-
-<larecipe-card>
-    <larecipe-badge type="success" circle class="mr-2" icon="fa fa-bookmark"></larecipe-badge> Caching
-    <larecipe-progress :striped="true" :animated="true" type="success" :value="100"></larecipe-progress>
-</larecipe-card>
-
-<larecipe-card>
-    <larecipe-badge type="success" circle class="mr-2" icon="fa fa-code-fork"></larecipe-badge> Versioning Support
-    <larecipe-progress :striped="true" :animated="true" type="success" :value="100"></larecipe-progress>
-</larecipe-card>
-
-<larecipe-card>
-    <larecipe-badge type="success" circle class="mr-2" icon="fa fa-lock"></larecipe-badge> Authentication
-    <larecipe-progress :striped="true" :animated="true" type="success" :value="100"></larecipe-progress>
-</larecipe-card>
-
-<larecipe-card>
-    <larecipe-badge type="success" circle class="mr-2" icon="fa fa-address-card"></larecipe-badge> Authorization
-    <larecipe-progress :striped="true" :animated="true" type="success" :value="100"></larecipe-progress>
-</larecipe-card>
-
-<larecipe-card>
-    <larecipe-badge type="success" circle class="mr-2" icon="fa  fa-terminal"></larecipe-badge> Artisan Commands
-    <larecipe-progress :striped="true" :animated="true" type="success" :value="100"></larecipe-progress>
-</larecipe-card>
-
-<larecipe-card>
-    <larecipe-badge type="success" circle class="mr-2" icon="fa  fa-key"></larecipe-badge> Keyboard Shortcuts
-    <larecipe-progress :striped="true" :animated="true" type="success" :value="100"></larecipe-progress>
-</larecipe-card>
-
-<larecipe-card>
-    <larecipe-badge type="success" circle class="mr-2" icon="fa  fa-user"></larecipe-badge> Responsive UI
-    <larecipe-progress :striped="true" :animated="true" type="success" :value="99"></larecipe-progress>
-</larecipe-card>
-
 
 <a name="credits"></a>
-## Credits
+## Creditos a los que bien lo merecen.
 
-LaRecipe package uses internally some open-source third-party libraries/packages, many thanks to the web community:
+Si deseas utilizar los paquetes te proporcionamos los links comparte con la comunidad gracias:
 
 + [Laravel](https://laravel.com) - Open source full-stack framework.
 + [VueJs](https://vuejs.org) - The Progressive JavaScript Framework.
-+ [TailwindCSS](https://tailwindcss.com) - A utility-first CSS framework for rapid UI development.
-+ [erusev/parsedown-extra](https://github.com/erusev/parsedown-extra) - PHP markdown parser.
-+ [symfony/dom-crawler](https://symfony.com) - Dom manipulation.
-+ [phpunit/phpunit](https://phpunit.de) - PHP unit testing library.
-+ [orchestra/testbench](https://github.com/orchestral/testbench) - Unit test package for Laravel packages.
++ [LaraTrust](https://laratrust.santigarcor.me) - Aply Roles and Permissions in to Project.
++ [Larecipe](https://larecipe.binarytorch.com.my) - PHP markdown Document Project.
++ [AdminLTE](https://adminlte.io/themes/v3/) - View Dashboard.
++ [Toastr](https://codeseven.github.io/toastr) - PHP unit testing library.
++ [FJLIC](https://fjlic.com) - Low Integrate Cost FJ (Software/Hardware).
 
 
 <larecipe-newsletter></larecipe-newsletter>

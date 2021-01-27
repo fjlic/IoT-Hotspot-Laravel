@@ -296,7 +296,7 @@ return [
         [
             'text'    => 'Crd Modulos',
             'icon'    => 'fas fa-space-shuttle',
-            'icon_color' => 'yellow',
+            'icon_color' => 'orange',
             'submenu' => [
                 [
                     'text'    => 'Info Crd',
