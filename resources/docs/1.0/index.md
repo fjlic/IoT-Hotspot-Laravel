@@ -9,6 +9,7 @@
     - [ModuloNfc](/{{route}}/{{version}}/module-nfc)
     - [ModuloQr](/{{route}}/{{version}}/module-qr)
     - [ModuloPublicidad](/{{route}}/{{version}}/module-file)
+    - [ModuloContador](/{{route}}/{{version}}/module-counter)
 - ## Erb Modulos
     - [ModuloErb](/{{route}}/{{version}}/module-erb)
     - [ModuloSensor](/{{route}}/{{version}}/module-sensor)

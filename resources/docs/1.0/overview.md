@@ -31,7 +31,7 @@ LaRecipe helps you write clean and beautiful documentation using Markdown for yo
 > {info} Love writing blog articles? check out our new Laravel package [`Blogged`](https://fjlic.com)
 
 
-![screenshot](https://github.com/fjlic/IOT-Hotspot/tree/master/resources/docs/1.0/IOT-Hotspot-Docuement.png)
+![screenshot](https://larecipe.binarytorch.com.my/images/screenshot.png)
 
 <a name="features"></a>
 ## Caracteristicas de IOT-Hotspot

@@ -1,8 +1,8 @@
-# Modulo File
+# Modulo Publicidad
 
 ---
 
-- [File CRUD](#section-file)
+- [Publicidad CRUD](#section-file)
 - [Migracion](#migrations)
 - [Seeder](#seeds)
 - [Modelo](#models)
@@ -14,7 +14,7 @@
 <a name="section-file"></a>
 ## Migracion, Sedder, Modelo, Controlador y Vista
 
-Estructura del modulo File.. 🦊
+Estructura del modulo Publicidad.. 🦊
 Si gustas es posible crear la estructura MVC de forma manual.
 
 ---

@@ -1,0 +1,448 @@
+<html><head><style>body {
+   color: black;
+}
+</style></head><body><h1 id="modulo-contador">Modulo Contador <a href="index.html"></h1>
+<hr>
+<ul>
+<li><a href="#section-counter">Contador CRUD</a></li>
+<li><a href="#migrations">Migracion</a></li>
+<li><a href="#seeds">Seeder</a></li>
+<li><a href="#models">Modelo</a></li>
+<li><a href="#controllers">Controlador</a></li>
+<li><a href="#routes">RutaWeb</a></li>
+<li><a href="#views">Vista</a></li>
+<li><a href="#mcr">Comando</a></li>
+</ul>
+<p><a name="section-counter"></a></p>
+<h2 id="migracion-sedder-modelo-controlador-y-vista">Migracion, Sedder, Modelo, Controlador y Vista</h2>
+<p>Estructura del modulo Counter.. 🦊
+Si gustas es posible crear la estructura MVC de forma manual.</p>
+<hr>
+<ul>
+<li><a href="#migrations">Migracion</a></li>
+<li><a href="#seeds">Seeder</a></li>
+<li><a href="#models">Modelo</a></li>
+<li><a href="#controllers">Controlador</a></li>
+<li><a href="#routes">RutaWeb</a></li>
+<li><a href="#views">Vista</a></li>
+<li><a href="#mcr">Comando MCR</a></li>
+</ul>
+<p><a name="migrations"></a></p>
+<h2 id="migracion">Migracion</h2>
+<p>Comando <code>php artisan make:migration counter</code> ejecutar en consola dentro del proyecto.</p>
+<blockquote>
+<p>{info} Directorio  <code>database/migrations/2014_10_12_000000_create_counters_table.php</code>.</p>
+</blockquote>
+<pre><code class="lang-php">
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CreateCountersTable</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Migration</span></span>
+{
+    <span class="hljs-comment">/**
+     * Run the migrations.
+     *
+     * @return void
+     */</span>
+    public <span class="hljs-keyword">function</span> up()
+    {
+        Schema::create(<span class="hljs-string">'counters'</span>, <span class="hljs-keyword">function</span> (Blueprint $table) {
+            $table-&gt;id();
+            $table-&gt;unsignedBigInteger<span class="hljs-function"><span class="hljs-params">(<span class="hljs-string">'crd_id'</span>)</span>-&gt;</span>nullable();
+            $table-&gt;unsignedBigInteger<span class="hljs-function"><span class="hljs-params">(<span class="hljs-string">'erb_id'</span>)</span>-&gt;</span>nullable();
+            $table-&gt;unsignedBigInteger<span class="hljs-function"><span class="hljs-params">(<span class="hljs-string">'nfc_id'</span>)</span>-&gt;</span>nullable();
+            $table-&gt;string<span class="hljs-function"><span class="hljs-params">(<span class="hljs-string">'num_serie'</span>)</span>-&gt;</span>nullable();
+            $table-&gt;string<span class="hljs-function"><span class="hljs-params">(<span class="hljs-string">'cont_qr'</span>)</span>-&gt;</span>nullable();
+            $table-&gt;string<span class="hljs-function"><span class="hljs-params">(<span class="hljs-string">'cont_mon'</span>)</span>-&gt;</span>nullable();
+            $table-&gt;timestamps();
+            $table-&gt;foreign<span class="hljs-function"><span class="hljs-params">(<span class="hljs-string">'crd_id'</span>)</span>-&gt;</span>references<span class="hljs-function"><span class="hljs-params">(<span class="hljs-string">'id'</span>)</span>-&gt;</span><span class="hljs-literal">on</span><span class="hljs-function"><span class="hljs-params">(<span class="hljs-string">'crds'</span>)</span>-&gt;</span>onUpdate<span class="hljs-function"><span class="hljs-params">(<span class="hljs-string">'cascade'</span>)</span>-&gt;</span>onDelete<span class="hljs-function"><span class="hljs-params">(<span class="hljs-string">'cascade'</span>)</span>-&gt;</span>nullable();
+            $table-&gt;foreign<span class="hljs-function"><span class="hljs-params">(<span class="hljs-string">'erb_id'</span>)</span>-&gt;</span>references<span class="hljs-function"><span class="hljs-params">(<span class="hljs-string">'id'</span>)</span>-&gt;</span><span class="hljs-literal">on</span><span class="hljs-function"><span class="hljs-params">(<span class="hljs-string">'erbs'</span>)</span>-&gt;</span>onUpdate<span class="hljs-function"><span class="hljs-params">(<span class="hljs-string">'cascade'</span>)</span>-&gt;</span>onDelete<span class="hljs-function"><span class="hljs-params">(<span class="hljs-string">'cascade'</span>)</span>-&gt;</span>nullable();
+            $table-&gt;foreign<span class="hljs-function"><span class="hljs-params">(<span class="hljs-string">'nfc_id'</span>)</span>-&gt;</span>references<span class="hljs-function"><span class="hljs-params">(<span class="hljs-string">'id'</span>)</span>-&gt;</span><span class="hljs-literal">on</span><span class="hljs-function"><span class="hljs-params">(<span class="hljs-string">'nfcs'</span>)</span>-&gt;</span>onUpdate<span class="hljs-function"><span class="hljs-params">(<span class="hljs-string">'cascade'</span>)</span>-&gt;</span>onDelete<span class="hljs-function"><span class="hljs-params">(<span class="hljs-string">'cascade'</span>)</span>-&gt;</span>nullable();
+        });
+    }
+
+    <span class="hljs-comment">/**
+     * Reverse the migrations.
+     *
+     * @return void
+     */</span>
+    public <span class="hljs-keyword">function</span> down()
+    {
+        Schema::dropIfExists(<span class="hljs-string">'counters'</span>);
+    }
+}
+</code></pre>
+<p><a name="seeds"></a></p>
+<h2 id="seeder">Seeder</h2>
+<p>Comando <code>php artisan make:seeder AddCounterTableSeeder</code> ejecutar en consola dentro del proyecto.</p>
+<blockquote>
+<p>{info} Directorio  <code>database/seeders/AddCounterTableSeeder.php</code>.</p>
+</blockquote>
+<pre><code class="lang-php">
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AddCounterTableSeeder</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Seeder</span>
+</span>{
+    <span class="hljs-comment">/**
+     * Run the database seeds.
+     *
+     * <span class="hljs-doctag">@return</span> void
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">run</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-comment">//</span>
+        $counter = <span class="hljs-keyword">new</span> Counter();
+        $counter-&gt;id = <span class="hljs-number">1</span>;
+        $counter-&gt;crd_id = <span class="hljs-number">1</span>;
+        $counter-&gt;erb_id = <span class="hljs-number">1</span>;
+        $counter-&gt;nfc_id = <span class="hljs-number">1</span>;
+        $counter-&gt;num_serie = <span class="hljs-string">'70000000001'</span>;
+        $counter-&gt;cont_qr = <span class="hljs-string">'0'</span>;
+        $counter-&gt;cont_mon = <span class="hljs-string">'0'</span>;
+        $counter-&gt;save();
+
+        $counter = <span class="hljs-keyword">new</span> Counter();
+        $counter-&gt;id = <span class="hljs-number">2</span>;
+        $counter-&gt;crd_id = <span class="hljs-number">2</span>;
+        $counter-&gt;erb_id = <span class="hljs-number">2</span>;
+        $counter-&gt;nfc_id = <span class="hljs-number">2</span>;
+        $counter-&gt;num_serie = <span class="hljs-string">'70000000002'</span>;
+        $counter-&gt;cont_qr = <span class="hljs-string">'0'</span>;
+        $counter-&gt;cont_mon = <span class="hljs-string">'0'</span>;
+        $counter-&gt;save();
+
+        $counter = <span class="hljs-keyword">new</span> Counter();
+        $counter-&gt;id = <span class="hljs-number">3</span>;
+        $counter-&gt;crd_id = <span class="hljs-number">3</span>;
+        $counter-&gt;erb_id = <span class="hljs-number">3</span>;
+        $counter-&gt;nfc_id = <span class="hljs-number">3</span>;
+        $counter-&gt;num_serie = <span class="hljs-string">'70000000003'</span>;
+        $counter-&gt;cont_qr = <span class="hljs-string">'0'</span>;
+        $counter-&gt;cont_mon = <span class="hljs-string">'0'</span>;
+        $counter-&gt;save();
+
+        $counter = <span class="hljs-keyword">new</span> Counter();
+        $counter-&gt;id = <span class="hljs-number">4</span>;
+        $counter-&gt;crd_id = <span class="hljs-number">4</span>;
+        $counter-&gt;erb_id = <span class="hljs-number">4</span>;
+        $counter-&gt;nfc_id = <span class="hljs-number">4</span>;
+        $counter-&gt;num_serie = <span class="hljs-string">'70000000004'</span>;
+        $counter-&gt;cont_qr = <span class="hljs-string">'0'</span>;
+        $counter-&gt;cont_mon = <span class="hljs-string">'0'</span>;
+        $counter-&gt;save();
+
+        $counter = <span class="hljs-keyword">new</span> Counter();
+        $counter-&gt;id = <span class="hljs-number">5</span>;
+        $counter-&gt;crd_id = <span class="hljs-number">5</span>;
+        $counter-&gt;erb_id = <span class="hljs-number">5</span>;
+        $counter-&gt;nfc_id = <span class="hljs-number">5</span>;
+        $counter-&gt;num_serie = <span class="hljs-string">'70000000005'</span>;
+        $counter-&gt;cont_qr = <span class="hljs-string">'0'</span>;
+        $counter-&gt;cont_mon = <span class="hljs-string">'0'</span>;
+        $counter-&gt;save();
+    }
+}
+</code></pre>
+<p><a name="models"></a></p>
+<h2 id="modelo">Modelo</h2>
+<p>Comando <code>php artisan make:model Counter</code> ejecutar en consola dentro del proyecto.</p>
+<blockquote>
+<p>{info} Directorio  <code>app/Counter.php</code>.</p>
+</blockquote>
+<pre><code class="lang-php">
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Counter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Model</span>
+</span>{
+    <span class="hljs-comment">//</span>
+    <span class="hljs-comment">/**
+     * The attributes that are mass assignable.
+     *
+     * <span class="hljs-doctag">@var</span> array
+     */</span>
+    <span class="hljs-keyword">protected</span> $fillable = [
+        <span class="hljs-string">'id'</span>, <span class="hljs-string">'crd_id'</span>, <span class="hljs-string">'erb_id'</span>, <span class="hljs-string">'nfc_id'</span>, <span class="hljs-string">'num_serie'</span>, <span class="hljs-string">'cont_qr'</span>, <span class="hljs-string">'cont_mon'</span>,
+    ];
+
+    <span class="hljs-comment">/**
+     * The attributes that should be hidden for arrays.
+     *
+     * <span class="hljs-doctag">@var</span> array
+     */</span>
+    <span class="hljs-keyword">protected</span> $hidden = [
+
+    ];
+
+    <span class="hljs-comment">/**
+     * The attributes that should be cast to native types.
+     *
+     * <span class="hljs-doctag">@var</span> array
+     */</span>
+    <span class="hljs-keyword">protected</span> $casts = [
+    ];
+
+    <span class="hljs-comment">/**
+     * Get the hostpot for the blog crd.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">historialcounter</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;hasMany(<span class="hljs-string">'App\HistorialCounter'</span>,<span class="hljs-string">'counter_id'</span>);
+    }
+}
+</code></pre>
+<p><a name="controllers"></a></p>
+<h2 id="controlador">Controlador</h2>
+<p>Comando <code>php artisan make:controller Counter</code> ejecutar en consola dentro del proyecto.</p>
+<blockquote>
+<p>{info} Directorio  <code>app/Http/Controllers/CounterController.php</code>.</p>
+</blockquote>
+<pre><code class="lang-php">
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CounterController</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Controller</span>
+</span>{
+    <span class="hljs-comment">/**
+     * Create a new controller instance.
+     *
+     * <span class="hljs-doctag">@return</span> void
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">$this</span>-&gt;middleware(<span class="hljs-string">'auth'</span>);
+    }
+
+    <span class="hljs-comment">/**
+     * Display a listing of the resource.
+     *
+     * <span class="hljs-doctag">@return</span> \Illuminate\Http\Response
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">index</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-comment">//</span>
+        $counters = Counter::all();
+        <span class="hljs-keyword">return</span> view(<span class="hljs-string">'module.counter.index'</span>,compact(<span class="hljs-string">'counters'</span>));
+    }
+
+    <span class="hljs-comment">/**
+     * Show the form for creating a new resource.
+     *
+     * <span class="hljs-doctag">@return</span> \Illuminate\Http\Response
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">create</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-comment">//</span>
+        $erbs = Erb::all();
+        $crds = Crd::all();
+        $nfcs = Nfc::all();
+        <span class="hljs-keyword">return</span> view(<span class="hljs-string">'module.counter.create'</span>,compact(<span class="hljs-string">'erbs'</span>, <span class="hljs-string">'crds'</span>, <span class="hljs-string">'nfcs'</span>));
+    }
+
+    <span class="hljs-comment">/**
+     * Store a newly created resource in storage.
+     *
+     * <span class="hljs-doctag">@param</span>  \Illuminate\Http\Request  $request
+     * <span class="hljs-doctag">@return</span> \Illuminate\Http\Response
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">store</span><span class="hljs-params">(Request $request)</span>
+    </span>{
+        <span class="hljs-comment">//</span>
+        $request-&gt;validate([
+            <span class="hljs-string">'crd_id'</span>=&gt;<span class="hljs-string">'required|string|max:100'</span>,
+            <span class="hljs-string">'erb_id'</span>=&gt;<span class="hljs-string">'required|string|max:100'</span>,
+            <span class="hljs-string">'nfc_id'</span>=&gt;<span class="hljs-string">'required|string|max:100'</span>,
+            <span class="hljs-string">'num_serie'</span>=&gt;<span class="hljs-string">'required|string|max:100'</span>,
+            <span class="hljs-string">'cont_qr'</span>=&gt;<span class="hljs-string">'required|string|max:100'</span>,
+            <span class="hljs-string">'cont_mon'</span>=&gt;<span class="hljs-string">'required|string|max:100'</span>,
+        ]);
+        $counter = <span class="hljs-keyword">new</span> Counter([
+            <span class="hljs-string">'crd_id'</span> =&gt; $request-&gt;get(<span class="hljs-string">'crd_id'</span>),
+            <span class="hljs-string">'erb_id'</span> =&gt; $request-&gt;get(<span class="hljs-string">'erb_id'</span>),
+            <span class="hljs-string">'nfc_id'</span> =&gt; $request-&gt;get(<span class="hljs-string">'erb_id'</span>),
+            <span class="hljs-string">'num_serie'</span> =&gt; $request-&gt;get(<span class="hljs-string">'num_serie'</span>),
+            <span class="hljs-string">'cont_qr'</span> =&gt; $request-&gt;get(<span class="hljs-string">'cont_qr'</span>),
+            <span class="hljs-string">'cont_mon'</span> =&gt; $request-&gt;get(<span class="hljs-string">'cont_mon'</span>)
+            ]);
+        $counter-&gt;save();
+        <span class="hljs-comment">//return redirect(/counter)-&gt;with('success','Contador generado satisfactoriamente');</span>
+        toastr()-&gt;success(<span class="hljs-string">'Contador creado'</span>);
+        <span class="hljs-keyword">return</span> redirect()-&gt;route(<span class="hljs-string">'counter.index'</span>);
+    }
+
+    <span class="hljs-comment">/**
+     * Display the specified resource.
+     *
+     * <span class="hljs-doctag">@param</span>  \App\Counter  $counter
+     * <span class="hljs-doctag">@return</span> \Illuminate\Http\Response
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">show</span><span class="hljs-params">(Counter $counter)</span>
+    </span>{
+        <span class="hljs-comment">//</span>
+        <span class="hljs-keyword">return</span> view(<span class="hljs-string">'module.counter.show'</span>, compact(<span class="hljs-string">'counter'</span>));
+    }
+
+    <span class="hljs-comment">/**
+     * Show the form for editing the specified resource.
+     *
+     * <span class="hljs-doctag">@param</span>  \App\Counter  $counter
+     * <span class="hljs-doctag">@return</span> \Illuminate\Http\Response
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">edit</span><span class="hljs-params">(Counter $counter)</span>
+    </span>{
+        <span class="hljs-comment">//</span>
+        $crds = Crd::all();
+        $erbs = Erb::all();
+        $nfcs = Nfc::all();
+        <span class="hljs-keyword">return</span> view(<span class="hljs-string">'module.counter.edit'</span>,compact(<span class="hljs-string">'counter'</span>,<span class="hljs-string">'crds'</span>,<span class="hljs-string">'erbs'</span>,<span class="hljs-string">'nfcs'</span>));
+    }
+
+    <span class="hljs-comment">/**
+     * Update the specified resource in storage.
+     *
+     * <span class="hljs-doctag">@param</span>  \Illuminate\Http\Request  $request
+     * <span class="hljs-doctag">@param</span>  \App\Counter  $counter
+     * <span class="hljs-doctag">@return</span> \Illuminate\Http\Response
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">update</span><span class="hljs-params">(Request $request, Counter $counter)</span>
+    </span>{
+        <span class="hljs-comment">//</span>
+        $request-&gt;validate([
+            <span class="hljs-string">'crd_id'</span>=&gt;<span class="hljs-string">'required|string|max:100'</span>,
+            <span class="hljs-string">'erb_id'</span>=&gt;<span class="hljs-string">'required|string|max:100'</span>,
+            <span class="hljs-string">'nfc_id'</span>=&gt;<span class="hljs-string">'required|string|max:100'</span>,
+            <span class="hljs-string">'num_serie'</span>=&gt;<span class="hljs-string">'required|string|max:100'</span>,
+            <span class="hljs-string">'cont_qr'</span>=&gt;<span class="hljs-string">'required|string|max:100'</span>,
+            <span class="hljs-string">'cont_mon'</span>=&gt;<span class="hljs-string">'required|string|max:100'</span>,
+        ]);
+        $counter_request = $request-&gt;all();
+        $counter-&gt;update($counter_request);
+        toastr()-&gt;warning(<span class="hljs-string">'Contador actualizado'</span>);
+        <span class="hljs-keyword">return</span> redirect()-&gt;route(<span class="hljs-string">'counter.index'</span>);
+    }
+
+    <span class="hljs-comment">/**
+     * Remove the specified resource from storage.
+     *
+     * <span class="hljs-doctag">@param</span>  \App\Counter  $counter
+     * <span class="hljs-doctag">@return</span> \Illuminate\Http\Response
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">destroy</span><span class="hljs-params">(Counter $counter)</span>
+    </span>{
+        <span class="hljs-comment">//</span>
+        $counter-&gt;delete();
+        toastr()-&gt;error(<span class="hljs-string">'Contador eliminado'</span>);
+        <span class="hljs-keyword">return</span> redirect()-&gt;route(<span class="hljs-string">'counter.index'</span>);
+    }
+}
+</code></pre>
+<p><a name="routes"></a></p>
+<h2 id="ruta-web">Ruta Web</h2>
+<p>No cuenta con comando artisan para esto dispones ya de un archivo de rutas web.</p>
+<blockquote>
+<p>{info} Directorio  <code>routes/web.php</code> agregar dentro del archivo.</p>
+</blockquote>
+<pre><code class="lang-php">
+<span class="hljs-comment">/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/</span>
+
+Route::get(<span class="hljs-string">'/'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">return</span> view(<span class="hljs-string">'auth.login'</span>);
+});
+
+Auth::routes();
+Route::get(<span class="hljs-string">'/home'</span>, <span class="hljs-string">'HomeController@index'</span>)-&gt;name(<span class="hljs-string">'home'</span>)-&gt;middleware(<span class="hljs-string">'auth'</span>);
+Route::resource(<span class="hljs-string">'counter'</span>, <span class="hljs-string">'CounterController'</span>)-&gt;middleware(<span class="hljs-string">'auth'</span>);
+Auth::routes();
+</code></pre>
+<p><a name="views"></a></p>
+<h2 id="vista">Vista</h2>
+<p>No se cuenta con comando pero crea un archivos index para modulo de counter <code>index.blade.php</code> y pega este codigo.</p>
+<blockquote>
+<p>{info} Directorio  <code>resources/views/module/counter/index.blade.php</code>.</p>
+</blockquote>
+<pre><code class="lang-php"><span class="xml">
+<span class="hljs-comment">&lt;!-- Main content --&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"content"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"row"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-12"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"card card-primary card-outline"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"card-header"</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"card-title"</span>&gt;</span>Tabla Contadores<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-xs btn-success float-right"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"</span></span></span><span class="hljs-template-variable">{{ route('counter.create') }}</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">"</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"button"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"fas fa-plus"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-comment">&lt;!-- /.card-header --&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"card-body"</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"counterTable"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"table table-bordered table-striped"</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">thead</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Id<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Crd Id<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Erb id<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Nfc id<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Num Serie<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Cont Qr<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Cont Mon<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>FechaCreacion<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>FechaMoficiacion<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Acciones<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">thead</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">tbody</span>&gt;</span>
+                @foreach($counters as $counter)
+                <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span></span><span class="hljs-template-variable">{{ $counter-&gt;id }}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span></span><span class="hljs-template-variable">{{ $counter-&gt;crd_id }}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span></span><span class="hljs-template-variable">{{ $counter-&gt;erb_id }}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span></span><span class="hljs-template-variable">{{ $counter-&gt;nfc_id }}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span></span><span class="hljs-template-variable">{{ $counter-&gt;num_serie }}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>      
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span></span><span class="hljs-template-variable">{{ $counter-&gt;cont_qr }}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span></span><span class="hljs-template-variable">{{ $counter-&gt;cont_mon }}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span></span><span class="hljs-template-variable">{{ $counter-&gt;created_at }}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span></span><span class="hljs-template-variable">{{ $counter-&gt;updated_at }}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>
+                      <span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"form"</span> <span class="hljs-attr">action</span>=<span class="hljs-string">"</span></span></span><span class="hljs-template-variable">{{ route('counter.destroy',$counter-&gt;id) }}</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">"</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"POST"</span>&gt;</span>
+                      <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-info btn-xs"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"</span></span></span><span class="hljs-template-variable">{{ route('counter.show',$counter-&gt;id) }}</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">"</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"button"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"fas fa-eye"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span> 
+                      <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-warning btn-xs"</span>  <span class="hljs-attr">href</span>=<span class="hljs-string">"</span></span></span><span class="hljs-template-variable">{{ route('counter.edit',$counter-&gt;id) }}</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">"</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"button"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"fas fa-pen"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+                      @csrf
+                      @method('DELETE')
+                      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-danger btn-xs"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"fas fa-trash"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                      <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+                @endforeach
+                <span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span>
+               <span class="hljs-comment">&lt;!-- &lt;tfoot&gt;
+                 &lt;tr&gt;
+                 &lt;th&gt;Id&lt;/th&gt;
+                  &lt;th&gt;Crd_Id&lt;/th&gt;
+                  &lt;th&gt;Erb_id&lt;/th&gt;
+                  &lt;th&gt;Nfc_id&lt;/th&gt;
+                  &lt;th&gt;NumSerie&lt;/th&gt;
+                  &lt;th&gt;Contqr&lt;/th&gt;
+                  &lt;th&gt;Contmon&lt;/th&gt;
+                  &lt;th&gt;FechaCreacion&lt;/th&gt;
+                  &lt;th&gt;FechaMoficiacion&lt;/th&gt;
+                  &lt;th&gt;Acciones&lt;/th&gt;
+                &lt;/tr&gt;
+                &lt;/tfoot&gt;--&gt;</span>
+              <span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-comment">&lt;!-- /.card-body --&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+          <span class="hljs-comment">&lt;!-- /.card --&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- /.col --&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-comment">&lt;!-- /.row --&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- /.content --&gt;</span> 
+@stop</span>
+</code></pre>
+<p><a name="mcr"></a></p>
+<h2 id="comando-para-crear-migracion-modelo-controlador-seeder">Comando para crear Migracion, Modelo, Controlador + Seeder</h2>
+<p>Tu puedes crear los archivos de forma automatica y sin tanta complejidad.</p>
+<p>☝️ En un solo comando crearas migracion, modelo, controlador con recursos.</p>
+<pre><code class="lang-php">   <span class="hljs-selector-tag">php</span> <span class="hljs-selector-tag">artisan</span> <span class="hljs-selector-tag">make</span><span class="hljs-selector-pseudo">:model</span> <span class="hljs-selector-tag">NameModel</span> <span class="hljs-selector-tag">-mcr</span>
+</code></pre>
+<p>✌️ Comando para crear Seeder.</p>
+<pre><code class="lang-php">   <span class="hljs-selector-tag">php</span> <span class="hljs-selector-tag">artisan</span> <span class="hljs-selector-tag">make</span><span class="hljs-selector-pseudo">:seeder</span> <span class="hljs-selector-tag">NameTableSeeder</span>
+</code></pre>
+</body></html>
