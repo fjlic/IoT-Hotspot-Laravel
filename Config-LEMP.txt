@@ -65,9 +65,9 @@ sudo apt install mariadb-server -y
 
 [*] Entrar a Mariadb
 sudo mariadb -u root -p
-CREATE USER 'fjlic'@'%' IDENTIFIED BY 'Fjlic123';
+CREATE USER 'fjlic'@'%' IDENTIFIED BY 'Fjl1c@2021';
 GRANT ALL PRIVILEGES ON *.* TO 'fjlic'@'%' WITH GRANT OPTION;
-CREATE USER 'testing'@'%' IDENTIFIED BY 'Testing123';
+CREATE USER 'testing'@'%' IDENTIFIED BY 'T3st1ng@2021';
 GRANT ALL PRIVILEGES ON *.* TO 'testing'@'%' WITH GRANT OPTION;
 exit;
 
@@ -115,7 +115,7 @@ sudo service php7.4-fpm restart
 cd /var/www/html
 sudo mkdir dev
 sudo mkdir prod
-sudo usermod -aG www-data fjlic
+sudo usermod -aG www-data badboy
 sudo chown -R www-data:www-data /var/www/
 sudo chmod -R 775 /var/www/
 
@@ -125,9 +125,9 @@ sudo reboot
 [*] Install Composer
 cd /var/www/html
 curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
-sudo chown fjlic /home/fjlic/.cache/composer/
-sudo chown fjlic /home/fjlic/.config/composer/
-sudo chown fjlic /home/fjlic/.local/share/composer/
+sudo chown badboy /home/badboy/.cache/composer/
+sudo chown badboy /home/badboy/.config/composer/
+sudo chown badboy /home/badboy/.local/share/composer/
 sudo sh -c "echo 'precedence ::ffff:0:0/96 100' >> /etc/gai.conf"
 
 [*] LARAVEL CONFIG

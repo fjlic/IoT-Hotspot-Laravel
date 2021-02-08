@@ -6,7 +6,7 @@ use App\Counter;
 use App\HistorialCounter;
 use Validator;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Api\BaseController as BaseController;
+use App\Http\Controllers\API\BaseController as BaseController;
 
 class CounterController extends BaseController
 {
