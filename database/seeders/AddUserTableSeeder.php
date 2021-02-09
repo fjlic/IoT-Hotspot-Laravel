@@ -1,6 +1,9 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
+use Hash;
 use App\User;
 
 class AddUserTableSeeder extends Seeder
@@ -64,3 +67,4 @@ class AddUserTableSeeder extends Seeder
         $disable->save();
     }
 }
+

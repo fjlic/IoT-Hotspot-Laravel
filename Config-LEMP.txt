@@ -19,6 +19,16 @@ usermod -aG sudo badboy
 ------------------------------------------------------------------------------------------------------
 Instalacion de cerbot para SSL // pagina validadad para https /// pasos para instalacion
 https://www.digitalocean.com/community/tutorials/how-to-secure-apache-with-let-s-encrypt-on-debian-9
+https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-20-04-es
+sudo apt install certbot python3-certbot-nginx
+server_name example.com www.example.com;
+sudo nginx -t
+sudo systemctl reload nginx
+sudo ufw allow 'Nginx Full'
+sudo ufw status
+sudo certbot --nginx -d example.com -d www.example.
+sudo systemctl status certbot.timer
+sudo certbot renew --dry-run
 ------------------------------------------------------------------------------------------------------
 ----------Config Git HUb-----------------------------------------------------------------------------
 sudo apt-get install git-core

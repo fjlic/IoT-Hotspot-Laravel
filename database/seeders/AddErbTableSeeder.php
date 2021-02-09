@@ -1,6 +1,9 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
+use Crypt;
 use App\Erb;
 use App\ApiToken;
 

@@ -1,8 +1,10 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 
-class AddHistorialCrdTableSeeder extends Seeder
+class AddHistorialStatisticalTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.

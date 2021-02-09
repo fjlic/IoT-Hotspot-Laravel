@@ -1,9 +1,11 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 use App\Sensor;
 
-use function Ramsey\Uuid\v1;
+//use function Ramsey\Uuid\v1;
 
 class AddSensorTableSeeder extends Seeder
 {

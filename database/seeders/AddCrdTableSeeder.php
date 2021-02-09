@@ -1,8 +1,10 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
+use Crypt;
 use App\Crd;
-//use App\Crypt;
 use App\ApiToken;
 
 class AddCrdTableSeeder extends Seeder

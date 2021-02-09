@@ -1,8 +1,10 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 
-class AddHistorialSensorTableSeeder extends Seeder
+class AddHistorialErbTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
