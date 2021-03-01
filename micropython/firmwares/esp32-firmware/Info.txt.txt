@@ -1,0 +1,2 @@
+Usa UpyCraft para cargar firmware
+Link: https://github.com/DFRobot/uPyCraft
