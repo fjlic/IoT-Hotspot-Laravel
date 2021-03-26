@@ -293,9 +293,11 @@ class SensorController extends BaseController
      */
     public function modify(Request $request)
     {
-        // num_serie', 'nick_name', 'password', 'api_token',
-        $input = $request->all();
-        $validator = Validator::make($input, [
+        // num_serie', 'passw', 'vol_1', 'vol_2', 'vol_3', 'vol_4',
+        // door_1', 'door_2', 'door_3', 'door_4',
+        // rlay_1', 'rlay_2', 'rlay_3', 'rlay_4', 'text',
+        $input_req = $request->all();
+        $validator = Validator::make($input_req, [
            'num_serie'=>'required|string|max:100',
            'passw'=>'required|string|max:100',
            'vol_1'=>'required|string|max:100',
@@ -320,8 +322,9 @@ class SensorController extends BaseController
             ];
             return response()->json($response, 404);
         }
-        $historialsensor = new HistorialSensor(); 
-        $sensor = Sensor::where('num_serie',$input['num_serie'])->first(); 
+
+        $sensor = Sensor::where('num_serie',$input_req['num_serie'])->first(); 
+        
         if (is_null($sensor)) {
             $response = [
                 'success' => false,
@@ -330,39 +333,43 @@ class SensorController extends BaseController
             ];
             return response()->json($response, 404);
         }
+        
+        /* Update sensors*/ 
+        $sensor->num_serie = $input_req['num_serie'];
+        $sensor->passw = $input_req['passw'];
+        $sensor->vol_1 = $input_req['vol_1'];
+        $sensor->vol_2 = $input_req['vol_2'];
+        $sensor->vol_3 = $input_req['vol_3'];
+        $sensor->door_1 = $input_req['door_1'];
+        $sensor->door_2 = $input_req['door_2'];
+        $sensor->door_3 = $input_req['door_3'];
+        $sensor->door_4 = $input_req['door_4'];
+        $sensor->rlay_1 = $input_req['rlay_1'];
+        $sensor->rlay_2 = $input_req['rlay_2'];
+        $sensor->rlay_3 = $input_req['rlay_3'];
+        $sensor->rlay_4 = $input_req['rlay_4'];
+        $sensor->text = $input_req['text'];
+        $sensor->save();
+
+        $historialsensor = new HistorialSensor(); 
         /* Historial Sensor*/
         $historialsensor->sensor_id = $sensor->id;
-        $historialsensor->num_serie = $input['num_serie'];
-        $historialsensor->passw = $input['passw'];
-        $historialsensor->vol_1 = $input['vol_1'];
-        $historialsensor->vol_2 = $input['vol_2'];
-        $historialsensor->vol_3 = $input['vol_3'];
-        $historialsensor->door_1 = $input['door_1'];
-        $historialsensor->door_2 = $input['door_2'];
-        $historialsensor->door_3 = $input['door_3'];
-        $historialsensor->door_4 = $input['door_4'];
-        $historialsensor->rlay_1 = $input['rlay_1'];
-        $historialsensor->rlay_2 = $input['rlay_2'];
-        $historialsensor->rlay_3 = $input['rlay_3'];
-        $historialsensor->rlay_4 = $input['rlay_4'];
-        $historialsensor->text = $input['text'];
+        $historialsensor->num_serie = $input_req['num_serie'];
+        $historialsensor->passw = $input_req['passw'];
+        $historialsensor->vol_1 = $input_req['vol_1'];
+        $historialsensor->vol_2 = $input_req['vol_2'];
+        $historialsensor->vol_3 = $input_req['vol_3'];
+        $historialsensor->door_1 = $input_req['door_1'];
+        $historialsensor->door_2 = $input_req['door_2'];
+        $historialsensor->door_3 = $input_req['door_3'];
+        $historialsensor->door_4 = $input_req['door_4'];
+        $historialsensor->rlay_1 = $input_req['rlay_1'];
+        $historialsensor->rlay_2 = $input_req['rlay_2'];
+        $historialsensor->rlay_3 = $input_req['rlay_3'];
+        $historialsensor->rlay_4 = $input_req['rlay_4'];
+        $historialsensor->text = $input_req['text'];
         $historialsensor->save();
-        /* Update sensors*/ 
-        $sensor->num_serie = $input['num_serie'];
-        $sensor->passw = $input['passw'];
-        $sensor->vol_1 = $input['vol_1'];
-        $sensor->vol_2 = $input['vol_2'];
-        $sensor->vol_3 = $input['vol_3'];
-        $sensor->door_1 = $input['door_1'];
-        $sensor->door_2 = $input['door_2'];
-        $sensor->door_3 = $input['door_3'];
-        $sensor->door_4 = $input['door_4'];
-        $sensor->rlay_1 = $input['rlay_1'];
-        $sensor->rlay_2 = $input['rlay_2'];
-        $sensor->rlay_3 = $input['rlay_3'];
-        $sensor->rlay_4 = $input['rlay_4'];
-        $sensor->text = $input['text'];
-        $sensor->save();
+
         $data = $sensor->toArray();
         $response = [
             'success' => true,
