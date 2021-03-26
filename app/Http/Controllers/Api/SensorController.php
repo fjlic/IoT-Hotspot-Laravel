@@ -293,7 +293,7 @@ class SensorController extends BaseController
      */
     public function modify(Request $request)
     {
-        // 'id', 'user_id', 'num_serie', 'nick_name', 'password', 'api_token',
+        // num_serie', 'nick_name', 'password', 'api_token',
         $input = $request->all();
         $validator = Validator::make($input, [
            'num_serie'=>'required|string|max:100',
@@ -305,6 +305,11 @@ class SensorController extends BaseController
            'door_2'=>'required|string|max:100',
            'door_3'=>'required|string|max:100',
            'door_4'=>'required|string|max:100',
+           'rlay_1'=>'required|string|max:100',
+           'rlay_2'=>'required|string|max:100',
+           'rlay_3'=>'required|string|max:100',
+           'rlay_4'=>'required|string|max:100',
+           'text'=>'required|string|max:100',
         ]);
 
         if ($validator->fails()) {
@@ -336,11 +341,11 @@ class SensorController extends BaseController
         $historialsensor->door_2 = $input['door_2'];
         $historialsensor->door_3 = $input['door_3'];
         $historialsensor->door_4 = $input['door_4'];
-        $historialsensor->rlay_1 = $sensor->rlay_1;
-        $historialsensor->rlay_2 = $sensor->rlay_2;
-        $historialsensor->rlay_3 = $sensor->rlay_3;
-        $historialsensor->rlay_4 = $sensor->rlay_4;
-        $historialsensor->text = $sensor->text;
+        $historialsensor->rlay_1 = $input['rlay_1'];
+        $historialsensor->rlay_2 = $input['rlay_2'];
+        $historialsensor->rlay_3 = $input['rlay_3'];
+        $historialsensor->rlay_4 = $input['rlay_4'];
+        $historialsensor->text = $input['text'];
         $historialsensor->save();
         /* Update sensors*/ 
         $sensor->num_serie = $input['num_serie'];
@@ -352,6 +357,11 @@ class SensorController extends BaseController
         $sensor->door_2 = $input['door_2'];
         $sensor->door_3 = $input['door_3'];
         $sensor->door_4 = $input['door_4'];
+        $sensor->rlay_1 = $input['rlay_1'];
+        $sensor->rlay_2 = $input['rlay_2'];
+        $sensor->rlay_3 = $input['rlay_3'];
+        $sensor->rlay_4 = $input['rlay_4'];
+        $sensor->text = $input['text'];
         $sensor->save();
         $data = $sensor->toArray();
         $response = [

@@ -16,7 +16,7 @@ class CreateHistorialSensorsTable extends Migration
         Schema::create('historial_sensors', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('sensor_id')->nullable();
-            $table->string('num_serie')->unique()->nullable();
+            $table->string('num_serie')->nullable();
             $table->string('passw')->nullable();
             $table->string('vol_1')->nullable();
             $table->string('vol_2')->nullable();
