@@ -1,123 +1,64 @@
-import network
-import urequests
-from machine import UART
+#----------------------------Libraries Code---------------------------------------------------------
 from machine import Pin, I2C
+from machine import UART
 from time import sleep
+import network
+import ujson
+import urequests
+#--------------------------The Led Pin by 2  GPIO2--------------------------------------------------
 
-#---------El Pin led es el 2  GPIO2-------------------
 ledpin=2
 pin = Pin(ledpin, Pin.OUT)
-#---------Activar Ic2 para Ntack NXP-------------------
-i2c = I2C(1, scl=Pin(22), sda=Pin(21), freq=400000)
+
+#---------------------------------------------------------------------------------------------------
+#--------------------------------Activate Ic2 by Ntag NXP-------------------------------------------
+
+nfc_ntag = I2C(1, scl=Pin(22), sda=Pin(21), freq=400000)
 #print(i2c.scan())              # scan for slave devices
-#------------------------Uart seria # 1----------------------------------------------------------------
-uart1 = UART(1, 9600)                         # init with given baudrate
-uart1.init(9600,bits=8,parity=None,stop=1,rx=5,tx=18)
-#------------------------Uart seria # 2----------------------------------------------------------------
-uart2 = UART(2, 300)                         # init with given baudrate # 2 RX2 TX2  
-uart2.init(300,bits=8,parity=None,stop=1,rx=16,tx=17)
-#------------------------------------------------------------------------------------------------------
-#------------Redes Wifi Config------------------------
-#SSID = "ECIDEAS_Work"            #WiFi name
-#PASSWORD = "CID101216M37?"       #WiFi password
+
+#---------------------------------------------------------------------------------------------------
+#------------------------Uart seria # 1 and 2-------------------------------------------------------
+
+a9g_serial = UART(1, 115200)                         # init with given baudrate
+a9g_serial.init(115200,bits=8,parity=None,stop=1,rx=5,tx=18)
+
+#------------------------Uart seria # 2-------------------------------------------------------------
+
+nano_serial = UART(2, 115200)                         # init with given baudrate # 2 RX2 TX2  
+nano_serial.init(115200,bits=8,parity=None,stop=1,rx=16,tx=17)
+
+#----------------------------------------------------------------------------------------------------
+#-----------------NetWork Wifi Config----------------------------------------------------------------
+SSID = "Galex_Moto"            #WiFi name
+PASSWORD = "fjlic123"       #WiFi password
 #SSID = "RedmiPro"                #WiFi name
 #PASSWORD = "redmi123"            #WiFi password
-SSID = "INFINITUM3652"            #WiFi name
-PASSWORD = "eoRrKzMxkU"           #WiFi password
-#------------Data Api Conection----------------------
-qr_serie = "ABDORT3467"
-id_esp32 = "1"
-usuario_id = "3"
-numero_serie = "777597841"
-alias_name = "esp32_1"
-contrasena = "esp32123"
-token = "dWogqZnpxyy0BzIURVRrZmXJS6lWanoI"
-#----------------------------------------------------
+#SSID = "INFINITUM3652"            #WiFi name
+#PASSWORD = "eoRrKzMxkU"           #WiFi password
+#---------------------------------------------------------------------------------------------------
 
-#--------------------------Funciones -----------------------------------------------
+#------------Data Api Conection---------------------------------------------------------------------
+#---------------------------------------------------------------------------------------------------
 
-def Read_Get_Srvr_Qr(str_qr):
-   json_str = ""
-   if len(str_qr) is 0:
-     json_str = "Lectura Qr: null"
-   else:
-     num_serie = '555597841'
-     passw = 'rlay123'
-     fin_line = "\r\n"
-     parse_str = str_qr.replace(fin_line,"")
-     baseUrl = "https://hotspot.fjlic.com/api/qr/"+parse_str
-     Accept = {'Accept': 'application/json'}
-     response = requests.get(baseUrl,headers=Accept)
-     data = response.json()
-     if data['success'] == True:
-        if data['data']['qr_serie'] == qr_serie:
-           rlay_1 = "Off"
-           rlay_2 = "Off"
-           rlay_3 = "Off"
-           rlay_4 = "Off"
-           messageDataMultirelay = {
-             'num_serie' :  num_serie,
-             'passw' : passw,
-             'rlay_1' : "Off",
-             'rlay_2' : "Off",
-             'rlay_3' : "Off",
-             'rlay_4' : "Off"
-           }
-           messageDataQr = {
-             'qr_serie' :  data['data']['qr_serie'],
-             'key_status' : "False",
-             'gone_down' : '1'
-           }
-           baseUrl_multirelay = "https://hotspot.fjlic.com/api/sensor/qrunblock"
-           response = requests.post(baseUrl_multirelay,data=messageDataMultirelay,headers=Accept)
-           baseUrl_qr = "https://hotspot.fjlic.com/api/qr/unblock"
-           response = requests.post(baseUrl_qr,data=messageDataQr,headers=Accept)
-           json_str =  "Lectura Qr: (" + parse_str + ") Desactivando Sistema"
-        else:
-           json_str =  "Lectura Qr: (" + parse_str + ") No valido"
-     else: 
-        json_str =  "Lectura Qr: (" + parse_str + ") No valido"
-    
-   return json_str
-    
+#--------------------------Functions ---------------------------------------------------------------
 
-def Read_Get_MultiRelay():
+def Get_Find_Sensor():
    parse_data = ""
-   num_serie = '555597841'
-   passw = 'rlay123'
+   num_serie = '1000000001'
+   passw = 'sensor@321'
    baseUrl = "https://hotspot.fjlic.com/api/sensor/"+num_serie
    Accept = {'Accept': 'application/json'}
-   response = requests.get(baseUrl,headers=Accept)
+   response = urequests.get(baseUrl,headers=Accept)
    #data = response.text
    data = response.json()
    #print(data)
-   if "trace" in data:
-      parse_data = {
-         'rlay_1' : rlay_1,
-         'rlay_2' : rlay_2,
-         'rlay_3' : rlay_3,
-         'rlay_4' : rlay_4
-      }
-   else:
-      parse_data = {
-         'rlay_4' : data['data']['rlay_4'],
-         'rlay_3' : data['data']['rlay_3'],
-         'rlay_2' : data['data']['rlay_2'],
-         'rlay_1' : data['data']['rlay_1']
-      }
-      rlay_1 = data['data']['rlay_1']
-      rlay_2 = data['data']['rlay_2']
-      rlay_3 = data['data']['rlay_3']
-      rlay_4 = data['data']['rlay_4']
-      
-   
-   json_str = json.dumps(parse_data)
+   relay_status = {'rlay_4' : data['data']['rlay_4'],'rlay_3' : data['data']['rlay_3'],'rlay_2' : data['data']['rlay_2'],'rlay_1' : data['data']['rlay_1']}  
+   json_str = ujson.dumps(relay_status)
    return json_str
    
-
-def Write_Post_MultiRelay(json_data):
-   num_serie = '555597841'
-   passw = 'rlay123'
+def Post_Modify_Sensor(json_data):
+   num_serie = '1000000001'
+   passw = 'sensor@321'
    baseUrl = "https://hotspot.fjlic.com/api/sensor/modify"
    messageData = {
         'num_serie' :  num_serie,
@@ -128,13 +69,17 @@ def Write_Post_MultiRelay(json_data):
         'door_1' : json_data['door_1'],
         'door_2' : json_data['door_2'],
         'door_3' : json_data['door_3'],
-        'door_4' : json_data['door_4']
-   }
+        'door_4' : json_data['door_4'],
+        'rlay_1' : json_data['rlay_1'],
+        'rlay_2' : json_data['rlay_2'],
+        'rlay_3' : json_data['rlay_3'],
+        'rlay_4' : json_data['rlay_4'],
+        'text' : json_data['text']}
    Accept = {'Accept': 'application/json'}
-   response = requests.post(baseUrl,data=messageData,headers=Accept)
+   response = urequests.post(baseUrl,data=messageData,headers=Accept)
    #print(messageData)
    
-def ConexionWifi(name_wifi, passw_wifi):
+def ConnectionWifi(name_wifi, passw_wifi):
     wlan = network.WLAN(network.STA_IF) #Create WLAN object
     wlan.active(True)                   #Activate the interface
     #print(wlan.active(True))
@@ -153,31 +98,29 @@ def ConexionWifi(name_wifi, passw_wifi):
     return res
 
 #------------------------------------------------------------------------------------
-conectado = ConexionWifi(SSID, PASSWORD)
-print(conectado)
-rint('-------------------------------------------------------------------------------------------')
-print("Preparando Puerto ")
-sleep(10)
-print("Inicio ")
+connect = ConnectionWifi(SSID, PASSWORD)
+print(connect)
+#print('-------------------------------------------------------------------------------------------')
+print("Prepare Port ")
+sleep(2)
+print("Start ")
 while True:
-      read_json_server = Read_Get_MultiRelay()
-      arduino.write(read_json_server) # Le envia el comando  por consola
-      print('--------------Datos-Multirelay-Server--------------------')
+      read_json_server = Get_Find_Sensor()
+      nano_serial.write(read_json_server) # Le envia el comando  por consola
+      #print('--------------Data-Sensor-Server--------------------')
       print(read_json_server)
-      read_jason_arduino = arduino.readline()
-      print('--------------Datos-Multirelay-Arduino--------------------')
-      print(read_jason_arduino)
-      covert_str = str(read_jason_arduino)
-      data_send = json.loads(covert_str)
-      Write_Post_MultiRelay(data_send)
-      print('---------------Datos-Qr-Module-------------------')
-      read_qr = qr.readline()
-      print(Read_Get_Srvr_Qr(read_qr))
-      print('---------------Espera--1--Segundo-------------------')
-      sleep(1)      
+      #read_jason_arduino = arduino.readline()
+      #print('--------------Datos-Multirelay-Arduino--------------------')
+      #print(read_jason_arduino)
+      #covert_str = str(read_jason_arduino)
+      #data_send = json.loads(covert_str)
+      #Write_Post_MultiRelay(data_send)
+      #print('---------------Datos-Qr-Module-------------------')
+      #read_qr = qr.readline()
+      #print(Read_Get_Srvr_Qr(read_qr))
+      #print('--Espera--2--Segundos--')
+      sleep(5)
       
-arduino.close() # Termina la comunicacion serial arduino
-qr.close() # Termina la comunicacion serial lector de qr
-
-
-
+      
+nano_serial.close() # Termina la comunicacion serial arduino
+a9g_serial.close() # Termina la comunicacion serial lector de qr

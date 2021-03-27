@@ -334,7 +334,7 @@ class SensorController extends BaseController
             return response()->json($response, 404);
         }
         
-        /* Update sensors*/ 
+        /* Update Sensors*/ 
         $sensor->num_serie = $input_req['num_serie'];
         $sensor->passw = $input_req['passw'];
         $sensor->vol_1 = $input_req['vol_1'];
@@ -369,7 +369,7 @@ class SensorController extends BaseController
         $historialsensor->rlay_4 = $input_req['rlay_4'];
         $historialsensor->text = $input_req['text'];
         $historialsensor->save();
-
+        /* Send Data Response*/
         $data = $sensor->toArray();
         $response = [
             'success' => true,

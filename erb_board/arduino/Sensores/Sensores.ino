@@ -31,6 +31,7 @@ int puerta_1 = 10; // Puerta 1
 int puerta_2 = 14; // Puerta 2
 int puerta_3 = 15; // Puerta 3
 int puerta_4 = 16; // Puerta 4
+const int LED = 13;
 String data = "";
 String vol_1 = "0.00";
 String vol_2 = "0.00";
@@ -39,7 +40,6 @@ String door_1 = "Off";
 String door_2 = "Off";
 String door_3 = "Off";
 String door_4 = "Off";
-
 
 const int analog_posi_A3 = A3; // ASIGNACION DEL PIN ANALOGO A4 COMO SENSOR DE LECTURA CONSTANTE POSTIVO CABLE AMARILLO
 int sensorValue_A3; // VALOR QUE ALMACENA EL VALOR EN EXADECOMA Y LO TRADUCE A ENTERO (0 a 1023) POSTIVO CABLE AMARILLO
@@ -57,6 +57,7 @@ void setup() {
   
   Serial.begin(115200);
   // initialize digital pin Relays.
+  pinMode(LED,OUTPUT);
   pinMode(relay_1, OUTPUT);
   pinMode(relay_2, OUTPUT);
   pinMode(relay_3, OUTPUT);
@@ -71,18 +72,7 @@ void setup() {
 
 // the loop function runs over and over again forever
 void loop() {
-  //digitalWrite(relay_1, HIGH);
-  //digitalWrite(relay_2, HIGH);
-  //digitalWrite(relay_3, HIGH);
-  //digitalWrite(relay_4, HIGH);
-  //delay(5000);
-  //digitalWrite(relay_1, LOW);
-  //digitalWrite(relay_2, LOW);
-  //digitalWrite(relay_3, LOW);
-  //digitalWrite(relay_4, LOW);
-  //delay(5000);
-  
-  while(Serial.available()){
+   while(Serial.available()){
       char character = Serial.read();
       if(character != '}'){
          data.concat(character);
@@ -97,76 +87,86 @@ void loop() {
          if(!root.success()){
          Serial.println("Dessincronizado Fail()");
          }
+         
          String rlay_1 = root["rlay_1"];
          String rlay_2 = root["rlay_2"];
          String rlay_3 = root["rlay_3"];
          String rlay_4 = root["rlay_4"];
+         
          if(rlay_1.equals("On"))
-         { 
+         {
+         digitalWrite(LED,HIGH);
          digitalWrite(relay_1, HIGH);
          //Serial.print("Relay_1: ");
          //Serial.println(rlay_1);
          }
          else if(rlay_1.equals("Off"))
          {
+         digitalWrite(LED,LOW);
          digitalWrite(relay_1, LOW);
          //Serial.print("Relay_1: ");
          //Serial.println(rlay_1);
          }
          else{
-         //Serial.print("Erro_Relay_1: ");
-         //Serial.println(rlay_1);
+         Serial.print("Erro_Relay_1: ");
+         Serial.println(rlay_1);
          }
      
          if(rlay_2.equals("On"))
-         { 
+         {
+         digitalWrite(LED,HIGH); 
          digitalWrite(relay_2, HIGH);
          //Serial.print("Relay_2: ");
          //Serial.println(rlay_2);
          }
          else if(rlay_2.equals("Off"))
          {
+         digitalWrite(LED,LOW);
          digitalWrite(relay_2, LOW);
          //Serial.print("Relay_2: ");
          //Serial.println(rlay_2);
          }
          else{
-         //Serial.print("Erro_Relay_2: ");
-         //Serial.println(rlay_2);
+         Serial.print("Erro_Relay_2: ");
+         Serial.println(rlay_2);
          }
      
          if(rlay_3.equals("On"))
-         { 
+         {
+         digitalWrite(LED,HIGH);
          digitalWrite(relay_3, HIGH);
          //Serial.print("Relay_3: ");
          //Serial.println(rlay_3);
          }
          else if(rlay_3.equals("Off"))
          {
+         digitalWrite(LED,LOW);
          digitalWrite(relay_3, LOW);
          //Serial.print("Relay_3: ");
          //Serial.println(rlay_3);
          }
          else{
-         //Serial.print("Erro_Relay_3: ");
-         //Serial.println(rlay_3);
+         Serial.print("Erro_Relay_3: ");
+         Serial.println(rlay_3);
          }
      
          if(rlay_4.equals("On"))
-         { 
+         {
+         digitalWrite(LED,HIGH);
          digitalWrite(relay_4, HIGH);
          //Serial.print("Relay_4: ");
          //Serial.println(rlay_4);
          }
          else if(rlay_4.equals("Off"))
          {
+         digitalWrite(LED,LOW);
          digitalWrite(relay_4, LOW);
          //Serial.print("Relay_4: ");
          //Serial.println(rlay_4);
          }
          else{
-         //Serial.print("Erro_Relay_4: ");
-         //Serial.println(rlay_4);
+         Serial.print("Erro_Relay_4: ");
+         Serial.println(rlay_4);
          }
          
          ////////////////////
@@ -182,13 +182,12 @@ void loop() {
          root2["door_4"] = door_4;
          root2.printTo(Serial);
          Serial.println();
-         //delay(1000);
+         delay(1000);
          ////////////////////
        }
    }
   
 }
-
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////FUNCIONES REUTILIZABLES PARA EL PROGRAMA///////////////////////////////////////////////////////////////////////////
