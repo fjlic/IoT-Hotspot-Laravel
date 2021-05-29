@@ -95,14 +95,14 @@ void loop() {
          
          if(rlay_1.equals("On"))
          {
-         digitalWrite(LED,HIGH);
+         //digitalWrite(LED,HIGH);
          digitalWrite(relay_1, HIGH);
          //Serial.print("Relay_1: ");
          //Serial.println(rlay_1);
          }
          else if(rlay_1.equals("Off"))
          {
-         digitalWrite(LED,LOW);
+         //digitalWrite(LED,LOW);
          digitalWrite(relay_1, LOW);
          //Serial.print("Relay_1: ");
          //Serial.println(rlay_1);
@@ -114,14 +114,14 @@ void loop() {
      
          if(rlay_2.equals("On"))
          {
-         digitalWrite(LED,HIGH); 
+         //digitalWrite(LED,HIGH); 
          digitalWrite(relay_2, HIGH);
          //Serial.print("Relay_2: ");
          //Serial.println(rlay_2);
          }
          else if(rlay_2.equals("Off"))
          {
-         digitalWrite(LED,LOW);
+         //digitalWrite(LED,LOW);
          digitalWrite(relay_2, LOW);
          //Serial.print("Relay_2: ");
          //Serial.println(rlay_2);
@@ -133,14 +133,14 @@ void loop() {
      
          if(rlay_3.equals("On"))
          {
-         digitalWrite(LED,HIGH);
+         //digitalWrite(LED,HIGH);
          digitalWrite(relay_3, HIGH);
          //Serial.print("Relay_3: ");
          //Serial.println(rlay_3);
          }
          else if(rlay_3.equals("Off"))
          {
-         digitalWrite(LED,LOW);
+         //digitalWrite(LED,LOW);
          digitalWrite(relay_3, LOW);
          //Serial.print("Relay_3: ");
          //Serial.println(rlay_3);
@@ -152,14 +152,14 @@ void loop() {
      
          if(rlay_4.equals("On"))
          {
-         digitalWrite(LED,HIGH);
+         //digitalWrite(LED,HIGH);
          digitalWrite(relay_4, HIGH);
          //Serial.print("Relay_4: ");
          //Serial.println(rlay_4);
          }
          else if(rlay_4.equals("Off"))
          {
-         digitalWrite(LED,LOW);
+         //digitalWrite(LED,LOW);
          digitalWrite(relay_4, LOW);
          //Serial.print("Relay_4: ");
          //Serial.println(rlay_4);

@@ -1,3 +1,4 @@
+
 #----------------------------Libraries Code---------------------------------------------------------
 from machine import Pin, I2C
 from machine import UART
@@ -29,12 +30,14 @@ nano_serial.init(115200,bits=8,parity=None,stop=1,rx=16,tx=17)
 
 #----------------------------------------------------------------------------------------------------
 #-----------------NetWork Wifi Config----------------------------------------------------------------
-SSID = "Galex_Moto"            #WiFi name
-PASSWORD = "fjlic123"       #WiFi password
-#SSID = "RedmiPro"                #WiFi name
-#PASSWORD = "redmi123"            #WiFi password
-#SSID = "INFINITUM3652"            #WiFi name
-#PASSWORD = "eoRrKzMxkU"           #WiFi password
+#SSID = "Galex_Moto"            #WiFi name
+#PASSWORD = "fjlic123"          #WiFi password
+#SSID = "RedmiPro"             #WiFi name
+#PASSWORD = "redmi123"         #WiFi password
+#SSID = "INFINITUM3652"        #WiFi name
+#PASSWORD = "eoRrKzMxkU"       #WiFi password
+SSID = "GalexWimaxFin"        #WiFi name
+PASSWORD = "Galex1537"        #WiFi password
 #---------------------------------------------------------------------------------------------------
 
 #------------Data Api Conection---------------------------------------------------------------------
@@ -98,12 +101,12 @@ def ConnectionWifi(name_wifi, passw_wifi):
     return res
 
 #------------------------------------------------------------------------------------
-connect = ConnectionWifi(SSID, PASSWORD)
-print(connect)
+#connect = ConnectionWifi(SSID, PASSWORD)
+#print(connect)
 #print('-------------------------------------------------------------------------------------------')
-print("Prepare Port ")
-sleep(2)
-print("Start ")
+#print("Prepare Port ")
+#sleep(2)
+#print("Start ")
 while True:
       read_json_server = Get_Find_Sensor()
       nano_serial.write(read_json_server) # Le envia el comando  por consola
@@ -119,8 +122,18 @@ while True:
       #read_qr = qr.readline()
       #print(Read_Get_Srvr_Qr(read_qr))
       #print('--Espera--2--Segundos--')
-      sleep(5)
+      #sleep(5)
+      connect = ConnectionWifi(SSID, PASSWORD)
+      print(connect)
+      print('-------------------------------------------------------------------------------------------')
+      print("Prepare Port ")
+      sleep(2)
+      print("Start ")
       
       
 nano_serial.close() # Termina la comunicacion serial arduino
 a9g_serial.close() # Termina la comunicacion serial lector de qr
+
+
+
+
