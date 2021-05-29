@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Hotspot-User')
+@section('title', 'Hotspot-Usuarios')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop
@@ -42,8 +42,8 @@
                   <th>Nombre</th>
                   <th>Email</th>
                   <th>Password</th>
-                  <th>FechaCreacion</th>
-                  <th>FechaMoficiacion</th>
+                 {{-- <th>FechaCreacion</th>  --}}
+                  <th>FechaMod</th>
                   <th>Acciones</th>
                 </tr>
                 </thead>
@@ -54,7 +54,7 @@
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->password }}</td>
-                    <td>{{ $user->created_at }}</td>
+                    {{-- <td>{{ $user->created_at }}</td>  --}}
                     <td>{{ $user->updated_at }}</td>
                     <td>
                       <form role="form" action="{{ route('user.destroy',$user->id) }}" method="POST">
@@ -94,7 +94,7 @@
 @stop
 
 @section('footer') 
-<div class="pull-right hidden-xs"><b>Version</b> 2.0.0<strong>  Copyright &copy; 2020 <a href="http://hotspot.local/home" target="_blank">Hotspot</a>.</strong>  Todo los derechos Reservados.</div> 
+<div class="pull-right hidden-xs"><b>Version</b> 2.0.1<strong>  Copyright &copy; 2021 <a href="http://hotspot.fjlic.com/home" target="_blank">Hotspot</a>.</strong>  Todo los derechos Reservados.</div> 
 @stop
 
 @section('css')

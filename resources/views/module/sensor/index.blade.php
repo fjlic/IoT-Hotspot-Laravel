@@ -41,7 +41,7 @@
                   <th>Id</th>
                   <th>Id_Erb</th>
                   <th>NumSer</th>
-                  <th>Passw</th>
+                  {{-- <th>Passw</th>  --}}
                   <th>Vol1</th>
                   <th>Vol2</th>
                   <th>Vol3</th>
@@ -54,8 +54,8 @@
                   <th>Rly3</th>
                   <th>Rly4</th>
                   <th>Text</th>
-                  <th>FechaCreacion</th>
-                  <th>FechaMoficiacion</th>
+                 {{--  <th>FechaCreacion</th>  --}}
+                 {{-- <th>FechaMoficiacion</th>  --}} 
                   <th>Acciones</th>
                 </tr>
                 </thead>
@@ -65,7 +65,7 @@
                     <td>{{ $sensor->id }}</td>
                     <td>{{ $sensor->erb_id }}</td>
                     <td>{{ $sensor->num_serie }}</td>
-                    <td>{{ $sensor->passw }}</td>
+                   {{-- <td>{{ $sensor->passw }}</td>  --}}
                     <td>{{ $sensor->vol_1 }}</td>
                     <td>{{ $sensor->vol_2 }}</td>
                     <td>{{ $sensor->vol_3 }}</td>
@@ -117,8 +117,8 @@
                     <td><span class="badge badge-danger">Off-<div class="fa fa-toggle-off"></div></span></td>
                     @endif
                     <td>{{ $sensor->text }}</td>
-                    <td>{{ $sensor->created_at }}</td>
-                    <td>{{ $sensor->updated_at }}</td>
+                   {{-- <td>{{ $sensor->created_at }}</td>  --}}
+                   {{--  <td>{{ $sensor->updated_at }}</td>  --}}
                     <td>
                       <form role="form" action="{{ route('sensor.destroy',$sensor->id) }}" method="POST">
                         <a class="btn btn-primary btn-xs" href="{{ route('sensor.chart',$sensor->id) }}" role="button"><span class="fa fa-chart-pie"></span></a>   
@@ -137,7 +137,7 @@
                   <th>Id</th>
                   <th>Id_Erb</th>
                   <th>NumSer</th>
-                  <th>Passw</th>
+                  {{-- <th>Passw</th>  --}}
                   <th>Vol1</th>
                   <th>Vol2</th>
                   <th>Vol3</th>
@@ -150,8 +150,8 @@
                   <th>Rly3</th>
                   <th>Rly4</th>
                   <th>Text</th>
-                  <th>FechaCreacion</th>
-                  <th>FechaMoficiacion</th>
+                 {{--  <th>FechaCreacion</th>  --}}
+                 {{-- <th>FechaMoficiacion</th>  --}} 
                   <th>Acciones</th>
                 </tr>
                 </tfoot>-->
@@ -170,7 +170,7 @@
 @stop
 
 @section('footer') 
-<div class="pull-right hidden-xs"><b>Version</b> 2.0.0<strong>  Copyright &copy; 2020 <a href="http://hotspot.local/home" target="_blank">Hotspot</a>.</strong>  Todo los derechos Reservados.</div> 
+<div class="pull-right hidden-xs"><b>Version</b> 2.0.1<strong>  Copyright &copy; 2021 <a href="http://hotspot.fjlic.local/home" target="_blank">Hotspot</a>.</strong>  Todo los derechos Reservados.</div> 
 @stop
 
 @section('css')

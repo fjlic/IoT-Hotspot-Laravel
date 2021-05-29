@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Hotspot-Role')
+@section('title', 'Hotspot-Roles')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop
@@ -39,11 +39,11 @@
                 <thead>
                 <tr>
                   <th>Id</th>
-                  <th>Nom-Codigo</th>
-                  <th>Nom-Vista</th>
+                  <th>NomCodigo</th>
+                  <th>NomVista</th>
                   <th>Descripcion</th>
-                  <th>FechaCreacion</th>
-                  <th>FechaMoficiacion</th>
+                  {{-- <th>FechaCreacion</th>  --}}
+                  <th>FechaMod</th>
                   <th>Acciones</th>
                 </tr>
                 </thead>
@@ -54,7 +54,7 @@
                     <td>{{ $role->name }}</td>
                     <td>{{ $role->display_name }}</td>
                     <td>{{ $role->description }}</td>
-                    <td>{{ $role->created_at }}</td>
+                   {{-- <td>{{ $role->created_at }}</td>  --}}
                     <td>{{ $role->updated_at }}</td>
                     <td>
                       <form role="form" action="{{ route('role.destroy',$role->id) }}" method="POST">
@@ -71,11 +71,11 @@
                <!-- <tfoot>
                 <tr>
                   <th>Id</th>
-                  <th>Nom-Codigo</th>
-                  <th>Nom-Vista</th>
+                  <th>NomCodigo</th>
+                  <th>NomVista</th>
                   <th>Descripcion</th>
-                  <th>FechaCreacion</th>
-                  <th>FechaMoficiacion</th>
+                  {{-- <th>FechaCreacion</th>  --}}
+                  <th>FechaMod</th>
                   <th>Acciones</th>
                 </tr>
                 </tfoot>-->
@@ -94,7 +94,7 @@
 @stop
 
 @section('footer') 
-<div class="pull-right hidden-xs"><b>Version</b> 2.0.0<strong>  Copyright &copy; 2020 <a href="http://hotspot.local/home" target="_blank">Hotspot</a>.</strong>  Todo los derechos Reservados.</div> 
+<div class="pull-right hidden-xs"><b>Version</b> 2.0.1<strong>  Copyright &copy; 2021 <a href="http://hotspot.fjlic.com/home" target="_blank">Hotspot</a>.</strong>  Todo los derechos Reservados.</div> 
 @stop
 
 @section('css')
