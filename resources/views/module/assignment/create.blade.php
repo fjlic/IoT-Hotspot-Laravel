@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Hotspot-Role')
+@section('title', 'Hotspot-Asignacion-Crear')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop
@@ -29,7 +29,7 @@
         <div class="col-12">
             <div class="card card-success card-outline">
             <div class="card-header">
-              <h3 class="card-title">Crear Role</h3>
+              <h3 class="card-title">Editar Asignacion</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -38,11 +38,11 @@
               @csrf
               <div class="card-body">
                 <div class="form-group">
-                  <label for="name">Nom-Codigo</label>
+                  <label for="name">Nombre Codigo</label>
                   <input type="text" class="form-control" name="name" id="name"  placeholder="Introduce un nombre del rol para codigo" required>
                 </div>
                 <div class="form-group">
-                  <label for="display_name">Nom-Vista</label>
+                  <label for="display_name">Nombre de la Vista</label>
                   <input type="text" class="form-control" name="display_name" id="display_name"  placeholder="Introduce el nombre visible" required>
                 </div>
                 <div class="form-group">
@@ -72,7 +72,7 @@
 @stop
 
 @section('footer') 
-<div class="pull-right hidden-xs"><b>Version</b> 2.0.0<strong>  Copyright &copy; 2020 <a href="http://hotspot.local/home" target="_blank">Hotspot</a>.</strong>  Todo los derechos Reservados.</div> 
+<div class="pull-right hidden-xs"><b>Version</b> 2.0.1<strong>  Copyright &copy; 2021 <a href="http://hotspot.fjlic.com/home" target="_blank">Hotspot</a>.</strong>  Todo los derechos Reservados.</div> 
 @stop
 
 @section('css')
