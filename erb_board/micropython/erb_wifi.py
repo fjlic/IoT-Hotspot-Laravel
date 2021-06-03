@@ -2,14 +2,37 @@
 #----------------------------Libraries Code---------------------------------------------------------
 from machine import Pin, I2C
 from machine import UART
+from machine import SPI
 from time import sleep
 import network
 import ujson
 import urequests
-#--------------------------The Led Pin by 2  GPIO2--------------------------------------------------
+import usocket as socket
+import uselect as select
+import os,machine, time
+#-----------------NetWork Wifi Config----------------------------------------------------------------
+
+#SSID = "Galex_Moto"            #WiFi name
+#PASSWORD = "fjlic123"          #WiFi password
+#SSID = "RedmiPro"             #WiFi name
+#PASSWORD = "redmi123"         #WiFi password
+#SSID = "INFINITUM3652"        #WiFi name
+#PASSWORD = "eoRrKzMxkU"       #WiFi password
+SSID = "GalexIOT"
+PASSWORD = "G4l3x#1537"
+#SSID = "GalexWimaxFin"        #WiFi name
+#PASSWORD = "Galex1537"        #WiFi password
+
+#--------------------------The Led Pin by 2  GPIO2 and Cont Global--------------------------------------------------
 
 ledpin=2
 pin = Pin(ledpin, Pin.OUT)
+accoun_global=0
+flag_srvr=0
+wlan = network.WLAN(network.STA_IF)
+wlan.active(True)
+wlan.connect(SSID, PASSWORD)
+intent=0
 
 #---------------------------------------------------------------------------------------------------
 #--------------------------------Activate Ic2 by Ntag NXP-------------------------------------------
@@ -29,106 +52,125 @@ nano_serial = UART(2, 115200)                         # init with given baudrate
 nano_serial.init(115200,bits=8,parity=None,stop=1,rx=16,tx=17)
 
 #----------------------------------------------------------------------------------------------------
-#-----------------NetWork Wifi Config----------------------------------------------------------------
-#SSID = "Galex_Moto"            #WiFi name
-#PASSWORD = "fjlic123"          #WiFi password
-#SSID = "RedmiPro"             #WiFi name
-#PASSWORD = "redmi123"         #WiFi password
-#SSID = "INFINITUM3652"        #WiFi name
-#PASSWORD = "eoRrKzMxkU"       #WiFi password
-SSID = "GalexWimaxFin"        #WiFi name
-PASSWORD = "Galex1537"        #WiFi password
-#---------------------------------------------------------------------------------------------------
+#------------Content Api Consult--------------------------------------------------------------------
+
+baseUrl = "https://hotspot.fjlic.com/api
+Accept = {'Accept': 'application/json'}
 
 #------------Data Api Conection---------------------------------------------------------------------
+
+num_serie = '1000000001'
+passw = 'sensor@321'
+vol_1 = '0.0'
+vol_2 = '0.0'
+vol_3 = '0.0'
+door_1 = 'Off'
+door_2 = 'Off'
+door_3 = 'Off'
+door_4 = 'Off'
+rlay_1 = 'Off'
+rlay_2 = 'Off'
+rlay_3 = 'Off'
+rlay_4 = 'Off'
+text = 'Test Sensor # 1000000001 OK'
+
 #---------------------------------------------------------------------------------------------------
 
 #--------------------------Functions ---------------------------------------------------------------
 
+def ConnectionWifi(name_wifi, passw_wifi):
+    global wlan,intent
+    wlan = network.WLAN(network.STA_IF)  #Create WLAN object
+    wlan.active(True)                    #Activate the interface
+    #print(wlan.active(True))
+    #print(wlan.scan())                  #Scan access point
+    #print(wlan.isconnected())           #Check whether the site is connected to the AP
+    #print(wlan.connect(SSID, PASSWORD)) #Connect to Wifi
+    #print("Connecting to :", essid)
+    #print(wlan.config('mac'))           #Get the MAC address of the interface
+    intent=0
+    while wlan.isconnected() == False and intento<3:
+      intento=intento+1
+      wlan.connect(name_wifi, passw_wifi)
+      sleep(.5)
+
+    if  wlan.isconnected() == True:
+     #print('Connection successful')
+     pin.on()
+    else:
+     pin.off() 
+     #print(station.ifconfig())
+    
+    rest_wlan = wlan.ifconfig()                     #Get the IP/netmask/gw/DNS address of the interface
+    return rest_wlan
+
 def Get_Find_Sensor():
-   parse_data = ""
-   num_serie = '1000000001'
-   passw = 'sensor@321'
-   baseUrl = "https://hotspot.fjlic.com/api/sensor/"+num_serie
-   Accept = {'Accept': 'application/json'}
-   response = urequests.get(baseUrl,headers=Accept)
+   global SSID, PASSWORD, num_serie, passw, vol_1, vol_2, vol_3, door_1, door_2, door_3, door_4, rlay_1, rlay_2, rlay_3, rlay_4, text, baseUrl, Accept
+   if wlan.isconnected()==False:
+       ConnectionWifi(SSID,PASSWORD)
+
+   urlTmp = baseUrl+"/sensor/"+num_serie
+   response = urequests.get(urlTmp,headers=Accept)
    #data = response.text
    data = response.json()
    #print(data)
-   relay_status = {'rlay_4' : data['data']['rlay_4'],'rlay_3' : data['data']['rlay_3'],'rlay_2' : data['data']['rlay_2'],'rlay_1' : data['data']['rlay_1']}  
+   num_serie = data['data']['num_serie']
+   passw = data['data']['passw']
+   vol_1 = data['data']['vol_1']
+   vol_2 = data['data']['vol_2']
+   vol_3 = data['data']['vol_3']
+   door_1 = data['data']['door_1']
+   door_2 = data['data']['door_2']
+   door_3 = data['data']['door_3']
+   door_4 = data['data']['door_4']
+   rlay_1 = data['data']['rlay_1']
+   rlay_2 = data['data']['rlay_2']
+   rlay_3 = data['data']['rlay_3']
+   rlay_4 = data['data']['rlay_4']
+   text = data['data']['text']
+   relay_status = {'rlay_4' : data['data']['rlay_4'],
+                   'rlay_3' : data['data']['rlay_3'],
+                   'rlay_2' : data['data']['rlay_2'],
+                   'rlay_1' : data['data']['rlay_1']}  
    json_str = ujson.dumps(relay_status)
    return json_str
    
 def Post_Modify_Sensor(json_data):
-   num_serie = '1000000001'
-   passw = 'sensor@321'
-   baseUrl = "https://hotspot.fjlic.com/api/sensor/modify"
-   messageData = {
-        'num_serie' :  num_serie,
-        'passw' : passw,
-        'vol_1' : json_data['vol_1'],
-        'vol_2' : json_data['vol_2'],
-        'vol_3' : json_data['vol_3'],
-        'door_1' : json_data['door_1'],
-        'door_2' : json_data['door_2'],
-        'door_3' : json_data['door_3'],
-        'door_4' : json_data['door_4'],
-        'rlay_1' : json_data['rlay_1'],
-        'rlay_2' : json_data['rlay_2'],
-        'rlay_3' : json_data['rlay_3'],
-        'rlay_4' : json_data['rlay_4'],
-        'text' : json_data['text']}
-   Accept = {'Accept': 'application/json'}
-   response = urequests.post(baseUrl,data=messageData,headers=Accept)
+   global num_serie, passw, baseUrl, Accept
+   urlTmp = baseUrl+"/sensor/modify"
+   messageData = {}
+   messageData['num_serie'] = num_serie
+   messageData['passw'] = passw
+   messageData['vol_1'] = vol_1
+   messageData['vol_2'] = vol_2
+   messageData['vol_3'] = vol_3
+   messageData['door_1'] = door_1
+   messageData['door_2'] = door_2
+   messageData['door_3'] = door_3
+   messageData['door_4'] = door_4
+   messageData['rlay_1'] = rlay_1
+   messageData['rlay_2'] = rlay_2
+   messageData['rlay_3'] = rlay_3
+   messageData['rlay_4'] = rlay_4
+   messageData['text'] = text
+   response = urequests.post(urlTmp,data=messageData,headers=Accept)
    #print(messageData)
-   
-def ConnectionWifi(name_wifi, passw_wifi):
-    wlan = network.WLAN(network.STA_IF) #Create WLAN object
-    wlan.active(True)                   #Activate the interface
-    #print(wlan.active(True))
-    wlan.scan()                         #Scan access point
-    #print(wlan.scan())
-    wlan.isconnected()                  #Check whether the site is connected to the AP
-    #print(wlan.isconnected())
-    wlan.connect(name_wifi, passw_wifi)        #Connect to AP
-    #print(wlan.connect(SSID, PASSWORD))
-    #print("Connecting to :", essid)
-    #while not wlan.isconnected():
-    #    sleep(1)
-    wlan.config('mac')                  #Get the MAC address of the interface
-    #print(wlan.config('mac'))
-    res = wlan.ifconfig()                     #Get the IP/netmask/gw/DNS address of the interface
-    return res
+   return response
 
 #------------------------------------------------------------------------------------
-#connect = ConnectionWifi(SSID, PASSWORD)
-#print(connect)
-#print('-------------------------------------------------------------------------------------------')
-#print("Prepare Port ")
-#sleep(2)
-#print("Start ")
+
+connect = ConnectionWifi(SSID, PASSWORD)
 while True:
-      read_json_server = Get_Find_Sensor()
-      nano_serial.write(read_json_server) # Le envia el comando  por consola
-      #print('--------------Data-Sensor-Server--------------------')
-      print(read_json_server)
-      #read_jason_arduino = arduino.readline()
-      #print('--------------Datos-Multirelay-Arduino--------------------')
-      #print(read_jason_arduino)
-      #covert_str = str(read_jason_arduino)
-      #data_send = json.loads(covert_str)
-      #Write_Post_MultiRelay(data_send)
-      #print('---------------Datos-Qr-Module-------------------')
-      #read_qr = qr.readline()
-      #print(Read_Get_Srvr_Qr(read_qr))
-      #print('--Espera--2--Segundos--')
-      #sleep(5)
-      connect = ConnectionWifi(SSID, PASSWORD)
-      print(connect)
-      print('-------------------------------------------------------------------------------------------')
-      print("Prepare Port ")
-      sleep(2)
-      print("Start ")
+      cont_global=cont_global+1 
+      if (accoun_global>=120):
+        #print("hola")
+        accoun_global=0
+        band_server=0
+        read_json_srvr = Get_Find_Sensor()
+        nano_serial.write(read_json_srvr) # Le envia el comando  por consola
+        print(read_json_srvr)
+
+      sleep(0.5)
       
       
 nano_serial.close() # Termina la comunicacion serial arduino
