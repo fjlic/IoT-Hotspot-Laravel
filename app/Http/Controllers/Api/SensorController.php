@@ -324,7 +324,8 @@ class SensorController extends BaseController
         }
 
         $sensor = Sensor::where('num_serie',$input_req['num_serie'])->where('passw',$input_req['passw'])->first(); 
-        
+        dd($sensor);
+
         if (is_null($sensor)) {
             $response = [
                 'success' => false,
@@ -346,7 +347,7 @@ class SensorController extends BaseController
         $sensor->rlay_2 = $input_req['rlay_2'];
         $sensor->rlay_3 = $input_req['rlay_3'];
         $sensor->rlay_4 = $input_req['rlay_4'];
-        $sensor->text = $input_req['text'];
+        $sensor->text = $input_req['txt'];
         $sensor->save();
 
         $historialsensor = new HistorialSensor(); 
@@ -365,7 +366,7 @@ class SensorController extends BaseController
         $historialsensor->rlay_2 = $input_req['rlay_2'];
         $historialsensor->rlay_3 = $input_req['rlay_3'];
         $historialsensor->rlay_4 = $input_req['rlay_4'];
-        $historialsensor->text = $input_req['text'];
+        $historialsensor->text = $input_req['txt'];
         $historialsensor->save();
         /* Send Data Response*/
         $data = $sensor->toArray();
