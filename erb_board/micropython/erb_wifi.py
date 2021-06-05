@@ -1,4 +1,3 @@
-
 #----------------------------Libraries Code---------------------------------------------------------
 from machine import Pin, I2C
 from machine import UART
@@ -54,28 +53,27 @@ nano_serial.init(115200,bits=8,parity=None,stop=1,rx=16,tx=17)
 #----------------------------------------------------------------------------------------------------
 #------------Content Api Consult--------------------------------------------------------------------
 
-baseUrl = "https://hotspot.fjlic.com/api
+baseUrl = "https://hotspot.fjlic.com/api"
 Accept = {'Accept': 'application/json'}
 
 #------------Data Api Conection---------------------------------------------------------------------
 
-num_serie = '1000000001'
-passw = 'sensor@321'
-vol_1 = '0.0'
-vol_2 = '0.0'
-vol_3 = '0.0'
-door_1 = 'Off'
-door_2 = 'Off'
-door_3 = 'Off'
-door_4 = 'Off'
-rlay_1 = 'Off'
-rlay_2 = 'Off'
-rlay_3 = 'Off'
-rlay_4 = 'Off'
-text = 'Test Sensor # 1000000001 OK'
+num_serie = "1000000001"
+passw = "sensor@321"
+vol_1 = "0.0"
+vol_2 = "0.0"
+vol_3 = "0.0"
+door_1 = "Off"
+door_2 = "Off"
+door_3 = "Off"
+door_4 = "Off"
+rlay_1 = "Off"
+rlay_2 = "Off"
+rlay_3 = "Off"
+rlay_4 = "Off"
+text = "Test Sensor # 1000000001 OK"
 
 #---------------------------------------------------------------------------------------------------
-
 #--------------------------Functions ---------------------------------------------------------------
 
 def ConnectionWifi(name_wifi, passw_wifi):
@@ -104,18 +102,21 @@ def ConnectionWifi(name_wifi, passw_wifi):
     rest_wlan = wlan.ifconfig()                     #Get the IP/netmask/gw/DNS address of the interface
     return rest_wlan
 
-def Get_Find_Sensor():
-   global SSID, PASSWORD, num_serie, passw, vol_1, vol_2, vol_3, door_1, door_2, door_3, door_4, rlay_1, rlay_2, rlay_3, rlay_4, text, baseUrl, Accept
+def Post_Status_Sensor():
+   global SSID, PASSWORD, num_serie, passw, vol_1, vol_2, vol_3, door_1, door_2, door_3, door_4, rlay_1, rlay_2, rlay_3, rlay_4, baseUrl, Accept
    if wlan.isconnected()==False:
        ConnectionWifi(SSID,PASSWORD)
+   #Obtiene los datos por Post (Valores, Temperatura - Puertas)
+   urlTmp = baseUrl+"/sensor/status"
+   messageData = {}
+   messageData['num_serie'] = num_serie
+   messageData['passw'] = passw
+   messageData['text'] = "Status Sensor"
 
-   urlTmp = baseUrl+"/sensor/"+num_serie
-   response = urequests.get(urlTmp,headers=Accept)
+   response = urequests.post(urlTmp,data=messageData,headers=Accept)
+   
    #data = response.text
    data = response.json()
-   #print(data)
-   num_serie = data['data']['num_serie']
-   passw = data['data']['passw']
    vol_1 = data['data']['vol_1']
    vol_2 = data['data']['vol_2']
    vol_3 = data['data']['vol_3']
@@ -127,7 +128,6 @@ def Get_Find_Sensor():
    rlay_2 = data['data']['rlay_2']
    rlay_3 = data['data']['rlay_3']
    rlay_4 = data['data']['rlay_4']
-   text = data['data']['text']
    relay_status = {'rlay_4' : data['data']['rlay_4'],
                    'rlay_3' : data['data']['rlay_3'],
                    'rlay_2' : data['data']['rlay_2'],
@@ -135,8 +135,11 @@ def Get_Find_Sensor():
    json_str = ujson.dumps(relay_status)
    return json_str
    
-def Post_Modify_Sensor(json_data):
-   global num_serie, passw, baseUrl, Accept
+def Post_Modify_Sensor():
+   global SSID, PASSWORD, num_serie, passw, vol_1, vol_2, vol_3, door_1, door_2, door_3, door_4, rlay_1, rlay_2, rlay_3, rlay_4, baseUrl, Accept
+   if wlan.isconnected()==False:
+       ConnectionWifi(SSID,PASSWORD)
+   #Envia informacion por Post (Valores, Temperatura - Puertas)
    urlTmp = baseUrl+"/sensor/modify"
    messageData = {}
    messageData['num_serie'] = num_serie
@@ -148,34 +151,38 @@ def Post_Modify_Sensor(json_data):
    messageData['door_2'] = door_2
    messageData['door_3'] = door_3
    messageData['door_4'] = door_4
-   messageData['rlay_1'] = rlay_1
-   messageData['rlay_2'] = rlay_2
-   messageData['rlay_3'] = rlay_3
-   messageData['rlay_4'] = rlay_4
-   messageData['text'] = text
+   messageData['text'] = "Modify Sensor"
+   
    response = urequests.post(urlTmp,data=messageData,headers=Accept)
-   #print(messageData)
-   return response
+   
+   data = response.json()
+   rlay_1 = data['data']['rlay_1']
+   rlay_2 = data['data']['rlay_2']
+   rlay_3 = data['data']['rlay_3']
+   rlay_4 = data['data']['rlay_4']
+   relay_status = {'rlay_4' : data['data']['rlay_4'],
+                   'rlay_3' : data['data']['rlay_3'],
+                   'rlay_2' : data['data']['rlay_2'],
+                   'rlay_1' : data['data']['rlay_1']}
+   json_str = ujson.dumps(relay_status)
+   return json_str
 
 #------------------------------------------------------------------------------------
 
 connect = ConnectionWifi(SSID, PASSWORD)
+Post_Status_Sensor()
+    
 while True:
       cont_global=cont_global+1 
-      if (accoun_global>=120):
+      if (accoun_global>=114):
         #print("hola")
         accoun_global=0
         band_server=0
-        read_json_srvr = Get_Find_Sensor()
+        read_json_srvr = Post_Modify_Sensor()
         nano_serial.write(read_json_srvr) # Le envia el comando  por consola
         print(read_json_srvr)
 
       sleep(0.5)
       
-      
 nano_serial.close() # Termina la comunicacion serial arduino
 a9g_serial.close() # Termina la comunicacion serial lector de qr
-
-
-
-

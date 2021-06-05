@@ -323,7 +323,7 @@ class SensorController extends BaseController
             return response()->json($response, 404);
         }
 
-        $sensor = Sensor::where('num_serie',$input_req['num_serie'])->first(); 
+        $sensor = Sensor::where('num_serie',$input_req['num_serie'])->where('passw',$input_req['passw'])->first(); 
         
         if (is_null($sensor)) {
             $response = [
@@ -335,8 +335,6 @@ class SensorController extends BaseController
         }
         
         /* Update Sensors*/ 
-        $sensor->num_serie = $input_req['num_serie'];
-        $sensor->passw = $input_req['passw'];
         $sensor->vol_1 = $input_req['vol_1'];
         $sensor->vol_2 = $input_req['vol_2'];
         $sensor->vol_3 = $input_req['vol_3'];
@@ -374,7 +372,93 @@ class SensorController extends BaseController
         $response = [
             'success' => true,
             'data' => $data,
-            'message' => 'Sensor updated successfully.'
+            'message' => 'Sensor modify successfully.'
+        ];
+        return response()->json($response, 200);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function status(Request $request)
+    {
+        // num_serie', 'passw', 'vol_1', 'vol_2', 'vol_3', 'vol_4',
+        // door_1', 'door_2', 'door_3', 'door_4',
+        // rlay_1', 'rlay_2', 'rlay_3', 'rlay_4', 'text',
+        $input_req = $request->all();
+        $validator = Validator::make($input_req, [
+           'num_serie'=>'required|string|max:100',
+           'passw'=>'required|string|max:100',
+           'text'=>'required|string|max:100',
+        ]);
+
+        if ($validator->fails()) {
+            $response = [
+                'success' => false,
+                'data' => 'Validation Error.',
+                'message' => $validator->errors()
+            ];
+            return response()->json($response, 404);
+        }
+
+        $sensor = Sensor::where('num_serie',$input_req['num_serie'])->where('passw',$input_req['passw'])->first(); 
+        //$sensor = DB::table('users')
+        //        ->where('votes', '=', 100)
+        //        ->where('age', '>', 35)
+        //        ->get();
+        
+        if (is_null($sensor)) {
+            $response = [
+                'success' => false,
+                'data' => 'Empty',
+                'message' => 'Sensor not Exist.'
+            ];
+            return response()->json($response, 404);
+        }
+        
+        /* Update Sensors*/ 
+        $sensor->vol_1 = $input_req['vol_1'];
+        $sensor->vol_2 = $input_req['vol_2'];
+        $sensor->vol_3 = $input_req['vol_3'];
+        $sensor->door_1 = $input_req['door_1'];
+        $sensor->door_2 = $input_req['door_2'];
+        $sensor->door_3 = $input_req['door_3'];
+        $sensor->door_4 = $input_req['door_4'];
+        $sensor->rlay_1 = $input_req['rlay_1'];
+        $sensor->rlay_2 = $input_req['rlay_2'];
+        $sensor->rlay_3 = $input_req['rlay_3'];
+        $sensor->rlay_4 = $input_req['rlay_4'];
+        $sensor->text = $input_req['text'];
+        $sensor->save();
+
+        $historialsensor = new HistorialSensor(); 
+        /* Historial Sensor*/
+        $historialsensor->sensor_id = $sensor->id;
+        $historialsensor->num_serie = $input_req['num_serie'];
+        $historialsensor->passw = $input_req['passw'];
+        $historialsensor->vol_1 = $input_req['vol_1'];
+        $historialsensor->vol_2 = $input_req['vol_2'];
+        $historialsensor->vol_3 = $input_req['vol_3'];
+        $historialsensor->door_1 = $input_req['door_1'];
+        $historialsensor->door_2 = $input_req['door_2'];
+        $historialsensor->door_3 = $input_req['door_3'];
+        $historialsensor->door_4 = $input_req['door_4'];
+        $historialsensor->rlay_1 = $input_req['rlay_1'];
+        $historialsensor->rlay_2 = $input_req['rlay_2'];
+        $historialsensor->rlay_3 = $input_req['rlay_3'];
+        $historialsensor->rlay_4 = $input_req['rlay_4'];
+        $historialsensor->text = $input_req['text'];
+        $historialsensor->save();
+        /* Send Data Response*/
+        $data = $sensor->toArray();
+        $response = [
+            'success' => true,
+            'data' => $data,
+            'message' => 'Sensor status successfully.'
         ];
         return response()->json($response, 200);
     }

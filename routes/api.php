@@ -27,6 +27,7 @@ Route::resource('nfc', 'API\NfcController');
 //Route::post('sensor/updthistorialsensor', 'API\SensorController@historialsensor')->name('sensor.updthistorialsensor');
 Route::post('sensor/qrunblock', 'API\SensorController@qrunblock')->name('sensor.qrunblock');
 Route::post('sensor/modify', 'API\SensorController@modify')->name('sensor.modify');
+Route::post('sensor/status', 'API\SensorController@status')->name('sensor.status');
 Route::resource('sensor', 'API\SensorController');
 Route::post('erb/modify', 'API\ErbController@modify')->name('erb.modify');
 Route::post('erb/register', 'API\ErbController@register')->name('erb.register');
