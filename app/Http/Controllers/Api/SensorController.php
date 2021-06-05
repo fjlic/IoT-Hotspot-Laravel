@@ -405,7 +405,7 @@ class SensorController extends BaseController
             return response()->json($response, 404);
         }
 
-        $sensor = Sensor::where('num_serie',$input_req['num_serie'])->where('passw',$input_req['passw'])->first(); 
+        $sensor = Sensor::where('num_serie',$input_req['num_serie'])->first(); 
         //$sensor = DB::table('users')
         //        ->where('votes', '=', 100)
         //        ->where('age', '>', 35)
