@@ -307,10 +307,6 @@ class SensorController extends BaseController
            'door_2'=>'required|string|max:100',
            'door_3'=>'required|string|max:100',
            'door_4'=>'required|string|max:100',
-           'rlay_1'=>'required|string|max:100',
-           'rlay_2'=>'required|string|max:100',
-           'rlay_3'=>'required|string|max:100',
-           'rlay_4'=>'required|string|max:100',
            'text'=>'required|string|max:100',
         ]);
 
@@ -324,7 +320,6 @@ class SensorController extends BaseController
         }
 
         $sensor = Sensor::where('num_serie',$input_req['num_serie'])->where('passw',$input_req['passw'])->first(); 
-        dd($sensor);
 
         if (is_null($sensor)) {
             $response = [
@@ -343,18 +338,14 @@ class SensorController extends BaseController
         $sensor->door_2 = $input_req['door_2'];
         $sensor->door_3 = $input_req['door_3'];
         $sensor->door_4 = $input_req['door_4'];
-        $sensor->rlay_1 = $input_req['rlay_1'];
-        $sensor->rlay_2 = $input_req['rlay_2'];
-        $sensor->rlay_3 = $input_req['rlay_3'];
-        $sensor->rlay_4 = $input_req['rlay_4'];
-        $sensor->text = $input_req['txt'];
+        $sensor->text = $input_req['text'];
         $sensor->save();
 
         $historialsensor = new HistorialSensor(); 
         /* Historial Sensor*/
         $historialsensor->sensor_id = $sensor->id;
-        $historialsensor->num_serie = $input_req['num_serie'];
-        $historialsensor->passw = $input_req['passw'];
+        $historialsensor->num_serie =  $sensor->num_serie;
+        $historialsensor->passw = $sensor->passw;
         $historialsensor->vol_1 = $input_req['vol_1'];
         $historialsensor->vol_2 = $input_req['vol_2'];
         $historialsensor->vol_3 = $input_req['vol_3'];
@@ -362,11 +353,11 @@ class SensorController extends BaseController
         $historialsensor->door_2 = $input_req['door_2'];
         $historialsensor->door_3 = $input_req['door_3'];
         $historialsensor->door_4 = $input_req['door_4'];
-        $historialsensor->rlay_1 = $input_req['rlay_1'];
-        $historialsensor->rlay_2 = $input_req['rlay_2'];
-        $historialsensor->rlay_3 = $input_req['rlay_3'];
-        $historialsensor->rlay_4 = $input_req['rlay_4'];
-        $historialsensor->text = $input_req['txt'];
+        $historialsensor->rlay_1 = $sensor->rlay_1;
+        $historialsensor->rlay_2 = $sensor->rlay_2;
+        $historialsensor->rlay_3 = $sensor->rlay_3;
+        $historialsensor->rlay_4 = $sensor->rlay_4;
+        $historialsensor->text = $input_req['text'];
         $historialsensor->save();
         /* Send Data Response*/
         $data = $sensor->toArray();
@@ -406,7 +397,7 @@ class SensorController extends BaseController
             return response()->json($response, 404);
         }
 
-        $sensor = Sensor::where('num_serie',$input_req['num_serie'])->first(); 
+        $sensor = Sensor::where('num_serie',$input_req['num_serie'])->where('passw',$input_req['passw'])->first(); 
         //$sensor = DB::table('users')
         //        ->where('votes', '=', 100)
         //        ->where('age', '>', 35)
@@ -422,36 +413,25 @@ class SensorController extends BaseController
         }
         
         /* Update Sensors*/ 
-        $sensor->vol_1 = $input_req['vol_1'];
-        $sensor->vol_2 = $input_req['vol_2'];
-        $sensor->vol_3 = $input_req['vol_3'];
-        $sensor->door_1 = $input_req['door_1'];
-        $sensor->door_2 = $input_req['door_2'];
-        $sensor->door_3 = $input_req['door_3'];
-        $sensor->door_4 = $input_req['door_4'];
-        $sensor->rlay_1 = $input_req['rlay_1'];
-        $sensor->rlay_2 = $input_req['rlay_2'];
-        $sensor->rlay_3 = $input_req['rlay_3'];
-        $sensor->rlay_4 = $input_req['rlay_4'];
         $sensor->text = $input_req['text'];
         $sensor->save();
 
         $historialsensor = new HistorialSensor(); 
         /* Historial Sensor*/
         $historialsensor->sensor_id = $sensor->id;
-        $historialsensor->num_serie = $input_req['num_serie'];
-        $historialsensor->passw = $input_req['passw'];
-        $historialsensor->vol_1 = $input_req['vol_1'];
-        $historialsensor->vol_2 = $input_req['vol_2'];
-        $historialsensor->vol_3 = $input_req['vol_3'];
-        $historialsensor->door_1 = $input_req['door_1'];
-        $historialsensor->door_2 = $input_req['door_2'];
-        $historialsensor->door_3 = $input_req['door_3'];
-        $historialsensor->door_4 = $input_req['door_4'];
-        $historialsensor->rlay_1 = $input_req['rlay_1'];
-        $historialsensor->rlay_2 = $input_req['rlay_2'];
-        $historialsensor->rlay_3 = $input_req['rlay_3'];
-        $historialsensor->rlay_4 = $input_req['rlay_4'];
+        $historialsensor->num_serie = $sensor->num_serie;
+        $historialsensor->passw = $sensor->passw;
+        $historialsensor->vol_1 = $sensor->vol_1;
+        $historialsensor->vol_2 = $sensor->vol_2;
+        $historialsensor->vol_3 = $sensor->vol_3;
+        $historialsensor->door_1 = $sensor->door_1;
+        $historialsensor->door_2 = $sensor->door_2;
+        $historialsensor->door_3 = $sensor->door_3;
+        $historialsensor->door_4 = $sensor->door_1;
+        $historialsensor->rlay_1 = $sensor->rlay_1;
+        $historialsensor->rlay_2 = $sensor->rlay_2;
+        $historialsensor->rlay_3 = $sensor->rlay_3;
+        $historialsensor->rlay_4 = $sensor->rlay_4;
         $historialsensor->text = $input_req['text'];
         $historialsensor->save();
         /* Send Data Response*/
