@@ -1,0 +1,18 @@
+(Incio: Thu 10 Jun 2021 06:07:44 AM UTC)
+(Usuario:badboy   pts/0        2021-06-10 05:18 (187.204.222.32)
+badboy   pts/1        2021-06-10 05:39 (187.204.222.32)
+badboy   pts/2        2021-06-10 05:47 (187.204.222.32)
+badboy   pts/3        2021-06-10 06:00 (187.204.222.32))
+(Variable:php artisan db:seed)
+(Fin:Thu 10 Jun 2021 06:07:46 AM UTC)
+(Status:OK)
+#################################################
+(Incio: Thu 10 Jun 2021 06:08:28 AM UTC)
+(Usuario:badboy   pts/0        2021-06-10 05:18 (187.204.222.32)
+badboy   pts/1        2021-06-10 05:39 (187.204.222.32)
+badboy   pts/2        2021-06-10 05:47 (187.204.222.32)
+badboy   pts/3        2021-06-10 06:00 (187.204.222.32))
+(Variable:php artisan migrate:fresh --seed)
+(Fin:Thu 10 Jun 2021 06:08:31 AM UTC)
+(Status:OK)
+#################################################
