@@ -313,10 +313,10 @@ class SensorController extends BaseController
         if ($validator->fails()) {
             $response = [
                 'success' => false,
-                'data' => 'Validation Error.',
-                'message' => $validator->errors()
+                'data' => 'Validation error',
+                'message' => 'Query error'
             ];
-            return response()->json($response, 404);
+            return response()->json($response, 403);
         }
 
         $sensor = Sensor::where('num_serie',$input_req['num_serie'])->where('passw',$input_req['passw'])->first(); 
@@ -324,8 +324,8 @@ class SensorController extends BaseController
         if (is_null($sensor)) {
             $response = [
                 'success' => false,
-                'data' => 'Empty',
-                'message' => 'Sensor not Exist.'
+                'data' => 'Search error',
+                'message' => 'Sensor not exist'
             ];
             return response()->json($response, 404);
         }
@@ -391,10 +391,10 @@ class SensorController extends BaseController
         if ($validator->fails()) {
             $response = [
                 'success' => false,
-                'data' => 'Validation Error.',
-                'message' => $validator->errors()
+                'data' => 'Validation Error',
+                'message' => 'Query error'
             ];
-            return response()->json($response, 404);
+            return response()->json($response, 403);
         }
 
         $sensor = Sensor::where('num_serie',$input_req['num_serie'])->where('passw',$input_req['passw'])->first(); 
@@ -406,8 +406,8 @@ class SensorController extends BaseController
         if (is_null($sensor)) {
             $response = [
                 'success' => false,
-                'data' => 'Empty',
-                'message' => 'Sensor not Exist.'
+                'data' => 'Search error',
+                'message' => 'Sensor not exist'
             ];
             return response()->json($response, 404);
         }

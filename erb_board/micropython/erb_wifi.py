@@ -17,8 +17,8 @@ import os,machine, time
 #PASSWORD = "redmi123"         #WiFi password
 #SSID = "INFINITUM3652"        #WiFi name
 #PASSWORD = "eoRrKzMxkU"       #WiFi password
-SSID = "GalexIOT"
-PASSWORD = "G4l3x#1537"
+SSID = 'GalexIOT'
+PASSWORD = 'G4l3x#1537'
 #SSID = "GalexWimaxFin"        #WiFi name
 #PASSWORD = "Galex1537"        #WiFi password
 
@@ -54,7 +54,8 @@ nano_serial.init(115200,bits=8,parity=None,stop=1,rx=16,tx=17)
 #------------Content Api Consult--------------------------------------------------------------------
 
 baseUrl = "https://hotspot.fjlic.com/api"
-Accept = {'Accept': 'application/json'}
+Accept={}
+Accept["Content-Type"] = "application/json"
 
 #------------Data Api Conection---------------------------------------------------------------------
 
@@ -107,15 +108,15 @@ def Post_Status_Sensor():
    if wlan.isconnected()==False:
        ConnectionWifi(SSID,PASSWORD)
    #Obtiene los datos por Post (Valores, Temperatura - Puertas)
-   urlTmp = baseUrl+"/sensor/status"
+   urlTmp = baseUrl + "/sensor/status"
    messageData = {}
    messageData['num_serie'] = num_serie
    messageData['passw'] = passw
    messageData['text'] = "Status Sensor"
-
-   response = urequests.post(urlTmp,data=messageData,headers=Accept)
-   
+   ujsonMessage=ujson.dumps(messageData)
+   response = urequests.post(urlTmp,data=ujsonMessage,headers=Accept)
    #data = response.text
+   #print(data)
    data = response.json()
    vol_1 = data['data']['vol_1']
    vol_2 = data['data']['vol_2']
@@ -140,7 +141,7 @@ def Post_Modify_Sensor():
    if wlan.isconnected()==False:
        ConnectionWifi(SSID,PASSWORD)
    #Envia informacion por Post (Valores, Temperatura - Puertas)
-   urlTmp = baseUrl+"/sensor/modify"
+   urlTmp = baseUrl + "/sensor/modify"
    messageData = {}
    messageData['num_serie'] = num_serie
    messageData['passw'] = passw
@@ -152,9 +153,10 @@ def Post_Modify_Sensor():
    messageData['door_3'] = door_3
    messageData['door_4'] = door_4
    messageData['text'] = "Modify Sensor"
-   
-   response = urequests.post(urlTmp,data=messageData,headers=Accept)
-   
+   ujsonMessage=ujson.dumps(messageData)
+   response = urequests.post(urlTmp,data=ujsonMessage,headers=Accept)
+   #data = response.text
+   #print(data)
    data = response.json()
    rlay_1 = data['data']['rlay_1']
    rlay_2 = data['data']['rlay_2']
@@ -173,8 +175,8 @@ connect = ConnectionWifi(SSID, PASSWORD)
 Post_Status_Sensor()
     
 while True:
-      cont_global=cont_global+1 
-      if (accoun_global>=114):
+      accoun_global=accoun_global+1 
+      if (accoun_global>=20):
         #print("hola")
         accoun_global=0
         band_server=0
