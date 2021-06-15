@@ -53,6 +53,22 @@
                   <input type="text" class="form-control" value="{{ $historialsensor->passw }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
+                  <label for="temp_1">Temperatura 1</label>
+                  <input type="text" class="form-control" value="{{ $historialsensor->temp_1 }}" readonly="readonly"/>
+                </div>
+                <div class="form-group">
+                  <label for="temp_2">Temperatura 2</label>
+                  <input type="text" class="form-control" value="{{ $historialsensor->temp_2 }}" readonly="readonly"/>
+                </div>
+                <div class="form-group">
+                  <label for="temp_3">Temperatura 3</label>
+                  <input type="text" class="form-control" value="{{ $historialsensor->temp_3 }}" readonly="readonly"/>
+                </div>
+                <div class="form-group">
+                  <label for="temp_4">Temperatura 4</label>
+                  <input type="text" class="form-control" value="{{ $historialsensor->temp_4 }}" readonly="readonly"/>
+                </div>
+                <div class="form-group">
                   <label for="vol_1">Voltaje 1</label>
                   <input type="text" class="form-control" value="{{ $historialsensor->vol_1 }}" readonly="readonly"/>
                 </div>
@@ -119,7 +135,7 @@
 @stop
 
 @section('footer') 
-<div class="pull-right hidden-xs"><b>Version</b> 2.0.0<strong>  Copyright &copy; 2020 <a href="http://hotspot.local/home" target="_blank">Hotspot</a>.</strong>  Todo los derechos Reservados.</div> 
+<div class="pull-right hidden-xs"><b>Version</b> 2.0.0<strong>  Copyright &copy; 2021 <a href="http://hotspot.fjlic.local/home" target="_blank">Hotspot</a>.</strong>  Todo los derechos Reservados.</div> 
 @stop
 
 @section('css')

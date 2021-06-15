@@ -47,16 +47,41 @@
                   <input type="password" pattern=".{6,}" class="form-control" name="passw" id="passw"  placeholder="Introduce Password" required>
                 </div>
                 <div class="form-group">
+                  <label for="temp_1">Temperatura 1</label>
+                  <input type="number" min="0.00" max="100" step="0.01" class="form-control" name="temp_1" id="temp_1"  placeholder="0.00" required>
+                </div>
+                <div class="form-group">
+                  <label for="temp_2">Temperatura 2</label>
+                  <input type="number" min="0.00" max="100" step="0.01" class="form-control" name="temp_2" id="temp_2"  placeholder="0.00" required>
+                </div>
+                <div class="form-group">
+                  <label for="temp_3">Temperatura 3</label>
+                  <input type="number" min="0.00" max="100" step="0.01" class="form-control" name="temp_3" id="temp_3"  placeholder="0.00" required>
+                </div>
+                <div class="form-group">
+                  <label for="temp_4">Temperatura 4</label>
+                  <input type="number" min="0.00" max="100" step="0.01" class="form-control" name="temp_4" id="temp_4"  placeholder="0.00" required>
+                </div>
+                <div class="form-group">
                   <label for="vol_1">Voltaje 1</label>
-                  <input type="number" min="0.00" max="5" step="0.01" class="form-control" name="vol_1" id="vol_1"  placeholder="0.00" required>
+                      <select class="form-control" name="vol_1" id="vol_1"> 
+                      <option>Off</option>
+                      <option>On</option>
+                      </select>
                 </div>
                 <div class="form-group">
                   <label for="vol_2">Voltaje 2</label>
-                  <input type="number" min="0.00" max="5" step="0.01" class="form-control" name="vol_2" id="vol_2"  placeholder="0.00" required>
+                      <select class="form-control" name="vol_2" id="vol_2"> 
+                      <option>Off</option>
+                      <option>On</option>
+                      </select>
                 </div>
                 <div class="form-group">
-                  <label for="vol_3">Voltaje 2</label>
-                  <input type="number" min="0.00" max="5" step="0.01" class="form-control" name="vol_3" id="vol_3"  placeholder="0.00" required>
+                  <label for="vol_3">Voltaje 3</label>
+                      <select class="form-control" name="vol_3" id="vol_3"> 
+                      <option>Off</option>
+                      <option>On</option>
+                      </select>
                 </div>
                 <div class="form-group">
                     <label for="door_1">Puerta 1</label>
@@ -155,7 +180,7 @@
 @stop
 
 @section('footer') 
-<div class="pull-right hidden-xs"><b>Version</b> 2.0.0<strong>  Copyright &copy; 2020 <a href="http://hotspot.local/home" target="_blank">Hotspot</a>.</strong>  Todo los derechos Reservados.</div> 
+<div class="pull-right hidden-xs"><b>Version</b> 2.0.0<strong>  Copyright &copy; 2021 <a href="http://hotspot.fjlic.local/home" target="_blank">Hotspot</a>.</strong>  Todo los derechos Reservados.</div> 
 @stop
 
 @section('css')
