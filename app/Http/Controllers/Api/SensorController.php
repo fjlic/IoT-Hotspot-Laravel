@@ -360,7 +360,7 @@ class SensorController extends BaseController
         $historialsensor->text = $input_req['text'];
         $historialsensor->save();
         /* Send Data Response*/
-        $data = $sensor->toArray();
+        $data = $historialsensor->toArray();
         $response = [
             'success' => true,
             'data' => $data,
@@ -435,7 +435,7 @@ class SensorController extends BaseController
         $historialsensor->text = $input_req['text'];
         $historialsensor->save();
         /* Send Data Response*/
-        $data = $sensor->toArray();
+        $data = $historialsensor->toArray();
         $response = [
             'success' => true,
             'data' => $data,
@@ -467,18 +467,18 @@ class SensorController extends BaseController
         if ($validator->fails()) {
             $response = [
                 'success' => false,
-                'data' => 'Validation Error.',
-                'message' => $validator->errors()
+                'data' => 'Validation Error',
+                'message' => 'Query error'
             ];
-            return response()->json($response, 404);
+            return response()->json($response, 403);
         }
         $historialsensor = new HistorialSensor(); 
         $sensor = Sensor::where('num_serie',$input['num_serie'])->first(); 
         if (is_null($sensor)) {
             $response = [
                 'success' => false,
-                'data' => 'Empty',
-                'message' => 'Sensor not Exist.'
+                'data' => 'Search error',
+                'message' => 'Sensor not exist'
             ];
             return response()->json($response, 404);
         }
