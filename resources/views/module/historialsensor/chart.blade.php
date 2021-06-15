@@ -72,7 +72,7 @@
     </section>
     <!-- /.content --> 
 
-<!-- Main content Sensors Voltaje-->
+<!-- Main content Sensors Door-->
 <section class="content">
   <div class="row">
     <div class="col-12">
@@ -94,25 +94,25 @@
           <div class="row">
             <div class="col">
               <h4 class="card-title">Voltaje 1</h4><br>
-                @if($sensor->vol_1 == 'On')
+                @if($historialsensor->vol_1 == 'On')
                   <a><img src="{{ asset('storage/Images/On.JPG') }}" alt="" title=""/></a>
-                @elseif($sensor->rlay_1 == 'Off')
+                @elseif($historialsensor->rlay_1 == 'Off')
                   <a><img src="{{ asset('storage/Images/Off.JPG') }}" alt="" title=""/></a>
                 @endif  
             </div>
             <div class="col">
               <h4 class="card-title">Voltaje 2</h4><br>
-                @if($sensor->vol_2 == 'On')
+                @if($historialsensor->vol_2 == 'On')
                   <a><img src="{{ asset('storage/Images/On.JPG') }}" alt="" title=""/></a>
-                @elseif($sensor->rlay_2 == 'Off')
+                @elseif($historialsensor->rlay_2 == 'Off')
                   <a><img src="{{ asset('storage/Images/Off.JPG') }}" alt="" title=""/></a>
                 @endif
               </div>
             <div class="col">
               <h4 class="card-title">Voltaje 3</h4><br>
-                @if($sensor->vol_3 == 'On')
+                @if($historialsensor->vol_3 == 'On')
                   <a><img src="{{ asset('storage/Images/On.JPG') }}" alt="" title=""/></a>
-                @elseif($sensor->vol_3 == 'Off')
+                @elseif($historialsensor->vol_3 == 'Off')
                   <a><img src="{{ asset('storage/Images/Off.JPG') }}" alt="" title=""/></a>
                 @endif 
               </div>
@@ -149,7 +149,7 @@
         <div class="card-body">
           <div class="row">
             <div class="col">
-                <h4 class="card-title">Puerta(1)</h4><br>
+                <h4 class="card-title">Puerta 1</h4><br>
                   @if($historialsensor->door_1 == 'On')
                     <a><img src="{{ asset('storage/Images/close-door.JPG') }}" alt="" title=""/></a>
                   @elseif($historialsensor->door_1 == 'Off')
@@ -157,7 +157,7 @@
                   @endif
             </div>
             <div class="col">
-                <h4 class="card-title">Puerta(2)</h4><br>
+                <h4 class="card-title">Puerta 2</h4><br>
                 @if($historialsensor->door_2 == 'On')
                   <a><img src="{{ asset('storage/Images/close-door.JPG') }}" alt="" title=""/></a>
                 @elseif($historialsensor->door_2 == 'Off')
@@ -165,7 +165,7 @@
                 @endif
             </div>
             <div class="col">
-                <h4 class="card-title">Puerta(3)</h4><br>
+                <h4 class="card-title">Puerta 3</h4><br>
                 @if($historialsensor->door_3 == 'On')
                     <a><img src="{{ asset('storage/Images/close-door.JPG') }}" alt="" title=""/></a>
                 @elseif($historialsensor->door_3 == 'Off')
@@ -173,7 +173,7 @@
                 @endif
             </div>
             <div class="col">
-                <h4 class="card-title">Puerta(4)</h4><br>
+                <h4 class="card-title">Puerta 4</h4><br>
                 @if($historialsensor->door_4 == 'On')
                     <a><img src="{{ asset('storage/Images/close-door.JPG') }}" alt="" title=""/></a>
                 @elseif($historialsensor->door_4 == 'Off')
@@ -213,7 +213,7 @@
         <div class="card-body">
           <div class="row">
             <div class="col">
-              <h4 class="card-title">Relay(1)</h4><br>
+              <h4 class="card-title">Relay 1</h4><br>
                 @if($historialsensor->rlay_1 == 'On')
                   <a><img src="{{ asset('storage/Images/block-on.JPG') }}" alt="" title=""/></a>
                 @elseif($historialsensor->rlay_1 == 'Off')
@@ -221,7 +221,7 @@
                 @endif  
             </div>
             <div class="col">
-              <h4 class="card-title">Relay(2)</h4><br>
+              <h4 class="card-title">Relay 2</h4><br>
                 @if($historialsensor->rlay_2 == 'On')
                   <a><img src="{{ asset('storage/Images/block-on.JPG') }}" alt="" title=""/></a>
                 @elseif($historialsensor->rlay_2 == 'Off')
@@ -229,7 +229,7 @@
                 @endif
               </div>
             <div class="col">
-              <h4 class="card-title">Relay(3)</h4><br>
+              <h4 class="card-title">Relay 3</h4><br>
                 @if($historialsensor->rlay_3 == 'On')
                   <a><img src="{{ asset('storage/Images/block-on.JPG') }}" alt="" title=""/></a>
                 @elseif($historialsensor->rlay_3 == 'Off')
@@ -237,7 +237,7 @@
                 @endif 
               </div>
             <div class="col">
-              <h4 class="card-title">Relay(4)</h4><br>
+              <h4 class="card-title">Relay 4</h4><br>
                 @if($historialsensor->rlay_4 == 'On')
                   <a><img src="{{ asset('storage/Images/block-on.JPG') }}" alt="" title=""/></a>
                 @elseif($historialsensor->rlay_4 == 'Off')
