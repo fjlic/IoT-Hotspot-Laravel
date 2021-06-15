@@ -38,7 +38,7 @@
               <table id="sensorTable" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Id</th>
+                  {{-- <th>Id</th>  --}}
                   <th>Id_Erb</th>
                   <th>NumSer</th>
                   {{-- <th>Passw</th>  --}}
@@ -62,7 +62,7 @@
                 <tbody>
                 @foreach($sensors as $sensor)
                 <tr>
-                    <td>{{ $sensor->id }}</td>
+                    {{-- <td>{{ $sensor->id }}</td>  --}}
                     <td>{{ $sensor->erb_id }}</td>
                     <td>{{ $sensor->num_serie }}</td>
                    {{-- <td>{{ $sensor->passw }}</td>  --}}

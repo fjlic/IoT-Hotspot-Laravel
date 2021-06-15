@@ -331,6 +331,8 @@ class SensorController extends BaseController
         }
         
         /* Update Sensors*/ 
+        $date = now();
+        $timestamp = $date->getTimestamp();
         $sensor->vol_1 = $input_req['vol_1'];
         $sensor->vol_2 = $input_req['vol_2'];
         $sensor->vol_3 = $input_req['vol_3'];
@@ -339,6 +341,7 @@ class SensorController extends BaseController
         $sensor->door_3 = $input_req['door_3'];
         $sensor->door_4 = $input_req['door_4'];
         $sensor->text = $input_req['text'];
+        $sensor->updated_at = $timestamp;
         $sensor->save();
 
         $historialsensor = new HistorialSensor(); 
@@ -412,8 +415,11 @@ class SensorController extends BaseController
             return response()->json($response, 404);
         }
         
-        /* Update Sensors*/ 
+        /* Update Sensors*/
+        $date = now();
+        $timestamp = $date->getTimestamp();
         $sensor->text = $input_req['text'];
+        $sensor->updated_at = $timestamp;
         $sensor->save();
 
         $historialsensor = new HistorialSensor(); 

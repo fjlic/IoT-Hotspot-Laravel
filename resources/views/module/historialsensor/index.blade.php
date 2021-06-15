@@ -38,7 +38,7 @@
               <table id="historialsensorTable" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Id</th>
+                  {{-- <th>Id</th>  --}}
                   <th>Sensor</th>
                   <th>NumSer</th>
                   <th>Passw</th>
@@ -62,7 +62,7 @@
                 <tbody>
                 @foreach($historialsensors as $historialsensor)
                 <tr>
-                    <td>{{ $historialsensor->id }}</td>
+                    {{-- <td>{{ $historialsensor->id }}</td>  --}}
                     <td>{{ $historialsensor->sensor_id }}</td>
                     <td>{{ $historialsensor->num_serie }}</td>
                     <td>{{ $historialsensor->passw }}</td>
