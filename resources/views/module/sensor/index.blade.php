@@ -42,13 +42,13 @@
                   <th>Id_Erb</th>
                   <th>NumSer</th>
                   {{-- <th>Passw</th>  --}}
-                  <th>Volt1</th>
-                  <th>Volt2</th>
-                  <th>Volt3</th>
                   <th>Temp1</th>
                   <th>Temp2</th>
                   <th>Temp3</th>
                   <th>Temp4</th>
+                  <th>Volt1</th>
+                  <th>Volt2</th>
+                  <th>Volt3</th>
                   <th>Prt1</th>
                   <th>Prt2</th>
                   <th>Prt3</th>
@@ -70,6 +70,10 @@
                     <td>{{ $sensor->erb_id }}</td>
                     <td>{{ $sensor->num_serie }}</td>
                    {{-- <td>{{ $sensor->passw }}</td>  --}}
+                    <td>{{ $sensor->temp_1 }}</td>
+                    <td>{{ $sensor->temp_2 }}</td>
+                    <td>{{ $sensor->temp_3 }}</td>
+                    <td>{{ $sensor->temp_4 }}</td>
                     @if($sensor->vol_1 == 'On')
                     <td><span class="badge badge-success">On-<div class="fa fa-toggle-on"></div></span></td>
                     @elseif($sensor->vol_1 == 'Off')
@@ -85,10 +89,6 @@
                     @elseif($sensor->vol_3 == 'Off')
                     <td><span class="badge badge-danger">Off-<div class="fa fa-toggle-off"></div></span></td>
                     @endif
-                    <td>{{ $sensor->temp_1 }}</td>
-                    <td>{{ $sensor->temp_2 }}</td>
-                    <td>{{ $sensor->temp_3 }}</td>
-                    <td>{{ $sensor->temp_4 }}</td>
                     @if($sensor->door_1 == 'On')
                     <td><span class="badge badge-primary">Close-<div class="fa fa-check-circle"></div></span></td>
                     @elseif($sensor->door_1 == 'Off')
