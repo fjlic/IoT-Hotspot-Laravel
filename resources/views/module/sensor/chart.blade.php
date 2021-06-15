@@ -31,7 +31,7 @@
         <div class="col-12">
             <div class="card card-success card-outline">
             <div class="card-header">
-              <h3 class="card-title">Indicador de Voltaje</h3>
+              <h3 class="card-title">Indicador de Temperatura</h3>
               <div class="card-tools">
                 <a class="btn btn-tool"  href="{{ route('sensor.index') }}" ><span class="fas fa-arrow-left"></span></a>
                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -45,16 +45,20 @@
             <div class="card-body">
             <div class="row">
               <div class="col-xs-8 col-md-4 text-center">
-                <div id="vol1"></div>
-                  {!! $vol1 !!}
+                <div id="temp1"></div>
+                  {!! $temp1 !!}
               </div>
               <div class="col-xs-8 col-md-4 text-center">
-                <div id="vol2"></div>
-                  {!! $vol2 !!}
+                <div id="temp2"></div>
+                  {!! $temp2 !!}
               </div>   
               <div class="col-xs-8 col-md-4 text-center">
-                <div id="vol3"></div>
-                  {!! $vol3 !!}
+                <div id="temp3"></div>
+                  {!! $temp3 !!}
+                </div>
+              <div class="col-xs-8 col-md-4 text-center">
+                <div id="temp4"></div>
+                  {!! $temp4 !!}
                 </div>   
             </div>
             </div>
