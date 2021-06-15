@@ -98,7 +98,8 @@ class SensorController extends Controller
                                    'data'  => [$sensor->temp_1*1],
                                    'tooltip' => ['valueSuffix' => '-Volt/DC'],]])
                         ->display();
-    $temp2 = \Chart::title(['text' => 'Temperatura 2',])
+
+        $temp2 = \Chart::title(['text' => 'Temperatura 2',])
                         ->chart(['type'     => 'gauge','renderTo' => 'temp2',
                                  'plotBackgroundColor' => null,
                                  'plotBackgroundImage' => null,
@@ -131,7 +132,7 @@ class SensorController extends Controller
 
                         ])
                         ->yaxis(['min' => 0,
-                                 'max' => 5.2,
+                                 'max' => 100,
                                  'minorTickInterval' => 'auto' ,
                                  'minorTickWidth' => 1,
                                  'minorTickLength' => 5,
@@ -146,13 +147,13 @@ class SensorController extends Controller
                                               'rotation' => 'auto',],
                                  'title' => ['text' => 'Grados/Centigrados',],
                                  'plotBands' => [['from' => 0,
-                                                 'to' => 3,
+                                                 'to' => 35,
                                                  'color' => '#55BF3B',],
-                                                 ['from' => 3,
-                                                 'to' => 4,
+                                                 ['from' => 35,
+                                                 'to' => 65,
                                                  'color' => '#DDDF0D',],
-                                                 ['from' => 4,
-                                                 'to' => 5.2,
+                                                 ['from' => 65,
+                                                 'to' => 100,
                                                  'color' => '#DF5353',]],
                                     ])
                          ->series([['name'  => 'Valor',
@@ -160,7 +161,7 @@ class SensorController extends Controller
                                    'tooltip' => ['valueSuffix' => '-Volt/DC'],]])
                         ->display();
     
-    $temp3 = \Chart::title(['text' => 'Temperatura 3',])
+        $temp3 = \Chart::title(['text' => 'Temperatura 3',])
                         ->chart(['type'     => 'gauge','renderTo' => 'temp3',
                                  'plotBackgroundColor' => null,
                                  'plotBackgroundImage' => null,
@@ -193,7 +194,7 @@ class SensorController extends Controller
 
                         ])
                         ->yaxis(['min' => 0,
-                                 'max' => 5.2,
+                                 'max' => 100,
                                  'minorTickInterval' => 'auto' ,
                                  'minorTickWidth' => 1,
                                  'minorTickLength' => 5,
@@ -208,20 +209,21 @@ class SensorController extends Controller
                                               'rotation' => 'auto',],
                                  'title' => ['text' => 'Grados/Centigrados',],
                                  'plotBands' => [['from' => 0,
-                                                 'to' => 3,
+                                                 'to' => 35,
                                                  'color' => '#55BF3B',],
-                                                 ['from' => 3,
-                                                 'to' => 4,
+                                                 ['from' => 35,
+                                                 'to' => 65,
                                                  'color' => '#DDDF0D',],
-                                                 ['from' => 4,
-                                                 'to' => 5.2,
+                                                 ['from' => 65,
+                                                 'to' => 100,
                                                  'color' => '#DF5353',]],
                                     ])
                          ->series([['name'  => 'Valor',
                                    'data'  => [$sensor->temp_3*1],
                                    'tooltip' => ['valueSuffix' => '-Volt/DC'],]])
                         ->display();
-    $temp4 = \Chart::title(['text' => 'Temperatura 4',])
+                        
+        $temp4 = \Chart::title(['text' => 'Temperatura 4',])
                         ->chart(['type'     => 'gauge','renderTo' => 'temp4',
                                  'plotBackgroundColor' => null,
                                  'plotBackgroundImage' => null,
@@ -254,7 +256,7 @@ class SensorController extends Controller
 
                         ])
                         ->yaxis(['min' => 0,
-                                 'max' => 5.2,
+                                 'max' => 100,
                                  'minorTickInterval' => 'auto' ,
                                  'minorTickWidth' => 1,
                                  'minorTickLength' => 5,
@@ -269,13 +271,13 @@ class SensorController extends Controller
                                               'rotation' => 'auto',],
                                  'title' => ['text' => 'Grados/Centigrados',],
                                  'plotBands' => [['from' => 0,
-                                                 'to' => 3,
+                                                 'to' => 35,
                                                  'color' => '#55BF3B',],
-                                                 ['from' => 3,
-                                                 'to' => 4,
+                                                 ['from' => 35,
+                                                 'to' => 65,
                                                  'color' => '#DDDF0D',],
-                                                 ['from' => 4,
-                                                 'to' => 5.2,
+                                                 ['from' => 65,
+                                                 'to' => 100,
                                                  'color' => '#DF5353',]],
                                     ])
                          ->series([['name'  => 'Valor',
