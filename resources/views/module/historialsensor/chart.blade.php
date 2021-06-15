@@ -31,7 +31,7 @@
         <div class="col-12">
             <div class="card card-success card-outline">
             <div class="card-header">
-              <h3 class="card-title">Indicador de Voltaje</h3>
+              <h3 class="card-title">Indicador de Temperatura</h3>
               <div class="card-tools">
                 <a class="btn btn-tool"  href="{{ route('historialsensor.index') }}" ><span class="fas fa-arrow-left"></span></a>
                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -44,18 +44,22 @@
             </div>
             <div class="card-body">
             <div class="row">
-              <div class="col-xs-8 col-md-4 text-center">
-                <div id="vol1"></div>
-                  {!! $vol1 !!}
+              <div class="col-xs-4 col-md-4 text-center">
+                <div id="temp1"></div>
+                  {!! $temp1 !!}
               </div>
-              <div class="col-xs-8 col-md-4 text-center">
-                <div id="vol2"></div>
-                  {!! $vol2 !!}
+              <div class="col-xs-4 col-md-4 text-center">
+                <div id="temp2"></div>
+                  {!! $temp2 !!}
               </div>   
-              <div class="col-xs-8 col-md-4 text-center">
-                <div id="vol3"></div>
-                  {!! $vol3 !!}
-                </div>   
+              <div class="col-xs-4 col-md-4 text-center">
+                <div id="temp3"></div>
+                  {!! $temp3 !!}
+                </div>
+              <div class="col-xs-4 col-md-4 text-center">
+                <div id="temp4"></div>
+                  {!! $temp4 !!}
+                </div>     
             </div>
             </div>
             <!-- /.card-body -->
@@ -67,6 +71,62 @@
       <!-- /.row -->
     </section>
     <!-- /.content --> 
+
+<!-- Main content Sensors Voltaje-->
+<section class="content">
+  <div class="row">
+    <div class="col-12">
+        <div class="card card-primary card-outline">
+        <div class="card-header">
+          <h3 class="card-title">Deteccion de Voltaje</h3>
+          <div class="card-tools">
+            <a class="btn btn-tool"  href="{{ route('historialsensor.index') }}" ><span class="fas fa-arrow-left"></span></a>
+            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+              <i class="fas fa-minus"></i>
+            </button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <h4 class="card-title">Voltaje 1</h4><br>
+                @if($sensor->vol_1 == 'On')
+                  <a><img src="{{ asset('storage/Images/On.JPG') }}" alt="" title=""/></a>
+                @elseif($sensor->rlay_1 == 'Off')
+                  <a><img src="{{ asset('storage/Images/Off.JPG') }}" alt="" title=""/></a>
+                @endif  
+            </div>
+            <div class="col">
+              <h4 class="card-title">Voltaje 2</h4><br>
+                @if($sensor->vol_2 == 'On')
+                  <a><img src="{{ asset('storage/Images/On.JPG') }}" alt="" title=""/></a>
+                @elseif($sensor->rlay_2 == 'Off')
+                  <a><img src="{{ asset('storage/Images/Off.JPG') }}" alt="" title=""/></a>
+                @endif
+              </div>
+            <div class="col">
+              <h4 class="card-title">Voltaje 3</h4><br>
+                @if($sensor->vol_3 == 'On')
+                  <a><img src="{{ asset('storage/Images/On.JPG') }}" alt="" title=""/></a>
+                @elseif($sensor->vol_3 == 'Off')
+                  <a><img src="{{ asset('storage/Images/Off.JPG') }}" alt="" title=""/></a>
+                @endif 
+              </div>
+          </div>
+        </div>
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+    </div>
+    <!-- /.col -->
+  </div>
+  <!-- /.row -->
+</section>
+<!-- /.content -->
 
 <!-- Main content historialSensors Door-->
 <section class="content">
@@ -199,7 +259,7 @@
 @stop
 
 @section('footer') 
-<div class="pull-right hidden-xs"><b>Version</b> 2.0.0<strong>  Copyright &copy; 2020 <a href="http://hotspot.local/home" target="_blank">Hotspot</a>.</strong>  Todo los derechos Reservados.</div> 
+<div class="pull-right hidden-xs"><b>Version</b> 2.0.0<strong>  Copyright &copy; 2021 <a href="http://hotspot.fjlic.local/home" target="_blank">Hotspot</a>.</strong>  Todo los derechos Reservados.</div> 
 @stop
 
 @section('css')

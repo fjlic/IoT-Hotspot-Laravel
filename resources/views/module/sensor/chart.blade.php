@@ -76,7 +76,7 @@
 <section class="content">
   <div class="row">
     <div class="col-12">
-        <div class="card card-warning card-outline">
+        <div class="card card-primary card-outline">
         <div class="card-header">
           <h3 class="card-title">Deteccion de Voltaje</h3>
           <div class="card-tools">
@@ -112,7 +112,7 @@
               <h4 class="card-title">Voltaje 3</h4><br>
                 @if($sensor->vol_3 == 'On')
                   <a><img src="{{ asset('storage/Images/On.JPG') }}" alt="" title=""/></a>
-                @elseif($sensor->rlay_3 == 'Off')
+                @elseif($sensor->vol_3 == 'Off')
                   <a><img src="{{ asset('storage/Images/Off.JPG') }}" alt="" title=""/></a>
                 @endif 
               </div>

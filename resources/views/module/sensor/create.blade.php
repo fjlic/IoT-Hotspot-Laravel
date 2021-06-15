@@ -63,13 +63,6 @@
                   <input type="number" min="0.00" max="100" step="0.01" class="form-control" name="temp_4" id="temp_4"  placeholder="0.00" required>
                 </div>
                 <div class="form-group">
-                    <label for="door_1">Puerta 1</label>
-                        <select class="form-control" name="door_1" id="door_1"> 
-                        <option>Off</option>
-                        <option>On</option>
-                        </select>
-                </div>
-                <div class="form-group">
                   <label for="vol_1">Voltaje 1</label>
                       <select class="form-control" name="vol_1" id="vol_1"> 
                       <option>Off</option>
@@ -90,6 +83,13 @@
                       <option>On</option>
                       </select>
                 </div>
+                <div class="form-group">
+                  <label for="door_1">Puerta 1</label>
+                      <select class="form-control" name="door_1" id="door_1"> 
+                      <option>Off</option>
+                      <option>On</option>
+                      </select>
+              </div>
                 <div class="form-group">
                     <label for="door_2">Puerta 2</label>
                         <select class="form-control" name="door_2" id="door_2"> 

@@ -41,7 +41,11 @@
                   {{-- <th>Id</th>  --}}
                   <th>Sensor</th>
                   <th>NumSer</th>
-                  <th>Passw</th>
+                  {{-- <th>Passw</th>  --}}
+                  <th>Temp1</th>
+                  <th>Temp2</th>
+                  <th>Temp3</th>
+                  <th>Temp4</th>
                   <th>Vol1</th>
                   <th>Vol2</th>
                   <th>Vol3</th>
@@ -56,7 +60,7 @@
                   <th>Text</th>
                   <th>FechaCre</th>
                   {{-- <th>FechaMoficiacion</th>  --}}
-                  {{-- <th>Acciones</th>  --}}
+                  <th>Acciones</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -65,10 +69,26 @@
                     {{-- <td>{{ $historialsensor->id }}</td>  --}}
                     <td>{{ $historialsensor->sensor_id }}</td>
                     <td>{{ $historialsensor->num_serie }}</td>
-                    <td>{{ $historialsensor->passw }}</td>
-                    <td>{{ $historialsensor->vol_1 }}</td>
-                    <td>{{ $historialsensor->vol_2 }}</td>
-                    <td>{{ $historialsensor->vol_3 }}</td>
+                    {{-- <td>{{ $historialsensor->passw }}</td>  --}}
+                    <td>{{ $historialsensor->temp_1 }}</td>
+                    <td>{{ $historialsensor->temp_2 }}</td>
+                    <td>{{ $historialsensor->temp_3 }}</td>
+                    <td>{{ $historialsensor->temp_4 }}</td>
+                    @if($historialsensor->vol_1 == 'On')
+                    <td><span class="badge badge-success">On-<div class="fa fa-toggle-on"></div></span></td>
+                    @elseif($historialsensor->vol_1 == 'Off')
+                    <td><span class="badge badge-danger">Off-<div class="fa fa-toggle-off"></div></span></td>
+                    @endif
+                    @if($historialsensor->vol_2 == 'On')
+                    <td><span class="badge badge-success">On-<div class="fa fa-toggle-on"></div></span></td>
+                    @elseif($historialsensor->vol_2 == 'Off')
+                    <td><span class="badge badge-danger">Off-<div class="fa fa-toggle-off"></div></span></td>
+                    @endif
+                    @if($historialsensor->vol_3 == 'On')
+                    <td><span class="badge badge-success">On-<div class="fa fa-toggle-on"></div></span></td>
+                    @elseif($historialsensor->vol_3 == 'Off')
+                    <td><span class="badge badge-danger">Off-<div class="fa fa-toggle-off"></div></span></td>
+                    @endif
                     @if($historialsensor->door_1 == 'On')
                     <td><span class="badge badge-primary">Close-<div class="fa fa-check-circle"></div></span></td>
                     @elseif($historialsensor->door_1 == 'Off')
@@ -119,16 +139,16 @@
                     <td>{{ $historialsensor->text }}</td>
                     <td>{{ $historialsensor->created_at }}</td>
                     {{-- <td>{{ $historialsensor->updated_at }}</td>  --}}
-                    {{--  <td>
-                      <form role="form" action="{{ route('historialsensor.destroy',$historialsensor->id) }}" method="POST">
-                        <a class="btn btn-primary btn-xs" href="{{ route('historialsensor.chart',$historialsensor->id) }}" role="button"><span class="fa fa-chart-pie"></span></a>   
+                    <td>
+                      {{-- <form role="form" action="{{ route('historialsensor.destroy',$historialsensor->id) }}" method="POST">  --}}
+                      <a class="btn btn-primary btn-xs" href="{{ route('historialsensor.chart',$historialsensor->id) }}" role="button"><span class="fa fa-chart-pie"></span></a>   
                       <a class="btn btn-info btn-xs" href="{{ route('historialsensor.show',$historialsensor->id) }}" role="button"><span class="fa fa-eye"></span></a> 
-                      <a class="btn btn-warning btn-xs"  href="{{ route('historialsensor.edit',$historialsensor->id) }}" role="button"><span class="fa fa-pen"></span></a>
+                      {{-- <a class="btn btn-warning btn-xs"  href="{{ route('historialsensor.edit',$historialsensor->id) }}" role="button"><span class="fa fa-pen"></span></a>
                       @csrf
                       @method('DELETE')
                       <button class="btn btn-danger btn-xs" type="submit"><span class="fa fa-trash"></span></button>
-                      </form>
-                    </td>  --}}
+                      </form> --}}
+                    </td>
                 </tr>
                 @endforeach
                 </tbody>
@@ -170,7 +190,7 @@
 @stop
 
 @section('footer') 
-<div class="pull-right hidden-xs"><b>Version</b> 2.0.0<strong>  Copyright &copy; 2020 <a href="http://hotspot.local/home" target="_blank">Hotspot</a>.</strong>  Todo los derechos Reservados.</div> 
+<div class="pull-right hidden-xs"><b>Version</b> 2.0.0<strong>  Copyright &copy; 2021 <a href="http://hotspot.fjlic.local/home" target="_blank">Hotspot</a>.</strong>  Todo los derechos Reservados.</div> 
 @stop
 
 @section('css')
