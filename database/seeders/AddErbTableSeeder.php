@@ -107,16 +107,16 @@ class AddErbTableSeeder extends Seeder
         $erb->api_token = ApiToken::GenerateToken32();
         $erb->save();
 
-        /*$erb = new Erb();
+        $erb = new Erb();
         $erb->id = 10;
-        $erb->user_id = 3;
+        $erb->user_id = 1;
         $erb->name_machine = 'Dino battle';
         $erb->nick_name = 'Erb_10';
         $erb->password = Crypt::encrypt('erb123');
         $erb->api_token = ApiToken::GenerateToken32();
         $erb->save();
 
-        $erb = new Erb();
+        /*$erb = new Erb();
         $erb->id = 11;
         $erb->user_id = 4;
         $erb->name_machine = 'Down the clown';
