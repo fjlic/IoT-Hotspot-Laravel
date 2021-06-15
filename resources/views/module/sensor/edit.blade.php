@@ -45,7 +45,7 @@
                 </div>
                 <div class="form-group">
                   <label for="passw">Password</label>
-                  <input type="text" pattern=".{6,}" class="form-control" name="passw" id="passw"  placeholder="Introduce Password" required value="{{ $sensor->passw }}"/>
+                  <input type="text" class="form-control" name="passw" id="passw"  placeholder="Introduce Password" required value="{{ $sensor->passw }}"/>
                 </div>
                 <div class="form-group">
                   <label for="temp_1">Temperatura 1</label>

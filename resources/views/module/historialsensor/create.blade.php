@@ -44,7 +44,7 @@
                 </div>
                 <div class="form-group">
                   <label for="passw">Password</label>
-                  <input type="password" pattern=".{6,}" class="form-control" name="passw" id="passw"  placeholder="Introduce Password" required>
+                  <input type="password" class="form-control" name="passw" id="passw"  placeholder="Introduce Password" required>
                 </div>
                 <div class="form-group">
                   <label for="temp_1">Temperatura 1</label>
