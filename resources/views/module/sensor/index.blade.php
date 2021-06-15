@@ -55,7 +55,7 @@
                   <th>Rly4</th>
                   <th>Text</th>
                  {{--  <th>FechaCreacion</th>  --}}
-                 {{-- <th>FechaMoficiacion</th>  --}} 
+                  <th>FechaMod</th> 
                   <th>Acciones</th>
                 </tr>
                 </thead>
@@ -151,7 +151,7 @@
                   <th>Rly4</th>
                   <th>Text</th>
                  {{--  <th>FechaCreacion</th>  --}}
-                 {{-- <th>FechaMoficiacion</th>  --}} 
+                 <th>FechaMod</th> 
                   <th>Acciones</th>
                 </tr>
                 </tfoot>-->

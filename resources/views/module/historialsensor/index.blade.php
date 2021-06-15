@@ -55,8 +55,8 @@
                   <th>Rly4</th>
                   <th>Text</th>
                   <th>FechaCreacion</th>
-                  <th>FechaMoficiacion</th>
-                  <th>Acciones</th>
+                  {{-- <th>FechaMoficiacion</th>  --}}
+                  {{-- <th>Acciones</th>  --}}
                 </tr>
                 </thead>
                 <tbody>
@@ -118,8 +118,8 @@
                     @endif
                     <td>{{ $historialsensor->text }}</td>
                     <td>{{ $historialsensor->created_at }}</td>
-                    <td>{{ $historialsensor->updated_at }}</td>
-                    <td>
+                    {{-- <td>{{ $historialsensor->updated_at }}</td>  --}}
+                    {{--  <td>
                       <form role="form" action="{{ route('historialsensor.destroy',$historialsensor->id) }}" method="POST">
                         <a class="btn btn-primary btn-xs" href="{{ route('historialsensor.chart',$historialsensor->id) }}" role="button"><span class="fa fa-chart-pie"></span></a>   
                       <a class="btn btn-info btn-xs" href="{{ route('historialsensor.show',$historialsensor->id) }}" role="button"><span class="fa fa-eye"></span></a> 
@@ -128,13 +128,13 @@
                       @method('DELETE')
                       <button class="btn btn-danger btn-xs" type="submit"><span class="fa fa-trash"></span></button>
                       </form>
-                    </td>
+                    </td>  --}}
                 </tr>
                 @endforeach
                 </tbody>
                <!-- <tfoot>
                 <tr>
-                  <th>Id</th>
+                 <th>Id</th>
                   <th>Id_sensor</th>
                   <th>NumSer</th>
                   <th>Passw</th>
@@ -151,8 +151,8 @@
                   <th>Rly4</th>
                   <th>Text</th>
                   <th>FechaCreacion</th>
-                  <th>FechaMoficiacion</th>
-                  <th>Acciones</th>
+                  {{-- <th>FechaMoficiacion</th>  --}}
+                  {{-- <th>Acciones</th>  --}}
                 </tr>
                 </tfoot>-->
               </table>

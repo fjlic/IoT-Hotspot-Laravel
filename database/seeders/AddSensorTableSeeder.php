@@ -19,7 +19,7 @@ class AddSensorTableSeeder extends Seeder
         // Sensor Example #1
         $sensor = new Sensor();
         $sensor->id = 1;
-        $sensor->erb_id = null;
+        $sensor->erb_id = 1;
         $sensor->num_serie = 1000000001;
         $sensor->passw = 'sensor@321';
         $sensor->vol_1 = '3.5';
@@ -39,7 +39,7 @@ class AddSensorTableSeeder extends Seeder
         // Sensor Example #2
         $sensor = new Sensor();
         $sensor->id = 2;
-        $sensor->erb_id = null;
+        $sensor->erb_id = 2;
         $sensor->num_serie = 1000000002;
         $sensor->passw = 'sensor@321';
         $sensor->vol_1 = '3.5';
@@ -59,7 +59,7 @@ class AddSensorTableSeeder extends Seeder
         // Sensor Example #3
         $sensor = new Sensor();
         $sensor->id = 3;
-        $sensor->erb_id = null;
+        $sensor->erb_id = 3;
         $sensor->num_serie = 1000000003;
         $sensor->passw = 'sensor@321';
         $sensor->vol_1 = '3.5';
@@ -79,7 +79,7 @@ class AddSensorTableSeeder extends Seeder
         // Sensor Example #4
         $sensor = new Sensor();
         $sensor->id = 4;
-        $sensor->erb_id = null;
+        $sensor->erb_id = 4;
         $sensor->num_serie = 1000000004;
         $sensor->passw = 'sensor@321';
         $sensor->vol_1 = '3.5';
@@ -99,7 +99,7 @@ class AddSensorTableSeeder extends Seeder
         // Sensor Example #5
         $sensor = new Sensor();
         $sensor->id = 5;
-        $sensor->erb_id = null;
+        $sensor->erb_id = 5;
         $sensor->num_serie = 1000000005;
         $sensor->passw = 'sensor@321';
         $sensor->vol_1 = '3.5';
@@ -119,7 +119,7 @@ class AddSensorTableSeeder extends Seeder
         // Sensor Example #6
         $sensor = new Sensor();
         $sensor->id = 6;
-        $sensor->erb_id = null;
+        $sensor->erb_id = 6;
         $sensor->num_serie = 1000000006;
         $sensor->passw = 'sensor@321';
         $sensor->vol_1 = '3.5';
@@ -139,7 +139,7 @@ class AddSensorTableSeeder extends Seeder
         // Sensor Example #7
         $sensor = new Sensor();
         $sensor->id = 7;
-        $sensor->erb_id = null;
+        $sensor->erb_id = 7;
         $sensor->num_serie = 1000000007;
         $sensor->passw = 'sensor@321';
         $sensor->vol_1 = '3.5';
@@ -159,7 +159,7 @@ class AddSensorTableSeeder extends Seeder
         // Sensor Example #8
         $sensor = new Sensor();
         $sensor->id = 8;
-        $sensor->erb_id = null;
+        $sensor->erb_id = 8;
         $sensor->num_serie = 1000000008;
         $sensor->passw = 'sensor@321';
         $sensor->vol_1 = '3.5';
@@ -179,7 +179,7 @@ class AddSensorTableSeeder extends Seeder
         // Sensor Example #9
         $sensor = new Sensor();
         $sensor->id = 9;
-        $sensor->erb_id = null;
+        $sensor->erb_id = 9;
         $sensor->num_serie = 1000000009;
         $sensor->passw = 'sensor@321';
         $sensor->vol_1 = '3.5';
@@ -199,7 +199,7 @@ class AddSensorTableSeeder extends Seeder
         // Sensor Example #10
         $sensor = new Sensor();
         $sensor->id = 10;
-        $sensor->erb_id = null;
+        $sensor->erb_id = 10;
         $sensor->num_serie = 1000000010;
         $sensor->passw = 'sensor@321';
         $sensor->vol_1 = '3.5';

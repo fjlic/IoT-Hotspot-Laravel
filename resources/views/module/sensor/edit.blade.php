@@ -159,7 +159,8 @@
                 -->
                 <div class="form-group">
                     <label for="erb_id">Asignar Erb</label>
-                        <select class="form-control" name="erb_id" id="erb_id"> 
+                        <select class="form-control" name="erb_id" id="erb_id">
+                        <option selected="selected">{{ $sensor->erb_id }}</option> 
                           @foreach($erbs as $erb)
                           <option>{{ $erb->id }}</option>
                           @endforeach
