@@ -26,7 +26,7 @@ class AddSensorTableSeeder extends Seeder
         $sensor->vol_2 = 'Off';
         $sensor->vol_3 = 'Off';
         $sensor->temp_1 = '20.3';
-        $sensor->temp_2 = '24.8';
+        $sensor->temp_2 = '19.8';
         $sensor->temp_3 = '21.2';
         $sensor->temp_4 = '19.9';
         $sensor->door_1 = 'On';
@@ -50,7 +50,7 @@ class AddSensorTableSeeder extends Seeder
         $sensor->vol_2 = 'Off';
         $sensor->vol_3 = 'Off';
         $sensor->temp_1 = '20.3';
-        $sensor->temp_2 = '24.8';
+        $sensor->temp_2 = '19.8';
         $sensor->temp_3 = '21.2';
         $sensor->temp_4 = '19.9';
         $sensor->door_1 = 'On';
@@ -74,7 +74,7 @@ class AddSensorTableSeeder extends Seeder
         $sensor->vol_2 = 'Off';
         $sensor->vol_3 = 'Off';
         $sensor->temp_1 = '20.3';
-        $sensor->temp_2 = '24.8';
+        $sensor->temp_2 = '19.8';
         $sensor->temp_3 = '21.2';
         $sensor->temp_4 = '19.9';
         $sensor->door_1 = 'On';
@@ -98,7 +98,7 @@ class AddSensorTableSeeder extends Seeder
         $sensor->vol_2 = 'Off';
         $sensor->vol_3 = 'Off';
         $sensor->temp_1 = '20.3';
-        $sensor->temp_2 = '24.8';
+        $sensor->temp_2 = '19.8';
         $sensor->temp_3 = '21.2';
         $sensor->temp_4 = '19.9';
         $sensor->door_1 = 'On';
@@ -122,7 +122,7 @@ class AddSensorTableSeeder extends Seeder
         $sensor->vol_2 = 'Off';
         $sensor->vol_3 = 'Off';
         $sensor->temp_1 = '20.3';
-        $sensor->temp_2 = '24.8';
+        $sensor->temp_2 = '19.8';
         $sensor->temp_3 = '21.2';
         $sensor->temp_4 = '19.9';
         $sensor->door_1 = 'On';
@@ -146,7 +146,7 @@ class AddSensorTableSeeder extends Seeder
         $sensor->vol_2 = 'Off';
         $sensor->vol_3 = 'Off';
         $sensor->temp_1 = '20.3';
-        $sensor->temp_2 = '24.8';
+        $sensor->temp_2 = '19.8';
         $sensor->temp_3 = '21.2';
         $sensor->temp_4 = '19.9';
         $sensor->door_1 = 'On';
@@ -170,7 +170,7 @@ class AddSensorTableSeeder extends Seeder
         $sensor->vol_2 = 'Off';
         $sensor->vol_3 = 'Off';
         $sensor->temp_1 = '20.3';
-        $sensor->temp_2 = '24.8';
+        $sensor->temp_2 = '19.8';
         $sensor->temp_3 = '21.2';
         $sensor->temp_4 = '19.9';
         $sensor->door_1 = 'On';
@@ -194,7 +194,7 @@ class AddSensorTableSeeder extends Seeder
         $sensor->vol_2 = 'Off';
         $sensor->vol_3 = 'Off';
         $sensor->temp_1 = '20.3';
-        $sensor->temp_2 = '24.8';
+        $sensor->temp_2 = '19.8';
         $sensor->temp_3 = '21.2';
         $sensor->temp_4 = '19.9';
         $sensor->door_1 = 'On';
@@ -218,7 +218,7 @@ class AddSensorTableSeeder extends Seeder
         $sensor->vol_2 = 'Off';
         $sensor->vol_3 = 'Off';
         $sensor->temp_1 = '20.3';
-        $sensor->temp_2 = '24.8';
+        $sensor->temp_2 = '19.8';
         $sensor->temp_3 = '21.2';
         $sensor->temp_4 = '19.9';
         $sensor->door_1 = 'On';
@@ -242,7 +242,7 @@ class AddSensorTableSeeder extends Seeder
         $sensor->vol_2 = 'Off';
         $sensor->vol_3 = 'Off';
         $sensor->temp_1 = '20.3';
-        $sensor->temp_2 = '24.8';
+        $sensor->temp_2 = '19.8';
         $sensor->temp_3 = '21.2';
         $sensor->temp_4 = '19.9';
         $sensor->door_1 = 'On';

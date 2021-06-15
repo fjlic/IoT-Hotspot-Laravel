@@ -69,19 +69,19 @@
                 </div>
                 <div class="form-group">
                   <label for="temp_1">Temperatura 1</label>
-                  <input type="number" min="0.00" max="5" step="0.01" class="form-control" name="temp_1" id="temp_1"  placeholder="0.00" required>
+                  <input type="number" min="0.00" max="100" step="0.01" class="form-control" name="temp_1" id="temp_1"  placeholder="0.00" required>
                 </div>
                 <div class="form-group">
                   <label for="temp_2">Temperatura 2</label>
-                  <input type="number" min="0.00" max="5" step="0.01" class="form-control" name="temp_2" id="temp_2"  placeholder="0.00" required>
+                  <input type="number" min="0.00" max="100" step="0.01" class="form-control" name="temp_2" id="temp_2"  placeholder="0.00" required>
                 </div>
                 <div class="form-group">
                   <label for="temp_3">Temperatura 3</label>
-                  <input type="number" min="0.00" max="5" step="0.01" class="form-control" name="temp_3" id="temp_3"  placeholder="0.00" required>
+                  <input type="number" min="0.00" max="100" step="0.01" class="form-control" name="temp_3" id="temp_3"  placeholder="0.00" required>
                 </div>
                 <div class="form-group">
                   <label for="temp_4">Temperatura 4</label>
-                  <input type="number" min="0.00" max="5" step="0.01" class="form-control" name="temp_4" id="temp_4"  placeholder="0.00" required>
+                  <input type="number" min="0.00" max="100" step="0.01" class="form-control" name="temp_4" id="temp_4"  placeholder="0.00" required>
                 </div>
                 <div class="form-group">
                     <label for="door_1">Puerta 1</label>

@@ -44,19 +44,19 @@
             </div>
             <div class="card-body">
             <div class="row">
-              <div class="col-xs-8 col-md-4 text-center">
+              <div class="col-xs-4 col-md-4 text-center">
                 <div id="temp1"></div>
                   {!! $temp1 !!}
               </div>
-              <div class="col-xs-8 col-md-4 text-center">
+              <div class="col-xs-4 col-md-4 text-center">
                 <div id="temp2"></div>
                   {!! $temp2 !!}
               </div>   
-              <div class="col-xs-8 col-md-4 text-center">
+              <div class="col-xs-4 col-md-4 text-center">
                 <div id="temp3"></div>
                   {!! $temp3 !!}
                 </div>
-              <div class="col-xs-8 col-md-4 text-center">
+              <div class="col-xs-4 col-md-4 text-center">
                 <div id="temp4"></div>
                   {!! $temp4 !!}
                 </div>   
