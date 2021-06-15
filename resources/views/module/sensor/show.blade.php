@@ -65,6 +65,22 @@
                   <input type="text" class="form-control" value="{{ $sensor->vol_3 }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
+                  <label for="temp_1">Temperatura 1</label>
+                  <input type="text" class="form-control" value="{{ $sensor->temp_1 }}" readonly="readonly"/>
+                </div>
+                <div class="form-group">
+                  <label for="temp_2">Temperatura 2</label>
+                  <input type="text" class="form-control" value="{{ $sensor->temp_2 }}" readonly="readonly"/>
+                </div>
+                <div class="form-group">
+                  <label for="temp_3">Temperatura 3</label>
+                  <input type="text" class="form-control" value="{{ $sensor->temp_3 }}" readonly="readonly"/>
+                </div>
+                <div class="form-group">
+                  <label for="temp_4">Temperatura 4</label>
+                  <input type="text" class="form-control" value="{{ $sensor->temp_4 }}" readonly="readonly"/>
+                </div>
+                <div class="form-group">
                   <label for="door_1">Puerta 1</label>
                   <input type="text" class="form-control" value="{{ $sensor->door_1 }}" readonly="readonly"/>
                 </div>
