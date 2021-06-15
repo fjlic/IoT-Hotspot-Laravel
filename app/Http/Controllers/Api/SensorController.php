@@ -118,69 +118,6 @@ class SensorController extends BaseController
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function historialsensor(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'json' => 'required|string',
-        ]);
-
-        if ($validator->fails()) {
-            $response = [
-                'success' => true,
-                'data' => 'Parameter Error.',
-                'message' => $validator->errors()
-            ];
-            return response()->json($response, 200);
-        }
-
-        /*'esp32_id'=>'required|string|max:100',
-        'raspberry_id'=>'required|string|max:100',
-        'num_serie'=>'required|string|max:100',
-        'passw'=>'required|string|max:100',
-        'vol_1'=>'required|string|max:100',
-        'vol_2'=>'required|string|max:100',
-        'door_1'=>'required|string|max:100',
-        'door_2'=>'required|string|max:100',
-        'door_3'=>'required|string|max:100',
-        'door_4'=>'required|string|max:100',
-        'rlay_1'=>'required|string|max:100',
-        'rlay_2'=>'required|string|max:100',
-        'rlay_3'=>'required|string|max:100',
-        'rlay_4'=>'required|string|max:100',
-        'text'=>'required|string|max:100',*/
-
-        $parse_json = json_decode($request->get('json'), true);
-        foreach ($parse_json as $key => $json) {
-        $historial_upload = new HistorialSensor();
-        $historial_upload->sensor_id  = $json['sensor_id'];
-        $historial_upload->name_machine  = $json['name_machine'];
-        $historial_upload->nick_name  = $json['nick_name'];
-        $historial_upload->nfc_serie  = $json['nfc_serie'];
-        $historial_upload->coins = $json['coins'];	
-        $historial_upload->uploaded = 1;
-        $historial_upload->created_at = $json['created_at'];
-        $historial_upload->save();
-        ////////////////////////////////////////////
-        $nfc = Nfc::find($json['nfc_coin_id']);
-        $nfc->coins = $json['coins'];
-        $nfc->save();
-        ////////////////////////////////////////////
-        }
-        $data = 'Upload Exitoso';
-            $response = [
-                'success' => true,
-                'data' => $data,
-                'message' => 'Todo OK'
-            ];
-            return response()->json($response, 200); 
-    }
-
-    /**
      * Display the specified resource.
      *
      * @param  int  $id
@@ -303,6 +240,10 @@ class SensorController extends BaseController
            'vol_1'=>'required|string|max:100',
            'vol_2'=>'required|string|max:100',
            'vol_3'=>'required|string|max:100',
+           'temp_1'=>'required|string|max:100',
+           'temp_2'=>'required|string|max:100',
+           'temp_3'=>'required|string|max:100',
+           'temp_4'=>'required|string|max:100',
            'door_1'=>'required|string|max:100',
            'door_2'=>'required|string|max:100',
            'door_3'=>'required|string|max:100',
@@ -336,6 +277,10 @@ class SensorController extends BaseController
         $sensor->vol_1 = $input_req['vol_1'];
         $sensor->vol_2 = $input_req['vol_2'];
         $sensor->vol_3 = $input_req['vol_3'];
+        $sensor->temp_1 = $input_req['temp_1'];
+        $sensor->temp_2 = $input_req['temp_2'];
+        $sensor->temp_3 = $input_req['temp_3'];
+        $sensor->temp_4 = $input_req['temp_4'];
         $sensor->door_1 = $input_req['door_1'];
         $sensor->door_2 = $input_req['door_2'];
         $sensor->door_3 = $input_req['door_3'];
@@ -352,6 +297,10 @@ class SensorController extends BaseController
         $historialsensor->vol_1 = $input_req['vol_1'];
         $historialsensor->vol_2 = $input_req['vol_2'];
         $historialsensor->vol_3 = $input_req['vol_3'];
+        $historialsensor->temp_1 = $input_req['temp_1'];
+        $historialsensor->temp_2 = $input_req['temp_2'];
+        $historialsensor->temp_3 = $input_req['temp_3'];
+        $historialsensor->temp_4 = $input_req['temp_4'];
         $historialsensor->door_1 = $input_req['door_1'];
         $historialsensor->door_2 = $input_req['door_2'];
         $historialsensor->door_3 = $input_req['door_3'];
@@ -430,6 +379,10 @@ class SensorController extends BaseController
         $historialsensor->vol_1 = $sensor->vol_1;
         $historialsensor->vol_2 = $sensor->vol_2;
         $historialsensor->vol_3 = $sensor->vol_3;
+        $historialsensor->temp_1 = $sensor->temp_1;
+        $historialsensor->temp_2 = $sensor->temp_2;
+        $historialsensor->temp_3 = $sensor->temp_3;
+        $historialsensor->temp_4 = $sensor->temp_4;
         $historialsensor->door_1 = $sensor->door_1;
         $historialsensor->door_2 = $sensor->door_2;
         $historialsensor->door_3 = $sensor->door_3;
