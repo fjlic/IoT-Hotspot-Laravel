@@ -70,7 +70,7 @@ class SensorController extends Controller
 
                         ])
                         ->yaxis(['min' => 0,
-                                 'max' => 5.2,
+                                 'max' => 100,
                                  'minorTickInterval' => 'auto' ,
                                  'minorTickWidth' => 1,
                                  'minorTickLength' => 5,
@@ -91,7 +91,7 @@ class SensorController extends Controller
                                                  'to' => 4,
                                                  'color' => '#DDDF0D',],
                                                  ['from' => 4,
-                                                 'to' => 5.2,
+                                                 'to' => 100,
                                                  'color' => '#DF5353',]],
                                     ])
                          ->series([['name'  => 'Valor',
