@@ -38,8 +38,8 @@ class HistorialSensorController extends Controller
         $back2[0][1]= "#333";
         $back2[1][0]= "1";
         $back2[1][1]= "#FFF"; 
-        $vol1 = \Chart::title(['text' => 'Voltaje(1)',])
-                        ->chart(['type'     => 'gauge','renderTo' => 'vol1',
+        $temp1 = \Chart::title(['text' => 'Temperatura 1',])
+                        ->chart(['type'     => 'gauge','renderTo' => 'temp1',
                                  'plotBackgroundColor' => null,
                                  'plotBackgroundImage' => null,
                                  'plotBorderWidth' => 0,
@@ -84,7 +84,7 @@ class HistorialSensorController extends Controller
                                  'tickColor' => '#666',
                                  'labels' => ['step' => 2,
                                               'rotation' => 'auto',],
-                                 'title' => ['text' => 'Volt/DC',],
+                                 'title' => ['text' => 'Temp/C°',],
                                  'plotBands' => [['from' => 0,
                                                  'to' => 3,
                                                  'color' => '#55BF3B',],
@@ -96,11 +96,11 @@ class HistorialSensorController extends Controller
                                                  'color' => '#DF5353',]],
                                     ])
                          ->series([['name'  => 'Valor',
-                                   'data'  => [$historialsensor->vol_1*1],
+                                   'data'  => [$historialsensor->temp_1*1],
                                    'tooltip' => ['valueSuffix' => '-Volt/DC'],]])
                         ->display();
-    $vol2 = \Chart::title(['text' => 'Voltaje(2)',])
-                        ->chart(['type'     => 'gauge','renderTo' => 'vol2',
+    $temp2 = \Chart::title(['text' => 'Temperatura 2',])
+                        ->chart(['type'     => 'gauge','renderTo' => 'temp2',
                                  'plotBackgroundColor' => null,
                                  'plotBackgroundImage' => null,
                                  'plotBorderWidth' => 0,
@@ -145,7 +145,7 @@ class HistorialSensorController extends Controller
                                  'tickColor' => '#666',
                                  'labels' => ['step' => 2,
                                               'rotation' => 'auto',],
-                                 'title' => ['text' => 'Volt/DC',],
+                                 'title' => ['text' => 'Temp/C°',],
                                  'plotBands' => [['from' => 0,
                                                  'to' => 3,
                                                  'color' => '#55BF3B',],
@@ -157,12 +157,12 @@ class HistorialSensorController extends Controller
                                                  'color' => '#DF5353',]],
                                     ])
                          ->series([['name'  => 'Valor',
-                                   'data'  => [$historialsensor->vol_2*1],
+                                   'data'  => [$historialsensor->temp_2*1],
                                    'tooltip' => ['valueSuffix' => '-Volt/DC'],]])
                         ->display();
     
-    $vol3 = \Chart::title(['text' => 'Voltaje(3)',])
-                        ->chart(['type'     => 'gauge','renderTo' => 'vol3',
+    $temp3 = \Chart::title(['text' => 'Temperatura 3',])
+                        ->chart(['type'     => 'gauge','renderTo' => 'temp3',
                                  'plotBackgroundColor' => null,
                                  'plotBackgroundImage' => null,
                                  'plotBorderWidth' => 0,
@@ -207,7 +207,7 @@ class HistorialSensorController extends Controller
                                  'tickColor' => '#666',
                                  'labels' => ['step' => 2,
                                               'rotation' => 'auto',],
-                                 'title' => ['text' => 'Volt/DC',],
+                                 'title' => ['text' => 'Temp/C°',],
                                  'plotBands' => [['from' => 0,
                                                  'to' => 3,
                                                  'color' => '#55BF3B',],
@@ -219,14 +219,76 @@ class HistorialSensorController extends Controller
                                                  'color' => '#DF5353',]],
                                     ])
                          ->series([['name'  => 'Valor',
-                                   'data'  => [$historialsensor->vol_3*1],
+                                   'data'  => [$historialsensor->temp_3*1],
+                                   'tooltip' => ['valueSuffix' => '-Volt/DC'],]])
+                        ->display();
+    $temp4 = \Chart::title(['text' => 'Temperatura 4',])
+                        ->chart(['type'     => 'gauge','renderTo' => 'temp4',
+                                 'plotBackgroundColor' => null,
+                                 'plotBackgroundImage' => null,
+                                 'plotBorderWidth' => 0,
+                                 'plotShadow' => false,])
+                        ->credits(['enabled' => false])
+                        ->pane(['startAngle' => -150,
+                                'endAngle' => 150,
+                                'background' => [['backgroundColor'=> ['linearGradient' => ['x1' => 0,
+                                                                                            'y1' => 0,
+                                                                                            'x2' => 0,
+                                                                                            'y2' => 1,],
+                                                                       'stops'         => $back1
+                                                                      ],
+                                                  'borderWidth' => 0,
+                                                  'outerRadius' => '109%',],
+                                                 ['backgroundColor'=> ['linearGradient' => ['x1' => 0,
+                                                                                            'y1' => 0,
+                                                                                            'x2' => 0,
+                                                                                            'y2' => 1,],
+                                                                       'stops'         => $back2,
+                                                                      ],
+                                                  'borderWidth' => 1,
+                                                  'outerRadius' => '107%',],
+                                                  ['' => ''],
+                                                  ['backgroundColor'=> '#DDD',
+                                                  'borderWidth' => 0,
+                                                  'outerRadius' => '105%',
+                                                  'innerRadius' => '103%',]], 
+
+                        ])
+                        ->yaxis(['min' => 0,
+                                 'max' => 5.2,
+                                 'minorTickInterval' => 'auto' ,
+                                 'minorTickWidth' => 1,
+                                 'minorTickLength' => 5,
+                                 'minorTickPosition' => 'inside',
+                                 'minorTickColor' => '#666',
+                                 'tickPixelInterval' => 30,
+                                 'tickWidth' => 2,
+                                 'tickPosition' => 'inside',
+                                 'tickLength' => 5,
+                                 'tickColor' => '#666',
+                                 'labels' => ['step' => 2,
+                                              'rotation' => 'auto',],
+                                 'title' => ['text' => 'Temp/C°',],
+                                 'plotBands' => [['from' => 0,
+                                                 'to' => 3,
+                                                 'color' => '#55BF3B',],
+                                                 ['from' => 3,
+                                                 'to' => 4,
+                                                 'color' => '#DDDF0D',],
+                                                 ['from' => 4,
+                                                 'to' => 5.2,
+                                                 'color' => '#DF5353',]],
+                                    ])
+                         ->series([['name'  => 'Valor',
+                                   'data'  => [$historialsensor->temp_4*1],
                                    'tooltip' => ['valueSuffix' => '-Volt/DC'],]])
                         ->display();
                        
     //return view('module.historialsensor.chart', ['vol1' => $vol1,]);
-    return view('module.historialsensor.chart')->with('vol1',$vol1)
-                                          ->with('vol2',$vol2)
-                                          ->with('vol3',$vol3)
+    return view('module.historialsensor.chart')->with('temp1',$temp1)
+                                          ->with('temp2',$temp2)
+                                          ->with('temp3',$temp3)
+                                          ->with('temp4',$temp4)
                                           ->with('historialsensor',$historialsensor);
     }
 

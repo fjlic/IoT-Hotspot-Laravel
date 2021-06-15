@@ -13,7 +13,7 @@ class Sensor extends Model
      * @var array
      */
     protected $fillable = [
-        'id', 'erb_id', 'num_serie', 'passw', 'vol_1', 'vol_1', 'vol_2', 'vol_3',
+        'id', 'erb_id', 'num_serie', 'passw', 'vol_1', 'vol_1', 'vol_2', 'vol_3', 'temp_1', 'temp_2', 'temp_3', 'temp_4',
         'door_1', 'door_2', 'door_3', 'door_4', 'rlay_1', 'rlay_2', 'rlay_3', 'rlay_4', 'text',
     ];
 
