@@ -39,7 +39,7 @@
                 <thead>
                 <tr>
                   <th>Id</th>
-                  <th>Id_sensor</th>
+                  <th>Sensor</th>
                   <th>NumSer</th>
                   <th>Passw</th>
                   <th>Vol1</th>
@@ -54,7 +54,7 @@
                   <th>Rly3</th>
                   <th>Rly4</th>
                   <th>Text</th>
-                  <th>FechaCreacion</th>
+                  <th>FechaCre</th>
                   {{-- <th>FechaMoficiacion</th>  --}}
                   {{-- <th>Acciones</th>  --}}
                 </tr>

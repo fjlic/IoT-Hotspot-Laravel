@@ -118,7 +118,7 @@
                     @endif
                     <td>{{ $sensor->text }}</td>
                    {{-- <td>{{ $sensor->created_at }}</td>  --}}
-                   {{--  <td>{{ $sensor->updated_at }}</td>  --}}
+                   <td>{{ $sensor->updated_at }}</td>
                     <td>
                       <form role="form" action="{{ route('sensor.destroy',$sensor->id) }}" method="POST">
                         <a class="btn btn-primary btn-xs" href="{{ route('sensor.chart',$sensor->id) }}" role="button"><span class="fa fa-chart-pie"></span></a>   
