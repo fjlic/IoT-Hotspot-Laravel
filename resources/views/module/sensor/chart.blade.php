@@ -76,6 +76,63 @@
 <section class="content">
   <div class="row">
     <div class="col-12">
+        <div class="card card-warning card-outline">
+        <div class="card-header">
+          <h3 class="card-title">Deteccion de Voltaje</h3>
+          <div class="card-tools">
+            <a class="btn btn-tool"  href="{{ route('sensor.index') }}" ><span class="fas fa-arrow-left"></span></a>
+            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+              <i class="fas fa-minus"></i>
+            </button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <h4 class="card-title">Voltaje 1</h4><br>
+                @if($sensor->vol_1 == 'On')
+                  <a><img src="{{ asset('storage/Images/On.JPG') }}" alt="" title=""/></a>
+                @elseif($sensor->rlay_1 == 'Off')
+                  <a><img src="{{ asset('storage/Images/Off.JPG') }}" alt="" title=""/></a>
+                @endif  
+            </div>
+            <div class="col">
+              <h4 class="card-title">Voltaje 2</h4><br>
+                @if($sensor->vol_2 == 'On')
+                  <a><img src="{{ asset('storage/Images/On.JPG') }}" alt="" title=""/></a>
+                @elseif($sensor->rlay_2 == 'Off')
+                  <a><img src="{{ asset('storage/Images/Off.JPG') }}" alt="" title=""/></a>
+                @endif
+              </div>
+            <div class="col">
+              <h4 class="card-title">Voltaje 3</h4><br>
+                @if($sensor->vol_3 == 'On')
+                  <a><img src="{{ asset('storage/Images/On.JPG') }}" alt="" title=""/></a>
+                @elseif($sensor->rlay_3 == 'Off')
+                  <a><img src="{{ asset('storage/Images/Off.JPG') }}" alt="" title=""/></a>
+                @endif 
+              </div>
+          </div>
+        </div>
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+    </div>
+    <!-- /.col -->
+  </div>
+  <!-- /.row -->
+</section>
+<!-- /.content -->
+    
+
+<!-- Main content Sensors Door-->
+<section class="content">
+  <div class="row">
+    <div class="col-12">
         <div class="card card-danger card-outline">
         <div class="card-header">
           <h3 class="card-title">Estatus Puertas</h3>
@@ -93,7 +150,7 @@
         <div class="card-body">
           <div class="row">
             <div class="col">
-                <h4 class="card-title">Puerta(1)</h4><br>
+                <h4 class="card-title">Puerta 1</h4><br>
                   @if($sensor->door_1 == 'On')
                     <a><img src="{{ asset('storage/Images/close-door.JPG') }}" alt="" title=""/></a>
                   @elseif($sensor->door_1 == 'Off')
@@ -101,7 +158,7 @@
                   @endif
             </div>
             <div class="col">
-                <h4 class="card-title">Puerta(2)</h4><br>
+                <h4 class="card-title">Puerta 2</h4><br>
                 @if($sensor->door_2 == 'On')
                   <a><img src="{{ asset('storage/Images/close-door.JPG') }}" alt="" title=""/></a>
                 @elseif($sensor->door_2 == 'Off')
@@ -109,7 +166,7 @@
                 @endif
             </div>
             <div class="col">
-                <h4 class="card-title">Puerta(3)</h4><br>
+                <h4 class="card-title">Puerta 3</h4><br>
                 @if($sensor->door_3 == 'On')
                     <a><img src="{{ asset('storage/Images/close-door.JPG') }}" alt="" title=""/></a>
                 @elseif($sensor->door_3 == 'Off')
@@ -117,7 +174,7 @@
                 @endif
             </div>
             <div class="col">
-                <h4 class="card-title">Puerta(4)</h4><br>
+                <h4 class="card-title">Puerta 4</h4><br>
                 @if($sensor->door_4 == 'On')
                     <a><img src="{{ asset('storage/Images/close-door.JPG') }}" alt="" title=""/></a>
                 @elseif($sensor->door_4 == 'Off')
@@ -157,7 +214,7 @@
         <div class="card-body">
           <div class="row">
             <div class="col">
-              <h4 class="card-title">Relay(1)</h4><br>
+              <h4 class="card-title">Relay 1</h4><br>
                 @if($sensor->rlay_1 == 'On')
                   <a><img src="{{ asset('storage/Images/block-on.JPG') }}" alt="" title=""/></a>
                 @elseif($sensor->rlay_1 == 'Off')
@@ -165,7 +222,7 @@
                 @endif  
             </div>
             <div class="col">
-              <h4 class="card-title">Relay(2)</h4><br>
+              <h4 class="card-title">Relay 2</h4><br>
                 @if($sensor->rlay_2 == 'On')
                   <a><img src="{{ asset('storage/Images/block-on.JPG') }}" alt="" title=""/></a>
                 @elseif($sensor->rlay_2 == 'Off')
@@ -173,7 +230,7 @@
                 @endif
               </div>
             <div class="col">
-              <h4 class="card-title">Relay(3)</h4><br>
+              <h4 class="card-title">Relay 3</h4><br>
                 @if($sensor->rlay_3 == 'On')
                   <a><img src="{{ asset('storage/Images/block-on.JPG') }}" alt="" title=""/></a>
                 @elseif($sensor->rlay_3 == 'Off')
@@ -181,7 +238,7 @@
                 @endif 
               </div>
             <div class="col">
-              <h4 class="card-title">Relay(4)</h4><br>
+              <h4 class="card-title">Relay 4</h4><br>
                 @if($sensor->rlay_4 == 'On')
                   <a><img src="{{ asset('storage/Images/block-on.JPG') }}" alt="" title=""/></a>
                 @elseif($sensor->rlay_4 == 'Off')
@@ -203,7 +260,7 @@
 @stop
 
 @section('footer') 
-<div class="pull-right hidden-xs"><b>Version</b> 2.0.0<strong>  Copyright &copy; 2020 <a href="http://hotspot.local/home" target="_blank">Hotspot</a>.</strong>  Todo los derechos Reservados.</div> 
+<div class="pull-right hidden-xs"><b>Version</b> 2.0.0<strong>  Copyright &copy; 2021 <a href="http://hotspot.fjlic.local/home" target="_blank">Hotspot</a>.</strong>  Todo los derechos Reservados.</div> 
 @stop
 
 @section('css')

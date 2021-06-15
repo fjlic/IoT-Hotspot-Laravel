@@ -53,18 +53,6 @@
                   <input type="text" class="form-control" value="{{ $sensor->passw }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
-                  <label for="vol_1">Voltaje 1</label>
-                  <input type="text" class="form-control" value="{{ $sensor->vol_1 }}" readonly="readonly"/>
-                </div>
-                <div class="form-group">
-                  <label for="vol_2">Voltaje 2</label>
-                  <input type="text" class="form-control" value="{{ $sensor->vol_2 }}" readonly="readonly"/>
-                </div>
-                <div class="form-group">
-                  <label for="vol_3">Voltaje 3</label>
-                  <input type="text" class="form-control" value="{{ $sensor->vol_3 }}" readonly="readonly"/>
-                </div>
-                <div class="form-group">
                   <label for="temp_1">Temperatura 1</label>
                   <input type="text" class="form-control" value="{{ $sensor->temp_1 }}" readonly="readonly"/>
                 </div>
@@ -79,6 +67,18 @@
                 <div class="form-group">
                   <label for="temp_4">Temperatura 4</label>
                   <input type="text" class="form-control" value="{{ $sensor->temp_4 }}" readonly="readonly"/>
+                </div>
+                <div class="form-group">
+                  <label for="vol_1">Voltaje 1</label>
+                  <input type="text" class="form-control" value="{{ $sensor->vol_1 }}" readonly="readonly"/>
+                </div>
+                <div class="form-group">
+                  <label for="vol_2">Voltaje 2</label>
+                  <input type="text" class="form-control" value="{{ $sensor->vol_2 }}" readonly="readonly"/>
+                </div>
+                <div class="form-group">
+                  <label for="vol_3">Voltaje 3</label>
+                  <input type="text" class="form-control" value="{{ $sensor->vol_3 }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
                   <label for="door_1">Puerta 1</label>
@@ -135,7 +135,7 @@
 @stop
 
 @section('footer') 
-<div class="pull-right hidden-xs"><b>Version</b> 2.0.0<strong>  Copyright &copy; 2020 <a href="http://hotspot.local/home" target="_blank">Hotspot</a>.</strong>  Todo los derechos Reservados.</div> 
+<div class="pull-right hidden-xs"><b>Version</b> 2.0.0<strong>  Copyright &copy; 2021 <a href="http://hotspot.fjlic.local/home" target="_blank">Hotspot</a>.</strong>  Todo los derechos Reservados.</div> 
 @stop
 
 @section('css')
