@@ -1,5 +1,3 @@
-
-
 #----------------------------Libraries Code---------------------------------------------------------
 from machine import Pin, I2C
 from machine import UART
