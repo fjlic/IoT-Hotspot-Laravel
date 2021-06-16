@@ -237,7 +237,6 @@ class QrController extends BaseController
         // 'id', 'user_id', 'num_serie', 'nick_name', 'password', 'api_token',
         $input = $request->all();
         $validator = Validator::make($input, [
-            'esp32_id'=>'required|string|max:100',
             'raspberry_id'=>'required|string|max:100',
             'qr_serie'=>'required|string|max:100',
             'key_status'=>'required|string|max:100',
@@ -248,9 +247,9 @@ class QrController extends BaseController
             $response = [
                 'success' => false,
                 'data' => 'Validation Error.',
-                'message' => $validator->errors()
+                'message' => 'Query error'
             ];
-            return response()->json($response, 404);
+            return response()->json($response, 403);
         }
         $qr = Qr::where('qr_serie',$input['qr_serie'])->first(); 
         if (is_null($qr)) {
@@ -261,7 +260,6 @@ class QrController extends BaseController
             ];
             return response()->json($response, 404);
         }
-        $qr->esp32_id = $input['esp32_id'];
         $qr->raspberry_id = $input['raspberry_id'];
         $qr->qr_serie = $input['qr_serie'];
         $qr->key_status = $input['key_status'];
