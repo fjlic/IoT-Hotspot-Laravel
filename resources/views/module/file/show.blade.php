@@ -55,7 +55,7 @@
                   <input type="text" class="form-control" value="{{ $file->route }}" readonly="readonly"/>
                 </div>
                 <video controls>
-                  <source src="public\storage/public/files/KissMe.mp4" type="video/mp4">
+                  <source src="{{ asset('storage/public/files/'. $file->name_file) }}" type="video/mp4">
                 </video>                
               </div>
               <!-- /.box-body -->
