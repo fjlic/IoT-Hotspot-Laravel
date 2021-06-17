@@ -42,8 +42,8 @@
                   <th>Nom-Codigo</th>
                   <th>Nom-Vista</th>
                   <th>Descripcion</th>
-                  <th>FechaCreacion</th>
-                  <th>FechaMoficiacion</th>
+                  {{--  <th>FechaCreacion</th>  --}}
+                  <th>FechaMod</th>
                   <th>Acciones</th>
                 </tr>
                 </thead>
@@ -54,7 +54,7 @@
                     <td>{{ $permission->name }}</td>
                     <td>{{ $permission->display_name }}</td>
                     <td>{{ $permission->description }}</td>
-                    <td>{{ $permission->created_at }}</td>
+                    {{--  <td>{{ $permission->created_at }}</td> --}}
                     <td>{{ $permission->updated_at }}</td>
                     <td>
                       <form role="form" action="{{ route('permission.destroy',$permission->id) }}" method="POST">

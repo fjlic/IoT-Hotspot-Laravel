@@ -43,10 +43,10 @@
                   <th>Serie</th>
                   <th>Nombre</th>
                   <th>Alias</th>
-                  <th>Password</th>
+                  {{-- <th>Password</th>  --}}
                   <th>ApiToken</th>
-                  <th>FechaCreacion</th>
-                  <th>FechaMoficiacion</th>
+                  {{-- <th>FechaCreacion</th> --}}
+                  <th>FechaMod</th>
                   <th>Acciones</th>
                 </tr>
                 </thead>
@@ -58,9 +58,9 @@
                     <td>{{ $historialerb->num_serie }}</td>
                     <td>{{ $historialerb->name_machine }}</td>      
                     <td>{{ $historialerb->nick_name }}</td>
-                    <td>{{ $historialerb->password }}</td>
+                   {{--   <td>{{ $historialerb->password }}</td> --}}
                     <td>{{ $historialerb->api_token }}</td>
-                    <td>{{ $historialerb->created_at }}</td>
+                    {{-- <td>{{ $historialerb->created_at }}</td> --}}
                     <td>{{ $historialerb->updated_at }}</td>
                     <td>
                       <form role="form" action="{{ route('historialerb.destroy',$historialerb->id) }}" method="POST">

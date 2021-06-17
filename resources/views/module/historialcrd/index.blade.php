@@ -43,10 +43,10 @@
                   <th>Serie</th>
                   <th>Nombre</th>
                   <th>Alias</th>
-                  <th>Password</th>
+                  {{-- <th>Password</th>  --}}
                   <th>ApiToken</th>
-                  <th>FechaCreacion</th>
-                  <th>FechaMoficiacion</th>
+                  {{-- <th>FechaCreacion</th>  --}}
+                  <th>FechaMod</th>
                   <th>Acciones</th>
                 </tr>
                 </thead>
@@ -58,9 +58,9 @@
                     <td>{{ $historialcrd->num_serie }}</td>
                     <td>{{ $historialcrd->name_machine }}</td>      
                     <td>{{ $historialcrd->nick_name }}</td>
-                    <td>{{ $historialcrd->password }}</td>
+                    {{-- <td>{{ $historialcrd->password }}</td>  --}}
                     <td>{{ $historialcrd->api_token }}</td>
-                    <td>{{ $historialcrd->created_at }}</td>
+                    {{-- <td>{{ $historialcrd->created_at }}</td>  --}}
                     <td>{{ $historialcrd->updated_at }}</td>
                     <td>
                       <form role="form" action="{{ route('historialcrd.destroy',$historialcrd->id) }}" method="POST">

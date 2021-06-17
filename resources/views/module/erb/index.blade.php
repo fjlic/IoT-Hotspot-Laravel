@@ -43,10 +43,10 @@
                   <th>Serie</th>
                   <th>Nombre</th>
                   <th>Alias</th>
-                  <th>Password</th>
+                 {{--  <th>Password</th>  --}}
                   <th>ApiToken</th>
-                  <th>FechaCreacion</th>
-                  <th>FechaMoficiacion</th>
+                  {{--  <th>FechaCreacion</th>  --}}
+                  <th>FechaMod</th>
                   <th>Acciones</th>
                 </tr>
                 </thead>
@@ -58,9 +58,9 @@
                     <td>{{ $erb->num_serie }}</td>
                     <td>{{ $erb->name_machine }}</td>      
                     <td>{{ $erb->nick_name }}</td>
-                    <td>{{ $erb->password }}</td>
+                    {{--  --}}<td>{{ $erb->password }}</td>  --}}
                     <td>{{ $erb->api_token }}</td>
-                    <td>{{ $erb->created_at }}</td>
+                    {{-- <td>{{ $erb->created_at }}</td>  --}}
                     <td>{{ $erb->updated_at }}</td>
                     <td>
                       <form role="form" action="{{ route('erb.destroy',$erb->id) }}" method="POST">

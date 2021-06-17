@@ -58,8 +58,8 @@
                   <th>Rly3</th>
                   <th>Rly4</th>
                   <th>Text</th>
-                  <th>FechaCre</th>
-                  {{-- <th>FechaMoficiacion</th>  --}}
+                  {{-- <th>FechaCre</th>  --}}
+                  <th>FechaMod</th>
                   <th>Acciones</th>
                 </tr>
                 </thead>
@@ -137,8 +137,8 @@
                     <td><span class="badge badge-danger">Off-<div class="fa fa-toggle-off"></div></span></td>
                     @endif
                     <td>{{ $historialsensor->text }}</td>
-                    <td>{{ $historialsensor->created_at }}</td>
-                    {{-- <td>{{ $historialsensor->updated_at }}</td>  --}}
+                   {{--  <td>{{ $historialsensor->created_at }}</td>  --}}
+                    <td>{{ $historialsensor->updated_at }}</td>  
                     <td>
                       {{-- <form role="form" action="{{ route('historialsensor.destroy',$historialsensor->id) }}" method="POST">  --}}
                       <a class="btn btn-primary btn-xs" href="{{ route('historialsensor.chart',$historialsensor->id) }}" role="button"><span class="fa fa-chart-pie"></span></a>   

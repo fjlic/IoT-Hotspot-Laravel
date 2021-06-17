@@ -44,8 +44,8 @@
                   <th>Nombre Video</th>
                   <th>Conjunto</th>
                   <th>Ruta Video</th>
-                  <th>FechaCreacion</th>
-                  <th>FechaMoficiacion</th>
+                  {{-- <th>FechaCreacion</th>  --}}
+                  <th>FechaMod</th>
                   <th>Acciones</th>
                 </tr>
                 </thead>
@@ -56,7 +56,7 @@
                     <td>{{ $file->name_file }}</td>
                     <td>{{ $file->set }}</td>
                     <td>{{ $file->route }}</td>
-                    <td>{{ $file->created_at }}</td>
+                    {{-- <td>{{ $file->created_at }}</td>  --}}
                     <td>{{ $file->updated_at }}</td>
                     <td>
                       <form role="form" action="{{ route('file.destroy',$file->id) }}" method="POST">

@@ -43,8 +43,8 @@
                   <th>Id</th>
                   <th>Tamaño Estimado</th>
                   <th>Horas Desarollo</th>
-                  <th>FechaCreacion</th>
-                  <th>FechaMoficiacion</th>
+                  {{-- <th>FechaCreacion</th> --}}
+                  <th>FechaMod</th>
                   <th>Acciones</th>
                 </tr>
                 </thead>
@@ -54,7 +54,7 @@
                     <td>{{ $statistical->id }}</td>
                     <td>{{ $statistical->estimate_proxy_size }}</td>
                     <td>{{ $statistical->development_hours }}</td>
-                    <td>{{ $statistical->created_at }}</td>
+                   {{--  <td>{{ $statistical->created_at }}</td>  --}}
                     <td>{{ $statistical->updated_at }}</td>
                     <td>
                       <form role="form" action="{{ route('statistical.destroy',$statistical->id) }}" method="POST">

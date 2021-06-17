@@ -45,8 +45,8 @@
                   <th>Tamaño Mod</th>
                   <th>Estim Proxi</th>
                   <th>Act Dev</th>
-                  <th>FechaCreacion</th>
-                  <th>FechaMoficiacion</th>
+                  {{-- <th>FechaCreacion</th>  --}}
+                  <th>FechaMod</th>
                   <th>Acciones</th>
                 </tr>
                 </thead>
@@ -58,7 +58,7 @@
                     <td>{{ $probeestimating->mod_size }}</td>
                     <td>{{ $probeestimating->stm_prox_size }}</td>
                     <td>{{ $probeestimating->act_dev_size }}</td>
-                    <td>{{ $probeestimating->created_at }}</td>
+                    {{-- <td>{{ $probeestimating->created_at }}</td>  --}}
                     <td>{{ $probeestimating->updated_at }}</td>
                     <td>
                       <form role="form" action="{{ route('probeestimating.destroy',$probeestimating->id) }}" method="POST">

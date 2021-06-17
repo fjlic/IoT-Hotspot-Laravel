@@ -44,8 +44,8 @@
                   <th>QrSerie</th>
                   <th>Coins</th>
                   <th>Actualizado</th>
-                  <th>FechaCreacion</th>
-                  <th>FechaMoficiacion</th>
+                  {{-- <th>FechaCreacion</th>  --}}
+                  <th>FechaMod</th>
                   <th>Acciones</th>
                 </tr>
                 </thead>
@@ -58,7 +58,7 @@
                     <td>{{ $qr->qr_serie }}</td>
                     <td>{{ $qr->coins }}</td>      
                     <td>{{ $qr->gone_down }}</td>
-                    <td>{{ $qr->created_at }}</td>
+                   {{--  <td>{{ $qr->created_at }}</td>  --}}
                     <td>{{ $qr->updated_at }}</td>
                     <td>
                       <form role="form" action="{{ route('qr.destroy',$qr->id) }}" method="POST">

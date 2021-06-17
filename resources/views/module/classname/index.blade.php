@@ -49,8 +49,8 @@
                   <th>Loc Method</th>
                   <th>In(x)</th>
                   <th>(In(x)-avg)2</th>
-                  <th>FechaCreacion</th>
-                  <th>FechaMoficiacion</th>
+                  {{-- <th>FechaCreacion</th>  --}}
+                  <th>FechaMod</th>
                   <th>Acciones</th>
                 </tr>
                 </thead>
@@ -64,7 +64,7 @@
                     <td>{{ $classname->loc_method }}</td>
                     <td>{{ $classname->in }}</td>
                     <td>{{ $classname->in2 }}</td>
-                    <td>{{ $classname->created_at }}</td>
+                    {{-- <td>{{ $classname->created_at }}</td>  --}}
                     <td>{{ $classname->updated_at }}</td>
                     <td>
                       <form role="form" action="{{ route('classname.destroy',$classname->id) }}" method="POST">

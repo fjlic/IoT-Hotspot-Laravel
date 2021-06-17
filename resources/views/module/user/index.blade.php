@@ -41,7 +41,7 @@
                   <th>Id</th>
                   <th>Nombre</th>
                   <th>Email</th>
-                  <th>Password</th>
+                 {{--  <th>Password</th>  --}}
                   {{-- <th>FechaCreacion</th> --}}
                   <th>FechaMod</th>
                   <th>Acciones</th>
@@ -53,7 +53,7 @@
                     <td>{{ $user->id }}</td>
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
-                    <td>{{ $user->password }}</td>
+                    {{-- <td>{{ $user->password }}</td>  --}}
                    {{--  <td>{{ $user->created_at }}</td>  --}}
                     <td>{{ $user->updated_at }}</td>
                     <td>

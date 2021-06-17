@@ -45,8 +45,8 @@
                   <th>QrSerie</th>
                   <th>Coins</th>
                   <th>Actualizado</th>
-                  <th>FechaCreacion</th>
-                  <th>FechaMoficiacion</th>
+                  {{--  <th>FechaCreacion</th> --}}
+                  <th>FechaMod</th>
                   <th>Acciones</th>
                 </tr>
                 </thead>
@@ -60,7 +60,7 @@
                     <td>{{ $historialqr->qr_serie }}</td>
                     <td>{{ $historialqr->coins }}</td>
                     <td>{{ $historialqr->uploaded }}</td>
-                    <td>{{ $historialqr->created_at }}</td>
+                    {{--  <td>{{ $historialqr->created_at }}</td> --}}
                     <td>{{ $historialqr->updated_at }}</td>
                     <td>
                       <form role="form" action="{{ route('historialqr.destroy',$historialqr->id) }}" method="POST">

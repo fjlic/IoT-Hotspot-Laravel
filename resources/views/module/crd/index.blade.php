@@ -43,10 +43,10 @@
                   <th>Serie</th>
                   <th>Nombre</th>
                   <th>Alias</th>
-                  <th>Password</th>
+                  {{-- th>Password</th>  --}}
                   <th>ApiToken</th>
-                  <th>FechaCreacion</th>
-                  <th>FechaMoficiacion</th>
+                  {{-- <th>FechaCreacion</th>  --}}
+                  <th>FechaMod</th>
                   <th>Acciones</th>
                 </tr>
                 </thead>
@@ -58,9 +58,9 @@
                     <td>{{ $crd->num_serie }}</td>
                     <td>{{ $crd->name_machine }}</td>      
                     <td>{{ $crd->nick_name }}</td>
-                    <td>{{ $crd->password }}</td>
+                    {{--  <td>{{ $crd->password }}</td>  --}}
                     <td>{{ $crd->api_token }}</td>
-                    <td>{{ $crd->created_at }}</td>
+                    {{-- <td>{{ $crd->created_at }}</td>  --}}
                     <td>{{ $crd->updated_at }}</td>
                     <td>
                       <form role="form" action="{{ route('crd.destroy',$crd->id) }}" method="POST">
