@@ -6,6 +6,7 @@ import urequests
 import usocket as socket
 import uselect as select
 import os,machine, time
+import machine, onewire, ds18x20, time
 from machine import Pin, I2C
 from machine import UART
 from machine import SPI
@@ -81,6 +82,14 @@ rlay_4 = "Off"
 text = "Test Sensor # 1000000001 OK"
 
 #---------------------------------------------------------------------------------------------------
+#--------------------------Sensor Temperatura GPIO 4 -----------------------------------------------
+
+ds_pin = machine.Pin(4)
+ds_sensor = ds18x20.DS18X20(onewire.OneWire(ds_pin))
+roms = ds_sensor.scan()
+sensor=""
+
+#---------------------------------------------------------------------------------------------------
 #--------------------------Functions ---------------------------------------------------------------
 
 def ConnectionWifi(name_wifi, passw_wifi):
@@ -111,6 +120,7 @@ def ConnectionWifi(name_wifi, passw_wifi):
 
 def Post_Status_Sensor():
    global wlan,SSID, PASSWORD, num_serie, passw, temp_1, temp_2, temp_3, temp_4, vol_1, vol_2, vol_3, door_1, door_2, door_3, door_4, rlay_1, rlay_2, rlay_3, rlay_4, baseUrl, Accept
+   json_str=""
    if wlan.isconnected()==False:
        ConnectionWifi(SSID,PASSWORD)
 
@@ -151,6 +161,8 @@ def Post_Status_Sensor():
    
 def Post_Modify_Sensor():
    global wlan,SSID, PASSWORD, num_serie, passw, temp_1, temp_2, temp_3, temp_4, vol_1, vol_2, vol_3, door_1, door_2, door_3, door_4, rlay_1, rlay_2, rlay_3, rlay_4, baseUrl, Accept
+   json_str=""
+   get_Sensor()
    if wlan.isconnected()==False:
        ConnectionWifi(SSID,PASSWORD)
    
@@ -189,6 +201,17 @@ def Post_Modify_Sensor():
    
    return json_str
 
+
+def get_Sensor():
+  global temp_1,temp_2,temp_3,temp_4,ds_sensor,roms
+  ds_sensor.convert_temp()
+  time.sleep_ms(750)
+  for rom in roms:
+    temp_1=str(ds_sensor.read_temp(rom))
+    temp_2=str(ds_sensor.read_temp(rom))
+    temp_3=str(ds_sensor.read_temp(rom))
+    temp_4=str(ds_sensor.read_temp(rom))
+    
 #------------------------------------------------------------------------------------
 
 connect = ConnectionWifi(SSID, PASSWORD)

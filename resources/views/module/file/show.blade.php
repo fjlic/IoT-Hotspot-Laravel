@@ -82,6 +82,15 @@
 
 @section('css')
 @toastr_css
+<!-- Styles -->
+<style>
+  html,
+  /* Este es el código del ejemplo con un máximo de 600px de ancho */
+  video{width:100%;}
+  /* Y así se adaptaría al 100% del ancho de página (para webs móviles sería útil) */
+  video{width:100%;}
+</style>
+
 @stop
 
 @section('js')
