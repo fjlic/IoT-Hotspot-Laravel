@@ -258,7 +258,7 @@ class QrController extends BaseController
             ];
             return response()->json($response, 404);
         }
-        if($qr->coins <= "0") {
+        if($qr->coins == "1") {
             $qr->gone_down = 0;
             $qr->coins = 0;
             $qr->save();
@@ -275,7 +275,7 @@ class QrController extends BaseController
                 'message' => 'qr coin empty'
             ];
         }
-        else if($qr->coins >= "1") {
+        else if($qr->coins >= "2") {
             $qr->coins -= 1;
             $qr->save();
             $historial_qr = new HistorialQr();
