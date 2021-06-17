@@ -45,14 +45,6 @@
                   <input type="text" class="form-control" value="{{ $historialqr->qr_id }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
-                  <label for="name_machine">Maquina</label>
-                  <input type="text" class="form-control" value="{{ $historialqr->name_machine }}" readonly="readonly"/>
-                </div>
-                <div class="form-group">
-                  <label for="nick_name">Alias</label>
-                  <input type="text" class="form-control" value="{{ $historialqr->nick_name }}" readonly="readonly"/>
-                </div>
-                <div class="form-group">
                   <label for="qr_serie">Qr Serie</label>
                   <input type="text" class="form-control" value="{{ $historialqr->qr_serie }}" readonly="readonly"/>
                 </div>

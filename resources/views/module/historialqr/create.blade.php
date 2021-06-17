@@ -48,14 +48,6 @@
                         </select>
               </div>
                 <div class="form-group">
-                  <label for="name_machine">Nombre</label>
-                  <input type="text" class="form-control" name="name_machine" id="name_machine"  placeholder="Introduce maquina" required>
-                </div>
-                <div class="form-group">
-                  <label for="nick_name">Alias</label>
-                  <input type="text" class="form-control" name="nick_name" id="nick_name"  placeholder="Introduce alias" required>
-                </div>
-                <div class="form-group">
                   <label for="qr_serie">Qr Serie</label>
                   <input type="text" class="form-control" name="qr_serie" id="qr_serie"  placeholder="Introduce alias" required>
                 </div>

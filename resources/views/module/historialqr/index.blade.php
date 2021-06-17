@@ -40,8 +40,6 @@
                 <tr>
                   <th>Id</th>
                   <th>Qr Id</th>
-                  <th>Maquina</th>
-                  <th>Alias</th>
                   <th>QrSerie</th>
                   <th>Coins</th>
                   <th>Actualizado</th>
@@ -54,9 +52,7 @@
                 @foreach($historialqrs as $historialqr)
                 <tr>
                     <td>{{ $historialqr->id }}</td>
-                    <td>{{ $historialqr->qr_id }}</td>
-                    <td>{{ $historialqr->name_machine }}</td>
-                    <td>{{ $historialqr->nick_name }}</td>      
+                    <td>{{ $historialqr->qr_id }}</td>     
                     <td>{{ $historialqr->qr_serie }}</td>
                     <td>{{ $historialqr->coins }}</td>
                     <td>{{ $historialqr->uploaded }}</td>

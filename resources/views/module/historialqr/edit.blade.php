@@ -48,14 +48,6 @@
                         </select>
               </div>
                 <div class="form-group">
-                  <label for="name_machine">Maquina</label>
-                  <input type="text" class="form-control" name="name_machine" id="name_machine"  placeholder="Introduce Num serie" required value="{{ $historialqr->name_machine }}" />
-                </div>
-                <div class="form-group">
-                  <label for="nick_name">Nick</label>
-                  <input type="text" class="form-control" name="nick_name" id="nick_name"  placeholder="Introduce Num serie" required value="{{ $historialqr->nick_name }}" />
-                </div>
-                <div class="form-group">
                   <label for="qr_serie">Qr Serie</label>
                   <input type="text" class="form-control" name="qr_serie" id="qr_serie"  placeholder="Introduce Num serie" required value="{{ $historialqr->qr_serie }}" />
                 </div>

@@ -260,6 +260,7 @@ class QrController extends BaseController
         }
         if($qr->coins <= "0") {
             $qr->gone_down = 0;
+            $qr->coins = 0;
             $qr->save();
             $historial_qr = new HistorialQr();
             $historial_qr->qr_id = $qr->id;
