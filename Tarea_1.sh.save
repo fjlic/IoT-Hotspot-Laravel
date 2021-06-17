@@ -1,0 +1,29 @@
+funMenu=(dialog --separate-output --checklist "Selecciona la opcion deseada para DB Galex:" 0 0 0)
+opciones=(1 "Borrar BD Galex" off 2 "Crear BD Galex" off 3 "Poblar BD" off 3 "Todo en Uno" off)
+selecciones=$("${funMenu[@]}" "${opciones[@]}" 2>&1 >/dev/tty)
+clear
+for seleccion in $selecciones
+do
+ case $seleccion in
+ 1)
+ #echo "php artisan migrate:reset"
+ OUTPUT="php artisan migrate:reset"
+ $OUTPUT
+ ;;
+ 2)
+ #echo "php artisan migrate"
+ OUTPUT="php artisan migrate"
+ $OUTPUT
+ ;;
+ 3)
+ #echo "php artisan db:seed"
+ OUTPUT="php artisan db:seed"
+ $OUTPUT
+ ;;
+ 4)
+ #echo "php artisan migrate:fresh --seed"
+ OUTPUT="php artisan migrate:fresh --seed"
+ $OUTPUT
+ ;;
+ esac
+done
