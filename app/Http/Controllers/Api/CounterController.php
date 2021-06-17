@@ -156,7 +156,7 @@ class CounterController extends BaseController
          /* Update Historial Contadores*/
          $historialcont = new HistorialCounter();
          /* Historial Contador*/
-         $historialcont->cont_id = $contador->id;
+         $historialcont->counter_id = $contador->id;
          $historialcont->nfc_id = $contador->nfc_id;
          $historialcont->num_serie = $input['num_serie'];
          $historialcont->cont_qr = $input['cont_qr'];
@@ -177,7 +177,7 @@ class CounterController extends BaseController
         else {
          $historialcont = new HistorialCounter();
          /* Historial Contador*/
-         $historialcont->cont_id = $contador->id;
+         $historialcont->counter_id = $contador->id;
          $historialcont->nfc_id = $contador->nfc_id;
          $historialcont->num_serie = $input['num_serie'];
          $historialcont->cont_qr = $input['cont_qr'];
