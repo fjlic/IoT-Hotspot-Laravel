@@ -238,9 +238,7 @@ class QrController extends BaseController
         $input = $request->all();
         $validator = Validator::make($input, [
             'crd_id'=>'required|string|max:100',
-            'qr_serie'=>'required|string|max:100',
-            'key_status'=>'required|string|max:100',
-            'gone_down'=>'required|string|max:100'
+            'qr_serie'=>'required|string|max:100'
         ]);
 
         if ($validator->fails()) {
@@ -260,18 +258,27 @@ class QrController extends BaseController
             ];
             return response()->json($response, 404);
         }
-        $qr->crd_id = $input['crd_id'];
-        $qr->qr_serie = $input['qr_serie'];
-        $qr->key_status = $input['key_status'];
-        $qr->gone_down = $input['gone_down'];
-        $qr->save();
-        $data = $qr->toArray();
-        $response = [
-            'success' => true,
-            'data' => $data,
-            'message' => 'qr updated successfully.'
-        ];
-        return response()->json($response, 200);
+        if($qr->coins >= "1") {
+            $qr->coins -= 1;
+            $qr->save();
+            $data = $qr->toArray();
+            $response = [
+                'success' => true,
+                'data' => $data,
+                'message' => 'qr coin successful'
+            ];
+        }
+        else {
+            $qr->coins = 0;
+            $qr->save();
+            $data = $qr->toArray();
+            $response = [
+                'success' => false,
+                'data' => $data,
+                'message' => 'qr coin empty'
+            ];
+        }
+       return response()->json($response, 200);
     }
 
 
