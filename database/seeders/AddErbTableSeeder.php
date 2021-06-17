@@ -110,6 +110,7 @@ class AddErbTableSeeder extends Seeder
         $erb = new Erb();
         $erb->id = 10;
         $erb->user_id = 1;
+        $erb->num_serie = 222233340;
         $erb->name_machine = 'Dino battle';
         $erb->nick_name = 'Erb_10';
         $erb->password = Crypt::encrypt('erb123');
