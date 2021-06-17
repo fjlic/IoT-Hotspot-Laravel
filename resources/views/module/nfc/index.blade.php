@@ -42,20 +42,19 @@
                   <th>Crd</th>
                   <th>Erb</th>
                   <th>Serie</th>
-                  <th>C_Global</th>
-                  <th>C_Corte</th>
-                  <th>T_Global</th>
-                  <th>T_Corte</th>
-                  <th>Pzs</th>
+                  <th>Cont Qr</th>
+                  <th>Cont Mon</th>
+                  <th>Cont Mon 2</th>
+                  <th>Cont Corte</th>
+                  <th>Cont Prem</th>
+                  <th>Cost Mon</th>
                   <th>Ssid</th>
-                  <th>Passw</th>
-                  <th>Dns Server</th>
+                  {{-- <th>Passw</th>  --}}
                   <th>Ip Server</th>
                   <th>Puerto</th>
-                  <th>Protocol</th>
                   <th>Texto</th>
-                  <th>FechMod</th>
-                  <th>FechMod</th>
+                  {{--<th>FechaModificacion</th>--}}
+                  <th>FechaMod</th>
                   <th>Acciones</th>
                 </tr>
                 </thead>
@@ -66,19 +65,18 @@
                     <td>{{ $nfc->crd_id }}</td>
                     <td>{{ $nfc->erb_id }}</td>
                     <td>{{ $nfc->num_serie }}</td>
-                    <td>{{ $nfc->count_global }}</td>
-                    <td>{{ $nfc->count_between_cuts }}</td>
-                    <td>{{ $nfc->time_global_between_cuts }}</td>
-                    <td>{{ $nfc->time_between_cuts }}</td>
-                    <td>{{ $nfc->prizes_count }}</td>
+                    <td>{{ $nfc->cont_qr }}</td>
+                    <td>{{ $nfc->cont_mon }}</td>
+                    <td>{{ $nfc->cont_mon_2 }}</td>
+                    <td>{{ $nfc->cont_corte }}</td>
+                    <td>{{ $nfc->cont_prem }}</td>
+                    <td>{{ $nfc->cost_mon }}</td>
                     <td>{{ $nfc->ssid }}</td>
-                    <td>{{ $nfc->password }}</td>
-                    <td>{{ $nfc->dns_server }}</td>
+                   {{-- <td>{{ $nfc->passwd }}</td> --}}
                     <td>{{ $nfc->ip_server }}</td>
                     <td>{{ $nfc->port }}</td>
-                    <td>{{ $nfc->protocol }}</td>
-                    <td>{{ $nfc->text }}</td>
-                    <td>{{ $nfc->created_at }}</td>
+                    <td>{{ $nfc->txt }}</td>
+                    {{--<td>{{ $nfc->created_at }}</td>--}}
                     <td>{{ $nfc->updated_at }}</td>
                     <td>
                       <form role="form" action="{{ route('nfc.destroy',$nfc->id) }}" method="POST">

@@ -48,16 +48,32 @@
                       </select>
                 </div>
                 <div class="form-group">
-                  <label for="num_serie">Numero de serie</label>
-                  <input type="text" class="form-control" name="num_serie" id="num_serie"  placeholder="Introduce numero de serie maquina" required>
+                  <label for="nfc_id">Nfc Id</label>
+                  <input type="text" class="form-control" name="nfc_id" id="nfc_id"  placeholder="Introduce nfc id" required>
                 </div>
                 <div class="form-group">
                   <label for="cont_qr">Contador Qr</label>
-                  <input type="text" class="form-control" name="cont_qr" id="cont_qr"  placeholder="Introduce contador qr" required>
+                  <input type="text" class="form-control" name="cont_qr" id="cont_qr"  placeholder="Introduce contador Qr" required>
                 </div>
                 <div class="form-group">
-                  <label for="cont_mon">Contador Monedero</label>
-                  <input type="text" class="form-control" name="cont_mon" id="cont_mon"  placeholder="Introduce contador monedero" required>
+                  <label for="cont_mon">Contador Mon</label>
+                  <input type="text" class="form-control" name="cont_mon" id="cont_mon"  placeholder="Introduce Contador Monedero" required>
+                </div>
+                <div class="form-group">
+                  <label for="cont_mon_2">Contador Mon 2</label>
+                  <input type="text" class="form-control" name="cont_mon_2" id="cont_mon_2"  placeholder="Introduce Contador Monedero 2" required>
+                </div>
+                <div class="form-group">
+                  <label for="cont_corte">Contador Corte</label>
+                  <input type="text" class="form-control" name="cont_corte" id="cont_corte"  placeholder="Introduce Contador Corte" required>
+                </div>
+                <div class="form-group">
+                  <label for="cont_prem">Contador Premio</label>
+                  <input type="text" class="form-control" name="cont_prem" id="cont_prem"  placeholder="Introduce Contador Premio" required>
+                </div>
+                <div class="form-group">
+                  <label for="cost_mon">Contador Premio</label>
+                  <input type="text" class="form-control" name="cost_mon" id="cost_mon"  placeholder="Introduce Costo Moneda" required>
                 </div>
               </div>
               <!-- /.card-body -->

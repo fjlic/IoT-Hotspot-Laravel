@@ -255,7 +255,7 @@ class QrController extends BaseController
         if (is_null($qr)) {
             $response = [
                 'success' => false,
-                'data' => 'Empty',
+                'data' => 'Search error',
                 'message' => 'Qr not Exist.'
             ];
             return response()->json($response, 404);

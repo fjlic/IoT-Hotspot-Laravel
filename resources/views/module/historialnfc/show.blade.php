@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'API ESP32')
+@section('title', 'Hotspot-Historial-Nfc')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop
@@ -14,20 +14,29 @@
         </ul>
       </div><br />
   @endif
+
+  @if ($message = Session::get('success'))
+
+<div class="alert alert-success">
+
+    <p>{{ $message }}</p>
+
+</div>
+@endif
  <!-- Main content -->
  <section class="content">
       <div class="row">
-        <div class="col-xs-12">
-            <div class="box box-info">
-            <div class="box-header">
-              <h3 class="box-title">Ver HIstorial Nfc</h3>
+        <div class="col-12">
+            <div class="card card-info card-outline">
+            <div class="card-header">
+              <h3 class="card-title">Ver HIstorial Nfc</h3>
             </div>
-            <!-- /.box-header -->
-            <div class="box-body">
+            <!-- /.card-header -->
+            <div class="card-body">
             <!-- form start -->
-            <!--'id', 'nfc_id', 'num_serie', 'key_1', 'key_2', 'key_3', 'key_4', 'key_5', 'ssid', 'password', 'dns_server', 'ip_server', 'protocol', 'port', 'text',,-->
+            <!--'id', 'nfc_id', 'num_serie', 'cont_qr', 'cont_mon', 'cont_corte', 'cont_prem', 'cost_mon', 'ssid', 'passwd', 'ip_server', 'port', 'txt', -->
             <form role="form">
-              <div class="box-body">
+              <div class="card-body">
                 <div class="form-group">
                   <label for="nfc_id">Id Nfc</label>
                   <input type="text" class="form-control" value="{{ $historialnfc->nfc_id }}" readonly="readonly"/>
@@ -37,68 +46,64 @@
                   <input type="text" class="form-control" value="{{ $historialnfc->num_serie }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
-                  <label for="key_1">Clave 1</label>
-                  <input type="text" class="form-control" value="{{ $historialnfc->key_1 }}" readonly="readonly"/>
+                  <label for="cont_qr">Nfc Qr</label>
+                  <input type="text" class="form-control" value="{{ $historialnfc->cont_qr }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
-                  <label for="key_2">Clave 2</label>
-                  <input type="text" class="form-control" value="{{ $historialnfc->key_2 }}" readonly="readonly"/>
+                  <label for="cont_mon">Contador Monedero</label>
+                  <input type="text" class="form-control" value="{{ $historialnfc->cont_mon }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
-                  <label for="key_3">Clave 3</label>
-                  <input type="text" class="form-control" value="{{ $historialnfc->key_3 }}" readonly="readonly"/>
+                  <label for="cont_mon_2">Contador Monedero 2</label>
+                  <input type="text" class="form-control" value="{{ $historialnfc->cont_mon_2 }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
-                  <label for="key_4">Clave 4</label>
-                  <input type="text" class="form-control" value="{{ $historialnfc->key_4 }}" readonly="readonly"/>
+                  <label for="cont_corte">Contador Corte</label>
+                  <input type="text" class="form-control" value="{{ $historialnfc->cont_corte }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
-                  <label for="key_5">Clave 5</label>
-                  <input type="text" class="form-control" value="{{ $historialnfc->key_5 }}" readonly="readonly"/>
+                  <label for="cont_prem">Contador Premio</label>
+                  <input type="text" class="form-control" value="{{ $historialnfc->cont_prem }}" readonly="readonly"/>
+                </div>
+                <div class="form-group">
+                  <label for="cost_mon">Costo Moneda</label>
+                  <input type="text" class="form-control" value="{{ $historialnfc->cost_mon }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
                   <label for="ssid">Ssid</label>
                   <input type="text" class="form-control" value="{{ $historialnfc->ssid }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
-                  <label for="password">Pasw</label>
-                  <input type="text" class="form-control" value="{{ $historialnfc->password }}" readonly="readonly"/>
-                </div>
-                <div class="form-group">
-                  <label for="dns_server">Dns Server</label>
-                  <input type="text" class="form-control" value="{{ $historialnfc->dns_server }}" readonly="readonly"/>
+                  <label for="passwd">Pasw</label>
+                  <input type="text" class="form-control" value="{{ $historialnfc->passwd }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
                   <label for="ip_server">IP Server</label>
                   <input type="text" class="form-control" value="{{ $historialnfc->ip_server }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
-                  <label for="protocol">Protocol</label>
-                  <input type="text" class="form-control" value="{{ $historialnfc->protocol }}" readonly="readonly"/>
-                </div>
-                <div class="form-group">
                   <label for="port">Puerto</label>
                   <input type="text" class="form-control" value="{{ $historialnfc->port }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
-                  <label for="text">Texto</label>
-                  <input type="text" class="form-control" value="{{ $historialnfc->text }}" readonly="readonly"/>
+                  <label for="txt">Texto</label>
+                  <input type="text" class="form-control" value="{{ $historialnfc->txt }}" readonly="readonly"/>
                 </div>
               </div>
-              <!-- /.box-body -->
+              <!-- /.card-body -->
 
-              <div class="box-footer">
+              <div class="card-footer">
                 <a href="{{ route('historialnfc.index') }}" class="btn btn-info pull-right">Regresar</a>
               </div>
             </form>
           </div>
-          <!-- /.box -->
+          <!-- /.card -->
           <!-- form-->
  
             </div>
-            <!-- /.box-body -->
+            <!-- /.card-body -->
           </div>
-          <!-- /.box -->
+          <!-- /.card -->
         </div>
         <!-- /.col -->
       </div>
@@ -108,8 +113,10 @@
 @stop
 
 @section('css')
-    
+@toastr_css
 @stop
 
 @section('js')
+@toastr_js
+@toastr_render
 @stop

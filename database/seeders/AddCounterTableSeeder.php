@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Counter;
+use App\ApiToken;
 
 class AddCounterTableSeeder extends Seeder
 {
@@ -23,6 +24,17 @@ class AddCounterTableSeeder extends Seeder
         $counter->num_serie = '70000000001';
         $counter->cont_qr = '0';
         $counter->cont_mon = '0';
+        $counter->cont_mon_2 = '0';
+        $counter->cont_corte = '0';
+        $counter->cont_prem = '0';
+        $counter->cost_mon = '5';
+        $counter->ssid = 'GalexIOT';
+        $counter->passwd = 'G4l3x#1537';
+        $counter->ip_server = '74.208.92.167';
+        $counter->port = '443';
+        $counter->token = ApiToken::GenerateToken16();
+        $counter->type = 0;
+        $counter->text = 'Prueba Contador 1 Ok';
         $counter->save();
 
         $counter = new Counter();
@@ -33,6 +45,17 @@ class AddCounterTableSeeder extends Seeder
         $counter->num_serie = '70000000002';
         $counter->cont_qr = '0';
         $counter->cont_mon = '0';
+        $counter->cont_mon_2 = '0';
+        $counter->cont_corte = '0';
+        $counter->cont_prem = '0';
+        $counter->cost_mon = '5';
+        $counter->ssid = 'GalexIOT';
+        $counter->passwd = 'G4l3x#1537';
+        $counter->ip_server = '74.208.92.167';
+        $counter->port = '443';
+        $counter->token = ApiToken::GenerateToken16();
+        $counter->type = 0;
+        $counter->text = 'Prueba Contador 2 Ok';
         $counter->save();
 
         $counter = new Counter();
@@ -43,6 +66,17 @@ class AddCounterTableSeeder extends Seeder
         $counter->num_serie = '70000000003';
         $counter->cont_qr = '0';
         $counter->cont_mon = '0';
+        $counter->cont_mon_2 = '0';
+        $counter->cont_corte = '0';
+        $counter->cont_prem = '0';
+        $counter->cost_mon = '5';
+        $counter->ssid = 'GalexIOT';
+        $counter->passwd = 'G4l3x#1537';
+        $counter->ip_server = '74.208.92.167';
+        $counter->port = '443';
+        $counter->token = ApiToken::GenerateToken16();
+        $counter->type = 0;
+        $counter->text = 'Prueba Contador 3 Ok';
         $counter->save();
 
         $counter = new Counter();
@@ -53,6 +87,17 @@ class AddCounterTableSeeder extends Seeder
         $counter->num_serie = '70000000004';
         $counter->cont_qr = '0';
         $counter->cont_mon = '0';
+        $counter->cont_mon_2 = '0';
+        $counter->cont_corte = '0';
+        $counter->cont_prem = '0';
+        $counter->cost_mon = '5';
+        $counter->ssid = 'GalexIOT';
+        $counter->passwd = 'G4l3x#1537';
+        $counter->ip_server = '74.208.92.167';
+        $counter->port = '443';
+        $counter->token = ApiToken::GenerateToken16();
+        $counter->type = 0;
+        $counter->text = 'Prueba Contador 4 Ok';
         $counter->save();
 
         $counter = new Counter();
@@ -63,6 +108,122 @@ class AddCounterTableSeeder extends Seeder
         $counter->num_serie = '70000000005';
         $counter->cont_qr = '0';
         $counter->cont_mon = '0';
+        $counter->cont_mon_2 = '0';
+        $counter->cont_corte = '0';
+        $counter->cont_prem = '0';
+        $counter->cost_mon = '5';
+        $counter->ssid = 'GalexIOT';
+        $counter->passwd = 'G4l3x#1537';
+        $counter->ip_server = '74.208.92.167';
+        $counter->port = '443';
+        $counter->token = ApiToken::GenerateToken16();
+        $counter->type = 0;
+        $counter->text = 'Prueba Contador 5 Ok';
+        $counter->save();
+
+        $counter = new Counter();
+        $counter->id = 6;
+        $counter->crd_id = 6;
+        $counter->erb_id = 6;
+        $counter->nfc_id = 6;
+        $counter->num_serie = '70000000006';
+        $counter->cont_qr = '0';
+        $counter->cont_mon = '0';
+        $counter->cont_mon_2 = '0';
+        $counter->cont_corte = '0';
+        $counter->cont_prem = '0';
+        $counter->cost_mon = '5';
+        $counter->ssid = 'GalexIOT';
+        $counter->passwd = 'G4l3x#1537';
+        $counter->ip_server = '74.208.92.167';
+        $counter->port = '443';
+        $counter->token = ApiToken::GenerateToken16();
+        $counter->type = 0;
+        $counter->text = 'Prueba Contador 6 Ok';
+        $counter->save();
+
+        $counter = new Counter();
+        $counter->id = 7;
+        $counter->crd_id = 7;
+        $counter->erb_id = 7;
+        $counter->nfc_id = 7;
+        $counter->num_serie = '70000000007';
+        $counter->cont_qr = '0';
+        $counter->cont_mon = '0';
+        $counter->cont_mon_2 = '0';
+        $counter->cont_corte = '0';
+        $counter->cont_prem = '0';
+        $counter->cost_mon = '5';
+        $counter->ssid = 'GalexIOT';
+        $counter->passwd = 'G4l3x#1537';
+        $counter->ip_server = '74.208.92.167';
+        $counter->port = '443';
+        $counter->token = ApiToken::GenerateToken16();
+        $counter->type = 0;
+        $counter->text = 'Prueba Contador 7 Ok';
+        $counter->save();
+
+        $counter = new Counter();
+        $counter->id = 8;
+        $counter->crd_id = 8;
+        $counter->erb_id = 8;
+        $counter->nfc_id = 8;
+        $counter->num_serie = '70000000008';
+        $counter->cont_qr = '0';
+        $counter->cont_mon = '0';
+        $counter->cont_mon_2 = '0';
+        $counter->cont_corte = '0';
+        $counter->cont_prem = '0';
+        $counter->cost_mon = '5';
+        $counter->ssid = 'GalexIOT';
+        $counter->passwd = 'G4l3x#1537';
+        $counter->ip_server = '74.208.92.167';
+        $counter->port = '443';
+        $counter->token = ApiToken::GenerateToken16();
+        $counter->type = 0;
+        $counter->text = 'Prueba Contador 8 Ok';
+        $counter->save();
+
+        $counter = new Counter();
+        $counter->id = 9;
+        $counter->crd_id = 9;
+        $counter->erb_id = 9;
+        $counter->nfc_id = 9;
+        $counter->num_serie = '70000000009';
+        $counter->cont_qr = '0';
+        $counter->cont_mon = '0';
+        $counter->cont_mon_2 = '0';
+        $counter->cont_corte = '0';
+        $counter->cont_prem = '0';
+        $counter->cost_mon = '5';
+        $counter->ssid = 'GalexIOT';
+        $counter->passwd = 'G4l3x#1537';
+        $counter->ip_server = '74.208.92.167';
+        $counter->port = '443';
+        $counter->token = ApiToken::GenerateToken16();
+        $counter->type = 0;
+        $counter->text = 'Prueba Contador 9 Ok';
+        $counter->save();
+
+        $counter = new Counter();
+        $counter->id = 10;
+        $counter->crd_id = 10;
+        $counter->erb_id = 10;
+        $counter->nfc_id = 10;
+        $counter->num_serie = '70000000010';
+        $counter->cont_qr = '0';
+        $counter->cont_mon = '0';
+        $counter->cont_mon_2 = '0';
+        $counter->cont_corte = '0';
+        $counter->cont_prem = '0';
+        $counter->cost_mon = '5';
+        $counter->ssid = 'GalexIOT';
+        $counter->passwd = 'G4l3x#1537';
+        $counter->ip_server = '74.208.92.167';
+        $counter->port = '443';
+        $counter->token = ApiToken::GenerateToken16();
+        $counter->type = 0;
+        $counter->text = 'Prueba Contador 9 Ok';
         $counter->save();
     }
 }

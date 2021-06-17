@@ -13,7 +13,8 @@ class HistorialNfc extends Model
      * @var array
      */
     protected $fillable = [
-        'id', 'nfc_id', 'num_serie', 'key_1', 'key_2', 'key_3', 'key_4', 'key_5', 'ssid', 'password', 'dns_server', 'ip_server', 'protocol', 'port', 'text',
+        'id', 'nfc_id', 'num_serie', 'cont_qr', 'cont_mon', 'cont_mon_2', 'cont_corte', 
+        'cont_prem', 'cost_mon', 'ssid', 'passwd', 'ip_server', 'port', 'txt',
     ];
 
     /**

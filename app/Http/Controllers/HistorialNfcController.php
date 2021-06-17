@@ -27,7 +27,8 @@ class HistorialNfcController extends Controller
     {
         //
         $historialnfcs = HistorialNfc::all();
-        return view('module.historialnfc.index',compact('historialnfcs'));
+        $nfcs = Nfc::all();
+        return view('module.historialnfc.index',compact('historialnfcs','nfcs'));
     }
 
     /**
@@ -54,36 +55,32 @@ class HistorialNfcController extends Controller
         $request->validate([
             'nfc_id'=>'required|string|max:100',
             'num_serie'=>'required|string|max:100',
-            'key_1'=>'required|string|max:100',
-            'key_2'=>'required|string|max:100',
-            'key_3'=>'required|string|max:100',
-            'key_4'=>'required|string|max:100',
-            'key_5'=>'required|string|max:100',
+            'cont_qr'=>'required|string|max:100',
+            'cont_mon'=>'required|string|max:100',
+            'cont_mon_2'=>'required|string|max:100',
+            'cont_corte'=>'required|string|max:100',
+            'cont_prem'=>'required|string|max:100',
+            'cost_mon'=>'required|string|max:100',
             'ssid'=>'required|string|max:100',
-            'text'=>'required|string|max:100',
-            'password'=>'required|string|max:100',
-            'dns_server'=>'required|string|max:100',
+            'passwd'=>'required|string|max:100',
             'ip_server'=>'required|string|max:100',
-            'protocol'=>'required|string|max:100',
             'port'=>'required|string|max:100',
-            'text'=>'required|string|max:100',
+            'txt'=>'required|string|max:100',
         ]);
         $historialnfc = new HistorialNfc([
             'nfc_id' => $request->get('nfc_id'),
             'num_serie' => $request->get('num_serie'),
-            'key_1' =>  $request->get('key_1'),
-            'key_2' =>  $request->get('key_2'),
-            'key_3' =>  $request->get('key_3'),
-            'key_4' =>  $request->get('key_4'),
-            'key_5' =>  $request->get('key_5'),
+            'cont_qr' =>  $request->get('cont_qr'),
+            'cont_mon' =>  $request->get('cont_mon'),
+            'cont_mon_2' =>  $request->get('cont_mon_2'),
+            'cont_corte' =>  $request->get('cont_corte'),
+            'cont_prem' =>  $request->get('cont_prem'),
+            'cost_mon' =>  $request->get('cost_mon'),
             'ssid' =>  $request->get('ssid'),
-            'text' =>  $request->get('text'),
-            'password' =>  $request->get('password'),
-            'dns_server' =>  $request->get('dns_server'),
+            'passwd' =>  $request->get('passwd'),
             'ip_server' =>  $request->get('ip_server'),
-            'protocol' =>  $request->get('protocol'),
             'port' =>  $request->get('port'),
-            'text' =>  $request->get('text')
+            'txt' =>  $request->get('txt')
 
         ]);
         $historialnfc->save();
@@ -129,18 +126,17 @@ class HistorialNfcController extends Controller
         $request->validate([
             'nfc_id'=>'required|string|max:100',
             'num_serie'=>'required|string|max:100',
-            'key_1'=>'required|string|max:100',
-            'key_2'=>'required|string|max:100',
-            'key_3'=>'required|string|max:100',
-            'key_4'=>'required|string|max:100',
-            'key_5'=>'required|string|max:100',
+            'cont_qr'=>'required|string|max:100',
+            'cont_mon'=>'required|string|max:100',
+            'cont_mon_2'=>'required|string|max:100',
+            'cont_corte'=>'required|string|max:100',
+            'cont_prem'=>'required|string|max:100',
+            'cost_mon'=>'required|string|max:100',
             'ssid'=>'required|string|max:100',
-            'password'=>'required|string|max:100',
-            'dns_server'=>'required|string|max:100',
+            'passwd'=>'required|string|max:100',
             'ip_server'=>'required|string|max:100',
-            'protocol'=>'required|string|max:100',
             'port'=>'required|string|max:100',
-            'text'=>'required|string|max:100',
+            'txt'=>'required|string|max:100',
         ]);
         $historialnfc_request = $request->all();
         $historialnfc->update($historialnfc_request);

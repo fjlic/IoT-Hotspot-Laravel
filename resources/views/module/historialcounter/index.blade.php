@@ -40,11 +40,16 @@
                 <tr>
                   <th>Id</th>
                   <th>Contador Id</th>
-                  <th>Num Serie</th>
+                  <th>Nfc Id</th>
                   <th>Cont Qr</th>
                   <th>Cont Mon</th>
-                  <th>FechaCreacion</th>
-                  <th>FechaMoficiacion</th>
+                  <th>Cont Mon 2</th>
+                  <th>Cont Corte</th>
+                  <th>Cont Prem</th>
+                  <th>Cost Mon</th>
+                  {{--<th>FechaCreacion</th>--}}
+                  <th>FechaMod</th>
+                  <th>Tipo</th>
                   <th>Acciones</th>
                 </tr>
                 </thead>
@@ -52,12 +57,17 @@
                 @foreach($historialcounters as $historialcounter)
                 <tr>
                     <td>{{ $historialcounter->id }}</td>
-                    <td>{{ $historialcounter->counter_id }}</td>
-                    <td>{{ $historialcounter->num_serie }}</td>      
+                    <td>{{ $historialcounter->cont_id }}</td>
+                    <td>{{ $historialcounter->nfc_id }}</td>
                     <td>{{ $historialcounter->cont_qr }}</td>
                     <td>{{ $historialcounter->cont_mon }}</td>
-                    <td>{{ $historialcounter->created_at }}</td>
+                    <td>{{ $historialcounter->cont_mon_2 }}</td>
+                    <td>{{ $historialcounter->cont_corte }}</td>
+                    <td>{{ $historialcounter->cont_prem }}</td>
+                    <td>{{ $historialcounter->cost_mon }}</td>
+                    {{-- <td>{{ $historialcounter->created_at }}</td> --}}
                     <td>{{ $historialcounter->updated_at }}</td>
+                     <td>{{ $historialcounter->type }}</td>
                     <td>
                       <form role="form" action="{{ route('historialcounter.destroy',$historialcounter->id) }}" method="POST">
                       <a class="btn btn-info btn-xs" href="{{ route('historialcounter.show',$historialcounter->id) }}" role="button"><span class="fas fa-eye"></span></a> 

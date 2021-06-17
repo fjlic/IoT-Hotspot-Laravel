@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'API ESP32')
+@section('title', 'Hotspot-Historial-Nfc')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop
@@ -27,35 +27,34 @@
  <!-- Main content -->
  <section class="content">
       <div class="row">
-        <div class="col-xs-12">
-            <div class="box box-primary">
-            <div class="box-header">
-              <h3 class="box-title">Tabla Historial Nfc</h3>
-              <a class="btn btn-success btn-xs pull-right"  href="{{ route('historialnfc.create') }}" ><span class="glyphicon glyphicon-plus"></span></a>
+        <div class="col-12">
+            <div class="card card-primary card-outline">
+            <div class="card-header">
+              <h3 class="card-title">Tabla Historial Nfc</h3>
+              <a class="btn btn-xs btn-success float-right" href="{{ route('historialnfc.create') }}" role="button"><span class="fas fa-plus"></span></a>
             </div>
-            <!-- /.box-header -->
-             <!-- 'id', 'nfc_id', 'num_serie', 'key_1', 'key_2', 'key_3', 'key_4', 'key_5', 'ssid', 'password', 'dns_server', 'ip_server', 'protocol', 'port', 'text',-->
-            <div class="box-body">
+            <!-- /.card-header -->
+            <!--'id', 'nfc_id', 'num_serie', 'cont_qr', 'cont_mon', 'cont_corte', 'cont_prem', 'cost_mon', 'ssid', 'passwd', 'ip_server', 'port', 'txt', -->
+            <div class="card-body">
               <table id="historiaNfcTable" class="table table-bordered table-striped">
                 <thead>
                 <tr>
                   <th>Id</th>
                   <th>Id Nfc</th>
                   <th>Serie</th>
-                  <th>Clave 1</th>
-                  <th>Clave 2</th>
-                  <th>Clave 3</th>
-                  <th>Clave 4</th>
-                  <th>Clave 5</th>
+                  <th>Cont Qr</th>
+                  <th>Cont Mon</th>
+                  <th>Cont Mon 2</th>
+                  <th>Cont Corte</th>
+                  <th>Cont Prem</th>
+                  <th>Cost Mon</th>
                   <th>Ssid</th>
-                  <th>Password</th>
-                  <th>Dns Server</th>
+                  {{-- <th>Passwd</th>  --}}
                   <th>Ip Server</th>
-                  <th>Protocol</th>
                   <th>Port</th>
                   <th>Texto</th>
-                  <th>FechaCreacion</th>
-                  <th>FechaMoficacion</th>
+                  {{--<th>FechaCreacion</th>--}}
+                  <th>FechaMod</th>
                   <th>Acciones</th>
                 </tr>
                 </thead>
@@ -65,27 +64,26 @@
                     <td>{{ $historialnfc->id }}</td>
                     <td>{{ $historialnfc->nfc_id }}</td>
                     <td>{{ $historialnfc->num_serie }}</td>
-                    <td>{{ $historialnfc->key_1 }}</td>
-                    <td>{{ $historialnfc->key_2 }}</td>
-                    <td>{{ $historialnfc->key_3 }}</td>
-                    <td>{{ $historialnfc->key_4 }}</td>
-                    <td>{{ $historialnfc->key_5 }}</td>
-                    <td>{{ $historialnfc->password }}</td>
-                    <td>{{ $historialnfc->dns_server }}</td>
-                    <td>{{ $historialnfc->ip_server }}</td>
-                    <td>{{ $historialnfc->protocol }}</td>
+                    <td>{{ $historialnfc->cont_qr }}</td>
+                    <td>{{ $historialnfc->cont_mon }}</td>
+                    <td>{{ $historialnfc->cont_mon_2 }}</td>
+                    <td>{{ $historialnfc->cont_corte }}</td>
+                    <td>{{ $historialnfc->cont_prem }}</td>
+                    <td>{{ $historialnfc->cost_mon }}</td>
+                    <td>{{ $historialnfc->ssid }}</td>
+                    {{-- <td>{{ $historialnfc->passwd }}</td>  --}}
                     <td>{{ $historialnfc->ip_server }}</td>
                     <td>{{ $historialnfc->port }}</td>
-                    <td>{{ $historialnfc->text }}</td>
-                    <td>{{ $historialnfc->created_at }}</td>
+                    <td>{{ $historialnfc->txt }}</td>
+                    {{--<td>{{ $historialnfc->created_at }}</td>--}}
                     <td>{{ $historialnfc->updated_at }}</td>
                     <td>
                       <form role="form" action="{{ route('historialnfc.destroy',$historialnfc->id) }}" method="POST">
-                      <a class="btn btn-info btn-xs" href="{{ route('historialnfc.show',$historialnfc->id) }}"><span class="glyphicon glyphicon-eye-open"></span></a> 
-                      <a class="btn btn-warning btn-xs"  href="{{ route('historialnfc.edit',$historialnfc->id) }}" ><span class="glyphicon glyphicon-pencil"></span></a>
+                      <a class="btn btn-info btn-xs" href="{{ route('historialnfc.show',$historialnfc->id) }}"><span class="fas fa-eye"></span></a> 
+                      <a class="btn btn-warning btn-xs"  href="{{ route('historialnfc.edit',$historialnfc->id) }}" ><span class="fas fa-pen"></span></a>
                       @csrf
                       @method('DELETE')
-                      <button class="btn btn-danger btn-xs" type="submit"><span class="glyphicon glyphicon-trash"></span></button>
+                      <button class="btn btn-danger btn-xs" type="submit"><span class="fas fa-trash"></span></button>
                       </form>
                     </td>
                 </tr>
@@ -104,9 +102,9 @@
                 </tfoot>-->
               </table>
             </div>
-            <!-- /.box-body -->
+            <!-- /.card-body -->
           </div>
-          <!-- /.box -->
+          <!-- /.card -->
         </div>
         <!-- /.col -->
       </div>
@@ -117,10 +115,12 @@
 @stop
 
 @section('css')
-    
+@toastr_css 
 @stop
 
 @section('js')
+@toastr_js
+@toastr_render
 <script>
   $(function () {
      $('#historiaNfcTable').DataTable({

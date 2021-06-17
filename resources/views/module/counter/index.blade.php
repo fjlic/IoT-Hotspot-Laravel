@@ -38,30 +38,37 @@
               <table id="counterTable" class="table table-bordered table-striped">
               <thead>
                 <tr>
-                  <th>Id</th>
-                  <th>Crd Id</th>
-                  <th>Erb id</th>
-                  <th>Nfc id</th>
+                  {{-- <th>Id</th> --}}
+                  {{-- <th>Esp32 Id</th> --}}
+                  {{-- <th>Nfc Id</th> --}}
                   <th>Num Serie</th>
                   <th>Cont Qr</th>
                   <th>Cont Mon</th>
-                  <th>FechaCreacion</th>
-                  <th>FechaMoficiacion</th>
+                  <th>Cont Mon2</th>
+                  <th>Cont Corte</th>
+                  <th>Cont Prem</th>
+                  <th>Cost Mon</th>
+                  {{-- <th>FechaCreacion</th> --}}
+                  <th>FechaMod</th>
+                  <th>Tipo</th>
                   <th>Acciones</th>
                 </tr>
                 </thead>
                 <tbody>
                 @foreach($counters as $counter)
                 <tr>
-                    <td>{{ $counter->id }}</td>
-                    <td>{{ $counter->crd_id }}</td>
-                    <td>{{ $counter->erb_id }}</td>
-                    <td>{{ $counter->nfc_id }}</td>
-                    <td>{{ $counter->num_serie }}</td>      
+                    {{-- <td>{{ $counter->id }}</td> --}}
+                    {{-- <td>{{ $counter->esp32_id }}</td> --}}
+                    {{-- <td>{{ $counter->nfc_id }}</td> --}}
+                    <td>{{ $counter->num_serie }}</td>
                     <td>{{ $counter->cont_qr }}</td>
                     <td>{{ $counter->cont_mon }}</td>
-                    <td>{{ $counter->created_at }}</td>
+                    <td>{{ $counter->cont_mon_2 }}</td>
+                    <td>{{ $counter->cont_corte }}</td>
+                    <td>{{ $counter->cont_prem }}</td>
+                    <td>{{ $counter->cost_mon }}</td>
                     <td>{{ $counter->updated_at }}</td>
+                    <td>{{ $counter->type }}</td>
                     <td>
                       <form role="form" action="{{ route('counter.destroy',$counter->id) }}" method="POST">
                       <a class="btn btn-info btn-xs" href="{{ route('counter.show',$counter->id) }}" role="button"><span class="fas fa-eye"></span></a> 

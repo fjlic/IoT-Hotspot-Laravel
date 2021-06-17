@@ -13,7 +13,8 @@ class HistorialCounter extends Model
      * @var array
      */
     protected $fillable = [
-        'id', 'counter_id', 'num_serie', 'cont_qr', 'cont_mon',
+        'id', 'counter_id', 'num_serie', 'cont_qr', 'cont_mon', 'cont_mon_2', 'cont_corte',  'cont_prem', 'cost_mon',
+        'ssid',  'passwd',  'ip_server',  'port', 'token', 'type',  'text',
     ];
 
     /**

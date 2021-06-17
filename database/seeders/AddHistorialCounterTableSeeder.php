@@ -15,7 +15,7 @@ class AddHistorialCounterTableSeeder extends Seeder
     public function run()
     {
         //
-        $historialcounter = new HistorialCounter();
+        /*$historialcounter = new HistorialCounter();
         $historialcounter->id = 1;
         $historialcounter->counter_id = 1;
         $historialcounter->num_serie = '70000000001';
@@ -53,6 +53,6 @@ class AddHistorialCounterTableSeeder extends Seeder
         $historialcounter->num_serie = '70000000001';
         $historialcounter->cont_qr = '5';
         $historialcounter->cont_mon = '5';
-        $historialcounter->save();
+        $historialcounter->save();*/
     }
 }

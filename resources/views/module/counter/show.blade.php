@@ -44,10 +44,10 @@
                   <label for="crd_id">Crd Id</label>
                   <input type="text" class="form-control" value="{{ $counter->crd_id }}" readonly="readonly"/>
                 </div>
-                <div class="form-group">
+                {{-- <div class="form-group">
                   <label for="erb_id">Erb Id</label>
                   <input type="text" class="form-control" value="{{ $counter->erb_id }}" readonly="readonly"/>
-                </div>
+                </div> --}}
                 <div class="form-group">
                   <label for="erb_id">Nfc Id</label>
                   <input type="text" class="form-control" value="{{ $counter->nfc_id }}" readonly="readonly"/>
@@ -61,10 +61,45 @@
                   <input type="text" class="form-control" value="{{ $counter->cont_qr }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
-                  <label for="cont_mon">Contador Monedero</label>
+                  <label for="cont_mon">Contador Monedas</label>
                   <input type="text" class="form-control" value="{{ $counter->cont_mon }}" readonly="readonly"/>
                 </div>
-              </div>
+                <div class="form-group">
+                  <label for="cont_mon_2">Contador Monedas 2</label>
+                  <input type="text" class="form-control" value="{{ $counter->cont_mon_2 }}" readonly="readonly"/>
+                </div>
+                <div class="form-group">
+                  <label for="cont_corte">Contador Corte</label>
+                  <input type="text" class="form-control" value="{{ $counter->cont_corte }}" readonly="readonly"/>
+                </div>
+                <div class="form-group">
+                  <label for="cont_prem">Contador Premio</label>
+                  <input type="text" class="form-control" value="{{ $counter->cont_prem }}" readonly="readonly"/>
+                </div>
+                <div class="form-group">
+                  <label for="cost_mon">Costo Moneda</label>
+                  <input type="text" class="form-control" value="{{ $counter->cost_mon }}" readonly="readonly"/>
+                </div>
+                <div class="form-group">
+                  <label for="ssid">Contador ssid</label>
+                  <input type="text" class="form-control" value="{{ $counter->ssid }}" readonly="readonly"/>
+                </div>
+                <div class="form-group">
+                  <label for="passwd">Password</label>
+                  <input type="text" class="form-control" value="{{ $counter->passwd }}" readonly="readonly"/>
+                </div>
+                <div class="form-group">
+                  <label for="ip_server">Ip Server</label>
+                  <input type="text" class="form-control" value="{{ $counter->ip_server }}" readonly="readonly"/>
+                </div>
+                <div class="form-group">
+                  <label for="port">Puerto</label>
+                  <input type="text" class="form-control" value="{{ $counter->port }}" readonly="readonly"/>
+                </div>
+                <div class="form-group">
+                  <label for="text">Texto</label>
+                  <input type="text" class="form-control" value="{{ $counter->text }}" readonly="readonly"/>
+                </div>
               <!-- /.box-body -->
 
               <div class="box-footer">

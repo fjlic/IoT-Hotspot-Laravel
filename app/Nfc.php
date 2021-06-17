@@ -16,10 +16,8 @@ class Nfc extends Model
      */
 
     protected $fillable = [
-        'id', 'crd_id', 'erb_id', 'count_global', 'count_between_cuts',
-        'time_global_between_cuts', 'time_between_cuts', 'prizes_count',
-        'num_serie', 'ssid', 'password', 'dns_server', 'ip_server', 'protocol',
-        'port', 'text',
+        'id', 'crd_id', 'erb_id', 'num_serie', 'cont_qr', 'cont_mon', 
+        'cont_mon_2', 'cont_corte', 'cont_prem', 'cost_mon', 'ssid', 'passwd', 'ip_server', 'port', 'txt',
     ];
 
     /**
@@ -40,6 +38,14 @@ class Nfc extends Model
     ];
 
     /**
+     * Get the hostpot for the blog crd.
+     */
+    public function historialnfc()
+    {
+        return $this->hasMany('App\HistorialNfc','nfc_id');
+    }
+
+    /**
      * Get the user record associated with the hostpot.
      */
     public function crd()
@@ -53,13 +59,5 @@ class Nfc extends Model
     public function erb()
     {
         return $this->belongsToMany('App\Erb', 'id');
-    }
-
-    /**
-     * Get the hostpot for the blog crd.
-     */
-    public function historialnfc()
-    {
-        return $this->hasMany('App\HistorialNfc','nfc_id');
     }
 }

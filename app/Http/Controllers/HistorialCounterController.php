@@ -53,15 +53,19 @@ class HistorialCounterController extends Controller
         //
         $request->validate([
             'counter_id'=>'required|string|max:100',
+            'nfc_id'=>'required|string|max:100',
             'num_serie'=>'required|string|max:100',
             'cont_qr'=>'required|string|max:100',
             'cont_mon'=>'required|string|max:100',
+            'cont_mon_2'=>'required|string|max:100',
         ]);
         $historialcounter = new HistorialCounter([
             'counter_id' => $request->get('counter_id'),
+            'nfc_id' => $request->get('nfc_id'),
             'num_serie' => $request->get('num_serie'),
             'cont_qr' => $request->get('cont_qr'),
-            'cont_mon' => $request->get('cont_mon')
+            'cont_mon' => $request->get('cont_mon'),
+            'cont_mon_2' => $request->get('cont_mon_2')
             ]);
         $historialcounter->save();
         //return redirect(/historialcounter)->with('success','Historial generado Satisfactoriamente');
@@ -106,9 +110,11 @@ class HistorialCounterController extends Controller
         //
         $request->validate([
             'counter_id'=>'required|string|max:100',
+            'nfc_id'=>'required|string|max:100',
             'num_serie'=>'required|string|max:100',
             'cont_qr'=>'required|string|max:100',
             'cont_mon'=>'required|string|max:100',
+            'cont_mon_2'=>'required|string|max:100',
         ]);
         $historialcounter_request = $request->all();
         $historialcounter->update($historialcounter_request);

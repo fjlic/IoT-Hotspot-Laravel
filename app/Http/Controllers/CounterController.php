@@ -6,6 +6,7 @@ use App\Counter;
 use App\Erb;
 use App\Crd;
 use App\Nfc;
+use App\ApiToken;
 use Illuminate\Http\Request;
 
 class CounterController extends Controller
@@ -62,6 +63,15 @@ class CounterController extends Controller
             'num_serie'=>'required|string|max:100',
             'cont_qr'=>'required|string|max:100',
             'cont_mon'=>'required|string|max:100',
+            'cont_mon_2'=>'required|string|max:100',
+            'cont_corte'=>'required|string|max:100',
+            'cont_prem'=>'required|string|max:100',
+            'cost_mon'=>'required|string|max:100',
+            'ssid'=>'required|string|max:100',
+            'passwd'=>'required|string|max:100',
+            'ip_server'=>'required|string|max:100',
+            'port'=>'required|string|max:100',
+            'text'=>'required|string|max:100',
         ]);
         $counter = new Counter([
             'crd_id' => $request->get('crd_id'),
@@ -69,7 +79,17 @@ class CounterController extends Controller
             'nfc_id' => $request->get('erb_id'),
             'num_serie' => $request->get('num_serie'),
             'cont_qr' => $request->get('cont_qr'),
-            'cont_mon' => $request->get('cont_mon')
+            'cont_mon' => $request->get('cont_mon'),
+            'cont_mon_2' => $request->get('cont_mon_2'),
+            'cont_corte' => $request->get('cont_corte'),
+            'cont_prem' => $request->get('cont_prem'),
+            'cost_mon' => $request->get('cost_mon'),
+            'ssid' => $request->get('ssid'),
+            'passwd' => $request->get('passwd'),
+            'ip_server' => $request->get('ip_server'),
+            'port' => $request->get('port'),
+            'text' => $request->get('text'),
+            'token' => ApiToken::GenerateToken16()
             ]);
         $counter->save();
         //return redirect(/counter)->with('success','Contador generado satisfactoriamente');
@@ -121,6 +141,15 @@ class CounterController extends Controller
             'num_serie'=>'required|string|max:100',
             'cont_qr'=>'required|string|max:100',
             'cont_mon'=>'required|string|max:100',
+            'cont_mon_2'=>'required|string|max:100',
+            'cont_corte'=>'required|string|max:100',
+            'cont_prem'=>'required|string|max:100',
+            'cost_mon'=>'required|string|max:100',
+            'ssid'=>'required|string|max:100',
+            'passwd'=>'required|string|max:100',
+            'ip_server'=>'required|string|max:100',
+            'port'=>'required|string|max:100',
+            'text'=>'required|string|max:100',
         ]);
         $counter_request = $request->all();
         $counter->update($counter_request);

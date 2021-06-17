@@ -57,37 +57,35 @@ class NfcController extends Controller
         $request->validate([
             'crd_id'=>'required|string|max:34',
             'erb_id'=>'required|string|max:34',
-            'count_global'=>'required|string|max:34',
-            'count_between_cuts'=>'required|string|max:34',
-            'time_global_between_cuts'=>'required|string|max:34',
-            'time_between_cuts'=>'required|string|max:34',
-            'prizes_count'=>'required|string|max:34',
-            'num_serie'=>'required|string|max:34',
-            'ssid'=>'required|string|max:34',
-            'password'=>'required|string|max:34',
-            'dns_server'=>'required|string|max:34',
-            'ip_server'=>'required|string|max:34',
-            'protocol'=>'required|string|max:34',
-            'port'=>'required|string|max:34',
-            'text'=>'required|string|max:34',
+            'num_serie'=>'required|string|max:100',
+            'cont_qr'=>'required|string|max:100',
+            'cont_mon'=>'required|string|max:100',
+            'cont_mon_2'=>'required|string|max:100',
+            'cont_corte'=>'required|string|max:100',
+            'cont_prem'=>'required|string|max:100',
+            'cost_mon'=>'required|string|max:100',
+            'ssid'=>'required|string|max:100',
+            'passwd'=>'required|string|max:100',
+            'ip_server'=>'required|string|max:100',
+            'port'=>'required|string|max:100',
+            'txt'=>'required|string|max:100',
             
         ]);
         $nfc = new Nfc([
             'crd_id' => $request->get('crd_id'),
             'erb_id' => $request->get('erb_id'),
-            'count_global' => $request->get('count_global'),
-            'count_between_cuts' => $request->get('count_between_cuts'),
-            'time_global_between_cuts' => $request->get('time_global_between_cuts'),
-            'time_between_cuts' => $request->get('time_between_cuts'),
-            'prizes_count' => $request->get('prizes_count'),
             'num_serie' => $request->get('num_serie'),
+            'cont_qr' => $request->get('cont_qr'),
+            'cont_mon' => $request->get('cont_mon'),
+            'cont_mon_2' => $request->get('cont_mon_2'),
+            'cont_corte' => $request->get('cont_corte'),
+            'cont_prem' => $request->get('cont_prem'),
+            'cost_mon' => $request->get('cost_mon'),
             'ssid' => $request->get('ssid'),
-            'password' => $request->get('password'),
-            'dns_server' => $request->get('dns_server'),
+            'passwd' => $request->get('passwd'),
             'ip_server' => $request->get('ip_server'),
-            'protocol' => $request->get('protocol'),
             'port' => $request->get('port'),
-            'text' => $request->get('text')
+            'txt' => $request->get('txt')
             ]);
         $nfc->save();
         //return redirect(/nfc)->with('success','Nfc Generado Satisfactoriamente');
@@ -134,23 +132,22 @@ class NfcController extends Controller
         $request->validate([
             'crd_id'=>'required|string|max:34',
             'erb_id'=>'required|string|max:34',
-            'count_global'=>'required|string|max:34',
-            'count_between_cuts'=>'required|string|max:34',
-            'time_global_between_cuts'=>'required|string|max:34',
-            'time_between_cuts'=>'required|string|max:34',
-            'prizes_count'=>'required|string|max:34',
-            'num_serie'=>'required|string|max:34',
-            'ssid'=>'required|string|max:34',
-            'password'=>'required|string|max:34',
-            'dns_server'=>'required|string|max:34',
-            'ip_server'=>'required|string|max:34',
-            'protocol'=>'required|string|max:34',
-            'port'=>'required|string|max:34',
-            'text'=>'required|string|max:34',
+            'num_serie'=>'required|string|max:100',
+            'cont_qr'=>'required|string|max:100',
+            'cont_mon'=>'required|string|max:100',
+            'cont_mon_2'=>'required|string|max:100',
+            'cont_corte'=>'required|string|max:100',
+            'cont_prem'=>'required|string|max:100',
+            'cost_mon'=>'required|string|max:100',
+            'ssid'=>'required|string|max:100',
+            'passwd'=>'required|string|max:100',
+            'ip_server'=>'required|string|max:100',
+            'port'=>'required|string|max:100',
+            'txt'=>'required|string|max:100',
         ]);
         $nfc_request = $request->all();
         $nfc->update($nfc_request);
-        toastr()->warning('nfc actualizado');
+        toastr()->warning('Nfc actualizado');
         return redirect()->route('nfc.index');
     }
 

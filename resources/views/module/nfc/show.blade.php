@@ -49,36 +49,36 @@
                   <input type="text" class="form-control" name="num_serie" id="num_serie"  readonly="readonly" required value="{{ $nfc->num_serie }}">
                 </div>
                 <div class="form-group">
-                  <label for="count_global">Contador Global</label>
-                  <input type="text" class="form-control" name="count_global" id="count_global"  readonly="readonly" required value="{{ $nfc->count_global }}">
+                  <label for="cont_qr">Contador Qr</label>
+                  <input type="text" class="form-control" name="cont_qr" id="cont_qr"  readonly="readonly" required value="{{ $nfc->cont_qr }}">
                 </div>
                 <div class="form-group">
-                  <label for="count_between_cuts">Contador entre Cortes</label>
-                  <input type="text" class="form-control" name="count_between_cuts" id="count_between_cuts"  readonly="readonly" required value="{{ $nfc->count_between_cuts }}">
+                  <label for="cont_mon">Contador Monedero</label>
+                  <input type="text" class="form-control" name="cont_mon" id="cont_mon"  readonly="readonly" required value="{{ $nfc->cont_mon }}">
+                </div>
+                 <div class="form-group">
+                  <label for="cont_mon_2">Contador Monedero 2</label>
+                  <input type="text" class="form-control" name="cont_mon_2" id="cont_mon_2"  readonly="readonly" required value="{{ $nfc->cont_mon_2 }}">
                 </div>
                 <div class="form-group">
-                  <label for="time_global_between_cuts">Tiempo Global entre Cortes</label>
-                  <input type="text" class="form-control" name="time_global_between_cuts" id="time_global_between_cuts"  readonly="readonly" required value="{{ $nfc->time_global_between_cuts }}">
+                  <label for="cont_corte">Contador Corte</label>
+                  <input type="text" class="form-control" name="cont_corte" id="cont_corte"  readonly="readonly" required value="{{ $nfc->cont_corte }}">
                 </div>
                 <div class="form-group">
-                  <label for="time_between_cuts">Tiempo entre Corte</label>
-                  <input type="text" class="form-control" name="time_between_cuts" id="time_between_cuts"  readonly="readonly" required value="{{ $nfc->time_between_cuts }}">
+                  <label for="cont_prem">Contador Premio</label>
+                  <input type="text" class="form-control" name="cont_prem" id="cont_prem"  readonly="readonly" required value="{{ $nfc->cont_prem }}">
                 </div>
                 <div class="form-group">
-                  <label for="prizes_count">Pzs</label>
-                  <input type="text" class="form-control" name="prizes_count" id="prizes_count"  readonly="readonly" required value="{{ $nfc->prizes_count }}">
+                  <label for="cost_mon">Costo Moneda</label>
+                  <input type="text" class="form-control" name="cost_mon" id="cost_mon"  readonly="readonly" required value="{{ $nfc->cost_mon }}">
                 </div>
                 <div class="form-group">
                   <label for="ssid">Ssid</label>
                   <input type="text" class="form-control" name="ssid" id="ssid"  readonly="readonly" required value="{{ $nfc->ssid }}">
                 </div>
                 <div class="form-group">
-                  <label for="password">Password</label>
-                  <input type="text" class="form-control" name="password" id="password"  readonly="readonly" required value="{{ $nfc->password }}">
-                </div>
-                <div class="form-group">
-                  <label for="dns_server">Dns Servidor</label>
-                  <input type="text" class="form-control" name="dns_server" id="dns_server"  readonly="readonly" required value="{{ $nfc->dns_server }}">
+                  <label for="passwd">Password</label>
+                  <input type="text" class="form-control" name="passwd" id="passwd"  readonly="readonly" required value="{{ $nfc->passwd }}">
                 </div>
                 <div class="form-group">
                   <label for="ip_server">Ip Servidor</label>
@@ -89,12 +89,8 @@
                   <input type="text" class="form-control" name="port" id="port"  readonly="readonly" required value="{{ $nfc->port }}">
                 </div>
                 <div class="form-group">
-                  <label for="protocol">Protocolo</label>
-                  <input type="text" class="form-control" name="protocol" id="protocol"  readonly="readonly" required value="{{ $nfc->protocol }}">
-                </div>
-                <div class="form-group">
-                  <label for="text">Text</label>
-                  <input type="text" class="form-control" name="text" id="text"  readonly="readonly" required value="{{ $nfc->text }}">
+                  <label for="txt">Text</label>
+                  <input type="text" class="form-control" name="txt" id="txt"  readonly="readonly" required value="{{ $nfc->txt }}">
                 </div>
               </div>
               <!-- /.box-body -->

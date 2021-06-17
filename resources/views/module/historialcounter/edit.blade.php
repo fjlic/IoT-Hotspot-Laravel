@@ -40,25 +40,41 @@
             @method('PUT')
               <div class="card-body">
               <div class="form-group">
-                <label for="counter_id">Contador Id</label>
+                <label for="counter_id">Contador Asignado</label>
                     <select class="form-control" name="counter_id" id="counter_id" value="{{ $historialcounter->counter_id }}">
                       @foreach($counters as $counter)
                       <option>{{ $counter->id }}</option>
                       @endforeach
                     </select>
               </div>
-                <div class="form-group">
-                  <label for="num_serie">Numero de Serie</label>
-                  <input type="text" class="form-control" name="num_serie" id="num_serie"  placeholder="Introduce Numero de serie" required value="{{ $historialcounter->num_serie }}" />
-                </div>
-                <div class="form-group">
-                  <label for="cont_qr">Contador Qr</label>
-                  <input type="text" class="form-control" name="cont_qr" id="cont_qr"  placeholder="Introduce contador qr" required value="{{ $historialcounter->cont_qr }}" />
-                </div>
-                <div class="form-group">
-                  <label for="cont_mon">Contador Monedero</label>
-                  <input type="text" class="form-control" name="cont_mon" id="cont_mon"  placeholder="Introduce contador monedero" required value="{{ $historialcounter->cont_mon }}" />
-                </div>
+              <div class="form-group">
+                <label for="nfc_id">Nfc id</label>
+                <input type="text" class="form-control" name="nfc_id" id="nfc_id"  placeholder="Introduce un id Nfc" required value="{{ $historialcont->nfc_id }}" />
+              </div>
+              <div class="form-group">
+                <label for="cont_qr">Contador Qr</label>
+                <input type="text" class="form-control" name="cont_qr" id="cont_qr"  placeholder="Introduce Contador Qr" required value="{{ $historialcont->cont_qr }}" />
+              </div>
+              <div class="form-group">
+                <label for="cont_mon">Contador Monedero</label>
+                <input type="text" class="form-control" name="cont_mon" id="cont_mon"  placeholder="Introduce Contador Monedero" required value="{{ $historialcont->cont_mon }}" />
+              </div>
+              <div class="form-group">
+                <label for="cont_mon_2">Contador Monedero</label>
+                <input type="text" class="form-control" name="cont_mon_2" id="cont_mon_2"  placeholder="Introduce Contador Monedero 1" required value="{{ $historialcont->cont_mon_2 }}" />
+              </div>
+              <div class="form-group">
+                <label for="cont_corte">Contador Corte</label>
+                <input type="text" class="form-control" name="cont_corte" id="cont_corte"  placeholder="Introduce Contador Corte" required value="{{ $historialcont->cont_corte }}" />
+              </div>
+              <div class="form-group">
+                <label for="cont_prem">Contador Premio</label>
+                <input type="text" class="form-control" name="cont_prem" id="cont_prem"  placeholder="Introduce Contador Premio" required value="{{ $historialcont->cont_prem }}" />
+              </div>
+              <div class="form-group">
+                <label for="cost_mon">Costo Moneda</label>
+                <input type="text" class="form-control" name="cost_mon" id="cost_mon"  placeholder="Introduce Costo Moneda" required value="{{ $historialcont->cost_mon }}" />
+              </div>
               </div>
               <!-- /.card-body -->
 

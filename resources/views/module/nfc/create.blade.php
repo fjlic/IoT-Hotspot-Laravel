@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'API ESP32')
+@section('title', 'Hotspot-Nfc')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop
@@ -21,66 +21,9 @@
 </div>
 @endif
 <!-- Main content -->
-<section class="content">
-      <div class="row">
-        <div class="col-12">
-            <div class="card card-success card-outline">
-            <div class="card-header">
-              <h3 class="card-title">Crear Nfc</h3>
-            </div>
-            <!-- /.card-header -->
-            <div class="card-body">
-                  <!-- form start -->
-            <form role="form" action="{{ route('user.store')}}" method="POST">
-              @csrf
-              <div class="card-body">
-                <div class="form-group">
-                  <label for="name">Nombre</label>
-                  <input type="text" class="form-control" name="name" id="name"  placeholder="Introduce nombre" required>
-                </div>
-                <div class="form-group">
-                  <label for="email">E-mail</label>
-                  <input type="text" class="form-control" name="email" id="email"  placeholder="Introduce e-mail" required>
-                </div>
-                <div class="form-group">
-                  <label for="password">Password</label>
-                  <input type="password" class="form-control" name="password" id="password" placeholder="Introduce contraseña" required>
-                </div>
-                <div class="form-group">
-                    <label for="name_role">Asignar tipo de usuario</label>
-                        <select class="form-control" name="name_role" id="name_role"> 
-                          @foreach($roles as $role)
-                          <option>{{ $role->name }}</option>
-                          @endforeach
-                        </select>
-              </div>
-              </div>
-              <!-- /.card-body -->
-
-              <div class="card-footer">
-                <a href="{{ route('user.index') }}" class="btn btn-default">Cancelar</a>
-                <button type="submit" class="btn btn-success pull-right" >Enviar</button>
-              </div>
-            </form>
-            </div>
-          <!-- /.card -->
-          <!-- form-->
-          <!-- /.card-body -->
-          </div>
-          <!-- /.card -->
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
-    </section>
-    <!-- /.content --> 
-@stop
-
-
-<!-- Main content -->
  <section class="content">
       <div class="row">
-        <div class="col-xs-12">
+        <div class="col-12">
             <div class="card card-success card-outline">
             <div class="card-header">
               <h3 class="card-title">Crear Nfc</h3>
@@ -111,36 +54,36 @@
                   <input type="text" class="form-control" name="num_serie" id="num_serie"  placeholder="Introduce Numero de Serie" required>
                 </div>
                 <div class="form-group">
-                  <label for="key_1">Clave 1</label>
-                  <input type="text" class="form-control" name="key_1" id="key_1"  placeholder="Introduce clave 1" required>
+                  <label for="cont_qr">Contador Qr</label>
+                  <input type="text" class="form-control" name="cont_qr" id="cont_qr"  placeholder="Introduce Contador Qr" required>
                 </div>
                 <div class="form-group">
-                  <label for="key_2">Clave 2</label>
-                  <input type="text" class="form-control" name="key_2" id="key_2"  placeholder="Introduce clave 2" required>
+                  <label for="cont_mon">Contador Monedero</label>
+                  <input type="text" class="form-control" name="cont_mon" id="cont_mon"  placeholder="Introduce Contador Monedero" required>
                 </div>
                 <div class="form-group">
-                  <label for="key_3">Clave 3</label>
-                  <input type="text" class="form-control" name="key_3" id="key_3"  placeholder="Introduce clave 3" required>
+                  <label for="cont_mon_2">Contador Monedero 2</label>
+                  <input type="text" class="form-control" name="cont_mon_2" id="cont_mon_2"  placeholder="Introduce Contador Monedero 2" required>
                 </div>
                 <div class="form-group">
-                  <label for="key_4">Clave 4</label>
-                  <input type="text" class="form-control" name="key_4" id="key_4"  placeholder="Introduce clave 4" required>
+                  <label for="cont_corte">Contador Corte</label>
+                  <input type="text" class="form-control" name="cont_corte" id="cont_corte"  placeholder="Introduce Contador Corte" required>
                 </div>
                 <div class="form-group">
-                  <label for="key_5">Clave 5</label>
-                  <input type="text" class="form-control" name="key_5" id="key_5"  placeholder="Introduce clave 5" required>
+                  <label for="cont_prem">Contador Premio</label>
+                  <input type="text" class="form-control" name="cont_prem" id="cont_prem"  placeholder="Introduce Contador Premio" required>
+                </div>
+                <div class="form-group">
+                  <label for="cost_mon">Costo Moneda</label>
+                  <input type="text" class="form-control" name="cost_mon" id="cost_mon"  placeholder="Introduce Costo Moneda" required>
                 </div>
                 <div class="form-group">
                   <label for="ssid">Ssid</label>
                   <input type="text" class="form-control" name="ssid" id="ssid"  placeholder="Introduce ssid" required>
                 </div>
                 <div class="form-group">
-                  <label for="password">Password</label>
-                  <input type="text" class="form-control" name="password" id="password"  placeholder="Introduce password" required>
-                </div>
-                <div class="form-group">
-                  <label for="dns_server">Dns servidor</label>
-                  <input type="text" class="form-control" name="dns_server" id="dns_server"  placeholder="Introduce dns" required>
+                  <label for="passwd">Password</label>
+                  <input type="text" class="form-control" name="passwd" id="passwd"  placeholder="Introduce Password" required>
                 </div>
                 <div class="form-group">
                   <label for="ip_server">Ip servidor</label>
@@ -151,15 +94,8 @@
                   <input type="text" class="form-control" name="port" id="port"  placeholder="Introduce puerto" required>
                 </div>
                 <div class="form-group">
-                    <label for="protocol">Protocolo</label>
-                        <select class="form-control" name="protocol" id="protocol"> 
-                          <option>JSON</option>
-                          <option>Otro</option>
-                        </select>
-              </div>
-                <div class="form-group">
-                  <label for="text">Text</label>
-                  <input type="text" min="0" class="form-control" name="text" id="text"  placeholder="Introduce text" required>
+                  <label for="text">Texto</label>
+                  <input type="text" class="form-control" name="txt" id="txt"  placeholder="Introduce un Texto" required>
                 </div>
                 </div>
               <!-- /.card-body -->

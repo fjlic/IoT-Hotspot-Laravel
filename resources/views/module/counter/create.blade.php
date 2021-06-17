@@ -75,7 +75,45 @@
                 </div>
                 <div class="form-group">
                   <label for="cont_mon">Contador Monedero</label>
-                  <input type="text" class="form-control" name="cont_mon" id="cont_mon"  placeholder="Introduce contador monedero" required>
+                  <input type="text" class="form-control" name="cont_mon" id="cont_mon"  placeholder="Introduce Contador Monedero" required>
+                </div>
+                
+                <div class="form-group">
+                  <label for="cont_mon_2">Contador Monedero 2</label>
+                  <input type="text" class="form-control" name="cont_mon_2" id="cont_mon_2"  placeholder="Introduce Contador Monedero 2" required>
+                </div>
+                
+                <div class="form-group">
+                  <label for="cont_corte">Contador Corte</label>
+                  <input type="text" class="form-control" name="cont_corte" id="cont_corte"  placeholder="Introduce Contador Corte" required>
+                </div>
+                <div class="form-group">
+                  <label for="cont_prem">Contador Premio</label>
+                  <input type="text" class="form-control" name="cont_prem" id="cont_prem"  placeholder="Introduce Contador Premio" required>
+              </div>
+              <div class="form-group">
+                  <label for="cost_mon">Costo Moneda</label>
+                  <input type="text" class="form-control" name="cost_mon" id="cost_mon"  placeholder="Introduce Costo Moneda" required>
+              </div>
+              <div class="form-group">
+                  <label for="ssid">Ssid</label>
+                  <input type="text" class="form-control" name="ssid" id="ssid"  placeholder="Introduce Ssid" required>
+                </div>
+              <div class="form-group">
+                  <label for="passwd">Password</label>
+                  <input type="text" class="form-control" name="passwd" id="passwd"  placeholder="Introduce Password" required>
+                </div>
+              <div class="form-group">
+                  <label for="ip_server">Ip Server</label>
+                  <input type="text" class="form-control" name="ip_server" id="ip_server"  placeholder="Introduce Ip Server" required>
+                </div>
+              <div class="form-group">
+                  <label for="port">Puerto</label>
+                  <input type="text" class="form-control" name="port" id="port"  placeholder="Introduce Puerto" required>
+                </div>
+              <div class="form-group">
+                  <label for="text">Texto</label>
+                  <input type="text" class="form-control" name="text" id="text"  placeholder="Introduce Texto" required>
                 </div>
               </div>
               <!-- /.card-body -->

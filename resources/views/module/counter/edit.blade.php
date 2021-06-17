@@ -73,7 +73,47 @@
                 </div>
                 <div class="form-group">
                   <label for="cont_mon">Contador Monedero</label>
-                  <input type="text" class="form-control" name="cont_mon" id="cont_mon"  placeholder="Introduce contador monedero" required value="{{ $counter->cont_mon }}" />
+                  <input type="text" class="form-control" name="cont_mon" id="cont_mon"  placeholder="Introduce Contador Monedero" required value="{{ $counter->cont_mon }}" />
+                </div>
+                <div class="form-group">
+                  <label for="cont_mon_2">Contador Monedero 2</label>
+                  <input type="text" class="form-control" name="cont_mon_2" id="cont_mon_2"  placeholder="Introduce Contador Monedero 2" required value="{{ $counter->cont_mon_2 }}" />
+                </div>
+                <div class="form-group">
+                  <label for="cont_corte">Contador Corte</label>
+                  <input type="text" class="form-control" name="cont_corte" id="cont_corte"  placeholder="Introduce Contador Corte" required value="{{ $counter->cont_corte }}" />
+                </div>
+                <div class="form-group">
+                  <label for="cont_prem">Contador Premios</label>
+                  <input type="text" class="form-control" name="cont_prem" id="cont_prem"  placeholder="Introduce Contador Premios" required value="{{ $counter->cont_prem }}" />
+                </div>
+                 <div class="form-group">
+                  <label for="cost_mon">Costo Moneda</label>
+                  <input type="text" class="form-control" name="cost_mon" id="cost_mon"  placeholder="Introduce Costo Moneda" required value="{{ $counter->cost_mon }}" />
+                </div>
+                <div class="form-group">
+                  <label for="ssid">Ssid</label>
+                  <input type="text" class="form-control" name="ssid" id="ssid"  placeholder="Introduce Ssid" required value="{{ $counter->ssid }}" />
+                </div>
+                <div class="form-group">
+                  <label for="passwd">Password</label>
+                  <input type="text" class="form-control" name="passwd" id="passwd"  placeholder="Introduce Password" required value="{{ $counter->passwd }}" />
+                </div>
+                 <div class="form-group">
+                  <label for="ip_server">Ip Server</label>
+                  <input type="text" class="form-control" name="ip_server" id="ip_server"  placeholder="Introduce Ip Server" required value="{{ $counter->ip_server }}" />
+                </div>
+                <div class="form-group">
+                  <label for="port">Puerto</label>
+                  <input type="text" class="form-control" name="port" id="port"  placeholder="Introduce Puerto" required value="{{ $counter->port }}" />
+                </div>
+                <div class="form-group">
+                  <label for="token">Token</label>
+                  <input type="text" class="form-control" name="token" id="token"  placeholder="Introduce Token" required value="{{ $counter->token }}" />
+                </div>
+                <div class="form-group">
+                  <label for="text">Texto</label>
+                  <input type="text" class="form-control" name="text" id="text"  placeholder="Introduce Texto" required value="{{ $counter->text }}" />
                 </div>
               </div>
               <!-- /.card-body -->

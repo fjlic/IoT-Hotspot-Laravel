@@ -18,7 +18,7 @@ class AddHistorialQrTableSeeder extends Seeder
     public function run()
     {
         //
-        $crds = Crd::all();
+       /* $crds = Crd::all();
         $erbs = Erb::all();
         $qrs = Qr::all();
         foreach ($crds as $key => $crd) {
@@ -35,7 +35,7 @@ class AddHistorialQrTableSeeder extends Seeder
                     $qr->save();
                 }
             }
-        }
+        }*/
 
         /*foreach ($erbs as $key => $erb) {
             foreach ($qrs as $key => $qr) {
