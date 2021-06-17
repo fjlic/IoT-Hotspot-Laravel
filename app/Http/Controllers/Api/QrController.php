@@ -258,9 +258,31 @@ class QrController extends BaseController
             ];
             return response()->json($response, 404);
         }
-        if($qr->coins >= "1") {
+        if($qr->coins >= "0") {
+            $qr->gone_down = 0;
+            $qr->save();
+            $historial_qr = new HistorialQr();
+            $historial_qr->qr_id = $qr->id;
+            $historial_qr->coins = $qr->coins;
+            $historial_qr->qr_serie = $qr->qr_serie;
+            $historial_qr->uploaded = $qr->gone_down;
+            $historial_qr->save();
+            $data = $qr->toArray();
+            $response = [
+                'success' => false,
+                'data' => $data,
+                'message' => 'qr coin empty'
+            ];
+        }
+        else if($qr->coins >= "1") {
             $qr->coins -= 1;
             $qr->save();
+            $historial_qr = new HistorialQr();
+            $historial_qr->qr_id = $qr->id;
+            $historial_qr->coins = $qr->coins;
+            $historial_qr->qr_serie = $qr->qr_serie;
+            $historial_qr->uploaded = $qr->gone_down;
+            $historial_qr->save();
             $data = $qr->toArray();
             $response = [
                 'success' => true,
@@ -269,8 +291,12 @@ class QrController extends BaseController
             ];
         }
         else {
-            $qr->coins = 0;
-            $qr->save();
+            $historial_qr = new HistorialQr();
+            $historial_qr->qr_id = $qr->id;
+            $historial_qr->coins = $qr->coins;
+            $historial_qr->qr_serie = $qr->qr_serie;
+            $historial_qr->uploaded = $qr->gone_down;
+            $historial_qr->save();
             $data = $qr->toArray();
             $response = [
                 'success' => false,

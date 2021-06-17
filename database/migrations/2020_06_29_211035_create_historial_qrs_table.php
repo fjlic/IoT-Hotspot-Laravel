@@ -16,8 +16,6 @@ class CreateHistorialQrsTable extends Migration
         Schema::create('historial_qrs', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('qr_id')->nullable();
-            $table->string('name_machine');
-            $table->string('nick_name');
             $table->string('qr_serie');
             $table->string('coins');
             $table->string('uploaded')->default('0');
