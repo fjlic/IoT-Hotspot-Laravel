@@ -237,7 +237,7 @@ class QrController extends BaseController
         // 'id', 'user_id', 'num_serie', 'nick_name', 'password', 'api_token',
         $input = $request->all();
         $validator = Validator::make($input, [
-            'raspberry_id'=>'required|string|max:100',
+            'crd_id'=>'required|string|max:100',
             'qr_serie'=>'required|string|max:100',
             'key_status'=>'required|string|max:100',
             'gone_down'=>'required|string|max:100'
@@ -260,7 +260,7 @@ class QrController extends BaseController
             ];
             return response()->json($response, 404);
         }
-        $qr->raspberry_id = $input['raspberry_id'];
+        $qr->crd_id = $input['crd_id'];
         $qr->qr_serie = $input['qr_serie'];
         $qr->key_status = $input['key_status'];
         $qr->gone_down = $input['gone_down'];
