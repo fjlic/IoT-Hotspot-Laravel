@@ -49,19 +49,19 @@
                 </div>
                 <div class="form-group">
                   <label for="temp_1">Temperatura 1</label>
-                  <input type="number" min="1" max="100" step="0.1" class="form-control" name="temp_1" id="temp_1"  placeholder="0.00" required value="{{ $sensor->temp_1 }}"/>
+                  <input type="number" class="form-control" name="temp_1" id="temp_1"  placeholder="0.00" required value="{{ $sensor->temp_1 }}"/>
                 </div>
                 <div class="form-group">
                   <label for="temp_2">Temperatura 2</label>
-                  <input type="number" min="1" max="100" step="0.1" class="form-control" name="temp_2" id="temp_2"  placeholder="0.00" required value="{{ $sensor->temp_2 }}"/>
+                  <input type="number" class="form-control" name="temp_2" id="temp_2"  placeholder="0.00" required value="{{ $sensor->temp_2 }}"/>
                 </div>
                 <div class="form-group">
                   <label for="temp_3">Temperatura 3</label>
-                  <input type="number" min="1" max="100" step="0.1" class="form-control" name="temp_3" id="temp_3"  placeholder="0.00" required value="{{ $sensor->temp_3 }}"/>
+                  <input type="number" class="form-control" name="temp_3" id="temp_3"  placeholder="0.00" required value="{{ $sensor->temp_3 }}"/>
                 </div>
                 <div class="form-group">
                   <label for="temp_4">Temperatura 1</label>
-                  <input type="number" min="1" max="100" step="0.1" class="form-control" name="temp_4" id="temp_4"  placeholder="0.00" required value="{{ $sensor->temp_4 }}"/>
+                  <input type="number" class="form-control" name="temp_4" id="temp_4"  placeholder="0.00" required value="{{ $sensor->temp_4 }}"/>
                 </div>
                 <div class="form-group">
                   <label for="vol_1">Voltaje 1</label>
