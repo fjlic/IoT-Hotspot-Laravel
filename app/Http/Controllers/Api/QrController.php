@@ -79,7 +79,6 @@ class QrController extends BaseController
         // 'qr_serie', 'key_status', 'gone_down',
        $validator = Validator::make($request->all(), [
         'qr_serie'=>'required|string|max:100',
-        'key_status'=>'required|string|max:100',
         'gone_down'=>'required|string|max:100',
     ]);
 
@@ -98,7 +97,6 @@ class QrController extends BaseController
     $qr->esp32_id = null;
     $qr->raspberry_id = null;
     $qr->qr_serie = $request->get('qr_serie');
-    $qr->key_status = $request->get('key_status');
     $qr->gone_down = $request->get('gone_down');
     $qr->save();
     $data = $qr->toArray();
@@ -196,7 +194,6 @@ class QrController extends BaseController
             'esp32_id'=>'required|string|max:100',
             'raspberry_id'=>'required|string|max:100',
             'qr_serie'=>'required|string|max:100',
-            'key_status'=>'required|string|max:100',
             'gone_down'=>'required|string|max:100'
         ]);
 
@@ -212,7 +209,6 @@ class QrController extends BaseController
         $qr->esp32_id = $input['esp32_id'];
         $qr->raspberry_id = $input['raspberry_id'];
         $qr->qr_serie = $input['qr_serie'];
-        $qr->key_status = $input['key_status'];
         $qr->gone_down = $input['gone_down'];
         $qr->save();
         $data = $qr->toArray();
@@ -321,9 +317,8 @@ class QrController extends BaseController
         // 'id', 'user_id', 'num_serie', 'nick_name', 'password', 'api_token',
         $input = $request->all();
         $validator = Validator::make($input, [
-            'qr_serie'=>'required|string|max:100',
-            'key_status'=>'required|string|max:100',
-            'gone_down'=>'required|string|max:100'
+            'crd_id'=>'required|string|max:100',
+            'qr_serie'=>'required|string|max:100'
         ]);
 
         if ($validator->fails()) {
@@ -347,8 +342,7 @@ class QrController extends BaseController
 
         $historial_qr->qr_id = $qr->id;
         $historial_qr->qr_serie = $input['qr_serie'];
-        $historial_qr->key_status = $input['key_status'];
-        $historial_qr->gone_down = $input['gone_down'];
+        $historial_qr->gone_down = $qr->gone_down;
         $historial_qr->save();
         //$qr->esp32_id = $input['esp32_id'];
         //$qr->raspberry_id = $input['raspberry_id'];

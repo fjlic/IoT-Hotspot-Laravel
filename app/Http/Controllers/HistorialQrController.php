@@ -53,16 +53,12 @@ class HistorialQrController extends Controller
         //
         $request->validate([ 
             'qr_id'=>'required|string|max:100',
-            'name_machine'=>'required|string|max:100',
-            'nick_name'=>'required|string|max:100',
             'qr_serie'=>'required|string|max:100',
             'coins'=>'required|string|max:100',
             'uploaded'=>'required|string|max:100',
         ]);
         $historialqr = new HistorialQr([
             'qr_id' => $request->get('qr_id'),
-            'name_machine' => $request->get('name_machine'),
-            'nick_name' => $request->get('nick_name'),
             'qr_serie' => $request->get('qr_serie'),
             'coins' => $request->get('coins'),
             'uploaded' => $request->get('uploaded')
@@ -109,8 +105,6 @@ class HistorialQrController extends Controller
         //
         $request->validate([
             'qr_id'=>'required|string|max:100',
-            'name_machine'=>'required|string|max:1000',
-            'nick_name'=>'required|string|max:1000',
             'qr_serie'=>'required|string|max:1000',
             'coins'=>'required|string|max:100',
             'uploaded'=>'required|string|max:100'

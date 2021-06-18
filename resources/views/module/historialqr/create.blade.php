@@ -56,7 +56,7 @@
                   <input type="text" class="form-control" name="coins" id="coins"  placeholder="Introduce coins" required>
                 </div>
                 <div class="form-group">
-                  <label for="uploaded">Actualido</label>
+                  <label for="uploaded">Actualizado</label>
                   <input type="text" class="form-control" name="uploaded" id="uploaded"  placeholder="Introduce 0-sin actualizar 1-actualizado" required>
                 </div>
               </div>
