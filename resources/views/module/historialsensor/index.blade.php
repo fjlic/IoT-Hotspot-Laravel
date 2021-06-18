@@ -140,14 +140,39 @@
                    {{--  <td>{{ $historialsensor->created_at }}</td>  --}}
                     <td>{{ $historialsensor->updated_at }}</td>  
                     <td>
-                      {{-- <form role="form" action="{{ route('historialsensor.destroy',$historialsensor->id) }}" method="POST">  --}}
+                      <form role="form" action="{{ route('historialsensor.destroy',$historialsensor->id) }}" method="POST">
                       <a class="btn btn-primary btn-xs" href="{{ route('historialsensor.chart',$historialsensor->id) }}" role="button"><span class="fa fa-chart-pie"></span></a>   
                       <a class="btn btn-info btn-xs" href="{{ route('historialsensor.show',$historialsensor->id) }}" role="button"><span class="fa fa-eye"></span></a> 
-                      {{-- <a class="btn btn-warning btn-xs"  href="{{ route('historialsensor.edit',$historialsensor->id) }}" role="button"><span class="fa fa-pen"></span></a>
+                      <a class="btn btn-warning btn-xs"  href="{{ route('historialsensor.edit',$historialsensor->id) }}" role="button"><span class="fa fa-pen"></span></a>
                       @csrf
                       @method('DELETE')
-                      <button class="btn btn-danger btn-xs" type="submit"><span class="fa fa-trash"></span></button>
-                      </form> --}}
+                      <a href="" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#exampleModalCenter{{$historialsensor->id}}"><span class="fas fa-trash"></span></a>
+                      <!------ ESTE ES EL MODAL QUE SE MUESTRA AL DAR CLICK EN EL BOTON "ELIMINAR" ------>
+                      <div class="modal fade" id="exampleModalCenter{{$historialsensor->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                      <div class="modal-header d-flex justify-content-center">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Ten cuidado con esta acción</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                          <div class="modal-body" style="text-align: center">
+                            <a><img src="{{ asset('storage/Images/Warning.JPG') }}" alt="" title=""  text-align="center" /></a>
+                           </div>
+                           <br>
+                          <p class="text-center">Eliminarás ( <b>{{$historialsensor->num_serie}}</b> ) seguro?</p>
+                      </div>
+                      <div class="modal-footer d-flex justify-content-center">
+                            <button type="button" class="btn btn-info" data-dismiss="modal">Cancelar</button>
+                            <input type="submit" class="btn btn-danger" value="Eliminar">
+                      </div>
+                      </div>
+                      </div>
+                      </div>
+                    <!--fin modal--> 
+                      </form>
                     </td>
                 </tr>
                 @endforeach

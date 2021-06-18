@@ -40,8 +40,6 @@
                 <tr>
                   <th>Id</th>
                   <th>Qr Id</th>
-                  <th>Maquina</th>
-                  <th>Alias</th>
                   <th>QrSerie</th>
                   <th>Coins</th>
                   <th>Actualizado</th>
@@ -54,9 +52,7 @@
                 @foreach($historialqrs as $historialqr)
                 <tr>
                     <td>{{ $historialqr->id }}</td>
-                    <td>{{ $historialqr->qr_id }}</td>
-                    <td>{{ $historialqr->name_machine }}</td>
-                    <td>{{ $historialqr->nick_name }}</td>      
+                    <td>{{ $historialqr->qr_id }}</td> 
                     <td>{{ $historialqr->qr_serie }}</td>
                     <td>{{ $historialqr->coins }}</td>
                     <td>{{ $historialqr->uploaded }}</td>
@@ -68,7 +64,32 @@
                       <a class="btn btn-warning btn-xs"  href="{{ route('historialqr.edit',$historialqr->id) }}" role="button"><span class="fas fa-pen"></span></a>
                       @csrf
                       @method('DELETE')
-                      <button class="btn btn-danger btn-xs" type="submit"><span class="fas fa-trash"></span></button>
+                      <a href="" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#exampleModalCenter{{$historialqr->id}}"><span class="fas fa-trash"></span></a>
+                      <!------ ESTE ES EL MODAL QUE SE MUESTRA AL DAR CLICK EN EL BOTON "ELIMINAR" ------>
+                      <div class="modal fade" id="exampleModalCenter{{$historialqr->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                      <div class="modal-header d-flex justify-content-center">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Ten cuidado con esta acción</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                          <div class="modal-body" style="text-align: center">
+                            <a><img src="{{ asset('storage/Images/Warning.JPG') }}" alt="" title=""  text-align="center" /></a>
+                           </div>
+                           <br>
+                          <p class="text-center">Eliminarás ( <b>{{$historialqr->qr_serie}}</b> ) seguro?</p>
+                      </div>
+                      <div class="modal-footer d-flex justify-content-center">
+                            <button type="button" class="btn btn-info" data-dismiss="modal">Cancelar</button>
+                            <input type="submit" class="btn btn-danger" value="Eliminar">
+                      </div>
+                      </div>
+                      </div>
+                      </div>
+                    <!--fin modal--> 
                       </form>
                     </td>
                 </tr>
