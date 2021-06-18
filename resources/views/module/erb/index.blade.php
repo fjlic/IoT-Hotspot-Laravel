@@ -43,9 +43,9 @@
                   <th>Serie</th>
                   <th>Nombre</th>
                   <th>Alias</th>
-                 {{-- <th>Password</th> --}}
+                 {{--  <th>Password</th>  --}}
                   <th>ApiToken</th>
-                  {{-- <th>FechaCreacion</th> --}}
+                  {{--  <th>FechaCreacion</th>  --}}
                   <th>FechaMod</th>
                   <th>Acciones</th>
                 </tr>
@@ -58,9 +58,9 @@
                     <td>{{ $erb->num_serie }}</td>
                     <td>{{ $erb->name_machine }}</td>      
                     <td>{{ $erb->nick_name }}</td>
-                    {{-- <td>{{ $erb->password }}</td> --}}
+                    {{-- <td>{{ $erb->password }}</td>  --}}
                     <td>{{ $erb->api_token }}</td>
-                    {{-- <td>{{ $erb->created_at }}</td> --}}
+                    {{-- <td>{{ $erb->created_at }}</td>  --}}
                     <td>{{ $erb->updated_at }}</td>
                     <td>
                       <form role="form" action="{{ route('erb.destroy',$erb->id) }}" method="POST">
@@ -101,7 +101,7 @@
 @stop
 
 @section('footer') 
-<div class="pull-right hidden-xs"><b>Version</b> 2.0.1<strong>  Copyright &copy; 2021 <a href="http://hotspot.fjlic.com/home" target="_blank">Hotspot</a>.</strong>  Todo los derechos Reservados.</div> 
+<div class="pull-right hidden-xs"><b>Version</b> 2.0.0<strong>  Copyright &copy; 2020 <a href="http://hotspot.local/home" target="_blank">Hotspot</a>.</strong>  Todo los derechos Reservados.</div> 
 @stop
 
 @section('css')
