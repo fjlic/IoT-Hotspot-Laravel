@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\File;
 use Illuminate\Http\Request;
-use PhpParser\Node\Stmt\Foreach_;
+use Illuminate\Support\Facades\Storage;
+//use PhpParser\Node\Stmt\Foreach_;
 
 class FileController extends Controller
 {
@@ -162,4 +163,33 @@ class FileController extends Controller
         toastr()->error('File eliminado');
         return redirect()->route('file.index');
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\File  $file
+     * @return \Illuminate\Http\Response
+     */
+    public function download(Request $request,$id)
+    {
+        $file = File::where('id',$id)->first();
+        if (is_null($file)) {
+            return response()->json(['message' => 'Archivo no encontrado'], 404);
+        }
+        $fileName = $file->name_file;
+        $filePath = $file->route;
+        if (Storage::exists('public/files/'.$file->name_file)) {
+            $pathToFile = public_path("storage/public/files/").$file->name_file;
+            $headers = [
+                'Content-Type' => 'application/octet-stream',
+            ];
+            // return Storage::download($pathToFile, $fileName, $headers);
+            return response()->download($pathToFile, $fileName, $headers);
+            // return response()->json(['message' => $filePath], 200);
+        }
+        /*else{
+            return response()->json(['message' => 'Archivo no encontrado'], 404);
+        }*/
+    }
+    
 }

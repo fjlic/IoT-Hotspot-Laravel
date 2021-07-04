@@ -60,6 +60,7 @@
                     <td>{{ $file->updated_at }}</td>
                     <td>
                       <form role="form" action="{{ route('file.destroy',$file->id) }}" method="POST">
+                      <a class="btn btn-primary btn-xs" href="{{route('file.download',$file->id)}}" role="button" data-report_id="{{$file->id}}"><span class="fas fa-download"></span></a>
                       <a class="btn btn-info btn-xs" href="{{ route('file.show',$file->id) }}" role="button"><span class="fas fa-eye"></span></a> 
                       <a class="btn btn-warning btn-xs"  href="{{ route('file.edit',$file->id) }}" role="button"><span class="fas fa-pen"></span></a>
                       @csrf

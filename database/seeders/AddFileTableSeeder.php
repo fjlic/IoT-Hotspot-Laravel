@@ -2,9 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use App\File;
-
+use Illuminate\Database\Seeder;
 
 class AddFileTableSeeder extends Seeder
 {
@@ -17,11 +16,39 @@ class AddFileTableSeeder extends Seeder
     public function run()
     {
         //
-        //$file = new File();
-        //$file->id = 1;
-        //$file->name_file = "test";
-        //$file->counter_lines = 125;
-        //$file->counter_lines = 'storage/public';
-        //$file->save();
+        $file = new File();
+        $file->id = 1;
+        $file->name_file = "nintendo.mp4";
+        $file->set = 'demo';
+        $file->route = public_path("storage/public/files/nintendo.mp4");
+        $file->save();
+
+        $file = new File();
+        $file->id = 2;
+        $file->name_file = "play.mp4";
+        $file->set = 'demo';
+        $file->route = public_path("storage/public/files/play.mp4");
+        $file->save(); 
+
+        $file = new File();
+        $file->id = 3;
+        $file->name_file = "xbox.mp4";
+        $file->set = 'demo';
+        $file->route = public_path("storage/public/files/xbox.mp4");
+        $file->save();
+
+        $file = new File();
+        $file->id = 4;
+        $file->name_file = "windows.mp4";
+        $file->set = 'demo';
+        $file->route = public_path("storage/public/files/windows.mp4");
+        $file->save();
+
+        $file = new File();
+        $file->id = 5;
+        $file->name_file = "apple.mp4";
+        $file->set = 'demo';
+        $file->route = public_path("storage/public/files/apple.mp4");
+        $file->save();
     }
 }

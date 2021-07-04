@@ -54,26 +54,29 @@
                   <label for="route">Ruta Video</label>
                   <input type="text" class="form-control" value="{{ $file->route }}" readonly="readonly"/>
                 </div>
-                <video controls>
-                  <source src="{{ asset('storage/public/files/'. $file->name_file) }}" type="video/mp4">
-                </video>                
-              </div>
-              <!-- /.box-body -->
-
-              <div class="box-footer">
+             <!-- /.card-body -->
+             <div class="form-group">
+              <video controls>
+                <source src="{{ asset('storage/public/files/'. $file->name_file) }}" type="video/mp4">
+              </video> 
+             </div> 
+            <div class="card-footer">
+              <div class="btn-group" role="group">
                 <a href="{{ route('file.index') }}" class="btn btn-info pull-right">Regresar</a>
+                <a href="{{route('file.download',$file->id)}}" type="button" class="btn btn-primary download" data-report_id="{{$file->id}}" >Descargar</a>
               </div>
-            </form>
             </div>
-            <!-- /.card-body -->
-          </div>
-          <!-- /.card -->
+          </form>
         </div>
-        <!-- /.col -->
+      <!-- /.card-body -->
       </div>
-      <!-- /.row -->
-    </section>
-    <!-- /.content --> 
+    <!-- /.card -->
+    </div>
+    <!-- /.col -->
+  </div>
+  <!-- /.row -->
+ </section>
+ <!-- /.content --> 
 @stop
 
 @section('footer') 

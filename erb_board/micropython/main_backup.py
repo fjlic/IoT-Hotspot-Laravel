@@ -131,10 +131,12 @@ def Post_Status_Sensor():
        messageData['num_serie'] = num_serie
        messageData['passw'] = passw
        messageData['text'] = "Status Sensor"
+       print("----------Peticion Esp32 - Estatus----------------------------------------------")
+       print(messageData)
        ujsonMessage=ujson.dumps(messageData)
        response = urequests.post(urlTmp,data=ujsonMessage,headers=Accept)
        data = response.json()
-       print("-------------------------------------------------------------------------------")
+       print("----------Respuesta de la Plataforma-------------------------------------------")
        print(data)
        temp_1 = data['data']['temp_1']
        temp_2 = data['data']['temp_2']
@@ -184,10 +186,12 @@ def Post_Modify_Sensor():
        messageData['door_3'] = door_3
        messageData['door_4'] = door_4
        messageData['text'] = "Modify Sensor"
+       print("----------Peticion ESP32 - Modify-----------------------------------------------")
+       print(messageData)
        ujsonMessage=ujson.dumps(messageData)
        response = urequests.post(urlTmp,data=ujsonMessage,headers=Accept)
        data = response.json()
-       print("-------------------------------------------------------------------------------")
+       print("----------Respuesta de la Plataforma-------------------------------------------")
        print(data)
        rlay_1 = data['data']['rlay_1']
        rlay_2 = data['data']['rlay_2']

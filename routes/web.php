@@ -34,6 +34,7 @@ Route::resource('sensor', 'SensorController')->middleware('auth');
 Route::resource('statistical', 'StatisticalController')->middleware('auth');
 Route::resource('probeestimating', 'ProbeEstimatingController')->middleware('auth');
 Route::resource('classname', 'ClassNameController')->middleware('auth');
+Route::get('file/download/{id}', 'FileController@download')->name('file.download')->middleware('auth');
 Route::resource('file', 'FileController')->middleware('auth');
 Route::resource('historialcounter', 'HistorialCounterController')->middleware('auth');
 Route::resource('historialcrd', 'HistorialCrdController')->middleware('auth');
