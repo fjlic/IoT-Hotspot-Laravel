@@ -92,7 +92,7 @@ class FileController extends BaseController
             return response()->json($response, 403);
         }
 
-        $file = File::where('set',$input_req['set'])->get(); 
+        $file = File::where('set',$input_req['set']); 
         //$sensor = DB::table('users')
         //        ->where('votes', '=', 100)
         //        ->where('age', '>', 35)
