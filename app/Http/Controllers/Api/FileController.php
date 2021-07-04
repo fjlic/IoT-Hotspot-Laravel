@@ -37,7 +37,7 @@ class FileController extends BaseController
 
         $file = File::where('id',$input_req['id'])->where('name_file',$input_req['name_file'])->where('set',$input_req['set'])->first(); 
 
-        if (is_null($file)) {
+        if ($file->isEmpty()) {
             $response = [
                 'success' => false,
                 'data' => 'Search error',
@@ -98,7 +98,7 @@ class FileController extends BaseController
         //        ->where('age', '>', 35)
         //        ->get();
         
-        if (empty($file)) {
+        if ($file->isEmpty()) {
             $response = [
                 'success' => false,
                 'data' => 'Search error',
