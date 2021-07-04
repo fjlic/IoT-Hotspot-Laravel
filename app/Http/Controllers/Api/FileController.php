@@ -92,13 +92,13 @@ class FileController extends BaseController
             return response()->json($response, 403);
         }
 
-        $file = File::where('set',$input_req['set']); 
+        $file = File::where('set',$input_req['set'])->get(); 
         //$sensor = DB::table('users')
         //        ->where('votes', '=', 100)
         //        ->where('age', '>', 35)
         //        ->get();
         
-        if (is_null($file)) {
+        if (empty($file)) {
             $response = [
                 'success' => false,
                 'data' => 'Search error',
