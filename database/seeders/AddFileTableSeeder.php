@@ -25,9 +25,9 @@ class AddFileTableSeeder extends Seeder
 
         $file = new File();
         $file->id = 2;
-        $file->name_file = "play.mp4";
+        $file->name_file = "psp.mp4";
         $file->set = 'demo';
-        $file->route = public_path("storage/public/files/play.mp4");
+        $file->route = public_path("storage/public/files/psp.mp4");
         $file->save(); 
 
         $file = new File();
