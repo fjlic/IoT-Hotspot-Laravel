@@ -86,13 +86,13 @@ class FileController extends BaseController
         if ($validator->fails()) {
             $response = [
                 'success' => false,
-                'data' => 'Validation Error',
+                'data' => 'Validation error',
                 'message' => 'Query error'
             ];
             return response()->json($response, 403);
         }
 
-        $file = File::where('set',$input_req['set']); 
+        $file = File::where('set',$input_req['set'])->get(); 
         //$sensor = DB::table('users')
         //        ->where('votes', '=', 100)
         //        ->where('age', '>', 35)
