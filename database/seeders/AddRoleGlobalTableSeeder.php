@@ -51,13 +51,13 @@ class AddRoleGlobalTableSeeder extends Seeder
         $disable->attachRole($role_user);
         $disable->save();
 
-        for ($i = 1; $i <= 9; $i++) {
+        for ($i = 1; $i <= $crds->count(); $i++) {
             $crd = $crds->find($i);
             $crd->attachRole($role_crd);
             $crd->save();
         }
 
-        for ($i = 1; $i <= 9; $i++) {
+        for ($i = 1; $i <= $erbs->count(); $i++) {
             $erb = $erbs->find($i);
             $erb->attachRole($role_erb);
             $erb->save();

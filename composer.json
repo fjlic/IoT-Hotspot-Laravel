@@ -19,6 +19,7 @@
         "laravel/tinker": "^2.5",
         "laravel/ui": "^2.1",
         "muhamadrezaar/highcharts": "dev-master",
+        "php-ai/php-ml": "^0.9.0",
         "santigarcor/laratrust": "^6.1",
         "simplesoftwareio/simple-qrcode": "^3.0",
         "yoeunes/toastr": "^1.2"

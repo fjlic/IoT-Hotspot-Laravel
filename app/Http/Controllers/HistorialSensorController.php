@@ -302,7 +302,7 @@ class HistorialSensorController extends Controller
     public function index()
     {
         //
-        $historialsensors = HistorialSensor::all();
+        $historialsensors = HistorialSensor::latest()->take(1000)->get();
         //return view('module.historialsensor.index')->with('historialsensors',$historialsensors);
         return view('module.historialsensor.index',compact('historialsensors'));
     }

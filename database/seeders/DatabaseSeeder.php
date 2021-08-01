@@ -32,6 +32,7 @@ class DatabaseSeeder extends Seeder
         $this->call(AddHistorialQrTableSeeder::class);
         $this->call(AddHistorialNfcTableSeeder::class);
         $this->call(AddHistorialCounterTableSeeder::class);
+        $this->call(AddHistorialSensorTableSeeder::class);
         
     }
 }

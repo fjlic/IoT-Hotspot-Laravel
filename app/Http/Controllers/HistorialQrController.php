@@ -26,7 +26,7 @@ class HistorialQrController extends Controller
     public function index()
     {
         //
-        $historialqrs = HistorialQr::all();
+        $historialqrs = HistorialQr::latest()->take(1000)->get();
         return view('module.historialqr.index',compact('historialqrs'));
     }
 

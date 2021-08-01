@@ -285,12 +285,12 @@ return [
                     'icon'  => 'fas fa-address-card',
                     'url'  => 'assignment',
                 ],
-                [
+                /*[
                     'text' => 'change_password',
                     'icon_color' => '',
                     'icon'  => 'fas fa-file-signature',
                     'url'  => 'password',
-                ],
+                ],*/
             ],
         ],
         [
@@ -427,7 +427,7 @@ return [
                     ],
                 ],
                 [
-                    'text'    => 'Estadistico',
+                    'text'    => 'Estadisticos',
                     'icon'    => 'fas fa-chart-bar',
                     'submenu' => [
                         [
@@ -436,15 +436,27 @@ return [
                             'icon'  => 'fas fa-fw fa-list',
                             'url'  => 'statistical',
                         ],
-                        [
-                            'text' => 'Historial Estadistico',
+                        /*[
+                            'text' => 'Historial Estadisticos',
                             'icon_color' => '',
                             'icon'  => 'fas fa-route',
                             'url'  => 'historialstatistical',
-                        ],
+                        ],*/
                     ],
                 ],
                 [
+                    'text'    => 'Redes Neuronales',
+                    'icon'    => 'fas fa-draw-polygon',
+                    'submenu' => [
+                        [
+                            'text' => 'Listar',
+                            'icon_color' => '',
+                            'icon'  => 'fas fa-fw fa-list',
+                            'url'  => 'learning',
+                        ],
+                    ],
+                ],
+                /*[
                     'text'    => 'Probe',
                     'icon'    => 'fas fa-file',
                     'submenu' => [
@@ -467,7 +479,7 @@ return [
                             'url'  => 'classname',
                         ],
                     ],
-                ],
+                ],*/
             ],
         ],
         [

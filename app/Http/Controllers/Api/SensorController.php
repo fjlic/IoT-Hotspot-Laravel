@@ -81,7 +81,7 @@ class SensorController extends BaseController
     if($request->get('password') == 'rlay123'){
     $ssid = (Sensor::all()->count() + 1);
     $sensor = new Sensor();
-    $sensor->esp32_id = null;
+    $sensor->erb_id = null;
     $sensor->raspberry_id = null;
     $sensor->num_serie = $request->get('num_serie');
     $sensor->passw = $request->get('passw');
@@ -168,7 +168,7 @@ class SensorController extends BaseController
         //'password', 'dns_server', 'ip_server', 'protocol', 'port', 'text',
         $input = $request->all();
         $validator = Validator::make($input, [
-           'esp32_id'=>'required|string|max:100',
+           'erb_id'=>'required|string|max:100',
            'raspberry_id'=>'required|string|max:100',
            'num_serie'=>'required|string|max:100',
            'passw'=>'required|string|max:100',
@@ -195,7 +195,7 @@ class SensorController extends BaseController
             return response()->json($response, 404);
         }
 
-        $sensor->esp32_id = $input['esp32_id'];
+        $sensor->erb_id = $input['erb_id'];
         $sensor->sensor_id = $input['sensor_id'];
         $sensor->num_serie = $input['num_serie'];
         $sensor->passw = Crypt::encrypt($request->get('passw'));
