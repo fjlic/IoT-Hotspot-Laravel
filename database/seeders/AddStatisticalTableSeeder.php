@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Statistical;
+use App\HistorialSensor;
+use App\Sensor;
 
 class AddStatisticalTableSeeder extends Seeder
 {
@@ -15,66 +17,61 @@ class AddStatisticalTableSeeder extends Seeder
      */
     public function run()
     {
-        //
-        $statistical = new Statistical();
-        $statistical->id = 1;
-        $statistical->estimate_proxy_size = 160;
-        $statistical->development_hours = 15.0;
-        $statistical->save();
-
-        $statistical = new Statistical();
-        $statistical->id = 2;
-        $statistical->estimate_proxy_size = 591;
-        $statistical->development_hours = 69.9;
-        $statistical->save();
-        
-        $statistical = new Statistical();
-        $statistical->id = 3;
-        $statistical->estimate_proxy_size = 114;
-        $statistical->development_hours = 6.5;
-        $statistical->save();
-
-        $statistical = new Statistical();
-        $statistical->id = 4;
-        $statistical->estimate_proxy_size = 229;
-        $statistical->development_hours = 22.4;
-        $statistical->save();
-
-        $statistical = new Statistical();
-        $statistical->id = 5;
-        $statistical->estimate_proxy_size = 230;
-        $statistical->development_hours = 28.4;
-        $statistical->save();
-
-        $statistical = new Statistical();
-        $statistical->id = 6;
-        $statistical->estimate_proxy_size = 270;
-        $statistical->development_hours = 65.9;
-        $statistical->save();
-
-        $statistical = new Statistical();
-        $statistical->id = 7;
-        $statistical->estimate_proxy_size = 128;
-        $statistical->development_hours = 19.4;
-        $statistical->save();
-
-        $statistical = new Statistical();
-        $statistical->id = 8;
-        $statistical->estimate_proxy_size = 1657;
-        $statistical->development_hours = 198.7;
-        $statistical->save();
-
-        $statistical = new Statistical();
-        $statistical->id = 9;
-        $statistical->estimate_proxy_size = 624;
-        $statistical->development_hours = 38.8;
-        $statistical->save();
-
-        $statistical = new Statistical();
-        $statistical->id = 10;
-        $statistical->estimate_proxy_size = 1503;
-        $statistical->development_hours = 138.2;
-        $statistical->save();
-
+        $inc = 1;
+        $process_chunk = 20;
+        $value_sample = 100;
+        $adjust_value = $value_sample+1;
+        $time_schedule = 600;
+        $time_lag = 60000;
+        $sensors = Sensor::all();
+        foreach ($sensors as $key1 => $sensor) {
+            for ($i=1; $i <= $process_chunk; $i++) {//16 
+                $data_his = HistorialSensor::where('sensor_id', $sensor->id)
+                ->where('stat', 0)
+                //->latest()
+                ->take($adjust_value)->get();
+                if ($data_his->count()==$adjust_value) 
+                {
+                    $statistical = new Statistical();
+                    $statistical->id = $inc++;
+                    $temp_start = $data_his->first();
+                    $statistical->sensor_id = $temp_start->sensor_id;
+                    $statistical->start_time = $temp_start->created_at;
+                    $tmp_sample = [[]];
+                    foreach ($data_his as $key2 => $data) 
+                    {
+                        if($key2<$value_sample)
+                        {
+                          $data->stat = 1;
+                          $data->save();
+                          $tmp_sample[$key2]["id_sen_hist"]=$data->id;
+                          $tmp_temp1 = new \Carbon\Carbon($data->created_at);
+                          $tmp_temp2 = new \Carbon\Carbon($data_his[$key2+1]->created_at);
+                          $tmp_pass=$tmp_temp1->diffInSeconds($tmp_temp2);
+                          $tmp_difer=($tmp_pass-$time_schedule);
+                          $tmp_sample[$key2]["sched_time"]=$time_schedule;
+                          $tmp_sample[$key2]["start_time"]=$tmp_temp1->format('Y-m-d H:i:s');
+                          $tmp_sample[$key2]["end_time"]=$tmp_temp2->format('Y-m-d H:i:s');
+                          $tmp_sample[$key2]["pass_time"]=$tmp_pass;
+                          $tmp_sample[$key2]["difer_time"]=$tmp_difer;   
+                        }
+                        
+                    }
+                    $statistical->elements = $value_sample;
+                    $statistical->sample =  json_encode($tmp_sample);
+                    $temp_finish = $data_his->last();
+                    $statistical->finish_time = $temp_finish->created_at;
+                    //convertimos la fecha 1 a objeto Carbon
+                    $carbon1 = new \Carbon\Carbon($temp_start->created_at);
+                    //convertimos la fecha 2 a objeto Carbon
+                    $carbon2 = new \Carbon\Carbon($temp_finish->created_at);
+                    //de esta manera sacamos la diferencia en minutos
+                    $secondsDiff=$carbon1->diffInSeconds($carbon2);
+                    $statistical->total_time = $secondsDiff;
+                    $statistical->difer_time = ($secondsDiff-$time_lag);
+                    $statistical->save();
+                }   
+            }
+        }  
     }
 }

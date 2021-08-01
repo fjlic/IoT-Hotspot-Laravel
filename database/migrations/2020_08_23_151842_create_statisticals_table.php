@@ -16,8 +16,14 @@ class CreateStatisticalsTable extends Migration
     {
         Schema::create('statisticals', function (Blueprint $table) {
             $table->id();
-            $table->string('estimate_proxy_size')->nullable();
-            $table->string('development_hours')->nullable();
+            $table->unsignedBigInteger('sensor_id')->nullable();
+            $table->string('elements')->nullable();
+            $table->string('start_time')->nullable();
+            $table->string('finish_time')->nullable();
+            $table->string('total_time')->nullable();
+            $table->string('difer_time')->nullable();
+            $table->json('sample')->nullable();
+            $table->foreign('sensor_id')->references('id')->on('sensors')->onUpdate('cascade')->onDelete('cascade')->nullable();
             $table->timestamps();
         });
     }

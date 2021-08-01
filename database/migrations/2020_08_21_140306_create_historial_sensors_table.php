@@ -34,6 +34,7 @@ class CreateHistorialSensorsTable extends Migration
             $table->string('rlay_3')->nullable();
             $table->string('rlay_4')->nullable();
             $table->string('text')->nullable();
+            $table->integer('stat')->default('0');
             $table->foreign('sensor_id')->references('id')->on('sensors')->onUpdate('cascade')->onDelete('cascade')->nullable();
             $table->timestamps();
         });
