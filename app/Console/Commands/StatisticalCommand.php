@@ -1,24 +1,47 @@
 <?php
 
-namespace Database\Seeders;
+namespace App\Console\Commands;
 
-use Illuminate\Database\Seeder;
+use Illuminate\Console\Command;
 use App\Statistical;
 use App\HistorialSensor;
 use App\Sensor;
 
-class AddStatisticalTableSeeder extends Seeder
+class StatisticalCommand extends Command
 {
     /**
-     * Run the database seeds.
-     *  Part Name : SED
-     * * Part Size : 5.1
+     * The name and signature of the console command.
+     *
+     * @var string
+     */
+    protected $signature = 'statistical:sensor';
+
+    /**
+     * The console command description.
+     *
+     * @var string
+     */
+    protected $description = 'Command to consolidate the statistics of sensors';
+
+    /**
+     * Create a new command instance.
+     *
      * @return void
      */
-    public function run()
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+    /**
+     * Execute the console command.
+     *
+     * @return int
+     */
+    public function handle()
     {
         $inc = 1;
-        $process_chunk = 20;
+        $process_chunk = 1;
         $value_sample = 100;
         $adjust_value = $value_sample+1;
         $time_schedule = 600;
@@ -79,5 +102,6 @@ class AddStatisticalTableSeeder extends Seeder
                 }   
             }
         }
+    return True;
     }
 }

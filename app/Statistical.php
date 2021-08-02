@@ -14,9 +14,9 @@ class Statistical extends Model
      * @var array
      */
     protected $fillable = [
-        'id', 'estimate_proxy_size', 'development_hours',
+        'id', 'sensor_id', 'elements', 'start_time', 'finish_time', 'total_time', 'difer_time', 'sample',
     ];
-
+    
     /**
      * The attributes that should be hidden for arrays.
      *
