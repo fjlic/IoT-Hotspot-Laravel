@@ -6,6 +6,7 @@ use Illuminate\Console\Command;
 use Phpml\Association\Apriori;
 use Phpml\Classification\SVC;
 use Phpml\Regression\SVR;
+use Phpml\Math\Statistic\Mean;
 use Phpml\Regression\LeastSquares;
 use Phpml\SupportVectorMachine\Kernel;
 use App\Statistical;
@@ -68,15 +69,27 @@ class LearningCommand extends Command
             $tmp_start = new \Carbon\Carbon($statistical->finish_time);
             $num_inc = 0; 
             for ($i=145; $i < 289; $i++) {
-                $tmp_pass=$regression->predict([$i]); 
+                $tmp_pass=$regression->predict([$i]);
+                $tmp_pass = (int) $tmp_pass;
                 $tmp_sample[$num_inc]["id_predict"]=$i;
-                $tmp_sample[$num_inc]["start_time"]=$tmp_start->format('Y-m-d H:i:s');
-                $tmp_finish = $tmp_start->addSeconds((int) $tmp_pass);
-                $tmp_sample[$num_inc]["end_time"]=$tmp_finish->format('Y-m-d H:i:s');
+                $sample_error = [];
+                $error = 0;
+                $error2 = 0;
+                foreach ($targets as $key3 => $target) {
+                    $sample_error[$key3] = abs($target-$tmp_pass);
+                    $error += $sample_error[$key3];
+                    $error2 += (($sample_error[$key3])*($sample_error[$key3]));
+                }
+                $tmp_sample[$num_inc]["start_time"] = $tmp_start->format('Y-m-d H:i:s');
+                $tmp_finish = $tmp_start->addSeconds($tmp_pass);
+                $tmp_sample[$num_inc]["end_time"] = $tmp_finish->format('Y-m-d H:i:s');
                 $tmp_difer=($tmp_pass-$time_schedule);
-                $tmp_sample[$num_inc]["sched_time"]=$time_schedule;
-                $tmp_sample[$num_inc]["pass_time"]= (int) $tmp_pass;
-                $tmp_sample[$num_inc]["difer_time"]=$tmp_difer;
+                $tmp_sample[$num_inc]["sched_time"] = $time_schedule;
+                $tmp_sample[$num_inc]["pass_time"] = $tmp_pass;
+                $tmp_sample[$num_inc]["difer_time"] = $tmp_difer;
+                $tmp_sample[$num_inc]["mean_absolute_error"] = round(($error / 144),4);
+                $tmp_sample[$num_inc]["median_absolute_error"] = round(Mean::median($sample_error),4);
+                $tmp_sample[$num_inc]["mean_squared_error"] = round(($error2 / 144),4);
                 $tmp_start = $tmp_finish;
                 $num_inc++;  
             }
