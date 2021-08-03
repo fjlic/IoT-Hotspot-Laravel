@@ -18,7 +18,7 @@ class AddStatisticalTableSeeder extends Seeder
     public function run()
     {
         $inc = 1;
-        $process_chunk = 1;
+        $process_chunk = 20;
         $value_sample = 144;
         $adjust_value = $value_sample+1;
         $time_schedule = 600;

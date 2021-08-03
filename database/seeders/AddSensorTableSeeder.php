@@ -40,6 +40,7 @@ class AddSensorTableSeeder extends Seeder
         $sensor->text = 'sensor demo';
         $sensor->save();
 
+        /*
         // Sensor Example #2
         $sensor = new Sensor();
         $sensor->id = 2;
@@ -255,6 +256,7 @@ class AddSensorTableSeeder extends Seeder
         $sensor->rlay_4 = 'Off';
         $sensor->text = 'sensor demo';
         $sensor->save();
+        */
 
     }
 }
