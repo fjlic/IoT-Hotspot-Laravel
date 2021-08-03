@@ -40,14 +40,34 @@
             @csrf
             @method('PUT')
               <div class="card-body">
+                <!-- 'id', 'sensor_id', 'elements', 'start_time', 'finish_time', 'total_time', 'difer_time', 'sample' -->
                 <div class="form-group">
-                   <!-- /.card-header 'id', 'estimate_proxy_size', 'development_hours' -->
-                  <label for="estimate_proxy_size">Tamaño Estimado</label>
-                  <input type="text" class="form-control" name="estimate_proxy_size" id="estimate_proxy_size"  placeholder="Introduce statistical serie" required value="{{ $statistical->estimate_proxy_size }}" />
+                  <label for="sensor_id">Sensor Id</label>
+                  <input type="text" class="form-control" name="sensor_id" id="sensor_id"  placeholder="Introduce num sensor id" required value="{{ $statistical->sensor_id }}" />
                 </div>
                 <div class="form-group">
-                  <label for="development_hours">Horas Desarollo</label>
-                  <input type="text" class="form-control" name="development_hours" id="development_hours"  placeholder="Introduce desarollo de horas" required value="{{ $statistical->development_hours }}" />
+                  <label for="elements">Elementos</label>
+                  <input type="text" class="form-control" name="elements" id="elements"  placeholder="Introduce elementos" required value="{{ $statistical->elements }}" />
+                </div>
+                <div class="form-group">
+                  <label for="start_time">Hora Inicial</label>
+                  <input type="text" class="form-control" name="start_time" id="start_time"  placeholder="Introduce hora de inicio" required value="{{ $statistical->start_time }}" />
+                </div>
+                <div class="form-group">
+                  <label for="finish_time">Hora Fianl</label>
+                  <input type="text" class="form-control" name="finish_time" id="finish_time"  placeholder="Introduce hora de fin" required value="{{ $statistical->finish_time }}" />
+                </div>
+                <div class="form-group">
+                  <label for="total_time">Tiempo Total</label>
+                  <input type="text" class="form-control" name="total_time" id="total_time"  placeholder="Introduce hora de fin" required value="{{ $statistical->total_time }}" />
+                </div>
+                <div class="form-group">
+                  <label for="difer_time">Tiempo desface (+/-)</label>
+                  <input type="text" class="form-control" name="difer_time" id="difer_time"  placeholder="Introduce hora de fin" required value="{{ $statistical->difer_time }}" />
+                </div>
+                <div class="form-group">
+                  <label for="sample">Muestra</label>
+                  <textarea class="form-control" name="sample" id="sample" required value="{{ $statistical->sample }}">{{ $statistical->sample }}</textarea>
                 </div>
               </div>
               <!-- /.card-body -->

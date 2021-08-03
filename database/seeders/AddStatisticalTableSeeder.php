@@ -18,11 +18,11 @@ class AddStatisticalTableSeeder extends Seeder
     public function run()
     {
         $inc = 1;
-        $process_chunk = 20;
-        $value_sample = 100;
+        $process_chunk = 1;
+        $value_sample = 144;
         $adjust_value = $value_sample+1;
         $time_schedule = 600;
-        $time_lag = 60000;
+        $time_lag = 86400;
         $sensors = Sensor::all();
         $id_continued = Statistical::all();
         if($id_continued->isNotEmpty())

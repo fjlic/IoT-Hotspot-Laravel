@@ -31,7 +31,7 @@
         <div class="col-12">
           <div class="card card-primary card-outline">
             <div class="card-header">
-              <h3 class="card-title">Tabla Estadistico</h3>
+              <h3 class="card-title">Muestras Estadistico Sensor</h3>
               <a class="btn btn-xs btn-success float-right" href="{{ route('statistical.create') }}" role="button"><span class="fas fa-plus"></span></a>
             </div>
             <!-- /.card-header -->
@@ -40,9 +40,14 @@
               <thead>
                  <!-- /.card-header 'id', 'estimate_proxy_size', 'development_hours' -->
                 <tr>
-                  <th>Id</th>
-                  <th>Tamaño Estimado</th>
-                  <th>Horas Desarollo</th>
+                  {{-- <th>Id</th> --}}
+                  <th>Id Sensor</th>
+                  <th>Elementos</th>
+                  <th>Hora Ini</th>
+                  <th>Hora Term</th>
+                  <th>Total Seg</th>
+                  <th>Diferencia</th>
+                  <th>Muestra</th>
                   {{-- <th>FechaCreacion</th> --}}
                   <th>FechaMod</th>
                   <th>Acciones</th>
@@ -51,9 +56,37 @@
                 <tbody>
                 @foreach($statisticals as $statistical)
                 <tr>
-                    <td>{{ $statistical->id }}</td>
-                    <td>{{ $statistical->estimate_proxy_size }}</td>
-                    <td>{{ $statistical->development_hours }}</td>
+                    {{-- <td>{{ $statistical->id }}</td> --}}
+                    <td>{{ $statistical->sensor_id }}</td>
+                    <td>{{ $statistical->elements }}</td>
+                    <td>{{ $statistical->start_time }}</td>
+                    <td>{{ $statistical->finish_time }}</td>
+                    <td>{{ $statistical->total_time }}</td>
+                    <td>{{ $statistical->difer_time }}</td>
+                    <td><a href="" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#ModalSt{{$statistical->id}}"><span>Datos-Muestra</span></a>
+                    <!------ ESTE ES EL MODAL QUE SE MUESTRA AL DAR CLICK EN EL BOTON "ELIMINAR" ------>
+                    <div class="modal fade" id="ModalSt{{$statistical->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                      <div class="modal-header d-flex justify-content-center">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Datos de la Muestra ({{$statistical->id}})</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                          <div class="modal-body" style="text-align: center">
+                            <a><p class="text-center">{{ $statistical->sample }}</p></a>
+                          </div>
+                      </div>
+                      <div class="modal-footer d-flex justify-content-center">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                      </div>
+                      </div>
+                      </div>
+                      </div>
+                    <!--fin modal-->
+                    </td>
                    {{--  <td>{{ $statistical->created_at }}</td>  --}}
                     <td>{{ $statistical->updated_at }}</td>
                     <td>
@@ -78,7 +111,7 @@
                             <a><img src="{{ asset('storage/Images/Warning.JPG') }}" alt="" title=""  text-align="center" /></a>
                            </div>
                            <br>
-                          <p class="text-center">Eliminarás ( <b>{{$statistical->estimate_proxy_size}}</b> ) seguro?</p>
+                          <p class="text-center">Eliminarás el registro ( <b>{{$statistical->id}}</b> ) seguro?</p>
                       </div>
                       <div class="modal-footer d-flex justify-content-center">
                             <button type="button" class="btn btn-info" data-dismiss="modal">Cancelar</button>
@@ -117,42 +150,56 @@
 
 <!--------------------------------------------------------------------------------------------------------------------------------------------------> 
 
-<!-- Main content -->
-<section class="content">
+<!-- Main content Part Name : VST -->
+ <!-- Part Size : 23.3 -->
+ <section class="content">
   <div class="row">
     <div class="col-12">
-      <div class="card card-success card-outline">
+      <div class="card card-primary card-outline">
         <div class="card-header">
-          <h3 class="card-title">Resultados</h3>
+          <h3 class="card-title">Resultados Estadisticos</h3>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
-          <table id="0" class="table table-striped table-bordered">
+          <table id="statisticalTable2" class="table table-bordered table-striped">
+          <thead>
              <!-- /.card-header 'id', 'estimate_proxy_size', 'development_hours' -->
-            <thead>
-             <tr>
-                <th>Pruebas</th>
-                <th COLSPAN=2>Valor Esperado</th>
-                <th COLSPAN=2>Valor Actual</th>
-              </tr>
+            <tr>
+              <th>Id Muestra</th>
+              <th>Id Sensor</th>
+              <th>Correlacion</th>
+              <th>Media Aritmetica</th>
+              <th>Mediana</th>
+              <th>Moda</th>
+              <th>Desviacion Estandar</th>
+              <th>FechaMod</th>
+            </tr>
             </thead>
             <tbody>
-              <tr>
-                <td></td> 
-                <td>Media</td> <td>Dev. Std</td>
-                <td>Media</td> <td>Dev. Std</td>
-              </tr>
-              <tr>
-                <td>Tabla 1: Columna 1</td> 
-                <td>550.6</td> <td>572.03</td>
-                <td>{{ $med1 }}</td> <td>{{ $dev1 }}</td>
-              </tr>
-              <tr>
-                <td>Tabla 1: Columna 2</td> 
-                <td>60.32</td> <td>62.26</td>
-                <td>{{ $med2 }}</td> <td>{{ $dev2 }}</td>
-              </tr>
+            @foreach($statisticals as $statistical)
+            <tr>
+                <td>{{ $statistical->id }}</td>
+                <td>{{ $statistical->sensor_id }}</td>
+                <td>{{ $statistical->pearsoncorrelation }}</td>
+                <td>{{ $statistical->meanarithmetic }}</td>
+                <td>{{ $statistical->meanmedian }}</td>
+                <td>{{ $statistical->meanmode }}</td>
+                <td>{{ $statistical->standartdesviation }}</td>
+                <td>{{ $statistical->updated_at }}</td>
+            </tr>
+            @endforeach
             </tbody>
+           <!-- <tfoot>
+             <tr>
+              <th>Id Muestra</th>
+              <th>Correlacion</th>
+              <th>Media Aritmetica</th>
+              <th>Mediana</th>
+              <th>Moda</th>
+              <th>Desviacion Estandar</th>
+              <th>FechaMod</th>
+            </tr>
+            </tfoot>-->
           </table>
         </div>
         <!-- /.card-body -->
@@ -165,7 +212,6 @@
 </section>
 <!-- /.content --> 
 
-    
 @stop
 
 @section('footer') 
@@ -182,6 +228,22 @@
 <script>
   $(function () {
      $('#statisticalTable').DataTable({  
+      'paging'      : true,
+      'lengthChange': true,
+      'searching'   : true,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : false,
+      'scrollX'     : true,
+      'scrollY'     : false,
+      'scrollCollapse': false,
+      'language': {'url': '//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json'}   
+    })
+  });
+</script>
+<script>
+  $(function () {
+     $('#statisticalTable2').DataTable({  
       'paging'      : true,
       'lengthChange': true,
       'searching'   : true,

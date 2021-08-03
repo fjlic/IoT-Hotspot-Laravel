@@ -23,6 +23,7 @@ class CreateStatisticalsTable extends Migration
             $table->string('total_time')->nullable();
             $table->string('difer_time')->nullable();
             $table->json('sample')->nullable();
+            $table->integer('stat')->default('0');
             $table->foreign('sensor_id')->references('id')->on('sensors')->onUpdate('cascade')->onDelete('cascade')->nullable();
             $table->timestamps();
         });

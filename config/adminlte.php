@@ -445,7 +445,7 @@ return [
                     ],
                 ],
                 [
-                    'text'    => 'Redes Neuronales',
+                    'text'    => 'Regresión Lineal',
                     'icon'    => 'fas fa-draw-polygon',
                     'submenu' => [
                         [

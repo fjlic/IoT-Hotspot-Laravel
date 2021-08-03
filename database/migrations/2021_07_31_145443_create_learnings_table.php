@@ -15,6 +15,14 @@ class CreateLearningsTable extends Migration
     {
         Schema::create('learnings', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('statistical_id')->nullable();
+            $table->string('elements')->nullable();
+            $table->string('start_time')->nullable();
+            $table->string('finish_time')->nullable();
+            $table->string('total_time')->nullable();
+            $table->string('difer_time')->nullable();
+            $table->json('sample')->nullable();
+            $table->foreign('statistical_id')->references('id')->on('statisticals')->onUpdate('cascade')->onDelete('cascade')->nullable();
             $table->timestamps();
         });
     }

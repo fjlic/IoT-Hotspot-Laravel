@@ -33,19 +33,39 @@
             <div class="card-header">
               <h3 class="card-title">Crear Estadistico</h3>
             </div>
-            <!-- /.card-header 'id', 'estimate_proxy_size', 'development_hours' -->
+            <!-- 'id', 'sensor_id', 'elements', 'start_time', 'finish_time', 'total_time', 'difer_time', 'sample' -->
             <div class="card-body">
             <!-- form start -->
             <form role="form" action="{{ route('statistical.store')}}" method="POST">
               @csrf
               <div class="card-body">
                 <div class="form-group">
-                  <label for="estimate_proxy_size">Tamaño Estimado</label>
-                  <input type="text" class="form-control" name="estimate_proxy_size" id="estimate_proxy_size"  placeholder="Introduce statistical serie" required>
+                  <label for="sensor_id">Sensor Id</label>
+                  <input type="text" class="form-control" name="sensor_id" id="sensor_id"  placeholder="Introduce statistical id" required>
                 </div>
                 <div class="form-group">
-                  <label for="development_hours">Horas Desarollo</label>
-                  <input type="text" class="form-control" name="development_hours" id="development_hours"  placeholder="Introduce desarollo de horas" required>
+                  <label for="elements">Elementos</label>
+                  <input type="text" class="form-control" name="elements" id="elements"  placeholder="Introduce elementos" required>
+                </div>
+                <div class="form-group">
+                  <label for="start_time">Hora Inicio</label>
+                  <input type="text" class="form-control" name="start_time" id="start_time"  placeholder="Introduce hora de inicio" required>
+                </div>
+                <div class="form-group">
+                  <label for="finish_time">Hora Fin</label>
+                  <input type="text" class="form-control" name="finish_time" id="finish_time"  placeholder="Introduce hora de fin" required>
+                </div>
+                <div class="form-group">
+                  <label for="total_time">Tiempo Total</label>
+                  <input type="text" class="form-control" name="total_time" id="total_time"  placeholder="Introduce tiempo total" required>
+                </div>
+                <div class="form-group">
+                  <label for="difer_time">Tiempo desface (+/-)</label>
+                  <input type="text" class="form-control" name="difer_time" id="difer_time"  placeholder="Introduce tiempo de desface" required>
+                </div>
+                <div class="form-group">
+                  <label for="sample">Muestra en JSON 144 peticiones</label>
+                  <input type="text" class="form-control" name="sample" id="sample"  placeholder="Introduce las muestras en array de json" required>
                 </div>
               </div>
               <!-- /.card-body -->
