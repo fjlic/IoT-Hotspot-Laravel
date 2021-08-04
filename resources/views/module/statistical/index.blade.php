@@ -40,7 +40,7 @@
               <thead>
                  <!-- /.card-header 'id', 'estimate_proxy_size', 'development_hours' -->
                 <tr>
-                  {{-- <th>Id</th> --}}
+                  <th>Id</th>
                   <th>Id Sensor</th>
                   <th>Elementos</th>
                   <th>Hora Ini</th>
@@ -56,7 +56,7 @@
                 <tbody>
                 @foreach($statisticals as $statistical)
                 <tr>
-                    {{-- <td>{{ $statistical->id }}</td> --}}
+                    <td>{{ $statistical->id }}</td>
                     <td>{{ $statistical->sensor_id }}</td>
                     <td>{{ $statistical->elements }}</td>
                     <td>{{ $statistical->start_time }}</td>
@@ -166,7 +166,7 @@
              <!-- /.card-header 'id', 'estimate_proxy_size', 'development_hours' -->
             <tr>
               <th>Id Muestra</th>
-              <th>Id Sensor</th>
+             {{-- <th>Id Sensor</th>  --}}
               <th>Correlacion</th>
               <th>Media Aritmetica</th>
               <th>Mediana</th>
@@ -179,7 +179,7 @@
             @foreach($statisticals as $statistical)
             <tr>
                 <td>{{ $statistical->id }}</td>
-                <td>{{ $statistical->sensor_id }}</td>
+                {{-- <td>{{ $statistical->sensor_id }}</td>  --}}
                 <td>{{ $statistical->pearsoncorrelation }}</td>
                 <td>{{ $statistical->meanarithmetic }}</td>
                 <td>{{ $statistical->meanmedian }}</td>
@@ -211,7 +211,6 @@
   <!-- /.row -->
 </section>
 <!-- /.content --> 
-
 @stop
 
 @section('footer') 
@@ -225,6 +224,7 @@
 @section('js')
 @toastr_js
 @toastr_render
+
 <script>
   $(function () {
      $('#statisticalTable').DataTable({  
@@ -241,6 +241,7 @@
     })
   });
 </script>
+
 <script>
   $(function () {
      $('#statisticalTable2').DataTable({  
