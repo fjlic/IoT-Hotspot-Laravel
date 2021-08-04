@@ -14,7 +14,8 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         //
-        'App\Console\Commands\StatisticalCommand'
+        'App\Console\Commands\StatisticalCommand',
+        'App\Console\Commands\LearningCommand'
     ];
 
     /**
@@ -27,6 +28,7 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly(); //->everyFourHours(); // ->everyTwoHours();
         $schedule->command('statistical:sensor')->everyTwoHours(); // ->twiceDaily(6, 8);
+        $schedule->command('sample:learning')->everySixHours(); // ->twiceDaily(6, 8);
     }
 
     /**
