@@ -32,6 +32,7 @@ Route::resource('nfc', 'NfcController')->middleware('auth');
 Route::get('sensor/chart/{id}', 'SensorController@chart')->name('sensor.chart')->middleware('auth');
 Route::resource('sensor', 'SensorController')->middleware('auth');
 Route::resource('statistical', 'StatisticalController')->middleware('auth');
+Route::resource('learning', 'LearningController')->middleware('auth');
 Route::resource('probeestimating', 'ProbeEstimatingController')->middleware('auth');
 Route::resource('classname', 'ClassNameController')->middleware('auth');
 Route::get('file/download/{id}', 'FileController@download')->name('file.download')->middleware('auth');

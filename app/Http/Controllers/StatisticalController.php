@@ -46,31 +46,6 @@ class StatisticalController extends Controller
            sort($y);
            $statistical->standartdesviation = StandardDeviation::population($y);
         }
-        //return view('module.statistical.index')->with('statisticals',$statisticals);
-        /*$med1 = 0;
-        $med2 = 0;
-        $dev1 = 0;
-        $dev2 = 0;
-        $tam = 0;
-        foreach ($statisticals as $key => $statistical) {
-            $med1 += $statistical->estimate_proxy_size;
-            $med2 += $statistical->development_hours;
-            $tam++;
-        }
-        $med1 = ($med1 / $tam);
-        $med2 = ($med2 / $tam);
-        
-        foreach ($statisticals as $key => $statistical) {
-            $dev1 += ($statistical->estimate_proxy_size - $med1) * ($statistical->estimate_proxy_size - $med1);
-            $dev2 += ($statistical->development_hours - $med2) * ($statistical->development_hours - $med2);
-        }
-
-        $vari1 = ($dev1/($tam -1));
-        $dev1 = sqrt($vari1);
-
-        $vari2 = ($dev2/($tam -1));
-        $dev2 = sqrt($vari2);*/
-
         return view('module.statistical.index',compact('statisticals'));
     }
 
