@@ -44,14 +44,14 @@
             </div>
             <div class="card-body">
             <div class="row">
-              <div class="col-xs-4 col-md-4 text-center">
+              <div class="col-xs-4 col-md-8 text-center">
                 <div id="sample1"></div>
                   {!! $sample1 !!}
               </div>
-              <div class="col-xs-4 col-md-4 text-center">
+              <div class="col-xs-4 col-md-8 text-center">
                 <div id="sample2"></div>
                   {!! $sample2 !!}
-              </div>   
+              </div> 
             </div>
             </div>
             <!-- /.card-body -->

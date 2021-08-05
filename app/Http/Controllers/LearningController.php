@@ -43,9 +43,8 @@ class LearningController extends Controller
                                       'name' => 'Observations',
                                       'data' => [1, 1.5, 2.8, 3.5, 3.9, 4.2],
                                       'marker' => ['radius' => 4]
-                                    ]])
-                          ->display();
-         
+                                     ]])->display();
+
         $sample2 = \Chart::title(['text' => 'Muestra '.$statistical->id,])
                           ->credits(['enabled' => false])
                           ->yaxis(['min' => 0])
@@ -60,8 +59,7 @@ class LearningController extends Controller
                                       'name' => 'Observations',
                                       'data' => [1, 1.5, 2.8, 3.5, 3.9, 4.2],
                                       'marker' => ['radius' => 4]
-                                    ]])
-                          ->display();
+                                     ]])->display();
     //return view('module.learning.chart', ['vol1' => $vol1,]);
     return view('module.learning.chart')->with('sample1',$sample1)
                                         ->with('sample2',$sample2);
