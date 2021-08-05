@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Learning;
+use App\Statistical;
 use Illuminate\Http\Request;
 
 class LearningController extends Controller
@@ -16,6 +17,54 @@ class LearningController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function chart($id)
+    {
+        //
+        $learning = Learning::find($id);
+        $statistical = Statistical::find($learning->statistical_id);
+        $sample1 = \Chart::title(['text' => 'Muestra '.$learning->id,])
+                          ->credits(['enabled' => false])
+                          ->yaxis(['min' => 0])
+                          ->xaxis(['min' => -0.5,'max' => 5.5])
+                          ->series([['type'  => 'line',
+                                     'name'  => 'Regression Line',
+                                     'data'  => [[0, 1.11],[5, 4.51]],
+                                     'marker' => ['enabled' => 'false'],
+                                     'states' => ['hover' => ['lineWith' => 0]],
+                                     'enableMouseTracking' => 'false'],
+                                     ['type' => 'scatter',
+                                      'name' => 'Observations',
+                                      'data' => [1, 1.5, 2.8, 3.5, 3.9, 4.2],
+                                      'marker' => ['radius' => 4]
+                                    ]])
+                          ->display();
+         
+        $sample2 = \Chart::title(['text' => 'Muestra '.$statistical->id,])
+                          ->credits(['enabled' => false])
+                          ->yaxis(['min' => 0])
+                          ->xaxis(['min' => -0.5,'max' => 5.5])
+                          ->series([['type'  => 'line',
+                                     'name'  => 'Regression Line',
+                                     'data'  => [[0, 1.11],[1, 4.51]],
+                                     'marker' => ['enabled' => 'false'],
+                                     'states' => ['hover' => ['lineWith' => 0]],
+                                     'enableMouseTracking' => 'false'],
+                                     ['type' => 'scatter',
+                                      'name' => 'Observations',
+                                      'data' => [1, 1.5, 2.8, 3.5, 3.9, 4.2],
+                                      'marker' => ['radius' => 4]
+                                    ]])
+                          ->display();
+    //return view('module.learning.chart', ['vol1' => $vol1,]);
+    return view('module.learning.chart')->with('sample1',$sample1)
+                                        ->with('sample2',$sample2);
     }
 
     /**

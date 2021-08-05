@@ -91,8 +91,9 @@
                     <td>{{ $learning->updated_at }}</td>
                     <td>
                       <form role="form" action="{{ route('learning.destroy',$learning->id) }}" method="POST">
-                      <a class="btn btn-info btn-xs" href="{{ route('learning.show',$learning->id) }}" role="button"><span class="fas fa-eye"></span></a> 
-                      <a class="btn btn-warning btn-xs"  href="{{ route('learning.edit',$learning->id) }}" role="button"><span class="fas fa-pen"></span></a>
+                      <a class="btn btn-primary btn-xs" href="{{ route('learning.chart',$learning->id) }}" role="button"><span class="fa fa-chart-pie"></span></a>
+                      <a class="btn btn-info btn-xs" href="{{ route('learning.show',$learning->id) }}" role="button"><span class="fa fa-eye"></span></a> 
+                      <a class="btn btn-warning btn-xs"  href="{{ route('learning.edit',$learning->id) }}" role="button"><span class="fa fa-pen"></span></a>
                       @csrf
                       @method('DELETE')
                       <a href="" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#exampleModalCenter{{$learning->id}}"><span class="fas fa-trash"></span></a>
