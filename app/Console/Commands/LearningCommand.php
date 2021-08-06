@@ -64,11 +64,11 @@ class LearningCommand extends Command
              $samples[$key2] = [$key2];
              $targets[$key2] = $json->pass_time;
             }
-            $regression = new LeastSquares();
-            $regression->train($samples, $targets);
             $tmp_start = new \Carbon\Carbon($statistical->finish_time);
             $num_inc = 0; 
             for ($i=145; $i < 289; $i++) {
+                $regression = new LeastSquares();
+                $regression->train($samples, $targets);
                 $tmp_pass=$regression->predict([$i]);
                 $tmp_pass = (int) $tmp_pass;
                 $tmp_sample[$num_inc]["id"]=$i-144;
