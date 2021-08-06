@@ -48,7 +48,7 @@ class AddLearningTableSeeder extends Seeder
             for ($i=145; $i < 289; $i++) {
                 $tmp_pass=$regression->predict([$i]);
                 $tmp_pass = (int) $tmp_pass;
-                $tmp_sample[$num_inc]["id_predict"]=$i;
+                $tmp_sample[$num_inc]["id_predict"]=$i-144;
                 $sample_error = [];
                 $error = 0;
                 $error2 = 0;

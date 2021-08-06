@@ -45,12 +45,12 @@
             <div class="card-body">
             <div class="row">
               <div class="col-xs-4 col-md-8 text-center">
-                <div id="sample1"></div>
-                  {!! $sample1 !!}
+                <div id="sample_1"></div>
+                  {!! $sample_1 !!}
               </div>
               <div class="col-xs-4 col-md-8 text-center">
-                <div id="sample2"></div>
-                  {!! $sample2 !!}
+                <div id="sample_2"></div>
+                  {!! $sample_2 !!}
               </div> 
             </div>
             </div>

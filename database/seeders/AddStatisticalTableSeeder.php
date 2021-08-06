@@ -48,9 +48,11 @@ class AddStatisticalTableSeeder extends Seeder
                     {
                         if($key2<$value_sample)
                         {
+                          $id_key2 = $key2;
+                          $id_key2++;
                           $data->stat = 1;
                           $data->save();
-                          $tmp_sample[$key2]["id_sen_hist"]=$data->id;
+                          $tmp_sample[$key2]["id"]=$id_key2;
                           $tmp_temp1 = new \Carbon\Carbon($data->created_at);
                           $tmp_temp2 = new \Carbon\Carbon($data_his[$key2+1]->created_at);
                           $tmp_pass=$tmp_temp1->diffInSeconds($tmp_temp2);
