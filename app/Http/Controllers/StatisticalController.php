@@ -31,8 +31,7 @@ class StatisticalController extends Controller
     public function index()
     {
         //
-        //$statisticals = Statistical::all();
-        $statisticals = Statistical::find(9);
+        $statisticals = Statistical::all();
         foreach ($statisticals as $key1 => $statistical) {
             $x = [];
             $y = []; 
