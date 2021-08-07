@@ -74,7 +74,8 @@ class LearningController extends Controller
     public function index()
     {
         //
-        $learnings = Learning::all();
+        //$learnings = Learning::all();
+        $learnings = Learning::find(9);
         return view('module.learning.index',compact('learnings'));
     }
 
