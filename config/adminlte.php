@@ -445,7 +445,7 @@ return [
                     ],
                 ],
                 [
-                    'text'    => 'Regresión Lineal',
+                    'text'    => 'Predicciones',
                     'icon'    => 'fas fa-draw-polygon',
                     'submenu' => [
                         [
