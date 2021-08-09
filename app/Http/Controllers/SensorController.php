@@ -37,7 +37,7 @@ class SensorController extends Controller
         $back2[0][1]= "#333";
         $back2[1][0]= "1";
         $back2[1][1]= "#FFF"; 
-        $temp1 = \Chart::title(['text' => 'Temperatura 1',])
+        $temp1 = \Chart::title(['text' => 'Temperature 1',])
                         ->chart(['type'     => 'gauge','renderTo' => 'temp1',
                                  'plotBackgroundColor' => null,
                                  'plotBackgroundImage' => null,
@@ -83,7 +83,7 @@ class SensorController extends Controller
                                  'tickColor' => '#666',
                                  'labels' => ['step' => 2,
                                               'rotation' => 'auto',],
-                                 'title' => ['text' => 'Grados/Centigrados',],
+                                 'title' => ['text' => 'Degrees/Centigrade',],
                                  'plotBands' => [['from' => 0,
                                                  'to' => 35,
                                                  'color' => '#55BF3B',],
@@ -99,7 +99,7 @@ class SensorController extends Controller
                                    'tooltip' => ['valueSuffix' => '-Volt/DC'],]])
                         ->display();
 
-        $temp2 = \Chart::title(['text' => 'Temperatura 2',])
+        $temp2 = \Chart::title(['text' => 'Temperature 2',])
                         ->chart(['type'     => 'gauge','renderTo' => 'temp2',
                                  'plotBackgroundColor' => null,
                                  'plotBackgroundImage' => null,
@@ -145,7 +145,7 @@ class SensorController extends Controller
                                  'tickColor' => '#666',
                                  'labels' => ['step' => 2,
                                               'rotation' => 'auto',],
-                                 'title' => ['text' => 'Grados/Centigrados',],
+                                 'title' => ['text' => 'Degrees/Centigrade',],
                                  'plotBands' => [['from' => 0,
                                                  'to' => 35,
                                                  'color' => '#55BF3B',],
@@ -161,7 +161,7 @@ class SensorController extends Controller
                                    'tooltip' => ['valueSuffix' => '-Volt/DC'],]])
                         ->display();
     
-        $temp3 = \Chart::title(['text' => 'Temperatura 3',])
+        $temp3 = \Chart::title(['text' => 'Temperature 3',])
                         ->chart(['type'     => 'gauge','renderTo' => 'temp3',
                                  'plotBackgroundColor' => null,
                                  'plotBackgroundImage' => null,
@@ -207,7 +207,7 @@ class SensorController extends Controller
                                  'tickColor' => '#666',
                                  'labels' => ['step' => 2,
                                               'rotation' => 'auto',],
-                                 'title' => ['text' => 'Grados/Centigrados',],
+                                 'title' => ['text' => 'Degrees/Centigrade',],
                                  'plotBands' => [['from' => 0,
                                                  'to' => 35,
                                                  'color' => '#55BF3B',],
@@ -223,7 +223,7 @@ class SensorController extends Controller
                                    'tooltip' => ['valueSuffix' => '-Volt/DC'],]])
                         ->display();
                         
-        $temp4 = \Chart::title(['text' => 'Temperatura 4',])
+        $temp4 = \Chart::title(['text' => 'Temperature 4',])
                         ->chart(['type'     => 'gauge','renderTo' => 'temp4',
                                  'plotBackgroundColor' => null,
                                  'plotBackgroundImage' => null,
@@ -269,7 +269,7 @@ class SensorController extends Controller
                                  'tickColor' => '#666',
                                  'labels' => ['step' => 2,
                                               'rotation' => 'auto',],
-                                 'title' => ['text' => 'Grados/Centigrados',],
+                                 'title' => ['text' => 'Degrees/Centigrade',],
                                  'plotBands' => [['from' => 0,
                                                  'to' => 35,
                                                  'color' => '#55BF3B',],
