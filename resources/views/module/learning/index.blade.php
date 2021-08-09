@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Hotspot-Aprendizaje')
+@section('title', 'Hotspot-Predict')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop
@@ -41,16 +41,16 @@
                 <!-- 'id', 'statistical_id', 'elements', 'start_time', 'finish_time', 'total_time', 'difer_time', 'sample' -->
                 <tr>
                   <th>Id</th>
-                  <th>Id Estadistico</th>
-                  <th>Elementos</th>
-                  <th>Hora Inicio</th>
-                  <th>Hora Fin</th>
-                  <th>Tiempo Total</th>
-                  <th>Diferencia</th>
-                  <th>Muestra</th>
+                  <th>Id Statistical</th>
+                  <th>Elements</th>
+                  <th>Sta time</th>
+                  <th>Din time</th>
+                  <th>Tot time</th>
+                  <th>Difer</th>
+                  <th>Sample</th>
                   {{-- <th>FechaCreacion</th> --}}
-                  <th>FechaMod</th>
-                  <th>Acciones</th>
+                  <th>DateMod</th>
+                  <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -63,13 +63,13 @@
                     <td>{{ $learning->finish_time }}</td>
                     <td>{{ $learning->total_time }}</td>
                     <td>{{ $learning->difer_time }}</td>
-                    <td><a href="" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#ModalSt{{$learning->id}}"><span>Datos-Muestra</span></a>
+                    <td><a href="" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#ModalSt{{$learning->id}}"><span>Sample-Data</span></a>
                     <!------ ESTE ES EL MODAL QUE SE MUESTRA AL DAR CLICK EN EL BOTON PARA VER ------>
                     <div class="modal fade" id="ModalSt{{$learning->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                       <div class="modal-dialog modal-dialog-centered" role="document">
                       <div class="modal-content">
                       <div class="modal-header d-flex justify-content-center">
-                        <h5 class="modal-title" id="exampleModalCenterTitle">Datos de la Muestra ({{$learning->id}})</h5>
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Sample-Data ({{$learning->id}})</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">&times;</span>
                         </button>

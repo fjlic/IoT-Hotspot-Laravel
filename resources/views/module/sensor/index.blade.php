@@ -30,7 +30,8 @@
         <div class="col-12">
             <div class="card card-primary card-outline">
             <div class="card-header">
-              <h3 class="card-title">Tabla de Sensores</h3>
+              {{-- <h3 class="card-title">Tabla de Sensores</h3> --}}
+              <h3 class="card-title">Sensor Table</h3>
               <a class="btn btn-xs btn-success float-right" href="{{ route('sensor.create') }}" role="button"><span class="fa fa-plus"></span></a>
             </div>
             <!-- /.card-header -->
@@ -40,7 +41,7 @@
                 <tr>
                   {{-- <th>Id</th>  --}}
                   <th>Id_Erb</th>
-                  <th>NumSer</th>
+                  <th>SerNum</th>
                   {{-- <th>Passw</th>  --}}
                   <th>Temp1</th>
                   <th>Temp2</th>
@@ -49,18 +50,18 @@
                   <th>Volt1</th>
                   <th>Volt2</th>
                   <th>Volt3</th>
-                  <th>Prt1</th>
-                  <th>Prt2</th>
-                  <th>Prt3</th>
-                  <th>Prt4</th>
-                  <th>Rly1</th>
-                  <th>Rly2</th>
-                  <th>Rly3</th>
-                  <th>Rly4</th>
+                  <th>Door1</th>
+                  <th>Door2</th>
+                  <th>Door3</th>
+                  <th>Door4</th>
+                  <th>Act1</th>
+                  <th>Act2</th>
+                  <th>Act3</th>
+                  <th>Act4</th>
                   <th>Text</th>
                  {{--  <th>FechaCreacion</th>  --}}
-                  <th>FechaMod</th> 
-                  <th>Acciones</th>
+                  <th>DateMod</th> 
+                  <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -237,7 +238,7 @@
       'scrollX'     : true,
       'scrollY'     : false,
       'scrollCollapse': false,
-      'language': {'url': '//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json'}   
+      //'language': {'url': '//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json'}   
     })
   });
 </script>
