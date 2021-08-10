@@ -172,7 +172,7 @@
               <th>Correlation</th>
               <th>Average Arithmetic</th>
               <th>Median</th>
-              <th>Mean</th>
+              <th>Mode</th>
               <th>Standard Deviation</th>
               <th>DateMod</th>
             </tr>
