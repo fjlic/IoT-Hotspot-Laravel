@@ -44,7 +44,7 @@
                   <th>Id Statistical</th>
                   <th>Elements</th>
                   <th>Sta time</th>
-                  <th>Din time</th>
+                  <th>Fin time</th>
                   <th>Tot time</th>
                   <th>Difer</th>
                   <th>Sample</th>
