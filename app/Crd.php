@@ -10,6 +10,8 @@ class Crd extends Model
 {
     use LaratrustUserTrait;
     use Notifiable;
+
+
     
     /**
      * The attributes that are mass assignable.
