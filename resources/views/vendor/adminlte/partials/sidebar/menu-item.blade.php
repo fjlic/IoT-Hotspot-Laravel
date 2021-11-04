@@ -1,23 +1,26 @@
-@inject('menuItemHelper', \JeroenNoten\LaravelAdminLte\Helpers\MenuItemHelper)
+@inject('sidebarItemHelper', 'JeroenNoten\LaravelAdminLte\Helpers\SidebarItemHelper')
 
-@if ($menuItemHelper->isHeader($item))
+@if ($sidebarItemHelper->isHeader($item))
 
     {{-- Header --}}
-    <li @if(isset($item['id'])) id="{{ $item['id'] }}" @endif class="nav-header">
-        {{ is_string($item) ? $item : $item['header'] }}
-    </li>
+    @include('adminlte::partials.sidebar.menu-item-header')
 
-@elseif ($menuItemHelper->isSearchBar($item))
+@elseif ($sidebarItemHelper->isLegacySearch($item) || $sidebarItemHelper->isCustomSearch($item))
 
     {{-- Search form --}}
     @include('adminlte::partials.sidebar.menu-item-search-form')
 
-@elseif ($menuItemHelper->isSubmenu($item))
+@elseif ($sidebarItemHelper->isMenuSearch($item))
+
+    {{-- Search menu --}}
+    @include('adminlte::partials.sidebar.menu-item-search-menu')
+
+@elseif ($sidebarItemHelper->isSubmenu($item))
 
     {{-- Treeview menu --}}
     @include('adminlte::partials.sidebar.menu-item-treeview-menu')
 
-@elseif ($menuItemHelper->isLink($item))
+@elseif ($sidebarItemHelper->isLink($item))
 
     {{-- Link --}}
     @include('adminlte::partials.sidebar.menu-item-link')

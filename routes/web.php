@@ -13,10 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('auth.login');
-});
-
+Route::get('/', function () {return view('auth.login');});
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 Route::resource('region', 'RegionController')->middleware('auth');
@@ -46,4 +43,9 @@ Route::resource('historialnfc', 'HistorialNfcController')->middleware('auth');
 Route::get('historialsensor/chart/{id}', 'HistorialSensorController@chart')->name('historialsensor.chart')->middleware('auth');
 Route::resource('historialsensor', 'HistorialSensorController')->middleware('auth');
 Route::resource('historialstatistical', 'HistorialStatisticalController')->middleware('auth');
+
 Auth::routes();
+
+/*Route::get('/home', function() {
+    return view('home');
+})->name('home')->middleware('auth');*/
