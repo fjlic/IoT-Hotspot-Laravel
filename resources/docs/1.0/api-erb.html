@@ -1,41 +1,52 @@
-<html><head><style>body {
-   color: black;
-}
-</style></head><body><h1 id="modulo-erb-api">Modulo Erb-API <a href="index.html">Regersa a Index</a></h1>
-<hr>
-<ul>
-<li><a href="#section-erb-api">Erb API</a></li>
-<li><a href="#controller-api">Controlador-API</a></li>
-<li><a href="#index">Index</a></li>
-<li><a href="#show">Show</a></li>
-<li><a href="#register">Register</a></li>
-<li><a href="#update">Update</a></li>
-<li><a href="#modify">Modify</a></li>
-<li><a href="#destroy">Destroy</a></li>
-<li><a href="#route">Ruta</a></li>
-</ul>
-<p><a name="section-erb-api"></a></p>
-<h2 id="controlador-metodos-index-register-update-modify-destroy-">Controlador, Metodos index(), register(), update(), modify(), destroy():</h2>
-<p>Estructura del modulo API Erb.. 🦊
-Si gustas es posible consultar los metodos get por web.</p>
-<hr>
-<ul>
-<li><a href="#controller-api">Controlador-API</a></li>
-<li><a href="#index">Index</a></li>
-<li><a href="#show">Index</a></li>
-<li><a href="#register">Register</a></li>
-<li><a href="#update">Update</a></li>
-<li><a href="#modify">Modify</a></li>
-<li><a href="#destroy">Destroy</a></li>
-<li><a href="#route">Ruta</a></li>
-</ul>
-<p><a name="controller-api"></a></p>
-<h2 id="controlador-api">Controlador API</h2>
-<p>Comando <code>php artisan make:controller API/ErbController</code> ejecutar en consola dentro del proyecto.</p>
-<blockquote>
-<p>{info} Directorio  <code>app/Http/Controller/API/ErbController.php</code> respeta esta estructura en el controlador.</p>
-</blockquote>
-<pre><code class="lang-php">
+<html>
+
+<head>
+    <style>
+        body {
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="modulo-erb-api">Modulo Erb-API <a href="index.html">Regersa a Index</a></h1>
+    <hr>
+    <ul>
+        <li><a href="#section-erb-api">Erb API</a></li>
+        <li><a href="#controller-api">Controlador-API</a></li>
+        <li><a href="#index">Index</a></li>
+        <li><a href="#show">Show</a></li>
+        <li><a href="#register">Register</a></li>
+        <li><a href="#update">Update</a></li>
+        <li><a href="#modify">Modify</a></li>
+        <li><a href="#destroy">Destroy</a></li>
+        <li><a href="#route">Ruta</a></li>
+    </ul>
+    <p>
+        <a name="section-erb-api"></a>
+    </p>
+    <h2 id="controlador-metodos-index-register-update-modify-destroy-">Controlador, Metodos index(), register(), update(), modify(), destroy():</h2>
+    <p>Estructura del modulo API Erb.. 🦊 Si gustas es posible consultar los metodos get por web.</p>
+    <hr>
+    <ul>
+        <li><a href="#controller-api">Controlador-API</a></li>
+        <li><a href="#index">Index</a></li>
+        <li><a href="#show">Show</a></li>
+        <li><a href="#register">Register</a></li>
+        <li><a href="#update">Update</a></li>
+        <li><a href="#modify">Modify</a></li>
+        <li><a href="#destroy">Destroy</a></li>
+        <li><a href="#route">Ruta</a></li>
+    </ul>
+    <p>
+        <a name="controller-api"></a>
+    </p>
+    <h2 id="controlador-api">Controlador API</h2>
+    <p>Comando <code>php artisan make:controller API/ErbController</code> ejecutar en consola dentro del proyecto.</p>
+    <blockquote>
+        <p>{info} Directorio <code>app/Http/Controller/API/ErbController.php</code> respeta esta estructura en el controlador.</p>
+    </blockquote>
+    <pre><code class="lang-php">
 <span class="php"><span class="hljs-meta">&lt;?php</span>
 
 <span class="hljs-keyword">namespace</span> <span class="hljs-title">App</span>\<span class="hljs-title">Http</span>\<span class="hljs-title">Controllers</span>\<span class="hljs-title">API</span>;
@@ -54,13 +65,15 @@ Si gustas es posible consultar los metodos get por web.</p>
 
 }</span>
 </code></pre>
-<p><a name="index"></a></p>
-<h2 id="metodo-index">Metodo Index</h2>
-<p>Consulta url <code>http://domain/api/erb</code> te regresara un objeto tipo JSON.</p>
-<blockquote>
-<p>{info} Directorio  <code>app/Http/Controller/API/ErbController.php</code>.</p>
-</blockquote>
-<pre><code class="lang-php">
+    <p>
+        <a name="index"></a>
+    </p>
+    <h2 id="metodo-index">Metodo Index</h2>
+    <p>Consulta url <code>http://domain/api/erb</code> te regresara un objeto tipo JSON.</p>
+    <blockquote>
+        <p>{info} Directorio <code>app/Http/Controller/API/ErbController.php</code>.</p>
+    </blockquote>
+    <pre><code class="lang-php">
 <span class="hljs-comment">/**
      * List all Erbs.
      *
@@ -82,13 +95,15 @@ Si gustas es posible consultar los metodos get por web.</p>
         <span class="hljs-keyword">return</span> response()-&gt;json($response, <span class="hljs-number">200</span>);
     }
 </code></pre>
-<p><a name="show"></a></p>
-<h2 id="metodo-show">Metodo Show</h2>
-<p>Consulta url <code>http://domain/api/erb/{#id}</code> te regresara un objeto tipo JSON.</p>
-<blockquote>
-<p>{info} Directorio  <code>app/Http/Controller/API/ErbController.php</code>.</p>
-</blockquote>
-<pre><code class="lang-php">
+    <p>
+        <a name="show"></a>
+    </p>
+    <h2 id="metodo-show">Metodo Show</h2>
+    <p>Consulta url <code>http://domain/api/erb/{#id}</code> te regresara un objeto tipo JSON.</p>
+    <blockquote>
+        <p>{info} Directorio <code>app/Http/Controller/API/ErbController.php</code>.</p>
+    </blockquote>
+    <pre><code class="lang-php">
 <span class="hljs-comment">/**
      * Display the Erb specified resource.
      *
@@ -117,13 +132,15 @@ Si gustas es posible consultar los metodos get por web.</p>
 
     }
 </code></pre>
-<p><a name="register"></a></p>
-<h2 id="metodo-register">Metodo Register</h2>
-<p>Consulta url <code>http://domain/api/erb/register</code> te regresara un objeto tipo JSON.</p>
-<blockquote>
-<p>{info} Directorio  <code>app/Http/Controller/API/ErbController.php</code>.</p>
-</blockquote>
-<pre><code class="lang-php">
+    <p>
+        <a name="register"></a>
+    </p>
+    <h2 id="metodo-register">Metodo Register</h2>
+    <p>Consulta url <code>http://domain/api/erb/register</code> te regresara un objeto tipo JSON.</p>
+    <blockquote>
+        <p>{info} Directorio <code>app/Http/Controller/API/ErbController.php</code>.</p>
+    </blockquote>
+    <pre><code class="lang-php">
 **
      * Store a newly Erb created resource in storage.
      *
@@ -179,13 +196,15 @@ Si gustas es posible consultar los metodos get por web.</p>
     <span class="hljs-keyword">return</span> response()-&gt;json($response, <span class="hljs-number">200</span>);
     }
 </code></pre>
-<p><a name="update"></a></p>
-<h2 id="metodo-update">Metodo Update</h2>
-<p>Consulta url <code>http://domain/api/erb/update{#id}</code> te regresara un objeto tipo JSON.</p>
-<blockquote>
-<p>{info} Directorio  <code>app/Http/Controller/API/ErbController.php</code>.</p>
-</blockquote>
-<pre><code class="lang-php">
+    <p>
+        <a name="update"></a>
+    </p>
+    <h2 id="metodo-update">Metodo Update</h2>
+    <p>Consulta url <code>http://domain/api/erb/update{#id}</code> te regresara un objeto tipo JSON.</p>
+    <blockquote>
+        <p>{info} Directorio <code>app/Http/Controller/API/ErbController.php</code>.</p>
+    </blockquote>
+    <pre><code class="lang-php">
 <span class="hljs-comment">/**
      * Update the specified resource in storage.
      *
@@ -227,13 +246,15 @@ Si gustas es posible consultar los metodos get por web.</p>
         <span class="hljs-keyword">return</span> response()-&gt;json($response, <span class="hljs-number">200</span>);
     }
 </code></pre>
-<p><a name="modify"></a></p>
-<h2 id="metodo-modify">Metodo Modify</h2>
-<p>Consulta url <code>http://domain/api/erb/modify{#id}</code> te regresara un objeto tipo JSON.</p>
-<blockquote>
-<p>{info} Directorio  <code>app/Http/Controller/API/ErbController.php</code>.</p>
-</blockquote>
-<pre><code class="lang-php">
+    <p>
+        <a name="modify"></a>
+    </p>
+    <h2 id="metodo-modify">Metodo Modify</h2>
+    <p>Consulta url <code>http://domain/api/erb/modify{#id}</code> te regresara un objeto tipo JSON.</p>
+    <blockquote>
+        <p>{info} Directorio <code>app/Http/Controller/API/ErbController.php</code>.</p>
+    </blockquote>
+    <pre><code class="lang-php">
 <span class="hljs-comment">/**
      * Update the specified resource in storage.
      *
@@ -286,13 +307,15 @@ Si gustas es posible consultar los metodos get por web.</p>
         <span class="hljs-keyword">return</span> response()-&gt;json($response, <span class="hljs-number">200</span>);
     }
 </code></pre>
-<p><a name="destroy"></a></p>
-<h2 id="metodo-destroy">Metodo Destroy</h2>
-<p>Consulta url <code>http://domain/api/erb/destroy{#id}</code> te regresara un objeto tipo JSON.</p>
-<blockquote>
-<p>{info} Directorio  <code>app/Http/Controller/API/ErbController.php</code>.</p>
-</blockquote>
-<pre><code class="lang-php">
+    <p>
+        <a name="destroy"></a>
+    </p>
+    <h2 id="metodo-destroy">Metodo Destroy</h2>
+    <p>Consulta url <code>http://domain/api/erb/destroy{#id}</code> te regresara un objeto tipo JSON.</p>
+    <blockquote>
+        <p>{info} Directorio <code>app/Http/Controller/API/ErbController.php</code>.</p>
+    </blockquote>
+    <pre><code class="lang-php">
 <span class="hljs-comment">/**
      * Remove the specified resource from storage.
      *
@@ -313,13 +336,15 @@ Si gustas es posible consultar los metodos get por web.</p>
         <span class="hljs-keyword">return</span> response()-&gt;json($response, <span class="hljs-number">200</span>);
     }
 </code></pre>
-<p><a name="route"></a></p>
-<h2 id="ruta-api">Ruta API</h2>
-<p>Se deben agregar las ruta necesario dentro de api rutas.</p>
-<blockquote>
-<p>{info} Directorio  <code>routes/api.php</code>.</p>
-</blockquote>
-<pre><code class="lang-php">
+    <p>
+        <a name="route"></a>
+    </p>
+    <h2 id="ruta-api">Ruta API</h2>
+    <p>Se deben agregar las ruta necesario dentro de api rutas.</p>
+    <blockquote>
+        <p>{info} Directorio <code>routes/api.php</code>.</p>
+    </blockquote>
+    <pre><code class="lang-php">
  <span class="hljs-comment">/*
 |--------------------------------------------------------------------------
 | API Routes
@@ -339,4 +364,6 @@ Route::middleware(<span class="hljs-string">'auth:api'</span>)-&gt;get(<span cla
     <span class="hljs-keyword">return</span> $request-&gt;user();
 });
 </code></pre>
-</body></html>
+</body>
+
+</html>

@@ -22,7 +22,7 @@ Si gustas es posible consultar los metodos get por web.
 
 - [Controlador-API](#controller-api)
 - [Index](#index)
-- [Index](#show)
+- [Show](#show)
 - [Register](#register)
 - [Update](#update)
 - [Modify](#modify)
