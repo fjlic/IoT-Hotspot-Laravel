@@ -30,7 +30,7 @@
                 <i class="fa fa-reply"></i>
             </larecipe-button>
 
-            <larecipe-button tag="a" href="https://github.com/fjlic/IOT-Hotspot" target="__blank" type="black" class="mx-2 px-4">
+            <larecipe-button tag="a" href="https://github.com/fjlic/IoT-Hotspot-Laravel" target="__blank" type="black" class="mx-2 px-4">
                 <i class="fab fa-github"></i>
             </larecipe-button>
 
