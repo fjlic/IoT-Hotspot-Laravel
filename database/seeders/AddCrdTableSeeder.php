@@ -21,7 +21,7 @@ class AddCrdTableSeeder extends Seeder
         $crd->id = 1;
         $crd->user_id = 1;
         $crd->num_serie = 333344441;
-        $crd->name_machine = 'Angry birds';
+        $crd->name_machine = 'rocking Horse';
         $crd->nick_name = 'Crd_1';
         $crd->password = Crypt::encrypt('crd123');
         $crd->api_token = ApiToken::GenerateToken16();

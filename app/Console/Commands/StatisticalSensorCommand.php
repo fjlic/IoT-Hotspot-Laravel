@@ -7,14 +7,14 @@ use App\Statistical;
 use App\HistorialSensor;
 use App\Sensor;
 
-class StatisticalCommand extends Command
+class StatisticalSensorCommand extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'statistical:sensor';
+    protected $signature = 'sensor:statistical';
 
     /**
      * The console command description.
@@ -104,6 +104,6 @@ class StatisticalCommand extends Command
                 }   
             }
         }
-    return True;
+        return Command::SUCCESS;
     }
 }

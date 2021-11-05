@@ -12,14 +12,14 @@ use Phpml\SupportVectorMachine\Kernel;
 use App\Statistical;
 use App\Learning;
 
-class LearningCommand extends Command
+class LearningSensorCommand extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'sample:learning';
+    protected $signature = 'sensor:learning';
 
     /**
      * The console command description.
@@ -108,6 +108,6 @@ class LearningCommand extends Command
             $statistical->stat = 1;
             $statistical->save();
         }
-        return True;
+        return Command::SUCCESS;
     }
 }

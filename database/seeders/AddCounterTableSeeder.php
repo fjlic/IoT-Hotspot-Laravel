@@ -37,7 +37,7 @@ class AddCounterTableSeeder extends Seeder
         $counter->text = 'Prueba Contador 1 Ok';
         $counter->save();
 
-        $counter = new Counter();
+        /*$counter = new Counter();
         $counter->id = 2;
         $counter->crd_id = 2;
         $counter->erb_id = 2;
@@ -224,6 +224,6 @@ class AddCounterTableSeeder extends Seeder
         $counter->token = ApiToken::GenerateToken16();
         $counter->type = 0;
         $counter->text = 'Prueba Contador 9 Ok';
-        $counter->save();
+        $counter->save();*/
     }
 }

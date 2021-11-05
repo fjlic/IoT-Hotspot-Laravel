@@ -323,6 +323,12 @@ return [
                             'icon'  => 'fas fa-route',
                             'url'  => 'historialcounter',
                         ],
+                        [
+                            'text' => 'Estadistico Contador',
+                            'icon_color' => '',
+                            'icon'  => 'fas fa-chart-bar',
+                            'url'  => 'statisticalcounter',
+                        ],
                     ],
                 ],
                 [

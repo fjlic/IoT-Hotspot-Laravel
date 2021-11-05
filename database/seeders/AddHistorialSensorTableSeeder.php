@@ -1,11 +1,10 @@
 <?php
 
 namespace Database\Seeders;
+use Illuminate\Database\Seeder;
 use App\Sensor;
 use App\HistorialSensor;
 use Carbon\Carbon;
-
-use Illuminate\Database\Seeder;
 
 class AddHistorialSensorTableSeeder extends Seeder
 {

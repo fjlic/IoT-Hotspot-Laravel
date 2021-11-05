@@ -57,7 +57,7 @@
                 @foreach($historialcounters as $historialcounter)
                 <tr>
                     <td>{{ $historialcounter->id }}</td>
-                    <td>{{ $historialcounter->cont_id }}</td>
+                    <td>{{ $historialcounter->counter_id }}</td>
                     <td>{{ $historialcounter->nfc_id }}</td>
                     <td>{{ $historialcounter->cont_qr }}</td>
                     <td>{{ $historialcounter->cont_mon }}</td>
