@@ -45,8 +45,8 @@
                   <th>Elementos</th>
                   <th>Inicio</th>
                   <th>Fin</th>
-                  <th>Total Juego</th>
-                  <th>Diferencia</th>
+                  <th>Tiempo Juego</th>
+                  <th>Tiempo Inactividad</th>
                   <th>Muestra</th>
                   {{-- <th>FechaCreacion</th> --}}
                   <th>Fecha Mod</th>
@@ -57,7 +57,7 @@
                 @foreach($statisticalcounters as $statisticalcounter)
                 <tr>
                     <td>{{ $statisticalcounter->id }}</td>
-                    <td>{{ $statisticalcounter->sensor_id }}</td>
+                    <td>{{ $statisticalcounter->counter_id }}</td>
                     <td>{{ $statisticalcounter->elements }}</td>
                     <td>{{ $statisticalcounter->start_time }}</td>
                     <td>{{ $statisticalcounter->finish_time }}</td>
@@ -178,7 +178,7 @@
             @foreach($statisticalcounters as $statisticalcounter)
             <tr>
                 <td>{{ $statisticalcounter->id }}</td>
-                {{-- <td>{{ $statisticalcounter->sensor_id }}</td>  --}}
+                {{-- <td>{{ $statisticalcounter->counter_id }}</td>  --}}
                 <td>{{ $statisticalcounter->pearsoncorrelation }}</td>
                 <td>{{ $statisticalcounter->meanarithmetic }}</td>
                 <td>{{ $statisticalcounter->meanmedian }}</td>

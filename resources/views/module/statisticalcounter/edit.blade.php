@@ -43,7 +43,7 @@
                 <!-- 'id', 'counter_id', 'elements', 'start_time', 'finish_time', 'total_time', 'difer_time', 'sample' -->
                 <div class="form-group">
                   <label for="counter_id">Contador Id</label>
-                  <input type="text" class="form-control" name="counter_id" id="counter_id"  placeholder="Introduce num sensor id" required value="{{ $statisticalcounter->counter_id }}" />
+                  <input type="text" class="form-control" name="counter_id" id="counter_id"  placeholder="Introduce num scontador id" required value="{{ $statisticalcounter->counter_id }}" />
                 </div>
                 <div class="form-group">
                   <label for="elements">Elementos</label>

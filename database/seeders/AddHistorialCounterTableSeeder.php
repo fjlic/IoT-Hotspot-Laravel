@@ -19,7 +19,7 @@ class AddHistorialCounterTableSeeder extends Seeder
         //
         $tmp_mon = 4360;
         $counters = Counter::all();
-        $modDate = Carbon::now()->subDays(7);
+        $modDate = Carbon::now()->subDays(98);
         foreach ($counters as $key => $counter) {
                 $histocounter = new HistorialCounter();
                 $histocounter->id = $counter->id;
@@ -45,10 +45,10 @@ class AddHistorialCounterTableSeeder extends Seeder
         } 
         
         $id_tmp = HistorialCounter::all()->count()+1;
-        for ($i=1; $i <= 672; $i++) {
+        for ($i=1; $i <= 9408; $i++) {
                 //$modDate = $modDate->addMinutes(15);
                 $tmp_mon += 10; 
-                $modDate = $modDate->addSeconds(random_int(180, 900));
+                $modDate = $modDate->addSeconds(random_int(800, 950));
                 foreach ($counters as $key => $counter) {
                     $histocounter = new HistorialCounter();
                     $histocounter->id = $id_tmp++;

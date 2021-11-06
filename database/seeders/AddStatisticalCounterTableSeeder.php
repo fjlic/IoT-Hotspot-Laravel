@@ -19,10 +19,10 @@ class AddStatisticalCounterTableSeeder extends Seeder
     {
         $inc = 1;
         $process_chunk = 20;
-        $value_sample = 144;
+        $value_sample = 672;
         $adjust_value = $value_sample+1;
-        $time_schedule = 900;
-        $time_lag = 86400;
+        $time_schedule = 180;
+        $time_lag = 120960;
         $counters = Counter::all();
         $id_continued = StatisticalCounter::all();
         if($id_continued->isNotEmpty())
@@ -38,11 +38,11 @@ class AddStatisticalCounterTableSeeder extends Seeder
                 ->take($adjust_value)->get();
                 if ($data_his->count()==$adjust_value) 
                 {
-                    $statistical = new Statistical();
-                    $statistical->id = $inc++;
+                    $statisticalcounter = new StatisticalCounter();
+                    $statisticalcounter->id = $inc++;
                     $temp_start = $data_his->first();
-                    $statistical->sensor_id = $temp_start->sensor_id;
-                    $statistical->start_time = $temp_start->created_at;
+                    $statisticalcounter->counter_id = $temp_start->counter_id;
+                    $statisticalcounter->start_time = $temp_start->created_at;
                     $tmp_sample = [[]];
                     foreach ($data_his as $key2 => $data) 
                     {
@@ -65,19 +65,19 @@ class AddStatisticalCounterTableSeeder extends Seeder
                         }
                         
                     }
-                    $statistical->elements = $value_sample;
-                    $statistical->sample =  json_encode($tmp_sample);
+                    $statisticalcounter->elements = $value_sample;
+                    $statisticalcounter->sample =  json_encode($tmp_sample);
                     $temp_finish = $data_his->last();
-                    $statistical->finish_time = $temp_finish->created_at;
+                    $statisticalcounter->finish_time = $temp_finish->created_at;
                     //convertimos la fecha 1 a objeto Carbon
                     $carbon1 = new \Carbon\Carbon($temp_start->created_at);
                     //convertimos la fecha 2 a objeto Carbon
                     $carbon2 = new \Carbon\Carbon($temp_finish->created_at);
                     //de esta manera sacamos la diferencia en minutos
                     $secondsDiff=$carbon1->diffInSeconds($carbon2);
-                    $statistical->total_time = $secondsDiff;
-                    $statistical->difer_time = ($secondsDiff-$time_lag);
-                    $statistical->save();
+                    $statisticalcounter->total_time = $secondsDiff;
+                    $statisticalcounter->difer_time = ($secondsDiff-$time_lag);
+                    $statisticalcounter->save();
                 }   
             }
         }

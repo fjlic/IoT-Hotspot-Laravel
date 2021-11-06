@@ -43,7 +43,7 @@
                   <input type="text" class="form-control" value="{{ $statisticalcounter->id }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
-                  <label for="counter_id">Sensor Id</label>
+                  <label for="counter_id">Contador Id</label>
                   <input type="text" class="form-control" value="{{ $statisticalcounter->counter_id }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
