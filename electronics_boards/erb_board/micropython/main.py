@@ -161,7 +161,7 @@ def Post_Status_Sensor():
    
    return json_str
    
-def Post_Modify_Sensor():
+def Post_IOTHOTSPOT_Modify_Sensor():
    global wlan,SSID, PASSWORD, num_serie, passw, temp_1, temp_2, temp_3, temp_4, vol_1, vol_2, vol_3, door_1, door_2, door_3, door_4, rlay_1, rlay_2, rlay_3, rlay_4, baseUrl, Accept
    json_str=""
    get_Sensor()
@@ -186,12 +186,12 @@ def Post_Modify_Sensor():
        messageData['door_3'] = door_3
        messageData['door_4'] = door_4
        messageData['text'] = "Modify Sensor"
-       print("----------Peticion ESP32 - Modify-----------------------------------------------")
+       print("----------Sending Telemetry ERB - Modify-----------------------------------------------")
        print(messageData)
        ujsonMessage=ujson.dumps(messageData)
        response = urequests.post(urlTmp,data=ujsonMessage,headers=Accept)
        data = response.json()
-       print("----------Respuesta de la Plataforma-------------------------------------------")
+       print("----------Getting Response Platform IoT-Hotpot-----------------------------------------")
        print(data)
        rlay_1 = data['data']['rlay_1']
        rlay_2 = data['data']['rlay_2']
