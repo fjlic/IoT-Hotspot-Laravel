@@ -184,7 +184,7 @@
                 <td>{{ $statisticalcounter->meanmedian }}</td>
                 <td>{{ $statisticalcounter->meanmode }}</td>
                 <td>{{ $statisticalcounter->standartdesviation }}</td>
-                {{-- <td>{{ $statisticalcounter->updated_at }}</td> --}
+                {{-- <td>{{ $statisticalcounter->updated_at }}</td> --}]
             </tr>
             @endforeach
             </tbody>
