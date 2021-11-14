@@ -49,8 +49,8 @@
                   <th>Total Sec</th>
                   <th>Difer</th>
                   <th>Sample</th>
-                  {{-- <th>FechaCreacion</th> --}}
-                  <th>DateMod</th>
+                  {{-- <th>FechaCre</th> --}}
+                  {{-- <th>DateMod</th> --}}
                   <th>Actions</th>
                 </tr>
                 </thead>
@@ -88,8 +88,8 @@
                       </div>
                     <!--fin modal-->
                     </td>
-                   {{--  <td>{{ $statistical->created_at }}</td>  --}}
-                    <td>{{ $statistical->updated_at }}</td>
+                   {{-- <td>{{ $statistical->created_at }}</td> --}}
+                   {{-- <td>{{ $statistical->updated_at }}</td> --}}
                     <td>
                       <form role="form" action="{{ route('statistical.destroy',$statistical->id) }}" method="POST">
                       <a class="btn btn-info btn-xs" href="{{ route('statistical.show',$statistical->id) }}" role="button"><span class="fas fa-eye"></span></a> 
@@ -174,7 +174,7 @@
               <th>Median</th>
               <th>Mode</th>
               <th>Standard Deviation</th>
-              <th>DateMod</th>
+              {{-- <th>DateMod</th> --}}
             </tr>
             </thead>
             <tbody>
@@ -187,7 +187,7 @@
                 <td>{{ $statistical->meanmedian }}</td>
                 <td>{{ $statistical->meanmode }}</td>
                 <td>{{ $statistical->standartdesviation }}</td>
-                <td>{{ $statistical->updated_at }}</td>
+                {{-- <td>{{ $statistical->updated_at }}</td> --}}
             </tr>
             @endforeach
             </tbody>

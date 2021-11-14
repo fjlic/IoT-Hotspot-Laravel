@@ -49,7 +49,7 @@
                   <th>Tiempo Inactividad</th>
                   <th>Muestra</th>
                   {{-- <th>FechaCreacion</th> --}}
-                  <th>Fecha Mod</th>
+                  {{-- <th>Fecha Mod</th> --}}
                   <th>Acciones</th>
                 </tr>
                 </thead>
@@ -87,8 +87,8 @@
                       </div>
                     <!--fin modal-->
                     </td>
-                   {{--  <td>{{ $statisticalcounter->created_at }}</td>  --}}
-                    <td>{{ $statisticalcounter->updated_at }}</td>
+                   {{--  <td>{{ $statisticalcounter->created_at }}</td> --}}
+                   {{--  <td>{{ $statisticalcounter->updated_at }}</td> --}}
                     <td>
                       <form role="form" action="{{ route('statisticalcounter.destroy',$statisticalcounter->id) }}" method="POST">
                       <a class="btn btn-info btn-xs" href="{{ route('statisticalcounter.show',$statisticalcounter->id) }}" role="button"><span class="fas fa-eye"></span></a> 
@@ -171,7 +171,7 @@
               <th>Mediana</th>
               <th>Moda</th>
               <th>Desviacion Estandar</th>
-              <th>FechaMod</th>
+              {{-- <th>FechaMod</th> --}}
             </tr>
             </thead>
             <tbody>
@@ -184,7 +184,7 @@
                 <td>{{ $statisticalcounter->meanmedian }}</td>
                 <td>{{ $statisticalcounter->meanmode }}</td>
                 <td>{{ $statisticalcounter->standartdesviation }}</td>
-                <td>{{ $statisticalcounter->updated_at }}</td>
+                {{-- <td>{{ $statisticalcounter->updated_at }}</td> --}
             </tr>
             @endforeach
             </tbody>

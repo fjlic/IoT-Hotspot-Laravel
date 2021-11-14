@@ -47,8 +47,8 @@
                   <th>Cont Corte</th>
                   <th>Cont Prem</th>
                   <th>Cost Mon</th>
-                  {{--<th>FechaCreacion</th>--}}
-                  <th>FechaMod</th>
+                  <th>FechaCreacion</th>
+                  {{-- <th>FechaMod</th> --}}
                   <th>Tipo</th>
                   <th>Acciones</th>
                 </tr>
@@ -65,8 +65,8 @@
                     <td>{{ $historialcounter->cont_corte }}</td>
                     <td>{{ $historialcounter->cont_prem }}</td>
                     <td>{{ $historialcounter->cost_mon }}</td>
-                    {{-- <td>{{ $historialcounter->created_at }}</td> --}}
-                    <td>{{ $historialcounter->updated_at }}</td>
+                    <td>{{ $historialcounter->created_at }}</td>
+                    {{-- <td>{{ $historialcounter->updated_at }}</td> --}}
                      <td>{{ $historialcounter->type }}</td>
                     <td>
                       <form role="form" action="{{ route('historialcounter.destroy',$historialcounter->id) }}" method="POST">

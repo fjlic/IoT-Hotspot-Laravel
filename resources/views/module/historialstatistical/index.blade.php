@@ -44,7 +44,7 @@
                   <th>Coins</th>
                   <th>Actualizado</th>
                   {{-- <th>FechaCreacion</th>  --}}
-                  <th>FechaMoficiacion</th> 
+                  {{-- <th>FechaMoficiacion</th>  --}}
                   <th>Acciones</th>
                 </tr>
                 </thead>
@@ -57,7 +57,7 @@
                     <td>{{ $historialqr->coins }}</td>
                     <td>{{ $historialqr->uploaded }}</td>
                     {{-- <td>{{ $historialqr->created_at }}</td>  --}}
-                    <td>{{ $historialqr->updated_at }}</td>
+                    {{-- <td>{{ $historialqr->updated_at }}</td> --}}
                     <td>
                       <form role="form" action="{{ route('historialqr.destroy',$historialqr->id) }}" method="POST">
                       <a class="btn btn-info btn-xs" href="{{ route('historialqr.show',$historialqr->id) }}" role="button"><span class="fas fa-eye"></span></a> 

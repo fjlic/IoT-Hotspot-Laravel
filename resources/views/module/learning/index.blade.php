@@ -49,7 +49,7 @@
                   <th>Difer</th>
                   <th>Sample</th>
                   {{-- <th>FechaCreacion</th> --}}
-                  <th>DateMod</th>
+                  {{-- <th>DateMod</th> --}}
                   <th>Actions</th>
                 </tr>
                 </thead>
@@ -87,8 +87,8 @@
                       </div>
                     <!--fin modal-->
                     </td>
-                   {{--  <td>{{ $learning->created_at }}</td>  --}}
-                    <td>{{ $learning->updated_at }}</td>
+                   {{--  <td>{{ $learning->created_at }}</td> --}}
+                   {{-- <td>{{ $learning->updated_at }}</td> --}}
                     <td>
                       <form role="form" action="{{ route('learning.destroy',$learning->id) }}" method="POST">
                       <a class="btn btn-primary btn-xs" href="{{ route('learning.chart',$learning->id) }}" role="button"><span class="fa fa-chart-pie"></span></a>
