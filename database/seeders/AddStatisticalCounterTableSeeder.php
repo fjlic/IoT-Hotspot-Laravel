@@ -18,7 +18,7 @@ class AddStatisticalCounterTableSeeder extends Seeder
     public function run()
     {
         $inc = 1;
-        $process_chunk = 20;
+        $process_chunk = 10;
         $value_sample = 672;
         $adjust_value = $value_sample+1;
         $time_schedule = 180;
@@ -30,7 +30,8 @@ class AddStatisticalCounterTableSeeder extends Seeder
             $id_tmp = $id_continued->last();
             $inc = $id_tmp->id + 1;
         }
-        foreach ($counters as $key1 => $counter) {
+        foreach ($counters as $key1 => $counter) 
+        {
             for ($i=1; $i <= $process_chunk; $i++) {//16 
                 $data_his = HistorialCounter::where('counter_id', $counter->id)
                 ->where('stat', 0)

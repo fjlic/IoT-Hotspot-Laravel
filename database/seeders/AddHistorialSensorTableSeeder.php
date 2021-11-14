@@ -17,7 +17,7 @@ class AddHistorialSensorTableSeeder extends Seeder
     {
         //
         $sensors = Sensor::all();
-        $modDate = Carbon::now()->subDays(15);
+        $modDate = Carbon::now()->subDays(90);
         foreach ($sensors as $key => $sensor) {
                 $histosensor = new HistorialSensor();
                 $histosensor->id = $sensor->id;
@@ -46,9 +46,9 @@ class AddHistorialSensorTableSeeder extends Seeder
         } 
         
         $id_tmp = HistorialSensor::all()->count()+1;
-        for ($i=1; $i <= 2160; $i++) {
+        for ($i=1; $i <= 12960; $i++) {
                 //$modDate = $modDate->addMinutes(10);  
-                $modDate = $modDate->addSeconds(random_int(590, 610));
+                $modDate = $modDate->addSeconds(random_int(585, 615));
                 foreach ($sensors as $key => $sensor) {
                     $histosensor = new HistorialSensor();
                     $histosensor->id = $id_tmp++;

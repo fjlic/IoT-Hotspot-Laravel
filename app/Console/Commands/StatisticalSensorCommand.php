@@ -41,7 +41,7 @@ class StatisticalSensorCommand extends Command
     public function handle()
     {
         $inc = 1;
-        $process_chunk = 1;
+        $process_chunk = 10;
         $value_sample = 144;
         $adjust_value = $value_sample+1;
         $time_schedule = 600;
@@ -53,7 +53,8 @@ class StatisticalSensorCommand extends Command
             $id_tmp = $id_continued->last();
             $inc = $id_tmp->id + 1;
         }
-        foreach ($sensors as $key1 => $sensor) {
+        foreach ($sensors as $key1 => $sensor) 
+        {
             for ($i=1; $i <= $process_chunk; $i++) {//16 
                 $data_his = HistorialSensor::where('sensor_id', $sensor->id)
                 ->where('stat', 0)
@@ -104,6 +105,6 @@ class StatisticalSensorCommand extends Command
                 }   
             }
         }
-        return Command::SUCCESS;
+    return Command::SUCCESS;
     }
 }
