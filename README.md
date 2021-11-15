@@ -11,7 +11,7 @@ User: [demo@fjlic.com](https://hotspot.fjlic.com/).
 
 Password: [demo@54321](https://hotspot.fjlic.com/).
 
-## Documentation Api Doc wit LaRecipe
+## Documentation Api Doc with LaRecipe
 
 In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://hotspot.fjlic.com/docs/1.0/module-user).
 
