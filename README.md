@@ -11,11 +11,11 @@ User: [demo@fjlic.com](https://hotspot.fjlic.com/).
 
 Password: [demo@54321](https://hotspot.fjlic.com/).
 
-## Code of Conduct
+## Documentation Api Doc wit LaRecipe
 
 In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://hotspot.fjlic.com/docs/1.0/module-user).
 
-## Security Vulnerabilities
+## Send me e-mail for better this project IoT
 
 If you discover form better code in the construct project, are welcome, please send an e-mail to Javier Flores via [soporte@fjlic.com](mailto:soporte@fjlic.com). All suggestions in the better code and comment.
 
