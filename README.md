@@ -9,7 +9,7 @@ Do you want authenticate can be with:
 
 User: [demo@fjlic.com](https://hotspot.fjlic.com/).
 
-Password: demo@54321 [demo@54321](https://hotspot.fjlic.com/).
+Password: [demo@54321](https://hotspot.fjlic.com/).
 
 ## Code of Conduct
 
