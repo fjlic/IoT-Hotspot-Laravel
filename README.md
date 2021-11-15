@@ -3,11 +3,11 @@ FJLIC Pojects IoT-Hotspot
 
 ## Contributing
 
-Can you visit project in the [IoT-Hotspot](https://hostpot.fjlic.com), Do you want authenticate can be with:
-
-User: demo@fjlic.com [demo@fjlic.com](https://hostpot.fjlic.com).
-
-Password: demo@54321 [demo@54321](https://hostpot.fjlic.com).
+Can you visit project in the [IoT-Hotspot](https://hotspot.fjlic.com/).
+ 
+Do you want authenticate can be with:
+User: demo@fjlic.com [demo@fjlic.com](https://hotspot.fjlic.com/).
+Password: demo@54321 [demo@54321](https://hotspot.fjlic.com/).
 
 ## Code of Conduct
 
