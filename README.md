@@ -7,9 +7,9 @@ Can you visit project in the [IoT-Hotspot](https://hotspot.fjlic.com/).
  
 Do you want authenticate can be with:
 
-User: [demo@fjlic.com](https://hotspot.fjlic.com/).
+User: [demo@fjlic.com](https://hotspot.fjlic.com/)
 
-Password: [demo@54321](https://hotspot.fjlic.com/).
+Password: [demo@54321](https://hotspot.fjlic.com/)
 
 ## Documentation Api Doc with LaRecipe
 
