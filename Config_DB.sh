@@ -1,6 +1,6 @@
-#funMenu=(dialog --separate-output --checklist "Selecciona la opcion deseada para BD Galex:" 0 0 0)
-funMenu=(dialog --clear --backtitle "Francisco Javie Flores Zermeño" --title "Menu principal" --separate-output --checklist "Selecciona la opcion deseada para BD Galex:" 0 0 0)
-opciones=(1 "Crear BD Galex" off 2 "Poblar BD" off 3 "Restablecimiento por Default" off)
+#funMenu=(dialog --separate-output --checklist "Selecciona la opcion deseada para BD IoT Hotspot:" 0 0 0)
+funMenu=(dialog --clear --backtitle "--------------------" --title "Menu principal" --separate-output --checklist "Selecciona la opcion deseada para BD IoT:" 0 0 0)
+opciones=(1 "Crear BD IoT-Hotspot" off 2 "Poblar BD" off 3 "Restablecimiento por Default" off)
 selecciones=$("${funMenu[@]}" "${opciones[@]}" 2>&1 >/dev/tty)
 clear
 OK="OK"

@@ -1,26 +1,26 @@
 #!/bin/bash
 #  Script BASH de Ejemplo de MENU
 clear
-echo "----------FRANCISCO JAVIER FLORES----------"
+echo "-------------------------------------------"
 echo "----------- CONFIG BASH DB GALEX-----------"
 echo "--------------MENU DE OPCIONES-------------"
 echo ""
 PS3='Opcion a ejecutar: '
-options=("Crear BD Galex. 1" "Poblar BD Galex. 2" "Restablcer BD Galex. 3" "Salir. 4")
+options=("Crear BD IoT. 1" "Poblar BD IoT. 2" "Restablcer BD IoT. 3" "Salir. 4")
 select opt in "${options[@]}"
 do
     case $opt in
-        "Crear BD Galex. 1")
+        "Crear BD IoT. 1")
             #echo "php artisan migrate"
             OUTPUT="php artisan migrate"
             $OUTPUT
             ;;
-        "Poblar BD Galex. 2")
+        "Poblar BD IoT. 2")
             #echo "php artisan db:seed"
             OUTPUT="php artisan db:seed"
             $OUTPUT
             ;;
-        "Restablcer BD Galex. 3")
+        "Restablcer BD IoT. 3")
             #echo "php artisan migrate:fresh --seed"
             OUTPUT="php artisan migrate:fresh --seed"
             $OUTPUT
@@ -30,9 +30,9 @@ do
             ;;
         *) echo invalid option;;
     esac
-    echo "----------FRANCISCO JAVIER FLORES----------"
-    echo "----------- CONFIG BASH DB GALEX-----------"
+    echo "-------------------------------------------------"
+    echo "----------- CONFIG BASH DB IoT-Hotspot-----------"
     echo "--------------MENU DE OPCIONES-------------"
-    echo "---Crear BD Galex. 1" "Poblar BD Galex. 2--"
-    echo "----Restablcer BD Galex. 3" "Salir. 4------"
+    echo "---Crear BD IoT. 1" "Poblar BD IoT. 2--"
+    echo "----Restablcer BD IoT. 3" "Salir. 4------"
 done
