@@ -24,53 +24,6 @@ class LearningController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function chart($id)
-    {
-        //
-        $learning = Learning::find($id);
-        $statistical = Statistical::find($learning->statistical_id);
-        $sample_1 = \Chart::title(['text' => 'Muestra '.$learning->id,])
-                          ->credits(['enabled' => false])
-                          ->yaxis(['min' => 0])
-                          ->xaxis(['min' => -0.5,'max' => 5.5])
-                          ->series([['type'  => 'line',
-                                     'name'  => 'Regression Line',
-                                     'data'  => [[0, 1.11],[5, 4.51]],
-                                     'marker' => ['enabled' => 'false'],
-                                     'states' => ['hover' => ['lineWith' => 0]],
-                                     'enableMouseTracking' => 'false'],
-                                     ['type' => 'scatter',
-                                      'name' => 'Observations',
-                                      'data' => [1, 1.5, 2.8, 3.5, 3.9, 4.2],
-                                      'marker' => ['radius' => 4]
-                                     ]])->display();
-        //dd($sample1);
-        $sample_2 = \Chart::title(['text' => 'Muestra '.$statistical->id,])
-                          ->credits(['enabled' => false])
-                          ->yaxis(['min' => 0])
-                          ->xaxis(['min' => -0.5,'max' => 5.5])
-                          ->series([['type'  => 'line',
-                                     'name'  => 'Regression Line',
-                                     'data'  => [[0, 1.11],[1, 4.51]],
-                                     'marker' => ['enabled' => 'false'],
-                                     'states' => ['hover' => ['lineWith' => 0]],
-                                     'enableMouseTracking' => 'false'],
-                                     ['type' => 'scatter',
-                                      'name' => 'Observations',
-                                      'data' => [1, 1.5, 2.8, 3.5, 3.9, 4.2],
-                                      'marker' => ['radius' => 4]
-                                     ]])->display();
-    //return view('module.learning.chart', ['vol1' => $vol1,]);
-    return view('module.learning.chart')->with('sample_1',$sample_1)
-                                        ->with('sample_2',$sample_2)
-                                        ->with('learning',$learning);
-    }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         //
@@ -186,5 +139,52 @@ class LearningController extends Controller
         //return reditec('/learning'->with('success','Muestra eliminada'));
         toastr()->error('Muestra eliminada');
         return redirect()->route('learning.index');
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function chart($id)
+    {
+        //
+        $learning = Learning::find($id);
+        $statistical = Statistical::find($learning->statistical_id);
+        $sample_1 = \Chart::title(['text' => 'Muestra '.$learning->id,])
+                          ->credits(['enabled' => false])
+                          ->yaxis(['min' => 0])
+                          ->xaxis(['min' => -0.5,'max' => 5.5])
+                          ->series([['type'  => 'line',
+                                     'name'  => 'Regression Line',
+                                     'data'  => [[0, 1.11],[5, 4.51]],
+                                     'marker' => ['enabled' => 'false'],
+                                     'states' => ['hover' => ['lineWith' => 0]],
+                                     'enableMouseTracking' => 'false'],
+                                     ['type' => 'scatter',
+                                      'name' => 'Observations',
+                                      'data' => [1, 1.5, 2.8, 3.5, 3.9, 4.2],
+                                      'marker' => ['radius' => 4]
+                                     ]])->display();
+        //dd($sample1);
+        $sample_2 = \Chart::title(['text' => 'Muestra '.$statistical->id,])
+                          ->credits(['enabled' => false])
+                          ->yaxis(['min' => 0])
+                          ->xaxis(['min' => -0.5,'max' => 5.5])
+                          ->series([['type'  => 'line',
+                                     'name'  => 'Regression Line',
+                                     'data'  => [[0, 1.11],[1, 4.51]],
+                                     'marker' => ['enabled' => 'false'],
+                                     'states' => ['hover' => ['lineWith' => 0]],
+                                     'enableMouseTracking' => 'false'],
+                                     ['type' => 'scatter',
+                                      'name' => 'Observations',
+                                      'data' => [1, 1.5, 2.8, 3.5, 3.9, 4.2],
+                                      'marker' => ['radius' => 4]
+                                     ]])->display();
+    //return view('module.learning.chart', ['vol1' => $vol1,]);
+    return view('module.learning.chart')->with('sample_1',$sample_1)
+                                        ->with('sample_2',$sample_2)
+                                        ->with('learning',$learning);
     }
 }

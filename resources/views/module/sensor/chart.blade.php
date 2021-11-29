@@ -79,8 +79,8 @@
     <div class="col-12">
         <div class="card card-primary card-outline">
         <div class="card-header">
-          {{-- <h3 class="card-title">Deteccion de Voltaje</h3> --}}
-          <h3 class="card-title">Voltage detection</h3>
+          <h3 class="card-title">Deteccion de Voltaje en Maquina</h3>
+          {{-- <h3 class="card-title">Voltage detection</h3> --}}
           <div class="card-tools">
             <a class="btn btn-tool"  href="{{ route('sensor.index') }}" ><span class="fas fa-arrow-left"></span></a>
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -95,7 +95,7 @@
         <div class="card-body">
           <div class="row">
             <div class="col">
-              <h4 class="card-title">Voltage 1</h4><br>
+              <h4 class="card-title">Fuente Principal</h4><br>
               {{-- <h4 class="card-title">Voltaje 1</h4><br>  --}}
                 @if($sensor->vol_1 == 'On')
                   <a><img src="{{ asset('storage/Images/On.JPG') }}" alt="" title=""/></a>
@@ -104,7 +104,7 @@
                 @endif  
             </div>
             <div class="col">
-              <h4 class="card-title">Voltage 2</h4><br>
+              <h4 class="card-title">Luminaria</h4><br>
               {{-- <h4 class="card-title">Voltaje 2</h4><br>  --}}
                 @if($sensor->vol_2 == 'On')
                   <a><img src="{{ asset('storage/Images/On.JPG') }}" alt="" title=""/></a>
@@ -113,7 +113,7 @@
                 @endif
               </div>
             <div class="col">
-              <h4 class="card-title">Voltage 3</h4><br>
+              <h4 class="card-title">Control Operativo</h4><br>
               {{-- <h4 class="card-title">Voltaje 3</h4><br>  --}}
                 @if($sensor->vol_3 == 'On')
                   <a><img src="{{ asset('storage/Images/On.JPG') }}" alt="" title=""/></a>
@@ -140,8 +140,8 @@
     <div class="col-12">
         <div class="card card-danger card-outline">
         <div class="card-header">
-          <h3 class="card-title">Door Status</h3>
-          {{-- <h3 class="card-title">Estatus Puertas</h3> --}}
+          {{-- <h3 class="card-title">Door Status</h3> --}}
+          <h3 class="card-title">Deteccion de Estatus para Puertas</h3> 
           <div class="card-tools">
             <a class="btn btn-tool"  href="{{ route('sensor.index') }}" ><span class="fas fa-arrow-left"></span></a>
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -156,8 +156,8 @@
         <div class="card-body">
           <div class="row">
             <div class="col">
-                {{-- <h4 class="card-title">Puerta 1</h4><br>  --}}
-                <h4 class="card-title">Door 1</h4><br> 
+                <h4 class="card-title">Puerta del Sistema (Puerta 1)</h4><br>
+                {{-- <h4 class="card-title">Door 1</h4><br> --}}
                   @if($sensor->door_1 == 'On')
                     <a><img src="{{ asset('storage/Images/close-door.JPG') }}" alt="" title=""/></a>
                   @elseif($sensor->door_1 == 'Off')
@@ -165,8 +165,8 @@
                   @endif
             </div>
             <div class="col">
-              <h4 class="card-title">Door 2</h4><br>
-                {{-- <h4 class="card-title">Puerta 2</h4><br> --}}
+              {{-- <h4 class="card-title">Door 2</h4><br> --}}
+                <h4 class="card-title">Puerta Adicional 2 (Opcional)</h4><br>
                 @if($sensor->door_2 == 'On')
                   <a><img src="{{ asset('storage/Images/close-door.JPG') }}" alt="" title=""/></a>
                 @elseif($sensor->door_2 == 'Off')
@@ -174,8 +174,8 @@
                 @endif
             </div>
             <div class="col">
-              <h4 class="card-title">Door 3</h4><br>
-                {{-- <h4 class="card-title">Puerta 3</h4><br> --}}
+              {{-- <h4 class="card-title">Door 3</h4><br> --}}
+                <h4 class="card-title">Puerta Adicional 3 (Opcional)</h4><br>
                 @if($sensor->door_3 == 'On')
                     <a><img src="{{ asset('storage/Images/close-door.JPG') }}" alt="" title=""/></a>
                 @elseif($sensor->door_3 == 'Off')
@@ -183,8 +183,8 @@
                 @endif
             </div>
             <div class="col">
-              <h4 class="card-title">Door 4</h4><br>
-                {{-- <h4 class="card-title">Puerta 4</h4><br> --}}
+              {{--<h4 class="card-title">Door 4</h4><br>--}}
+              <h4 class="card-title">Puerta Adicional 4 (Opcional)</h4><br>
                 @if($sensor->door_4 == 'On')
                     <a><img src="{{ asset('storage/Images/close-door.JPG') }}" alt="" title=""/></a>
                 @elseif($sensor->door_4 == 'Off')
@@ -209,8 +209,8 @@
     <div class="col-12">
         <div class="card card-warning card-outline">
         <div class="card-header">
-          {{-- <h3 class="card-title">Estatus Actuadores</h3>  --}}
-          <h3 class="card-title">Actuator Status</h3>
+          <h3 class="card-title">Estatus Actuadores para Cerraduras Electricas</h3>
+          {{-- <h3 class="card-title">Actuator Status</h3> --}}
           <div class="card-tools">
             <a class="btn btn-tool"  href="{{ route('sensor.index') }}" ><span class="fas fa-arrow-left"></span></a>
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -225,8 +225,8 @@
         <div class="card-body">
           <div class="row">
             <div class="col">
-              {{-- <h4 class="card-title">Relay 1</h4><br> --}}
-              <h4 class="card-title">Actuator 1</h4><br>
+              <h4 class="card-title">Puerta del Sistema (Actuador 1)</h4><br>
+              {{-- <h4 class="card-title">Actuator 1</h4><br> --}}
                 @if($sensor->rlay_1 == 'On')
                   <a><img src="{{ asset('storage/Images/block-on.JPG') }}" alt="" title=""/></a>
                 @elseif($sensor->rlay_1 == 'Off')
@@ -235,7 +235,7 @@
             </div>
             <div class="col">
               {{-- <h4 class="card-title">Relay 2</h4><br> --}}
-              <h4 class="card-title">Actuator 2</h4><br>
+              <h4 class="card-title">Puerta Adicional 2 (Actuador 2 Opcional)</h4><br>
                 @if($sensor->rlay_2 == 'On')
                   <a><img src="{{ asset('storage/Images/block-on.JPG') }}" alt="" title=""/></a>
                 @elseif($sensor->rlay_2 == 'Off')
@@ -244,7 +244,7 @@
               </div>
             <div class="col">
               {{--  <h4 class="card-title">Relay 3</h4><br>--}}
-              <h4 class="card-title">Actuator 3</h4><br>
+              <h4 class="card-title">Puerta Adicional 3 (Actuador 3 Opcional)</h4><br>
                 @if($sensor->rlay_3 == 'On')
                   <a><img src="{{ asset('storage/Images/block-on.JPG') }}" alt="" title=""/></a>
                 @elseif($sensor->rlay_3 == 'Off')
@@ -252,8 +252,8 @@
                 @endif 
               </div>
             <div class="col">
-              {{-- <h4 class="card-title">Relay 4</h4><br> --}}
-              <h4 class="card-title">Actuator 4</h4><br>
+              <h4 class="card-title">Puerta Adicional 4 (Actuador 4 Opcional)</h4><br>
+              {{-- <h4 class="card-title">Actuator 4</h4><br> --}}
                 @if($sensor->rlay_4 == 'On')
                   <a><img src="{{ asset('storage/Images/block-on.JPG') }}" alt="" title=""/></a>
                 @elseif($sensor->rlay_4 == 'Off')
