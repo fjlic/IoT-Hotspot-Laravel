@@ -18,6 +18,7 @@ use App\Mail\SensorAlertMail;
 
 Route::get('/', function () {return view('auth.login');});
 Auth::routes();
+
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 Route::resource('region', 'RegionController')->middleware('auth');
 Route::resource('user', 'UserController')->middleware('auth');
