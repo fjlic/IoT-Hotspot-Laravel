@@ -1,13 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Test email</h1>
-    <p>email test</p>
-</body>
-</html>
+@component('mail::message')
+# Introduction
+
+The body of your message.
+
+@component('mail::button', ['url' => ''])
+    Button Text
+@endcomponent
+
+@component('mail::panel')
+    This is a panel
+@endcomponent
+
+## Table component:
+
+@component('mail::table')
+| Laravel       | Table         | Example  |
+| ------------- |:-------------:| --------:|
+| Col 2 is      | Centered      | $10      |
+| Col 3 is      | Right-Aligned | $20      |
+@endcomponent
+
+
+@component('mail::subcopy')
+    This is a subcopy component
+@endcomponent
+
+
+Thanks,<br>
+{{ config('app.name') }}
+@endcomponent
