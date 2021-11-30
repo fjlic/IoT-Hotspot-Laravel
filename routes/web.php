@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\SensorAlertMail;
+use App\Mail\AlertSensorMail;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,9 +48,9 @@ Route::get('historialsensor/chart/{id}', 'HistorialSensorController@chart')->nam
 Route::resource('historialsensor', 'HistorialSensorController')->middleware('auth');
 Route::resource('historialstatistical', 'HistorialStatisticalController')->middleware('auth');
 Route::get('email/sensor', function() {
-    $email = new SensorAlertMail;
-    Mail::to('franc.javier.flores@gmail.com')->send($email);
-    return 'Send succes'; 
+    $mail = new AlertSensorMail;
+    Mail::to('franc.javier.flores@gmail.com')->send($mail);
+    return $mail->render(); 
 });
 
 Auth::routes();
