@@ -11,6 +11,8 @@ class AlertSensorMail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $subject = 'Alerta de Sensor';
+
     /**
      * Create a new message instance.
      *
