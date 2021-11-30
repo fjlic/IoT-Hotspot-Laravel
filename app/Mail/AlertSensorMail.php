@@ -30,6 +30,6 @@ class AlertSensorMail extends Mailable
      */
     public function build()
     {
-        return $this->view('module.email.sensor');
+        return $this->markdown('module.email.sensor');
     }
 }
