@@ -1,7 +1,7 @@
 @component('mail::message')
 # Hola estimad(a) este mensage requiere de tu atencion !!
 
-    se detectaron alertas en la plataforma por favor.
+se detectaron alertas en la plataforma por favor.
 
 @component('mail::button', ['url' => 'https://hotspot.fjlic.com/'])
     Visita Hotspot
@@ -26,7 +26,7 @@
 
 
 @component('mail::subcopy')
-    Para mas detalles visita el link: https://hotspot.fjlic.com/
+Para mas detalles visita el link: https://hotspot.fjlic.com/
 @endcomponent
 
 
