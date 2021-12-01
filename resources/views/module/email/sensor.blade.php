@@ -1,31 +1,31 @@
 @component('mail::message')
-# Introduction
+# Este mensage requiere de tu atencion !!
 
-The body of your message.
+ Hola estimado se detectaron alertas en la plataforma por favor.
 
-@component('mail::button', ['url' => ''])
-    Button Text
+@component('mail::button', ['url' => 'https://hotspot.fjlic.com/'])
+    Visita Hotspot
 @endcomponent
 
 @component('mail::panel')
-    This is a panel
+    Alertas de Sensores IoT-Hotspot
 @endcomponent
 
-## Table component:
+## Tabla de Alertas:
 
 @component('mail::table')
-| Laravel       | Table         | Example  |
-| ------------- |:-------------:| --------:|
-| Col 2 is      | Centered      | $10      |
-| Col 3 is      | Right-Aligned | $20      |
+| Id Sensor | Id Historial | Nombre | Estatus |
+|:---------:|:------------:|:------:|:------:-|
+|     1     |      1       |  Tmp1  |    3.5  |
+|     1     |      2       |  Tmp2  |    3.6  |
 @endcomponent
 
 
 @component('mail::subcopy')
-    This is a subcopy component
+    Para mas detalles visita el link: https://hotspot.fjlic.com/
 @endcomponent
 
 
-Thanks,<br>
+Gracias por atender el mensage,<br>
 {{ config('app.name') }}
 @endcomponent
