@@ -29,5 +29,5 @@
 @endcomponent
 
 
-    Gracias, Atte. {{ config('app.name') }}
+Gracias, Atte. {{ config('app.name') }}
 @endcomponent
