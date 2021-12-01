@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Hotspot-Nfc')
+@section('title', 'Hotspot|Nfc')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop
@@ -89,7 +89,7 @@
                   <input type="text" class="form-control" name="port" id="port"  readonly="readonly" required value="{{ $nfc->port }}">
                 </div>
                 <div class="form-group">
-                  <label for="txt">Text</label>
+                  <label for="txt">Texto</label>
                   <input type="text" class="form-control" name="txt" id="txt"  readonly="readonly" required value="{{ $nfc->txt }}">
                 </div>
               </div>

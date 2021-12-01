@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Hotspot-Nfc')
+@section('title', 'Hotspot|Nfc')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop
@@ -53,7 +53,7 @@
                   <th>Ip Server</th>
                   <th>Puerto</th>
                   <th>Texto</th>
-                  {{--<th>FechaModificacion</th>--}}
+                  {{--<th>FechaMod</th>--}}
                   <th>FechaMod</th>
                   <th>Acciones</th>
                 </tr>

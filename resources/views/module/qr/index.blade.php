@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Hotspot-Qr')
+@section('title', 'Hotspot|Qr')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop
@@ -42,7 +42,7 @@
                   <th>Crd_Id</th>
                   <th>Erb_id</th>
                   <th>QrSerie</th>
-                  <th>Coins</th>
+                  <th>Monedas</th>
                   <th>Actualizado</th>
                   {{-- <th>FechaCreacion</th>  --}}
                   <th>FechaMod</th>

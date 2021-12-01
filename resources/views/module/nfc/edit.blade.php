@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Hotspot-Nfc')
+@section('title', 'Hotspot|Nfc')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop
@@ -88,22 +88,22 @@
             </div>
             <div class="form-group">
               <label for="ssid">Ssid</label>
-              <input type="text" class="form-control" name="ssid" id="ssid"  placeholder="Introduce ssid" required value="{{ $nfc->ssid }}">
+              <input type="text" class="form-control" name="ssid" id="ssid"  placeholder="Introduce Ssid" required value="{{ $nfc->ssid }}">
             </div>
             <div class="form-group">
               <label for="passwd">Password</label>
-              <input type="text" class="form-control" name="passwd" id="passwd"  placeholder="Introduce password" required value="{{ $nfc->passwd }}">
+              <input type="text" class="form-control" name="passwd" id="passwd"  placeholder="Introduce Password" required value="{{ $nfc->passwd }}">
             </div>
             <div class="form-group">
               <label for="ip_server">Ip Servidor</label>
-              <input type="text" class="form-control" name="ip_server" id="ip_server"  placeholder="Introduce ip" required value="{{ $nfc->ip_server }}">
+              <input type="text" class="form-control" name="ip_server" id="ip_server"  placeholder="Introduce Ip" required value="{{ $nfc->ip_server }}">
             </div>
             <div class="form-group">
-              <label for="port">port</label>
-              <input type="text" class="form-control" name="port" id="port"  placeholder="Introduce puerto" required value="{{ $nfc->port }}">
+              <label for="port">Puerto</label>
+              <input type="text" class="form-control" name="port" id="port"  placeholder="Introduce Puerto" required value="{{ $nfc->port }}">
             </div>
             <div class="form-group">
-              <label for="txt">Text</label>
+              <label for="txt">Texto</label>
               <input type="text" class="form-control" name="txt" id="txt"  placeholder="Introduce Texto" required value="{{ $nfc->txt }}">
             </div>
               </div>

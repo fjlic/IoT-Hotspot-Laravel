@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Hotspot-Estadistico')
+@section('title', 'Hotspot|Estadistico')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop
@@ -31,8 +31,8 @@
         <div class="col-12">
           <div class="card card-primary card-outline">
             <div class="card-header">
-              {{--  <h3 class="card-title">Muestras Estadistico Sensor</h3>--}}
-              <h3 class="card-title">Samples Statistical Sensor</h3>
+              <h3 class="card-title">Muestras Estadistico Sensor</h3>
+              {{--  <h3 class="card-title">Samples Statistical Sensor</h3>  --}}
               <a class="btn btn-xs btn-success float-right" href="{{ route('statistical.create') }}" role="button"><span class="fas fa-plus"></span></a>
             </div>
             <!-- /.card-header -->
@@ -43,15 +43,15 @@
                 <tr>
                   <th>Id</th>
                   <th>Id Sensor</th>
-                  <th>Elements</th>
-                  <th>St time</th>
-                  <th>Fin time</th>
+                  <th>Element</th>
+                  <th>Tmp Inicio</th>
+                  <th>Tmp Fin</th>
                   <th>Total Sec</th>
                   <th>Difer</th>
-                  <th>Sample</th>
+                  <th>Muestra</th>
                   {{-- <th>FechaCre</th> --}}
                   {{-- <th>DateMod</th> --}}
-                  <th>Actions</th>
+                  <th>Acciones</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -64,14 +64,14 @@
                     <td>{{ $statistical->finish_time }}</td>
                     <td>{{ $statistical->total_time }}</td>
                     <td>{{ $statistical->difer_time }}</td>
-                    <td><a href="" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#ModalSt{{$statistical->id}}"><span>Sample-Data</span></a>
+                    <td><a href="" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#ModalSt{{$statistical->id}}"><span>Datos-Muestra</span></a>
                     <!------ ESTE ES EL MODAL QUE SE MUESTRA AL DAR CLICK EN EL BOTON "ELIMINAR" ------>
                     <div class="modal fade" id="ModalSt{{$statistical->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                       <div class="modal-dialog modal-dialog-centered" role="document">
                       <div class="modal-content">
                       <div class="modal-header d-flex justify-content-center">
-                        <h5 class="modal-title" id="exampleModalCenterTitle">Dates Sample ({{$statistical->id}})</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Datos de la Muestra ({{$statistical->id}})</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
@@ -81,7 +81,7 @@
                           </div>
                       </div>
                       <div class="modal-footer d-flex justify-content-center">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                       </div>
                       </div>
                       </div>
@@ -158,8 +158,8 @@
     <div class="col-12">
       <div class="card card-primary card-outline">
         <div class="card-header">
-          {{-- <h3 class="card-title">Resultados Estadisticos</h3> --}}
-          <h3 class="card-title">Statistical Results</h3>
+          <h3 class="card-title">Resultados Estadisticos</h3>
+          {{--  <h3 class="card-title">Statistical Results</h3>  --}}
         </div>
         <!-- /.card-header -->
         <div class="card-body">
@@ -167,13 +167,13 @@
           <thead>
              <!-- /.card-header 'id', 'estimate_proxy_size', 'development_hours' -->
             <tr>
-              <th>Id Sample</th>
+              <th>Id Muestra</th>
              {{-- <th>Id Sensor</th>  --}}
-              <th>Correlation</th>
-              <th>Average Arithmetic</th>
-              <th>Median</th>
-              <th>Mode</th>
-              <th>Standard Deviation</th>
+              <th>Correlacion</th>
+              <th>Media Aritmetica</th>
+              <th>Mediana</th>
+              <th>Moda</th>
+              <th>Deviacion Estandar</th>
               {{-- <th>DateMod</th> --}}
             </tr>
             </thead>
@@ -239,7 +239,7 @@
       'scrollX'     : true,
       'scrollY'     : false,
       'scrollCollapse': false,
-      //'language': {'url': '//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json'}   
+      'language': {'url': '//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json'}   
     })
   });
 </script>
@@ -256,7 +256,7 @@
       'scrollX'     : true,
       'scrollY'     : false,
       'scrollCollapse': false,
-      //'language': {'url': '//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json'}   
+      'language': {'url': '//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json'}   
     })
   });
 </script>

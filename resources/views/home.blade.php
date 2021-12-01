@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Hotspot-Sensor')
+@section('title', 'Hotspot|Sensor')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop
@@ -154,13 +154,17 @@
                 </tbody>
                <!-- <tfoot>
                 <tr>
-                  <th>Id</th>
+                  {{-- <th>Id</th>  --}}
                   <th>Id_Erb</th>
                   <th>NumSer</th>
                   {{-- <th>Passw</th>  --}}
-                  <th>Vol1</th>
-                  <th>Vol2</th>
-                  <th>Vol3</th>
+                  <th>Temp1</th>
+                  <th>Temp2</th>
+                  <th>Temp3</th>
+                  <th>Temp4</th>
+                  <th>Volt1</th>
+                  <th>Volt2</th>
+                  <th>Volt3</th>
                   <th>Prt1</th>
                   <th>Prt2</th>
                   <th>Prt3</th>
@@ -171,7 +175,7 @@
                   <th>Rly4</th>
                   <th>Text</th>
                  {{--  <th>FechaCreacion</th>  --}}
-                 <th>FechaMod</th> 
+                  <th>FechaMod</th> 
                   <th>Acciones</th>
                 </tr>
                 </tfoot>-->

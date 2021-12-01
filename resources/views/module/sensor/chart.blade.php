@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Hotspot-Sensor')
+@section('title', 'Hotspot|Sensor')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop
@@ -31,8 +31,8 @@
         <div class="col-12">
             <div class="card card-success card-outline">
             <div class="card-header">
-              {{-- <h3 class="card-title">Indicador de Temperatura</h3>  --}}
-              <h3 class="card-title">Temperature Indicator</h3>
+              <h3 class="card-title">Indicador de Temperatura</h3>
+              {{--  <h3 class="card-title">Temperature Indicator</h3>  --}}
               <div class="card-tools">
                 <a class="btn btn-tool"  href="{{ route('sensor.index') }}" ><span class="fas fa-arrow-left"></span></a>
                 <button type="button" class="btn btn-tool" data-card-widget="collapse">

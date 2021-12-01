@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Hotspot-Nfc')
+@section('title', 'Hotspot|Nfc')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop
@@ -79,7 +79,7 @@
                 </div>
                 <div class="form-group">
                   <label for="ssid">Ssid</label>
-                  <input type="text" class="form-control" name="ssid" id="ssid"  placeholder="Introduce ssid" required>
+                  <input type="text" class="form-control" name="ssid" id="ssid"  placeholder="Introduce Ssid" required>
                 </div>
                 <div class="form-group">
                   <label for="passwd">Password</label>
@@ -87,11 +87,11 @@
                 </div>
                 <div class="form-group">
                   <label for="ip_server">Ip servidor</label>
-                  <input type="text" class="form-control" name="ip_server" id="ip_server"  placeholder="Introduce ip" required>
+                  <input type="text" class="form-control" name="ip_server" id="ip_server"  placeholder="Introduce Ip" required>
                 </div>
                 <div class="form-group">
                   <label for="port">Puerto</label>
-                  <input type="text" class="form-control" name="port" id="port"  placeholder="Introduce puerto" required>
+                  <input type="text" class="form-control" name="port" id="port"  placeholder="Introduce Puerto" required>
                 </div>
                 <div class="form-group">
                   <label for="text">Texto</label>

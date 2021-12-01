@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Hotspot-Estadistico')
+@section('title', 'Hotspot|Estadistico')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop
@@ -41,7 +41,7 @@
               <div class="card-body">
                 <div class="form-group">
                   <label for="sensor_id">Sensor Id</label>
-                  <input type="text" class="form-control" name="sensor_id" id="sensor_id"  placeholder="Introduce statistical id" required>
+                  <input type="text" class="form-control" name="sensor_id" id="sensor_id"  placeholder="Introduce estadistico id" required>
                 </div>
                 <div class="form-group">
                   <label for="elements">Elementos</label>

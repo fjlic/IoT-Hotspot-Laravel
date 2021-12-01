@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Hotspot-Usuario')
+@section('title', 'Hotspot|Usuario')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop
@@ -49,7 +49,7 @@
                 </div>
                 <div class="form-group">
                   <label for="password">Password</label>
-                  <input type="password" class="form-control" name="password" id="password" placeholder="Nuevo contraseña"/>
+                  <input type="password" class="form-control" name="password" id="password" placeholder="Nueva contraseña"/>
                 </div>
                 <div class="form-group">
                   <label for="name_role">Asignar tipo de usuario</label>

@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Hotspot-Estadistico')
+@section('title', 'Hotspot|Estadistico')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop
@@ -59,11 +59,11 @@
                 </div>
                 <div class="form-group">
                   <label for="total_time">Tiempo Total</label>
-                  <input type="text" class="form-control" name="total_time" id="total_time"  placeholder="Introduce hora de fin" required value="{{ $statistical->total_time }}" />
+                  <input type="text" class="form-control" name="total_time" id="total_time"  placeholder="Introduce tiempo total" required value="{{ $statistical->total_time }}" />
                 </div>
                 <div class="form-group">
                   <label for="difer_time">Tiempo desface (+/-)</label>
-                  <input type="text" class="form-control" name="difer_time" id="difer_time"  placeholder="Introduce hora de fin" required value="{{ $statistical->difer_time }}" />
+                  <input type="text" class="form-control" name="difer_time" id="difer_time"  placeholder="Introduce tiempo de desface" required value="{{ $statistical->difer_time }}" />
                 </div>
                 <div class="form-group">
                   <label for="sample">Muestra</label>

@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Hotspot-Qr')
+@section('title', 'Hotspot|Qr')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop
@@ -53,7 +53,7 @@
                   <input type="text" class="form-control" value="{{ $qr->qr_serie }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
-                  <label for="coins">Coins</label>
+                  <label for="coins">Monedas</label>
                   <input type="text" class="form-control" value="{{ $qr->coins }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">

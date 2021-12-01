@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Hotspot-Estadistico-Contador')
+@section('title', 'Hotspot|Estadistico|Contador')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop
@@ -43,7 +43,7 @@
                 <!-- 'id', 'counter_id', 'elements', 'start_time', 'finish_time', 'total_time', 'difer_time', 'sample' -->
                 <div class="form-group">
                   <label for="counter_id">Contador Id</label>
-                  <input type="text" class="form-control" name="counter_id" id="counter_id"  placeholder="Introduce num scontador id" required value="{{ $statisticalcounter->counter_id }}" />
+                  <input type="text" class="form-control" name="counter_id" id="counter_id"  placeholder="Introduce numero del contador id" required value="{{ $statisticalcounter->counter_id }}" />
                 </div>
                 <div class="form-group">
                   <label for="elements">Elementos</label>
@@ -59,11 +59,11 @@
                 </div>
                 <div class="form-group">
                   <label for="total_time">Tiempo Total</label>
-                  <input type="text" class="form-control" name="total_time" id="total_time"  placeholder="Introduce hora de fin" required value="{{ $statisticalcounter->total_time }}" />
+                  <input type="text" class="form-control" name="total_time" id="total_time"  placeholder="Introduce tiempo total" required value="{{ $statisticalcounter->total_time }}" />
                 </div>
                 <div class="form-group">
                   <label for="difer_time">Tiempo Desface (+/-)</label>
-                  <input type="text" class="form-control" name="difer_time" id="difer_time"  placeholder="Introduce hora de fin" required value="{{ $statisticalcounter->difer_time }}" />
+                  <input type="text" class="form-control" name="difer_time" id="difer_time"  placeholder="Introduce hora de desface" required value="{{ $statisticalcounter->difer_time }}" />
                 </div>
                 <div class="form-group">
                   <label for="sample">Muestra</label>

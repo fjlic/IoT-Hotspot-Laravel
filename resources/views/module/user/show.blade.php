@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Hotspot-Usuario')
+@section('title', 'Hotspot|Usuario')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop
@@ -41,11 +41,9 @@
                        src="vendor/adminlte/dist/img/logo-iot.png"
                        alt="Picture User">
                 </div>
-
                 <h3 class="profile-username text-center">{{ $user->name }}</h3>
-
                 <p class="text-muted text-center">{{ $user->name_role }}</p>
-            <ul class="list-group list-group-unbordered mb-3">
+                <ul class="list-group list-group-unbordered mb-3">
                   <li class="list-group-item">
                     <b>Nombre</b> <a class="float-right">{{ $user->name }}</a>
                   </li>

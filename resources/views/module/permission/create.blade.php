@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Hotspot-Permission')
+@section('title', 'Hotspot|Permiso')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop

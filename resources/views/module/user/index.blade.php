@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Hotspot-Usuarios')
+@section('title', 'Hotspot|Usuarios')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop
@@ -41,8 +41,8 @@
                   <th>Id</th>
                   <th>Nombre</th>
                   <th>Email</th>
-                 {{--  <th>Password</th>  --}}
-                  {{-- <th>FechaCreacion</th> --}}
+                  {{-- <th>Password</th> --}}
+                  {{-- <th>FechaCre</th> --}}
                   <th>FechaMod</th>
                   <th>Acciones</th>
                 </tr>
@@ -54,7 +54,7 @@
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
                     {{-- <td>{{ $user->password }}</td>  --}}
-                   {{--  <td>{{ $user->created_at }}</td>  --}}
+                    {{--  <td>{{ $user->created_at }}</td>  --}}
                     <td>{{ $user->updated_at }}</td>
                     <td>
                       <form role="form" action="{{ route('user.destroy',$user->id) }}" method="POST">

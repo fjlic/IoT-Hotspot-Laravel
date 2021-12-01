@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Hotspot-Estadistico-Contador')
+@section('title', 'Hotspot|Estadistico|Contador')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop

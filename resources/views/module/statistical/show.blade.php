@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Hotspot-Estadistico')
+@section('title', 'Hotspot|Estadistico')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop
@@ -47,7 +47,7 @@
                   <input type="text" class="form-control" value="{{ $statistical->sensor_id }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
-                  <label for="elements">Tamaño de la Muestra</label>
+                  <label for="elements">Tamaño de la muestra</label>
                   <input type="text" class="form-control" value="{{ $statistical->elements }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
