@@ -30,7 +30,7 @@ Si gustas es posible crear la estructura MVC de forma manual.
 <a name="migrations"></a>
 ## Migracion
 
-Comando `php artisan make:migration File` ejecutar en consola dentro del proyecto.
+Comando `php artisan make:migration file` ejecutar en consola dentro del proyecto.
 
 > {info} Directorio  `database/migrations/2014_10_12_000000_create_files_table.php`.
 
@@ -174,12 +174,6 @@ class FileController extends Controller
     {
         //
         $files = File::all();
-        //$total_line = 0;
-        //if($files->isNotEmpty()){
-         // foreach ($files as $key => $file) {
-          //    $total_line += $file->set;
-         // }
-        //}
        
         return view('module.file.index',compact('files'));
     }
@@ -211,26 +205,7 @@ class FileController extends Controller
         ]);
         $req_file = $request->file('name_file');
         $set = $request->get('set');
-
-        //CARGO EL ARCHIVO QUE DESEO LEER
         $archivo=fopen($req_file, "r") or die ("error al leer el archivo");
-        //INICIALIZO LA VARIABLE QUE ME ALMACENARA LAS LINEAS
-        //$set = 0; 
-        //$linea_vacia="";
-        //HAGO UNA SENTENCIA QUE ME RECORRA EL ARCHIVO  DE INICIO A FIN 
-        //while (!feof($archivo)) {
-        //  if ($cant_lineas=fgets($archivo)) {
-            //HAGO UN CONTADOR QUE ME ALMACENE LA CANTIDAD DE LINEAS DE CODIGO
-        //    $set++;
-        //  }
-
-        //  else if($cant_lineas=NULL) {
-        ///    $set = 0;
-        //   }
-
-        //} 
-        //fclose ($archivo);
-
         $name_file = $req_file->getClientOriginalName();
         $path_file = public_path("storage/public/files") . "/" . $name_file;
 
@@ -308,6 +283,35 @@ class FileController extends Controller
         toastr()->error('File eliminado');
         return redirect()->route('file.index');
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\File  $file
+     * @return \Illuminate\Http\Response
+     */
+    public function download(Request $request,$id)
+    {
+        $file = File::where('id',$id)->first();
+        if (is_null($file)) {
+            return response()->json(['message' => 'Archivo no encontrado'], 404);
+        }
+        $fileName = $file->name_file;
+        $filePath = $file->route;
+        if (Storage::exists('public/files/'.$file->name_file)) {
+            $pathToFile = public_path("storage/public/files/").$file->name_file;
+            $headers = [
+                'Content-Type' => 'application/octet-stream',
+            ];
+            // return Storage::download($pathToFile, $fileName, $headers);
+            return response()->download($pathToFile, $fileName, $headers);
+            // return response()->json(['message' => $filePath], 200);
+        }
+        /*else{
+            return response()->json(['message' => 'Archivo no encontrado'], 404);
+        }*/
+    }
+    
 }
 
 
@@ -338,7 +342,7 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
+Route::get('file/download/{id}', 'FileController@download')->name('file.download')->middleware('auth');
 Route::resource('file', 'FileController')->middleware('auth');
 Auth::routes();
 
@@ -373,8 +377,7 @@ No se cuenta con comando pero crea un archivos index para modulo de erb `index.b
                   <th>Nombre Video</th>
                   <th>Conjunto</th>
                   <th>Ruta Video</th>
-                  <th>FechaCreacion</th>
-                  <th>FechaMoficiacion</th>
+                  <th>FechaMod</th>
                   <th>Acciones</th>
                 </tr>
                 </thead>
@@ -385,15 +388,40 @@ No se cuenta con comando pero crea un archivos index para modulo de erb `index.b
                     <td>{{ $file->name_file }}</td>
                     <td>{{ $file->set }}</td>
                     <td>{{ $file->route }}</td>
-                    <td>{{ $file->created_at }}</td>
                     <td>{{ $file->updated_at }}</td>
                     <td>
                       <form role="form" action="{{ route('file.destroy',$file->id) }}" method="POST">
+                      <a class="btn btn-primary btn-xs" href="{{route('file.download',$file->id)}}" role="button" data-report_id="{{$file->id}}"><span class="fas fa-download"></span></a>
                       <a class="btn btn-info btn-xs" href="{{ route('file.show',$file->id) }}" role="button"><span class="fas fa-eye"></span></a> 
                       <a class="btn btn-warning btn-xs"  href="{{ route('file.edit',$file->id) }}" role="button"><span class="fas fa-pen"></span></a>
                       @csrf
                       @method('DELETE')
-                      <button class="btn btn-danger btn-xs" type="submit"><span class="fas fa-trash"></span></button>
+                      <a href="" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#exampleModalCenter{{$file->id}}"><span class="fas fa-trash"></span></a>
+                      <!------ Modal 1 ------>
+                      <div class="modal fade" id="exampleModalCenter{{$file->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                      <div class="modal-header d-flex justify-content-center">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Ten cuidado con esta acción</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                          <div class="modal-body" style="text-align: center">
+                            <a><img src="{{ asset('storage/Images/Warning.JPG') }}" alt="" title=""  text-align="center" /></a>
+                           </div>
+                           <br>
+                          <p class="text-center">Eliminarás ( <b>{{$file->name_file}}</b> ) seguro</p>
+                      </div>
+                      <div class="modal-footer d-flex justify-content-center">
+                            <button type="button" class="btn btn-info" data-dismiss="modal">Cancelar</button>
+                            <input type="submit" class="btn btn-danger" value="Eliminar">
+                      </div>
+                      </div>
+                      </div>
+                      </div>
+                    <!--fin modal--> 
                       </form>
                     </td>
                 </tr>
@@ -422,10 +450,6 @@ No se cuenta con comando pero crea un archivos index para modulo de erb `index.b
     </section>
     <!-- /.content --> 
 
-<!--------------------------------------------------------------------------------------------------------------------------------------------------> 
-
-@stop
-
 ```
 
 <a name="mcr"></a>
@@ -436,14 +460,14 @@ Tu puedes crear los archivos de forma automatica y sin tanta complejidad.
 ☝️ En un solo comando crearas migracion, modelo, controlador con recursos.
 
 ```php
-   php artisan make:model NameModel -mcr
+   php artisan make:model File -mcr
 
 ```
 
 ✌️ Comando para crear Seeder.
 
 ```php
-   php artisan make:seeder NameTableSeeder
+   php artisan make:seeder AddFileTableSeeder
 
 ```
 

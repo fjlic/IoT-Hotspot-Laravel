@@ -14,7 +14,7 @@ class ErbController extends BaseController
 
 {
     /**
-     * List all Crds.
+     * List all Erb.
      *
      * @return \Illuminate\Http\Response
      */
@@ -40,6 +40,7 @@ class ErbController extends BaseController
      * @param  int  $id or name $name_machine
      * @return \Illuminate\Http\Response
      */
+
     public function show($id)
     {
         $erb = Erb::where('id',$id)->first(); 

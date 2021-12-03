@@ -48,8 +48,15 @@ class CreateStatisticalsTable extends Migration
     {
         Schema::create('statisticals', function (Blueprint $table) {
             $table->id();
-            $table->string('estimate_proxy_size')->nullable();
-            $table->string('development_hours')->nullable();
+            $table->unsignedBigInteger('sensor_id')->nullable();
+            $table->string('elements')->nullable();
+            $table->string('start_time')->nullable();
+            $table->string('finish_time')->nullable();
+            $table->string('total_time')->nullable();
+            $table->string('difer_time')->nullable();
+            $table->json('sample')->nullable();
+            $table->integer('stat')->default('0');
+            $table->foreign('sensor_id')->references('id')->on('sensors')->onUpdate('cascade')->onDelete('cascade')->nullable();
             $table->timestamps();
         });
     }
@@ -87,66 +94,70 @@ class AddStatisticalTableSeeder extends Seeder
     public function run()
     {
         //
-        $statistical = new Statistical();
-        $statistical->id = 1;
-        $statistical->estimate_proxy_size = 160;
-        $statistical->development_hours = 15.0;
-        $statistical->save();
-
-        $statistical = new Statistical();
-        $statistical->id = 2;
-        $statistical->estimate_proxy_size = 591;
-        $statistical->development_hours = 69.9;
-        $statistical->save();
-        
-        $statistical = new Statistical();
-        $statistical->id = 3;
-        $statistical->estimate_proxy_size = 114;
-        $statistical->development_hours = 6.5;
-        $statistical->save();
-
-        $statistical = new Statistical();
-        $statistical->id = 4;
-        $statistical->estimate_proxy_size = 229;
-        $statistical->development_hours = 22.4;
-        $statistical->save();
-
-        $statistical = new Statistical();
-        $statistical->id = 5;
-        $statistical->estimate_proxy_size = 230;
-        $statistical->development_hours = 28.4;
-        $statistical->save();
-
-        $statistical = new Statistical();
-        $statistical->id = 6;
-        $statistical->estimate_proxy_size = 270;
-        $statistical->development_hours = 65.9;
-        $statistical->save();
-
-        $statistical = new Statistical();
-        $statistical->id = 7;
-        $statistical->estimate_proxy_size = 128;
-        $statistical->development_hours = 19.4;
-        $statistical->save();
-
-        $statistical = new Statistical();
-        $statistical->id = 8;
-        $statistical->estimate_proxy_size = 1657;
-        $statistical->development_hours = 198.7;
-        $statistical->save();
-
-        $statistical = new Statistical();
-        $statistical->id = 9;
-        $statistical->estimate_proxy_size = 624;
-        $statistical->development_hours = 38.8;
-        $statistical->save();
-
-        $statistical = new Statistical();
-        $statistical->id = 10;
-        $statistical->estimate_proxy_size = 1503;
-        $statistical->development_hours = 138.2;
-        $statistical->save();
-
+        $inc = 1;
+        $process_chunk = 10;
+        $value_sample = 144;
+        $adjust_value = $value_sample+1;
+        $time_schedule = 600;
+        $time_lag = 86400;
+        $sensors = Sensor::all();
+        $id_continued = Statistical::all();
+        if($id_continued->isNotEmpty())
+        {
+            $id_tmp = $id_continued->last();
+            $inc = $id_tmp->id + 1;
+        }
+        foreach ($sensors as $key1 => $sensor) {
+            for ($i=1; $i <= $process_chunk; $i++) {//16 
+                $data_his = HistorialSensor::where('sensor_id', $sensor->id)
+                ->where('stat', 0)
+                //->latest()
+                ->take($adjust_value)->get();
+                if ($data_his->count()==$adjust_value) 
+                {
+                    $statistical = new Statistical();
+                    $statistical->id = $inc++;
+                    $temp_start = $data_his->first();
+                    $statistical->sensor_id = $temp_start->sensor_id;
+                    $statistical->start_time = $temp_start->created_at;
+                    $tmp_sample = [[]];
+                    foreach ($data_his as $key2 => $data) 
+                    {
+                        if($key2<$value_sample)
+                        {
+                          $id_key2 = $key2;
+                          $id_key2++;
+                          $data->stat = 1;
+                          $data->save();
+                          $tmp_sample[$key2]["id"]=$id_key2;
+                          $tmp_temp1 = new \Carbon\Carbon($data->created_at);
+                          $tmp_temp2 = new \Carbon\Carbon($data_his[$key2+1]->created_at);
+                          $tmp_pass=$tmp_temp1->diffInSeconds($tmp_temp2);
+                          $tmp_difer=($tmp_pass-$time_schedule);
+                          $tmp_sample[$key2]["sched_time"]=$time_schedule;
+                          $tmp_sample[$key2]["start_time"]=$tmp_temp1->format('Y-m-d H:i:s');
+                          $tmp_sample[$key2]["end_time"]=$tmp_temp2->format('Y-m-d H:i:s');
+                          $tmp_sample[$key2]["pass_time"]=$tmp_pass;
+                          $tmp_sample[$key2]["difer_time"]=$tmp_difer;   
+                        }
+                        
+                    }
+                    $statistical->elements = $value_sample;
+                    $statistical->sample =  json_encode($tmp_sample);
+                    $temp_finish = $data_his->last();
+                    $statistical->finish_time = $temp_finish->created_at;
+                    //convertimos la fecha 1 a objeto Carbon
+                    $carbon1 = new \Carbon\Carbon($temp_start->created_at);
+                    //convertimos la fecha 2 a objeto Carbon
+                    $carbon2 = new \Carbon\Carbon($temp_finish->created_at);
+                    //de esta manera sacamos la diferencia en minutos
+                    $secondsDiff=$carbon1->diffInSeconds($carbon2);
+                    $statistical->total_time = $secondsDiff;
+                    $statistical->difer_time = ($secondsDiff-$time_lag);
+                    $statistical->save();
+                }   
+            }
+        }
     }
 }
 
@@ -171,7 +182,7 @@ class Statistical extends Model
      * @var array
      */
     protected $fillable = [
-        'id', 'estimate_proxy_size', 'development_hours',
+        'id', 'sensor_id', 'elements', 'start_time', 'finish_time', 'total_time', 'difer_time', 'sample',
     ];
 
     /**
@@ -204,8 +215,19 @@ Comando `php artisan make:controller Statistical` ejecutar en consola dentro del
 
 ```php
 
-class TestController extends Controller
+class StatisticalController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     * Part Name : CNT
+     * * Part Size : 15.1
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -214,6 +236,22 @@ class TestController extends Controller
     public function index()
     {
         //
+        $statisticals = Statistical::all();
+        foreach ($statisticals as $key1 => $statistical) {
+            $x = [];
+            $y = []; 
+           foreach (json_decode($statistical->sample) as $key2 => $json) {
+            $x[$key2] = $key2;
+            $y[$key2] = $json->pass_time;
+           }
+           $statistical->pearsoncorrelation = Correlation::pearson($x, $y);
+           $statistical->meanarithmetic = Mean::arithmetic([reset($y), end($y)]);
+           $statistical->meanmedian = Mean::median($y);
+           $statistical->meanmode = Mean::mode($y);
+           sort($y);
+           $statistical->standartdesviation = StandardDeviation::population($y);
+        }
+        return view('module.statistical.index',compact('statisticals'));
     }
 
     /**
@@ -224,6 +262,7 @@ class TestController extends Controller
     public function create()
     {
         //
+        return view('module.statistical.create');
     }
 
     /**
@@ -235,51 +274,89 @@ class TestController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'elements'=>'required|string|max:100',
+            'start_time'=>'required|string|max:100',
+            'finish_time'=>'required|string|max:100',
+            'total_time'=>'required|string|max:100',
+            'difer_time'=>'required|string|max:100',
+            'sample'=>'required|string',
+        ]);
+        $statistical = new Statistical([
+            'elements' => $request->get('elements'),
+            'start_time' => $request->get('start_time'),
+            'finish_time' => $request->get('finish_time'),
+            'total_time' => $request->get('total_time'),
+            'difer_time' => $request->get('difer_time'),
+            'sample' => $request->get('sample')
+            ]);
+        $statistical->save();
+        //return redirect(/statistical)->with('success','Prueba probabilistica creada');
+        toastr()->success('Muestra probabilistica creada');
+        return redirect()->route('statistical.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Test  $test
+     * @param  \App\Statistical  $statistical
      * @return \Illuminate\Http\Response
      */
-    public function show(Test $test)
+    public function show(Statistical $statistical)
     {
         //
+        return view('module.statistical.show', compact('statistical'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Test  $test
+     * @param  \App\Statistical  $statistical
      * @return \Illuminate\Http\Response
      */
-    public function edit(Test $test)
+    public function edit(Statistical $statistical)
     {
         //
+        return view('module.statistical.edit',compact('statistical'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Test  $test
+     * @param  \App\Statistical  $statistical
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Test $test)
+    public function update(Request $request, Statistical $statistical)
     {
         //
+        $request->validate([
+            'elements'=>'required|string|max:100',
+            'start_time'=>'required|string|max:100',
+            'finish_time'=>'required|string|max:100',
+            'total_time'=>'required|string|max:100',
+            'difer_time'=>'required|string|max:100',
+            'sample'=>'required|string',
+        ]);
+        $statistical_request = $request->all();
+        $statistical->update($statistical_request);
+        toastr()->warning('Prueba actualizada');
+        return redirect()->route('statistical.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Test  $test
+     * @param  \App\Statistical  $statistical
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Test $test)
+    public function destroy(Statistical $statistical)
     {
         //
+        $statistical->delete();
+        //return reditec('/statistical'->with('success','Estadistico eliminado'));
+        toastr()->error('Estadistico eliminado');
+        return redirect()->route('statistical.index');
     }
 }
 
@@ -310,7 +387,6 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 Route::resource('statistical', 'StatisticalController')->middleware('auth');
 Auth::routes();
 
@@ -328,106 +404,36 @@ No se cuenta con comando pero crea un archivos index para modulo de erb `index.b
 <!-- Main content Part Name : VST -->
  <!-- Part Size : 23.3 -->
  <section class="content">
-      <div class="row">
-        <div class="col-12">
-          <div class="card card-primary card-outline">
-            <div class="card-header">
-              <h3 class="card-title">Tabla Estadistico</h3>
-              <a class="btn btn-xs btn-success float-right" href="{{ route('statistical.create') }}" role="button"><span class="fas fa-plus"></span></a>
-            </div>
-            <!-- /.card-header -->
-            <div class="card-body">
-              <table id="statisticalTable" class="table table-bordered table-striped">
-              <thead>
-                 <!-- /.card-header 'id', 'estimate_proxy_size', 'development_hours' -->
-                <tr>
-                  <th>Id</th>
-                  <th>Tamaño Estimado</th>
-                  <th>Horas Desarollo</th>
-                  <th>FechaCreacion</th>
-                  <th>FechaMoficiacion</th>
-                  <th>Acciones</th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach($statisticals as $statistical)
-                <tr>
-                    <td>{{ $statistical->id }}</td>
-                    <td>{{ $statistical->estimate_proxy_size }}</td>
-                    <td>{{ $statistical->development_hours }}</td>
-                    <td>{{ $statistical->created_at }}</td>
-                    <td>{{ $statistical->updated_at }}</td>
-                    <td>
-                      <form role="form" action="{{ route('statistical.destroy',$statistical->id) }}" method="POST">
-                      <a class="btn btn-info btn-xs" href="{{ route('statistical.show',$statistical->id) }}" role="button"><span class="fas fa-eye"></span></a> 
-                      <a class="btn btn-warning btn-xs"  href="{{ route('statistical.edit',$statistical->id) }}" role="button"><span class="fas fa-pen"></span></a>
-                      @csrf
-                      @method('DELETE')
-                      <button class="btn btn-danger btn-xs" type="submit"><span class="fas fa-trash"></span></button>
-                      </form>
-                    </td>
-                </tr>
-                @endforeach
-                </tbody>
-               <!-- <tfoot>
-                 <tr>
-                 <th>Id</th>
-                  <th>Tamaño Estimado</th>
-                  <th>Horas Desarollo</th>
-                  <th>FechaCreacion</th>
-                  <th>FechaMoficiacion</th>
-                  <th>Acciones</th>
-                </tr>
-                </tfoot>-->
-              </table>
-            </div>
-            <!-- /.card-body -->
-          </div>
-          <!-- /.card -->
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
-    </section>
-    <!-- /.content --> 
-
-<!--------------------------------------------------------------------------------------------------------------------------------------------------> 
-
-<!-- Main content -->
-<section class="content">
   <div class="row">
     <div class="col-12">
-      <div class="card card-success card-outline">
+      <div class="card card-primary card-outline">
         <div class="card-header">
-          <h3 class="card-title">Resultados</h3>
+          <h3 class="card-title">Resultados Estadisticos</h3>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
-          <table id="0" class="table table-striped table-bordered">
-             <!-- /.card-header 'id', 'estimate_proxy_size', 'development_hours' -->
-            <thead>
-             <tr>
-                <th>Pruebas</th>
-                <th COLSPAN=2>Valor Esperado</th>
-                <th COLSPAN=2>Valor Actual</th>
-              </tr>
+          <table id="statisticalTable2" class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th>Id Muestra</th>
+              <th>Correlacion</th>
+              <th>Media Aritmetica</th>
+              <th>Mediana</th>
+              <th>Moda</th>
+              <th>Deviacion Estandar</th>
+            </tr>
             </thead>
             <tbody>
-              <tr>
-                <td></td> 
-                <td>Media</td> <td>Dev. Std</td>
-                <td>Media</td> <td>Dev. Std</td>
-              </tr>
-              <tr>
-                <td>Tabla 1: Columna 1</td> 
-                <td>550.6</td> <td>572.03</td>
-                <td>{{ $med1 }}</td> <td>{{ $dev1 }}</td>
-              </tr>
-              <tr>
-                <td>Tabla 1: Columna 2</td> 
-                <td>60.32</td> <td>62.26</td>
-                <td>{{ $med2 }}</td> <td>{{ $dev2 }}</td>
-              </tr>
+            @foreach($statisticals as $statistical)
+            <tr>
+                <td>{{ $statistical->id }}</td>
+                <td>{{ $statistical->pearsoncorrelation }}</td>
+                <td>{{ $statistical->meanarithmetic }}</td>
+                <td>{{ $statistical->meanmedian }}</td>
+                <td>{{ $statistical->meanmode }}</td>
+                <td>{{ $statistical->standartdesviation }}</td>
+            </tr>
+            @endforeach
             </tbody>
           </table>
         </div>
@@ -439,8 +445,7 @@ No se cuenta con comando pero crea un archivos index para modulo de erb `index.b
   </div>
   <!-- /.row -->
 </section>
-<!-- /.content --> 
-@stop
+<!-- /.content -->
 
 ```
 
@@ -452,14 +457,14 @@ Tu puedes crear los archivos de forma automatica y sin tanta complejidad.
 ☝️ En un solo comando crearas migracion, modelo, controlador con recursos.
 
 ```php
-   php artisan make:model NameModel -mcr
+   php artisan make:model Statistical -mcr
 
 ```
 
 ✌️ Comando para crear Seeder.
 
 ```php
-   php artisan make:seeder NameTableSeeder
+   php artisan make:seeder AddStatisticalTableSeeder
 
 ```
 

@@ -53,6 +53,17 @@ class CreateCountersTable extends Migration
             $table->string('num_serie')->nullable();
             $table->string('cont_qr')->nullable();
             $table->string('cont_mon')->nullable();
+            $table->string('cont_mon_2')->nullable();
+            $table->string('cont_corte')->nullable();
+            $table->string('cont_prem')->nullable();
+            $table->string('cost_mon')->nullable();
+            $table->string('ssid')->nullable();
+            $table->string('passwd')->nullable();
+            $table->string('ip_server')->nullable();
+            $table->string('port')->nullable();
+            $table->string('token')->nullable();
+            $table->integer('type')->nullable();
+            $table->string('text')->nullable();
             $table->timestamps();
             $table->foreign('crd_id')->references('id')->on('crds')->onUpdate('cascade')->onDelete('cascade')->nullable();
             $table->foreign('erb_id')->references('id')->on('erbs')->onUpdate('cascade')->onDelete('cascade')->nullable();
@@ -100,46 +111,17 @@ class AddCounterTableSeeder extends Seeder
         $counter->num_serie = '70000000001';
         $counter->cont_qr = '0';
         $counter->cont_mon = '0';
-        $counter->save();
-
-        $counter = new Counter();
-        $counter->id = 2;
-        $counter->crd_id = 2;
-        $counter->erb_id = 2;
-        $counter->nfc_id = 2;
-        $counter->num_serie = '70000000002';
-        $counter->cont_qr = '0';
-        $counter->cont_mon = '0';
-        $counter->save();
-
-        $counter = new Counter();
-        $counter->id = 3;
-        $counter->crd_id = 3;
-        $counter->erb_id = 3;
-        $counter->nfc_id = 3;
-        $counter->num_serie = '70000000003';
-        $counter->cont_qr = '0';
-        $counter->cont_mon = '0';
-        $counter->save();
-
-        $counter = new Counter();
-        $counter->id = 4;
-        $counter->crd_id = 4;
-        $counter->erb_id = 4;
-        $counter->nfc_id = 4;
-        $counter->num_serie = '70000000004';
-        $counter->cont_qr = '0';
-        $counter->cont_mon = '0';
-        $counter->save();
-
-        $counter = new Counter();
-        $counter->id = 5;
-        $counter->crd_id = 5;
-        $counter->erb_id = 5;
-        $counter->nfc_id = 5;
-        $counter->num_serie = '70000000005';
-        $counter->cont_qr = '0';
-        $counter->cont_mon = '0';
+        $counter->cont_mon_2 = '0';
+        $counter->cont_corte = '0';
+        $counter->cont_prem = '0';
+        $counter->cost_mon = '5';
+        $counter->ssid = 'GalexIOT';
+        $counter->passwd = 'G4l3x#1537';
+        $counter->ip_server = '74.208.92.167';
+        $counter->port = '443';
+        $counter->token = ApiToken::GenerateToken16();
+        $counter->type = 0;
+        $counter->text = 'Prueba Contador 1 Ok';
         $counter->save();
     }
 }
@@ -164,7 +146,8 @@ class Counter extends Model
      * @var array
      */
     protected $fillable = [
-        'id', 'crd_id', 'erb_id', 'nfc_id', 'num_serie', 'cont_qr', 'cont_mon',
+        'id', 'crd_id', 'erb_id', 'nfc_id', 'num_serie', 'cont_qr', 'cont_mon',  'cont_corte',  'cont_prem',
+        'ssid',  'passwd',  'ip_server',  'port',  'token', 'type', 'text', 
     ];
 
     /**
@@ -190,6 +173,30 @@ class Counter extends Model
     public function historialcounter()
     {
         return $this->hasMany('App\HistorialCounter','counter_id');
+    }
+
+    /**
+     * Get the user record associated with the hostpot.
+     */
+    public function erb()
+    {
+        return $this->belongsTo('App\Erb', 'id');
+    }
+
+    /**
+     * Get the user record associated with the hostpot.
+     */
+    public function crd()
+    {
+        return $this->belongsTo('App\Crd', 'id');
+    }
+
+    /**
+     * Get the user record associated with the hostpot.
+     */
+    public function nfc()
+    {
+        return $this->belongsTo('App\Nfc', 'id');
     }
 }
 
@@ -258,6 +265,15 @@ class CounterController extends Controller
             'num_serie'=>'required|string|max:100',
             'cont_qr'=>'required|string|max:100',
             'cont_mon'=>'required|string|max:100',
+            'cont_mon_2'=>'required|string|max:100',
+            'cont_corte'=>'required|string|max:100',
+            'cont_prem'=>'required|string|max:100',
+            'cost_mon'=>'required|string|max:100',
+            'ssid'=>'required|string|max:100',
+            'passwd'=>'required|string|max:100',
+            'ip_server'=>'required|string|max:100',
+            'port'=>'required|string|max:100',
+            'text'=>'required|string|max:100',
         ]);
         $counter = new Counter([
             'crd_id' => $request->get('crd_id'),
@@ -265,7 +281,17 @@ class CounterController extends Controller
             'nfc_id' => $request->get('erb_id'),
             'num_serie' => $request->get('num_serie'),
             'cont_qr' => $request->get('cont_qr'),
-            'cont_mon' => $request->get('cont_mon')
+            'cont_mon' => $request->get('cont_mon'),
+            'cont_mon_2' => $request->get('cont_mon_2'),
+            'cont_corte' => $request->get('cont_corte'),
+            'cont_prem' => $request->get('cont_prem'),
+            'cost_mon' => $request->get('cost_mon'),
+            'ssid' => $request->get('ssid'),
+            'passwd' => $request->get('passwd'),
+            'ip_server' => $request->get('ip_server'),
+            'port' => $request->get('port'),
+            'text' => $request->get('text'),
+            'token' => ApiToken::GenerateToken16()
             ]);
         $counter->save();
         //return redirect(/counter)->with('success','Contador generado satisfactoriamente');
@@ -317,6 +343,15 @@ class CounterController extends Controller
             'num_serie'=>'required|string|max:100',
             'cont_qr'=>'required|string|max:100',
             'cont_mon'=>'required|string|max:100',
+            'cont_mon_2'=>'required|string|max:100',
+            'cont_corte'=>'required|string|max:100',
+            'cont_prem'=>'required|string|max:100',
+            'cost_mon'=>'required|string|max:100',
+            'ssid'=>'required|string|max:100',
+            'passwd'=>'required|string|max:100',
+            'ip_server'=>'required|string|max:100',
+            'port'=>'required|string|max:100',
+            'text'=>'required|string|max:100',
         ]);
         $counter_request = $request->all();
         $counter->update($counter_request);
@@ -366,7 +401,6 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 Route::resource('counter', 'CounterController')->middleware('auth');
 Auth::routes();
 
@@ -395,37 +429,62 @@ No se cuenta con comando pero crea un archivos index para modulo de counter `ind
               <table id="counterTable" class="table table-bordered table-striped">
               <thead>
                 <tr>
-                  <th>Id</th>
-                  <th>Crd Id</th>
-                  <th>Erb id</th>
-                  <th>Nfc id</th>
                   <th>Num Serie</th>
                   <th>Cont Qr</th>
                   <th>Cont Mon</th>
-                  <th>FechaCreacion</th>
-                  <th>FechaMoficiacion</th>
+                  <th>Cont Mon2</th>
+                  <th>Cont Corte</th>
+                  <th>Cont Prem</th>
+                  <th>Cost Mon</th>
+                  <th>FechaMod</th>
+                  <th>Tipo</th>
                   <th>Acciones</th>
                 </tr>
                 </thead>
                 <tbody>
                 @foreach($counters as $counter)
                 <tr>
-                    <td>{{ $counter->id }}</td>
-                    <td>{{ $counter->crd_id }}</td>
-                    <td>{{ $counter->erb_id }}</td>
-                    <td>{{ $counter->nfc_id }}</td>
-                    <td>{{ $counter->num_serie }}</td>      
+                    <td>{{ $counter->num_serie }}</td>
                     <td>{{ $counter->cont_qr }}</td>
                     <td>{{ $counter->cont_mon }}</td>
-                    <td>{{ $counter->created_at }}</td>
+                    <td>{{ $counter->cont_mon_2 }}</td>
+                    <td>{{ $counter->cont_corte }}</td>
+                    <td>{{ $counter->cont_prem }}</td>
+                    <td>{{ $counter->cost_mon }}</td>
                     <td>{{ $counter->updated_at }}</td>
+                    <td>{{ $counter->type }}</td>
                     <td>
                       <form role="form" action="{{ route('counter.destroy',$counter->id) }}" method="POST">
                       <a class="btn btn-info btn-xs" href="{{ route('counter.show',$counter->id) }}" role="button"><span class="fas fa-eye"></span></a> 
                       <a class="btn btn-warning btn-xs"  href="{{ route('counter.edit',$counter->id) }}" role="button"><span class="fas fa-pen"></span></a>
                       @csrf
                       @method('DELETE')
-                      <button class="btn btn-danger btn-xs" type="submit"><span class="fas fa-trash"></span></button>
+                      <a href="" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#exampleModalCenter{{$counter->id}}"><span class="fas fa-trash"></span></a>
+                      <!------ Modal 1 ------>
+                      <div class="modal fade" id="exampleModalCenter{{$counter->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                      <div class="modal-header d-flex justify-content-center">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Ten cuidado con esta acción</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                          <div class="modal-body" style="text-align: center">
+                            <a><img src="{{ asset('storage/Images/Warning.JPG') }}" alt="" title=""  text-align="center" /></a>
+                           </div>
+                           <br>
+                          <p class="text-center">Eliminarás ( <b>{{$counter->num_serie}}</b> ) seguro</p>
+                      </div>
+                      <div class="modal-footer d-flex justify-content-center">
+                            <button type="button" class="btn btn-info" data-dismiss="modal">Cancelar</button>
+                            <input type="submit" class="btn btn-danger" value="Eliminar">
+                      </div>
+                      </div>
+                      </div>
+                      </div>
+                    <!--fin modal--> 
                       </form>
                     </td>
                 </tr>
@@ -435,7 +494,7 @@ No se cuenta con comando pero crea un archivos index para modulo de counter `ind
                  <tr>
                  <th>Id</th>
                   <th>Crd_Id</th>
-                  <th>Erb_id</th>
+                  <th>counter_id</th>
                   <th>Nfc_id</th>
                   <th>NumSerie</th>
                   <th>Contqr</th>
@@ -455,8 +514,7 @@ No se cuenta con comando pero crea un archivos index para modulo de counter `ind
       </div>
       <!-- /.row -->
     </section>
-    <!-- /.content --> 
-@stop
+    <!-- /.content -->
 
 ```
 
@@ -468,13 +526,13 @@ Tu puedes crear los archivos de forma automatica y sin tanta complejidad.
 ☝️ En un solo comando crearas migracion, modelo, controlador con recursos.
 
 ```php
-   php artisan make:model NameModel -mcr
+   php artisan make:model Counter -mcr
 
 ```
 
 ✌️ Comando para crear Seeder.
 
 ```php
-   php artisan make:seeder NameTableSeeder
+   php artisan make:seeder AddCounterTableSeeder
 
 ```

@@ -98,77 +98,6 @@ class AddQrTableSeeder extends Seeder
         $qrcoin->coins = 2000;
         $qrcoin->gone_down = 0;
         $qrcoin->save();
-
-        $qrcoin = new Qr();
-        $qrcoin->id = 2;
-        $qrcoin->crd_id = null;
-        $qrcoin->erb_id = null;
-        $qrcoin->qr_serie = 'CDFHIKR359';
-        $qrcoin->coins = 2000;
-        $qrcoin->gone_down = 0;
-        $qrcoin->save();
-        
-        $qrcoin = new Qr();
-        $qrcoin->id = 3;
-        $qrcoin->crd_id = null;
-        $qrcoin->erb_id = null;
-        $qrcoin->qr_serie = 'CDLQRWX145';
-        $qrcoin->coins = 2000;
-        $qrcoin->gone_down = 0;
-        $qrcoin->save();
-
-        $qrcoin = new Qr();
-        $qrcoin->id = 4;
-        $qrcoin->crd_id = null;
-        $qrcoin->erb_id = null;
-        $qrcoin->qr_serie = 'ACJOTWXY01';
-        $qrcoin->coins = 2000;
-        $qrcoin->gone_down = 0;
-        $qrcoin->save();
-
-        $qrcoin = new Qr();
-        $qrcoin->id = 5;
-        $qrcoin->crd_id = null;
-        $qrcoin->qr_serie = 'HJKLOQXY06';
-        $qrcoin->coins = 2000;
-        $qrcoin->gone_down = 0;
-        $qrcoin->save();
-
-        $qrcoin = new Qr();
-        $qrcoin->id = 6;
-        $qrcoin->crd_id = null;
-        $qrcoin->erb_id = null;
-        $qrcoin->qr_serie = 'LPTUVXY134';
-        $qrcoin->coins = 2000;
-        $qrcoin->gone_down = 0;
-        $qrcoin->save();
-
-        $qrcoin = new Qr();
-        $qrcoin->id = 7;
-        $qrcoin->crd_id = null;
-        $qrcoin->erb_id = null;
-        $qrcoin->qr_serie = 'CGHKNOUYZ6';
-        $qrcoin->coins = 2000;
-        $qrcoin->gone_down = 0;
-        $qrcoin->save();
-        
-        $qrcoin = new Qr();
-        $qrcoin->id = 8;
-        $qrcoin->crd_id = null;
-        $qrcoin->erb_id = null;
-        $qrcoin->qr_serie = 'CFJM012468';
-        $qrcoin->coins = 2000;
-        $qrcoin->gone_down = 0;
-        $qrcoin->save();
-
-        $qrcoin = new Qr();
-        $qrcoin->id = 9;
-        $qrcoin->crd_id = null;
-        $qrcoin->erb_id = null;
-        $qrcoin->qr_serie = 'BGHIJPVW07';
-        $qrcoin->coins = 2000;
-        $qrcoin->gone_down = 0;
-        $qrcoin->save();
     }
 }
 
@@ -248,7 +177,7 @@ Comando `php artisan make:controller Qr` ejecutar en consola dentro del proyecto
 
 ```php
 
-class QrController extends Controller
+class HistorialQrController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -268,10 +197,8 @@ class QrController extends Controller
     public function index()
     {
         //
-        //QrCode::size(500)->generate('A tutorial of QR code!');
-        $qrs = Qr::all();
-        //return view('module.qr.index')->with('qrcoins',$qrs);
-        return view('module.qr.index',compact('qrs'));
+        $historialqrs = HistorialQr::latest()->take(1000)->get();
+        return view('module.historialqr.index',compact('historialqrs'));
     }
 
     /**
@@ -282,9 +209,8 @@ class QrController extends Controller
     public function create()
     {
         //
-        $crds = Crd::all();
-        $erbs = Erb::all();
-        return view('module.qr.create',compact('crds','erbs'));
+        $qrs = Qr::all();
+        return view('module.historialqr.create',compact('qrs'));
     }
 
     /**
@@ -296,88 +222,83 @@ class QrController extends Controller
     public function store(Request $request)
     {
         //
-        $request->validate([
-            'crd_id'=>'required|string|max:100',
-            'erb_id'=>'required|string|max:100',
+        $request->validate([ 
+            'qr_id'=>'required|string|max:100',
             'qr_serie'=>'required|string|max:100',
             'coins'=>'required|string|max:100',
-            'gone_down'=>'required|string|max:100',
+            'uploaded'=>'required|string|max:100',
         ]);
-        $qr = new Qr([
-            'crd_id' => $request->get('crd_id'),
-            'erb_id' => $request->get('erb_id'),
+        $historialqr = new HistorialQr([
+            'qr_id' => $request->get('qr_id'),
             'qr_serie' => $request->get('qr_serie'),
             'coins' => $request->get('coins'),
-            'gone_down' => $request->get('gone_down')
+            'uploaded' => $request->get('uploaded')
             ]);
-        $qr->save();
-        //return redirect(/coin)->with('success','Qr Generado Satisfactoriamente');
-        toastr()->success('Qr creado');
-        return redirect()->route('qr.index');
+        $historialqr->save();
+        toastr()->success('Historial Qr Creado');
+        return redirect()->route('historialqr.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Qr  $qr
+     * @param  \App\HistorialQr  $historialQr
      * @return \Illuminate\Http\Response
      */
-    public function show(Qr $qr)
+    public function show(HistorialQr $historialqr)
     {
         //
-        return view('module.qr.show', compact('qr'));
+        return view('module.historialqr.show',compact('historialqr'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Qr  $qr
+     * @param  \App\HistorialQr  $historialQr
      * @return \Illuminate\Http\Response
      */
-    public function edit(Qr $qr)
+    public function edit(HistorialQr $historialqr)
     {
         //
-        $crds = Crd::all();
-        $erbs = Erb::all();
-        return view('module.qr.edit',compact('qr','crds','erbs'));
+        $qrs = Qr::all();
+        return view('module.historialqr.edit', compact('qrs','historialqr'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Qr  $qr
+     * @param  \App\HistorialQr  $historialQr
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Qr $qr)
+    public function update(Request $request, HistorialQr $historialqr) 
     {
         //
         $request->validate([
-            'crd_id'=>'required|string|max:100',
-            'erb_id'=>'required|string|max:100',
-            'qr_serie'=>'required|string|max:100',
+            'qr_id'=>'required|string|max:100',
+            'qr_serie'=>'required|string|max:1000',
             'coins'=>'required|string|max:100',
-            'gone_down'=>'required|string|max:100',
+            'uploaded'=>'required|string|max:100'
         ]);
-        $qr_request = $request->all();
-        $qr->update($qr_request);
-        toastr()->warning('Qr actualizado');
-        return redirect()->route('qr.index');
+        $historialqr_request = $request->all();
+        $historialqr->update($historialqr_request);
+        toastr()->warning('Historial Qr actuaizado');
+        return redirect()->route('historialqr.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Qr  $qr
+     * @param  \App\HistorialQr  $historialQr
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Qr $qr)
+    public function destroy(HistorialQr $historialqr)
     {
         //
-        $qr->delete();
-        //return reditec('/qr'->with('success','Qr Eliminado Satisfactoriamente'));
-        toastr()->error('Qr eliminado');
-        return redirect()->route('qr.index');
+        $historialqr->delete();
+        //return redirect('/historialqr')->with('success', 'Qr Eliminado!');
+        toastr()->error('Qr Historial eliminado');
+        return redirect()->route('historialqr.index');
     }
 }
 
@@ -408,7 +329,6 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 Route::resource('qr', 'QrController')->middleware('auth');
 Auth::routes();
 
@@ -432,7 +352,6 @@ No se cuenta con comando pero crea un archivos index para modulo de usuario `ind
               <h3 class="card-title">Tabla Qr</h3>
               <a class="btn btn-xs btn-success float-right" href="{{ route('qr.create') }}" role="button"><span class="fas fa-plus"></span></a>
             </div>
-            <!-- /.card-header -->
             <div class="card-body">
               <table id="qrTable" class="table table-bordered table-striped">
               <thead>
@@ -441,10 +360,9 @@ No se cuenta con comando pero crea un archivos index para modulo de usuario `ind
                   <th>Crd_Id</th>
                   <th>Erb_id</th>
                   <th>QrSerie</th>
-                  <th>Coins</th>
+                  <th>Monedas</th>
                   <th>Actualizado</th>
-                  <th>FechaCreacion</th>
-                  <th>FechaMoficiacion</th>
+                  <th>FechaMod</th>
                   <th>Acciones</th>
                 </tr>
                 </thead>
@@ -457,22 +375,18 @@ No se cuenta con comando pero crea un archivos index para modulo de usuario `ind
                     <td>{{ $qr->qr_serie }}</td>
                     <td>{{ $qr->coins }}</td>      
                     <td>{{ $qr->gone_down }}</td>
-                    <td>{{ $qr->created_at }}</td>
                     <td>{{ $qr->updated_at }}</td>
                     <td>
                       <form role="form" action="{{ route('qr.destroy',$qr->id) }}" method="POST">
                       <a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#{{ $qr->qr_serie }}"><span class="fas fa-barcode"></span></a>
                       <a class="btn btn-info btn-xs" href="{{ route('qr.show',$qr->id) }}" role="button"><span class="fas fa-eye"></span></a> 
                       <a class="btn btn-warning btn-xs"  href="{{ route('qr.edit',$qr->id) }}" role="button"><span class="fas fa-pen"></span></a>
-                      <!--------------------------------------------------------------------------------->
-                      <!-- Modal -->
                       <div class="modal fade" id="{{ $qr->qr_serie }}" tabindex="-1" role="dialog" aria-labelledby="{{ $qr->qr_serie }}" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
                           <div class="modal-content">
                             <div class="modal-header">
                              <h3 class="modal-title text-center" id="{{ $qr->qr_serie }}">Codigo Qr: {{ $qr->qr_serie }}</h3>
                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                               <span aria-hidden="true">&times;</span>
                                </button>
                                </div>
                                <div class="modal-body" style="text-align: center">
@@ -484,29 +398,36 @@ No se cuenta con comando pero crea un archivos index para modulo de usuario `ind
                           </div>
                         </div>
                       </div>
-                      <!-- /.Modal -->
-                      <!--------------------------------------------------------------------------------->
                       @csrf
                       @method('DELETE')
-                      <button class="btn btn-danger btn-xs" type="submit"><span class="fas fa-trash"></span></button>
+                      <a href="" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#exampleModalCenter{{$qr->id}}"><span class="fas fa-trash"></span></a>
+                      <div class="modal fade" id="exampleModalCenter{{$qr->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                      <div class="modal-header d-flex justify-content-center">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Ten cuidado con esta acción</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                          <div class="modal-body" style="text-align: center">
+                            <a><img src="{{ asset('storage/Images/Warning.JPG') }}" alt="" title=""  text-align="center" /></a>
+                           </div>
+                           <br>
+                          <p class="text-center">Eliminarás ( <b>{{$qr->qr_serie}}</b> ) seguro</p>
+                      </div>
+                      <div class="modal-footer d-flex justify-content-center">
+                            <button type="button" class="btn btn-info" data-dismiss="modal">Cancelar</button>
+                            <input type="submit" class="btn btn-danger" value="Eliminar">
+                      </div>
+                      </div>
+                      </div>
+                      </div>
                       </form>
                     </td>
                 </tr>
                 @endforeach
                 </tbody>
-               <!-- <tfoot>
-                 <tr>
-                 <th>Id</th>
-                  <th>Crd_Id</th>
-                  <th>Erb_id</th>
-                  <th>QrSerie</th>
-                  <th>Coins</th>
-                  <th>Actualizado</th>
-                  <th>FechaCreacion</th>
-                  <th>FechaMoficiacion</th>
-                  <th>Acciones</th>
-                </tr>
-                </tfoot>-->
               </table>
             </div>
             <!-- /.card-body -->
@@ -518,7 +439,6 @@ No se cuenta con comando pero crea un archivos index para modulo de usuario `ind
       <!-- /.row -->
     </section>
     <!-- /.content --> 
-@stop
 
 ```
 
@@ -530,14 +450,14 @@ Tu puedes crear los archivos de forma automatica y sin tanta complejidad.
 ☝️ En un solo comando crearas migracion, modelo, controlador con recursos.
 
 ```php
-   php artisan make:model NameModel -mcr
+   php artisan make:model Qr -mcr
 
 ```
 
 ✌️ Comando para crear Seeder.
 
 ```php
-   php artisan make:seeder NameTableSeeder
+   php artisan make:seeder AddQrTableSeeder
 
 ```
 

@@ -99,86 +99,6 @@ class AddCrdTableSeeder extends Seeder
         $crd->password = Crypt::encrypt('crd123');
         $crd->api_token = ApiToken::GenerateToken32();
         $crd->save();
-
-        $crd = new Crd();
-        $crd->id = 2;
-        $crd->user_id = 1;
-        $crd->num_serie = 333344442;
-        $crd->name_machine = 'Bean bag toss';
-        $crd->nick_name = 'Crd_2';
-        $crd->password = Crypt::encrypt('crd123');
-        $crd->api_token = ApiToken::GenerateToken32();
-        $crd->save();
-        
-        $crd = new Crd();
-        $crd->id = 3;
-        $crd->user_id = 1;
-        $crd->num_serie = 333344443;
-        $crd->name_machine = 'Black hole';
-        $crd->nick_name = 'Crd_3';
-        $crd->password = Crypt::encrypt('crd123');
-        $crd->api_token = ApiToken::GenerateToken32();
-        $crd->save();
-
-        $crd = new Crd();
-        $crd->id = 4;
-        $crd->user_id = 1;
-        $crd->num_serie = 333344444;
-        $crd->name_machine = 'Candy fall';
-        $crd->nick_name = 'Crd_4';
-        $crd->password = Crypt::encrypt('crd123');
-        $crd->api_token = ApiToken::GenerateToken32();
-        $crd->save();
-
-        $crd = new Crd();
-        $crd->id = 5;
-        $crd->user_id = 1;
-        $crd->num_serie = 333344445;
-        $crd->name_machine = 'Cartooon coaster';
-        $crd->nick_name = 'Crd_5';
-        $crd->password = Crypt::encrypt('crd123');
-        $crd->api_token = ApiToken::GenerateToken32();
-        $crd->save();
-
-        $crd = new Crd();
-        $crd->id = 6;
-        $crd->user_id = 1;
-        $crd->num_serie = 333344446;
-        $crd->name_machine = 'Crazy animals';
-        $crd->nick_name = 'Crd_6';
-        $crd->password = Crypt::encrypt('crd123');
-        $crd->api_token = ApiToken::GenerateToken32();
-        $crd->save();
-        
-        $crd = new Crd();
-        $crd->id = 7;
-        $crd->user_id = 1;
-        $crd->num_serie = 333344447;
-        $crd->name_machine = 'Crazy Canoe';
-        $crd->nick_name = 'Crd_7';
-        $crd->password = Crypt::encrypt('crd123');
-        $crd->api_token = ApiToken::GenerateToken32();
-        $crd->save();
-
-        $crd = new Crd();
-        $crd->id = 8;
-        $crd->user_id = 1;
-        $crd->num_serie = 333344448;
-        $crd->name_machine = 'Cross y road';
-        $crd->nick_name = 'Crd_8';
-        $crd->password = Crypt::encrypt('crd123');
-        $crd->api_token = ApiToken::GenerateToken32();
-        $crd->save();
-       
-        $crd = new Crd();
-        $crd->id = 9;
-        $crd->user_id = 1;
-        $crd->num_serie = 333344449;
-        $crd->name_machine = 'Deal or no Deal';
-        $crd->nick_name = 'Crd_9';
-        $crd->password = Crypt::encrypt('crd123');
-        $crd->api_token = ApiToken::GenerateToken32();
-        $crd->save();
     }
 }
 
@@ -444,7 +364,6 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 Route::resource('crd', 'CrdController')->middleware('auth');
 Auth::routes();
 
@@ -478,10 +397,8 @@ No se cuenta con comando pero crea un archivos index para modulo de crd `index.b
                   <th>Serie</th>
                   <th>Nombre</th>
                   <th>Alias</th>
-                  <th>Password</th>
                   <th>ApiToken</th>
-                  <th>FechaCreacion</th>
-                  <th>FechaMoficiacion</th>
+                  <th>FechaMod</th>
                   <th>Acciones</th>
                 </tr>
                 </thead>
@@ -493,9 +410,7 @@ No se cuenta con comando pero crea un archivos index para modulo de crd `index.b
                     <td>{{ $crd->num_serie }}</td>
                     <td>{{ $crd->name_machine }}</td>      
                     <td>{{ $crd->nick_name }}</td>
-                    <td>{{ $crd->password }}</td>
                     <td>{{ $crd->api_token }}</td>
-                    <td>{{ $crd->created_at }}</td>
                     <td>{{ $crd->updated_at }}</td>
                     <td>
                       <form role="form" action="{{ route('crd.destroy',$crd->id) }}" method="POST">
@@ -503,7 +418,32 @@ No se cuenta con comando pero crea un archivos index para modulo de crd `index.b
                       <a class="btn btn-warning btn-xs"  href="{{ route('crd.edit',$crd->id) }}" role="button"><span class="fas fa-pen"></span></a>
                       @csrf
                       @method('DELETE')
-                      <button class="btn btn-danger btn-xs" type="submit"><span class="fas fa-trash"></span></button>
+                      <a href="" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#exampleModalCenter{{$crd->id}}"><span class="fas fa-trash"></span></a>
+                      <!------ Modal 1 ------>
+                      <div class="modal fade" id="exampleModalCenter{{$crd->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                      <div class="modal-header d-flex justify-content-center">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Ten cuidado con esta acción</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                          <div class="modal-body" style="text-align: center">
+                            <a><img src="{{ asset('storage/Images/Warning.JPG') }}" alt="" title=""  text-align="center" /></a>
+                           </div>
+                           <br>
+                          <p class="text-center">Eliminarás ( <b>{{$crd->nick_name}}</b> ) seguro</p>
+                      </div>
+                      <div class="modal-footer d-flex justify-content-center">
+                            <button type="button" class="btn btn-info" data-dismiss="modal">Cancelar</button>
+                            <input type="submit" class="btn btn-danger" value="Eliminar">
+                      </div>
+                      </div>
+                      </div>
+                      </div>
+                    <!--fin modal--> 
                       </form>
                     </td>
                 </tr>
@@ -532,8 +472,7 @@ No se cuenta con comando pero crea un archivos index para modulo de crd `index.b
       </div>
       <!-- /.row -->
     </section>
-    <!-- /.content --> 
-@stop
+    <!-- /.content -->
 
 ```
 
@@ -545,13 +484,13 @@ Tu puedes crear los archivos de forma automatica y sin tanta complejidad.
 ☝️ En un solo comando crearas migracion, modelo, controlador con recursos.
 
 ```php
-   php artisan make:model NameModel -mcr
+   php artisan make:model Crd -mcr
 
 ```
 
 ✌️ Comando para crear Seeder.
 
 ```php
-   php artisan make:seeder NameTableSeeder
+   php artisan make:seeder AddCrdTableSeeder
 
 ```

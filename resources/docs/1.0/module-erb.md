@@ -97,87 +97,7 @@ class AddErbTableSeeder extends Seeder
         $erb->name_machine = 'Angry birds';
         $erb->nick_name = 'Erb_1';
         $erb->password = Crypt::encrypt('erb123');
-        $erb->api_token = ApiToken::GenerateToken32();
-        $erb->save();
-
-        $erb = new Erb();
-        $erb->id = 2;
-        $erb->user_id = 1;
-        $erb->num_serie = 222233332;
-        $erb->name_machine = 'Bean bag toss';
-        $erb->nick_name = 'Erb_2';
-        $erb->password = Crypt::encrypt('erb123');
-        $erb->api_token = ApiToken::GenerateToken32();
-        $erb->save();
-        
-        $erb = new Erb();
-        $erb->id = 3;
-        $erb->user_id = 1;
-        $erb->num_serie = 222233333;
-        $erb->name_machine = 'Black hole';
-        $erb->nick_name = 'Erb_3';
-        $erb->password = Crypt::encrypt('erb123');
-        $erb->api_token = ApiToken::GenerateToken32();
-        $erb->save();
-
-        $erb = new Erb();
-        $erb->id = 4;
-        $erb->user_id = 1;
-        $erb->num_serie = 222233334;
-        $erb->name_machine = 'Candy fall';
-        $erb->nick_name = 'Erb_4';
-        $erb->password = Crypt::encrypt('erb123');
-        $erb->api_token = ApiToken::GenerateToken32();
-        $erb->save();
-
-        $erb = new Erb();
-        $erb->id = 5;
-        $erb->user_id = 1;
-        $erb->num_serie = 222233335;
-        $erb->name_machine = 'Cartooon coaster';
-        $erb->nick_name = 'Erb_5';
-        $erb->password = Crypt::encrypt('erb123');
-        $erb->api_token = ApiToken::GenerateToken32();
-        $erb->save();
-
-        $erb = new Erb();
-        $erb->id = 6;
-        $erb->user_id = 1;
-        $erb->num_serie = 222233336;
-        $erb->name_machine = 'Crazy animals';
-        $erb->nick_name = 'Erb_6';
-        $erb->password = Crypt::encrypt('erb123');
-        $erb->api_token = ApiToken::GenerateToken32();
-        $erb->save();
-        
-        $erb = new Erb();
-        $erb->id = 7;
-        $erb->user_id = 1;
-        $erb->num_serie = 222233337;
-        $erb->name_machine = 'Crazy Canoe';
-        $erb->nick_name = 'Erb_7';
-        $erb->password = Crypt::encrypt('erb123');
-        $erb->api_token = ApiToken::GenerateToken32();
-        $erb->save();
-
-        $erb = new Erb();
-        $erb->id = 8;
-        $erb->user_id = 1;
-        $erb->num_serie = 222233338;
-        $erb->name_machine = 'Cross y road';
-        $erb->nick_name = 'Erb_8';
-        $erb->password = Crypt::encrypt('erb123');
-        $erb->api_token = ApiToken::GenerateToken32();
-        $erb->save();
-       
-        $erb = new Erb();
-        $erb->id = 9;
-        $erb->user_id = 1;
-        $erb->num_serie = 222233339;
-        $erb->name_machine = 'Deal or no Deal';
-        $erb->nick_name = 'Erb_9';
-        $erb->password = Crypt::encrypt('erb123');
-        $erb->api_token = ApiToken::GenerateToken32();
+        $erb->api_token = ApiToken::GenerateToken16();
         $erb->save();
     }
 }
@@ -313,8 +233,7 @@ class ErbController extends Controller
             'num_serie'=>'required|string|max:100',
             'name_machine'=>'required|string|max:100',
             'nick_name'=>'required|string|max:100',
-            'password'=>'required|string|max:100'
-            
+            'password'=>'required|string|max:100'   
         ]);
 
          $erb = new Erb();
@@ -429,7 +348,6 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 Route::resource('erb', 'ErbController')->middleware('auth');
 Auth::routes();
 
@@ -463,10 +381,8 @@ No se cuenta con comando pero crea un archivos index para modulo de erb `index.b
                   <th>Serie</th>
                   <th>Nombre</th>
                   <th>Alias</th>
-                  <th>Password</th>
                   <th>ApiToken</th>
-                  <th>FechaCreacion</th>
-                  <th>FechaMoficiacion</th>
+                  <th>FechaMod</th>
                   <th>Acciones</th>
                 </tr>
                 </thead>
@@ -478,18 +394,41 @@ No se cuenta con comando pero crea un archivos index para modulo de erb `index.b
                     <td>{{ $erb->num_serie }}</td>
                     <td>{{ $erb->name_machine }}</td>      
                     <td>{{ $erb->nick_name }}</td>
-                    <td>{{ $erb->password }}</td>
                     <td>{{ $erb->api_token }}</td>
-                    <td>{{ $erb->created_at }}</td>
                     <td>{{ $erb->updated_at }}</td>
                     <td>
                       <form role="form" action="{{ route('erb.destroy',$erb->id) }}" method="POST">
                       <a class="btn btn-info btn-xs" href="{{ route('erb.show',$erb->id) }}" role="button"><span class="fas fa-eye"></span></a> 
                       <a class="btn btn-warning btn-xs"  href="{{ route('erb.edit',$erb->id) }}" role="button"><span class="fas fa-pen"></span></a>
                       @csrf
-                      @method('DELETE')
-                      <button class="btn btn-danger btn-xs" type="submit"><span class="fas fa-trash"></span></button>
-                      </form>
+                        @method('DELETE')
+                      <a href="" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#exampleModalCenter{{$erb->id}}"><span class="fas fa-trash"></span></a>
+                      <!------ Modal 1 ------>
+                      <div class="modal fade" id="exampleModalCenter{{$erb->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                      <div class="modal-header d-flex justify-content-center">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Ten cuidado con esta acción</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                          <div class="modal-body" style="text-align: center">
+                            <a><img src="{{ asset('storage/Images/Warning.JPG') }}" alt="" title=""  text-align="center" /></a>
+                           </div>
+                           <br>
+                          <p class="text-center">Eliminarás ( <b>{{$erb->nick_name}}</b> ) seguro</p>
+                      </div>
+                      <div class="modal-footer d-flex justify-content-center">
+                            <button type="button" class="btn btn-info" data-dismiss="modal">Cancelar</button>
+                            <input type="submit" class="btn btn-danger" value="Eliminar">
+                      </div>
+                      </div>
+                      </div>
+                      </div>
+                    <!--fin modal--> 
+                  </form>
                     </td>
                 </tr>
                 @endforeach
@@ -518,7 +457,6 @@ No se cuenta con comando pero crea un archivos index para modulo de erb `index.b
       <!-- /.row -->
     </section>
     <!-- /.content --> 
-@stop
 
 ```
 
@@ -530,14 +468,14 @@ Tu puedes crear los archivos de forma automatica y sin tanta complejidad.
 ☝️ En un solo comando crearas migracion, modelo, controlador con recursos.
 
 ```php
-   php artisan make:model NameModel -mcr
+   php artisan make:model Erb -mcr
 
 ```
 
 ✌️ Comando para crear Seeder.
 
 ```php
-   php artisan make:seeder NameTableSeeder
+   php artisan make:seeder AddErbTableSeeder
 
 ```
 

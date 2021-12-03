@@ -94,9 +94,9 @@ class AddUserTableSeeder extends Seeder
         //
         $root = new User();
         $root->id = 1;
-        $root->region_id = 1;
+        $root->region_id = 2;
         $root->name = 'Root';
-        $root->email = 'root@local.com';
+        $root->email = 'root@fjlic.com';
         $root->password = Hash::make('root@54321');
         $root->branch_office = 'Sin Asignar';
         $root->serial_number = '0000000001';
@@ -104,9 +104,9 @@ class AddUserTableSeeder extends Seeder
 
         $admin = new User();
         $admin->id = 2;
-        $admin->region_id = 1;
+        $admin->region_id = 2;
         $admin->name = 'Admin';
-        $admin->email = 'admin@local.com';
+        $admin->email = 'admin@fjlic.com';
         $admin->password = Hash::make('admin@54321');
         $admin->branch_office = 'Sin Asignar';
         $admin->serial_number = '0000000002';
@@ -114,9 +114,9 @@ class AddUserTableSeeder extends Seeder
 
         $super = new User();
         $super->id = 3;
-        $super->region_id = 1;
+        $super->region_id = 2;
         $super->name = 'Super';
-        $super->email = 'super@local.com';
+        $super->email = 'super@fjlic.com';
         $super->password = Hash::make('super@54321');
         $super->branch_office = 'Sin Asignar';
         $super->serial_number = '0000000003';
@@ -124,9 +124,9 @@ class AddUserTableSeeder extends Seeder
 
         $user = new User();
         $user->id = 4;
-        $user->region_id = 1;
+        $user->region_id = 2;
         $user->name = 'User';
-        $user->email = 'user@local.com';
+        $user->email = 'user@fjlic.com';
         $user->password = Hash::make('user@54321');
         $user->branch_office = 'Sin Asignar';
         $user->serial_number = '0000000004';
@@ -134,10 +134,10 @@ class AddUserTableSeeder extends Seeder
 
         $disable = new User();
         $disable->id = 5;
-        $disable->region_id = 1;
-        $disable->name = 'Disable';
-        $disable->email = 'disable@local.com';
-        $disable->password = Hash::make('disable@54321');
+        $disable->region_id = 2;
+        $disable->name = 'Demo';
+        $disable->email = 'demo@fjlic.com';
+        $disable->password = Hash::make('demo@54321');
         $disable->branch_office = 'Sin Asignar';
         $disable->serial_number = '0000000005';
         $disable->save();
@@ -341,16 +341,6 @@ class UserController extends Controller
     public function edit(User $user)
     {
         //
-        /*$filter = Role::all();
-        $roles = $filter->filter(function ($role, $key) {
-            return $role->name != 'hostpot';
-        });
-        foreach (Role::all() as $key => $role) {
-            if($user->hasRole($role->name)){
-             $user->name_role = $role->name; 
-             $roles = $roles->except($role->id);       
-            }
-        }*/
         $roles = Role::all();
         return view('module.user.edit', compact('user','roles'));
     }
@@ -432,7 +422,6 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 Route::resource('user', 'UserController')->middleware('auth');
 Auth::routes();
 
@@ -464,9 +453,7 @@ No se cuenta con comando pero crea un archivos index para modulo de usuario `ind
                   <th>Id</th>
                   <th>Nombre</th>
                   <th>Email</th>
-                  <th>Password</th>
-                  <th>FechaCreacion</th>
-                  <th>FechaMoficiacion</th>
+                  <th>FechaMod</th>
                   <th>Acciones</th>
                 </tr>
                 </thead>
@@ -476,8 +463,6 @@ No se cuenta con comando pero crea un archivos index para modulo de usuario `ind
                     <td>{{ $user->id }}</td>
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
-                    <td>{{ $user->password }}</td>
-                    <td>{{ $user->created_at }}</td>
                     <td>{{ $user->updated_at }}</td>
                     <td>
                       <form role="form" action="{{ route('user.destroy',$user->id) }}" method="POST">
@@ -491,17 +476,6 @@ No se cuenta con comando pero crea un archivos index para modulo de usuario `ind
                 </tr>
                 @endforeach
                 </tbody>
-               <!-- <tfoot>
-                <tr>
-                  <th>Id</th>
-                  <th>Nombre</th>
-                  <th>Email</th>
-                  <th>Password</th>
-                  <th>FechaCreacion</th>
-                  <th>FechaMoficiacion</th>
-                  <th>Acciones</th>
-                </tr>
-                </tfoot>-->
               </table>
             </div>
             <!-- /.card-body -->
@@ -513,8 +487,6 @@ No se cuenta con comando pero crea un archivos index para modulo de usuario `ind
       <!-- /.row -->
     </section>
     <!-- /.content -->  
-    
-@stop
 
 ```
 
@@ -526,14 +498,14 @@ Tu puedes crear los archivos de forma automatica y sin tanta complejidad.
 ☝️ En un solo comando crearas migracion, modelo, controlador con recursos.
 
 ```php
-   php artisan make:model NameModel -mcr
+   php artisan make:model User -mcr
 
 ```
 
 ✌️ Comando para crear Seeder.
 
 ```php
-   php artisan make:seeder NameTableSeeder
+   php artisan make:seeder AddUserTableSeeder
 
 ```
 

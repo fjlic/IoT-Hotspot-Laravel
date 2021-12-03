@@ -1,40 +1,22 @@
-# Bienvenido a IOT-Hotspot Documentacion
-
+# Bienvenido a IoT-Hotspot Documentacion
 ---
 
-- [First Section](#section-1)
-
-<a name="section-1"></a>
-## First Section
-
-Write something cool.. 🦊
-
-LaRecipe helps you write clean and beautiful documentation using Markdown for your software projects and keeping the docs within the source code.
-
----
-
-- [Gold Sponsors](#sponsors)
-- [Overview](#overview)
-- [Features](#features)
-- [Credits](#credits)
-
-<a name="sponsors"></a>
-## Gold Sponsors
-
-<larecipe-sponsers></larecipe-sponsers>
+- [Que es IoT-Hotspot](#overview)
+- [Caracteristicas](#features)
+- [Aportes](#credits)
 
 <a name="overview"></a>
-## Overview
+## Quienes somos
 
-**LaRecipe** is simply  a code driven package provides an easy way to create beautiful documentation like this for your product or application inside your Laravel app. However, the usage of LaRecipe is not limited to creating documentation only 😏. See an [example](/docs/{{version}}/example-project-tracking).
+**IoT-Hotspot** es una simple plataforma que intenta aplicar la tecnologia del Internet de las Cosas (IoT) robusteciendolo con un poco de estadistica y un algoritmo para el aprendizaje de maquinas (IA) enfocado ala prediccion de fallas y el analisis de la telemetria de los datos recolectados por los dispositivos, útilizando dos tarjetas prototipos llamadas (CRD Y ERB), con estas se permitio dar 2 soluciones novedosas a maquinas que requerian de comunicar su estado actual y operativo por medio del uso de hardware adaptable, permitiendo que sus maquinas enviaran datos ala nube, nuestra intencion es permitir replicar esta dos alternativas de solucion a otros posibles proyectos de indole similar y asi contribuir al mundo interconectando dispositivos electronicos hacia la nube 😏. visita la solucion [IoT-Hotspot](https://hotspot.fjlic.com), o ponerte en contacto [soporte@fjlic.com](https://github.com/fjlic).
 
-> {info} Love writing blog articles? check out our new Laravel package [`Blogged`](https://fjlic.com)
+> {info} Puedes descargar el proyecto completo desde [`GitHub`](https://github.com/fjlic/IoT-Hotspot-Laravel)
 
 
-![screenshot](https://larecipe.binarytorch.com.my/images/screenshot.png)
+![screenshot](http://localhost:8000/storage/Images/Hotspot_1.png)
 
 <a name="features"></a>
-## Caracteristicas de IOT-Hotspot
+## Caracteristicas de IoT-Hotspot
 
 <larecipe-card>
     <larecipe-badge type="success" circle class="mr-2" icon="fa fa-user-astronaut"></larecipe-badge> Modulo de Usuarios y Roles.
@@ -42,7 +24,7 @@ LaRecipe helps you write clean and beautiful documentation using Markdown for yo
 </larecipe-card>
 
 <larecipe-card>
-    <larecipe-badge type="warning" circle class="mr-2" icon="fa fa-space-shuttle"></larecipe-badge> Modulo de Crd (Nfc, Qr y Publicidad).
+    <larecipe-badge type="warning" circle class="mr-2" icon="fa fa-space-shuttle"></larecipe-badge> Modulo de Crd (Nfc, Qr, Contador y Publicidad).
     <larecipe-progress :striped="true" :animated="true" type="info" :value="100"></larecipe-progress>
 </larecipe-card>
 

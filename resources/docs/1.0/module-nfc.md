@@ -101,36 +101,20 @@ class AddNfcTableSeeder extends Seeder
         //
         $nfccoin = new Nfc();
         $nfccoin->id = 1;
-        $nfccoin->crd_id = null;
-        $nfccoin->erb_id = null;
+        $nfccoin->crd_id = 1;
+        $nfccoin->erb_id = 1;
         $nfccoin->num_serie = '777597840';
-        $nfccoin->count_global = '6500';
-        $nfccoin->count_between_cuts = '260';
-        $nfccoin->time_global_between_cuts = '1200';
-        $nfccoin->time_between_cuts = '120';
-        $nfccoin->prizes_count = '110';
-        $nfccoin->ssid = 'nfc_1';
-        $nfccoin->password = 'nfc123';
-        $nfccoin->ip_server = '192.168.0.100';
-        $nfccoin->port = '13003';
-        $nfccoin->text = 'Prueba Nfc 1 Ok';
-        $nfccoin->save();
-
-        $nfccoin = new Nfc();
-        $nfccoin->id = 2;
-        $nfccoin->crd_id = null;
-        $nfccoin->erb_id = null;
-        $nfccoin->num_serie = '777597841';
-        $nfccoin->count_global = '6600';
-        $nfccoin->count_between_cuts = '230';
-        $nfccoin->time_global_between_cuts = '1220';
-        $nfccoin->time_between_cuts = '130';
-        $nfccoin->prizes_count = '115';
-        $nfccoin->ssid = 'nfc_2';
-        $nfccoin->password = 'nfc123';
-        $nfccoin->ip_server = '192.168.0.100';
-        $nfccoin->port = '13003';
-        $nfccoin->text = 'Prueba Nfc 2 Ok';
+        $nfccoin->cont_qr = '0';
+        $nfccoin->cont_mon = '0';
+        $nfccoin->cont_mon_2 = '0';
+        $nfccoin->cont_corte = '0';
+        $nfccoin->cont_prem = '0';
+        $nfccoin->cost_mon = '5';
+        $nfccoin->ssid = 'IoT-Hotspot';
+        $nfccoin->passwd = '10T#H0t5p0t';
+        $nfccoin->ip_server = '74.208.92.167';
+        $nfccoin->port = '443';
+        $nfccoin->txt = 'Prueba Nfc 1 Ok';
         $nfccoin->save();
     }
 }
@@ -158,10 +142,8 @@ class Nfc extends Model
      */
 
     protected $fillable = [
-        'id', 'crd_id', 'erb_id', 'count_global', 'count_between_cuts',
-        'time_global_between_cuts', 'time_between_cuts', 'prizes_count',
-        'num_serie', 'ssid', 'password', 'dns_server', 'ip_server', 'protocol',
-        'port', 'text',
+        'id', 'crd_id', 'erb_id', 'num_serie', 'cont_qr', 'cont_mon', 
+        'cont_mon_2', 'cont_corte', 'cont_prem', 'cost_mon', 'ssid', 'passwd', 'ip_server', 'port', 'txt',
     ];
 
     /**
@@ -182,6 +164,14 @@ class Nfc extends Model
     ];
 
     /**
+     * Get the hostpot for the blog crd.
+     */
+    public function historialnfc()
+    {
+        return $this->hasMany('App\HistorialNfc','nfc_id');
+    }
+
+    /**
      * Get the user record associated with the hostpot.
      */
     public function crd()
@@ -195,14 +185,6 @@ class Nfc extends Model
     public function erb()
     {
         return $this->belongsToMany('App\Erb', 'id');
-    }
-
-    /**
-     * Get the hostpot for the blog crd.
-     */
-    public function historialnfc()
-    {
-        return $this->hasMany('App\HistorialNfc','nfc_id');
     }
 }
 
@@ -267,37 +249,35 @@ class NfcController extends Controller
         $request->validate([
             'crd_id'=>'required|string|max:34',
             'erb_id'=>'required|string|max:34',
-            'count_global'=>'required|string|max:34',
-            'count_between_cuts'=>'required|string|max:34',
-            'time_global_between_cuts'=>'required|string|max:34',
-            'time_between_cuts'=>'required|string|max:34',
-            'prizes_count'=>'required|string|max:34',
-            'num_serie'=>'required|string|max:34',
-            'ssid'=>'required|string|max:34',
-            'password'=>'required|string|max:34',
-            'dns_server'=>'required|string|max:34',
-            'ip_server'=>'required|string|max:34',
-            'protocol'=>'required|string|max:34',
-            'port'=>'required|string|max:34',
-            'text'=>'required|string|max:34',
+            'num_serie'=>'required|string|max:100',
+            'cont_qr'=>'required|string|max:100',
+            'cont_mon'=>'required|string|max:100',
+            'cont_mon_2'=>'required|string|max:100',
+            'cont_corte'=>'required|string|max:100',
+            'cont_prem'=>'required|string|max:100',
+            'cost_mon'=>'required|string|max:100',
+            'ssid'=>'required|string|max:100',
+            'passwd'=>'required|string|max:100',
+            'ip_server'=>'required|string|max:100',
+            'port'=>'required|string|max:100',
+            'txt'=>'required|string|max:100',
             
         ]);
         $nfc = new Nfc([
             'crd_id' => $request->get('crd_id'),
             'erb_id' => $request->get('erb_id'),
-            'count_global' => $request->get('count_global'),
-            'count_between_cuts' => $request->get('count_between_cuts'),
-            'time_global_between_cuts' => $request->get('time_global_between_cuts'),
-            'time_between_cuts' => $request->get('time_between_cuts'),
-            'prizes_count' => $request->get('prizes_count'),
             'num_serie' => $request->get('num_serie'),
+            'cont_qr' => $request->get('cont_qr'),
+            'cont_mon' => $request->get('cont_mon'),
+            'cont_mon_2' => $request->get('cont_mon_2'),
+            'cont_corte' => $request->get('cont_corte'),
+            'cont_prem' => $request->get('cont_prem'),
+            'cost_mon' => $request->get('cost_mon'),
             'ssid' => $request->get('ssid'),
-            'password' => $request->get('password'),
-            'dns_server' => $request->get('dns_server'),
+            'passwd' => $request->get('passwd'),
             'ip_server' => $request->get('ip_server'),
-            'protocol' => $request->get('protocol'),
             'port' => $request->get('port'),
-            'text' => $request->get('text')
+            'txt' => $request->get('txt')
             ]);
         $nfc->save();
         //return redirect(/nfc)->with('success','Nfc Generado Satisfactoriamente');
@@ -344,23 +324,22 @@ class NfcController extends Controller
         $request->validate([
             'crd_id'=>'required|string|max:34',
             'erb_id'=>'required|string|max:34',
-            'count_global'=>'required|string|max:34',
-            'count_between_cuts'=>'required|string|max:34',
-            'time_global_between_cuts'=>'required|string|max:34',
-            'time_between_cuts'=>'required|string|max:34',
-            'prizes_count'=>'required|string|max:34',
-            'num_serie'=>'required|string|max:34',
-            'ssid'=>'required|string|max:34',
-            'password'=>'required|string|max:34',
-            'dns_server'=>'required|string|max:34',
-            'ip_server'=>'required|string|max:34',
-            'protocol'=>'required|string|max:34',
-            'port'=>'required|string|max:34',
-            'text'=>'required|string|max:34',
+            'num_serie'=>'required|string|max:100',
+            'cont_qr'=>'required|string|max:100',
+            'cont_mon'=>'required|string|max:100',
+            'cont_mon_2'=>'required|string|max:100',
+            'cont_corte'=>'required|string|max:100',
+            'cont_prem'=>'required|string|max:100',
+            'cost_mon'=>'required|string|max:100',
+            'ssid'=>'required|string|max:100',
+            'passwd'=>'required|string|max:100',
+            'ip_server'=>'required|string|max:100',
+            'port'=>'required|string|max:100',
+            'txt'=>'required|string|max:100',
         ]);
         $nfc_request = $request->all();
         $nfc->update($nfc_request);
-        toastr()->warning('nfc actualizado');
+        toastr()->warning('Nfc actualizado');
         return redirect()->route('nfc.index');
     }
 
@@ -407,7 +386,6 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 Route::resource('nfc', 'NfcController')->middleware('auth');
 Auth::routes();
 
@@ -440,20 +418,17 @@ No se cuenta con comando pero crea un archivos index para modulo de usuario `ind
                   <th>Crd</th>
                   <th>Erb</th>
                   <th>Serie</th>
-                  <th>C_Global</th>
-                  <th>C_Corte</th>
-                  <th>T_Global</th>
-                  <th>T_Corte</th>
-                  <th>Pzs</th>
+                  <th>Cont Qr</th>
+                  <th>Cont Mon</th>
+                  <th>Cont Mon 2</th>
+                  <th>Cont Corte</th>
+                  <th>Cont Prem</th>
+                  <th>Cost Mon</th>
                   <th>Ssid</th>
-                  <th>Passw</th>
-                  <th>Dns Server</th>
                   <th>Ip Server</th>
                   <th>Puerto</th>
-                  <th>Protocol</th>
                   <th>Texto</th>
-                  <th>FechMod</th>
-                  <th>FechMod</th>
+                  <th>FechaMod</th>
                   <th>Acciones</th>
                 </tr>
                 </thead>
@@ -464,19 +439,16 @@ No se cuenta con comando pero crea un archivos index para modulo de usuario `ind
                     <td>{{ $nfc->crd_id }}</td>
                     <td>{{ $nfc->erb_id }}</td>
                     <td>{{ $nfc->num_serie }}</td>
-                    <td>{{ $nfc->count_global }}</td>
-                    <td>{{ $nfc->count_between_cuts }}</td>
-                    <td>{{ $nfc->time_global_between_cuts }}</td>
-                    <td>{{ $nfc->time_between_cuts }}</td>
-                    <td>{{ $nfc->prizes_count }}</td>
+                    <td>{{ $nfc->cont_qr }}</td>
+                    <td>{{ $nfc->cont_mon }}</td>
+                    <td>{{ $nfc->cont_mon_2 }}</td>
+                    <td>{{ $nfc->cont_corte }}</td>
+                    <td>{{ $nfc->cont_prem }}</td>
+                    <td>{{ $nfc->cost_mon }}</td>
                     <td>{{ $nfc->ssid }}</td>
-                    <td>{{ $nfc->password }}</td>
-                    <td>{{ $nfc->dns_server }}</td>
                     <td>{{ $nfc->ip_server }}</td>
                     <td>{{ $nfc->port }}</td>
-                    <td>{{ $nfc->protocol }}</td>
-                    <td>{{ $nfc->text }}</td>
-                    <td>{{ $nfc->created_at }}</td>
+                    <td>{{ $nfc->txt }}</td>
                     <td>{{ $nfc->updated_at }}</td>
                     <td>
                       <form role="form" action="{{ route('nfc.destroy',$nfc->id) }}" method="POST">
@@ -484,35 +456,37 @@ No se cuenta con comando pero crea un archivos index para modulo de usuario `ind
                       <a class="btn btn-warning btn-xs"  href="{{ route('nfc.edit',$nfc->id) }}" role="button"><span class="fas fa-pen"></span></a>
                       @csrf
                       @method('DELETE')
-                      <button class="btn btn-danger btn-xs" type="submit"><span class="fas fa-trash"></span></button>
+                      <a href="" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#exampleModalCenter{{$nfc->id}}"><span class="fas fa-trash"></span></a>
+                      <!------ Modal 1 ------>
+                      <div class="modal fade" id="exampleModalCenter{{$nfc->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                      <div class="modal-header d-flex justify-content-center">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Ten cuidado con esta acción</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                          <div class="modal-body" style="text-align: center">
+                            <a><img src="{{ asset('storage/Images/Warning.JPG') }}" alt="" title=""  text-align="center" /></a>
+                           </div>
+                           <br>
+                          <p class="text-center">Eliminarás ( <b>{{$nfc->num_serie}}</b> ) seguro</p>
+                      </div>
+                      <div class="modal-footer d-flex justify-content-center">
+                            <button type="button" class="btn btn-info" data-dismiss="modal">Cancelar</button>
+                            <input type="submit" class="btn btn-danger" value="Eliminar">
+                      </div>
+                      </div>
+                      </div>
+                      </div>
+                    <!--fin modal--> 
                       </form>
                     </td>
                 </tr>
                 @endforeach
                 </tbody>
-               <!-- <tfoot>
-                 <tr>
-                 <th>Id</th>
-                  <th>Crd</th>
-                  <th>Erb</th>
-                  <th>Serie</th>
-                  <th>Clv1</th>
-                  <th>Clv2</th>
-                  <th>Clv3</th>
-                  <th>Clv4</th>
-                  <th>Clv5</th>
-                  <th>Ssid</th>
-                  <th>Passw</th>
-                  <th>Ip Server</th>
-                  <th>Dns Server</th>
-                  <th>Puerto</th>
-                  <th>Protocol</th>
-                  <th>Texto</th>
-                  <th>FechMod</th>
-                  <th>FechMod</th>
-                  <th>Acciones</th>
-                </tr>
-                </tfoot>-->
               </table>
             </div>
             <!-- /.card-body -->
@@ -524,7 +498,6 @@ No se cuenta con comando pero crea un archivos index para modulo de usuario `ind
       <!-- /.row -->
     </section>
     <!-- /.content --> 
-@stop
 
 ```
 
@@ -536,14 +509,14 @@ Tu puedes crear los archivos de forma automatica y sin tanta complejidad.
 ☝️ En un solo comando crearas migracion, modelo, controlador con recursos.
 
 ```php
-   php artisan make:model NameModel -mcr
+   php artisan make:model Nfc -mcr
 
 ```
 
 ✌️ Comando para crear Seeder.
 
 ```php
-   php artisan make:seeder NameTableSeeder
+   php artisan make:seeder AddNfcTableSeeder
 
 ```
 

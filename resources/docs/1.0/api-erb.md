@@ -32,9 +32,9 @@ Si gustas es posible consultar los metodos get por web.
 <a name="controller-api"></a>
 ## Controlador API
 
-Comando `php artisan make:controller API/ErbController` ejecutar en consola dentro del proyecto.
+Comando `php artisan make:controller Api/ErbController` ejecutar en consola dentro del proyecto.
 
-> {info} Directorio  `app/Http/Controller/API/ErbController.php` respeta esta estructura en el controlador.
+> {info} Directorio  `app/Http/Controller/Api/ErbController.php` respeta esta estructura en el controlador.
 
 ```php
 
@@ -61,9 +61,9 @@ class ErbController extends BaseController
 <a name="index"></a>
 ## Metodo Index
 
-Consulta url `http://domain/api/erb` te regresara un objeto tipo JSON.
+Consulta url `https://hotspot.fjlic.com/api/erb` te regresara un objeto tipo JSON.
 
-> {info} Directorio  `app/Http/Controller/API/ErbController.php`.
+> {info} Directorio  `app/Http/Controller/Api/ErbController.php`.
 
 ```php
 
@@ -93,9 +93,9 @@ Consulta url `http://domain/api/erb` te regresara un objeto tipo JSON.
 <a name="show"></a>
 ## Metodo Show
 
-Consulta url `http://domain/api/erb/{#id}` te regresara un objeto tipo JSON.
+Consulta url `https://hotspot.fjlic.com/api/erb/{#id}` te regresara un objeto tipo JSON.
 
-> {info} Directorio  `app/Http/Controller/API/ErbController.php`.
+> {info} Directorio  `app/Http/Controller/Api/ErbController.php`.
 
 ```php
 
@@ -105,6 +105,7 @@ Consulta url `http://domain/api/erb/{#id}` te regresara un objeto tipo JSON.
      * @param  int  $id or name $name_machine
      * @return \Illuminate\Http\Response
      */
+
     public function show($id)
     {
         $erb = Erb::where('id',$id)->first(); 
@@ -132,9 +133,9 @@ Consulta url `http://domain/api/erb/{#id}` te regresara un objeto tipo JSON.
 <a name="register"></a>
 ## Metodo Register
 
-Consulta url `http://domain/api/erb/register` te regresara un objeto tipo JSON.
+Consulta url `https://hotspot.fjlic.com/api/erb/register` te regresara un objeto tipo JSON.
 
-> {info} Directorio  `app/Http/Controller/API/ErbController.php`.
+> {info} Directorio  `app/Http/Controller/Api/ErbController.php`.
 
 ```php
 
@@ -198,9 +199,9 @@ Consulta url `http://domain/api/erb/register` te regresara un objeto tipo JSON.
 <a name="update"></a>
 ## Metodo Update
 
-Consulta url `http://domain/api/erb/update{#id}` te regresara un objeto tipo JSON.
+Consulta url `https://hotspot.fjlic.com/api/erb/update{#id}` te regresara un objeto tipo JSON.
 
-> {info} Directorio  `app/Http/Controller/API/ErbController.php`.
+> {info} Directorio  `app/Http/Controller/Api/ErbController.php`.
 
 ```php
 
@@ -250,9 +251,9 @@ Consulta url `http://domain/api/erb/update{#id}` te regresara un objeto tipo JSO
 <a name="modify"></a>
 ## Metodo Modify
 
-Consulta url `http://domain/api/erb/modify{#id}` te regresara un objeto tipo JSON.
+Consulta url `https://hotspot.fjlic.com/erb/modify{#id}` te regresara un objeto tipo JSON.
 
-> {info} Directorio  `app/Http/Controller/API/ErbController.php`.
+> {info} Directorio  `app/Http/Controller/Api/ErbController.php`.
 
 ```php
 
@@ -313,9 +314,9 @@ Consulta url `http://domain/api/erb/modify{#id}` te regresara un objeto tipo JSO
 <a name="destroy"></a>
 ## Metodo Destroy
 
-Consulta url `http://domain/api/erb/destroy{#id}` te regresara un objeto tipo JSON.
+Consulta url `https://hotspot.fjlic.com/api/erb/destroy{#id}` te regresara un objeto tipo JSON.
 
-> {info} Directorio  `app/Http/Controller/API/ErbController.php`.
+> {info} Directorio  `app/Http/Controller/Api/ErbController.php`.
 
 ```php
 
@@ -361,10 +362,9 @@ Se deben agregar las ruta necesario dentro de api rutas.
 |
 */
 
-Route::post('erb/modify', 'API\ErbController@modify')->name('erb.modify');
-Route::post('erb/register', 'API\ErbController@register')->name('erb.register');
-Route::resource('erb', 'API\ErbController');
-
+Route::post('erb/modify', 'Api\ErbController@modify')->name('erb.modify');
+Route::post('erb/register', 'Api\ErbController@register')->name('erb.register');
+Route::resource('erb', 'Api\ErbController');
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });

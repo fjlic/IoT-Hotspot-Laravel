@@ -32,9 +32,9 @@ Si gustas es posible consultar los metodos get por web.
 <a name="controller-api"></a>
 ## Controlador API
 
-Comando `php artisan make:controller API/Crd` ejecutar en consola dentro del proyecto.
+Comando `php artisan make:controller Api/Crd` ejecutar en consola dentro del proyecto.
 
-> {info} Directorio  `app/Http/Controller/API/CrdController.php` respeta esta estructura en el controlador.
+> {info} Directorio  `app/Http/Controller/Api/CrdController.php` respeta esta estructura en el controlador.
 
 ```php
 
@@ -61,9 +61,9 @@ class CrdController extends BaseController
 <a name="index"></a>
 ## Metodo Index
 
-Consulta url `http://domain/api/crd` te regresara un objeto tipo JSON.
+Consulta url `https://hotspot.fjlic.com/api/crd` te regresara un objeto tipo JSON.
 
-> {info} Directorio  `app/Http/Controller/API/CrdController.php`.
+> {info} Directorio  `app/Http/Controller/Api/CrdController.php`.
 
 ```php
 
@@ -93,9 +93,9 @@ Consulta url `http://domain/api/crd` te regresara un objeto tipo JSON.
 <a name="show"></a>
 ## Metodo Show
 
-Consulta url `http://domain/api/crd/{#id}` te regresara un objeto tipo JSON.
+Consulta url `https://hotspot.fjlic.com/api/crd/{#id}` te regresara un objeto tipo JSON.
 
-> {info} Directorio  `app/Http/Controller/API/CrdController.php`.
+> {info} Directorio  `app/Http/Controller/Api/CrdController.php`.
 
 ```php
 
@@ -132,9 +132,9 @@ Consulta url `http://domain/api/crd/{#id}` te regresara un objeto tipo JSON.
 <a name="register"></a>
 ## Metodo Register
 
-Consulta url `http://domain/api/crd/register` te regresara un objeto tipo JSON.
+Consulta url `https://hotspot.fjlic.com/api/crd/register` te regresara un objeto tipo JSON.
 
-> {info} Directorio  `app/Http/Controller/API/CrdController.php`.
+> {info} Directorio  `app/Http/Controller/Api/CrdController.php`.
 
 ```php
 
@@ -198,9 +198,9 @@ Consulta url `http://domain/api/crd/register` te regresara un objeto tipo JSON.
 <a name="update"></a>
 ## Metodo Update
 
-Consulta url `http://domain/api/crd/update{#id}` te regresara un objeto tipo JSON.
+Consulta url `https://hotspot.fjlic.com/api/crd/update{#id}` te regresara un objeto tipo JSON.
 
-> {info} Directorio  `app/Http/Controller/API/CrdController.php`.
+> {info} Directorio  `app/Http/Controller/Api/CrdController.php`.
 
 ```php
 
@@ -250,9 +250,9 @@ Consulta url `http://domain/api/crd/update{#id}` te regresara un objeto tipo JSO
 <a name="modify"></a>
 ## Metodo Modify
 
-Consulta url `http://domain/api/crd/modify{#id}` te regresara un objeto tipo JSON.
+Consulta url `https://hotspot.fjlic.com/api/crd/modify{#id}` te regresara un objeto tipo JSON.
 
-> {info} Directorio  `app/Http/Controller/API/CrdController.php`.
+> {info} Directorio  `app/Http/Controller/Api/CrdController.php`.
 
 ```php
 
@@ -313,9 +313,9 @@ Consulta url `http://domain/api/crd/modify{#id}` te regresara un objeto tipo JSO
 <a name="destroy"></a>
 ## Metodo Destroy
 
-Consulta url `http://domain/api/crd/destroy{#id}` te regresara un objeto tipo JSON.
+Consulta url `https://hotspot.fjlic.com/api/crd/destroy{#id}` te regresara un objeto tipo JSON.
 
-> {info} Directorio  `app/Http/Controller/API/CrdController.php`.
+> {info} Directorio  `app/Http/Controller/Api/CrdController.php`.
 
 ```php
 
@@ -361,10 +361,9 @@ Se deben agregar las ruta necesario dentro de api rutas.
 |
 */
 
-Route::post('crd/modify', 'API\CrdController@modify')->name('crd.modify');
-Route::post('crd/register', 'API\CrdController@register')->name('crd.register');
-Route::resource('crd', 'API\CrdController');
-
+Route::post('crd/modify', 'Api\CrdController@modify')->name('crd.modify');
+Route::post('crd/register', 'Api\CrdController@register')->name('crd.register');
+Route::resource('crd', 'Api\CrdController');
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });

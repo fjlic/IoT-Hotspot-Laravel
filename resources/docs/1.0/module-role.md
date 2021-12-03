@@ -228,27 +228,59 @@ Comando `php artisan make:model Role` ejecutar en consola dentro del proyecto.
 
 ```php
 
-class LaratrustRole extends Model implements LaratrustRoleInterface
+class AddRoleGlobalTableSeeder extends Seeder
 {
-    use LaratrustRoleTrait;
-
     /**
-     * The database table used by the model.
+     * Run the database seeds.
      *
-     * @var string
-     */
-    protected $table;
-
-    /**
-     * Creates a new instance of the model.
-     *
-     * @param  array  $attributes
      * @return void
      */
-    public function __construct(array $attributes = [])
+    public function run()
     {
-        parent::__construct($attributes);
-        $this->table = Config::get('laratrust.tables.roles');
+        //
+        $users = User::all();
+        $crds = Crd::all();
+        $erbs = ERB::all();
+        $role_root = Role::where('name','root')->first();
+        $role_admin = Role::where('name','admin')->first();
+        $role_super = Role::where('name','super')->first();
+        $role_user = Role::where('name','user')->first();
+        $role_crd = Role::where('name','crd')->first();
+        $role_erb = Role::where('name','erb')->first();
+
+        /* Asign roles with users and micros*/
+
+        $root = $users->find(1);
+        $root->attachRole($role_root);
+        $root->save();
+
+        $admin = $users->find(2);
+        $admin->attachRole($role_admin);
+        $admin->save();
+
+        $super = $users->find(3);
+        $super->attachRole($role_super);
+        $super->save();
+
+        $user = $users->find(4);
+        $user->attachRole($role_user);
+        $user->save();
+
+        $disable = $users->find(5);
+        $disable->attachRole($role_user);
+        $disable->save();
+
+        for ($i = 1; $i <= $crds->count(); $i++) {
+            $crd = $crds->find($i);
+            $crd->attachRole($role_crd);
+            $crd->save();
+        }
+
+        for ($i = 1; $i <= $erbs->count(); $i++) {
+            $erb = $erbs->find($i);
+            $erb->attachRole($role_erb);
+            $erb->save();
+        }
     }
 }
 
@@ -412,11 +444,10 @@ No se cuenta con comando pero crea un archivos index para modulo de usuario `ind
                 <thead>
                 <tr>
                   <th>Id</th>
-                  <th>Nom-Codigo</th>
-                  <th>Nom-Vista</th>
+                  <th>NomCodigo</th>
+                  <th>NomVista</th>
                   <th>Descripcion</th>
-                  <th>FechaCreacion</th>
-                  <th>FechaMoficiacion</th>
+                  <th>FechaMod</th>
                   <th>Acciones</th>
                 </tr>
                 </thead>
@@ -427,7 +458,6 @@ No se cuenta con comando pero crea un archivos index para modulo de usuario `ind
                     <td>{{ $role->name }}</td>
                     <td>{{ $role->display_name }}</td>
                     <td>{{ $role->description }}</td>
-                    <td>{{ $role->created_at }}</td>
                     <td>{{ $role->updated_at }}</td>
                     <td>
                       <form role="form" action="{{ route('role.destroy',$role->id) }}" method="POST">
@@ -435,7 +465,32 @@ No se cuenta con comando pero crea un archivos index para modulo de usuario `ind
                       <a class="btn btn-warning btn-xs"  href="{{ route('role.edit',$role->id) }}" role="button"><span class="fas fa-pen"></span></a>
                       @csrf
                       @method('DELETE')
-                      <button class="btn btn-danger btn-xs" type="submit"><span class="fas fa-trash"></span></button>
+                      <a href="" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#exampleModalCenter{{$role->id}}"><span class="fas fa-trash"></span></a>
+                      <!------ Modal 1 ------>
+                      <div class="modal fade" id="exampleModalCenter{{$role->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                      <div class="modal-header d-flex justify-content-center">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Ten cuidado con esta acción</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                          <div class="modal-body" style="text-align: center">
+                            <a><img src="{{ asset('storage/Images/Warning.JPG') }}" alt="" title=""  text-align="center" /></a>
+                           </div>
+                           <br>
+                          <p class="text-center">Eliminarás ( <b>{{$role->display_name}}</b> ) seguro</p>
+                      </div>
+                      <div class="modal-footer d-flex justify-content-center">
+                            <button type="button" class="btn btn-info" data-dismiss="modal">Cancelar</button>
+                            <input type="submit" class="btn btn-danger" value="Eliminar">
+                      </div>
+                      </div>
+                      </div>
+                      </div>
+                    <!--fin modal--> 
                       </form>
                     </td>
                 </tr>
@@ -444,11 +499,10 @@ No se cuenta con comando pero crea un archivos index para modulo de usuario `ind
                <!-- <tfoot>
                 <tr>
                   <th>Id</th>
-                  <th>Nom-Codigo</th>
-                  <th>Nom-Vista</th>
+                  <th>NomCodigo</th>
+                  <th>NomVista</th>
                   <th>Descripcion</th>
-                  <th>FechaCreacion</th>
-                  <th>FechaMoficiacion</th>
+                  <th>FechaMod</th>
                   <th>Acciones</th>
                 </tr>
                 </tfoot>-->
@@ -463,8 +517,6 @@ No se cuenta con comando pero crea un archivos index para modulo de usuario `ind
       <!-- /.row -->
     </section>
     <!-- /.content -->  
-    
-@stop
 
 ```
 
@@ -476,14 +528,14 @@ Tu puedes crear los archivos de forma automatica y sin tanta complejidad.
 ☝️ En un solo comando crearas migracion, modelo, controlador con recursos.
 
 ```php
-   php artisan make:model NameModel -mcr
+   php artisan make:model Role -mcr
 
 ```
 
 ✌️ Comando para crear Seeder.
 
 ```php
-   php artisan make:seeder NameTableSeeder
+   php artisan make:seeder AddRoleGlobalTableSeeder
 
 ```
 
