@@ -14,7 +14,7 @@
 <a name="section-sensor"></a>
 ## Migracion, Sedder, Modelo, Controlador y Vista
 
-Estructura del modulo Sensor.. 🦊
+Estructura del modulo Sensor.. 📡
 Si gustas es posible crear la estructura MVC de forma manual.
 
 ---

@@ -14,7 +14,7 @@
 <a name="section-erb"></a>
 ## Migracion, Sedder, Modelo, Controlador y Vista
 
-Estructura del modulo Erb.. 🦊
+Estructura del modulo Erb.. 🎮
 Si gustas es posible crear la estructura MVC de forma manual.
 
 ---

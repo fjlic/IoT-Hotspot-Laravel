@@ -15,7 +15,7 @@
 <a name="section-crd-api"></a>
 ## Controlador, Metodos index(), register(), update(), modify(), destroy():
 
-Estructura del modulo API Crd.. 🦊
+Estructura del modulo API Crd.. 🚥
 Si gustas es posible consultar los metodos get por web.
 
 ---

@@ -15,7 +15,7 @@
 <a name="section-erb-api"></a>
 ## Controlador, Metodos index(), register(), update(), modify(), destroy():
 
-Estructura del modulo API Erb.. 🦊
+Estructura del modulo API Erb.. 🚥
 Si gustas es posible consultar los metodos get por web.
 
 ---

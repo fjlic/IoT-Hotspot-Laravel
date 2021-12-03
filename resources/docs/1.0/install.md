@@ -7,11 +7,11 @@
 - [Soporte](#docs-command)
 
 <a name="section-1"></a>
-## Utilizando IoT-Hotspot
+## Utilizando IoT-Hotspot 🚀
 
 ### Antes de comenzar te damos la siguientes sugerencias.. 👀
 
-Es importante que consideres cual sera tu ambiente de trabajo, ya sea para produccion o en local, te recomedamos para tu equipo ya sea fisico o virtualizado cuentes con al menos 2 cores, 2 gigas en ram + unos 60 gigas de ssd de almacenamiento. Si optas por utilizar un espacio en la nube como todo un profesional 😎, aplica de la misma forma ya que la mayoria de las compañias que oferecen servicios de vps, cuentan con esta configuracion, tambien te recomendamos los servicios de AWS de Amazon, Digital Ocean, IONOS 1and1 o cualquier otro.
+Es importante que consideres cual sera tu ambiente de trabajo, ya sea para produccion o en local, te recomedamos para tu equipo ya sea fisico o virtualizado cuentes con al menos 2 cores, 2 gigas en ram + unos 60 gigas de ssd de almacenamiento. Si optas por utilizar un espacio en la nube como todo un profesional 🤘, aplica de la misma forma ya que la mayoria de las compañias que oferecen servicios de vps, cuentan con esta configuracion, tambien te recomendamos los servicios de AWS de Amazon, Digital Ocean, IONOS 1and1 o cualquier otro.
 
 > {warning} Nota. para que el proyecto incie requiere de ciertas hereamientas previas.
 
@@ -25,7 +25,7 @@ Es importante que consideres cual sera tu ambiente de trabajo, ya sea para produ
 ---
 
 <a name="install-command"></a>
-## Comandos de Instalacion
+## Comandos de Instalacion 😬
 
 ### 1. Desarga el proyecto desde [`GitHub`](https://github.com/fjlic/IoT-Hotspot-Laravel) y descomprime el zip.
 
@@ -93,7 +93,7 @@ composer update
 ```
 
 <a name="docs-command"></a>
-## Soporte
+## Soporte 🔥
 
 ### Para cualquier duda visita o contacta al [soporte@fjlic.com](https://github.com/fjlic)
 
