@@ -1,4 +1,4 @@
-# Bienvenido a IoT-Hotspot Documentacion
+# Bienvenido a IoT-Hotspot Documentación
 ---
 
 - [Que es IoT-Hotspot](#overview)
@@ -8,7 +8,7 @@
 <a name="overview"></a>
 ## Quienes somos
 
-**IoT-Hotspot** es una simple plataforma que intenta aplicar la tecnologia del Internet de las Cosas (IoT) robusteciendolo con un poco de estadistica y un algoritmo para el aprendizaje de maquinas (IA) enfocado ala prediccion de fallas y el analisis de la telemetria de los datos recolectados por los dispositivos, útilizando dos tarjetas prototipos llamadas (CRD Y ERB), con estas se permitio dar 2 soluciones novedosas a maquinas que requerian de comunicar su estado actual y operativo por medio del uso de hardware adaptable, permitiendo que sus maquinas enviaran datos ala nube, nuestra intencion es permitir replicar esta dos alternativas de solucion a otros posibles proyectos de indole similar y asi contribuir al mundo interconectando dispositivos electronicos hacia la nube 😏. visita la solucion [IoT-Hotspot](https://hotspot.fjlic.com), o ponerte en contacto [soporte@fjlic.com](https://github.com/fjlic).
+**IoT-Hotspot** es una simple plataforma que aplica la tecnologia del Internet de las Cosas (IoT) robusteciendolo con un poco de estadistica y un algoritmo para el aprendizaje de máquinas (IA) enfocado a la predicción de fallas y el análisis de la telemetria de los datos recolectados por los dispositivos, útilizando dos tarjetas prototipos llamadas (CRD Y ERB), con estas se permitio dar 2 soluciones novedosas a máquinas que requerian de comunicar su estado actual y operativo por medio del uso de hardware adaptable, permitiendo que sus máquinas enviaran datos ala nube, nuestra intención es permitir replicar estas alternativas de solución a otros posibles proyectos de indole similar y asi contribuir al mundo interconectando dispositivos electrónicos hacia la nube 😏. Visita la solución [IoT-Hotspot](https://hotspot.fjlic.com), o contacta [soporte@fjlic.com](https://github.com/fjlic).
 
 > {info} Puedes descargar el proyecto completo desde [`GitHub`](https://github.com/fjlic/IoT-Hotspot-Laravel)
 
@@ -36,7 +36,7 @@
 <a name="credits"></a>
 ## Creditos a los que bien lo merecen.
 
-Si deseas utilizar los paquetes te proporcionamos los links comparte con la comunidad gracias:
+Si deseas utilizar los paquetes, te proporcionamos los links, comparte con la comunidad, gracias:
 
 + [Laravel](https://laravel.com) - Open source full-stack framework.
 + [VueJs](https://vuejs.org) - The Progressive JavaScript Framework.

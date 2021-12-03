@@ -3,7 +3,7 @@
 ---
 
 - [Usuario CRUD](#section-user)
-- [Migracion](#migrations)
+- [Migración](#migrations)
 - [Seeder](#seeds)
 - [Modelo](#models)
 - [Controlador](#controllers)
@@ -12,14 +12,14 @@
 - [Comando](#mcr)
 
 <a name="section-user"></a>
-## Migracion, Sedder, Modelo, Controlador y Vista
+## Migración, Sedder, Modelo, Controlador y Vista
 
 Estructura del modulo Usuario.. 🙈
 Si gustas es posible crear la estructura MVC de forma manual.
 
 ---
 
-- [Migracion](#migrations)
+- [Migración](#migrations)
 - [Seeder](#seeds)
 - [Modelo](#models)
 - [Controlador](#controllers)
@@ -28,7 +28,7 @@ Si gustas es posible crear la estructura MVC de forma manual.
 - [Comando MCR](#mcr)
 
 <a name="migrations"></a>
-## Migracion
+## Migración
 
 Comando `php artisan make:migration User` ejecutar en consola dentro del proyecto.
 
@@ -491,11 +491,11 @@ No se cuenta con comando pero crea un archivos index para modulo de usuario `ind
 ```
 
 <a name="mcr"></a>
-## Comando para crear Migracion, Modelo, Controlador + Seeder
+## Comando para crear Migración, Modelo, Controlador + Seeder
 
 Tu puedes crear los archivos de forma automatica y sin tanta complejidad.
 
-☝️ En un solo comando crearas migracion, modelo, controlador con recursos.
+☝️ En un solo comando crearas migración, modelo, controlador con recursos.
 
 ```php
    php artisan make:model User -mcr
@@ -509,3 +509,4 @@ Tu puedes crear los archivos de forma automatica y sin tanta complejidad.
 
 ```
 
+<larecipe-newsletter></larecipe-newsletter>

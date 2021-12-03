@@ -369,3 +369,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 ```
+
+
+<larecipe-newsletter></larecipe-newsletter>

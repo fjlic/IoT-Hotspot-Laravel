@@ -1,6 +1,6 @@
-- ## Documentacion
+- ## Documentación
     - [Inicio](/{{route}}/{{version}}/overview)
-    - [Instalacion](/{{route}}/{{version}}/install)
+    - [Instalación](/{{route}}/{{version}}/install)
 - ## Usuarios y Roles
     - [ModuloUsuario](/{{route}}/{{version}}/module-user)
     - [ModuloRole](/{{route}}/{{version}}/module-role)
