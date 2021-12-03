@@ -1,62 +1,100 @@
-# Instalacion IOT-Hotspot
+# Instalacion IoT-Hotspot
 
 ---
 
-- [First Section](#section-1)
+- [Utilizando IoT-Hotspot](#section-1)
+- [Comandos de Instalacion](#install-command)
+- [Soporte](#docs-command)
 
 <a name="section-1"></a>
-## First Section
+## Utilizando IoT-Hotspot
 
-Write something cool.. 🦊
+### Antes de comenzar te damos la siguientes sugerencias.. 👀
 
-LaRecipe comes with helpful Artisan commands that can be triggered to handle boring stuff out of the box.
+Es importante que consideres cual sera tu ambiente de trabajo, ya sea para produccion o en local, te recomedamos para tu equipo ya sea fisico o virtualizado cuentes con al menos 2 cores, 2 gigas en ram + unos 60 gigas de ssd de almacenamiento. Si optas por utilizar un espacio en la nube como todo un profesional 😎, aplica de la misma forma ya que la mayoria de las compañias que oferecen servicios de vps, cuentan con esta configuracion, tambien te recomendamos los servicios de AWS de Amazon, Digital Ocean, IONOS 1and1 o cualquier otro.
+
+> {warning} Nota. para que el proyecto incie requiere de ciertas hereamientas previas.
+
+1. Php en su version 7.4 [`Php`](https://www.php.net/releases/7_4_0.php).
+2. Composer en su version 2.1 [`Composer`](https://getcomposer.org/).
+3. Maria DB en version 10.4 [`MariaDB`](https://mariadb.org/).
+4. Apache 2 [`Servidor Web`](https://httpd.apache.org/) o Nginx [`Servidor Web`](https://www.nginx.com/).
+5. Sino quiere complicarte levantando un servicio [`LEMP`](https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-20-04-es) o [`LAMP`](https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-20-04-es) mejor instala [`XAMPP`](https://www.apachefriends.org/es/index.html).
+
 
 ---
 
-- [Install Command](#install-command)
-- [Docs Command](#docs-command)
-
 <a name="install-command"></a>
-## Install Command
+## Comandos de Instalacion
 
-After requiring the package via `composer`, all you have to do is to run a single command which will take care of publishing the needed assets and configurations.
-
-```php
-php artisan larecipe:install
-```
-
-After running the command you will find a few changes in your Laravel app folders: the `larecipe.php` config file will be added to your `config` directory and the basic setup for writing documentation will be added to the `resources/docs` directory. That happened internally by calling `larecipe:docs` command inside `larecipe:install` command.
-
-> {warning} This structure is based on the default path of the docs. Yours will be different if you change the docs `path`.
+### 1. Desarga el proyecto desde [`GitHub`](https://github.com/fjlic/IoT-Hotspot-Laravel) y descomprime el zip.
 
 ```php
-.
-├─ config
-│  └─ larecipe.php
-└─ resources
-   └─ docs
-      └─ 1.0
-         │─ index.md
-         └─ overview.md
-       
+git clone https://github.com/fjlic/IoT-Hotspot-Laravel.git
 ```
 
+### 2. Dentro de IoT-Hotspot-Laravel ejecuta dump-autoload para descargar las dependencias requeridas del proyecto.
 
+```php
+composer dump-autoload
+```
+
+### 3. Edita tu archivo env.example para iniciar la variable globales, despues renombralo como .env
+
+```php
+APP_NAME=IoT-Hotspot
+APP_ENV=local
+APP_KEY=
+APP_DEBUG=true
+APP_URL=http://localhost
+
+LOG_CHANNEL=stack
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=hotspot
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+### 4. Si utilizas XAMPP crea una base de datos llamada hotspot o por terminal.
+
+```php
+CREATE DATABASE hotspot;
+```
+
+ ###5. Para construir las tablas de la base de datos seria.
+
+```php
+php artisan migrate:fresh --seed
+```
+
+### 6. Por ultimo te dejo estos comandos utiles.
+
+#### Comandos Artisan
+
+```php
+php artisan clear
+php artisan cache:clear
+php artisan view:clear
+php artisan config:clear
+php artisan route:clear
+```
+
+#### Comandos Composer
+
+```php
+composer clear
+composer clear:cache
+composer dump:autoload
+composer install
+composer update
+```
 
 <a name="docs-command"></a>
-## Docs Command
+## Soporte
 
-This command is a bit more complicated than `larecipe:install` command. However, all you have to know is the behavior of this command and what you expect from it.
+### Para cualquier duda visita o contacta al [soporte@fjlic.com](https://github.com/fjlic)
 
-```php
-php artisan larecipe:docs
-```
-
-> {primary} The workflow of this command is:
-
-1. LaRecipe will read the published versions array in your `config/larecipe`.
-2. For each published version, LaRecipe will create the corresponding version directory if not exists.
-3. After creating the directory, LaRecipe will create `index.md` for the given version if not exists.
-4. Finally, LaRecipe will create `overview.md` for the given version if not exists.
-
-<larecipe-newsletter></larecipe-newsletter>
+> {primary} Gracias por utilizar IoT Hotspot 😏
