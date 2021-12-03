@@ -1,4 +1,4 @@
-# Modulo Nfc
+# Modulo Nfc 📱
 
 ---
 
@@ -14,7 +14,7 @@
 <a name="section-user"></a>
 ## Migración, Sedder, Modelo, Controlador y Vista
 
-Estructura del modulo Nfc.. 📱
+Estructura del modulo Nfc.. 
 Si gustas es posible crear la estructura MVC de forma manual.
 
 ---

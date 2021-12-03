@@ -1,4 +1,4 @@
-# Modulo Crd
+# Modulo Crd 🎮
 
 ---
 
@@ -14,7 +14,7 @@
 <a name="section-crd"></a>
 ## Migración, Sedder, Modelo, Controlador y Vista
 
-Estructura del modulo Crd.. 🎮
+Estructura del modulo Crd.. 
 Si gustas es posible crear la estructura MVC de forma manual.
 
 ---

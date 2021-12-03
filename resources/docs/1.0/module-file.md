@@ -1,4 +1,4 @@
-# Modulo Publicidad
+# Modulo Publicidad 📺
 
 ---
 
@@ -14,7 +14,7 @@
 <a name="section-file"></a>
 ## Migración, Sedder, Modelo, Controlador y Vista
 
-Estructura del modulo Publicidad.. 📺
+Estructura del modulo Publicidad.. 
 Si gustas es posible crear la estructura MVC de forma manual.
 
 ---

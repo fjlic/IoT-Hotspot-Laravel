@@ -1,4 +1,4 @@
-# Modulo Usuario
+# Modulo Usuario 🙈
 
 ---
 
@@ -14,7 +14,7 @@
 <a name="section-user"></a>
 ## Migración, Sedder, Modelo, Controlador y Vista
 
-Estructura del modulo Usuario.. 🙈
+Estructura del modulo Usuario.. 
 Si gustas es posible crear la estructura MVC de forma manual.
 
 ---

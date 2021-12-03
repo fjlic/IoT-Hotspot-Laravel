@@ -1,4 +1,4 @@
-# Modulo Role
+# Modulo Role 👮
 
 ---
 
@@ -14,7 +14,7 @@
 <a name="section-role"></a>
 ## Migración, Sedder, Modelo, Controlador y Vista
 
-Estructura del modulo Role.. 👮
+Estructura del modulo Role.. 
 Si gustas es posible crear la estructura MVC de forma manual.
 
 ---

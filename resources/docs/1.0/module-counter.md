@@ -1,4 +1,4 @@
-# Modulo Contador
+# Modulo Contador 💰
 
 ---
 
@@ -14,7 +14,7 @@
 <a name="section-counter"></a>
 ## Migración, Sedder, Modelo, Controlador y Vista
 
-Estructura del modulo Counter.. 💰
+Estructura del modulo Counter.. 
 Si gustas es posible crear la estructura MVC de forma manual.
 
 ---

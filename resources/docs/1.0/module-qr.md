@@ -1,4 +1,4 @@
-# Modulo Qr
+# Modulo Qr 🔳
 
 ---
 
@@ -14,7 +14,7 @@
 <a name="section-qr"></a>
 ## Migración, Sedder, Modelo, Controlador y Vista
 
-Estructura del modulo Qr.. 🔳
+Estructura del modulo Qr.. 
 Si gustas es posible crear la estructura MVC de forma manual.
 
 ---

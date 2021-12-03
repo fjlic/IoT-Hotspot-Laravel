@@ -1,4 +1,4 @@
-# Modulo Estadistico
+# Modulo Estadistico 📈
 
 ---
 
@@ -14,7 +14,7 @@
 <a name="section-statistical"></a>
 ## Migración, Sedder, Modelo, Controlador y Vista
 
-Estructura del modulo Estadistico.. 📈
+Estructura del modulo Estadistico.. 
 Si gustas es posible crear la estructura MVC de forma manual.
 
 ---

@@ -1,4 +1,4 @@
-# Instalación IoT-Hotspot
+# Instalación IoT-Hotspot 🚀
 
 ---
 
@@ -7,13 +7,13 @@
 - [Soporte](#docs-command)
 
 <a name="section-1"></a>
-## Utilizando IoT-Hotspot 🚀
+## Utilizando IoT-Hotspot 🔰
 
 ### Antes de comenzar te damos las siguientes sugerencias.. 👀
 
 Es importante que consideres cual será tu ambiente de trabajo, ya sea para producción o en local, te recomendamos para tu equipo ya sea físico o virtualizado cuentes con al menos 2 cores, 2 gigas en ram + unos 60 gigas de ssd de almacenamiento. Si optas por utilizar un espacio en la nube como todo un profesional 🤘, aplica de la misma forma ya que la mayoría de las compañías que ofrecen servicios de vps, cuentan con esta configuración, también te recomendamos los servicios de AWS de Amazon, Digital Ocean, IONOS 1and1 o cualquier otro.
 
-> {warning} Nota. Para que el proyecto inicie requiere de ciertas herramientas previas.
+> {warning} Nota. Para que el proyecto inicie requiere de ciertas herramientas previas ✋
 
 1. Php en su versión 7.4 [`Php`](https://www.php.net/releases/7_4_0.php).
 2. Composer en su versión 2.1 [`Composer`](https://getcomposer.org/).
