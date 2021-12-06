@@ -1,9 +1,10 @@
 - ## Documentación
     - [Inicio](/{{route}}/{{version}}/overview)
     - [Instalación](/{{route}}/{{version}}/install)
-- ## Usuarios y Roles
+- ## Usuarios, Roles y Alertas
     - [ModuloUsuario](/{{route}}/{{version}}/module-user)
     - [ModuloRole](/{{route}}/{{version}}/module-role)
+    - [ModuloAlerta](/{{route}}/{{version}}/module-alert)
 - ## Crd Modulos
     - [ModuloCrd](/{{route}}/{{version}}/module-crd)
     - [ModuloNfc](/{{route}}/{{version}}/module-nfc)
