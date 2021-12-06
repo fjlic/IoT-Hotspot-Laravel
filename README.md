@@ -1,24 +1,24 @@
-# IoT-Hotspot
+# IoT-Hotspot 🚀
 FJLIC Pojects IoT-Hotspot 
 
-## Contributing
+## Contributing 👾
 
-Can you visit project in the [IoT-Hotspot](https://hotspot.fjlic.com/).
+You can visit the project from IoT-Hotspot [IoT-Hotspot](https://hotspot.fjlic.com/).
  
-Do you want authenticate can be with:
+Take a look at the platform with::
 
 User: [demo@fjlic.com](https://hotspot.fjlic.com/)
 
 Password: [demo@54321](https://hotspot.fjlic.com/)
 
-## Documentation Api Doc with LaRecipe
+## Documentation with API 📚
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://hotspot.fjlic.com/docs/1.0/module-user).
+We have prepared Api Documentation if you would like to review the code [Documentation IoT Hotspot](https://hotspot.fjlic.com/docs/1.0/overview).
 
-## Send me e-mail for better this project IoT
+## Send me e-mail for better this project IoT 📧
 
-If you discover form better code in the construct project, are welcome, please send an e-mail to Javier Flores via [soporte@fjlic.com](mailto:soporte@fjlic.com). All suggestions in the better code and comment.
+If you have suggestion to improve the construction of the project, all comments are welcome, please send an email to Javier Flores at soporte@fjlic.com. All suggestions for the code will be taken into account via [soporte@fjlic.com](mailto:soporte@fjlic.com).
 
-## License
+## License 🔑
 
-This Project is Open Source Software, Thanks for Laravel 8.0 [MIT license](https://opensource.org/licenses/MIT).
+This project is open source software, thanks to the [MIT license](https://opensource.org/licenses/MIT).
