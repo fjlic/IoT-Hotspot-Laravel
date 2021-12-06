@@ -2,7 +2,7 @@
 
 ---
 
-- [Alerta CRUD](#section-crd)
+- [Alerta CRUD](#section-alert)
 - [Migración](#migrations)
 - [Seeder](#seeds)
 - [Modelo](#models)
@@ -352,9 +352,9 @@ Auth::routes();
 <a name="views"></a>
 ## Vista
 
-No se cuenta con comando pero crea un archivos index para modulo de crd `index.blade.php` y pega este codigo.
+No se cuenta con comando pero crea un archivos index para modulo de alert `index.blade.php` y pega este codigo.
 
-> {info} Directorio  `resources/views/module/crd/index.blade.php`.
+> {info} Directorio  `resources/views/module/alert/index.blade.php`.
 
 ```php
 
