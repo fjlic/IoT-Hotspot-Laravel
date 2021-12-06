@@ -101,7 +101,6 @@
                   <input type="text" class="form-control" value="{{ $counter->text }}" readonly="readonly"/>
                 </div>
               <!-- /.box-body -->
-
               <div class="box-footer">
                 <a href="{{ route('counter.index') }}" class="btn btn-info pull-right">Regresar</a>
               </div>

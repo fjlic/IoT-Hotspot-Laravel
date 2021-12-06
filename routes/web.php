@@ -39,6 +39,7 @@ Route::resource('probeestimating', 'ProbeEstimatingController')->middleware('aut
 Route::resource('classname', 'ClassNameController')->middleware('auth');
 Route::get('file/download/{id}', 'FileController@download')->name('file.download')->middleware('auth');
 Route::resource('file', 'FileController')->middleware('auth');
+Route::resource('alert', 'AlertController')->middleware('auth');
 Route::resource('historialcounter', 'HistorialCounterController')->middleware('auth');
 Route::resource('historialcrd', 'HistorialCrdController')->middleware('auth');
 Route::resource('historialerb', 'HistorialErbController')->middleware('auth');

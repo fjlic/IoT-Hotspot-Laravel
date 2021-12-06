@@ -66,7 +66,6 @@
                   <label for="difer_time">Tiempo Desface (+/-)</label>
                   <input type="text" class="form-control" value="{{ $statisticalcounter->difer_time }}" readonly="readonly"/>
                 </div>
-              </div>
               <!-- /.box-body -->
 
               <div class="box-footer">

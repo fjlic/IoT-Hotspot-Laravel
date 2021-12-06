@@ -1,5 +1,5 @@
 @component('mail::message')
-# Hola estimado(a) este mensage requiere de tu atencion !!
+# {{ $alert->title }}
 
 @component('mail::subcopy')
     se detectaron alertas en la plataforma por favor da click en el boton.
@@ -10,7 +10,7 @@
 @endcomponent
 
 @component('mail::panel')
-    Acontinuacion se describen las alertas de Sensores IoT-Hotspot
+    {{ $alert->body }}
 @endcomponent
 
 ## Tabla de Alertas:
@@ -25,7 +25,7 @@
 
 
 @component('mail::subcopy')
-    Para mas detalles visita el link: https://hotspot.fjlic.com/
+    {{ $alert->footer }}
 @endcomponent
 
 

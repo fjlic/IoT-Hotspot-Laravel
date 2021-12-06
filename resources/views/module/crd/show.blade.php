@@ -28,7 +28,7 @@
  <section class="content">
       <div class="row">
         <div class="col-12">
-          <div class="card">
+          <div class="card card-info card-outline">
             <div class="card-header">
               <h3 class="card-title">Tabla Crd</h3>
             </div>
@@ -64,9 +64,7 @@
                   <label for="api_token">Token</label>
                   <input type="text" class="form-control" value="{{ $crd->api_token }}" readonly="readonly"/>
                 </div>
-              </div>
               <!-- /.box-body -->
-
               <div class="box-footer">
                 <a href="{{ route('crd.index') }}" class="btn btn-info pull-right">Regresar</a>
               </div>

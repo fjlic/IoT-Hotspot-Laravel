@@ -92,9 +92,7 @@
                   <label for="txt">Texto</label>
                   <input type="text" class="form-control" name="txt" id="txt"  readonly="readonly" required value="{{ $nfc->txt }}">
                 </div>
-              </div>
               <!-- /.box-body -->
-
               <div class="box-footer">
                 <a href="{{ route('nfc.index') }}" class="btn btn-info pull-right">Regresar</a>
               </div>

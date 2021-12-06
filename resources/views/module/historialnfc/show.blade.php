@@ -89,9 +89,7 @@
                   <label for="txt">Texto</label>
                   <input type="text" class="form-control" value="{{ $historialnfc->txt }}" readonly="readonly"/>
                 </div>
-              </div>
               <!-- /.card-body -->
-
               <div class="card-footer">
                 <a href="{{ route('historialnfc.index') }}" class="btn btn-info pull-right">Regresar</a>
               </div>

@@ -28,7 +28,7 @@
  <section class="content">
       <div class="row">
         <div class="col-12">
-          <div class="card">
+          <div class="card card-info card-outline">
             <div class="card-header">
               <h3 class="card-title">Tabla Historial Qr</h3>
             </div>
@@ -64,9 +64,7 @@
                   <label for="uploaded">Actualizado</label>
                   <input type="text" class="form-control" value="{{ $historialqr->uploaded }}" readonly="readonly"/>
                 </div>
-              </div>
               <!-- /.box-body -->
-
               <div class="box-footer">
                 <a href="{{ route('historialqr.index') }}" class="btn btn-info pull-right">Regresar</a>
               </div>

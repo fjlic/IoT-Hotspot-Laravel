@@ -117,7 +117,6 @@
                   <textarea  type="text" class="form-control" readonly="readonly">{{ $sensor->text }}</textarea>
                 </div>
               <!-- /.card-body -->
-
               <div class="card-footer">
                 <a href="{{ route('sensor.index') }}" class="btn btn-info pull-right">Regresar</a>
               </div>

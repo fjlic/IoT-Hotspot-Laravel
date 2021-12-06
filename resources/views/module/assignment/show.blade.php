@@ -49,9 +49,7 @@
                   <label for="description">Descripcion</label>
                   <input type="text" class="form-control" value="{{ $role->description }}" readonly="readonly"/>
                 </div>
-              </div>
               <!-- /.card-body -->
-
               <div class="card-footer">
                 <a href="{{ route('role.index') }}" class="btn btn-info pull-right">Regresar</a>
                 </div>

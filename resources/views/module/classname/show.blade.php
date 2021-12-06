@@ -54,9 +54,7 @@
                   <label for="num_method">Num Method</label>
                   <input type="text" class="form-control" value="{{ $classname->num_method }}" readonly="readonly"/>
                 </div>
-              </div>
               <!-- /.box-body -->
-
               <div class="box-footer">
                 <a href="{{ route('classname.index') }}" class="btn btn-info pull-right">Regresar</a>
               </div>

@@ -60,9 +60,7 @@
                   <label for="gone_down">Actualizado</label>
                   <input type="text" class="form-control" value="{{ $qr->gone_down }}" readonly="readonly"/>
                 </div>
-              </div>
               <!-- /.box-body -->
-
               <div class="box-footer">
                 <a href="{{ route('qr.index') }}" class="btn btn-info pull-right">Regresar</a>
               </div>

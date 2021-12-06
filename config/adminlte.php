@@ -276,6 +276,12 @@ return [
                     'icon'  => 'fas fa-address-card',
                     'url'  => 'assignment',
                 ],
+                [
+                    'text' => 'Alertas',
+                    'icon_color' => '',
+                    'icon'  => 'fas fa-exclamation-circle',
+                    'url'  => 'alert',
+                ],
                 /*[
                     'text' => 'change_password',
                     'icon_color' => '',

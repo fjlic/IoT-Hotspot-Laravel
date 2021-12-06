@@ -66,9 +66,7 @@
                   <label for="difer_time">Tiempo desface (+/-)</label>
                   <input type="text" class="form-control" value="{{ $statistical->difer_time }}" readonly="readonly"/>
                 </div>
-              </div>
               <!-- /.box-body -->
-
               <div class="box-footer">
                 <a href="{{ route('statistical.index') }}" class="btn btn-info pull-right">Regresar</a>
                 <a href="" class="btn btn-primary" data-toggle="modal" data-target="#ModalSt{{$statistical->id}}"><span>Datos-Muestra</span></a>

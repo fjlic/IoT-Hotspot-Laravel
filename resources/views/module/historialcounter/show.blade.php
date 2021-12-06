@@ -96,9 +96,7 @@
                   <label for="text">Texto</label>
                   <input type="text" class="form-control" value="{{ $historialcounter->text }}" readonly="readonly"/>
                 </div>
-              </div>
               <!-- /.box-body -->
-
               <div class="box-footer">
                 <a href="{{ route('historialcounter.index') }}" class="btn btn-info pull-right">Regresar</a>
               </div>
