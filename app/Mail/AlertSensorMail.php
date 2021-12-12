@@ -32,9 +32,9 @@ class AlertSensorMail extends Mailable
      */
     public function build()
     {
-        $alerts = Alert::all();
+        $alert = Alert::find(1)->where('type', 'sensor')->first();
         $sensor = HistorialSensor::all();
         $sensor = $sensor->last();
-        return $this->markdown('module.email.sensor', compact('alerts','sensor'));
+        return $this->markdown('module.email.sensor', compact('alert','sensor'));
     }
 }
