@@ -6,6 +6,8 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use App\Alert;
+use App\HistorialSensor;
 
 class AlertSensorMail extends Mailable
 {
@@ -30,6 +32,9 @@ class AlertSensorMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('module.email.sensor');
+        $alerts = Alert::all();
+        $sensor = HistorialSensor::all();
+        $sensor = $sensor->last();
+        return $this->markdown('module.email.sensor', compact('alerts','sensor'));
     }
 }

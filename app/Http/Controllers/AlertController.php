@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Alert;
 use Phpml\CrossValidation\Split;
+use Illuminate\Container\Container;
+use Illuminate\Mail\Markdown;
+use App\Alert;
+use App\HistorialSensor;
+
 
 class AlertController extends Controller
 {
@@ -26,8 +30,13 @@ class AlertController extends Controller
     public function index()
     {
         //
+
+        $mkd = Container::getInstance()->make(Markdown::class);
         $alerts = Alert::all();
-        return view('module.alert.index', compact('alerts'));
+        $sensor = HistorialSensor::all();
+        $sensor = $sensor->last();
+        $mkd->render('module.alert.index', compact('alerts','sensor'));
+        return view('module.alert.index', compact('alerts','sensor'));
     }
 
     /**

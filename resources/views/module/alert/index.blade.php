@@ -88,12 +88,81 @@
                     <td>{{ $alert->updated_at }}</td>
                     <td>
                       <form role="form" action="{{ route('alert.destroy',$alert->id) }}" method="POST">
+                      <a href="" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#emailModalCenter{{$alert->id}}"><span class="fas fa-envelope"></span></a>
+<!------------------------------------------- Modal 1 ---------------------------------------------------->
+<div class="modal fade" id="emailModalCenter{{$alert->id}}" tabindex="-1" role="dialog" aria-labelledby="emailModalCenterTitle" aria-hidden="true">
+<div class="modal-dialog modal-lg" role="document">
+<div class="modal-content">
+<div class="modal-header d-flex justify-content-center">
+<h5 class="modal-title" id="emailModalCenterTitle">Cuerpo de E-mail de alerta</h5>
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
+</div>
+<div class="modal-body d-flex justify-content-center">
+@component('mail::message')
+    {{ $alert->title }} 😱
+
+@component('mail::subcopy')
+    Se detectaron alertas en la plataforma por favor da click en el boton. 🔲
+@endcomponent
+
+@component('mail::button', ['url' => 'https://hotspot.fjlic.com/historialsensor/chart/'.$sensor->id])
+    Visita Hotspot
+@endcomponent
+
+@component('mail::panel')
+    {{ $alert->body }} 🚀
+@endcomponent
+
+## Tabla {{ $alert->type }} con Id: {{ $sensor->id }}
+
+<center>
+@component('mail::table')
+| Sensor | Nombre | Estado/Valor | Descripción |
+| --   |   --   |   --   |   --   |
+|      |        |        |        |
+| Temperatura | Fuente Prin | {{$sensor->temp_1}} | @if($sensor->temp_1 <= 35) ✔️ @else ❌ @endif |
+| Temperatura | Ventilador | {{$sensor->temp_2}} | @if($sensor->temp_2 <= 35) ✔️ @else ❌ @endif |
+| Temperatura | Ambiente | {{$sensor->temp_3}} | @if($sensor->temp_3 <= 35) ✔️ @else ❌ @endif |
+| Temperatura | Sin Asignar | {{$sensor->temp_4}} | @if($sensor->temp_4 <= 35) ✔️ @else ❌ @endif |
+| Voltage | Fuente Prin | {{$sensor->vol_1}} | @if($sensor->vol_1 === 'On') ✔️ @else ❌ @endif |
+| Voltage | Ventilador | {{$sensor->vol_2}} | @if($sensor->vol_2 === 'On') ✔️ @else ❌ @endif |
+| Voltage | Leds | {{$sensor->vol_3}} | @if($sensor->vol_3 === 'On') ✔️ @else ❌ @endif |
+| Puertas | Tapa Fron | {{$sensor->door_1}} | @if($sensor->door_1 === 'On') ✔️ @else ❌ @endif |
+| Puertas | Sin Asignar | {{$sensor->door_2}} | @if($sensor->door_2 === 'On') ✔️ @else ❌ @endif |
+| Puertas | Sin Asignar | {{$sensor->door_3}} | @if($sensor->door_3 === 'On') ✔️ @else ❌ @endif |
+| Puertas | Sin Asignar | {{$sensor->door_4}} | @if($sensor->door_4 === 'On') ✔️ @else ❌ @endif |
+| Actuador | Cerradura Prin | {{$sensor->rlay_1}} | @if($sensor->rlay_1 === 'On') ✔️ @else ❌ @endif |
+| Actuador | Sin Asignar | {{$sensor->rlay_2}} | @if($sensor->rlay_2 === 'On') ✔️ @else ❌ @endif |
+| Actuador | Sin Asignar | {{$sensor->rlay_3}} | @if($sensor->rlay_3 === 'On') ✔️ @else ❌ @endif |
+| Actuador | Sin Asignar | {{$sensor->rlay_4}} | @if($sensor->rlay_4 === 'On') ✔️ @else ❌ @endif |
+@endcomponent
+</center>
+
+
+@component('mail::subcopy')
+    https://hotspot.fjlic.com/historialsensor/chart/{{ $sensor->id }} 🔗
+@endcomponent
+
+
+{{-- Gracias, Atte. {{ config('app.footer') }} --}}
+Gracias, Atte. {{ config('app.name') }} 👻
+@endcomponent
+</div>
+<div class="modal-footer d-flex justify-content-center">
+<button type="button" class="btn btn-info" data-dismiss="modal">Cerrar</button>
+</div>
+</div>
+</div>
+</div>
+<!------------------------------------------- fin modal ---------------------------------------------------> 
                       <a class="btn btn-info btn-xs" href="{{ route('alert.show',$alert->id) }}" role="button"><span class="fas fa-eye"></span></a> 
                       <a class="btn btn-warning btn-xs"  href="{{ route('alert.edit',$alert->id) }}" role="button"><span class="fas fa-pen"></span></a>
                       @csrf
                       @method('DELETE')
                       <a href="" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#exampleModalCenter{{$alert->id}}"><span class="fas fa-trash"></span></a>
-                      <!------ ESTE ES EL MODAL QUE SE MUESTRA AL DAR CLICK EN EL BOTON "ELIMINAR" ------>
+                      <!------ Modal 2 ------>
                       <div class="modal fade" id="exampleModalCenter{{$alert->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                       <div class="modal-dialog modal-dialog-centered" role="document">
                       <div class="modal-content">
