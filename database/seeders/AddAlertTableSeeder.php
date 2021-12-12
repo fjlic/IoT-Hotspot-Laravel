@@ -23,8 +23,8 @@ class AddAlertTableSeeder extends Seeder
         $alert->type = 'sensor';
         $alert->email = json_encode($emails);
         $alert->title = 'Hola estimado(a) este mensage requiere de tu atencion !!';
-        $alert->body = 'Acontinuacion se describen las alertas de Sensores IoT-Hotspot';
-        $alert->footer = 'Para mas detalles visita el link: https://hotspot.fjlic.com/';
+        $alert->body = 'A continuación se describe la alerta de IoT-Hotspot';
+        $alert->footer = 'Para mas detalles visita el link';
         $alert->save();
     }
 }

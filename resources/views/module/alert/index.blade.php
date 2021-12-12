@@ -142,11 +142,11 @@
 
 
 @component('mail::subcopy')
-    https://hotspot.fjlic.com/historialsensor/chart/{{ $sensor->id }} 🔗
+    {{ $alert->footer }} 🔗<br/><br/>
+    https://hotspot.fjlic.com/historialsensor/chart/{{ $sensor->id }} ✌️
 @endcomponent
 
 
-{{-- Gracias, Atte. {{ config('app.footer') }} --}}
 Gracias, Atte. {{ config('app.name') }} 👻
 @endcomponent
 </div>
