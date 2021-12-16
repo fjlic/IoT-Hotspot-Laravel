@@ -18,3 +18,6 @@
 - ## API Modulos
     - [ApiCrd](/{{route}}/{{version}}/api-crd)
     - [ApiErb](/{{route}}/{{version}}/api-erb)
+- ## Dispositivos Prototipo
+    - [FirmwareCrd](/{{route}}/{{version}}/api-crd)
+    - [FirmwareErb](/{{route}}/{{version}}/api-erb)

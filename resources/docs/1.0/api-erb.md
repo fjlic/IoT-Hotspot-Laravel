@@ -4,16 +4,14 @@
 
 - [Erb API](#section-erb-api)
 - [Controlador-API](#controller-api)
-- [Index](#index)
-- [Show](#show)
-- [Register](#register)
-- [Update](#update)
+- [Status](#status)
 - [Modify](#modify)
-- [Destroy](#destroy)
+- [Index](#index)
+- [Register](#register)
 - [Ruta](#route)
 
 <a name="section-erb-api"></a>
-## Controlador, Metodos index(), register(), update(), modify(), destroy():
+## Controlador Metodos status(), modify(), index(), register():
 
 Estructura del modulo API Erb.. 🚥
 Si gustas es posible consultar los metodos get por web.
@@ -21,12 +19,10 @@ Si gustas es posible consultar los metodos get por web.
 ---
 
 - [Controlador-API](#controller-api)
-- [Index](#index)
-- [Show](#show)
-- [Register](#register)
-- [Update](#update)
+- [Status](#status)
 - [Modify](#modify)
-- [Destroy](#destroy)
+- [Index](#index)
+- [Register](#register)
 - [Ruta](#route)
 
 <a name="controller-api"></a>
@@ -55,6 +51,200 @@ class ErbController extends BaseController
 {
   
 }
+
+```
+
+<a name="status"></a>
+## Metodo Status
+
+Consulta url `https://hotspot.fjlic.com/api/sensor/status{#id}` te regresara un objeto tipo JSON.
+
+> {info} Directorio  `app/Http/Controller/Api/SensorController.php`.
+
+```php
+
+/**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function status(Request $request)
+    {
+        $input_req = $request->all();
+        $validator = Validator::make($input_req, [
+           'num_serie'=>'required|string|max:100',
+           'passw'=>'required|string|max:100',
+           'text'=>'required|string|max:100',
+        ]);
+
+        if ($validator->fails()) {
+            $response = [
+                'success' => false,
+                'data' => 'Validation Error',
+                'message' => 'Query error'
+            ];
+            return response()->json($response, 403);
+        }
+
+        $sensor = Sensor::where('num_serie',$input_req['num_serie'])->where('passw',$input_req['passw'])->first(); 
+        
+        if (is_null($sensor)) {
+            $response = [
+                'success' => false,
+                'data' => 'Search error',
+                'message' => 'Sensor not exist'
+            ];
+            return response()->json($response, 404);
+        }
+        
+        /* Update Sensors*/
+        $date = now();
+        $timestamp = $date->getTimestamp();
+        $sensor->text = $input_req['text'];
+        $sensor->updated_at = $timestamp;
+        $sensor->save();
+
+        $historialsensor = new HistorialSensor(); 
+        /* Historial Sensor*/
+        $historialsensor->sensor_id = $sensor->id;
+        $historialsensor->num_serie = $sensor->num_serie;
+        $historialsensor->passw = $sensor->passw;
+        $historialsensor->vol_1 = $sensor->vol_1;
+        $historialsensor->vol_2 = $sensor->vol_2;
+        $historialsensor->vol_3 = $sensor->vol_3;
+        $historialsensor->temp_1 = $sensor->temp_1;
+        $historialsensor->temp_2 = $sensor->temp_2;
+        $historialsensor->temp_3 = $sensor->temp_3;
+        $historialsensor->temp_4 = $sensor->temp_4;
+        $historialsensor->door_1 = $sensor->door_1;
+        $historialsensor->door_2 = $sensor->door_2;
+        $historialsensor->door_3 = $sensor->door_3;
+        $historialsensor->door_4 = $sensor->door_1;
+        $historialsensor->rlay_1 = $sensor->rlay_1;
+        $historialsensor->rlay_2 = $sensor->rlay_2;
+        $historialsensor->rlay_3 = $sensor->rlay_3;
+        $historialsensor->rlay_4 = $sensor->rlay_4;
+        $historialsensor->text = $input_req['text'];
+        $historialsensor->save();
+        /* Send Data Response*/
+        $data = $historialsensor->toArray();
+        $response = [
+            'success' => true,
+            'data' => $data,
+            'message' => 'Sensor status successfully.'
+        ];
+        return response()->json($response, 200);
+    }
+
+```
+
+<a name="modify"></a>
+## Metodo Modify
+
+Consulta url `https://hotspot.fjlic.com/api/sensor/modify{#id}` te regresara un objeto tipo JSON.
+
+> {info} Directorio  `app/Http/Controller/Api/SensorController.php`.
+
+```php
+
+/**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function modify(Request $request)
+    {
+        $input_req = $request->all();
+        $validator = Validator::make($input_req, [
+           'num_serie'=>'required|string|max:100',
+           'passw'=>'required|string|max:100',
+           'vol_1'=>'required|string|max:100',
+           'vol_2'=>'required|string|max:100',
+           'vol_3'=>'required|string|max:100',
+           'temp_1'=>'required|string|max:100',
+           'temp_2'=>'required|string|max:100',
+           'temp_3'=>'required|string|max:100',
+           'temp_4'=>'required|string|max:100',
+           'door_1'=>'required|string|max:100',
+           'door_2'=>'required|string|max:100',
+           'door_3'=>'required|string|max:100',
+           'door_4'=>'required|string|max:100',
+           'text'=>'required|string|max:100',
+        ]);
+
+        if ($validator->fails()) {
+            $response = [
+                'success' => false,
+                'data' => 'Validation error',
+                'message' => 'Query error'
+            ];
+            return response()->json($response, 403);
+        }
+
+        $sensor = Sensor::where('num_serie',$input_req['num_serie'])->where('passw',$input_req['passw'])->first(); 
+
+        if (is_null($sensor)) {
+            $response = [
+                'success' => false,
+                'data' => 'Search error',
+                'message' => 'Sensor not exist'
+            ];
+            return response()->json($response, 404);
+        }
+        
+        /* Update Sensors*/ 
+        $date = now();
+        $timestamp = $date->getTimestamp();
+        $sensor->vol_1 = $input_req['vol_1'];
+        $sensor->vol_2 = $input_req['vol_2'];
+        $sensor->vol_3 = $input_req['vol_3'];
+        $sensor->temp_1 = $input_req['temp_1'];
+        $sensor->temp_2 = $input_req['temp_2'];
+        $sensor->temp_3 = $input_req['temp_3'];
+        $sensor->temp_4 = $input_req['temp_4'];
+        $sensor->door_1 = $input_req['door_1'];
+        $sensor->door_2 = $input_req['door_2'];
+        $sensor->door_3 = $input_req['door_3'];
+        $sensor->door_4 = $input_req['door_4'];
+        $sensor->text = $input_req['text'];
+        $sensor->updated_at = $timestamp;
+        $sensor->save();
+
+        $historialsensor = new HistorialSensor(); 
+        /* Historial Sensor*/
+        $historialsensor->sensor_id = $sensor->id;
+        $historialsensor->num_serie =  $sensor->num_serie;
+        $historialsensor->passw = $sensor->passw;
+        $historialsensor->vol_1 = $input_req['vol_1'];
+        $historialsensor->vol_2 = $input_req['vol_2'];
+        $historialsensor->vol_3 = $input_req['vol_3'];
+        $historialsensor->temp_1 = $input_req['temp_1'];
+        $historialsensor->temp_2 = $input_req['temp_2'];
+        $historialsensor->temp_3 = $input_req['temp_3'];
+        $historialsensor->temp_4 = $input_req['temp_4'];
+        $historialsensor->door_1 = $input_req['door_1'];
+        $historialsensor->door_2 = $input_req['door_2'];
+        $historialsensor->door_3 = $input_req['door_3'];
+        $historialsensor->door_4 = $input_req['door_4'];
+        $historialsensor->rlay_1 = $sensor->rlay_1;
+        $historialsensor->rlay_2 = $sensor->rlay_2;
+        $historialsensor->rlay_3 = $sensor->rlay_3;
+        $historialsensor->rlay_4 = $sensor->rlay_4;
+        $historialsensor->text = $input_req['text'];
+        $historialsensor->save();
+        /* Send Data Response*/
+        $data = $historialsensor->toArray();
+        $response = [
+            'success' => true,
+            'data' => $data,
+            'message' => 'Sensor modify successfully.'
+        ];
+        return response()->json($response, 200);
+    }
 
 ```
 
@@ -362,7 +552,8 @@ Se deben agregar las ruta necesario dentro de api rutas.
 |
 */
 
-Route::post('erb/modify', 'Api\ErbController@modify')->name('erb.modify');
+Route::post('sensor/modify', 'Api\SensorController@modify')->name('sensor.modify');
+Route::post('sensor/status', 'Api\SensorController@status')->name('sensor.status');
 Route::post('erb/register', 'Api\ErbController@register')->name('erb.register');
 Route::resource('erb', 'Api\ErbController');
 Route::middleware('auth:api')->get('/user', function (Request $request) {
