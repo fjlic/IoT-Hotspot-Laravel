@@ -40,7 +40,7 @@ class SendAlertEmailCommand extends Command
     public function handle()
     {
         $mail = new AlertSensorMail;
-        Mail::to('franc.javier.flores@gmail.com')->send($mail);
+        $mail->build();
         return Command::SUCCESS;
     }
 }
