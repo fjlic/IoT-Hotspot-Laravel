@@ -13,7 +13,7 @@
 > {info} Puedes descargar el proyecto completo desde [`GitHub`](https://github.com/fjlic/IoT-Hotspot-Laravel)
 
 
-![screenshot](http://localhost:8000/storage/Images/Hotspot_1.png)
+![screenshot](https://hotspot.fjlic.com/storage/Images/Hotspot_1.png)
 
 <a name="features"></a>
 ## Caracteristicas de IoT-Hotspot 🏭

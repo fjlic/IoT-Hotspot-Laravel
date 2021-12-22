@@ -11,19 +11,19 @@
 ### El diseño prototipo fue desarollado con [`Fritzing`](https://fritzing.org/) ⚡
 <br>
 
-![screenshot](http://localhost:8000/storage/Images/Pcb_ERB.jpg)
+![screenshot](https://hotspot.fjlic.com/storage/Images/Pcb_ERB.jpg)
 <br>
 
 ### La pcb fue fabricada en [`JLCPCB`](https://jlcpcb.com/) 🏭
 <br>
 
-![screenshot](http://localhost:8000/storage/Images/Pcb_ERB_Armada.jpg)
+![screenshot](https://hotspot.fjlic.com/storage/Images/Pcb_ERB_Armada.jpg)
 <br>
 
 ### El ensamble de los componenete fue hecho en casa [`IoT-Hotspot`](https://hotspot.fjlic.com/docs/1.0/overview) 🌀
 <br>
 
-![screenshot](http://localhost:8000/storage/Images/Pcb_ERB_Instalada.jpg)
+![screenshot](https://hotspot.fjlic.com/storage/Images/Pcb_ERB_Instalada.jpg)
 <br>
 
 ### El micro Esp32 su firmware es [`Micropython`](http://www.micropython.org/download/esp32/) 🌀
