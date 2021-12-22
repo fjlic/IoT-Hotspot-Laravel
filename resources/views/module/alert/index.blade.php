@@ -144,7 +144,13 @@
 @component('mail::subcopy')
     {{ $alert->footer }} 🔗<br/><br/>
     <https://hotspot.fjlic.com/historialsensor/chart/{{ $sensor->id }}> ✌️ <br/><br/>
-    ![](data:image/png;base64, {!! base64_encode(QrCode::format('png')->size(50)->generate('https://hotspot.fjlic.com/historialsensor/chart/{{$sensor->id}}')) !!})
+![][dataqr]
+
+more text...
+...
+[dataqr]:
+data:image/png;base64, {!! base64_encode(QrCode::format('png')->size(100)->generate('https://hotspot.fjlic.com/historialsensor/chart/{{$sensor->id}}')) !!}
+
 @endcomponent
 
 
