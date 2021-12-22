@@ -14,16 +14,10 @@ from time import sleep
 
 #-----------------NetWork Wifi Config----------------------------------------------------------------
 
-#SSID = "Galex_Moto"            #WiFi name
-#PASSWORD = "fjlic123"          #WiFi password
-#SSID = "RedmiPro"             #WiFi name
-#PASSWORD = "redmi123"         #WiFi password
-#SSID = "INFINITUM3652"        #WiFi name
-#PASSWORD = "eoRrKzMxkU"       #WiFi password
-SSID = 'GalexIOT'
-PASSWORD = 'G4l3x#1537'
-#SSID = "GalexWimaxFin"        #WiFi name
-#PASSWORD = "Galex1537"        #WiFi password
+#SSID = "MotoG8Play"           #WiFi name
+#PASSWORD = "fjlic123"         #WiFi password
+SSID = 'FJLIC'
+PASSWORD = 'Fjl1cFjfl0r35'
 
 #--------------------------The Led Pin by 2  GPIO2 and Cont Global--------------------------------------------------
 

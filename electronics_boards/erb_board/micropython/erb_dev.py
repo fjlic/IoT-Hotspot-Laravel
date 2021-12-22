@@ -39,8 +39,10 @@ costo_moneda=int(5)
 
 sleep(1)
 #-------------------------------------------------
-ssid = 'GalexWimaxT'
-password = 'Galex1537'
+#ssid = "MotoG8Play"       #WiFi name
+#ssid = "fjlic123"         #WiFi password
+ssid = 'FJLIC'
+password = 'Fjl1cFjfl0r35'
 
 station = network.WLAN(network.STA_IF)
 station.active(True)
@@ -53,8 +55,8 @@ cont_mon="41144"
 cont_mon_2="00000"
 cont_corte="11"
 cont_prem="111"
-ssid = 'GalexWimaxT'
-password = 'Galex1537'
+ssid = 'FJLIC'
+password = 'Fjl1cFjfl0r35'
 ip_server="111"
 port="11"
 token="11"
@@ -519,7 +521,7 @@ def envio_datos_server():
   global num_serie,costo_moneda, cont_qr, cont_mon, cont_corte, cont_prem, ssid , password, ip_server, port, token, text,cont_mon_2
   Read_defalt_Ntag_Nfc()
   json_str = ""
-  baseUrl_contador = "https://apisecurity.galexiot.com/api/cont/test"
+  baseUrl_contador = "https://hotspot.fjlic.com/api/cont/test"
   datosContador = {}
   
   datosContador['esp32_id']='1'
@@ -537,14 +539,14 @@ def envio_datos_server():
   datosContador['token']=token
   datosContador['text']=text
   datosContador['cost_mon']=str(costo_moneda)
-  print("hola Javier")
+  print("Pruebas de la Data")
   print(datosContador)
   sleep(1)
   hola=ujson.dumps(datosContador)
   Accept={}
   sleep(1)
   Accept["Content-Type"] = "application/json"
-  print(" Nop me haces caso...")
+  print(" Peticion satisfactoria...")
   sleep(1)
   response_cont = urequests.post(baseUrl_contador,data=hola,headers=Accept)
   qr_json = response_cont.json() 
@@ -553,7 +555,7 @@ def envio_datos_server():
 
   
 #-------------------Main--------------------------------------
-conecta_wifi('GalexWimaxT','Galex_1537')
+conecta_wifi('FJLIC','Fjl1cFjfl0r35')
 Activa_dispositivos()
 get_inicial_nfc()
 print('__________________')
@@ -586,13 +588,13 @@ while True:
  contador_time=contador_time+1  
  if (contador_time>=100 and band_server>=1):
 
-  print("hola Moneda")
+  print("Moneda")
   envio_datos_server()
   contador_time=0
   band_server=0
  if (contador_time>=300):
 
-  print("hola 5 min")
+  print("Programacion 10 min")
   envio_datos_server()
   contador_time=0
   band_server=0
