@@ -144,14 +144,16 @@
 @component('mail::subcopy')
     {{ $alert->footer }} 🔗<br/><br/>
     <https://hotspot.fjlic.com/historialsensor/chart/{{ $sensor->id }}> ✌️ <br/><br/>
-`{{QrCode::size(50)->generate("https://hotspot.fjlic.com/historialsensor/chart/$sensor->id")}}`
+    ![screenshot]()
 @endcomponent
 
 
 Gracias, Atte. {{ config('app.name') }} 👻
 @endcomponent
 </div>
-
+<div>
+<img src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->size(100)->generate('Make me into an QrCode!')) !!} ">
+</div>
 <div class="modal-footer d-flex justify-content-center">
 <button type="button" class="btn btn-info" data-dismiss="modal">Cerrar</button>
 </div>
