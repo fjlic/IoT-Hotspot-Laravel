@@ -10,6 +10,8 @@
 
 ### El diseño prototipo fue desarollado con [`Fritzing`](https://fritzing.org/) ⚡
 <br>
+Descarga el diseño y modificalo a tu necesidades [`Erb_Pcb`](https://github.com/fjlic/IoT-Hotspot-Laravel/blob/master/electronics_boards/erb_board/fritzing/SensorIOT/PcbSensor_Prod_10-03-2021.fzz)
+<br>
 
 ![screenshot](https://hotspot.fjlic.com/storage/Images/Pcb_ERB.jpg)
 <br>
@@ -20,7 +22,7 @@
 ![screenshot](https://hotspot.fjlic.com/storage/Images/Pcb_ERB_Armada.jpg)
 <br>
 
-### El ensamble de los componenete fue hecho en casa [`IoT-Hotspot`](https://hotspot.fjlic.com/docs/1.0/overview) 🌀
+### El ensamble de los componentes fue en casa [`IoT-Hotspot`](https://hotspot.fjlic.com/docs/1.0/overview) 🌀
 <br>
 
 ![screenshot](https://hotspot.fjlic.com/storage/Images/Pcb_ERB_Instalada.jpg)
@@ -39,7 +41,7 @@
 <a name="source-code-ep32"></a>
 ## Codigo fuente Esp32(Micropython)
 
-Consulta url `https://github.com/fjlic/IoT-Hotspot-Laravel/blob/master/electronics_boards/erb_board/micropython/main.py` aqui encontraras el codigo completo.
+Consulta la url [`Erb-Micropython`](https://github.com/fjlic/IoT-Hotspot-Laravel/blob/master/electronics_boards/erb_board/micropython/main.py) aqui encontraras el codigo completo.
 
 > {info} Directorio  `electronics_boards/erb_board/micropython/main.py`
 
@@ -202,7 +204,7 @@ a9g_serial.close() # Termina la comunicacion serial lector de a9g
 <a name="source-code-atmega"></a>
 ## Codigo fuente AtMega328(Arduino)
 
-Consulta url `https://github.com/fjlic/IoT-Hotspot-Laravel/blob/master/electronics_boards/erb_board/arduino/Sensores/Sensores.ino` aqui encontraras el codigo completo.
+Consulta la url [`Erb-Aduino`](https://github.com/fjlic/IoT-Hotspot-Laravel/blob/master/electronics_boards/erb_board/arduino/Sensores/Sensores.ino) aqui encontraras el codigo completo.
 
 > {info} Directorio  `https://github.com/fjlic/IoT-Hotspot-Laravel/blob/master/electronics_boards/erb_board/arduino/Sensores/Sensores.ino`
 

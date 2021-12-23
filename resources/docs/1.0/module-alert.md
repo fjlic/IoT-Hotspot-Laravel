@@ -33,7 +33,7 @@ Si gustas es posible crear la estructura MVC de forma manual.
 > {success} Manejo de Alertas por correo electrónico [`Gmail`](https://gmail.com/)
 
 
-![screenshot](https://hotspot.fjlic.com/storage/Images/Alerta_2.png)
+![screenshot](https://hotspot.fjlic.com/storage/Images/Alerta_2.PNG)
 
 
 <a name="migrations"></a>
