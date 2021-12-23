@@ -9,8 +9,7 @@
 <a name="desing-prototye-erb"></a>
 
 ### El diseño prototipo fue desarollado con [`Fritzing`](https://fritzing.org/) ⚡
-<br>
-Descarga el diseño y modificalo a tu necesidades [`Erb_Pcb`](https://github.com/fjlic/IoT-Hotspot-Laravel/blob/master/electronics_boards/erb_board/fritzing/SensorIOT/PcbSensor_Prod_10-03-2021.fzz)
+### Descarga el diseño y modificalo a tu necesidades [`Erb_Pcb`](https://github.com/fjlic/IoT-Hotspot-Laravel/blob/master/electronics_boards/erb_board/fritzing/SensorIOT/PcbSensor_Prod_10-03-2021.fzz)
 <br>
 
 ![screenshot](https://hotspot.fjlic.com/storage/Images/Pcb_ERB.jpg)
