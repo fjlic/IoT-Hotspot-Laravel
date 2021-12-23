@@ -21,14 +21,14 @@
 ![screenshot](https://hotspot.fjlic.com/storage/Images/Pcb_ERB_Armada.jpg)
 <br>
 
-### El ensamble de los componentes fue en casa [`IoT-Hotspot`](https://hotspot.fjlic.com/docs/1.0/overview) 🌀
+### El ensamble de los componentes fue en casa [`IoT-Hotspot`](https://hotspot.fjlic.com/docs/1.0/overview) 🔨
 <br>
 
 ![screenshot](https://hotspot.fjlic.com/storage/Images/Pcb_ERB_Instalada.jpg)
 <br>
 
-### El micro Esp32 su firmware es [`Micropython`](http://www.micropython.org/download/esp32/) 🌀
-### El micro AT-Mega328P su firmware es [`Arduino`](https://www.arduino.cc/en/software) 🌀
+### El micro Esp32 su firmware es [`Micropython`](http://www.micropython.org/download/esp32/) 🌌
+### El micro AT-Mega328P su firmware es [`Arduino`](https://www.arduino.cc/en/software) 🌌
 <br>
 
 ---
