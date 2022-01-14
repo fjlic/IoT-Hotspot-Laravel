@@ -44,7 +44,7 @@ Si deseas utilizar los paquetes, te proporcionamos los links, comparte con la co
 + [Larecipe](https://larecipe.binarytorch.com.my) - PHP markdown Document Project.
 + [AdminLTE](https://adminlte.io/themes/v3/) - View Dashboard.
 + [Toastr](https://codeseven.github.io/toastr) - PHP unit testing library.
-+ [FJLIC](https://fjlic.com) - Low Integrate Cost FJ (Software/Hardware).
++ [FJLIC](https://fjlic.com) - FJ Low Integrating Cost (Software/Hardware).
 
 
 <larecipe-newsletter></larecipe-newsletter>
