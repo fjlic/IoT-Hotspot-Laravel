@@ -69,7 +69,7 @@
                 </div>
                 <div class="form-group">
                   <label for="status_video">Estatus Video</label>
-                  <input type="text" class="form-control" name="status_video" id="status_video" placeholder="Sin Token" readonly="readonly" value="{{ $crd->status_video }}" />
+                  <input type="text" class="form-control" name="status_video" id="status_video" placeholder="Sin status 0 o 1" required value="{{ $crd->status_video }}" />
                 </div>
               </div>
               <!-- /.card-body -->
