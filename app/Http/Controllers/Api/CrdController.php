@@ -251,4 +251,54 @@ class CrdController extends BaseController
         ];
         return response()->json($response, 200);
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function status(Request $request)
+    {
+        // status_video,
+        $input_req = $request->all();
+        $validator = Validator::make($input_req, [
+           'num_serie'=>'required|string|max:100',
+           'nick_name'=>'required|string|max:100',
+           'status_video'=>'required|string|max:10',
+        ]);
+
+        if ($validator->fails()) {
+            $response = [
+                'success' => false,
+                'data' => 'Validation error',
+                'message' => 'Query error'
+            ];
+            return response()->json($response, 403);
+        }
+
+        $file = Crd::where('num_serie',$input_req['num_serie'])->where('nick_name',$input_req['nick_name'])->first(); 
+        //$file = DB::table('files')
+        //        ->where('num_serie', '=', '333344441')
+        //        ->where('nick_name', '=', 'Crd_1')
+        //        ->get();
+        if (is_null($file)) {
+            $response = [
+                'success' => false,
+                'data' => 'Search error',
+                'message' => 'Crd not exist'
+            ];
+            return response()->json($response, 404);
+        }
+        $file->status_video = $input_req['status_video'];
+        $file->save();
+        /* Send Data Response*/
+        $data = $file->toArray();
+        $response = [
+            'success' => true,
+            'data' => $data,
+            'message' => 'Video crd status updated successfully'
+        ];
+        return response()->json($response, 200);
+    }
 }

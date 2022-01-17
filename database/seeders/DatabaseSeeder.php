@@ -35,8 +35,8 @@ class DatabaseSeeder extends Seeder
         $this->call(AddStatisticalCounterTableSeeder::class);
         $this->call(AddStatisticalTableSeeder::class);    
         $this->call(AddLearningTableSeeder::class);
-        */
         $this->call(AddAlertTableSeeder::class);
+        */
         
     }
 }

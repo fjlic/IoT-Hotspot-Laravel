@@ -64,6 +64,14 @@
                   <label for="api_token">Token</label>
                   <input type="text" class="form-control" value="{{ $crd->api_token }}" readonly="readonly"/>
                 </div>
+                <div class="form-group">
+                  <label for="status_video">Estatus Video</label>
+                  @if($crd->status_video == '1')
+                    <input type="text" class="form-control" value="Ok" readonly="readonly"/>
+                  @elseif($crd->status_video == '0')
+                    <input type="text" class="form-control" value="Falla" readonly="readonly"/>
+                  @endif
+                </div>
               <!-- /.box-body -->
               <div class="box-footer">
                 <a href="{{ route('crd.index') }}" class="btn btn-info pull-right">Regresar</a>

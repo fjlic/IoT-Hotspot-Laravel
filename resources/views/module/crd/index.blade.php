@@ -46,6 +46,7 @@
                   {{-- th>Password</th>  --}}
                   <th>ApiToken</th>
                   {{-- <th>FechaCreacion</th>  --}}
+                  <th>Videos</th>
                   <th>FechaMod</th>
                   <th>Acciones</th>
                 </tr>
@@ -61,6 +62,11 @@
                     {{--  <td>{{ $crd->password }}</td>  --}}
                     <td>{{ $crd->api_token }}</td>
                     {{-- <td>{{ $crd->created_at }}</td>  --}}
+                    @if($crd->status_video == '1')
+                    <td><span class="badge badge-success">Ok-<div class="fa fa-toggle-on"></div></span></td>
+                    @elseif($crd->status_video == '0')
+                    <td><span class="badge badge-danger">Falla-<div class="fa fa-toggle-off"></div></span></td>
+                    @endif
                     <td>{{ $crd->updated_at }}</td>
                     <td>
                       <form role="form" action="{{ route('crd.destroy',$crd->id) }}" method="POST">

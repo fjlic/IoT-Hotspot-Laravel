@@ -76,8 +76,7 @@ class CrdController extends Controller
             'num_serie'=>'required|string|max:100',
             'name_machine'=>'required|string|max:100',
             'nick_name'=>'required|string|max:100',
-            'password'=>'required|string|max:100'
-            
+            'password'=>'required|string|max:100',
         ]);
 
          $crd = new Crd();
@@ -87,6 +86,7 @@ class CrdController extends Controller
          $crd->name_machine = $request->get('name_machine');
          $crd->password = Crypt::encrypt($request->get('password'));
          $crd->api_token = ApiToken::GenerateToken32();
+         $crd->status_video = '1';
          $crd->save();
         //return redirect('/crd')->with('success', 'Crd Generado Satisfactoriamente!');
         toastr()->success('Crd generado satisfactoriamente');
@@ -103,6 +103,9 @@ class CrdController extends Controller
     {
         //
         $crd->password = Crypt::decrypt($crd->password);
+        if($crd->status_video == '0')
+          toastr()->warning('Crd espacio limitado');
+
         return view('module.crd.show',compact('crd'));
     }
 
@@ -136,7 +139,8 @@ class CrdController extends Controller
             'name_machine'=>'required|string|max:100',
             'nick_name'=>'required|string|max:100',
             'password'=>'required|string|max:100',
-            'api_token'=>'required|string|max:100'
+            'api_token'=>'required|string|max:100',
+            'status_video'=>'required|string|max:10'
         ]);
         $crd_request = $request->all();
         $crd_request['user_id'] =  $request->get('user_id');
@@ -145,6 +149,7 @@ class CrdController extends Controller
         $crd_request['nick_name'] =  $request->get('nick_name');
         $crd_request['password'] = Crypt::encrypt($request->get('password'));
         $crd_request['api_token'] =  $request->get('api_token');
+        $crd_request['status_video'] =  $request->get('status_video');
         $crd->update($crd_request);
         toastr()->warning('Crd Actualizado Satisfactoriamente');
         return redirect()->route('crd.index');

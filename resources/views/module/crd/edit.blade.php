@@ -67,6 +67,10 @@
                   <label for="api_token">Token</label>
                   <input type="text" class="form-control" name="api_token" id="api_token" placeholder="Sin Token" readonly="readonly" value="{{ $crd->api_token }}" />
                 </div>
+                <div class="form-group">
+                  <label for="status_video">Estatus Video</label>
+                  <input type="text" class="form-control" name="status_video" id="status_video" placeholder="Sin Token" readonly="readonly" value="{{ $crd->status_video }}" />
+                </div>
               </div>
               <!-- /.card-body -->
 
