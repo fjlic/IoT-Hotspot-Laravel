@@ -34,7 +34,7 @@ Route::post('erb/register', 'Api\ErbController@register')->name('erb.register');
 Route::resource('erb', 'Api\ErbController');
 Route::post('crd/modify', 'Api\CrdController@modify')->name('crd.modify');
 Route::post('crd/register', 'Api\CrdController@register')->name('crd.register');
-Route::post('crd/status', 'Api\CrdController@status')->name('crd.status');
+//Route::post('crd/status', 'Api\CrdController@status')->name('crd.status');
 Route::resource('crd', 'Api\CrdController');
 Route::post('file/list', 'Api\FileController@list')->name('file.list');
 Route::post('file/download', 'Api\FileController@download')->name('file.download');
