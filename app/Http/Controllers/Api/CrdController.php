@@ -266,6 +266,7 @@ class CrdController extends BaseController
            'num_serie'=>'required|string|max:100',
            'nick_name'=>'required|string|max:100',
            'status_video'=>'required|string|max:10',
+           'status_crd'=>'required|string|max:10',
         ]);
 
         if ($validator->fails()) {
@@ -291,6 +292,8 @@ class CrdController extends BaseController
             return response()->json($response, 404);
         }
         $file->status_video = $input_req['status_video'];
+        $file->status_crd = $input_req['status_crd'];
+        $file->updated_at = \Carbon\Carbon::now();
         $file->save();
         /* Send Data Response*/
         $data = $file->toArray();

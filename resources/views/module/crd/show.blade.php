@@ -65,11 +65,19 @@
                   <input type="text" class="form-control" value="{{ $crd->api_token }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
-                  <label for="status_video">Estatus Video</label>
+                  <label for="status_video">Estatus Video (Falla=0 y Ok=1)</label>
                   @if($crd->status_video == '1')
                     <input type="text" class="form-control" value="Ok" readonly="readonly"/>
                   @elseif($crd->status_video == '0')
                     <input type="text" class="form-control" value="Falla" readonly="readonly"/>
+                  @endif
+                </div>
+                <div class="form-group">
+                  <label for="status_crd">Estatus Crd (Off=0 y On=1)</label>
+                  @if($crd->status_crd == '1')
+                    <input type="text" class="form-control" value="On" readonly="readonly"/>
+                  @elseif($crd->status_crd == '0')
+                    <input type="text" class="form-control" value="Off" readonly="readonly"/>
                   @endif
                 </div>
               <!-- /.box-body -->

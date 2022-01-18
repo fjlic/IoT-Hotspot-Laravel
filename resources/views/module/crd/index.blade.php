@@ -47,6 +47,7 @@
                   <th>ApiToken</th>
                   {{-- <th>FechaCreacion</th>  --}}
                   <th>Videos</th>
+                  <th>Maquina</th>
                   <th>FechaMod</th>
                   <th>Acciones</th>
                 </tr>
@@ -63,9 +64,14 @@
                     <td>{{ $crd->api_token }}</td>
                     {{-- <td>{{ $crd->created_at }}</td>  --}}
                     @if($crd->status_video == '1')
-                    <td><span class="badge badge-success">Ok-<div class="fa fa-toggle-on"></div></span></td>
+                    <td><span class="badge badge-primary">Ok-<div class="fa fa-toggle-on"></div></span></td>
                     @elseif($crd->status_video == '0')
-                    <td><span class="badge badge-danger">Falla-<div class="fa fa-toggle-off"></div></span></td>
+                    <td><span class="badge badge-warning">Falla-<div class="fa fa-toggle-off"></div></span></td>
+                    @endif
+                    @if($crd->status_crd == '1')
+                    <td><span class="badge badge-success">On-<div class="fa fa-toggle-on"></div></span></td>
+                    @elseif($crd->status_crd == '0')
+                    <td><span class="badge badge-danger">Off-<div class="fa fa-toggle-off"></div></span></td>
                     @endif
                     <td>{{ $crd->updated_at }}</td>
                     <td>

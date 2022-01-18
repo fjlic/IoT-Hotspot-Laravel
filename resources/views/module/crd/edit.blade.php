@@ -69,7 +69,11 @@
                 </div>
                 <div class="form-group">
                   <label for="status_video">Estatus Video</label>
-                  <input type="text" class="form-control" name="status_video" id="status_video" placeholder="Sin status 0 o 1" required value="{{ $crd->status_video }}" />
+                  <input type="text" class="form-control" name="status_video" id="status_video" placeholder="Sin status (Falla=0 y Ok=1)" required value="{{ $crd->status_video }}" />
+                </div>
+                <div class="form-group">
+                  <label for="status_crd">Estatus Crd</label>
+                  <input type="text" class="form-control" name="status_crd" id="status_crd" placeholder="Sin status (Off=0 y On=1)" required value="{{ $crd->status_crd }}" />
                 </div>
               </div>
               <!-- /.card-body -->

@@ -22,6 +22,7 @@ class CreateCrdsTable extends Migration
             $table->string('password')->default('crd123');
             $table->string('api_token')->unique();
             $table->string('status_video')->default('1');
+            $table->string('status_crd')->default('0');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade')->nullable();
         });

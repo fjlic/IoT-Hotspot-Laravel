@@ -25,6 +25,8 @@ class AddCrdTableSeeder extends Seeder
         $crd->nick_name = 'Crd_1';
         $crd->password = Crypt::encrypt('crd123');
         $crd->api_token = ApiToken::GenerateToken16();
+        $crd->status_video = '1';
+        $crd->status_crd = '0';
         $crd->save();
 
         $crd = new Crd();
@@ -35,6 +37,8 @@ class AddCrdTableSeeder extends Seeder
         $crd->nick_name = 'Crd_2';
         $crd->password = Crypt::encrypt('crd123');
         $crd->api_token = ApiToken::GenerateToken16();
+        $crd->status_video = '1';
+        $crd->status_crd = '0';
         $crd->save();
         
         $crd = new Crd();
@@ -45,6 +49,8 @@ class AddCrdTableSeeder extends Seeder
         $crd->nick_name = 'Crd_3';
         $crd->password = Crypt::encrypt('crd123');
         $crd->api_token = ApiToken::GenerateToken16();
+        $crd->status_video = '1';
+        $crd->status_crd = '0';
         $crd->save();
 
         $crd = new Crd();
@@ -55,6 +61,8 @@ class AddCrdTableSeeder extends Seeder
         $crd->nick_name = 'Crd_4';
         $crd->password = Crypt::encrypt('crd123');
         $crd->api_token = ApiToken::GenerateToken16();
+        $crd->status_video = '1';
+        $crd->status_crd = '0';
         $crd->save();
 
         $crd = new Crd();
@@ -65,6 +73,8 @@ class AddCrdTableSeeder extends Seeder
         $crd->nick_name = 'Crd_5';
         $crd->password = Crypt::encrypt('crd123');
         $crd->api_token = ApiToken::GenerateToken16();
+        $crd->status_video = '1';
+        $crd->status_crd = '0';
         $crd->save();
 
         $crd = new Crd();
@@ -75,6 +85,8 @@ class AddCrdTableSeeder extends Seeder
         $crd->nick_name = 'Crd_6';
         $crd->password = Crypt::encrypt('crd123');
         $crd->api_token = ApiToken::GenerateToken16();
+        $crd->status_video = '1';
+        $crd->status_crd = '0';
         $crd->save();
         
         $crd = new Crd();
@@ -85,6 +97,8 @@ class AddCrdTableSeeder extends Seeder
         $crd->nick_name = 'Crd_7';
         $crd->password = Crypt::encrypt('crd123');
         $crd->api_token = ApiToken::GenerateToken16();
+        $crd->status_video = '1';
+        $crd->status_crd = '0';
         $crd->save();
 
         $crd = new Crd();
@@ -95,6 +109,8 @@ class AddCrdTableSeeder extends Seeder
         $crd->nick_name = 'Crd_8';
         $crd->password = Crypt::encrypt('crd123');
         $crd->api_token = ApiToken::GenerateToken16();
+        $crd->status_video = '1';
+        $crd->status_crd = '0';
         $crd->save();
        
         $crd = new Crd();
@@ -105,6 +121,8 @@ class AddCrdTableSeeder extends Seeder
         $crd->nick_name = 'Crd_9';
         $crd->password = Crypt::encrypt('crd123');
         $crd->api_token = ApiToken::GenerateToken16();
+        $crd->status_video = '1';
+        $crd->status_crd = '0';
         $crd->save();
 
         $crd = new Crd();
@@ -114,6 +132,8 @@ class AddCrdTableSeeder extends Seeder
         $crd->nick_name = 'Crd_10';
         $crd->password = Crypt::encrypt('crd123');
         $crd->api_token = ApiToken::GenerateToken16();
+        $crd->status_video = '1';
+        $crd->status_crd = '0';
         $crd->save();
 
         /*$crd = new Crd();

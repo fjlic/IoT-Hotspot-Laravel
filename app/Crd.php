@@ -19,7 +19,7 @@ class Crd extends Model
      * @var array
      */
     protected $fillable = [
-       'id','user_id', 'name_machine', 'nick_name', 'password', 'api_token', 'status_video',
+       'id','user_id', 'name_machine', 'nick_name', 'password', 'api_token', 'status_video', 'status_crd',
     ];
 
     /**

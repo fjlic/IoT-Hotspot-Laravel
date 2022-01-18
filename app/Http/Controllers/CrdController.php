@@ -30,7 +30,14 @@ class CrdController extends Controller
         //
         $crds = Crd::all();
         foreach ($crds as $key => $crd) {
-        $crd->password = Crypt::decrypt($crd->password);
+          $date = \Carbon\Carbon::now();
+          $tmp_updated = new \Carbon\Carbon($crd->updated_at);
+          $crd->password = Crypt::decrypt($crd->password);
+          if($date->diffInMinutes($tmp_updated) >= 10)
+          { 
+            //$crds[$key]['status_crd'] = '0';
+            $crd->status_crd = '0';
+          }  
         }
         return view('module.crd.index',compact('crds'));
     }
@@ -87,6 +94,7 @@ class CrdController extends Controller
          $crd->password = Crypt::encrypt($request->get('password'));
          $crd->api_token = ApiToken::GenerateToken32();
          $crd->status_video = '1';
+         $crd->status_crd = '0';
          $crd->save();
         //return redirect('/crd')->with('success', 'Crd Generado Satisfactoriamente!');
         toastr()->success('Crd generado satisfactoriamente');
@@ -140,7 +148,8 @@ class CrdController extends Controller
             'nick_name'=>'required|string|max:100',
             'password'=>'required|string|max:100',
             'api_token'=>'required|string|max:100',
-            'status_video'=>'required|string|max:10'
+            'status_video'=>'required|string|max:10',
+            'status_crd'=>'required|string|max:10'
         ]);
         $crd_request = $request->all();
         $crd_request['user_id'] =  $request->get('user_id');
@@ -150,6 +159,7 @@ class CrdController extends Controller
         $crd_request['password'] = Crypt::encrypt($request->get('password'));
         $crd_request['api_token'] =  $request->get('api_token');
         $crd_request['status_video'] =  $request->get('status_video');
+        $crd_request['status_crd'] =  $request->get('status_crd');
         $crd->update($crd_request);
         toastr()->warning('Crd Actualizado Satisfactoriamente');
         return redirect()->route('crd.index');
