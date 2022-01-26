@@ -19,8 +19,10 @@ class BotManController extends Controller
         $botman->hears('{message}', function($botman, $message) {
             if ($message == 'hola') {
                 $this->askName($botman);
+            }if ($message == 'soporte') {
+                $this->howCanHelpYou($botman);
             }else{
-                $botman->reply("Escribe 'hola' para iniciar la conversacion...");
+                $botman->reply("Escribe 'hola o soporte' para iniciar la conversacion...");
             }
         });
         $botman->listen();
@@ -34,6 +36,14 @@ class BotManController extends Controller
         $botman->ask('Hola!! Cual es tu nombre?', function(Answer $answer) {
             $name = $answer->getText();
             $this->say('Mucho gusto '.$name);
+        });
+    }
+
+    public function howCanHelpYou($botman)
+    {
+        $botman->ask('Hola!! Como te puedo ayudar?', function(Answer $answer) {
+            $name = $answer->getText();
+            $this->say('Claro que si será un placer ayudarte al respecto con --> ('.$name.')');
         });
     }
 }
