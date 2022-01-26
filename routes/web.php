@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\AlertSensorMail;
+use App\Http\Controllers\BotManController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +17,7 @@ use App\Mail\AlertSensorMail;
 */
 
 Route::get('/', function () {return view('auth.login');});
+Route::match(['get', 'post'], '/botman', [BotManController::class, 'handle']);
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
@@ -55,7 +57,6 @@ Route::get('email/sensor', function() {
 });
 
 Auth::routes();
-
 /*Route::get('/home', function() {
     return view('home');
 })->name('home')->middleware('auth');*/

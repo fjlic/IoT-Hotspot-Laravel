@@ -93,10 +93,17 @@
   /* Y así se adaptaría al 100% del ancho de página (para webs móviles sería útil) */
   video{width:100%;}
 </style>
-
+{{-- <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/assets/css/chat.min.css"> --}}
 @stop
 
 @section('js')
 @toastr_js
 @toastr_render
+<script>
+        var botmanWidget = {
+            aboutText: 'Centro de Ayuda FJLIC',
+            introMessage: "✋ Hola!! soy tu asistente IoT-Hotspot"
+        };
+</script>
+<script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script>
 @stop
