@@ -32,6 +32,7 @@ class UserController extends Controller
     public function index()
     { 
         $filter = Role::all();
+        $roles = '';
         if(auth()->user()->hasRole('root')){
           $roles = $filter->filter(function ($role, $key) {
               return $role->name != 'root';
