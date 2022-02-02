@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
@@ -42,7 +42,7 @@ class Erb extends Model
      */
     public function user()
     {
-        return $this->belongsTo('App\User', 'id');
+        return $this->belongsTo('App\Models\User', 'id');
     }
 
     /**
@@ -50,7 +50,7 @@ class Erb extends Model
      */
     public function qr()
     {
-        return $this->belongsToMany('App\Qr','erb_id');
+        return $this->belongsToMany('App\Models\Qr','erb_id');
     }
 
     /**
@@ -58,6 +58,6 @@ class Erb extends Model
      */
     public function nfc()
     {
-        return $this->belongsToMany('App\Nfc','erb_id');
+        return $this->belongsToMany('App\Models\Nfc','erb_id');
     }
 }

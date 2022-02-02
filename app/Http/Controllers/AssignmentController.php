@@ -6,11 +6,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Session;
-use App\User;
-use App\Crd;
-use App\Erb;
-use App\Role;
-use App\Permission;
+use App\Models\User;
+use App\Models\Crd;
+use App\Models\Erb;
+use App\Models\Role;
+use App\Models\Permission;
 use DB;
 
 class AssignmentController extends Controller

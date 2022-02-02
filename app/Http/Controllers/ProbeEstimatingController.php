@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\ProbeEstimating;
+use App\Models\ProbeEstimating;
 use Illuminate\Http\Request;
 
 class ProbeEstimatingController extends Controller

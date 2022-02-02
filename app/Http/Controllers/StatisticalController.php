@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Statistical;
+use App\Models\Statistical;
 use Phpml\Math\Statistic\StandardDeviation;
 use Phpml\Math\Statistic\Mean;
 use Phpml\Math\Statistic\Correlation;

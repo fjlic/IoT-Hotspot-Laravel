@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Nfc;
-use App\Crd;
-use App\Erb;
+use App\Models\Nfc;
+use App\Models\Crd;
+use App\Models\Erb;
 use Illuminate\Http\Request;
 
 class NfcController extends Controller

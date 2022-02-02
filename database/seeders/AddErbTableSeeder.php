@@ -4,8 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Crypt;
-use App\Erb;
-use App\ApiToken;
+use App\Models\Erb;
+use App\Models\ApiToken;
 
 class AddErbTableSeeder extends Seeder
 {

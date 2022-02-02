@@ -6,13 +6,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
-use BotMan\BotMan\BotMan;
-use App\Conversations\ExampleConversation;
 use Hash;
 use Crypt;
-use App\User;
-use App\Role;
-use App\Hospot;
+use App\Models\User;
+use App\Models\Role;
 use Carbon;
 
 class UserController extends Controller

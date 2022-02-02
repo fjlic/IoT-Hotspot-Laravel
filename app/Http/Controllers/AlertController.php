@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 use Phpml\CrossValidation\Split;
 use Illuminate\Container\Container;
 use Illuminate\Mail\Markdown;
-use App\Alert;
-use App\HistorialSensor;
+use App\Models\Alert;
+use App\Models\HistorialSensor;
 
 
 class AlertController extends Controller

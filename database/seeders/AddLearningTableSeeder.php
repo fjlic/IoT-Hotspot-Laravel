@@ -9,8 +9,8 @@ use Phpml\Regression\SVR;
 use Phpml\Regression\LeastSquares;
 use Phpml\Math\Statistic\Mean;
 use Phpml\SupportVectorMachine\Kernel;
-use App\Statistical;
-use App\Learning;
+use App\Models\Statistical;
+use App\Models\Learning;
 
 class AddLearningTableSeeder extends Seeder
 {

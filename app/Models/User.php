@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -44,7 +44,7 @@ class User extends Authenticatable
      */
     public function region()
     {
-        return $this->belongsTo('App\Region', 'id');
+        return $this->belongsTo('App\Models\Region', 'id');
     }
 
     /**
@@ -52,7 +52,7 @@ class User extends Authenticatable
      */
     public function crd()
     {
-        return $this->hasMany('App\Crd','user_id');
+        return $this->hasMany('App\Models\Crd','user_id');
     }
 
     /**
@@ -60,6 +60,6 @@ class User extends Authenticatable
      */
     public function erb()
     {
-        return $this->hasMany('App\Erb','user_id');
+        return $this->hasMany('App\Models\Erb','user_id');
     }
 }

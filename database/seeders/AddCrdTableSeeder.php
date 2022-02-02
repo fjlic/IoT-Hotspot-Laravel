@@ -4,8 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Crypt;
-use App\Crd;
-use App\ApiToken;
+use App\Models\Crd;
+use App\Models\ApiToken;
 
 class AddCrdTableSeeder extends Seeder
 {

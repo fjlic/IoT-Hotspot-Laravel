@@ -3,10 +3,10 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Role;
-use App\User;
-use App\Crd;
-use App\Erb;
+use App\Models\Role;
+use App\Models\User;
+use App\Models\Crd;
+use App\Models\Erb;
 
 
 class AddRoleGlobalTableSeeder extends Seeder

@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
@@ -44,7 +44,7 @@ class Crd extends Model
      */
     public function user()
     {
-        return $this->belongsTo('App\User', 'id');
+        return $this->belongsTo('App\Models\User', 'id');
     }
 
     /**
@@ -52,7 +52,7 @@ class Crd extends Model
      */
     public function qr()
     {
-        return $this->belongsToMany('App\Qr','crd_id');
+        return $this->belongsToMany('App\Models\Qr','crd_id');
     }
 
     /**
@@ -60,6 +60,6 @@ class Crd extends Model
      */
     public function nfc()
     {
-        return $this->belongsToMany('App\Nfc','crd_id');
+        return $this->belongsToMany('App\Models\Nfc','crd_id');
     }
 }

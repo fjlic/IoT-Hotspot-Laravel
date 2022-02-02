@@ -1,22 +1,24 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class HistorialCounter extends Model
+class StatisticalCounter extends Model
 {
+    use HasFactory;
     //
     /**
      * The attributes that are mass assignable.
-     *
+     * Part Name : MDL
+     * * Part Size : 15.1
      * @var array
      */
     protected $fillable = [
-        'id', 'counter_id', 'num_serie', 'cont_qr', 'cont_mon', 'cont_mon_2', 'cont_corte',  'cont_prem', 'cost_mon',
-        'ssid',  'passwd',  'ip_server',  'port', 'token', 'type',  'text',
+        'id', 'counter_id', 'elements', 'start_time', 'finish_time', 'total_time', 'difer_time', 'sample',
     ];
-
+    
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -34,11 +36,4 @@ class HistorialCounter extends Model
     protected $casts = [
     ];
 
-    /**
-     * Get the hostpot for the blog crd.
-     */
-    public function counter()
-    {
-        return $this->belongsTo('App\Counter','id');
-    }
 }

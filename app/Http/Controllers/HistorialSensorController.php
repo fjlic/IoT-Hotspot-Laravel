@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\HistorialSensor;
-use App\Sensor;
+use App\Models\HistorialSensor;
+use App\Models\Sensor;
 use Illuminate\Http\Request;
 
 class HistorialSensorController extends Controller

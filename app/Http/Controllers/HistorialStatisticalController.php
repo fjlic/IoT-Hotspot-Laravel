@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\HistorialStatistical;
+use App\Models\HistorialStatistical;
 use Illuminate\Http\Request;
 
 class HistorialStatisticalController extends Controller

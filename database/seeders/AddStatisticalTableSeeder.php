@@ -3,9 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Statistical;
-use App\HistorialSensor;
-use App\Sensor;
+use App\Models\Statistical;
+use App\Models\HistorialSensor;
+use App\Models\Sensor;
 
 class AddStatisticalTableSeeder extends Seeder
 {

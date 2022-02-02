@@ -3,9 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\StatisticalCounter;
-use App\HistorialCounter;
-use App\Counter;
+use App\Models\StatisticalCounter;
+use App\Models\HistorialCounter;
+use App\Models\Counter;
 
 
 class AddStatisticalCounterTableSeeder extends Seeder

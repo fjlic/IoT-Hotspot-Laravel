@@ -1,21 +1,19 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Alert extends Model
+class HistorialQr extends Model
 {
-    use HasFactory;
-
+    //
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'type','email', 'title', 'body', 'footer',
+        'id', 'qr_id', 'qr_serie', 'coins', 'uploaded',
     ];
 
     /**
@@ -24,6 +22,7 @@ class Alert extends Model
      * @var array
      */
     protected $hidden = [
+        
     ];
 
     /**
@@ -32,6 +31,14 @@ class Alert extends Model
      * @var array
      */
     protected $casts = [
+        
     ];
 
+    /**
+     * Get the user record associated with the hostpot.
+     */
+    public function qr()
+    {
+        return $this->belongsTo('App\Models\Qr', 'id');
+    }
 }

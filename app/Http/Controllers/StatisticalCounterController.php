@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\StatisticalCounter;
+use App\Models\StatisticalCounter;
 use Illuminate\Http\Request;
 use Phpml\Math\Statistic\StandardDeviation;
 use Phpml\Math\Statistic\Mean;

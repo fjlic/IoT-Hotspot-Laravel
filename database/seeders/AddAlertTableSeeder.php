@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Alert;
+use App\Models\Alert;
 
 class AddAlertTableSeeder extends Seeder
 {

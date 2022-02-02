@@ -22,7 +22,7 @@
         "laravel/ui": "^2.1",
         "muhamadrezaar/highcharts": "dev-master",
         "php-ai/php-ml": "^0.9.0",
-        "santigarcor/laratrust": "^6.1",
+        "santigarcor/laratrust": "^6.3",
         "simplesoftwareio/simple-qrcode": "^3.0",
         "yoeunes/toastr": "^1.2"
     },
@@ -53,7 +53,10 @@
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/"
-        }
+        },
+        "exclude-from-classmap": [
+            "/vendor/erusev/parsedown-extra/test"
+        ]
     },
     "minimum-stability": "dev",
     "prefer-stable": true,

@@ -3,10 +3,10 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Crd;
-use App\Erb;
-use App\Qr;
-use App\HistorialQr;
+use App\Models\Crd;
+use App\Models\Erb;
+use App\Models\Qr;
+use App\Models\HistorialQr;
 
 class AddHistorialQrTableSeeder extends Seeder
 {

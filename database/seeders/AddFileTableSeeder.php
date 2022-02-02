@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\File;
+use App\Models\File;
 use Illuminate\Database\Seeder;
 
 class AddFileTableSeeder extends Seeder

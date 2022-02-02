@@ -1,14 +1,11 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class StatisticalCounter extends Model
+class Learning extends Model
 {
-    use HasFactory;
-    //
     /**
      * The attributes that are mass assignable.
      * Part Name : MDL
@@ -16,7 +13,7 @@ class StatisticalCounter extends Model
      * @var array
      */
     protected $fillable = [
-        'id', 'counter_id', 'elements', 'start_time', 'finish_time', 'total_time', 'difer_time', 'sample',
+        'id', 'statistical_id', 'elements', 'start_time', 'finish_time', 'total_time', 'difer_time', 'sample',
     ];
     
     /**
@@ -35,5 +32,4 @@ class StatisticalCounter extends Model
      */
     protected $casts = [
     ];
-
 }

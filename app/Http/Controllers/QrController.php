@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Qr;
-use App\Erb;
-use App\Crd;
+use App\Models\Qr;
+use App\Models\Erb;
+use App\Models\Crd;
 use QrCode;
 use Illuminate\Http\Request;
 

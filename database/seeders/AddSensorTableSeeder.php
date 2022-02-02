@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Sensor;
+use App\Models\Sensor;
 
 //use function Ramsey\Uuid\v1;
 

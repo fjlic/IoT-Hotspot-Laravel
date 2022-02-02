@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 use Illuminate\Database\Seeder;
-use App\Sensor;
-use App\HistorialSensor;
+use App\Models\Sensor;
+use App\Models\HistorialSensor;
 use Carbon\Carbon;
 
 class AddHistorialSensorTableSeeder extends Seeder

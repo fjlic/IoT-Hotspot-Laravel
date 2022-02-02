@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\ClassName;
+use App\Models\ClassName;
 
 class AddClassNameTableSeeder extends Seeder
 {

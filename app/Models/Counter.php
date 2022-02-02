@@ -1,23 +1,20 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Nfc extends Model
+class Counter extends Model
 {
     //
-    //use HasApiTokens, Notifiable;
-
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-
     protected $fillable = [
-        'id', 'crd_id', 'erb_id', 'num_serie', 'cont_qr', 'cont_mon', 
-        'cont_mon_2', 'cont_corte', 'cont_prem', 'cost_mon', 'ssid', 'passwd', 'ip_server', 'port', 'txt',
+        'id', 'crd_id', 'erb_id', 'nfc_id', 'num_serie', 'cont_qr', 'cont_mon',  'cont_corte',  'cont_prem',
+        'ssid',  'passwd',  'ip_server',  'port',  'token', 'type', 'text', 
     ];
 
     /**
@@ -40,17 +37,9 @@ class Nfc extends Model
     /**
      * Get the hostpot for the blog crd.
      */
-    public function historialnfc()
+    public function historialcounter()
     {
-        return $this->hasMany('App\HistorialNfc','nfc_id');
-    }
-
-    /**
-     * Get the user record associated with the hostpot.
-     */
-    public function crd()
-    {
-        return $this->belongsToMany('App\Crd', 'id');
+        return $this->hasMany('App\Models\HistorialCounter','counter_id');
     }
 
     /**
@@ -58,6 +47,22 @@ class Nfc extends Model
      */
     public function erb()
     {
-        return $this->belongsToMany('App\Erb', 'id');
+        return $this->belongsTo('App\Models\Erb', 'id');
+    }
+
+    /**
+     * Get the user record associated with the hostpot.
+     */
+    public function crd()
+    {
+        return $this->belongsTo('App\Models\Crd', 'id');
+    }
+
+    /**
+     * Get the user record associated with the hostpot.
+     */
+    public function nfc()
+    {
+        return $this->belongsTo('App\Models\Nfc', 'id');
     }
 }

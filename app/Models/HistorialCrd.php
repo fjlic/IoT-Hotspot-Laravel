@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -38,6 +38,6 @@ class HistorialCrd extends Model
      */
     public function crd()
     {
-        return $this->belongsTo('App\Crd', 'id');
+        return $this->belongsTo('App\Models\Crd', 'id');
     }
 }

@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Qr;
+use App\Models\Qr;
 
 class AddQrTableSeeder extends Seeder
 {

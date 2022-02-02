@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Learning;
-use App\Statistical;
+use App\Models\Learning;
+use App\Models\Statistical;
 use Illuminate\Http\Request;
 
 class LearningController extends Controller

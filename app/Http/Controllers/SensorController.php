@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Sensor;
-use App\Erb;
+use App\Models\Sensor;
+use App\Models\Erb;
 use Illuminate\Http\Request;
 
 class SensorController extends Controller

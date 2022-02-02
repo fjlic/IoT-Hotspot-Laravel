@@ -1,29 +1,30 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class HistorialErb extends Model
+class Statistical extends Model
 {
     //
-     /**
+    /**
      * The attributes that are mass assignable.
-     *
+     * Part Name : MDL
+     * * Part Size : 15.1
      * @var array
      */
     protected $fillable = [
-        'id', 'erb_id', 'num_serie', 'name_machine', 'nick_name', 'password', 'api_token',
+        'id', 'sensor_id', 'elements', 'start_time', 'finish_time', 'total_time', 'difer_time', 'sample',
     ];
-
+    
     /**
      * The attributes that should be hidden for arrays.
      *
      * @var array
      */
-    //protected $hidden = [
-    //    'password', 
-    //];
+    protected $hidden = [
+        
+    ];
 
     /**
      * The attributes that should be cast to native types.
@@ -33,11 +34,4 @@ class HistorialErb extends Model
     protected $casts = [
     ];
 
-     /**
-     * Get the user record associated with the hostpot.
-     */
-    public function erb()
-    {
-        return $this->belongsTo('App\Erb', 'id');
-    }
 }

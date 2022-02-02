@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\ApiToken;
-use App\Crd;
-use App\HistorialCrd;
+use App\Models\ApiToken;
+use App\Models\Crd;
+use App\Models\HistorialCrd;
 use Crypt;
 use Illuminate\Http\Request;
 

@@ -3,10 +3,10 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Crd;
-use App\Erb;
-use App\Nfc;
-use App\HistorialNfc;
+use App\Models\Crd;
+use App\Models\Erb;
+use App\Models\Nfc;
+use App\Models\HistorialNfc;
 
 class AddHistorialNfcTableSeeder extends Seeder
 {

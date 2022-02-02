@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Nfc;
-use App\HistorialNfc;
+use App\Models\Nfc;
+use App\Models\HistorialNfc;
 use Illuminate\Http\Request;
 
 class HistorialNfcController extends Controller

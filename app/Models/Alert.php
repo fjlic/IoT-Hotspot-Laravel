@@ -1,20 +1,21 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ProbeEstimating extends Model
+class Alert extends Model
 {
-     //
+    use HasFactory;
+
     /**
      * The attributes that are mass assignable.
-     * Part Name : MDL
-     * * Part Size : 15.
+     *
      * @var array
      */
     protected $fillable = [
-        'id', 'prox_size', 'mod_size', 'stm_prox_size', 'act_dev_size',
+        'type','email', 'title', 'body', 'footer',
     ];
 
     /**
@@ -23,7 +24,6 @@ class ProbeEstimating extends Model
      * @var array
      */
     protected $hidden = [
-        
     ];
 
     /**
@@ -33,4 +33,5 @@ class ProbeEstimating extends Model
      */
     protected $casts = [
     ];
+
 }

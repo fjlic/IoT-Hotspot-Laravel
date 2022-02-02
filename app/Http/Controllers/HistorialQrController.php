@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Qr;
-use App\HistorialQr;
+use App\Models\Qr;
+use App\Models\HistorialQr;
 use Illuminate\Http\Request;
 
 class HistorialQrController extends Controller

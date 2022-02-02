@@ -1,10 +1,10 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class HistorialQr extends Model
+class Sensor extends Model
 {
     //
     /**
@@ -13,7 +13,8 @@ class HistorialQr extends Model
      * @var array
      */
     protected $fillable = [
-        'id', 'qr_id', 'qr_serie', 'coins', 'uploaded',
+        'id', 'erb_id', 'num_serie', 'passw', 'vol_1', 'vol_2', 'vol_3', 'temp_1', 'temp_2', 'temp_3', 'temp_4',
+        'door_1', 'door_2', 'door_3', 'door_4', 'rlay_1', 'rlay_2', 'rlay_3', 'rlay_4', 'text',
     ];
 
     /**
@@ -31,14 +32,21 @@ class HistorialQr extends Model
      * @var array
      */
     protected $casts = [
-        
     ];
 
     /**
      * Get the user record associated with the hostpot.
      */
-    public function qr()
+    public function erb()
     {
-        return $this->belongsTo('App\Qr', 'id');
+        return $this->belongsToMany('App\Models\Erb', 'id');
+    }
+
+    /**
+     * Get the hostpot for the blog crd.
+     */
+    public function historialsensor()
+    {
+        return $this->hasMany('App\Models\HistorialSensor','sensor_id');
     }
 }

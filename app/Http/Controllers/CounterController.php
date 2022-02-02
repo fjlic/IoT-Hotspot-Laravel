@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Counter;
-use App\Erb;
-use App\Crd;
-use App\Nfc;
-use App\ApiToken;
+use App\Models\Counter;
+use App\Models\Erb;
+use App\Models\Crd;
+use App\Models\Nfc;
+use App\Models\ApiToken;
 use Illuminate\Http\Request;
 
 class CounterController extends Controller

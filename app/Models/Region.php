@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -22,6 +22,6 @@ class Region extends Model
      */
     public function user()
     {
-        return $this->hasMany('App\User','region_id');
+        return $this->hasMany('App\Models\User','region_id');
     }
 }

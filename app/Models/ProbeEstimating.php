@@ -1,20 +1,20 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class HistorialNfc extends Model
+class ProbeEstimating extends Model
 {
-    //
+     //
     /**
      * The attributes that are mass assignable.
-     *
+     * Part Name : MDL
+     * * Part Size : 15.
      * @var array
      */
     protected $fillable = [
-        'id', 'nfc_id', 'num_serie', 'cont_qr', 'cont_mon', 'cont_mon_2', 'cont_corte', 
-        'cont_prem', 'cost_mon', 'ssid', 'passwd', 'ip_server', 'port', 'txt',
+        'id', 'prox_size', 'mod_size', 'stm_prox_size', 'act_dev_size',
     ];
 
     /**
@@ -32,14 +32,5 @@ class HistorialNfc extends Model
      * @var array
      */
     protected $casts = [
-        
     ];
-
-    /**
-     * Get the user record associated with the hostpot.
-     */
-    public function nfc()
-    {
-        return $this->belongsTo('App\Nfc', 'id');
-    }
 }

@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 use Illuminate\Database\Seeder;
-use App\ApiToken;
-use App\Counter;
-use App\HistorialCounter;
+use App\Models\ApiToken;
+use App\Models\Counter;
+use App\Models\HistorialCounter;
 use Carbon\Carbon;
 
 class AddHistorialCounterTableSeeder extends Seeder

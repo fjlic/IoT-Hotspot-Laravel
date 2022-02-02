@@ -1,22 +1,21 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class File extends Model
+class HistorialCounter extends Model
 {
     //
     /**
      * The attributes that are mass assignable.
-     * Part Name : MDL
-     * * Part Size : 15.
+     *
      * @var array
      */
     protected $fillable = [
-        'id', 'name_file', 'set', 'route',
+        'id', 'counter_id', 'num_serie', 'cont_qr', 'cont_mon', 'cont_mon_2', 'cont_corte',  'cont_prem', 'cost_mon',
+        'ssid',  'passwd',  'ip_server',  'port', 'token', 'type',  'text',
     ];
-
 
     /**
      * The attributes that should be hidden for arrays.
@@ -35,4 +34,11 @@ class File extends Model
     protected $casts = [
     ];
 
+    /**
+     * Get the hostpot for the blog crd.
+     */
+    public function counter()
+    {
+        return $this->belongsTo('App\Models\Counter','id');
+    }
 }

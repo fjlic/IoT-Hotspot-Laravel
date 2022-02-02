@@ -3,8 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Counter;
-use App\ApiToken;
+use App\Models\Counter;
+use App\Models\ApiToken;
 
 class AddCounterTableSeeder extends Seeder
 {

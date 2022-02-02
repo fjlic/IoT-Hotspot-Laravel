@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\ProbeEstimating;
+use App\Models\ProbeEstimating;
 
 class AddTableProbeStimatingSeeder extends Seeder
 {

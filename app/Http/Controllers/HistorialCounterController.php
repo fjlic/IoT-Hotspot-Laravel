@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\HistorialCounter;
-use App\Counter;
+use App\Models\HistorialCounter;
+use App\Models\Counter;
 use Illuminate\Http\Request;
 
 class HistorialCounterController extends Controller

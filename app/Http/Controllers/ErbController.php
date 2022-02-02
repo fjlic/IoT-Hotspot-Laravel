@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Erb;
-use App\User;
-use App\ApiToken;
+use App\Models\Erb;
+use App\Models\User;
+use App\Models\ApiToken;
 use Crypt;
 use Illuminate\Http\Request;
 

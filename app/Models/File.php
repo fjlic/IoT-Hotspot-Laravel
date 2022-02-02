@@ -1,21 +1,23 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Learning extends Model
+class File extends Model
 {
+    //
     /**
      * The attributes that are mass assignable.
      * Part Name : MDL
-     * * Part Size : 15.1
+     * * Part Size : 15.
      * @var array
      */
     protected $fillable = [
-        'id', 'statistical_id', 'elements', 'start_time', 'finish_time', 'total_time', 'difer_time', 'sample',
+        'id', 'name_file', 'set', 'route',
     ];
-    
+
+
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -32,4 +34,5 @@ class Learning extends Model
      */
     protected $casts = [
     ];
+
 }
