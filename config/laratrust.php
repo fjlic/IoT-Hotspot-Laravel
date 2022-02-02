@@ -25,7 +25,8 @@ return [
     |           This method doesn't support cache yet.
     |
      */
-    'checker' => 'default',
+    //'checker' => 'default',
+    'checker' => 'query',
 
     /*
     |--------------------------------------------------------------------------
