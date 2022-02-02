@@ -54,6 +54,7 @@ class UserController extends Controller
             });
         }
         $users = collect();
+        dd($roles);
         foreach ($roles as $key => $role) {
             foreach (User::whereRoleIs($role->name)->get() as $key => $value) {
                 $value->name_role = $role->name;
