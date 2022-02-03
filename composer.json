@@ -9,6 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
+        "beyondcode/laravel-websockets": "^1.12",
         "binarytorch/larecipe": "^2.4",
         "binarytorch/larecipe-dark-theme": "^0.1.5",
         "botman/botman": "^2.6",
@@ -21,9 +22,9 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^2.1",
-        "pusher/pusher-php-server": "^5.0",
         "muhamadrezaar/highcharts": "dev-master",
         "php-ai/php-ml": "^0.9.0",
+        "pusher/pusher-php-server": "^5.0",
         "santigarcor/laratrust": "^6.3",
         "simplesoftwareio/simple-qrcode": "^3.0",
         "yoeunes/toastr": "^1.2"
