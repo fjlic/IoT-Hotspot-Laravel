@@ -15,11 +15,13 @@
         "botman/driver-web": "^1.5",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
-        "guzzlehttp/guzzle": "^7.0.1",
+        "guzzlehttp/guzzle": "^7.2",
         "jeroennoten/laravel-adminlte": "^3.4",
-        "laravel/framework": "^8.12",
+        "laravel/framework": "^8.75",
+        "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^2.1",
+        "pusher/pusher-php-server": "^5.0",
         "muhamadrezaar/highcharts": "dev-master",
         "php-ai/php-ml": "^0.9.0",
         "santigarcor/laratrust": "^6.3",
@@ -29,9 +31,10 @@
     "require-dev": {
         "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
-        "mockery/mockery": "^1.4.2",
-        "nunomaduro/collision": "^5.0",
-        "phpunit/phpunit": "^9.3.3"
+        "laravel/sail": "^1.0.1",
+        "mockery/mockery": "^1.4.4",
+        "nunomaduro/collision": "^5.10",
+        "phpunit/phpunit": "^9.5.10"
     },
     "config": {
         "optimize-autoloader": true,
