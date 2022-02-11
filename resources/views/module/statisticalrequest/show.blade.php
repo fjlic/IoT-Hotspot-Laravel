@@ -31,7 +31,7 @@
         <div class="col-12">
           <div class="card card-info card-outline">
             <div class="card-header">
-              <h3 class="card-title">Ver Id Estadistico</h3>
+              <h3 class="card-title">Ver Id Estadistico de Peticion</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -40,49 +40,49 @@
                 <!-- 'id', 'sensor_id', 'elements', 'start_time', 'finish_time', 'total_time', 'difer_time', 'sample' -->
                 <div class="form-group">
                   <label for="id">Id</label>
-                  <input type="text" class="form-control" value="{{ $statistical->id }}" readonly="readonly"/>
+                  <input type="text" class="form-control" value="{{ $statisticalrequest->id }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
                   <label for="id">Sensor Id</label>
-                  <input type="text" class="form-control" value="{{ $statistical->sensor_id }}" readonly="readonly"/>
+                  <input type="text" class="form-control" value="{{ $statisticalrequest->sensor_id }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
                   <label for="elements">Tamaño de la muestra</label>
-                  <input type="text" class="form-control" value="{{ $statistical->elements }}" readonly="readonly"/>
+                  <input type="text" class="form-control" value="{{ $statisticalrequest->elements }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
                   <label for="start_time">Tiempo inicio</label>
-                  <input type="text" class="form-control" value="{{ $statistical->start_time }}" readonly="readonly"/>
+                  <input type="text" class="form-control" value="{{ $statisticalrequest->start_time }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
                   <label for="finish_time">Tiempo fin</label>
-                  <input type="text" class="form-control" value="{{ $statistical->finish_time }}" readonly="readonly"/>
+                  <input type="text" class="form-control" value="{{ $statisticalrequest->finish_time }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
                   <label for="total_time">Tiempo total</label>
-                  <input type="text" class="form-control" value="{{ $statistical->total_time }}" readonly="readonly"/>
+                  <input type="text" class="form-control" value="{{ $statisticalrequest->total_time }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
                   <label for="difer_time">Tiempo desface (+/-)</label>
-                  <input type="text" class="form-control" value="{{ $statistical->difer_time }}" readonly="readonly"/>
+                  <input type="text" class="form-control" value="{{ $statisticalrequest->difer_time }}" readonly="readonly"/>
                 </div>
               <!-- /.box-body -->
               <div class="box-footer">
-                <a href="{{ route('statistical.index') }}" class="btn btn-info pull-right">Regresar</a>
-                <a href="" class="btn btn-primary" data-toggle="modal" data-target="#ModalSt{{$statistical->id}}"><span>Datos-Muestra</span></a>
+                <a href="{{ route('statisticalrequest.index') }}" class="btn btn-info pull-right">Regresar</a>
+                <a href="" class="btn btn-primary" data-toggle="modal" data-target="#ModalSt{{$statisticalrequest->id}}"><span>Datos-Muestra</span></a>
                 <!------ ESTE ES EL MODAL QUE SE MUESTRA AL DAR CLICK EN EL BOTON "ELIMINAR" ------>
-                <div class="modal fade" id="ModalSt{{$statistical->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal fade" id="ModalSt{{$statisticalrequest->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered" role="document">
                   <div class="modal-content">
                   <div class="modal-header d-flex justify-content-center">
-                    <h5 class="modal-title" id="exampleModalCenterTitle">Datos de la Muestra ({{$statistical->id}})</h5>
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Datos de la Muestra ({{$statisticalrequest->id}})</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
                   <div class="modal-body">
                       <div class="modal-body" style="text-align: center">
-                        <a><p class="text-center">{{ $statistical->sample }}</p></a>
+                        <a><p class="text-center">{{ $statisticalrequest->sample }}</p></a>
                       </div>
                   </div>
                   <div class="modal-footer d-flex justify-content-center">

@@ -24,71 +24,69 @@
 </div>
 @endif
 
- <!-- Main content  Part Name : VST -->
+ <!-- Main content Part Name : VST -->
  <!-- Part Size : 23.3 -->
  <section class="content">
       <div class="row">
         <div class="col-12">
-          <div class="card card-warning card-outline">
+            <div class="card card-success card-outline">
             <div class="card-header">
-              <h3 class="card-title">Editar Estadistico</h3>
+              <h3 class="card-title">Crear Estadistico para Peticiones</h3>
             </div>
-            <!-- /.card-header -->
+            <!-- 'id', 'sensor_id', 'elements', 'start_time', 'finish_time', 'total_time', 'difer_time', 'sample' -->
             <div class="card-body">
             <!-- form start -->
-            <form role="form" action="{{ route('statistical.update',$statistical->id) }}" method="POST">
-            @csrf
-            @method('PUT')
+            <form role="form" action="{{ route('statisticalrequest.store')}}" method="POST">
+              @csrf
               <div class="card-body">
-                <!-- 'id', 'sensor_id', 'elements', 'start_time', 'finish_time', 'total_time', 'difer_time', 'sample' -->
                 <div class="form-group">
                   <label for="sensor_id">Sensor Id</label>
-                  <input type="text" class="form-control" name="sensor_id" id="sensor_id"  placeholder="Introduce num sensor id" required value="{{ $statistical->sensor_id }}" />
+                  <input type="text" class="form-control" name="sensor_id" id="sensor_id"  placeholder="Introduce estadistico id" required>
                 </div>
                 <div class="form-group">
                   <label for="elements">Elementos</label>
-                  <input type="text" class="form-control" name="elements" id="elements"  placeholder="Introduce elementos" required value="{{ $statistical->elements }}" />
+                  <input type="text" class="form-control" name="elements" id="elements"  placeholder="Introduce elementos" required>
                 </div>
                 <div class="form-group">
-                  <label for="start_time">Hora Inicial</label>
-                  <input type="text" class="form-control" name="start_time" id="start_time"  placeholder="Introduce hora de inicio" required value="{{ $statistical->start_time }}" />
+                  <label for="start_time">Hora Inicio</label>
+                  <input type="text" class="form-control" name="start_time" id="start_time"  placeholder="Introduce hora de inicio" required>
                 </div>
                 <div class="form-group">
-                  <label for="finish_time">Hora Fianl</label>
-                  <input type="text" class="form-control" name="finish_time" id="finish_time"  placeholder="Introduce hora de fin" required value="{{ $statistical->finish_time }}" />
+                  <label for="finish_time">Hora Fin</label>
+                  <input type="text" class="form-control" name="finish_time" id="finish_time"  placeholder="Introduce hora de fin" required>
                 </div>
                 <div class="form-group">
                   <label for="total_time">Tiempo Total</label>
-                  <input type="text" class="form-control" name="total_time" id="total_time"  placeholder="Introduce tiempo total" required value="{{ $statistical->total_time }}" />
+                  <input type="text" class="form-control" name="total_time" id="total_time"  placeholder="Introduce tiempo total" required>
                 </div>
                 <div class="form-group">
                   <label for="difer_time">Tiempo desface (+/-)</label>
-                  <input type="text" class="form-control" name="difer_time" id="difer_time"  placeholder="Introduce tiempo de desface" required value="{{ $statistical->difer_time }}" />
+                  <input type="text" class="form-control" name="difer_time" id="difer_time"  placeholder="Introduce tiempo de desface" required>
                 </div>
                 <div class="form-group">
-                  <label for="sample">Muestra</label>
-                  <textarea class="form-control" name="sample" id="sample" required value="{{ $statistical->sample }}">{{ $statistical->sample }}</textarea>
+                  <label for="sample">Muestra en JSON 144 peticiones</label>
+                  <input type="text" class="form-control" name="sample" id="sample"  placeholder="Introduce las muestras en array de json" required>
                 </div>
               </div>
               <!-- /.card-body -->
 
               <div class="card-footer">
-                <a href="{{ route('statistical.index') }}" class="btn btn-default">Cancelar</a>
-                <button type="submit" class="btn btn-warning pull-right" >Enviar</button>
+                <a href="{{ route('statisticalrequest.index') }}" class="btn btn-default">Cancelar</a>
+                <button type="submit" class="btn btn-success pull-right" >Enviar</button>
               </div>
             </form>
-          </div>
-          <!-- /.card -->
-          <!-- form-->
-          <!-- /.card-body -->
-          </div>
-          <!-- /.card -->
+            </div>
+            <!-- /.card -->
+            <!-- form-->
+            <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
         </div>
         <!-- /.col -->
       </div>
       <!-- /.row -->
     </section>
-    <!-- /.content --> 
+    <!-- /.content -->   
 @stop
 
 @section('footer') 

@@ -53,7 +53,7 @@ class LearningSensorController extends Controller
         // 'id', 'statistical_id', 'elements', 'start_time',
         //'finish_time', 'total_time', 'difer_time', 'sample',
         $request->validate([
-            'statistical_id'=>'required|string|max:100',
+            'statistical_sensor_id'=>'required|string|max:100',
             'elements'=>'required|string|max:100',
             'start_time'=>'required|string|max:100',
             'finish_time'=>'required|string|max:100',
@@ -63,7 +63,7 @@ class LearningSensorController extends Controller
             
         ]);
         $learningsensor = new LearningSensor([
-            'statistical_id' => $request->get('statistical_id'),
+            'statistical_sensor_id' => $request->get('statistical_sensor_id'),
             'elements' => $request->get('elements'),
             'start_time' => $request->get('start_time'),
             'finish_time' => $request->get('finish_time'),
@@ -112,7 +112,7 @@ class LearningSensorController extends Controller
     {
         //
         $request->validate([
-            'statistical_id'=>'required|string|max:100',
+            'statistical_sensor_id'=>'required|string|max:100',
             'elements'=>'required|string|max:100',
             'start_time'=>'required|string|max:100',
             'finish_time'=>'required|string|max:100',
@@ -150,7 +150,7 @@ class LearningSensorController extends Controller
     {
         //
         $learningsensor = LearningSensor::find($id);
-        $statisticalsensor = StatisticalSensor::find($learningsensor->statistical_id);
+        $statisticalsensor = StatisticalSensor::find($learningsensor->statistical_sensor_id);
         $sample_1 = \Chart::title(['text' => 'Muestra '.$learningsensor->id,])
                           ->credits(['enabled' => false])
                           ->yaxis(['min' => 0])
@@ -182,8 +182,8 @@ class LearningSensorController extends Controller
                                       'data' => [1, 1.5, 2.8, 3.5, 3.9, 4.2],
                                       'marker' => ['radius' => 4]
                                      ]])->display();
-    //return view('module.learning.chart', ['vol1' => $vol1,]);
-    return view('module.learning.chart')->with('sample_1',$sample_1)
+    //return view('module.learningsensor.chart', ['vol1' => $vol1,]);
+    return view('module.learningsensor.chart')->with('sample_1',$sample_1)
                                         ->with('sample_2',$sample_2)
                                         ->with('learning',$learningsensor);
     }

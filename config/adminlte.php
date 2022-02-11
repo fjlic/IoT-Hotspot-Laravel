@@ -282,6 +282,36 @@ return [
                     'icon'  => 'fas fa-exclamation-circle',
                     'url'  => 'alert',
                 ],
+                [
+                    'text'    => 'Estadistico Telemetria',
+                    'icon'    => 'fas fa-chart-bar',
+                    'submenu' => [
+                        [
+                            'text' => 'Listar',
+                            'icon_color' => '',
+                            'icon'  => 'fas fa-fw fa-list',
+                            'url'  => 'statisticalrequest',
+                        ],
+                        /*[
+                            'text' => 'Historial Estadisticos Telemetria',
+                            'icon_color' => '',
+                            'icon'  => 'fas fa-route',
+                            'url'  => 'historialstatisticalsensor',
+                        ],*/
+                    ],
+                ],
+                [
+                    'text'    => 'Predicciones Telemetria',
+                    'icon'    => 'fas fa-draw-polygon',
+                    'submenu' => [
+                        [
+                            'text' => 'Listar',
+                            'icon_color' => '',
+                            'icon'  => 'fas fa-fw fa-list',
+                            'url'  => 'learningrequest',
+                        ],
+                    ],
+                ],
                 /*[
                     'text' => 'change_password',
                     'icon_color' => '',
@@ -430,32 +460,32 @@ return [
                     ],
                 ],
                 [
-                    'text'    => 'Estadisticos',
+                    'text'    => 'Estadistico Sensores',
                     'icon'    => 'fas fa-chart-bar',
                     'submenu' => [
                         [
                             'text' => 'Listar',
                             'icon_color' => '',
                             'icon'  => 'fas fa-fw fa-list',
-                            'url'  => 'statistical',
+                            'url'  => 'statisticalsensor',
                         ],
                         /*[
                             'text' => 'Historial Estadisticos',
                             'icon_color' => '',
                             'icon'  => 'fas fa-route',
-                            'url'  => 'historialstatistical',
+                            'url'  => 'historialstatisticalsensor',
                         ],*/
                     ],
                 ],
                 [
-                    'text'    => 'Predicciones',
+                    'text'    => 'Predicciones Sensores',
                     'icon'    => 'fas fa-draw-polygon',
                     'submenu' => [
                         [
                             'text' => 'Listar',
                             'icon_color' => '',
                             'icon'  => 'fas fa-fw fa-list',
-                            'url'  => 'learning',
+                            'url'  => 'learningsensor',
                         ],
                     ],
                 ],

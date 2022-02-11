@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Hotspot|Prediccion')
+@section('title', 'Hotspot|Estadistico')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop
@@ -31,17 +31,17 @@
         <div class="col-12">
             <div class="card card-success card-outline">
             <div class="card-header">
-              <h3 class="card-title">Crear Muestra Predictiva</h3>
+              <h3 class="card-title">Crear Estadistico de Sensor</h3>
             </div>
-            <!-- 'id', 'statistical_id', 'elements', 'start_time', 'finish_time', 'total_time', 'difer_time', 'sample' -->
+            <!-- 'id', 'sensor_id', 'elements', 'start_time', 'finish_time', 'total_time', 'difer_time', 'sample' -->
             <div class="card-body">
             <!-- form start -->
-            <form role="form" action="{{ route('learning.store')}}" method="POST">
+            <form role="form" action="{{ route('statisticalsensor.store')}}" method="POST">
               @csrf
               <div class="card-body">
                 <div class="form-group">
-                  <label for="statistical_id">Estadistico Id</label>
-                  <input type="text" class="form-control" name="statistical_id" id="statistical_id"  placeholder="Introduce estadistico id" required>
+                  <label for="sensor_id">Sensor Id</label>
+                  <input type="text" class="form-control" name="sensor_id" id="sensor_id"  placeholder="Introduce estadistico id" required>
                 </div>
                 <div class="form-group">
                   <label for="elements">Elementos</label>
@@ -71,7 +71,7 @@
               <!-- /.card-body -->
 
               <div class="card-footer">
-                <a href="{{ route('learning.index') }}" class="btn btn-default">Cancelar</a>
+                <a href="{{ route('statisticalsensor.index') }}" class="btn btn-default">Cancelar</a>
                 <button type="submit" class="btn btn-success pull-right" >Enviar</button>
               </div>
             </form>

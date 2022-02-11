@@ -31,12 +31,12 @@
         <div class="col-12">
           <div class="card card-primary card-outline">
             <div class="card-header">
-              <h3 class="card-title">Predicciones</h3>
-              <a class="btn btn-xs btn-success float-right" href="{{ route('learning.create') }}" role="button"><span class="fas fa-plus"></span></a>
+              <h3 class="card-title">Predicciones de Peticiones</h3>
+              <a class="btn btn-xs btn-success float-right" href="{{ route('learningrequest.create') }}" role="button"><span class="fas fa-plus"></span></a>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <table id="learningTable" class="table table-bordered table-striped">
+              <table id="learningRequestTable" class="table table-bordered table-striped">
               <thead>
                 <!-- 'id', 'statistical_id', 'elements', 'start_time', 'finish_time', 'total_time', 'difer_time', 'sample' -->
                 <tr>
@@ -54,29 +54,29 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($learnings as $learning)
+                @foreach($learningrequests as $learningrequest)
                 <tr>
-                    <td>{{ $learning->id }}</td>
-                    <td>{{ $learning->statistical_id }}</td>
-                    <td>{{ $learning->elements }}</td>
-                    <td>{{ $learning->start_time }}</td>
-                    <td>{{ $learning->finish_time }}</td>
-                    <td>{{ $learning->total_time }}</td>
-                    <td>{{ $learning->difer_time }}</td>
-                    <td><a href="" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#ModalSt{{$learning->id}}"><span>Datos-Muestra</span></a>
+                    <td>{{ $learningrequest->id }}</td>
+                    <td>{{ $learningrequest->statistical_request_id }}</td>
+                    <td>{{ $learningrequest->elements }}</td>
+                    <td>{{ $learningrequest->start_time }}</td>
+                    <td>{{ $learningrequest->finish_time }}</td>
+                    <td>{{ $learningrequest->total_time }}</td>
+                    <td>{{ $learningrequest->difer_time }}</td>
+                    <td><a href="" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#ModalSt{{$learningrequest->id}}"><span>Datos-Muestra</span></a>
                     <!------ ESTE ES EL MODAL QUE SE MUESTRA AL DAR CLICK EN EL BOTON PARA VER ------>
-                    <div class="modal fade" id="ModalSt{{$learning->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal fade" id="ModalSt{{$learningrequest->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                       <div class="modal-dialog modal-dialog-centered" role="document">
                       <div class="modal-content">
                       <div class="modal-header d-flex justify-content-center">
-                        <h5 class="modal-title" id="exampleModalCenterTitle">Id-Muestra ({{$learning->id}})</h5>
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Id-Muestra ({{$learningrequest->id}})</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
                       <div class="modal-body">
                           <div class="modal-body" style="text-align: center">
-                            <a><p class="text-center">{{ $learning->sample }}</p></a>
+                            <a><p class="text-center">{{ $learningrequest->sample }}</p></a>
                           </div>
                       </div>
                       <div class="modal-footer d-flex justify-content-center">
@@ -87,18 +87,18 @@
                       </div>
                     <!--fin modal-->
                     </td>
-                   {{--  <td>{{ $learning->created_at }}</td> --}}
-                   {{-- <td>{{ $learning->updated_at }}</td> --}}
+                   {{--  <td>{{ $learningrequest->created_at }}</td> --}}
+                   {{-- <td>{{ $learningrequest->updated_at }}</td> --}}
                     <td>
-                      <form role="form" action="{{ route('learning.destroy',$learning->id) }}" method="POST">
-                      <a class="btn btn-primary btn-xs" href="{{ route('learning.chart',$learning->id) }}" role="button"><span class="fa fa-chart-pie"></span></a>
-                      <a class="btn btn-info btn-xs" href="{{ route('learning.show',$learning->id) }}" role="button"><span class="fa fa-eye"></span></a> 
-                      <a class="btn btn-warning btn-xs"  href="{{ route('learning.edit',$learning->id) }}" role="button"><span class="fa fa-pen"></span></a>
+                      <form role="form" action="{{ route('learningrequest.destroy',$learningrequest->id) }}" method="POST">
+                      <a class="btn btn-primary btn-xs" href="{{ route('learningrequest.chart',$learningrequest->id) }}" role="button"><span class="fa fa-chart-pie"></span></a>
+                      <a class="btn btn-info btn-xs" href="{{ route('learningrequest.show',$learningrequest->id) }}" role="button"><span class="fa fa-eye"></span></a> 
+                      <a class="btn btn-warning btn-xs"  href="{{ route('learningrequest.edit',$learningrequest->id) }}" role="button"><span class="fa fa-pen"></span></a>
                       @csrf
                       @method('DELETE')
-                      <a href="" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#exampleModalCenter{{$learning->id}}"><span class="fas fa-trash"></span></a>
+                      <a href="" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#exampleModalCenter{{$learningrequest->id}}"><span class="fas fa-trash"></span></a>
                       <!------ ESTE ES EL MODAL QUE SE MUESTRA AL DAR CLICK EN EL BOTON "ELIMINAR" ------>
-                      <div class="modal fade" id="exampleModalCenter{{$learning->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                      <div class="modal fade" id="exampleModalCenter{{$learningrequest->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                       <div class="modal-dialog modal-dialog-centered" role="document">
                       <div class="modal-content">
                       <div class="modal-header d-flex justify-content-center">
@@ -112,7 +112,7 @@
                             <a><img src="{{ asset('storage/Images/Warning.JPG') }}" alt="" title=""  text-align="center" /></a>
                            </div>
                            <br>
-                          <p class="text-center">Eliminarás el registro ( <b>{{$learning->id}}</b> ) seguro?</p>
+                          <p class="text-center">Eliminarás el registro ( <b>{{$learningrequest->id}}</b> ) seguro?</p>
                       </div>
                       <div class="modal-footer d-flex justify-content-center">
                             <button type="button" class="btn btn-info" data-dismiss="modal">Cancelar</button>
@@ -165,7 +165,7 @@
 @toastr_render
 <script>
   $(function () {
-     $('#learningTable').DataTable({  
+     $('#learningRequestTable').DataTable({  
       'paging'      : true,
       'lengthChange': true,
       'searching'   : true,

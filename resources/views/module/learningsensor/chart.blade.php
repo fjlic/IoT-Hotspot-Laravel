@@ -31,9 +31,9 @@
         <div class="col-12">
             <div class="card card-success card-outline">
             <div class="card-header">
-              <h3 class="card-title">Grafica Muestra Aplicando Regrecion Lineal</h3>
+              <h3 class="card-title">Grafica Muestra Aplicando Regrecion Lineal para Sensores</h3>
               <div class="card-tools">
-                <a class="btn btn-tool"  href="{{ route('learning.index') }}" ><span class="fas fa-arrow-left"></span></a>
+                <a class="btn btn-tool"  href="{{ route('learningsensor.index') }}" ><span class="fas fa-arrow-left"></span></a>
                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
                   <i class="fas fa-minus"></i>
                 </button>

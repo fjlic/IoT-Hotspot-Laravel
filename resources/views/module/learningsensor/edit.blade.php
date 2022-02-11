@@ -31,49 +31,49 @@
         <div class="col-12">
           <div class="card card-warning card-outline">
             <div class="card-header">
-              <h3 class="card-title">Editar Prediccion</h3>
+              <h3 class="card-title">Editar Prediccion de Sensores</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
             <!-- form start -->
-            <form role="form" action="{{ route('learning.update',$learning->id) }}" method="POST">
+            <form role="form" action="{{ route('learningsensor.update',$learningsensor->id) }}" method="POST">
             @csrf
             @method('PUT')
               <div class="card-body">
                 <!-- 'id', 'statistical_id', 'elements', 'start_time', 'finish_time', 'total_time', 'difer_time', 'sample' -->
                 <div class="form-group">
-                  <label for="statistical_id">Sensor Id</label>
-                  <input type="text" class="form-control" name="statistical_id" id="statistical_id"  placeholder="Introduce id estadistico" required value="{{ $learning->statistical_id }}" />
+                  <label for="statistical_sensor_id">Sensor Id</label>
+                  <input type="text" class="form-control" name="statistical_sensor_id" id="statistical_sensor_id"  placeholder="Introduce id estadistico" required value="{{ $learningsensor->statistical_sensor_id }}" />
                 </div>
                 <div class="form-group">
                   <label for="elements">Elementos</label>
-                  <input type="text" class="form-control" name="elements" id="elements"  placeholder="Introduce elementos" required value="{{ $learning->elements }}" />
+                  <input type="text" class="form-control" name="elements" id="elements"  placeholder="Introduce elementos" required value="{{ $learningsensor->elements }}" />
                 </div>
                 <div class="form-group">
                   <label for="start_time">Hora Inicial</label>
-                  <input type="text" class="form-control" name="start_time" id="start_time"  placeholder="Introduce hora de inicio" required value="{{ $learning->start_time }}" />
+                  <input type="text" class="form-control" name="start_time" id="start_time"  placeholder="Introduce hora de inicio" required value="{{ $learningsensor->start_time }}" />
                 </div>
                 <div class="form-group">
                   <label for="finish_time">Hora Fianl</label>
-                  <input type="text" class="form-control" name="finish_time" id="finish_time"  placeholder="Introduce hora de fin" required value="{{ $learning->finish_time }}" />
+                  <input type="text" class="form-control" name="finish_time" id="finish_time"  placeholder="Introduce hora de fin" required value="{{ $learningsensor->finish_time }}" />
                 </div>
                 <div class="form-group">
                   <label for="total_time">Tiempo Total</label>
-                  <input type="text" class="form-control" name="total_time" id="total_time"  placeholder="Introduce hora total" required value="{{ $learning->total_time }}" />
+                  <input type="text" class="form-control" name="total_time" id="total_time"  placeholder="Introduce hora total" required value="{{ $learningsensor->total_time }}" />
                 </div>
                 <div class="form-group">
                   <label for="difer_time">Tiempo desface (+/-)</label>
-                  <input type="text" class="form-control" name="difer_time" id="difer_time"  placeholder="Introduce hora de desface" required value="{{ $learning->difer_time }}" />
+                  <input type="text" class="form-control" name="difer_time" id="difer_time"  placeholder="Introduce hora de desface" required value="{{ $learningsensor->difer_time }}" />
                 </div>
                 <div class="form-group">
                   <label for="sample">Muestra</label>
-                  <textarea class="form-control" name="sample" id="sample" required value="{{ $learning->sample }}">{{ $learning->sample }}</textarea>
+                  <textarea class="form-control" name="sample" id="sample" required value="{{ $learningsensor->sample }}">{{ $learningsensor->sample }}</textarea>
                 </div>
               </div>
               <!-- /.card-body -->
 
               <div class="card-footer">
-                <a href="{{ route('learning.index') }}" class="btn btn-default">Cancelar</a>
+                <a href="{{ route('learningsensor.index') }}" class="btn btn-default">Cancelar</a>
                 <button type="submit" class="btn btn-warning pull-right" >Enviar</button>
               </div>
             </form>

@@ -33,11 +33,11 @@
             <div class="card-header">
               <h3 class="card-title">Muestras Estadistico Sensor</h3>
               {{--  <h3 class="card-title">Samples Statistical Sensor</h3>  --}}
-              <a class="btn btn-xs btn-success float-right" href="{{ route('statistical.create') }}" role="button"><span class="fas fa-plus"></span></a>
+              <a class="btn btn-xs btn-success float-right" href="{{ route('statisticalsensor.create') }}" role="button"><span class="fas fa-plus"></span></a>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <table id="statisticalTable" class="table table-bordered table-striped">
+              <table id="statisticalSensorTable" class="table table-bordered table-striped">
               <thead>
                  <!-- /.card-header 'id', 'estimate_proxy_size', 'development_hours' -->
                 <tr>
@@ -55,29 +55,29 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($statisticals as $statistical)
+                @foreach($statisticalsensors as $statisticalsensor)
                 <tr>
-                    <td>{{ $statistical->id }}</td>
-                    <td>{{ $statistical->sensor_id }}</td>
-                    <td>{{ $statistical->elements }}</td>
-                    <td>{{ $statistical->start_time }}</td>
-                    <td>{{ $statistical->finish_time }}</td>
-                    <td>{{ $statistical->total_time }}</td>
-                    <td>{{ $statistical->difer_time }}</td>
-                    <td><a href="" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#ModalSt{{$statistical->id}}"><span>Datos-Muestra</span></a>
+                    <td>{{ $statisticalsensor->id }}</td>
+                    <td>{{ $statisticalsensor->sensor_id }}</td>
+                    <td>{{ $statisticalsensor->elements }}</td>
+                    <td>{{ $statisticalsensor->start_time }}</td>
+                    <td>{{ $statisticalsensor->finish_time }}</td>
+                    <td>{{ $statisticalsensor->total_time }}</td>
+                    <td>{{ $statisticalsensor->difer_time }}</td>
+                    <td><a href="" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#ModalSt{{$statisticalsensor->id}}"><span>Datos-Muestra</span></a>
                     <!------ ESTE ES EL MODAL QUE SE MUESTRA AL DAR CLICK EN EL BOTON "ELIMINAR" ------>
-                    <div class="modal fade" id="ModalSt{{$statistical->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal fade" id="ModalSt{{$statisticalsensor->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                       <div class="modal-dialog modal-dialog-centered" role="document">
                       <div class="modal-content">
                       <div class="modal-header d-flex justify-content-center">
-                        <h5 class="modal-title" id="exampleModalCenterTitle">Datos de la Muestra ({{$statistical->id}})</h5>
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Datos de la Muestra ({{$statisticalsensor->id}})</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
                       <div class="modal-body">
                           <div class="modal-body" style="text-align: center">
-                            <a><p class="text-center">{{ $statistical->sample }}</p></a>
+                            <a><p class="text-center">{{ $statisticalsensor->sample }}</p></a>
                           </div>
                       </div>
                       <div class="modal-footer d-flex justify-content-center">
@@ -88,17 +88,17 @@
                       </div>
                     <!--fin modal-->
                     </td>
-                   {{-- <td>{{ $statistical->created_at }}</td> --}}
-                   {{-- <td>{{ $statistical->updated_at }}</td> --}}
+                   {{-- <td>{{ $statisticalsensor->created_at }}</td> --}}
+                   {{-- <td>{{ $statisticalsensor->updated_at }}</td> --}}
                     <td>
-                      <form role="form" action="{{ route('statistical.destroy',$statistical->id) }}" method="POST">
-                      <a class="btn btn-info btn-xs" href="{{ route('statistical.show',$statistical->id) }}" role="button"><span class="fas fa-eye"></span></a> 
-                      <a class="btn btn-warning btn-xs"  href="{{ route('statistical.edit',$statistical->id) }}" role="button"><span class="fas fa-pen"></span></a>
+                      <form role="form" action="{{ route('statisticalsensor.destroy',$statisticalsensor->id) }}" method="POST">
+                      <a class="btn btn-info btn-xs" href="{{ route('statisticalsensor.show',$statisticalsensor->id) }}" role="button"><span class="fas fa-eye"></span></a> 
+                      <a class="btn btn-warning btn-xs"  href="{{ route('statisticalsensor.edit',$statisticalsensor->id) }}" role="button"><span class="fas fa-pen"></span></a>
                       @csrf
                       @method('DELETE')
-                      <a href="" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#exampleModalCenter{{$statistical->id}}"><span class="fas fa-trash"></span></a>
+                      <a href="" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#exampleModalCenter{{$statisticalsensor->id}}"><span class="fas fa-trash"></span></a>
                       <!------ ESTE ES EL MODAL QUE SE MUESTRA AL DAR CLICK EN EL BOTON "ELIMINAR" ------>
-                      <div class="modal fade" id="exampleModalCenter{{$statistical->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                      <div class="modal fade" id="exampleModalCenter{{$statisticalsensor->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                       <div class="modal-dialog modal-dialog-centered" role="document">
                       <div class="modal-content">
                       <div class="modal-header d-flex justify-content-center">
@@ -112,7 +112,7 @@
                             <a><img src="{{ asset('storage/Images/Warning.JPG') }}" alt="" title=""  text-align="center" /></a>
                            </div>
                            <br>
-                          <p class="text-center">Eliminarás el registro ( <b>{{$statistical->id}}</b> ) seguro?</p>
+                          <p class="text-center">Eliminarás el registro ( <b>{{$statisticalsensor->id}}</b> ) seguro?</p>
                       </div>
                       <div class="modal-footer d-flex justify-content-center">
                             <button type="button" class="btn btn-info" data-dismiss="modal">Cancelar</button>
@@ -158,12 +158,12 @@
     <div class="col-12">
       <div class="card card-primary card-outline">
         <div class="card-header">
-          <h3 class="card-title">Resultados Estadisticos</h3>
+          <h3 class="card-title">Resultados Estadisticos de Sensores</h3>
           {{--  <h3 class="card-title">Statistical Results</h3>  --}}
         </div>
         <!-- /.card-header -->
         <div class="card-body">
-          <table id="statisticalTable2" class="table table-bordered table-striped">
+          <table id="statisticalSensorTable2" class="table table-bordered table-striped">
           <thead>
              <!-- /.card-header 'id', 'estimate_proxy_size', 'development_hours' -->
             <tr>
@@ -178,16 +178,16 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($statisticals as $statistical)
+            @foreach($statisticalsensors as $statisticalsensor)
             <tr>
-                <td>{{ $statistical->id }}</td>
-                {{-- <td>{{ $statistical->sensor_id }}</td>  --}}
-                <td>{{ $statistical->pearsoncorrelation }}</td>
-                <td>{{ $statistical->meanarithmetic }}</td>
-                <td>{{ $statistical->meanmedian }}</td>
-                <td>{{ $statistical->meanmode }}</td>
-                <td>{{ $statistical->standartdesviation }}</td>
-                {{-- <td>{{ $statistical->updated_at }}</td> --}}
+                <td>{{ $statisticalsensor->id }}</td>
+                {{-- <td>{{ $statisticalsensor->sensor_id }}</td>  --}}
+                <td>{{ $statisticalsensor->pearsoncorrelation }}</td>
+                <td>{{ $statisticalsensor->meanarithmetic }}</td>
+                <td>{{ $statisticalsensor->meanmedian }}</td>
+                <td>{{ $statisticalsensor->meanmode }}</td>
+                <td>{{ $statisticalsensor->standartdesviation }}</td>
+                {{-- <td>{{ $statisticalsensor->updated_at }}</td> --}}
             </tr>
             @endforeach
             </tbody>
@@ -230,7 +230,7 @@
 
 <script>
   $(function () {
-     $('#statisticalTable').DataTable({  
+     $('#statisticalSensorTable').DataTable({  
       'paging'      : true,
       'lengthChange': true,
       'searching'   : true,
@@ -247,7 +247,7 @@
 
 <script>
   $(function () {
-     $('#statisticalTable2').DataTable({  
+     $('#statisticalSensorTable2').DataTable({  
       'paging'      : true,
       'lengthChange': true,
       'searching'   : true,

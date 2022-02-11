@@ -13,7 +13,7 @@ class LearningRequest extends Model
      * @var array
      */
     protected $fillable = [
-        'id', 'statistical_id', 'elements', 'start_time', 'finish_time', 'total_time', 'difer_time', 'sample',
+        'id', 'statistical_request_id', 'elements', 'start_time', 'finish_time', 'total_time', 'difer_time', 'sample',
     ];
     
     /**
