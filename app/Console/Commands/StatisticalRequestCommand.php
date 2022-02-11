@@ -1,21 +1,44 @@
 <?php
 
-namespace Database\Seeders;
+namespace App\Console\Commands;
 
-use Illuminate\Database\Seeder;
-use App\Models\Statistical;
+use Illuminate\Console\Command;
+use App\Models\StatisticalRequest;
 use App\Models\HistorialSensor;
 use App\Models\Sensor;
 
-class AddStatisticalTableSeeder extends Seeder
+class StatisticalRequestCommand extends Command
 {
     /**
-     * Run the database seeds.
-     *  Part Name : SED
-     * * Part Size : 5.1
+     * The name and signature of the console command.
+     *
+     * @var string
+     */
+    protected $signature = 'statistical:request';
+
+    /**
+     * The console command description.
+     *
+     * @var string
+     */
+    protected $description = 'Command to consolidate the statistics of requests';
+
+    /**
+     * Create a new command instance.
+     *
      * @return void
      */
-    public function run()
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+    /**
+     * Execute the console command.
+     *
+     * @return int
+     */
+    public function handle()
     {
         $inc = 1;
         $process_chunk = 10;
@@ -24,13 +47,14 @@ class AddStatisticalTableSeeder extends Seeder
         $time_schedule = 600;
         $time_lag = 86400;
         $sensors = Sensor::all();
-        $id_continued = Statistical::all();
+        $id_continued = StatisticalRequest::all();
         if($id_continued->isNotEmpty())
         {
             $id_tmp = $id_continued->last();
             $inc = $id_tmp->id + 1;
         }
-        foreach ($sensors as $key1 => $sensor) {
+        foreach ($sensors as $key1 => $sensor) 
+        {
             for ($i=1; $i <= $process_chunk; $i++) {//16 
                 $data_his = HistorialSensor::where('sensor_id', $sensor->id)
                 ->where('stat', 0)
@@ -38,11 +62,11 @@ class AddStatisticalTableSeeder extends Seeder
                 ->take($adjust_value)->get();
                 if ($data_his->count()==$adjust_value) 
                 {
-                    $statistical = new Statistical();
-                    $statistical->id = $inc++;
+                    $statisticalrequest = new StatisticalRequest();
+                    $statisticalrequest->id = $inc++;
                     $temp_start = $data_his->first();
-                    $statistical->sensor_id = $temp_start->sensor_id;
-                    $statistical->start_time = $temp_start->created_at;
+                    $statisticalrequest->sensor_id = $temp_start->sensor_id;
+                    $statisticalrequest->start_time = $temp_start->created_at;
                     $tmp_sample = [[]];
                     foreach ($data_his as $key2 => $data) 
                     {
@@ -65,21 +89,22 @@ class AddStatisticalTableSeeder extends Seeder
                         }
                         
                     }
-                    $statistical->elements = $value_sample;
-                    $statistical->sample =  json_encode($tmp_sample);
+                    $statisticalrequest->elements = $value_sample;
+                    $statisticalrequest->sample =  json_encode($tmp_sample);
                     $temp_finish = $data_his->last();
-                    $statistical->finish_time = $temp_finish->created_at;
+                    $statisticalrequest->finish_time = $temp_finish->created_at;
                     //convertimos la fecha 1 a objeto Carbon
                     $carbon1 = new \Carbon\Carbon($temp_start->created_at);
                     //convertimos la fecha 2 a objeto Carbon
                     $carbon2 = new \Carbon\Carbon($temp_finish->created_at);
                     //de esta manera sacamos la diferencia en minutos
                     $secondsDiff=$carbon1->diffInSeconds($carbon2);
-                    $statistical->total_time = $secondsDiff;
-                    $statistical->difer_time = ($secondsDiff-$time_lag);
-                    $statistical->save();
+                    $statisticalrequest->total_time = $secondsDiff;
+                    $statisticalrequest->difer_time = ($secondsDiff-$time_lag);
+                    $statisticalrequest->save();
                 }   
             }
         }
+    return Command::SUCCESS;
     }
 }

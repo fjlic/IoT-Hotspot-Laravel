@@ -1,70 +1,47 @@
 <?php
 
-namespace App\Console\Commands;
+namespace Database\Seeders;
 
-use Illuminate\Console\Command;
+use Illuminate\Database\Seeder;
 use Phpml\Association\Apriori;
 use Phpml\Classification\SVC;
 use Phpml\Regression\SVR;
-use Phpml\Math\Statistic\Mean;
 use Phpml\Regression\LeastSquares;
+use Phpml\Math\Statistic\Mean;
 use Phpml\SupportVectorMachine\Kernel;
-use App\Models\StatisticalSensor;
-use App\Models\LearningSensor;
+use App\Models\StatisticalRequest;
+use App\Models\LearningRequest;
 
-class LearningSensorCommand extends Command
+class AddLearningRequestTableSeeder extends Seeder
 {
     /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
-    protected $signature = 'learning:sensor';
-
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
-    protected $description = 'Command consolidate the sample for linear regression';
-
-    /**
-     * Create a new command instance.
+     * Run the database seeds.
      *
      * @return void
      */
-    public function __construct()
+    public function run()
     {
-        parent::__construct();
-    }
-
-    /**
-     * Execute the console command.
-     *
-     * @return int
-     */
-    public function handle()
-    {
+        //
         $inc = 1;
         $time_schedule = 600;
         $time_lag = 86400;
-        $id_continued = LearningSensor::all();
+        $id_continued = LearningRequest::all();
         if($id_continued->isNotEmpty())
         {
             $id_tmp = $id_continued->last();
             $inc = $id_tmp->id + 1;
         }
-        $statisticalsensors = StatisticalSensor::where('stat', 0)->get();
-        foreach ($statisticalsensors as $key => $statisticalsensor) {
-            $learning = new LearningSensor();
+        $statisticalrequests = StatisticalRequest::where('stat', 0)->get();
+        foreach ($statisticalrequests as $key => $statisticalrequest) {
+            $learning = new LearningRequest();
             $samples = [[]];
             $targets = [];
             $tmp_sample = [[]]; 
-            foreach (json_decode($statisticalsensor->sample) as $key2 => $json) {
+            foreach (json_decode($statisticalrequest->sample) as $key2 => $json) {
              $samples[$key2] = [$key2];
              $targets[$key2] = $json->pass_time;
             }
-            $tmp_start = new \Carbon\Carbon($statisticalsensor->finish_time);
+            $tmp_start = new \Carbon\Carbon($statisticalrequest->finish_time);
             $num_inc = 0;
             $regression = new LeastSquares();
             $regression->train($samples, $targets); 
@@ -94,20 +71,19 @@ class LearningSensorCommand extends Command
                 $num_inc++;  
             }
             $tmp_finish = $tmp_start;
-            $tmp_tr = new \Carbon\Carbon($statisticalsensor->finish_time);
+            $tmp_tr = new \Carbon\Carbon($statisticalrequest->finish_time);
             $secondsDiff = $tmp_tr->diffInSeconds($tmp_finish);
             $learning->id = $inc++;
-            $learning->statistical_sensor_id = $statisticalsensor->id;
-            $learning->elements = $statisticalsensor->elements;
-            $learning->start_time = $statisticalsensor->finish_time;
+            $learning->statistical_request_id = $statisticalrequest->id;
+            $learning->elements = $statisticalrequest->elements;
+            $learning->start_time = $statisticalrequest->finish_time;
             $learning->finish_time = $tmp_start;
             $learning->total_time = $secondsDiff;
             $learning->difer_time = ($secondsDiff-$time_lag);
             $learning->sample = json_encode($tmp_sample);
             $learning->save();
-            $statisticalsensor->stat = 1;
-            $statisticalsensor->save();
+            $statisticalrequest->stat = 1;
+            $statisticalrequest->save();
         }
-        return Command::SUCCESS;
     }
 }

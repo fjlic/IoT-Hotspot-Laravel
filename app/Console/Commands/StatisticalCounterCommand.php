@@ -14,7 +14,7 @@ class StatisticalCounterCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'counter:statistical';
+    protected $signature = 'statistical:counter';
 
     /**
      * The console command description.

@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Learning extends Model
+class LearningSensor extends Model
 {
     /**
      * The attributes that are mass assignable.

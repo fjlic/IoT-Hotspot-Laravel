@@ -9,10 +9,10 @@ use Phpml\Regression\SVR;
 use Phpml\Regression\LeastSquares;
 use Phpml\Math\Statistic\Mean;
 use Phpml\SupportVectorMachine\Kernel;
-use App\Models\Statistical;
-use App\Models\Learning;
+use App\Models\StatisticalSensor;
+use App\Models\LearningSensor;
 
-class AddLearningTableSeeder extends Seeder
+class AddLearningSensorTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -25,23 +25,23 @@ class AddLearningTableSeeder extends Seeder
         $inc = 1;
         $time_schedule = 600;
         $time_lag = 86400;
-        $id_continued = Learning::all();
+        $id_continued = LearningSensor::all();
         if($id_continued->isNotEmpty())
         {
             $id_tmp = $id_continued->last();
             $inc = $id_tmp->id + 1;
         }
-        $statisticals = Statistical::where('stat', 0)->get();
-        foreach ($statisticals as $key => $statistical) {
-            $learning = new Learning();
+        $statisticalsensors = StatisticalSensor::where('stat', 0)->get();
+        foreach ($statisticalsensors as $key => $statisticalsensor) {
+            $learning = new LearningSensor();
             $samples = [[]];
             $targets = [];
             $tmp_sample = [[]]; 
-            foreach (json_decode($statistical->sample) as $key2 => $json) {
+            foreach (json_decode($statisticalsensor->sample) as $key2 => $json) {
              $samples[$key2] = [$key2];
              $targets[$key2] = $json->pass_time;
             }
-            $tmp_start = new \Carbon\Carbon($statistical->finish_time);
+            $tmp_start = new \Carbon\Carbon($statisticalsensor->finish_time);
             $num_inc = 0;
             $regression = new LeastSquares();
             $regression->train($samples, $targets); 
@@ -71,19 +71,19 @@ class AddLearningTableSeeder extends Seeder
                 $num_inc++;  
             }
             $tmp_finish = $tmp_start;
-            $tmp_tr = new \Carbon\Carbon($statistical->finish_time);
+            $tmp_tr = new \Carbon\Carbon($statisticalsensor->finish_time);
             $secondsDiff = $tmp_tr->diffInSeconds($tmp_finish);
             $learning->id = $inc++;
-            $learning->statistical_id = $statistical->id;
-            $learning->elements = $statistical->elements;
-            $learning->start_time = $statistical->finish_time;
+            $learning->statistical_sensor_id = $statisticalsensor->id;
+            $learning->elements = $statisticalsensor->elements;
+            $learning->start_time = $statisticalsensor->finish_time;
             $learning->finish_time = $tmp_start;
             $learning->total_time = $secondsDiff;
             $learning->difer_time = ($secondsDiff-$time_lag);
             $learning->sample = json_encode($tmp_sample);
             $learning->save();
-            $statistical->stat = 1;
-            $statistical->save();
+            $statisticalsensor->stat = 1;
+            $statisticalsensor->save();
         }
     }
 }

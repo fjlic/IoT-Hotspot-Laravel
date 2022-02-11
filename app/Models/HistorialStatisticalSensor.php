@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class HistorialStatistical extends Model
+class HistorialStatisticalSensor extends Model
 {
     //
 }

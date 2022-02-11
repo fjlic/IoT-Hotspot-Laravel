@@ -22,4 +22,10 @@ class ApiToken extends Model
     {
        return Str::random(64); 
     }
+
+    function random_float($min=16, $max=25, $decimals=2){
+      $div = pow(10, $decimals);
+      // Syntax: mt_rand(min, max);
+      return mt_rand($min * $div, $max * $div) / $div;
+    }
 }

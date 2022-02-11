@@ -23,9 +23,9 @@ class DatabaseSeeder extends Seeder
         $this->call(AddQrTableSeeder::class);
         $this->call(AddNfcTableSeeder::class);
         $this->call(AddSensorTableSeeder::class);
-        $this->call(AddTableProbeStimatingSeeder::class);
-        $this->call(AddClassNameTableSeeder::class);
-        $this->call(AddChapterTableSeeder::class);
+        //$this->call(AddTableProbeStimatingSeeder::class);
+        //$this->call(AddClassNameTableSeeder::class);
+        //$this->call(AddChapterTableSeeder::class);
         $this->call(AddFileTableSeeder::class);
         $this->call(AddCounterTableSeeder::class);
         $this->call(AddHistorialQrTableSeeder::class);
@@ -33,8 +33,10 @@ class DatabaseSeeder extends Seeder
         $this->call(AddHistorialCounterTableSeeder::class);
         $this->call(AddHistorialSensorTableSeeder::class);
         $this->call(AddStatisticalCounterTableSeeder::class);
-        $this->call(AddStatisticalTableSeeder::class);    
-        $this->call(AddLearningTableSeeder::class);
+        $this->call(AddStatisticalRequestTableSeeder::class);    
+        $this->call(AddStatisticalSensorTableSeeder::class);    
+        $this->call(AddLearningRequestTableSeeder::class);
+        $this->call(AddLearningSensorTableSeeder::class);
         $this->call(AddAlertTableSeeder::class);
         
     }

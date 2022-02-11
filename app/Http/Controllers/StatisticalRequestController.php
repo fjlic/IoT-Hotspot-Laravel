@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Statistical;
+use App\Models\StatisticalRequest;
 use Phpml\Math\Statistic\StandardDeviation;
 use Phpml\Math\Statistic\Mean;
 use Phpml\Math\Statistic\Correlation;
 use Phpml\Regression\LeastSquares;
-
 use Illuminate\Http\Request;
 
-class StatisticalController extends Controller
+class StatisticalRequestController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -31,22 +30,22 @@ class StatisticalController extends Controller
     public function index()
     {
         //
-        $statisticals = Statistical::all();
-        foreach ($statisticals as $key1 => $statistical) {
+        $statisticalrequests = StatisticalRequest::all();
+        foreach ($statisticalrequests as $key1 => $statisticalrequest) {
             $x = [];
             $y = []; 
-           foreach (json_decode($statistical->sample) as $key2 => $json) {
+           foreach (json_decode($statisticalrequest->sample) as $key2 => $json) {
             $x[$key2] = $key2;
             $y[$key2] = $json->pass_time;
            }
-           $statistical->pearsoncorrelation = Correlation::pearson($x, $y);
-           $statistical->meanarithmetic = Mean::arithmetic([reset($y), end($y)]);
-           $statistical->meanmedian = Mean::median($y);
-           $statistical->meanmode = Mean::mode($y);
+           $statisticalrequest->pearsoncorrelation = Correlation::pearson($x, $y);
+           $statisticalrequest->meanarithmetic = Mean::arithmetic([reset($y), end($y)]);
+           $statisticalrequest->meanmedian = Mean::median($y);
+           $statisticalrequest->meanmode = Mean::mode($y);
            sort($y);
-           $statistical->standartdesviation = StandardDeviation::population($y);
+           $statisticalrequest->standartdesviation = StandardDeviation::population($y);
         }
-        return view('module.statistical.index',compact('statisticals'));
+        return view('module.statisticalrequest.index',compact('statisticalrequests'));
     }
 
     /**
@@ -57,7 +56,7 @@ class StatisticalController extends Controller
     public function create()
     {
         //
-        return view('module.statistical.create');
+        return view('module.statisticalrequest.create');
     }
 
     /**
@@ -77,7 +76,7 @@ class StatisticalController extends Controller
             'difer_time'=>'required|string|max:100',
             'sample'=>'required|string',
         ]);
-        $statistical = new Statistical([
+        $statisticalrequest = new StatisticalRequest([
             'elements' => $request->get('elements'),
             'start_time' => $request->get('start_time'),
             'finish_time' => $request->get('finish_time'),
@@ -85,44 +84,44 @@ class StatisticalController extends Controller
             'difer_time' => $request->get('difer_time'),
             'sample' => $request->get('sample')
             ]);
-        $statistical->save();
-        //return redirect(/statistical)->with('success','Prueba probabilistica creada');
+        $statisticalrequest->save();
+        //return redirect(/statisticalrequest)->with('success','Prueba probabilistica creada');
         toastr()->success('Muestra probabilistica creada');
-        return redirect()->route('statistical.index');
+        return redirect()->route('statisticalrequest.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Statistical  $statistical
+     * @param  \App\StatisticalRequest  $statisticalrequest
      * @return \Illuminate\Http\Response
      */
-    public function show(Statistical $statistical)
+    public function show(StatisticalRequest $statisticalrequest)
     {
         //
-        return view('module.statistical.show', compact('statistical'));
+        return view('module.statisticalrequest.show', compact('statisticalrequest'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Statistical  $statistical
+     * @param  \App\StatisticalRequest  $statisticalrequest
      * @return \Illuminate\Http\Response
      */
-    public function edit(Statistical $statistical)
+    public function edit(StatisticalRequest $statisticalrequest)
     {
         //
-        return view('module.statistical.edit',compact('statistical'));
+        return view('module.statisticalrequest.edit',compact('statisticalrequest'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Statistical  $statistical
+     * @param  \App\StatisticalRequest  $statisticalrequest
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Statistical $statistical)
+    public function update(Request $request, StatisticalRequest $statisticalrequest)
     {
         //
         $request->validate([
@@ -133,24 +132,24 @@ class StatisticalController extends Controller
             'difer_time'=>'required|string|max:100',
             'sample'=>'required|string',
         ]);
-        $statistical_request = $request->all();
-        $statistical->update($statistical_request);
+        $statisticalrequest_request = $request->all();
+        $statisticalrequest->update($statisticalrequest_request);
         toastr()->warning('Prueba actualizada');
-        return redirect()->route('statistical.index');
+        return redirect()->route('statisticalrequest.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Statistical  $statistical
+     * @param  \App\StatisticalRequest  $statisticalrequest
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Statistical $statistical)
+    public function destroy(StatisticalRequest $statisticalrequest)
     {
         //
-        $statistical->delete();
-        //return reditec('/statistical'->with('success','Estadistico eliminado'));
+        $statisticalrequest->delete();
+        //return reditec('/statisticalrequest'->with('success','Estadistico eliminado'));
         toastr()->error('Estadistico eliminado');
-        return redirect()->route('statistical.index');
+        return redirect()->route('statisticalrequest.index');
     }
 }

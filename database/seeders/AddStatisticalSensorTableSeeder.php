@@ -1,44 +1,21 @@
 <?php
 
-namespace App\Console\Commands;
+namespace Database\Seeders;
 
-use Illuminate\Console\Command;
+use Illuminate\Database\Seeder;
 use App\Models\StatisticalSensor;
 use App\Models\HistorialSensor;
 use App\Models\Sensor;
 
-class StatisticalSensorCommand extends Command
+class AddStatisticalSensorTableSeeder extends Seeder
 {
     /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
-    protected $signature = 'statistical:sensor';
-
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
-    protected $description = 'Command to consolidate the statistics of sensors';
-
-    /**
-     * Create a new command instance.
-     *
+     * Run the database seeds.
+     *  Part Name : SED
+     * * Part Size : 5.1
      * @return void
      */
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
-    /**
-     * Execute the console command.
-     *
-     * @return int
-     */
-    public function handle()
+    public function run()
     {
         $inc = 1;
         $process_chunk = 10;
@@ -53,8 +30,7 @@ class StatisticalSensorCommand extends Command
             $id_tmp = $id_continued->last();
             $inc = $id_tmp->id + 1;
         }
-        foreach ($sensors as $key1 => $sensor) 
-        {
+        foreach ($sensors as $key1 => $sensor) {
             for ($i=1; $i <= $process_chunk; $i++) {//16 
                 $data_his = HistorialSensor::where('sensor_id', $sensor->id)
                 ->where('stat', 0)
@@ -105,6 +81,5 @@ class StatisticalSensorCommand extends Command
                 }   
             }
         }
-    return Command::SUCCESS;
     }
 }

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Learning;
-use App\Models\Statistical;
+use App\Models\LearningRequest;
+use App\Models\StatisticalRequest;
 use Illuminate\Http\Request;
 
-class LearningController extends Controller
+class LearningRequestController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -27,8 +27,8 @@ class LearningController extends Controller
     public function index()
     {
         //
-        $learnings = Learning::all();
-        return view('module.learning.index',compact('learnings'));
+        $learningrequests = LearningRequest::all();
+        return view('module.learningrequest.index',compact('learningrequests'));
     }
 
     /**
@@ -39,7 +39,7 @@ class LearningController extends Controller
     public function create()
     {
         //
-        return view('module.learning.create');
+        return view('module.learningrequest.create');
     }
 
     /**
@@ -62,7 +62,7 @@ class LearningController extends Controller
             'sample'=>'required|string',
             
         ]);
-        $learning = new Learning([
+        $learningrequest = new LearningResquest([
             'statistical_id' => $request->get('statistical_id'),
             'elements' => $request->get('elements'),
             'start_time' => $request->get('start_time'),
@@ -71,44 +71,44 @@ class LearningController extends Controller
             'difer_time' => $request->get('difer_time'),
             'sample' => $request->get('sample')
             ]);
-        $learning->save();
-        //return redirect(/learning)->with('success','Muestra prediccion creada');
+        $learningrequest->save();
+        //return redirect(/learningrequest)->with('success','Muestra prediccion creada');
         toastr()->success('Muestra prediccion creada');
-        return redirect()->route('learning.index');
+        return redirect()->route('learningrequest.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Learning  $learning
+     * @param  \App\Learning  $learningrequest
      * @return \Illuminate\Http\Response
      */
-    public function show(Learning $learning)
+    public function show(LearningRequest $learningrequest)
     {
         //
-        return view('module.learning.show', compact('learning'));
+        return view('module.learningrequest.show', compact('learningrequest'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Learning  $learning
+     * @param  \App\Learning  $learningrequest
      * @return \Illuminate\Http\Response
      */
-    public function edit(Learning $learning)
+    public function edit(LearningRequest $learningrequest)
     {
         //
-        return view('module.learning.edit',compact('learning'));
+        return view('module.learningrequest.edit',compact('learningrequest'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Learning  $learning
+     * @param  \App\Learning  $learningrequest
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Learning $learning)
+    public function update(Request $request, LearningRequest $learningrequest)
     {
         //
         $request->validate([
@@ -120,25 +120,25 @@ class LearningController extends Controller
             'difer_time'=>'required|string|max:100',
             'sample'=>'required|string',
         ]);
-        $learning_request = $request->all();
-        $learning->update($learning_request);
+        $learningrequest_request = $request->all();
+        $learningrequest->update($learningrequest_request);
         toastr()->warning('Muestra actualizada');
-        return redirect()->route('learning.index');
+        return redirect()->route('learningrequest.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Learning  $learning
+     * @param  \App\LearningRequest  $learningrequest
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Learning $learning)
+    public function destroy(LearningRequest $learningrequest)
     {
         //
-        $learning->delete();
-        //return reditec('/learning'->with('success','Muestra eliminada'));
+        $learningrequest->delete();
+        //return reditec('/learningrequest'->with('success','Muestra eliminada'));
         toastr()->error('Muestra eliminada');
-        return redirect()->route('learning.index');
+        return redirect()->route('learningrequest.index');
     }
 
     /**
@@ -149,9 +149,9 @@ class LearningController extends Controller
     public function chart($id)
     {
         //
-        $learning = Learning::find($id);
-        $statistical = Statistical::find($learning->statistical_id);
-        $sample_1 = \Chart::title(['text' => 'Muestra '.$learning->id,])
+        $learningrequest = LearningRequest::find($id);
+        $statisticalrequest = StatisticalRequest::find($learningrequest->statistical_id);
+        $sample_1 = \Chart::title(['text' => 'Muestra '.$learningrequest->id,])
                           ->credits(['enabled' => false])
                           ->yaxis(['min' => 0])
                           ->xaxis(['min' => -0.5,'max' => 5.5])
@@ -167,7 +167,7 @@ class LearningController extends Controller
                                       'marker' => ['radius' => 4]
                                      ]])->display();
         //dd($sample1);
-        $sample_2 = \Chart::title(['text' => 'Muestra '.$statistical->id,])
+        $sample_2 = \Chart::title(['text' => 'Muestra '.$statisticalrequest->id,])
                           ->credits(['enabled' => false])
                           ->yaxis(['min' => 0])
                           ->xaxis(['min' => -0.5,'max' => 5.5])
@@ -185,6 +185,6 @@ class LearningController extends Controller
     //return view('module.learning.chart', ['vol1' => $vol1,]);
     return view('module.learning.chart')->with('sample_1',$sample_1)
                                         ->with('sample_2',$sample_2)
-                                        ->with('learning',$learning);
+                                        ->with('learning',$learningrequest);
     }
 }

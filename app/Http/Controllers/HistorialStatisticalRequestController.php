@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\HistorialStatistical;
+use App\Models\HistorialStatisticalRequest;
 use Illuminate\Http\Request;
 
-class HistorialStatisticalController extends Controller
+class HistorialStatisticalRequestController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class HistorialStatisticalController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\HistorialStatistical  $historialStatistical
+     * @param  \App\HistorialStatisticalRequest  $historialstatisticalrequest
      * @return \Illuminate\Http\Response
      */
-    public function show(HistorialStatistical $historialStatistical)
+    public function show(HistorialStatisticalRequest $historialstatisticalrequest)
     {
         //
     }
@@ -52,10 +52,10 @@ class HistorialStatisticalController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\HistorialStatistical  $historialStatistical
+     * @param  \App\HistorialStatisticalRequest  $historialstatisticalrequest
      * @return \Illuminate\Http\Response
      */
-    public function edit(HistorialStatistical $historialStatistical)
+    public function edit(HistorialStatisticalRequest $historialstatisticalrequest)
     {
         //
     }
@@ -64,10 +64,10 @@ class HistorialStatisticalController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\HistorialStatistical  $historialStatistical
+     * @param  \App\HistorialStatisticalRequest  $historialstatisticalrequest
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, HistorialStatistical $historialStatistical)
+    public function update(Request $request, HistorialStatisticalRequest $historialStatisticalrequest)
     {
         //
     }
@@ -75,10 +75,10 @@ class HistorialStatisticalController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\HistorialStatistical  $historialStatistical
+     * @param  \App\HistorialStatisticalRequest  $historialStatisticalrequest
      * @return \Illuminate\Http\Response
      */
-    public function destroy(HistorialStatistical $historialStatistical)
+    public function destroy(HistorialStatisticalRequest $historialStatisticalrequest)
     {
         //
     }

@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Statistical extends Model
+class StatisticalSensor extends Model
 {
+    use HasFactory;
     //
     /**
      * The attributes that are mass assignable.
@@ -14,7 +16,7 @@ class Statistical extends Model
      * @var array
      */
     protected $fillable = [
-        'id', 'sensor_id', 'elements', 'start_time', 'finish_time', 'total_time', 'difer_time', 'sample',
+        'id', 'counter_id', 'elements', 'start_time', 'finish_time', 'total_time', 'difer_time', 'sample',
     ];
     
     /**
@@ -33,5 +35,4 @@ class Statistical extends Model
      */
     protected $casts = [
     ];
-
 }
