@@ -6,8 +6,8 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use App\Alert;
-use App\HistorialSensor;
+use App\Models\Alert;
+use App\Models\HistorialSensor;
 
 class AlertSensorMail extends Mailable
 {
