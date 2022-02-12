@@ -32,10 +32,10 @@ class CreateCountersTable extends Migration
             $table->string('token')->nullable();
             $table->integer('type')->nullable();
             $table->string('text')->nullable();
-            $table->timestamps();
             $table->foreign('crd_id')->references('id')->on('crds')->onUpdate('cascade')->onDelete('cascade')->nullable();
             $table->foreign('erb_id')->references('id')->on('erbs')->onUpdate('cascade')->onDelete('cascade')->nullable();
             $table->foreign('nfc_id')->references('id')->on('nfcs')->onUpdate('cascade')->onDelete('cascade')->nullable();
+            $table->timestamps();
         });
     }
 

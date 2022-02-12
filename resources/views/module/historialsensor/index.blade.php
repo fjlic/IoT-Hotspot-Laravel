@@ -35,7 +35,7 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <table id="historialsensorTable" class="table table-bordered table-striped">
+              <table id="historialSensorTable" class="table table-bordered table-striped">
                 <thead>
                 <tr>
                   {{-- <th>Id</th>  --}}
@@ -228,7 +228,7 @@
 @toastr_render
 <script>
   $(function () {
-     $('#historialsensorTable').DataTable({  
+     $('#historialSensorTable').DataTable({  
       'paging'      : true,
       'lengthChange': true,
       'searching'   : true,

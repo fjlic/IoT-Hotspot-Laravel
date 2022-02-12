@@ -126,45 +126,6 @@ def conecta_wifi(ssid_1,password_1):
   print('Connection successful')
   print(station.ifconfig())
   
-def Activa_dispositivos():
- # Activacion  Billetero
- Activa_billetero()
- sleep(0.5)
- # Activacion Monedero_1 
- Activa_monedero(0x41)
- sleep(0.5)
-
- #Activa monedero 2
- Activa_monedero(0x42)
-
- 
- 
-
-
-
-def Activa_billetero():
-# Activacion  Billetero
-#qr.write(bytearray([0x02,0x3E])) # Activacion Billetero por Uart
- pin_spi_cs.off()              # Activacion Billetero por SPI
- spi.write(bytearray([0x40]))
- spi.write(bytearray([0x02]))
- spi.write(bytearray([0x02]))
- spi.write(bytearray([0x3E]))
- pin_spi_cs.on() 
-
-
-def Activa_monedero(num_monedero):
- pin_spi_cs.off()    # Activacion Monedero por SPI
- spi.write(bytearray([num_monedero]))
- spi.write(bytearray([0x06]))
- spi.write(bytearray([0x90]))
-
- spi.write(bytearray([0x05]))
- spi.write(bytearray([0x01]))
- spi.write(bytearray([0x03]))
- spi.write(bytearray([0x99]))
- spi.write(bytearray([0xFF]))
- pin_spi_cs.on()
 
 def obtener_buffer(num_buffer,num_buffer_2):
  global hola,band,suma_billetero,suma_monedero_1,suma_monedero_2,suma_qr
@@ -193,83 +154,6 @@ def obtener_buffer(num_buffer,num_buffer_2):
        suma_qr=suma_qr+","+str(value)
   spi.write_readinto(bytearray([0xFF]),hola)
   pin_spi_cs.on()
-
-def revisar_pulso():
- global moneda,band,suma_billetero,suma_monedero_1,suma_monedero_2,suma_qr
- if ",0x81,0x40" in suma_billetero:
-  moneda=moneda+20
-  suma_billetero=suma_billetero.replace(",0x81,0x40","",1) 
- elif ",0x81,0x41" in suma_billetero:
-  moneda=moneda+50
-  suma_billetero=suma_billetero.replace(",0x81,0x41","",1) 
- elif ",0x81,0x42" in suma_billetero:
-  moneda=moneda+100
-  suma_billetero=suma_billetero.replace(",0x81,0x42","",1) 
- elif ",0x81,0x43" in suma_billetero:
-  moneda=moneda+200
-  suma_billetero=suma_billetero.replace(",0x81,0x43","",1)  
- elif ",0x81,0x44" in suma_billetero:
-  moneda=moneda+500
-  suma_billetero=suma_billetero.replace(",0x81,0x44","",1) 
- elif ",0x29,0x2f" in suma_billetero:
-  suma_billetero=suma_billetero.replace(",0x29,0x2f","")  
- elif ",0x16" in suma_billetero:
-  suma_billetero=suma_billetero.replace(",0x16","")
- elif ",0x3e" in suma_billetero:
-  suma_billetero=suma_billetero.replace(",0x3e","")
- elif ",0x80" in suma_billetero:
-  suma_billetero=suma_billetero.replace(",0x80","")
- elif ",0x8f" in suma_billetero:
-
-  suma_billetero=suma_billetero.replace(",0x8f","")
- elif ",0x2f" in suma_billetero:
-  suma_billetero=suma_billetero.replace(",0x2f","")
- elif ",0x10" in suma_billetero:
-  suma_billetero=suma_billetero.replace(",0x10","")
- 
- #-----------------------------------------#
- if ",0x90,0x6,0x12,0x1,0x3,0xac" in suma_monedero_1:
-  moneda=moneda+1
-  suma_monedero_1=suma_monedero_1.replace(",0x90,0x6,0x12,0x1,0x3,0xac","",1) 
-
- elif ",0x90,0x6,0x12,0x2,0x3,0xad" in suma_monedero_1:
-  moneda=moneda+2
-  suma_monedero_1=suma_monedero_1.replace(",0x90,0x6,0x12,0x2,0x3,0xad","",1) 
- elif ",0x90,0x6,0x12,0x3,0x3,0xae" in suma_monedero_1:
-  moneda=moneda+5
-  suma_monedero_1=suma_monedero_1.replace(",0x90,0x6,0x12,0x3,0x3,0xae","",1) 
- elif ",0x90,0x6,0x12,0x4,0x3,0xaf" in suma_monedero_1:
-  moneda=moneda+10
-  suma_monedero_1=suma_monedero_1.replace(",0x90,0x6,0x12,0x4,0x3,0xaf","",1) 
- elif ",0x90,0x6,0x12,0x5,0x3,0xb0" in suma_monedero_1:
-  coin_out_valido()
-  suma_monedero_1=suma_monedero_1.replace(",0x90,0x6,0x12,0x5,0x3,0xb0","",1) 
- elif ",0x90,0x5,0x50,0x3,0xe8" in suma_monedero_1:
-  suma_monedero_1=suma_monedero_1.replace(",0x90,0x5,0x50,0x3,0xe8","") 
-
-
-
-
- #-----------------------------------------#
- if ",0x90,0x6,0x12,0x1,0x3,0xac" in suma_monedero_2:
-  moneda=moneda+1
-  suma_monedero_2=suma_monedero_2.replace(",0x90,0x6,0x12,0x1,0x3,0xac","",1) 
- elif ",0x90,0x6,0x12,0x2,0x3,0xad" in suma_monedero_2:
-
-  moneda=moneda+2
-  suma_monedero_2=suma_monedero_2.replace(",0x90,0x6,0x12,0x2,0x3,0xad","",1) 
- elif ",0x90,0x6,0x12,0x3,0x3,0xae" in suma_monedero_2:
-  moneda=moneda+5
-  suma_monedero_2=suma_monedero_2.replace(",0x90,0x6,0x12,0x3,0x3,0xae","",1) 
- elif ",0x90,0x6,0x12,0x4,0x3,0xaf" in suma_monedero_2:
-  moneda=moneda+10
-  suma_monedero_2=suma_monedero_2.replace(",0x90,0x6,0x12,0x4,0x3,0xaf","",1) 
- elif ",0x90,0x6,0x12,0x5,0x3,0xb0" in suma_monedero_2:
-  coin_out_valido()
-  suma_monedero_2=suma_monedero_2.replace(",0x90,0x6,0x12,0x5,0x3,0xb0","",1) 
- elif ",0x90,0x5,0x50,0x3,0xe8" in suma_monedero_2:
-  suma_monedero_2=suma_monedero_2.replace(",0x90,0x5,0x50,0x3,0xe8","") 
-    
 
 def coin_out_valido():
   pin_coin_out.on()
@@ -556,17 +440,12 @@ def envio_datos_server():
   
 #-------------------Main--------------------------------------
 conecta_wifi('FJLIC','Fjl1cFjfl0r35')
-Activa_dispositivos()
 get_inicial_nfc()
 print('__________________')
 Read_defalt_Ntag_Nfc()
 print('__________________')
 while True:
  spi = SPI(2,polarity=0, phase=0,baudrate=10000000,firstbit=SPI.MSB, sck=Pin(18), mosi=Pin(23), miso=Pin(19))
-
- #Billetero
-
- Activa_billetero()
 
  obtener_buffer(bytearray([0x10]),bytearray([0x20]))
  obtener_buffer(bytearray([0x11]),bytearray([0x21]))
@@ -580,7 +459,6 @@ while True:
  print(suma_monedero_1)
  print(suma_monedero_2)
  print(suma_qr)
- revisar_pulso()
  generar_credito()
  sleep(1)
     

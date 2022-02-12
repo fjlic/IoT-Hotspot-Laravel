@@ -2,7 +2,7 @@
 #  Script BASH de Ejemplo de MENU
 clear
 echo "-------------------------------------------"
-echo "----------- CONFIG BASH DB GALEX-----------"
+echo "----------- CONFIG BASH DB IOT-HOTSPOT-----------"
 echo "--------------MENU DE OPCIONES-------------"
 echo ""
 PS3='Opcion a ejecutar: '

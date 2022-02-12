@@ -32,8 +32,8 @@ class CreateHistorialCountersTable extends Migration
             $table->integer('type')->nullable();
             $table->string('text')->nullable();
             $table->integer('stat')->default('0');
+            $table->foreign('counter_id')->references('id')->on('counters')->onUpdate('cascade')->onDelete('cascade')->nullable();
             $table->timestamps();
-            $table->foreign('counter_id')->references('id')->on('counters')->onUpdate('cascade')->onDelete('cascade')->default(0)->nullable();
         });
     }
 

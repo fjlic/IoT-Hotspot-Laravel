@@ -35,7 +35,7 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <table id="historialcounterTable" class="table table-bordered table-striped">
+              <table id="historialCounterTable" class="table table-bordered table-striped">
               <thead>
                 <tr>
                   <th>Id</th>
@@ -144,7 +144,7 @@
 @toastr_render
 <script>
   $(function () {
-     $('#historialcounterTable').DataTable({  
+     $('#historialCounterTable').DataTable({  
       'paging'      : true,
       'lengthChange': true,
       'searching'   : true,

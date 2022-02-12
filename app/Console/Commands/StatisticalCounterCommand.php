@@ -42,10 +42,10 @@ class StatisticalCounterCommand extends Command
     {
         $inc = 1;
         $process_chunk = 10;
-        $value_sample = 672;
+        $value_sample = 144;
         $adjust_value = $value_sample+1;
-        $time_schedule = 180;
-        $time_lag = 120960;
+        $time_schedule = 600;
+        $time_lag = 86400;
         $counters = Counter::all();
         $id_continued = StatisticalCounter::all();
         if($id_continued->isNotEmpty())

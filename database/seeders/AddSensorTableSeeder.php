@@ -37,7 +37,7 @@ class AddSensorTableSeeder extends Seeder
         $sensor->rlay_2 = 'Off';
         $sensor->rlay_3 = 'On';
         $sensor->rlay_4 = 'Off';
-        $sensor->text = 'sensor demo';
+        $sensor->text = 'sensor demo '.'1';
         $sensor->save();
 
         /*

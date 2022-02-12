@@ -15,7 +15,7 @@ class CreateSensorsTable extends Migration
     {
         Schema::create('sensors', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('erb_id')->default(0)->nullable();
+            $table->unsignedBigInteger('erb_id')->nullable();
             $table->string('num_serie')->unique()->nullable();
             $table->string('passw')->nullable();
             $table->string('vol_1')->nullable();

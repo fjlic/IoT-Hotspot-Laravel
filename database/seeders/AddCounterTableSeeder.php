@@ -15,21 +15,21 @@ class AddCounterTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        // Counter Example #1
         $counter = new Counter();
         $counter->id = 1;
         $counter->crd_id = 1;
         $counter->erb_id = 1;
         $counter->nfc_id = 1;
-        $counter->num_serie = '70000000001';
+        $counter->num_serie = 70000000001;
         $counter->cont_qr = '0';
         $counter->cont_mon = '0';
         $counter->cont_mon_2 = '0';
         $counter->cont_corte = '0';
         $counter->cont_prem = '0';
         $counter->cost_mon = '5';
-        $counter->ssid = 'GalexIOT';
-        $counter->passwd = 'G4l3x#1537';
+        $counter->ssid = 'FJLIC_IoT';
+        $counter->passwd = 'FJL1C_I@T';
         $counter->ip_server = '74.208.92.167';
         $counter->port = '443';
         $counter->token = ApiToken::GenerateToken16();
@@ -49,8 +49,8 @@ class AddCounterTableSeeder extends Seeder
         $counter->cont_corte = '0';
         $counter->cont_prem = '0';
         $counter->cost_mon = '5';
-        $counter->ssid = 'GalexIOT';
-        $counter->passwd = 'G4l3x#1537';
+        $counter->ssid = 'FJLIC_IoT';
+        $counter->passwd = 'FJL1C_I@T';
         $counter->ip_server = '74.208.92.167';
         $counter->port = '443';
         $counter->token = ApiToken::GenerateToken16();
@@ -70,8 +70,8 @@ class AddCounterTableSeeder extends Seeder
         $counter->cont_corte = '0';
         $counter->cont_prem = '0';
         $counter->cost_mon = '5';
-        $counter->ssid = 'GalexIOT';
-        $counter->passwd = 'G4l3x#1537';
+        $counter->ssid = 'FJLIC_IoT';
+        $counter->passwd = 'FJL1C_I@T';
         $counter->ip_server = '74.208.92.167';
         $counter->port = '443';
         $counter->token = ApiToken::GenerateToken16();
@@ -91,8 +91,8 @@ class AddCounterTableSeeder extends Seeder
         $counter->cont_corte = '0';
         $counter->cont_prem = '0';
         $counter->cost_mon = '5';
-        $counter->ssid = 'GalexIOT';
-        $counter->passwd = 'G4l3x#1537';
+        $counter->ssid = 'FJLIC_IoT';
+        $counter->passwd = 'FJL1C_I@T';
         $counter->ip_server = '74.208.92.167';
         $counter->port = '443';
         $counter->token = ApiToken::GenerateToken16();
@@ -112,8 +112,8 @@ class AddCounterTableSeeder extends Seeder
         $counter->cont_corte = '0';
         $counter->cont_prem = '0';
         $counter->cost_mon = '5';
-        $counter->ssid = 'GalexIOT';
-        $counter->passwd = 'G4l3x#1537';
+        $counter->ssid = 'FJLIC_IoT';
+        $counter->passwd = 'FJL1C_I@T';
         $counter->ip_server = '74.208.92.167';
         $counter->port = '443';
         $counter->token = ApiToken::GenerateToken16();
@@ -133,8 +133,8 @@ class AddCounterTableSeeder extends Seeder
         $counter->cont_corte = '0';
         $counter->cont_prem = '0';
         $counter->cost_mon = '5';
-        $counter->ssid = 'GalexIOT';
-        $counter->passwd = 'G4l3x#1537';
+        $counter->ssid = 'FJLIC_IoT';
+        $counter->passwd = 'FJL1C_I@T';
         $counter->ip_server = '74.208.92.167';
         $counter->port = '443';
         $counter->token = ApiToken::GenerateToken16();
@@ -154,8 +154,8 @@ class AddCounterTableSeeder extends Seeder
         $counter->cont_corte = '0';
         $counter->cont_prem = '0';
         $counter->cost_mon = '5';
-        $counter->ssid = 'GalexIOT';
-        $counter->passwd = 'G4l3x#1537';
+        $counter->ssid = 'FJLIC_IoT';
+        $counter->passwd = 'FJL1C_I@T';
         $counter->ip_server = '74.208.92.167';
         $counter->port = '443';
         $counter->token = ApiToken::GenerateToken16();
@@ -175,8 +175,8 @@ class AddCounterTableSeeder extends Seeder
         $counter->cont_corte = '0';
         $counter->cont_prem = '0';
         $counter->cost_mon = '5';
-        $counter->ssid = 'GalexIOT';
-        $counter->passwd = 'G4l3x#1537';
+        $counter->ssid = 'FJLIC_IoT';
+        $counter->passwd = 'FJL1C_I@T';
         $counter->ip_server = '74.208.92.167';
         $counter->port = '443';
         $counter->token = ApiToken::GenerateToken16();
@@ -196,8 +196,8 @@ class AddCounterTableSeeder extends Seeder
         $counter->cont_corte = '0';
         $counter->cont_prem = '0';
         $counter->cost_mon = '5';
-        $counter->ssid = 'GalexIOT';
-        $counter->passwd = 'G4l3x#1537';
+        $counter->ssid = 'FJLIC_IoT';
+        $counter->passwd = 'FJL1C_I@T';
         $counter->ip_server = '74.208.92.167';
         $counter->port = '443';
         $counter->token = ApiToken::GenerateToken16();
@@ -217,8 +217,8 @@ class AddCounterTableSeeder extends Seeder
         $counter->cont_corte = '0';
         $counter->cont_prem = '0';
         $counter->cost_mon = '5';
-        $counter->ssid = 'GalexIOT';
-        $counter->passwd = 'G4l3x#1537';
+        $counter->ssid = 'FJLIC_IoT';
+        $counter->passwd = 'FJL1C_I@T';
         $counter->ip_server = '74.208.92.167';
         $counter->port = '443';
         $counter->token = ApiToken::GenerateToken16();

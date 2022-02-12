@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 use Illuminate\Database\Seeder;
+use App\Models\ApiToken;
 use App\Models\Sensor;
 use App\Models\HistorialSensor;
-use App\Models\ApiToken;
 use Carbon\Carbon;
 
 class AddHistorialSensorTableSeeder extends Seeder

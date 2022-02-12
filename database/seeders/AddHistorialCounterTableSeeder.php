@@ -17,9 +17,9 @@ class AddHistorialCounterTableSeeder extends Seeder
     public function run()
     {
         //
-        $tmp_mon = 4360;
+        $tmp_mon = 0;
         $counters = Counter::all();
-        $modDate = Carbon::now()->subDays(145);
+        $modDate = Carbon::now()->subDays(90);
         foreach ($counters as $key => $counter) {
                 $histocounter = new HistorialCounter();
                 $histocounter->id = $counter->id;
@@ -32,23 +32,23 @@ class AddHistorialCounterTableSeeder extends Seeder
                 $histocounter->cont_corte = 0;
                 $histocounter->cont_prem = 0;
                 $histocounter->cost_mon = 10;
-                $histocounter->ssid = "Galex_IoT";
-                $histocounter->passwd = "G4l3x1537";
+                $histocounter->ssid = "FJLIC_IoT";
+                $histocounter->passwd = "FJL1C_I@T";
                 $histocounter->ip_server = "74.208.92.167";
                 $histocounter->port = "443";
                 $histocounter->token = ApiToken::GenerateToken16();
                 $histocounter->type = 1;
-                $histocounter->text = "Moneda 10";
+                $histocounter->text = "Moneda ".$tmp_mon;
                 $histocounter->created_at = $modDate;
                 $histocounter->updated_at = $modDate;
                 $histocounter->save();
         } 
         
         $id_tmp = HistorialCounter::all()->count()+1;
-        for ($i=1; $i <= 13920; $i++) {
+        for ($i=1; $i <= 12960; $i++) {
                 //$modDate = $modDate->addMinutes(15);
-                $tmp_mon += 10; 
-                $modDate = $modDate->addSeconds(random_int(800, 950));
+                $tmp_mon = $tmp_mon+10; 
+                $modDate = $modDate->addSeconds(random_int(585, 615));
                 foreach ($counters as $key => $counter) {
                     $histocounter = new HistorialCounter();
                     $histocounter->id = $id_tmp++;
@@ -61,17 +61,19 @@ class AddHistorialCounterTableSeeder extends Seeder
                     $histocounter->cont_corte = 0;
                     $histocounter->cont_prem = 0;
                     $histocounter->cost_mon = 10;
-                    $histocounter->ssid = "Galex_IoT";
-                    $histocounter->passwd = "G4l3x1537";
+                    $histocounter->ssid = "FJLIC_IoT";
+                    $histocounter->passwd = "FJL1C_I@T";
                     $histocounter->ip_server = "74.208.92.167";
                     $histocounter->port = "443";
                     $histocounter->token = ApiToken::GenerateToken16();
                     $histocounter->type = 1;
-                    $histocounter->text = "Moneda 10";
+                    $histocounter->text = "Moneda ".$tmp_mon;
                     $histocounter->created_at = $modDate;
                     $histocounter->updated_at = $modDate;
                     $histocounter->save();
                 }
         }
+        //$counters->cont_mon = $tmp_mon;
+        //$counters->save();
     }
 }
