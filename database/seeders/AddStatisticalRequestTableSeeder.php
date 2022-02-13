@@ -62,8 +62,7 @@ class AddStatisticalRequestTableSeeder extends Seeder
                           $tmp_sample[$key2]["end_time"]=$tmp_temp2->format('Y-m-d H:i:s');
                           $tmp_sample[$key2]["pass_time"]=$tmp_pass;
                           $tmp_sample[$key2]["difer_time"]=$tmp_difer;   
-                        }
-                        
+                        }    
                     }
                     $statisticalrequest->elements = $value_sample;
                     $statisticalrequest->sample =  json_encode($tmp_sample);

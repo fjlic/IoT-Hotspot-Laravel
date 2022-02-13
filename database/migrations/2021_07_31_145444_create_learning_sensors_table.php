@@ -16,12 +16,13 @@ class CreateLearningSensorsTable extends Migration
         Schema::create('learning_sensors', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('statistical_sensor_id')->nullable();
+            $table->string('aver_temper_glob')->nullable();
+            $table->string('difer_const')->nullable();
             $table->string('elements')->nullable();
-            $table->string('start_time')->nullable();
-            $table->string('finish_time')->nullable();
-            $table->string('total_time')->nullable();
-            $table->string('difer_time')->nullable();
             $table->json('sample')->nullable();
+            $table->string('start_time')->nullable();
+            $table->string('pass_time')->nullable();
+            $table->string('finish_time')->nullable();
             $table->foreign('statistical_sensor_id')->references('id')->on('statistical_sensors')->onUpdate('cascade')->onDelete('cascade')->nullable();
             $table->timestamps();
         });

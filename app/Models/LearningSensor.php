@@ -13,7 +13,7 @@ class LearningSensor extends Model
      * @var array
      */
     protected $fillable = [
-        'id', 'statistical_sensor_id', 'elements', 'start_time', 'finish_time', 'total_time', 'difer_time', 'sample',
+        'id', 'statistical_sensor_id', 'elements', 'start_time', 'pass_time', 'finish_time', 'aver_temper_glob', 'difer_const', 'sample',
     ];
     
     /**

@@ -6,6 +6,7 @@ use Illuminate\Database\Seeder;
 use App\Models\StatisticalSensor;
 use App\Models\HistorialSensor;
 use App\Models\Sensor;
+use App\Models\ApiToken;
 
 class AddStatisticalSensorTableSeeder extends Seeder
 {
@@ -20,6 +21,7 @@ class AddStatisticalSensorTableSeeder extends Seeder
         $inc = 1;
         $process_chunk = 10;
         $value_sample = 144;
+        $const_temper = 20;
         $adjust_value = $value_sample+1;
         $time_schedule = 600;
         $time_lag = 86400;
@@ -41,6 +43,7 @@ class AddStatisticalSensorTableSeeder extends Seeder
                     $statisticalsensor = new StatisticalSensor();
                     $statisticalsensor->id = $inc++;
                     $temp_start = $data_his->first();
+                    $aver_temper_glob = 0;
                     $statisticalsensor->sensor_id = $temp_start->sensor_id;
                     $statisticalsensor->start_time = $temp_start->created_at;
                     $tmp_sample = [[]];
@@ -53,15 +56,19 @@ class AddStatisticalSensorTableSeeder extends Seeder
                           $data->stat = 1;
                           $data->save();
                           $tmp_sample[$key2]["id"]=$id_key2;
-                          $tmp_temp1 = new \Carbon\Carbon($data->created_at);
-                          $tmp_temp2 = new \Carbon\Carbon($data_his[$key2+1]->created_at);
-                          $tmp_pass=$tmp_temp1->diffInSeconds($tmp_temp2);
-                          $tmp_difer=($tmp_pass-$time_schedule);
-                          $tmp_sample[$key2]["sched_time"]=$time_schedule;
-                          $tmp_sample[$key2]["start_time"]=$tmp_temp1->format('Y-m-d H:i:s');
-                          $tmp_sample[$key2]["end_time"]=$tmp_temp2->format('Y-m-d H:i:s');
+                          $tmp_date1 = new \Carbon\Carbon($data->created_at);
+                          $tmp_date2 = new \Carbon\Carbon($data_his[$key2+1]->created_at);
+                          $tmp_pass=$tmp_date1->diffInSeconds($tmp_date2);
+                          $tmp_aver = ApiToken::average_temperature($data->temp_1, $data->temp_2, $data->temp_3, $data->temp_4);
+                          $tmp_sample[$key2]["temper_1"]=$data->temp_1;
+                          $tmp_sample[$key2]["temper_2"]=$data->temp_2;
+                          $tmp_sample[$key2]["temper_3"]=$data->temp_3;
+                          $tmp_sample[$key2]["temper_4"]=$data->temp_4;
+                          $tmp_sample[$key2]["aver_temper"]=$tmp_aver;
+                          $tmp_sample[$key2]["start_time"]=$tmp_date1->format('Y-m-d H:i:s');
                           $tmp_sample[$key2]["pass_time"]=$tmp_pass;
-                          $tmp_sample[$key2]["difer_time"]=$tmp_difer;   
+                          $tmp_sample[$key2]["end_time"]=$tmp_date2->format('Y-m-d H:i:s');
+                          $aver_temper_glob += $tmp_aver;
                         }
                         
                     }
@@ -75,8 +82,9 @@ class AddStatisticalSensorTableSeeder extends Seeder
                     $carbon2 = new \Carbon\Carbon($temp_finish->created_at);
                     //de esta manera sacamos la diferencia en minutos
                     $secondsDiff=$carbon1->diffInSeconds($carbon2);
-                    $statisticalsensor->total_time = $secondsDiff;
-                    $statisticalsensor->difer_time = ($secondsDiff-$time_lag);
+                    $statisticalsensor->pass_time = $secondsDiff;
+                    $statisticalsensor->aver_temper_glob = ($aver_temper_glob / $value_sample);
+                    $statisticalsensor->difer_const = (($aver_temper_glob / $value_sample) - $const_temper);
                     $statisticalsensor->save();
                 }   
             }

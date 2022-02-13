@@ -33,7 +33,7 @@
             <div class="card-header">
               <h3 class="card-title">Crear Estadistico de Sensor</h3>
             </div>
-            <!-- 'id', 'sensor_id', 'elements', 'start_time', 'finish_time', 'total_time', 'difer_time', 'sample' -->
+            <!-- 'sensor_id', 'elements', 'aver_temper_glob', 'difer_const', 'sample', 'stat', 'start_time', 'pass_time', 'finish_time' -->
             <div class="card-body">
             <!-- form start -->
             <form role="form" action="{{ route('statisticalsensor.store')}}" method="POST">
@@ -48,20 +48,24 @@
                   <input type="text" class="form-control" name="elements" id="elements"  placeholder="Introduce elementos" required>
                 </div>
                 <div class="form-group">
+                  <label for="aver_temper_glob">Temperatura Promedio</label>
+                  <input type="text" class="form-control" name="aver_temper_glob" id="aver_temper_glob"  placeholder="Introduce elementos" required>
+                </div>
+                <div class="form-group">
+                  <label for="difer_const">Diferencia en constante de 20C°</label>
+                  <input type="text" class="form-control" name="difer_const" id="difer_const"  placeholder="Introduce elementos" required>
+                </div>
+                <div class="form-group">
                   <label for="start_time">Hora Inicio</label>
                   <input type="text" class="form-control" name="start_time" id="start_time"  placeholder="Introduce hora de inicio" required>
                 </div>
                 <div class="form-group">
+                  <label for="pass_time">Timpoe transcurrido en segundos</label>
+                  <input type="text" class="form-control" name="pass_time" id="pass_time"  placeholder="Introduce en segundos" required>
+                </div>
+                <div class="form-group">
                   <label for="finish_time">Hora Fin</label>
                   <input type="text" class="form-control" name="finish_time" id="finish_time"  placeholder="Introduce hora de fin" required>
-                </div>
-                <div class="form-group">
-                  <label for="total_time">Tiempo Total</label>
-                  <input type="text" class="form-control" name="total_time" id="total_time"  placeholder="Introduce tiempo total" required>
-                </div>
-                <div class="form-group">
-                  <label for="difer_time">Tiempo desface (+/-)</label>
-                  <input type="text" class="form-control" name="difer_time" id="difer_time"  placeholder="Introduce tiempo de desface" required>
                 </div>
                 <div class="form-group">
                   <label for="sample">Muestra en JSON 144 peticiones</label>

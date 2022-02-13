@@ -17,7 +17,7 @@ class AddHistorialCounterTableSeeder extends Seeder
     public function run()
     {
         //
-        $tmp_mon = 0;
+        $tmp_mon = 10;
         $counters = Counter::all();
         $modDate = Carbon::now()->subDays(90);
         foreach ($counters as $key => $counter) {
@@ -67,13 +67,13 @@ class AddHistorialCounterTableSeeder extends Seeder
                     $histocounter->port = "443";
                     $histocounter->token = ApiToken::GenerateToken16();
                     $histocounter->type = 1;
-                    $histocounter->text = "Moneda ".$tmp_mon;
+                    $histocounter->text = "Moneda ".($tmp_mon/10);
                     $histocounter->created_at = $modDate;
                     $histocounter->updated_at = $modDate;
                     $histocounter->save();
+                    $counter->cont_mon = $tmp_mon;
+                    $counter->save();
                 }
         }
-        //$counters->cont_mon = $tmp_mon;
-        //$counters->save();
     }
 }

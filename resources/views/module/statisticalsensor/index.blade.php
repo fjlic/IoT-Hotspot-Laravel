@@ -39,15 +39,16 @@
             <div class="card-body">
               <table id="statisticalSensorTable" class="table table-bordered table-striped">
               <thead>
-                 <!-- /.card-header 'id', 'estimate_proxy_size', 'development_hours' -->
+                 <!-- 'sensor_id', 'elements', 'aver_temper_glob', 'difer_const', 'sample', 'stat', 'start_time', 'pass_time', 'finish_time',  -->
                 <tr>
                   <th>Id</th>
                   <th>Id Sensor</th>
                   <th>Element</th>
-                  <th>Tmp Inicio</th>
+                  <th>Temperatura</th>
+                  <th>Dif 20-C°</th>
+                  <th>Tmp Ini</th>
+                  <th>Tmp Seg</th>
                   <th>Tmp Fin</th>
-                  <th>Total Sec</th>
-                  <th>Difer</th>
                   <th>Muestra</th>
                   {{-- <th>FechaCre</th> --}}
                   {{-- <th>DateMod</th> --}}
@@ -60,10 +61,11 @@
                     <td>{{ $statisticalsensor->id }}</td>
                     <td>{{ $statisticalsensor->sensor_id }}</td>
                     <td>{{ $statisticalsensor->elements }}</td>
+                    <td>{{ $statisticalsensor->aver_temper_glob }}</td>
+                    <td>{{ $statisticalsensor->difer_const }}</td>
                     <td>{{ $statisticalsensor->start_time }}</td>
+                    <td>{{ $statisticalsensor->pass_time }}</td>
                     <td>{{ $statisticalsensor->finish_time }}</td>
-                    <td>{{ $statisticalsensor->total_time }}</td>
-                    <td>{{ $statisticalsensor->difer_time }}</td>
                     <td><a href="" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#ModalSt{{$statisticalsensor->id}}"><span>Datos-Muestra</span></a>
                     <!------ ESTE ES EL MODAL QUE SE MUESTRA AL DAR CLICK EN EL BOTON "ELIMINAR" ------>
                     <div class="modal fade" id="ModalSt{{$statisticalsensor->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">

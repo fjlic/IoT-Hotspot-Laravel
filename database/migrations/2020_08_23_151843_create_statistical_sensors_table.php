@@ -17,11 +17,12 @@ class CreateStatisticalSensorsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('sensor_id')->nullable();
             $table->string('elements')->nullable();
-            $table->string('start_time')->nullable();
-            $table->string('finish_time')->nullable();
-            $table->string('total_time')->nullable();
-            $table->string('difer_time')->nullable();
+            $table->string('aver_temper_glob')->nullable();
+            $table->string('difer_const')->nullable();
             $table->json('sample')->nullable();
+            $table->string('start_time')->nullable();
+            $table->string('pass_time')->nullable();
+            $table->string('finish_time')->nullable();
             $table->integer('stat')->default('0');
             $table->foreign('sensor_id')->references('id')->on('sensors')->onUpdate('cascade')->onDelete('cascade')->nullable();
             $table->timestamps();

@@ -50,15 +50,15 @@ class LearningSensorController extends Controller
      */
     public function store(Request $request)
     {
-        // 'id', 'statistical_id', 'elements', 'start_time',
-        //'finish_time', 'total_time', 'difer_time', 'sample',
+        // 'statistical_sensor_id', 'elements', 'start_time', 'pass_time', 'finish_time', 'aver_temper_glob', 'difer_const', 'sample',
         $request->validate([
             'statistical_sensor_id'=>'required|string|max:100',
             'elements'=>'required|string|max:100',
             'start_time'=>'required|string|max:100',
+            'pass_time'=>'required|string|max:100',
             'finish_time'=>'required|string|max:100',
-            'total_time'=>'required|string|max:100',
-            'difer_time'=>'required|string|max:100',
+            'aver_temper_glob'=>'required|string|max:100',
+            'difer_const'=>'required|string|max:100',
             'sample'=>'required|string',
             
         ]);
@@ -66,9 +66,10 @@ class LearningSensorController extends Controller
             'statistical_sensor_id' => $request->get('statistical_sensor_id'),
             'elements' => $request->get('elements'),
             'start_time' => $request->get('start_time'),
+            'pass_time' => $request->get('start_time'),
             'finish_time' => $request->get('finish_time'),
-            'total_time' => $request->get('total_time'),
-            'difer_time' => $request->get('difer_time'),
+            'aver_temper_glob' => $request->get('aver_temper_glob'),
+            'difer_const' => $request->get('difer_const'),
             'sample' => $request->get('sample')
             ]);
         $learningsensor->save();
@@ -115,9 +116,10 @@ class LearningSensorController extends Controller
             'statistical_sensor_id'=>'required|string|max:100',
             'elements'=>'required|string|max:100',
             'start_time'=>'required|string|max:100',
+            'pass_time'=>'required|string|max:100',
             'finish_time'=>'required|string|max:100',
-            'total_time'=>'required|string|max:100',
-            'difer_time'=>'required|string|max:100',
+            'aver_temper_glob'=>'required|string|max:100',
+            'difer_const'=>'required|string|max:100',
             'sample'=>'required|string',
         ]);
         $learningsensor_request = $request->all();

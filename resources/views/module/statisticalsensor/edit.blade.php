@@ -40,7 +40,7 @@
             @csrf
             @method('PUT')
               <div class="card-body">
-                <!-- 'id', 'sensor_id', 'elements', 'start_time', 'finish_time', 'total_time', 'difer_time', 'sample' -->
+                <!-- 'sensor_id', 'elements', 'aver_temper_glob', 'difer_const', 'sample', 'stat', 'start_time', 'pass_time', 'finish_time' -->
                 <div class="form-group">
                   <label for="sensor_id">Sensor Id</label>
                   <input type="text" class="form-control" name="sensor_id" id="sensor_id"  placeholder="Introduce numero sensor id" required value="{{ $statisticalsensor->sensor_id }}" />
@@ -50,20 +50,24 @@
                   <input type="text" class="form-control" name="elements" id="elements"  placeholder="Introduce elementos" required value="{{ $statisticalsensor->elements }}" />
                 </div>
                 <div class="form-group">
-                  <label for="start_time">Hora Inicial</label>
-                  <input type="text" class="form-control" name="start_time" id="start_time"  placeholder="Introduce hora de inicio" required value="{{ $statisticalsensor->start_time }}" />
+                  <label for="aver_temper_glob">Temperatura Promedio</label>
+                  <input type="text" class="form-control" name="aver_temper_glob" id="aver_temper_glob"  placeholder="Introduce hora de inicio" required value="{{ $statisticalsensor->aver_temper_glob }}" />
                 </div>
                 <div class="form-group">
-                  <label for="finish_time">Hora Fianl</label>
-                  <input type="text" class="form-control" name="finish_time" id="finish_time"  placeholder="Introduce hora de fin" required value="{{ $statisticalsensor->finish_time }}" />
+                  <label for="difer_const">Diferencia de 20C°</label>
+                  <input type="text" class="form-control" name="difer_const" id="difer_const"  placeholder="Introduce tiempo de desface" required value="{{ $statisticalsensor->difer_const }}" />
                 </div>
                 <div class="form-group">
-                  <label for="total_time">Tiempo Total</label>
-                  <input type="text" class="form-control" name="total_time" id="total_time"  placeholder="Introduce tiempo total" required value="{{ $statisticalsensor->total_time }}" />
+                  <label for="start_time">Hora Inicio</label>
+                  <input type="text" class="form-control" name="start_time" id="start_time"  placeholder="Introduce hora de fin" required value="{{ $statisticalsensor->start_time }}" />
                 </div>
                 <div class="form-group">
-                  <label for="difer_time">Tiempo desface (+/-)</label>
-                  <input type="text" class="form-control" name="difer_time" id="difer_time"  placeholder="Introduce tiempo de desface" required value="{{ $statisticalsensor->difer_time }}" />
+                  <label for="pass_time">Tiempo transcurrido en segundos</label>
+                  <input type="text" class="form-control" name="pass_time" id="pass_time"  placeholder="Introduce tiempo total" required value="{{ $statisticalsensor->pass_time }}" />
+                </div>
+                <div class="form-group">
+                  <label for="finish_time">Tiempo Fin</label>
+                  <input type="text" class="form-control" name="finish_time" id="finish_time"  placeholder="Introduce tiempo total" required value="{{ $statisticalsensor->finish_time }}" />
                 </div>
                 <div class="form-group">
                   <label for="sample">Muestra</label>

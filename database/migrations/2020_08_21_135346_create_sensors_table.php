@@ -21,10 +21,10 @@ class CreateSensorsTable extends Migration
             $table->string('vol_1')->nullable();
             $table->string('vol_2')->nullable();
             $table->string('vol_3')->nullable();
-            $table->string('temp_1')->nullable();
-            $table->string('temp_2')->nullable();
-            $table->string('temp_3')->nullable();
-            $table->string('temp_4')->nullable();
+            $table->string('temp_1')->default(0)->nullable();
+            $table->string('temp_2')->default(0)->nullable();
+            $table->string('temp_3')->default(0)->nullable();
+            $table->string('temp_4')->default(0)->nullable();
             $table->string('door_1')->nullable();
             $table->string('door_2')->nullable();
             $table->string('door_3')->nullable();

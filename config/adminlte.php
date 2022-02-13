@@ -253,38 +253,46 @@ return [
             'icon_color' => 'green',
             'submenu' => [
                 [
-                    'text' => 'Listar',
-                    'icon_color' => '',
-                    'icon'  => 'fas fa-fw fa-users',
-                    'url'  => 'user',
-                ],
-                [
-                    'text' => 'Roles',
-                    'icon_color' => '',
-                    'icon'  => 'fas fa-address-card',
-                    'url'  => 'role',
-                ],
-                [
-                    'text' => 'Permisos',
-                    'icon_color' => '',
-                    'icon'  => 'fas fa-address-card',
-                    'url'  => 'permission',
-                ],
-                [
-                    'text' => 'Asignaciones',
-                    'icon_color' => '',
-                    'icon'  => 'fas fa-address-card',
-                    'url'  => 'assignment',
-                ],
-                [
-                    'text' => 'Alertas',
-                    'icon_color' => '',
-                    'icon'  => 'fas fa-exclamation-circle',
-                    'url'  => 'alert',
-                ],
+                    'text'    => 'Configuraciones',
+                    'icon'    => 'fas fa-user-cog',
+                    'icon_color' => 'green',
+                    'submenu' => [
+                        [
+                            'text' => 'Listar',
+                            'icon_color' => '',
+                            'icon'  => 'fas fa-fw fa-users',
+                            'url'  => 'user',
+                        ],
+                        [
+                            'text' => 'Roles',
+                            'icon_color' => '',
+                            'icon'  => 'fas fa-address-card',
+                            'url'  => 'role',
+                        ],
+                        [
+                            'text' => 'Permisos',
+                            'icon_color' => '',
+                            'icon'  => 'fas fa-address-card',
+                            'url'  => 'permission',
+                        ],
+                        [
+                            'text' => 'Asignaciones',
+                            'icon_color' => '',
+                            'icon'  => 'fas fa-address-card',
+                            'url'  => 'assignment',
+                        ],
+                        [
+                            'text' => 'Alertas',
+                            'icon_color' => '',
+                            'icon'  => 'fas fa-exclamation-circle',
+                            'url'  => 'alert',
+                        ],
+                    ],
+                ],    
                 [
                     'text'    => 'Estadistico Telemetria',
                     'icon'    => 'fas fa-chart-bar',
+                    'icon_color' => 'green',
                     'submenu' => [
                         [
                             'text' => 'Listar',
@@ -303,6 +311,7 @@ return [
                 [
                     'text'    => 'Predicciones Telemetria',
                     'icon'    => 'fas fa-draw-polygon',
+                    'icon_color' => 'green',
                     'submenu' => [
                         [
                             'text' => 'Listar',
@@ -328,6 +337,7 @@ return [
                 [
                     'text'    => 'Info Crd',
                     'icon'    => 'fas fa-bezier-curve',
+                    'icon_color' => 'orange',
                     'submenu' => [
                         [
                             'text' => 'Listar',
@@ -346,6 +356,7 @@ return [
                 [
                     'text'    => 'Contadores',
                     'icon'    => 'fas fa-camera-retro',
+                    'icon_color' => 'orange',
                     'submenu' => [
                         [
                             'text' => 'Listar',
@@ -370,6 +381,7 @@ return [
                 [
                     'text'    => 'Qr',
                     'icon'    => 'fas fa-qrcode',
+                    'icon_color' => 'orange',
                     'submenu' => [
                         [
                             'text' => 'Listar',
@@ -388,6 +400,7 @@ return [
                 [
                     'text'    => 'Nfc',
                     'icon'    => 'fas fa-window-restore',
+                    'icon_color' => 'orange',
                     'submenu' => [
                         [
                             'text' => 'Listar',
@@ -406,6 +419,7 @@ return [
                 [
                     'text'    => 'Publicidad',
                     'icon'    => 'fas fa-image',
+                    'icon_color' => 'orange',
                     'submenu' => [
                         [
                             'text' => 'Listar',
@@ -426,6 +440,7 @@ return [
                 [
                     'text'    => 'Info Erb',
                     'icon'    => 'fas fa-bezier-curve',
+                    'icon_color' => 'red',
                     'submenu' => [
                         [
                             'text' => 'Listar',
@@ -444,6 +459,7 @@ return [
                 [
                     'text'    => 'Sensores',
                     'icon'    => 'fas fa-cogs',
+                    'icon_color' => 'red',
                     'submenu' => [
                         [
                             'text' => 'Listar',
@@ -457,34 +473,16 @@ return [
                             'icon'  => 'fas fa-route',
                             'url'  => 'historialsensor',
                         ],
-                    ],
-                ],
-                [
-                    'text'    => 'Estadistico Sensores',
-                    'icon'    => 'fas fa-chart-bar',
-                    'submenu' => [
                         [
-                            'text' => 'Listar',
+                            'text' => 'Estadistico Sensores',
                             'icon_color' => '',
-                            'icon'  => 'fas fa-fw fa-list',
+                            'icon'  => 'fas fa-chart-bar',
                             'url'  => 'statisticalsensor',
                         ],
-                        /*[
-                            'text' => 'Historial Estadisticos',
-                            'icon_color' => '',
-                            'icon'  => 'fas fa-route',
-                            'url'  => 'historialstatisticalsensor',
-                        ],*/
-                    ],
-                ],
-                [
-                    'text'    => 'Predicciones Sensores',
-                    'icon'    => 'fas fa-draw-polygon',
-                    'submenu' => [
                         [
-                            'text' => 'Listar',
+                            'text' => 'Predicciones Sensores',
                             'icon_color' => '',
-                            'icon'  => 'fas fa-fw fa-list',
+                            'icon'  => 'fas fa-draw-polygon',
                             'url'  => 'learningsensor',
                         ],
                     ],
@@ -517,7 +515,7 @@ return [
         ],
         [
             'text'    => 'Documentacion',
-            'icon'    => 'fas fa-fw fa-file-code',
+            'icon'    => 'fas fa-file-code',
             'icon_color' => 'blue',
             'url'  => 'docs',
         ],

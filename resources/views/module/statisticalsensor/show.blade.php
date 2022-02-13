@@ -37,7 +37,7 @@
             <div class="card-body">
             <form role="form">
               <div class="card-body">
-                <!-- 'id', 'sensor_id', 'elements', 'start_time', 'finish_time', 'total_time', 'difer_time', 'sample' -->
+                <!-- 'sensor_id', 'elements', 'aver_temper_glob', 'difer_const', 'sample', 'stat', 'start_time', 'pass_time', 'finish_time' -->
                 <div class="form-group">
                   <label for="id">Id</label>
                   <input type="text" class="form-control" value="{{ $statisticalsensor->id }}" readonly="readonly"/>
@@ -51,20 +51,24 @@
                   <input type="text" class="form-control" value="{{ $statisticalsensor->elements }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
-                  <label for="start_time">Tiempo inicio</label>
+                  <label for="aver_temper_glob">Temperatura promedio</label>
+                  <input type="text" class="form-control" value="{{ $statisticalsensor->aver_temper_glob }}" readonly="readonly"/>
+                </div>
+                <div class="form-group">
+                  <label for="difer_const">Diferencia para 20-C°</label>
+                  <input type="text" class="form-control" value="{{ $statisticalsensor->difer_const }}" readonly="readonly"/>
+                </div>
+                <div class="form-group">
+                  <label for="start_time">Tiempo Incio</label>
                   <input type="text" class="form-control" value="{{ $statisticalsensor->start_time }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
-                  <label for="finish_time">Tiempo fin</label>
+                  <label for="pass_time">Tiempo trancusrrido en segundos</label>
+                  <input type="text" class="form-control" value="{{ $statisticalsensor->pass_time }}" readonly="readonly"/>
+                </div>
+                <div class="form-group">
+                  <label for="finish_time">Tiempo Fin</label>
                   <input type="text" class="form-control" value="{{ $statisticalsensor->finish_time }}" readonly="readonly"/>
-                </div>
-                <div class="form-group">
-                  <label for="total_time">Tiempo total</label>
-                  <input type="text" class="form-control" value="{{ $statisticalsensor->total_time }}" readonly="readonly"/>
-                </div>
-                <div class="form-group">
-                  <label for="difer_time">Tiempo desface (+/-)</label>
-                  <input type="text" class="form-control" value="{{ $statisticalsensor->difer_time }}" readonly="readonly"/>
                 </div>
               <!-- /.box-body -->
               <div class="box-footer">

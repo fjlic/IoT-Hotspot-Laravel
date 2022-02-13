@@ -40,7 +40,7 @@
             @csrf
             @method('PUT')
               <div class="card-body">
-                <!-- 'id', 'statistical_id', 'elements', 'start_time', 'finish_time', 'total_time', 'difer_time', 'sample' -->
+                <!-- 'statistical_sensor_id', 'elements', 'start_time', 'pass_time', 'finish_time', 'aver_temper_glob', 'difer_const', 'sample' -->
                 <div class="form-group">
                   <label for="statistical_sensor_id">Sensor Id</label>
                   <input type="text" class="form-control" name="statistical_sensor_id" id="statistical_sensor_id"  placeholder="Introduce id estadistico" required value="{{ $learningsensor->statistical_sensor_id }}" />
@@ -50,20 +50,24 @@
                   <input type="text" class="form-control" name="elements" id="elements"  placeholder="Introduce elementos" required value="{{ $learningsensor->elements }}" />
                 </div>
                 <div class="form-group">
+                  <label for="aver_temper_glob">Temperatura Promedio</label>
+                  <input type="text" class="form-control" name="aver_temper_glob" id="aver_temper_glob"  placeholder="Introduce elementos" required value="{{ $learningsensor->aver_temper_glob }}" />
+                </div>
+                <div class="form-group">
+                  <label for="difer_const">Diferencia de 20-C°</label>
+                  <input type="text" class="form-control" name="difer_const" id="difer_const"  placeholder="Introduce elementos" required value="{{ $learningsensor->difer_const }}" />
+                </div>
+                <div class="form-group">
                   <label for="start_time">Hora Inicial</label>
                   <input type="text" class="form-control" name="start_time" id="start_time"  placeholder="Introduce hora de inicio" required value="{{ $learningsensor->start_time }}" />
                 </div>
                 <div class="form-group">
-                  <label for="finish_time">Hora Fianl</label>
+                  <label for="pass_time">Tiempo transcurrido en segundos</label>
+                  <input type="text" class="form-control" name="pass_time" id="pass_time"  placeholder="Introduce hora de inicio" required value="{{ $learningsensor->start_time }}" />
+                </div>
+                <div class="form-group">
+                  <label for="finish_time">Hora Final</label>
                   <input type="text" class="form-control" name="finish_time" id="finish_time"  placeholder="Introduce hora de fin" required value="{{ $learningsensor->finish_time }}" />
-                </div>
-                <div class="form-group">
-                  <label for="total_time">Tiempo Total</label>
-                  <input type="text" class="form-control" name="total_time" id="total_time"  placeholder="Introduce hora total" required value="{{ $learningsensor->total_time }}" />
-                </div>
-                <div class="form-group">
-                  <label for="difer_time">Tiempo desface (+/-)</label>
-                  <input type="text" class="form-control" name="difer_time" id="difer_time"  placeholder="Introduce hora de desface" required value="{{ $learningsensor->difer_time }}" />
                 </div>
                 <div class="form-group">
                   <label for="sample">Muestra</label>

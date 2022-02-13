@@ -37,7 +37,7 @@
             <div class="card-body">
             <form role="form">
               <div class="card-body">
-                 <!-- 'id', 'statistical_id', 'elements', 'start_time', 'finish_time', 'total_time', 'difer_time', 'sample' -->
+                 <!-- 'statistical_sensor_id', 'elements', 'start_time', 'pass_time', 'finish_time', 'aver_temper_glob', 'difer_const', 'sample' -->
                 <div class="form-group">
                   <label for="id">Id</label>
                   <input type="text" class="form-control" value="{{ $learningsensor->id }}" readonly="readonly"/>
@@ -51,20 +51,24 @@
                   <input type="text" class="form-control" value="{{ $learningsensor->elements }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
+                  <label for="aver_temper_glob">Temparura Promedio</label>
+                  <input type="text" class="form-control" value="{{ $learningsensor->aver_temper_glob }}" readonly="readonly"/>
+                </div>
+                <div class="form-group">
+                  <label for="difer_const">Diferencia 20-C°</label>
+                  <input type="text" class="form-control" value="{{ $learningsensor->difer_const }}" readonly="readonly"/>
+                </div>
+                <div class="form-group">
                   <label for="start_time">Tiempo inicio</label>
                   <input type="text" class="form-control" value="{{ $learningsensor->start_time }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
+                  <label for="pass_time">Tiempo transcurrido en segundos</label>
+                  <input type="text" class="form-control" value="{{ $learningsensor->pass_time }}" readonly="readonly"/>
+                </div>
+                <div class="form-group">
                   <label for="finish_time">Tiempo fin</label>
                   <input type="text" class="form-control" value="{{ $learningsensor->finish_time }}" readonly="readonly"/>
-                </div>
-                <div class="form-group">
-                  <label for="total_time">Tiempo total</label>
-                  <input type="text" class="form-control" value="{{ $learningsensor->total_time }}" readonly="readonly"/>
-                </div>
-                <div class="form-group">
-                  <label for="difer_time">Tiempo desface (+/-)</label>
-                  <input type="text" class="form-control" value="{{ $learningsensor->difer_time }}" readonly="readonly"/>
                 </div>
               <!-- /.box-body -->
               <div class="box-footer">

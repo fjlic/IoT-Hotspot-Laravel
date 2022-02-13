@@ -36,7 +36,7 @@ class StatisticalSensorController extends Controller
             $y = []; 
            foreach (json_decode($statisticalsensor->sample) as $key2 => $json) {
             $x[$key2] = $key2;
-            $y[$key2] = $json->pass_time;
+            $y[$key2] = intval($json->aver_temper);
            }
            $statisticalsensor->pearsoncorrelation = Correlation::pearson($x, $y);
            $statisticalsensor->meanarithmetic = Mean::arithmetic([reset($y), end($y)]);
@@ -67,21 +67,23 @@ class StatisticalSensorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // 'sensor_id', 'elements', 'aver_temper_glob', 'difer_const', 'sample', 'stat', 'start_time', 'pass_time', 'finish_time', 
         $request->validate([
             'elements'=>'required|string|max:100',
+            'aver_temper_glob'=>'required|string|max:100',
+            'difer_const'=>'required|string|max:100',
             'start_time'=>'required|string|max:100',
+            'pass_time'=>'required|string|max:100',
             'finish_time'=>'required|string|max:100',
-            'total_time'=>'required|string|max:100',
-            'difer_time'=>'required|string|max:100',
             'sample'=>'required|string',
         ]);
         $statisticalsensor = new StatisticalRequest([
             'elements' => $request->get('elements'),
+            'aver_temper_glob' => $request->get('aver_temper_glob'),
+            'difer_const' => $request->get('difer_const'),
             'start_time' => $request->get('start_time'),
+            'pass_time' => $request->get('start_time'),
             'finish_time' => $request->get('finish_time'),
-            'total_time' => $request->get('total_time'),
-            'difer_time' => $request->get('difer_time'),
             'sample' => $request->get('sample')
             ]);
         $statisticalsensor->save();
@@ -126,10 +128,11 @@ class StatisticalSensorController extends Controller
         //
         $request->validate([
             'elements'=>'required|string|max:100',
+            'aver_temper_glob'=>'required|string|max:100',
+            'difer_const'=>'required|string|max:100',
             'start_time'=>'required|string|max:100',
+            'pass_time'=>'required|string|max:100',
             'finish_time'=>'required|string|max:100',
-            'total_time'=>'required|string|max:100',
-            'difer_time'=>'required|string|max:100',
             'sample'=>'required|string',
         ]);
         $statisticalsensor_request = $request->all();

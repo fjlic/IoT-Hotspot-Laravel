@@ -16,7 +16,7 @@ class StatisticalSensor extends Model
      * @var array
      */
     protected $fillable = [
-        'id', 'sensor_id', 'elements', 'start_time', 'finish_time', 'total_time', 'difer_time', 'sample',
+        'id', 'sensor_id', 'elements', 'aver_temper_glob', 'difer_const', 'sample', 'stat', 'start_time', 'pass_time', 'finish_time', 
     ];
     
     /**

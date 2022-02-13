@@ -38,15 +38,16 @@
             <div class="card-body">
               <table id="learningSensorTable" class="table table-bordered table-striped">
               <thead>
-                <!-- 'id', 'statistical_id', 'elements', 'start_time', 'finish_time', 'total_time', 'difer_time', 'sample' -->
+                <!-- 'statistical_sensor_id', 'elements', 'start_time', 'pass_time', 'finish_time', 'aver_temper_glob', 'difer_const', 'sample' -->
                 <tr>
                   <th>Id</th>
                   <th>Id Estadistico</th>
                   <th>Elementos</th>
-                  <th>Tmp Inicial</th>
+                  <th>Temp Prom</th>
+                  <th>Temp 20-C°</th>
+                  <th>Tmp Ini</th>
+                  <th>Seg</th>
                   <th>Tmp Final</th>
-                  <th>Tmp Total</th>
-                  <th>Difer</th>
                   <th>Muestra</th>
                   {{-- <th>FechaCreacion</th> --}}
                   {{-- <th>DateMod</th> --}}
@@ -59,10 +60,11 @@
                     <td>{{ $learningsensor->id }}</td>
                     <td>{{ $learningsensor->statistical_sensor_id }}</td>
                     <td>{{ $learningsensor->elements }}</td>
+                    <td>{{ $learningsensor->aver_temper_glob }}</td>
+                    <td>{{ $learningsensor->difer_const }}</td>
                     <td>{{ $learningsensor->start_time }}</td>
+                    <td>{{ $learningsensor->pass_time }}</td>
                     <td>{{ $learningsensor->finish_time }}</td>
-                    <td>{{ $learningsensor->total_time }}</td>
-                    <td>{{ $learningsensor->difer_time }}</td>
                     <td><a href="" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#ModalSt{{$learningsensor->id}}"><span>Datos-Muestra</span></a>
                     <!------ ESTE ES EL MODAL QUE SE MUESTRA AL DAR CLICK EN EL BOTON PARA VER ------>
                     <div class="modal fade" id="ModalSt{{$learningsensor->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
