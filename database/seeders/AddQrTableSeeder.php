@@ -24,7 +24,7 @@ class AddQrTableSeeder extends Seeder
         $qrcoin->gone_down = 1;
         $qrcoin->save();
 
-        $qrcoin = new Qr();
+        /*$qrcoin = new Qr();
         $qrcoin->id = 2;
         $qrcoin->crd_id = 2;
         $qrcoin->erb_id = 2;
@@ -94,6 +94,6 @@ class AddQrTableSeeder extends Seeder
         $qrcoin->qr_serie = 'BGHIJPVW07';
         $qrcoin->coins = 20;
         $qrcoin->gone_down = 1;
-        $qrcoin->save();
+        $qrcoin->save();*/
     }
 }

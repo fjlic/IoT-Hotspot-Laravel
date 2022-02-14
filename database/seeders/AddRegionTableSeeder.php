@@ -17,10 +17,10 @@ class AddRegionTableSeeder extends Seeder
         //
         $region = new Region();
         $region->id = 1;
-        $region->country = 'Por Asignar';
-        $region->state = 'Por Asignar';
-        $region->municipality = 'Por Asignar';
-        $region->suburb = 'Por Asignar';
+        $region->country = 'By assigning';
+        $region->state = 'By assigning';
+        $region->municipality = 'By assigning';
+        $region->suburb = 'By assigning';
         $region->save();
 
         $region = new Region();
