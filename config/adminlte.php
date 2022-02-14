@@ -480,7 +480,7 @@ return [
                             'url'  => 'statisticalsensor',
                         ],
                         [
-                            'text' => 'Predicciones Sensores',
+                            'text' => 'Prediction Sensors',
                             'icon_color' => '',
                             'icon'  => 'fas fa-draw-polygon',
                             'url'  => 'learningsensor',
