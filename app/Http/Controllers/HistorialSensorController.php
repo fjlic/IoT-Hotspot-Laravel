@@ -259,7 +259,7 @@ class HistorialSensorController extends Controller
                                    'tooltip' => ['valueSuffix' => '-Volt/DC'],]])
                         ->display();
 
-        $temp2 = \Chart::title(['text' => 'Temperatura 3',])
+        $temp2 = \Chart::title(['text' => 'Temperature 2',])
                         ->chart(['type'     => 'gauge','renderTo' => 'temp2',
                                  'plotBackgroundColor' => null,
                                  'plotBackgroundImage' => null,
