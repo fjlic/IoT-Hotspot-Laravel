@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Hotspot|Estadistico')
+@section('title', 'Hotspot|Statistical')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop
@@ -31,7 +31,7 @@
         <div class="col-12">
           <div class="card card-primary card-outline">
             <div class="card-header">
-              <h3 class="card-title">Muestras Estadistico Sensor</h3>
+              <h3 class="card-title">Samples Statistical Sensor</h3>
               {{--  <h3 class="card-title">Samples Statistical Sensor</h3>  --}}
               <a class="btn btn-xs btn-success float-right" href="{{ route('statisticalsensor.create') }}" role="button"><span class="fas fa-plus"></span></a>
             </div>
@@ -43,16 +43,16 @@
                 <tr>
                   <th>Id</th>
                   <th>Id Sensor</th>
-                  <th>Element</th>
-                  <th>Temperatura</th>
+                  <th>Elements</th>
+                  <th>Temperature</th>
                   <th>Dif 20-C°</th>
-                  <th>Tmp Ini</th>
-                  <th>Tmp Seg</th>
-                  <th>Tmp Fin</th>
-                  <th>Muestra</th>
+                  <th>Start Time</th>
+                  <th>Elaps Time</th>
+                  <th>Fin Time</th>
+                  <th>Sample</th>
                   {{-- <th>FechaCre</th> --}}
                   {{-- <th>DateMod</th> --}}
-                  <th>Acciones</th>
+                  <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -66,13 +66,13 @@
                     <td>{{ $statisticalsensor->start_time }}</td>
                     <td>{{ $statisticalsensor->pass_time }}</td>
                     <td>{{ $statisticalsensor->finish_time }}</td>
-                    <td><a href="" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#ModalSt{{$statisticalsensor->id}}"><span>Datos-Muestra</span></a>
+                    <td><a href="" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#ModalSt{{$statisticalsensor->id}}"><span>Sample-Data</span></a>
                     <!------ ESTE ES EL MODAL QUE SE MUESTRA AL DAR CLICK EN EL BOTON "ELIMINAR" ------>
                     <div class="modal fade" id="ModalSt{{$statisticalsensor->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                       <div class="modal-dialog modal-dialog-centered" role="document">
                       <div class="modal-content">
                       <div class="modal-header d-flex justify-content-center">
-                        <h5 class="modal-title" id="exampleModalCenterTitle">Datos de la Muestra ({{$statisticalsensor->id}})</h5>
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Sample Data ({{$statisticalsensor->id}})</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                           <span aria-hidden="true">&times;</span>
                         </button>
@@ -83,7 +83,7 @@
                           </div>
                       </div>
                       <div class="modal-footer d-flex justify-content-center">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                       </div>
                       </div>
                       </div>
@@ -104,7 +104,7 @@
                       <div class="modal-dialog modal-dialog-centered" role="document">
                       <div class="modal-content">
                       <div class="modal-header d-flex justify-content-center">
-                        <h5 class="modal-title" id="exampleModalCenterTitle">Ten cuidado con esta acción</h5>
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Be careful with this action</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">&times;</span>
                         </button>
@@ -114,11 +114,11 @@
                             <a><img src="{{ asset('storage/Images/Warning.JPG') }}" alt="" title=""  text-align="center" /></a>
                            </div>
                            <br>
-                          <p class="text-center">Eliminarás el registro ( <b>{{$statisticalsensor->id}}</b> ) seguro?</p>
+                          <p class="text-center">You will delete the record ( <b>{{$statisticalsensor->id}}</b> ) are you sure ?</p>
                       </div>
                       <div class="modal-footer d-flex justify-content-center">
-                            <button type="button" class="btn btn-info" data-dismiss="modal">Cancelar</button>
-                            <input type="submit" class="btn btn-danger" value="Eliminar">
+                            <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
+                            <input type="submit" class="btn btn-danger" value="Delete">
                       </div>
                       </div>
                       </div>
@@ -160,7 +160,7 @@
     <div class="col-12">
       <div class="card card-primary card-outline">
         <div class="card-header">
-          <h3 class="card-title">Resultados Estadisticos de Sensores</h3>
+          <h3 class="card-title">Statistical Results of Sensors</h3>
           {{--  <h3 class="card-title">Statistical Results</h3>  --}}
         </div>
         <!-- /.card-header -->
@@ -169,13 +169,13 @@
           <thead>
              <!-- /.card-header 'id', 'estimate_proxy_size', 'development_hours' -->
             <tr>
-              <th>Id Muestra</th>
+              <th>Sample Id</th>
              {{-- <th>Id Sensor</th>  --}}
-              <th>Correlacion</th>
-              <th>Media Aritmetica</th>
-              <th>Mediana</th>
-              <th>Moda</th>
-              <th>Deviacion Estandar</th>
+              <th>Correlation</th>
+              <th>Arithmetic Average</th>
+              <th>Median</th>
+              <th>Mode</th>
+              <th>Standard Deviation</th>
               {{-- <th>DateMod</th> --}}
             </tr>
             </thead>
@@ -218,7 +218,7 @@
 @stop
 
 @section('footer') 
-<div class="pull-right hidden-xs"><b>Version</b> 2.0.1<strong>  Copyright &copy; 2021 <a href="http://hotspot.fjlic.com/home" target="_blank">Hotspot</a>.</strong>  Todo los derechos Reservados.</div> 
+<div class="pull-right hidden-xs"><b>Version</b> 2.1.1<strong>  Copyright &copy; 2022 <a href="http://hotspot.fjlic.com/home" target="_blank">Hotspot</a>.</strong>  All rights reserved.</div> 
 @stop
 
 @section('css')
@@ -242,7 +242,7 @@
       'scrollX'     : true,
       'scrollY'     : false,
       'scrollCollapse': false,
-      'language': {'url': '//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json'}   
+      //'language': {'url': '//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json'}   
     })
   });
 </script>
@@ -259,14 +259,14 @@
       'scrollX'     : true,
       'scrollY'     : false,
       'scrollCollapse': false,
-      'language': {'url': '//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json'}   
+      //'language': {'url': '//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json'}   
     })
   });
 </script>
 <script>
         var botmanWidget = {
-            aboutText: 'Centro de Ayuda FJLIC',
-            introMessage: "✋ Hola!! soy tu asistente IoT-Hotspot"
+          aboutText: 'FJLIC Help Center',
+          introMessage: "✋ Hello!! I am your IoT-Hotspot assistant"
         };
 </script>
 <script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script>

@@ -246,19 +246,19 @@ return [
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
-        ['header' => 'Panel de Opciones'],
+        ['header' => 'Options Panel'],
         [
-            'text'    => 'Usuarios',
+            'text'    => 'Users',
             'icon'    => 'fas fa-user-astronaut',
             'icon_color' => 'green',
             'submenu' => [
                 [
-                    'text'    => 'Configuraciones',
+                    'text'    => 'Configurations',
                     'icon'    => 'fas fa-user-cog',
                     'icon_color' => 'green',
                     'submenu' => [
                         [
-                            'text' => 'Listar',
+                            'text' => 'List',
                             'icon_color' => '',
                             'icon'  => 'fas fa-fw fa-users',
                             'url'  => 'user',
@@ -270,19 +270,19 @@ return [
                             'url'  => 'role',
                         ],
                         [
-                            'text' => 'Permisos',
+                            'text' => ' Permissions',
                             'icon_color' => '',
                             'icon'  => 'fas fa-address-card',
                             'url'  => 'permission',
                         ],
                         [
-                            'text' => 'Asignaciones',
+                            'text' => 'Assignments',
                             'icon_color' => '',
                             'icon'  => 'fas fa-address-card',
                             'url'  => 'assignment',
                         ],
                         [
-                            'text' => 'Alertas',
+                            'text' => 'Alerts',
                             'icon_color' => '',
                             'icon'  => 'fas fa-exclamation-circle',
                             'url'  => 'alert',
@@ -290,18 +290,18 @@ return [
                     ],
                 ],    
                 [
-                    'text'    => 'Estadistico Telemetria',
+                    'text'    => 'Statistical Telemetry',
                     'icon'    => 'fas fa-chart-bar',
                     'icon_color' => 'green',
                     'submenu' => [
                         [
-                            'text' => 'Listar',
+                            'text' => 'List',
                             'icon_color' => '',
                             'icon'  => 'fas fa-fw fa-list',
                             'url'  => 'statisticalrequest',
                         ],
                         /*[
-                            'text' => 'Historial Estadisticos Telemetria',
+                            'text' => 'History Statistics Telemetry',
                             'icon_color' => '',
                             'icon'  => 'fas fa-route',
                             'url'  => 'historialstatisticalsensor',
@@ -309,12 +309,12 @@ return [
                     ],
                 ],
                 [
-                    'text'    => 'Predicciones Telemetria',
+                    'text'    => 'Telemetry Predictions',
                     'icon'    => 'fas fa-draw-polygon',
                     'icon_color' => 'green',
                     'submenu' => [
                         [
-                            'text' => 'Listar',
+                            'text' => 'List',
                             'icon_color' => '',
                             'icon'  => 'fas fa-fw fa-list',
                             'url'  => 'learningrequest',
@@ -330,7 +330,7 @@ return [
             ],
         ],
         [
-            'text'    => 'Crd Modulos',
+            'text'    => 'Crd Modules',
             'icon'    => 'fas fa-space-shuttle',
             'icon_color' => 'orange',
             'submenu' => [
@@ -340,7 +340,7 @@ return [
                     'icon_color' => 'orange',
                     'submenu' => [
                         [
-                            'text' => 'Listar',
+                            'text' => 'List',
                             'icon_color' => '',
                             'icon'  => 'fas fa-fw fa-list',
                             'url'  => 'crd',
@@ -354,24 +354,24 @@ return [
                     ],
                 ],
                 [
-                    'text'    => 'Contadores',
+                    'text'    => 'Counters',
                     'icon'    => 'fas fa-camera-retro',
                     'icon_color' => 'orange',
                     'submenu' => [
                         [
-                            'text' => 'Listar',
+                            'text' => 'List',
                             'icon_color' => '',
                             'icon'  => 'fas fa-fw fa-list',
                             'url'  => 'counter',
                         ],
                         [
-                            'text' => 'Historial Contador',
+                            'text' => 'Historial Counters',
                             'icon_color' => '',
                             'icon'  => 'fas fa-route',
                             'url'  => 'historialcounter',
                         ],
                         [
-                            'text' => 'Estadistico Contador',
+                            'text' => 'Statistical Counter',
                             'icon_color' => '',
                             'icon'  => 'fas fa-chart-bar',
                             'url'  => 'statisticalcounter',
@@ -384,7 +384,7 @@ return [
                     'icon_color' => 'orange',
                     'submenu' => [
                         [
-                            'text' => 'Listar',
+                            'text' => 'List',
                             'icon_color' => '',
                             'icon'  => 'fas fa-fw fa-list',
                             'url'  => 'qr',
@@ -403,7 +403,7 @@ return [
                     'icon_color' => 'orange',
                     'submenu' => [
                         [
-                            'text' => 'Listar',
+                            'text' => 'List',
                             'icon_color' => '',
                             'icon'  => 'fas fa-fw fa-list',
                             'url'  => 'nfc',
@@ -417,12 +417,12 @@ return [
                     ],
                 ],
                 [
-                    'text'    => 'Publicidad',
+                    'text'    => 'Advertising',
                     'icon'    => 'fas fa-image',
                     'icon_color' => 'orange',
                     'submenu' => [
                         [
-                            'text' => 'Listar',
+                            'text' => 'List',
                             'icon_color' => '',
                             'icon'  => 'fas fa-fw fa-list',
                             'url'  => 'file',
@@ -433,7 +433,7 @@ return [
             
         ],
         [
-            'text'    => 'Erb Modulos',
+            'text'    => 'Erb Modules',
             'icon'    => 'fas fa-rocket',
             'icon_color' => 'red',
             'submenu' => [
@@ -443,7 +443,7 @@ return [
                     'icon_color' => 'red',
                     'submenu' => [
                         [
-                            'text' => 'Listar',
+                            'text' => 'List',
                             'icon_color' => '',
                             'icon'  => 'fas fa-fw fa-list',
                             'url'  => 'erb',
@@ -457,24 +457,24 @@ return [
                     ],
                 ],
                 [
-                    'text'    => 'Sensores',
+                    'text'    => 'Sensors',
                     'icon'    => 'fas fa-cogs',
                     'icon_color' => 'red',
                     'submenu' => [
                         [
-                            'text' => 'Listar',
+                            'text' => 'List',
                             'icon_color' => '',
                             'icon'  => 'fas fa-fw fa-list',
                             'url'  => 'sensor',
                         ],
                         [
-                            'text' => 'Historial Sensores',
+                            'text' => 'Historial Sensors',
                             'icon_color' => '',
                             'icon'  => 'fas fa-route',
                             'url'  => 'historialsensor',
                         ],
                         [
-                            'text' => 'Estadistico Sensores',
+                            'text' => 'Statistical Sensors',
                             'icon_color' => '',
                             'icon'  => 'fas fa-chart-bar',
                             'url'  => 'statisticalsensor',
@@ -492,7 +492,7 @@ return [
                     'icon'    => 'fas fa-file',
                     'submenu' => [
                         [
-                            'text' => 'Listar',
+                            'text' => 'List',
                             'icon_color' => '',
                             'icon'  => 'fas fa-fw fa-list',
                             'url'  => 'probeestimating',
@@ -504,7 +504,7 @@ return [
                     'icon'    => 'fas fa-file',
                     'submenu' => [
                         [
-                            'text' => 'Listar',
+                            'text' => 'List',
                             'icon_color' => '',
                             'icon'  => 'fas fa-fw fa-list',
                             'url'  => 'classname',
@@ -514,7 +514,7 @@ return [
             ],
         ],
         [
-            'text'    => 'Documentacion',
+            'text'    => 'Documentation',
             'icon'    => 'fas fa-file-code',
             'icon_color' => 'blue',
             'url'  => 'docs',

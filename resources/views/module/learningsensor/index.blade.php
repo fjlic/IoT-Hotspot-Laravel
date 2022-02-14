@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Hotspot|Prediccion')
+@section('title', 'Hotspot|Prediction')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop
@@ -31,7 +31,7 @@
         <div class="col-12">
           <div class="card card-primary card-outline">
             <div class="card-header">
-              <h3 class="card-title">Predicciones de Sensores</h3>
+              <h3 class="card-title">Sensor Predictions</h3>
               <a class="btn btn-xs btn-success float-right" href="{{ route('learningsensor.create') }}" role="button"><span class="fas fa-plus"></span></a>
             </div>
             <!-- /.card-header -->
@@ -41,17 +41,17 @@
                 <!-- 'statistical_sensor_id', 'elements', 'start_time', 'pass_time', 'finish_time', 'aver_temper_glob', 'difer_const', 'sample' -->
                 <tr>
                   <th>Id</th>
-                  <th>Id Estadistico</th>
-                  <th>Elementos</th>
-                  <th>Temp Prom</th>
-                  <th>Temp 20-C°</th>
-                  <th>Tmp Ini</th>
-                  <th>Seg</th>
-                  <th>Tmp Final</th>
-                  <th>Muestra</th>
+                  <th>Statistical Id</th>
+                  <th>Elements</th>
+                  <th>Temperature</th>
+                  <th>Dif 20-C°</th>
+                  <th>Start Time</th>
+                  <th>Elaps Time</th>
+                  <th>Fin Time</th>
+                  <th>Sample</th>
                   {{-- <th>FechaCreacion</th> --}}
                   {{-- <th>DateMod</th> --}}
-                  <th>Acciones</th>
+                  <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -65,13 +65,13 @@
                     <td>{{ $learningsensor->start_time }}</td>
                     <td>{{ $learningsensor->pass_time }}</td>
                     <td>{{ $learningsensor->finish_time }}</td>
-                    <td><a href="" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#ModalSt{{$learningsensor->id}}"><span>Datos-Muestra</span></a>
+                    <td><a href="" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#ModalSt{{$learningsensor->id}}"><span>Sample-Data</span></a>
                     <!------ ESTE ES EL MODAL QUE SE MUESTRA AL DAR CLICK EN EL BOTON PARA VER ------>
                     <div class="modal fade" id="ModalSt{{$learningsensor->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                       <div class="modal-dialog modal-dialog-centered" role="document">
                       <div class="modal-content">
                       <div class="modal-header d-flex justify-content-center">
-                        <h5 class="modal-title" id="exampleModalCenterTitle">Id-Muestra ({{$learningsensor->id}})</h5>
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Sample Data ({{$learningsensor->id}})</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">&times;</span>
                         </button>
@@ -82,7 +82,7 @@
                           </div>
                       </div>
                       <div class="modal-footer d-flex justify-content-center">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                       </div>
                       </div>
                       </div>
@@ -99,12 +99,12 @@
                       @csrf
                       @method('DELETE')
                       <a href="" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#exampleModalCenter{{$learningsensor->id}}"><span class="fas fa-trash"></span></a>
-                      <!------ ESTE ES EL MODAL QUE SE MUESTRA AL DAR CLICK EN EL BOTON "ELIMINAR" ------>
+                      <!------ THIS IS THE MODAL THAT IS DISPLAYED WHEN YOU CLICK ON THE "DELETE" BUTTON" ------>
                       <div class="modal fade" id="exampleModalCenter{{$learningsensor->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                       <div class="modal-dialog modal-dialog-centered" role="document">
                       <div class="modal-content">
                       <div class="modal-header d-flex justify-content-center">
-                        <h5 class="modal-title" id="exampleModalCenterTitle">Ten cuidado con esta acción</h5>
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Be careful with this action</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">&times;</span>
                         </button>
@@ -114,11 +114,11 @@
                             <a><img src="{{ asset('storage/Images/Warning.JPG') }}" alt="" title=""  text-align="center" /></a>
                            </div>
                            <br>
-                          <p class="text-center">Eliminarás el registro ( <b>{{$learningsensor->id}}</b> ) seguro?</p>
+                          <p class="text-center">You will delete the record ( <b>{{$learningsensor->id}}</b> ) are you sure ?</p>
                       </div>
                       <div class="modal-footer d-flex justify-content-center">
-                            <button type="button" class="btn btn-info" data-dismiss="modal">Cancelar</button>
-                            <input type="submit" class="btn btn-danger" value="Eliminar">
+                            <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
+                            <input type="submit" class="btn btn-danger" value="Delete">
                       </div>
                       </div>
                       </div>
@@ -154,7 +154,7 @@
 @stop
 
 @section('footer') 
-<div class="pull-right hidden-xs"><b>Version</b> 2.0.1<strong>  Copyright &copy; 2021 <a href="http://hotspot.fjlic.com/home" target="_blank">Hotspot</a>.</strong>  Todo los derechos Reservados.</div> 
+<div class="pull-right hidden-xs"><b>Version</b> 2.1.1<strong>  Copyright &copy; 2022 <a href="http://hotspot.fjlic.com/home" target="_blank">Hotspot</a>.</strong>  All rights reserved.</div> 
 @stop
 
 @section('css')
@@ -177,14 +177,14 @@
       'scrollX'     : true,
       'scrollY'     : false,
       'scrollCollapse': false,
-      'language': {'url': '//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json'}   
+      //'language': {'url': '//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json'}   
     })
   });
 </script>
 <script>
         var botmanWidget = {
-            aboutText: 'Centro de Ayuda FJLIC',
-            introMessage: "✋ Hola!! soy tu asistente IoT-Hotspot"
+          aboutText: 'FJLIC Help Center',
+          introMessage: "✋ Hello!! I am your IoT-Hotspot assistant"
         };
 </script>
 <script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script>
