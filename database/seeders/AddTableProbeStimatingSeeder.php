@@ -24,7 +24,7 @@ class AddTableProbeStimatingSeeder extends Seeder
          $prob_stm->act_dev_size = 15.0;
          $prob_stm->save();
 
-         $prob_stm = new ProbeEstimating();
+         /*$prob_stm = new ProbeEstimating();
          $prob_stm->id = 2;
          $prob_stm->prox_size = 650;
          $prob_stm->mod_size = 765;
@@ -94,6 +94,6 @@ class AddTableProbeStimatingSeeder extends Seeder
          $prob_stm->mod_size = 1130;
          $prob_stm->stm_prox_size = 1601;
          $prob_stm->act_dev_size = 138.2;
-         $prob_stm->save();
+         $prob_stm->save();*/
     }
 }

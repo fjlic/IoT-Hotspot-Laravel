@@ -23,7 +23,7 @@ class AddClassNameTableSeeder extends Seeder
         $classname->num_method = 3;
         $classname->save();
 
-        $classname = new ClassName();
+        /*$classname = new ClassName();
         $classname->id = 2;
         $classname->class_name = 'string_read';
         $classname->class_loc = 18;
@@ -105,6 +105,6 @@ class AddClassNameTableSeeder extends Seeder
         $classname->class_name = 'Converter';
         $classname->class_loc = 588;
         $classname->num_method = 10;
-        $classname->save();
+        $classname->save();*/
     }
 }

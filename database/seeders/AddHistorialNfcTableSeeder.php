@@ -18,7 +18,7 @@ class AddHistorialNfcTableSeeder extends Seeder
     public function run()
     {
         $nfc1 = Nfc::find(1);
-        $nfc2 = Nfc::find(2);
+        /*$nfc2 = Nfc::find(2);
         $nfc3 = Nfc::find(3);
         $nfc4 = Nfc::find(4);
         $nfc5 = Nfc::find(5);
@@ -27,7 +27,7 @@ class AddHistorialNfcTableSeeder extends Seeder
         $nfc8 = Nfc::find(8);
         $nfc9 = Nfc::find(9);
         $nfc10 = Nfc::find(10);
-        /*$nfc11 = Nfc::find(11);
+        $nfc11 = Nfc::find(11);
         $nfc12 = Nfc::find(12);
         $nfc13 = Nfc::find(13);
         $nfc14 = Nfc::find(14);
@@ -55,7 +55,7 @@ class AddHistorialNfcTableSeeder extends Seeder
         $historialnfc->txt = $nfc1->txt;
         $historialnfc->save();
         
-        $historialnfc = new HistorialNfc();
+        /*$historialnfc = new HistorialNfc();
         $historialnfc->nfc_id = $nfc2->id;
         $historialnfc->num_serie = $nfc2->num_serie;
         $historialnfc->cont_qr = $nfc2->cont_qr;
@@ -202,7 +202,7 @@ class AddHistorialNfcTableSeeder extends Seeder
         $historialnfc->ip_server = $nfc10->ip_server;
         $historialnfc->port = $nfc10->port;
         $historialnfc->txt = $nfc10->txt;
-        $historialnfc->save();
+        $historialnfc->save();*/
         
         
         /*$historialnfc = new HistorialNfc();

@@ -30,10 +30,10 @@ class AddNfcTableSeeder extends Seeder
         $nfccoin->passwd = '10T#H0t5p0t';
         $nfccoin->ip_server = '74.208.92.167';
         $nfccoin->port = '443';
-        $nfccoin->txt = 'Prueba Nfc 1 Ok';
+        $nfccoin->txt = 'Test Nfc 1 Ok';
         $nfccoin->save();
 
-        $nfccoin = new Nfc();
+        /*$nfccoin = new Nfc();
         $nfccoin->id = 2;
         $nfccoin->crd_id = 2;
         $nfccoin->erb_id = 2;
@@ -193,6 +193,6 @@ class AddNfcTableSeeder extends Seeder
         $nfccoin->ip_server = '74.208.92.167';
         $nfccoin->port = '443';
         $nfccoin->txt = 'Prueba Nfc 10 Ok';
-        $nfccoin->save();
+        $nfccoin->save();*/
     }
 }

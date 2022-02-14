@@ -23,7 +23,7 @@ class AddChapterTableSeeder extends Seeder
         $chapter->pages = 7;
         $chapter->save();
 
-        $chapter = new Chapter();
+        /*$chapter = new Chapter();
         $chapter->id = 2;
         $chapter->chapter_name = 'Chapter 1';
         $chapter->chapter_num = 2;
@@ -126,6 +126,6 @@ class AddChapterTableSeeder extends Seeder
         $chapter->chapter_name = 'Appendix F';
         $chapter->chapter_num = 16;
         $chapter->pages = 12;
-        $chapter->save();
+        $chapter->save();*/
     }
 }

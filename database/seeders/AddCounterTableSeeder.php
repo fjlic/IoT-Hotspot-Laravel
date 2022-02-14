@@ -34,7 +34,7 @@ class AddCounterTableSeeder extends Seeder
         $counter->port = '443';
         $counter->token = ApiToken::GenerateToken16();
         $counter->type = 0;
-        $counter->text = 'Prueba Contador 1 Ok';
+        $counter->text = 'Test Counter 1 Ok';
         $counter->save();
 
         /*$counter = new Counter();

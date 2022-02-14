@@ -21,13 +21,13 @@ class AddErbTableSeeder extends Seeder
         $erb->id = 1;
         $erb->user_id = 1;
         $erb->num_serie = 222233331;
-        $erb->name_machine = 'Angry birds';
+        $erb->name_machine = 'Sensor Device';
         $erb->nick_name = 'Erb_1';
         $erb->password = Crypt::encrypt('erb123');
         $erb->api_token = ApiToken::GenerateToken16();
         $erb->save();
 
-        $erb = new Erb();
+        /*$erb = new Erb();
         $erb->id = 2;
         $erb->user_id = 1;
         $erb->num_serie = 222233332;
@@ -115,7 +115,7 @@ class AddErbTableSeeder extends Seeder
         $erb->nick_name = 'Erb_10';
         $erb->password = Crypt::encrypt('erb123');
         $erb->api_token = ApiToken::GenerateToken16();
-        $erb->save();
+        $erb->save();*/
 
         /*$erb = new Erb();
         $erb->id = 11;

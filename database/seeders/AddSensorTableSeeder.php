@@ -25,19 +25,19 @@ class AddSensorTableSeeder extends Seeder
         $sensor->vol_1 = 'On';
         $sensor->vol_2 = 'Off';
         $sensor->vol_3 = 'Off';
-        $sensor->temp_1 = '20.3';
-        $sensor->temp_2 = '19.8';
-        $sensor->temp_3 = '21.2';
-        $sensor->temp_4 = '19.9';
+        $sensor->temp_1 = '0.0';
+        $sensor->temp_2 = '0.0';
+        $sensor->temp_3 = '0.0';
+        $sensor->temp_4 = '0.0';
         $sensor->door_1 = 'On';
-        $sensor->door_2 = 'Off';
-        $sensor->door_3 = 'On';
-        $sensor->door_4 = 'On';
+        $sensor->door_2 = 'On';
+        $sensor->door_3 = 'Off';
+        $sensor->door_4 = 'Off';
         $sensor->rlay_1 = 'On';
-        $sensor->rlay_2 = 'Off';
-        $sensor->rlay_3 = 'On';
+        $sensor->rlay_2 = 'On';
+        $sensor->rlay_3 = 'Off';
         $sensor->rlay_4 = 'Off';
-        $sensor->text = 'sensor demo '.'1';
+        $sensor->text = 'Test Sensor 1';
         $sensor->save();
 
         /*

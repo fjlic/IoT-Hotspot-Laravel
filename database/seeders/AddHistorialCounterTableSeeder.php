@@ -38,7 +38,7 @@ class AddHistorialCounterTableSeeder extends Seeder
                 $histocounter->port = "443";
                 $histocounter->token = ApiToken::GenerateToken16();
                 $histocounter->type = 1;
-                $histocounter->text = "Moneda ".$tmp_mon;
+                $histocounter->text = "Currency ".$tmp_mon;
                 $histocounter->created_at = $modDate;
                 $histocounter->updated_at = $modDate;
                 $histocounter->save();
@@ -67,7 +67,7 @@ class AddHistorialCounterTableSeeder extends Seeder
                     $histocounter->port = "443";
                     $histocounter->token = ApiToken::GenerateToken16();
                     $histocounter->type = 1;
-                    $histocounter->text = "Moneda ".($tmp_mon/10);
+                    $histocounter->text = "Currency ".($tmp_mon/10);
                     $histocounter->created_at = $modDate;
                     $histocounter->updated_at = $modDate;
                     $histocounter->save();

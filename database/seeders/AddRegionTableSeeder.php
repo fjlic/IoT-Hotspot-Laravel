@@ -28,7 +28,7 @@ class AddRegionTableSeeder extends Seeder
         $region->country = 'Mexico';
         $region->state = 'Jalisco';
         $region->municipality = 'Tlaquepaque';
-        $region->suburb = 'Tequepexpan';
+        $region->suburb = 'San Pedro Tlquepaque';
         $region->save();
     }
 }

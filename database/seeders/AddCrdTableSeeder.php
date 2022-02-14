@@ -21,7 +21,7 @@ class AddCrdTableSeeder extends Seeder
         $crd->id = 1;
         $crd->user_id = 1;
         $crd->num_serie = 333344441;
-        $crd->name_machine = 'rocking Horse';
+        $crd->name_machine = 'Marketing Devide';
         $crd->nick_name = 'Crd_1';
         $crd->password = Crypt::encrypt('crd123');
         $crd->api_token = ApiToken::GenerateToken16();
@@ -29,7 +29,7 @@ class AddCrdTableSeeder extends Seeder
         $crd->status_crd = '0';
         $crd->save();
 
-        $crd = new Crd();
+        /*$crd = new Crd();
         $crd->id = 2;
         $crd->user_id = 1;
         $crd->num_serie = 333344442;
@@ -134,8 +134,8 @@ class AddCrdTableSeeder extends Seeder
         $crd->api_token = ApiToken::GenerateToken16();
         $crd->status_video = '1';
         $crd->status_crd = '0';
-        $crd->save();
-
+        $crd->save();*/
+        
         /*$crd = new Crd();
         $crd->id = 11;
         $crd->user_id = 4;
