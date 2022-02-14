@@ -16,15 +16,15 @@ class AddAlertTableSeeder extends Seeder
     {
         //
         $emails = array();
-        $emails[0] = 'franc.javier.flores@gmail.com';
-        $emails[1] = 'fjavier.flores@hotmail.com';
+        $emails[0] = 'support@fjlic.com';
+        $emails[1] = 'franc.javier.flores@gmail.com';
         $alert = new Alert();
         $alert->id = 1;
         $alert->type = 'sensor';
         $alert->email = json_encode($emails);
-        $alert->title = 'Hola estimado(a) este mensage requiere de tu atención !!';
-        $alert->body = 'A continuación se describe la alerta de IoT-Hotspot';
-        $alert->footer = 'Para más detalles visita el link';
+        $alert->title = 'Hello dear, this message requires your attention !!';
+        $alert->body = 'The IoT-Hotspot alert is described below';
+        $alert->footer = 'For more details visit the link';
         $alert->save();
     }
 }

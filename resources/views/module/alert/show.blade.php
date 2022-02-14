@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Hotspot|Alerta')
+@section('title', 'Hotspot|Alerts')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop
@@ -30,7 +30,7 @@
         <div class="col-12">
           <div class="card card-info card-outline">
             <div class="card-header">
-              <h3 class="card-title">Ver Alerta</h3>
+              <h3 class="card-title">Alert Table</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -41,28 +41,28 @@
                   <input type="text" class="form-control" value="{{ $alert->id }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
-                  <label for="type">Tipo</label>
+                  <label for="type">Type</label>
                   <input type="text" class="form-control" value="{{ $alert->type }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
-                  <label for="email">Email</label>
+                  <label for="email">Mail</label>
                   <input type="text" class="form-control" value="{{ $alert->email }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
-                  <label for="title">Titulo</label>
+                  <label for="title">Title</label>
                   <input type="text" class="form-control" value="{{ $alert->title }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
-                  <label for="body">Cuerpo mensaje</label>
+                  <label for="body">Message Body</label>
                   <input type="text" class="form-control" value="{{ $alert->body }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
-                  <label for="footer">Fin de mensaje</label>
+                  <label for="footer">End Message</label>
                   <input type="text" class="form-control" value="{{ $alert->footer }}" readonly="readonly"/>
                 </div>
               <!-- /.box-body -->
               <div class="box-footer">
-                <a href="{{ route('alert.index') }}" class="btn btn-info pull-right">Regresar</a>
+                <a href="{{ route('alert.index') }}" class="btn btn-info pull-right">Get Back</a>
               </div>
             </form>
             </div>
@@ -78,7 +78,7 @@
 @stop
 
 @section('footer') 
-<div class="pull-right hidden-xs"><b>Version</b> 2.0.1<strong>  Copyright &copy; 2021 <a href="http://hotspot.fjlic.com/home" target="_blank">Hotspot</a>.</strong>  Todo los derechos Reservados.</div> 
+<div class="pull-right hidden-xs"><b>Version</b> 2.1.1<strong>  Copyright &copy; 2022 <a href="http://hotspot.fjlic.com/home" target="_blank">Hotspot</a>.</strong>  All rights reserved.</div> 
 @stop
 
 @section('css')
@@ -91,8 +91,8 @@
 @toastr_render
 <script>
         var botmanWidget = {
-            aboutText: 'Centro de Ayuda FJLIC',
-            introMessage: "✋ Hola!! soy tu asistente IoT-Hotspot"
+            aboutText: 'FJLIC Help Center',
+            introMessage: "✋ Hello!! I am your IoT-Hotspot assistant"
         };
 </script>
 <script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script>

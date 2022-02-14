@@ -19,7 +19,7 @@ class Kernel extends ConsoleKernel
         'App\Console\Commands\StatisticalCounterCommand',
         'App\Console\Commands\LearningRequestCommand',
         'App\Console\Commands\LearningSensorCommand',
-        'App\Console\Commands\SendAlertEmailCommand'
+        'App\Console\Commands\SendAlertSensorEmailCommand'
     ];
 
     /**
@@ -36,6 +36,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('statistical:counter')->everyTwoHours(); // ->twiceDaily(6, 8);
         $schedule->command('learning:request')->everyFourHours(); // ->twiceDaily(6, 8);
         $schedule->command('learning:sensor')->everyFourHours(); // ->twiceDaily(6, 8);
+        $schedule->command('alert:sensor')->everyTwoHours(); // ->twiceDaily(6, 8);
     }
 
     /**

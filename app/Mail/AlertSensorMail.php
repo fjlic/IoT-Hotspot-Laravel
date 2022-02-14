@@ -13,7 +13,7 @@ class AlertSensorMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $subject = 'Alerta de Sensor';
+    public $subject = 'Sensor Alert';
 
     /**
      * Create a new message instance.

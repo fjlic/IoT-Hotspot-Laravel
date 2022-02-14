@@ -6,14 +6,14 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\AlertSensorMail;
 
-class SendAlertEmailCommand extends Command
+class SendAlertSensorEmailCommand extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'send:alert';
+    protected $signature = 'alert:sensor';
 
     /**
      * The console command description.

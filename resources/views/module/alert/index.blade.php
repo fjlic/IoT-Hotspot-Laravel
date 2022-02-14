@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Hotspot|Alertas')
+@section('title', 'Hotspot|Alerts')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop
@@ -30,7 +30,7 @@
         <div class="col-12">
             <div class="card card-primary card-outline">
             <div class="card-header">
-              <h3 class="card-title">Tabla de Alertas</h3>
+              <h3 class="card-title">Alert Table</h3>
               <a class="btn btn-xs btn-success float-right" href="{{ route('alert.create') }}" role="button"><span class="fas fa-plus"></span></a>
             </div>
             <!-- /.card-header -->
@@ -39,15 +39,15 @@
                 <thead>
                 <tr>
                   <th>Id</th>
-                  <th>Tipo</th>
-                  <th>Email</th>
-                  <th>Titulo</th>
-                  <th>Mensaje</th>
-                  <th>Fin Msj</th>
+                  <th>Type</th>
+                  <th>Mail</th>
+                  <th>Title</th>
+                  <th>Message</th>
+                  <th>End Msj</th>
                   {{-- <th>Password</th> --}}
                   {{-- <th>FechaCre</th> --}}
-                  <th>FechaMod</th>
-                  <th>Acciones</th>
+                  <th>ModDate</th>
+                  <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -56,13 +56,13 @@
                     <td>{{ $alert->id }}</td>
                     <td>{{ $alert->type }}</td>
                     {{-- <td>{{ $alert->email }}</td> --}}
-                    <td><a href="" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#ModalSt{{$alert->id}}"><span>Ver-Correos</span></a>
+                    <td><a href="" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#ModalSt{{$alert->id}}"><span>See-Mails</span></a>
                     <!------ ESTE ES EL MODAL QUE SE MUESTRA AL DAR CLICK EN EL BOTON "ELIMINAR" ------>
                     <div class="modal fade" id="ModalSt{{$alert->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                       <div class="modal-dialog modal-dialog-centered" role="document">
                       <div class="modal-content">
                       <div class="modal-header d-flex justify-content-center">
-                        <h5 class="modal-title" id="exampleModalCenterTitle">Correos de la Alerta con Id ({{$alert->id}})</h5>
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Emails of the Alert with Id ({{$alert->id}})</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                           <span aria-hidden="true">&times;</span>
                         </button>
@@ -73,7 +73,7 @@
                           </div>
                       </div>
                       <div class="modal-footer d-flex justify-content-center">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                       </div>
                       </div>
                       </div>
@@ -94,7 +94,7 @@
 <div class="modal-dialog modal-lg" role="document">
 <div class="modal-content">
 <div class="modal-header d-flex justify-content-center">
-<h5 class="modal-title" id="emailModalCenterTitle">Cuerpo de E-mail de alerta</h5>
+<h5 class="modal-title" id="emailModalCenterTitle">Alert Email Body</h5>
 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 <span aria-hidden="true">&times;</span>
 </button>
@@ -104,39 +104,28 @@
     {{ $alert->title }} 😱
 
 @component('mail::subcopy')
-    Se detectaron alertas en la plataforma por favor da click en el boton. 🔲
+    Alerts were detected on the platform please click on the button. 🔲
 @endcomponent
 
 @component('mail::button', ['url' => 'https://hotspot.fjlic.com/historialsensor/chart/'.$sensor->id])
-    Visita Hotspot
+    Visit IoT-Hotspot
 @endcomponent
 
 @component('mail::panel')
     {{ $alert->body }} 🚀
 @endcomponent
 
-## Tabla {{ $alert->type }} con Id: {{ $sensor->id }}
+## Table {{ $alert->type }} with Id: {{ $sensor->id }}
 
 <center>
 @component('mail::table')
-| Sensor | Nombre | Estado | Descripción |
+| Sensor | Name | Status | Description |
 | --   |   --   |   --   |   --   |
 |      |        |        |        |
-| Temperatura | Fuente DC | {{$sensor->temp_1}} | @if($sensor->temp_1 <= 35) ✔️ @else ❌ @endif |
-| Temperatura | Ventilador | {{$sensor->temp_2}} | @if($sensor->temp_2 <= 35) ✔️ @else ❌ @endif |
-| Temperatura | Ambiente | {{$sensor->temp_3}} | @if($sensor->temp_3 <= 35) ✔️ @else ❌ @endif |
-| Temperatura | S/D | {{$sensor->temp_4}} | @if($sensor->temp_4 <= 35) ✔️ @else ❌ @endif |
-| Voltage | Fuente DC | {{$sensor->vol_1}} | @if($sensor->vol_1 === 'On') ✔️ @else ❌ @endif |
-| Voltage | Ventilador | {{$sensor->vol_2}} | @if($sensor->vol_2 === 'On') ✔️ @else ❌ @endif |
-| Voltage | Leds | {{$sensor->vol_3}} | @if($sensor->vol_3 === 'On') ✔️ @else ❌ @endif |
-| Puerta | Tapa | {{$sensor->door_1}} | @if($sensor->door_1 === 'On') ✔️ @else ❌ @endif |
-| Puerta | S/D | {{$sensor->door_2}} | @if($sensor->door_2 === 'On') ✔️ @else ❌ @endif |
-| Puerta | S/D | {{$sensor->door_3}} | @if($sensor->door_3 === 'On') ✔️ @else ❌ @endif |
-| Puerta | S/D | {{$sensor->door_4}} | @if($sensor->door_4 === 'On') ✔️ @else ❌ @endif |
-| Actuador | Cerradura | {{$sensor->rlay_1}} | @if($sensor->rlay_1 === 'On') ✔️ @else ❌ @endif |
-| Actuador | S/D | {{$sensor->rlay_2}} | @if($sensor->rlay_2 === 'On') ✔️ @else ❌ @endif |
-| Actuador | S/D | {{$sensor->rlay_3}} | @if($sensor->rlay_3 === 'On') ✔️ @else ❌ @endif |
-| Actuador | S/D | {{$sensor->rlay_4}} | @if($sensor->rlay_4 === 'On') ✔️ @else ❌ @endif |
+| Temperature | Temp_1 | {{$sensor->temp_1}} | @if($sensor->temp_1 <= 35) ✔️ @else ❌ @endif |
+| Temperature | Temp_2 | {{$sensor->temp_2}} | @if($sensor->temp_2 <= 35) ✔️ @else ❌ @endif |
+| Temperature | Temp_3 | {{$sensor->temp_3}} | @if($sensor->temp_3 <= 35) ✔️ @else ❌ @endif |
+| Temperature | Temp_4 | {{$sensor->temp_4}} | @if($sensor->temp_4 <= 35) ✔️ @else ❌ @endif |
 @endcomponent
 </center>
 
@@ -147,11 +136,11 @@
 @endcomponent
 
 
-Gracias, Atte. {{ config('app.name') }} 👻
+Thanks, Atte. {{ config('app.name') }} 👻
 @endcomponent
 </div>
 <div class="modal-footer d-flex justify-content-center">
-<button type="button" class="btn btn-info" data-dismiss="modal">Cerrar</button>
+<button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
 </div>
 </div>
 </div>
@@ -167,7 +156,7 @@ Gracias, Atte. {{ config('app.name') }} 👻
                       <div class="modal-dialog modal-dialog-centered" role="document">
                       <div class="modal-content">
                       <div class="modal-header d-flex justify-content-center">
-                        <h5 class="modal-title" id="exampleModalCenterTitle">Ten cuidado con esta acción</h5>
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Be careful with this action</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">&times;</span>
                         </button>
@@ -177,11 +166,11 @@ Gracias, Atte. {{ config('app.name') }} 👻
                             <a><img src="{{ asset('storage/Images/Warning.JPG') }}" alt="" title=""  text-align="center" /></a>
                            </div>
                            <br>
-                          <p class="text-center">Eliminarás ( <b>{{$alert->type}}</b> ) seguro?</p>
+                          <p class="text-center">Do you will delete ( <b>{{$alert->type}}</b> ) are you sure?</p>
                       </div>
                       <div class="modal-footer d-flex justify-content-center">
-                            <button type="button" class="btn btn-info" data-dismiss="modal">Cancelar</button>
-                            <input type="submit" class="btn btn-danger" value="Eliminar">
+                            <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
+                            <input type="submit" class="btn btn-danger" value="Delete">
                       </div>
                       </div>
                       </div>
@@ -221,7 +210,7 @@ Gracias, Atte. {{ config('app.name') }} 👻
 @stop
 
 @section('footer') 
-<div class="pull-right hidden-xs"><b>Version</b> 2.0.1 <strong>  Copyright &copy; 2021 <a href="http://hotspot.fjlic.com/home" target="_blank">Hotspot</a>.</strong>  Todo los derechos Reservados.</div> 
+<div class="pull-right hidden-xs"><b>Version</b> 2.1.1 <strong>  Copyright &copy; 2022 <a href="http://hotspot.fjlic.com/home" target="_blank">Hotspot</a>.</strong>  All rights reserved.</div> 
 @stop
 
 @section('css')
@@ -244,14 +233,14 @@ Gracias, Atte. {{ config('app.name') }} 👻
       'scrollX'     : true,
       'scrollY'     : false,
       'scrollCollapse': false,
-      'language': {'url': '//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json'}   
+      //'language': {'url': '//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json'}   
     })
   });
 </script>
 <script>
         var botmanWidget = {
-            aboutText: 'Centro de Ayuda FJLIC',
-            introMessage: "✋ Hola!! soy tu asistente IoT-Hotspot"
+            aboutText: 'FJLIC Help Center',
+            introMessage: "✋ Hello!! I am your IoT-Hotspot assistant"
         };
 </script>
 <script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script>

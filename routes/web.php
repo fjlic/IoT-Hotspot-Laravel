@@ -55,7 +55,7 @@ Route::resource('historialsensor', 'HistorialSensorController')->middleware('aut
 Route::resource('historialstatistical', 'HistorialStatisticalController')->middleware('auth');
 Route::get('email/sensor', function() {
     $mail = new AlertSensorMail;
-    Mail::to('franc.javier.flores@gmail.com')->send($mail);
+    Mail::to('support@fjlic.com')->send($mail);
     return $mail->render(); 
 });
 
