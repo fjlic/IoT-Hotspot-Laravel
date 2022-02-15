@@ -22,7 +22,7 @@ class AddAlertTableSeeder extends Seeder
         $alert->id = 1;
         $alert->type = 'sensor';
         $alert->email = json_encode($emails);
-        $alert->title = 'Hello dear, this message requires your attention !!';
+        $alert->title = 'Hello, this message requires your attention !!';
         $alert->body = 'The IoT-Hotspot alert is described below';
         $alert->footer = 'For more details visit the link';
         $alert->save();
