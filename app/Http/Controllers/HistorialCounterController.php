@@ -26,7 +26,7 @@ class HistorialCounterController extends Controller
     public function index()
     {
         //
-        $historialcounters = HistorialCounter::latest()->take(1000)->get();
+        $historialcounters = HistorialCounter::latest()->take(432)->get(); // before 3 days
         return view('module.historialcounter.index',compact('historialcounters'));
     }
 

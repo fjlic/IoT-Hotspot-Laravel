@@ -28,7 +28,7 @@ class HistorialCrdController extends Controller
     public function index()
     {
         //
-        $historialcrds = HistorialCrd::latest()->take(1000)->get();
+        $historialcrds = HistorialCrd::latest()->take(432)->get(); // before 3 days
         foreach ($historialcrds as $key => $historialcrd) {
             $historialcrd->password = Crypt::decrypt($historialcrd->password);  
         }

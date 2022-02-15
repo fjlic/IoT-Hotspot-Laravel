@@ -26,7 +26,7 @@ class HistorialNfcController extends Controller
     public function index()
     {
         //
-        $historialnfcs = HistorialNfc::latest()->take(1000)->get();
+        $historialnfcs = HistorialNfc::latest()->take(432)->get(); // before 3 days
         $nfcs = Nfc::all();
         return view('module.historialnfc.index',compact('historialnfcs','nfcs'));
     }

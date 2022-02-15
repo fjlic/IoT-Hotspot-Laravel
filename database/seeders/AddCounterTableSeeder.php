@@ -27,7 +27,7 @@ class AddCounterTableSeeder extends Seeder
         $counter->cont_mon_2 = '0';
         $counter->cont_corte = '0';
         $counter->cont_prem = '0';
-        $counter->cost_mon = '5';
+        $counter->cost_mon = '10';
         $counter->ssid = 'FJLIC_IoT';
         $counter->passwd = 'FJL1C_I@T';
         $counter->ip_server = '74.208.92.167';

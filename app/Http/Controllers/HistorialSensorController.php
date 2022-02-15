@@ -27,7 +27,7 @@ class HistorialSensorController extends Controller
     public function index()
     {
         //
-        $historialsensors = HistorialSensor::latest()->take(1000)->get();
+        $historialsensors = HistorialSensor::latest()->take(432)->get(); // before 3 days
         //return view('module.historialsensor.index')->with('historialsensors',$historialsensors);
         return view('module.historialsensor.index',compact('historialsensors'));
     }

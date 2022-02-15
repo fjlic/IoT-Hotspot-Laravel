@@ -28,7 +28,7 @@ class HistorialErbController extends Controller
     public function index()
     {
         //
-        $historialerbs = HistorialErb::latest()->take(1000)->get();
+        $historialerbs = HistorialErb::latest()->take(432)->get(); // before 3 days
         foreach ($historialerbs as $key => $historialerb) {
             $historialerb->password = Crypt::decrypt($historialerb->password);  
         }
