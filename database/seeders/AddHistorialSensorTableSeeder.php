@@ -47,7 +47,7 @@ class AddHistorialSensorTableSeeder extends Seeder
         } 
         
         $id_tmp = HistorialSensor::all()->count()+1;
-        for ($i=1; $i <= 12960; $i++) {
+        for ($i=1; $i <= 12960; $i++) { // 12960
                 //$modDate = $modDate->addMinutes(10);
                 $temp_1_rand = ApiToken::random_float(14, 26, 2);
                 $temp_2_rand = ApiToken::random_float(14, 26, 2);
@@ -81,5 +81,14 @@ class AddHistorialSensorTableSeeder extends Seeder
                     $histosensor->save();
                 }
         }
+
+        foreach ($sensors as $key => $sensor) {
+            $data_his = HistorialSensor::where('sensor_id', $sensor->id)->latest('created_at')->first();
+            $sensor->temp_1 = $data_his->temp_1;
+            $sensor->temp_2 = $data_his->temp_2;
+            $sensor->temp_3 = $data_his->temp_3;
+            $sensor->temp_4 = $data_his->temp_4;
+            $sensor->save();
+        } 
     }
 }

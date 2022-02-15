@@ -71,9 +71,13 @@ class AddHistorialCounterTableSeeder extends Seeder
                     $histocounter->created_at = $modDate;
                     $histocounter->updated_at = $modDate;
                     $histocounter->save();
-                    $counter->cont_mon = $tmp_mon;
-                    $counter->save();
                 }
         }
+
+        foreach ($counters as $key => $counter) {
+            $count_his = HistorialCounter::where('counter_id', $counter->id)->latest('created_at')->first();
+            $counter->cont_mon = $count_his->cont_mon;
+            $counter->save();
+        } 
     }
 }
