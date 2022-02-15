@@ -47,7 +47,7 @@
                   <th>Dif 20-C°</th>
                   <th>Start Time</th>
                   <th>Elaps Time</th>
-                  <th>Fin Time</th>
+                  <th>End Time</th>
                   <th>Sample</th>
                   {{-- <th>FechaCreacion</th> --}}
                   {{-- <th>DateMod</th> --}}
