@@ -89,12 +89,13 @@ class AddLearningSensorTableSeeder extends Seeder
             $learning->start_time = $statisticalsensor->finish_time;
             $learning->pass_time = $secondsDiff;
             $learning->finish_time = $tmp_start;
-            $learning->aver_temper_glob = ($aver_temper_glob / $statisticalsensor->elements);
-            $learning->difer_const = (($aver_temper_glob / $statisticalsensor->elements) - $temper_const);
+            $learning->aver_temper_glob = round(($aver_temper_glob / $statisticalsensor->elements), 2);
+            $learning->difer_const = round((($aver_temper_glob / $statisticalsensor->elements) - $temper_const), 2);
             $learning->sample = json_encode($tmp_sample);
             $learning->save();
             $statisticalsensor->stat = 1;
             $statisticalsensor->save();
+            $aver_temper_glob = 0;
         }
     }
 }

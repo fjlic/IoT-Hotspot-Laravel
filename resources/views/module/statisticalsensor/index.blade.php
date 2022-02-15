@@ -61,7 +61,13 @@
                     <td>{{ $statisticalsensor->id }}</td>
                     <td>{{ $statisticalsensor->sensor_id }}</td>
                     <td>{{ $statisticalsensor->elements }}</td>
-                    <td>{{ $statisticalsensor->aver_temper_glob }}</td>
+                    @if($statisticalsensor->aver_temper_glob >= 0 && $statisticalsensor->aver_temper_glob <= 30)
+                    <td><span class="badge badge-success">{{ $statisticalsensor->aver_temper_glob }} = <div class="fa fa-check-circle"></div></span></td>
+                    @elseif($statisticalsensor->aver_temper_glob >= 30.1 && $statisticalsensor->aver_temper_glob <= 60)
+                    <td><span class="badge badge-warning">{{ $statisticalsensor->aver_temper_glob }} = <div class="fa fa-exclamation-circle"></div></span></td>
+                    @elseif($statisticalsensor->aver_temper_glob >= 60.1 && $statisticalsensor->aver_temper_glob <= 100)
+                    <td><span class="badge badge-danger">{{ $statisticalsensor->aver_temper_glob }} = <div class="fa fa-times-circle"></div></span></td>
+                    @endif
                     <td>{{ $statisticalsensor->difer_const }}</td>
                     <td>{{ $statisticalsensor->start_time }}</td>
                     <td>{{ $statisticalsensor->pass_time }}</td>

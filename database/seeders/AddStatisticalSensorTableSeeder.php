@@ -83,8 +83,8 @@ class AddStatisticalSensorTableSeeder extends Seeder
                     //de esta manera sacamos la diferencia en minutos
                     $secondsDiff=$carbon1->diffInSeconds($carbon2);
                     $statisticalsensor->pass_time = $secondsDiff;
-                    $statisticalsensor->aver_temper_glob = ($aver_temper_glob / $value_sample);
-                    $statisticalsensor->difer_const = (($aver_temper_glob / $value_sample) - $const_temper);
+                    $statisticalsensor->aver_temper_glob = round(($aver_temper_glob / $value_sample), 2);
+                    $statisticalsensor->difer_const = round((($aver_temper_glob / $value_sample) - $const_temper), 2);
                     $statisticalsensor->save();
                 }   
             }
