@@ -17,7 +17,7 @@ We have prepared Api Documentation if you would like to review the code [Documen
 
 ## Send me e-mail for better this project IoT 📧
 
-If you have suggestion to improve the construction of the project, all comments are welcome, please send an email to Javier Flores at soporte@fjlic.com. All suggestions for the code will be taken into account via [soporte@fjlic.com](mailto:soporte@fjlic.com).
+If you have suggestion to improve the construction of the project, all comments are welcome, please send an email to Javier Flores at soporte@fjlic.com. All suggestions for the code will be taken into account via [support@fjlic.com](mailto:soporte@fjlic.com).
 
 ## License 🔑
 
