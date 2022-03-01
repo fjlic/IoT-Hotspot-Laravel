@@ -30,7 +30,7 @@
         <div class="col-12">
             <div class="card card-success card-outline">
             <div class="card-header">
-              <h3 class="card-title">Crear Erb</h3>
+              <h3 class="card-title">Create Erb</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -39,7 +39,7 @@
               @csrf
               <div class="card-body">
               <div class="form-group">
-                    <label for="user_id">Usuario Asignado</label>
+                    <label for="user_id">Assigned User</label>
                         <select class="form-control" name="user_id" id="user_id"> 
                           {{--<option selected="true">{{ $erb->user_asign }}</option>--}}
                           @foreach($users as $user)
@@ -48,11 +48,11 @@
                         </select>
               </div>
                 <div class="form-group">
-                  <label for="name_machine">Nombre</label>
+                  <label for="name_machine">Name</label>
                   <input type="text" class="form-control" name="name_machine" id="name_machine"  placeholder="Introduce alias" required>
                 </div>
                 <div class="form-group">
-                  <label for="num_serie">Num Serie</label>
+                  <label for="num_serie">Serial Number</label>
                   <input type="text" class="form-control" name="num_serie" id="num_serie"  placeholder="Introduce serie" required>
                 </div>
                 <div class="form-group">
@@ -67,8 +67,8 @@
               <!-- /.card-body -->
 
               <div class="card-footer">
-                <a href="{{ route('erb.index') }}" class="btn btn-default">Cancelar</a>
-                <button type="submit" class="btn btn-success pull-right" >Enviar</button>
+                <a href="{{ route('erb.index') }}" class="btn btn-default">Cancel</a>
+                <button type="submit" class="btn btn-success pull-right" >Send</button>
               </div>
             </form>
             </div>
@@ -86,7 +86,7 @@
 @stop
 
 @section('footer') 
-<div class="pull-right hidden-xs"><b>Version</b> 2.0.1<strong>  Copyright &copy; 2021 <a href="http://hotspot.fjlic.com/home" target="_blank">Hotspot</a>.</strong>  Todo los derechos Reservados.</div> 
+<div class="pull-right hidden-xs"><b>Version</b> 2.1.1<strong>  Copyright &copy; 2022 <a href="http://hotspot.fjlic.com/home" target="_blank">Hotspot</a>.</strong>  All rights reserved.</div> 
 @stop
 
 @section('css')
@@ -99,8 +99,8 @@
 @toastr_render
 <script>
         var botmanWidget = {
-            aboutText: 'Centro de Ayuda FJLIC',
-            introMessage: "✋ Hola!! soy tu asistente IoT-Hotspot"
+            aboutText: 'FJLIC Help Center',
+            introMessage: "✋ Hello!! I am your IoT-Hotspot assistant"
         };
 </script>
 <script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script>

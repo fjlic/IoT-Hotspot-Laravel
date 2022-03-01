@@ -30,7 +30,7 @@
         <div class="col-12">
             <div class="card card-success card-outline">
             <div class="card-header">
-              <h3 class="card-title">Crete Sensor</h3>
+              <h3 class="card-title">Create Sensor</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -161,7 +161,7 @@
               <!-- /.card-body -->
 
               <div class="card-footer">
-                <a href="{{ route('sensor.index') }}" class="btn btn-default">CanceL</a>
+                <a href="{{ route('sensor.index') }}" class="btn btn-default">Cancel</a>
                 <button type="submit" class="btn btn-success pull-right" >Send</button>
               </div>
             </form>
