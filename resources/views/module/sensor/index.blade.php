@@ -30,7 +30,7 @@
         <div class="col-12">
             <div class="card card-primary card-outline">
             <div class="card-header">
-              <h3 class="card-title">Sensors table</h3>
+              <h3 class="card-title">Sensors Table</h3>
               {{--  <h3 class="card-title">Sensor Table</h3>  --}}
               <a class="btn btn-xs btn-success float-right" href="{{ route('sensor.create') }}" role="button"><span class="fa fa-plus"></span></a>
             </div>
@@ -238,8 +238,9 @@
       'autoWidth'   : false,
       'scrollX'     : true,
       'scrollY'     : false,
-      'scrollCollapse': false,
-      //'language': {'url': '//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json'}   
+      'scrollCollapse': false
+      //'language': {'url': '//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json'
+      }   
     })
   });
 </script>

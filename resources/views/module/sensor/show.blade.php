@@ -30,7 +30,7 @@
         <div class="col-12">
           <div class="card card-info card-outline">
             <div class="card-header">
-              <h3 class="card-title">Ver Sensor</h3>
+              <h3 class="card-title">See Sensor</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -45,7 +45,7 @@
                   <input type="text" class="form-control" value="{{ $sensor->erb_id }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
-                  <label for="num_serie">Numero Serie</label>
+                  <label for="num_serie">Serial Number</label>
                   <input type="text" class="form-control" value="{{ $sensor->num_serie }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
@@ -53,47 +53,47 @@
                   <input type="text" class="form-control" value="{{ $sensor->passw }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
-                  <label for="temp_1">Temperatura 1</label>
+                  <label for="temp_1">Temperature 1</label>
                   <input type="text" class="form-control" value="{{ $sensor->temp_1 }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
-                  <label for="temp_2">Temperatura 2</label>
+                  <label for="temp_2">Temperature 2</label>
                   <input type="text" class="form-control" value="{{ $sensor->temp_2 }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
-                  <label for="temp_3">Temperatura 3</label>
+                  <label for="temp_3">Temperature 3</label>
                   <input type="text" class="form-control" value="{{ $sensor->temp_3 }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
-                  <label for="temp_4">Temperatura 4</label>
+                  <label for="temp_4">Temperature 4</label>
                   <input type="text" class="form-control" value="{{ $sensor->temp_4 }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
-                  <label for="vol_1">Voltaje 1</label>
+                  <label for="vol_1">Voltage 1</label>
                   <input type="text" class="form-control" value="{{ $sensor->vol_1 }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
-                  <label for="vol_2">Voltaje 2</label>
+                  <label for="vol_2">Voltage 2</label>
                   <input type="text" class="form-control" value="{{ $sensor->vol_2 }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
-                  <label for="vol_3">Voltaje 3</label>
+                  <label for="vol_3">Voltage 3</label>
                   <input type="text" class="form-control" value="{{ $sensor->vol_3 }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
-                  <label for="door_1">Puerta 1</label>
+                  <label for="door_1">Door 1</label>
                   <input type="text" class="form-control" value="{{ $sensor->door_1 }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
-                  <label for="door_2">Puerta 2</label>
+                  <label for="door_2">Door 2</label>
                   <input type="text" class="form-control" value="{{ $sensor->door_2 }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
-                  <label for="door_3">Puerta 3</label>
+                  <label for="door_3">Door 3</label>
                   <input type="text" class="form-control" value="{{ $sensor->door_3 }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
-                  <label for="door_4">Puerta 4</label>
+                  <label for="door_4">Door 4</label>
                   <input type="text" class="form-control" value="{{ $sensor->door_4 }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
@@ -113,12 +113,12 @@
                   <input type="text" class="form-control" value="{{ $sensor->rlay_4 }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
-                  <label for="text">Comentario</label>
+                  <label for="text">Comment</label>
                   <textarea  type="text" class="form-control" readonly="readonly">{{ $sensor->text }}</textarea>
                 </div>
               <!-- /.card-body -->
               <div class="card-footer">
-                <a href="{{ route('sensor.index') }}" class="btn btn-info pull-right">Regresar</a>
+                <a href="{{ route('sensor.index') }}" class="btn btn-info pull-right">Back</a>
               </div>
             </form>
             </div>
@@ -134,7 +134,7 @@
 @stop
 
 @section('footer') 
-<div class="pull-right hidden-xs"><b>Version</b> 2.0.1<strong>  Copyright &copy; 2021 <a href="http://hotspot.fjlic.com/home" target="_blank">Hotspot</a>.</strong>  Todo los derechos Reservados.</div> 
+<div class="pull-right hidden-xs"><b>Version</b> 2.1.1<strong>  Copyright &copy; 2022 <a href="http://hotspot.fjlic.com/home" target="_blank">Hotspot</a>.</strong>  All rights reserved.</div> 
 @stop
 
 @section('css')
@@ -147,8 +147,8 @@
 @toastr_render
 <script>
         var botmanWidget = {
-            aboutText: 'Centro de Ayuda FJLIC',
-            introMessage: "✋ Hola!! soy tu asistente IoT-Hotspot"
+            aboutText: 'FJLIC Help Center',
+            introMessage: "✋ Hello!! I am your IoT-Hotspot assistant"
         };
 </script>
 <script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script>

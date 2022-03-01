@@ -30,7 +30,7 @@
         <div class="col-12">
             <div class="card card-warning card-outline">
             <div class="card-header">
-              <h3 class="card-title">Editar Sensor</h3>
+              <h3 class="card-title">Edit Sensor</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -40,7 +40,7 @@
             @method('PUT')
               <div class="card-body">
                 <div class="form-group">
-                  <label for="num_serie">Numero serie</label>
+                  <label for="num_serie">Serial Number</label>
                   <input type="text" class="form-control" name="num_serie" id="num_serie"  placeholder="Introduce Numero de Serie" required value="{{ $sensor->num_serie }}" />
                 </div>
                 <div class="form-group">
@@ -48,23 +48,23 @@
                   <input type="text" class="form-control" name="passw" id="passw"  placeholder="Introduce Password" required value="{{ $sensor->passw }}"/>
                 </div>
                 <div class="form-group">
-                  <label for="temp_1">Temperatura 1</label>
+                  <label for="temp_1">Temperature 1</label>
                   <input type="number" class="form-control" name="temp_1" id="temp_1"  placeholder="0.00" required value="{{ $sensor->temp_1 }}"/>
                 </div>
                 <div class="form-group">
-                  <label for="temp_2">Temperatura 2</label>
+                  <label for="temp_2">Temperature 2</label>
                   <input type="number" class="form-control" name="temp_2" id="temp_2"  placeholder="0.00" required value="{{ $sensor->temp_2 }}"/>
                 </div>
                 <div class="form-group">
-                  <label for="temp_3">Temperatura 3</label>
+                  <label for="temp_3">Temperature 3</label>
                   <input type="number" class="form-control" name="temp_3" id="temp_3"  placeholder="0.00" required value="{{ $sensor->temp_3 }}"/>
                 </div>
                 <div class="form-group">
-                  <label for="temp_4">Temperatura 1</label>
+                  <label for="temp_4">Temperature 4</label>
                   <input type="number" class="form-control" name="temp_4" id="temp_4"  placeholder="0.00" required value="{{ $sensor->temp_4 }}"/>
                 </div>
                 <div class="form-group">
-                  <label for="vol_1">Voltaje 1</label>
+                  <label for="vol_1">Voltage 1</label>
                       <select class="form-control" name="vol_1" id="vol_1" placeholder="On/Off" required value="{{ $sensor->vol_1 }}"> 
                         <option selected="selected">{{ $sensor->vol_1 }}</option>
                         @if($sensor->vol_1 =='On')         
@@ -75,7 +75,7 @@
                       </select>
                 </div>
                 <div class="form-group">
-                  <label for="vol_2">Voltaje 2</label>
+                  <label for="vol_2">Voltage 2</label>
                       <select class="form-control" name="vol_2" id="vol_2" placeholder="On/Off" required value="{{ $sensor->vol_2 }}"> 
                         <option selected="selected">{{ $sensor->vol_2 }}</option>
                         @if($sensor->vol_2 =='On')         
@@ -86,7 +86,7 @@
                       </select>
                 </div>
                 <div class="form-group">
-                  <label for="vol_3">Voltaje 3</label>
+                  <label for="vol_3">Voltage 3</label>
                       <select class="form-control" name="vol_3" id="vol_3" placeholder="On/Off" required value="{{ $sensor->vol_3 }}"> 
                         <option selected="selected">{{ $sensor->vol_3 }}</option>
                         @if($sensor->vol_3 =='On')         
@@ -97,7 +97,7 @@
                       </select>
                 </div>
                 <div class="form-group">
-                    <label for="door_1">Puerta 1</label>
+                    <label for="door_1">Door 1</label>
                         <select class="form-control" name="door_1" id="door_1" placeholder="On/Off" required value="{{ $sensor->door_1 }}"> 
                         <option selected="selected">{{ $sensor->door_1 }}</option>
                           @if($sensor->door_1 =='On')         
@@ -108,7 +108,7 @@
                         </select>
                 </div>
                 <div class="form-group">
-                    <label for="door_2">Puerta 2</label>
+                    <label for="door_2">Door 2</label>
                         <select class="form-control" name="door_2" id="door_2" placeholder="On/Off" required value="{{ $sensor->door_2 }}"> 
                           <option selected="selected">{{ $sensor->door_2 }}</option>
                           @if($sensor->door_2 =='On')         
@@ -119,7 +119,7 @@
                         </select>
                 </div>
                 <div class="form-group">
-                    <label for="door_3">Puerta 3</label>
+                    <label for="door_3">Door 3</label>
                         <select class="form-control" name="door_3" id="door_3" placeholder="On/Off" required value="{{ $sensor->door_3 }}"> 
                           <option selected="selected">{{ $sensor->door_3 }}</option>
                           @if($sensor->door_3 =='On')         
@@ -130,7 +130,7 @@
                         </select>
                 </div>
                 <div class="form-group">
-                    <label for="door_4">Puerta 4</label>
+                    <label for="door_4">Door 4</label>
                         <select class="form-control" name="door_4" id="door_4" placeholder="On/Off" required value="{{ $sensor->door_4 }}"> 
                           <option selected="selected">{{ $sensor->door_4 }}</option>
                           @if($sensor->door_4 =='On')         
@@ -185,7 +185,7 @@
                         </select>
                 </div>
                 <div class="form-group">
-                <label for="text">Comentario</label>
+                <label for="text">Comment</label>
                 <textarea  type="text" class="form-control" name="text" id="text"  placeholder="Introduce Comentario" required>{{ $sensor->text }}</textarea>
                 </div>
                 <!-- 
@@ -195,7 +195,7 @@
                 </div>
                 -->
                 <div class="form-group">
-                    <label for="erb_id">Asignar Erb</label>
+                    <label for="erb_id">Assign Erb</label>
                         <select class="form-control" name="erb_id" id="erb_id">
                         <option selected="selected">{{ $sensor->erb_id }}</option> 
                           @foreach($erbs as $erb)
@@ -207,8 +207,8 @@
               <!-- /.card-body -->
 
               <div class="card-footer">
-                <a href="{{ route('sensor.index') }}" class="btn btn-default">Cancelar</a>
-                <button type="submit" class="btn btn-warning pull-right" >Enviar</button>
+                <a href="{{ route('sensor.index') }}" class="btn btn-default">Cancel</a>
+                <button type="submit" class="btn btn-warning pull-right" >Send</button>
               </div>
             </form>
             </div>
@@ -226,7 +226,7 @@
 @stop
 
 @section('footer') 
-<div class="pull-right hidden-xs"><b>Version</b> 2.0.1<strong>  Copyright &copy; 2021 <a href="http://hotspot.fjlic.com/home" target="_blank">Hotspot</a>.</strong>  Todo los derechos Reservados.</div> 
+<div class="pull-right hidden-xs"><b>Version</b> 2.1.1<strong>  Copyright &copy; 2022 <a href="http://hotspot.fjlic.com/home" target="_blank">Hotspot</a>.</strong>  All rights reserved.</div> 
 @stop
 
 @section('css')
@@ -239,8 +239,8 @@
 @toastr_render
 <script>
         var botmanWidget = {
-            aboutText: 'Centro de Ayuda FJLIC',
-            introMessage: "✋ Hola!! soy tu asistente IoT-Hotspot"
+            aboutText: 'FJLIC Help Center',
+            introMessage: "✋ Hello!! I am your IoT-Hotspot assistant"
         };
 </script>
 <script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script>
