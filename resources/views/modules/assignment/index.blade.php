@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Hotspot|Asignacion')
+@section('title', 'Hotspot|Assignments')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop
@@ -27,13 +27,13 @@
         <div class="col-12">
             <div class="card card-primary card-outline">
             <div class="card-header">
-              <h3 class="card-title ">Asignacion de Roles y Permisos</h3>
+              <h3 class="card-title ">Assignment of Roles and Permissions</h3>
               <a class="btn btn-xs btn-success float-right" href="{{ route('assignment.create') }}" role="button"><span class="fas fa-plus"></span></a>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
             <div class="form-group">
-                <h3 class="card-title ">Usuarios</h3><br>
+                <h3 class="card-title ">Users</h3><br>
                 <select class="form-control" name="model" id="model">
                   @foreach($models as $model)
                     <option>{{ $model }}</option>
@@ -44,10 +44,10 @@
                 <thead>
                 <tr>
                   <th>Id</th>
-                  <th>Nombre</th>
-                  <th>NumRole</th>
-                  <th>NumPermiso</th>
-                  <th>Acciones</th>
+                  <th>Name</th>
+                  <th>IdRole</th>
+                  <th>IdAssignment</th>
+                  <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -93,7 +93,7 @@
 @stop
 
 @section('footer') 
-<div class="pull-right hidden-xs"><b>Version</b> 2.0.1<strong>  Copyright &copy; 2021 <a href="http://hotspot.fjlic.com/home" target="_blank">Hotspot</a>.</strong>  Todo los derechos Reservados.</div> 
+<div class="pull-right hidden-xs"><b>Version</b> 2.1.1 <strong>  Copyright &copy; 2022 <a href="http://hotspot.fjlic.com/home" target="_blank">Hotspot</a>.</strong>  All rights reserved.</div>
 @stop
 
 @section('css')
@@ -122,8 +122,8 @@
 </script>
 <script>
         var botmanWidget = {
-            aboutText: 'Centro de Ayuda FJLIC',
-            introMessage: "✋ Hola!! soy tu asistente IoT-Hotspot"
+            aboutText: 'FJLIC Help Center',
+            introMessage: "✋ Hello!! I am your IoT-Hotspot assistant"
         };
 </script>
 <script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script>

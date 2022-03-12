@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Hotspot|Contador')
+@section('title', 'Hotspot|Counters')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop
@@ -30,7 +30,7 @@
         <div class="col-12">
           <div class="card card-warning card-outline">
             <div class="card-header">
-              <h3 class="card-title">Editar Contador</h3>
+              <h3 class="card-title">Edit Counter</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -64,63 +64,63 @@
                     </select>
               </div>
                 <div class="form-group">
-                  <label for="num_serie">Numero de Serie</label>
-                  <input type="text" class="form-control" name="num_serie" id="num_serie"  placeholder="Introduce Numero de serie" required value="{{ $counter->num_serie }}" />
+                  <label for="num_serie">Serial number</label>
+                  <input type="text" class="form-control" name="num_serie" id="num_serie"  placeholder="Enter serial number" required value="{{ $counter->num_serie }}" />
                 </div>
                 <div class="form-group">
-                  <label for="cont_qr">Contador Qr</label>
-                  <input type="text" class="form-control" name="cont_qr" id="cont_qr"  placeholder="Introduce contador qr" required value="{{ $counter->cont_qr }}" />
+                  <label for="cont_qr">Qr counter</label>
+                  <input type="text" class="form-control" name="cont_qr" id="cont_qr"  placeholder="Enter Qr counter" required value="{{ $counter->cont_qr }}" />
                 </div>
                 <div class="form-group">
-                  <label for="cont_mon">Contador Monedero</label>
-                  <input type="text" class="form-control" name="cont_mon" id="cont_mon"  placeholder="Introduce Contador Monedero" required value="{{ $counter->cont_mon }}" />
+                  <label for="cont_mon">Coin Counter</label>
+                  <input type="text" class="form-control" name="cont_mon" id="cont_mon"  placeholder="Enter Coin Counter" required value="{{ $counter->cont_mon }}" />
                 </div>
                 <div class="form-group">
-                  <label for="cont_mon_2">Contador Monedero 2</label>
-                  <input type="text" class="form-control" name="cont_mon_2" id="cont_mon_2"  placeholder="Introduce Contador Monedero 2" required value="{{ $counter->cont_mon_2 }}" />
+                  <label for="cont_mon_2">Coin Counter 2</label>
+                  <input type="text" class="form-control" name="cont_mon_2" id="cont_mon_2"  placeholder="Enter Coin Counter 2" required value="{{ $counter->cont_mon_2 }}" />
                 </div>
                 <div class="form-group">
-                  <label for="cont_corte">Contador Corte</label>
-                  <input type="text" class="form-control" name="cont_corte" id="cont_corte"  placeholder="Introduce Contador Corte" required value="{{ $counter->cont_corte }}" />
+                  <label for="cont_corte">Court Counter</label>
+                  <input type="text" class="form-control" name="cont_corte" id="cont_corte"  placeholder="Enter Court Counter" required value="{{ $counter->cont_corte }}" />
                 </div>
                 <div class="form-group">
-                  <label for="cont_prem">Contador Premios</label>
-                  <input type="text" class="form-control" name="cont_prem" id="cont_prem"  placeholder="Introduce Contador Premios" required value="{{ $counter->cont_prem }}" />
+                  <label for="cont_prem">Counter Prizes</label>
+                  <input type="text" class="form-control" name="cont_prem" id="cont_prem"  placeholder="Enter Counter Prizes" required value="{{ $counter->cont_prem }}" />
                 </div>
                  <div class="form-group">
-                  <label for="cost_mon">Costo Moneda</label>
-                  <input type="text" class="form-control" name="cost_mon" id="cost_mon"  placeholder="Introduce Costo Moneda" required value="{{ $counter->cost_mon }}" />
+                  <label for="cost_mon">Cost Currency</label>
+                  <input type="text" class="form-control" name="cost_mon" id="cost_mon"  placeholder="Enter Cost Currency" required value="{{ $counter->cost_mon }}" />
                 </div>
                 <div class="form-group">
                   <label for="ssid">Ssid</label>
-                  <input type="text" class="form-control" name="ssid" id="ssid"  placeholder="Introduce Ssid" required value="{{ $counter->ssid }}" />
+                  <input type="text" class="form-control" name="ssid" id="ssid"  placeholder="Enter Ssid" required value="{{ $counter->ssid }}" />
                 </div>
                 <div class="form-group">
                   <label for="passwd">Password</label>
-                  <input type="text" class="form-control" name="passwd" id="passwd"  placeholder="Introduce Password" required value="{{ $counter->passwd }}" />
+                  <input type="text" class="form-control" name="passwd" id="passwd"  placeholder="Enter Password" required value="{{ $counter->passwd }}" />
                 </div>
                  <div class="form-group">
                   <label for="ip_server">Ip Server</label>
-                  <input type="text" class="form-control" name="ip_server" id="ip_server"  placeholder="Introduce Ip Server" required value="{{ $counter->ip_server }}" />
+                  <input type="text" class="form-control" name="ip_server" id="ip_server"  placeholder="Enter Ip Server" required value="{{ $counter->ip_server }}" />
                 </div>
                 <div class="form-group">
-                  <label for="port">Puerto</label>
-                  <input type="text" class="form-control" name="port" id="port"  placeholder="Introduce Puerto" required value="{{ $counter->port }}" />
+                  <label for="port">Port</label>
+                  <input type="text" class="form-control" name="port" id="port"  placeholder="Enter Port" required value="{{ $counter->port }}" />
                 </div>
                 <div class="form-group">
                   <label for="token">Token</label>
-                  <input type="text" class="form-control" name="token" id="token"  placeholder="Introduce Token" required value="{{ $counter->token }}" />
+                  <input type="text" class="form-control" name="token" id="token"  placeholder="Enter Token" required value="{{ $counter->token }}" />
                 </div>
                 <div class="form-group">
-                  <label for="text">Texto</label>
-                  <input type="text" class="form-control" name="text" id="text"  placeholder="Introduce Texto" required value="{{ $counter->text }}" />
+                  <label for="text">Text</label>
+                  <input type="text" class="form-control" name="text" id="text"  placeholder="Enter Texto" required value="{{ $counter->text }}" />
                 </div>
               </div>
               <!-- /.card-body -->
 
               <div class="card-footer">
-                <a href="{{ route('counter.index') }}" class="btn btn-default">Cancelar</a>
-                <button type="submit" class="btn btn-warning pull-right" >Enviar</button>
+                <a href="{{ route('counter.index') }}" class="btn btn-default">Cancel</a>
+                <button type="submit" class="btn btn-warning pull-right">Send</button>
               </div>
             </form>
           </div>
@@ -138,7 +138,7 @@
 @stop
 
 @section('footer') 
-<div class="pull-right hidden-xs"><b>Version</b> 2.0.1<strong>  Copyright &copy; 2021 <a href="http://hotspot.fjlic.com/home" target="_blank">Hotspot</a>.</strong>  Todo los derechos Reservados.</div> 
+<div class="pull-right hidden-xs"><b>Version</b> 2.1.1 <strong>  Copyright &copy; 2022 <a href="http://hotspot.fjlic.com/home" target="_blank">Hotspot</a>.</strong>  All rights reserved.</div>
 @stop
 
 @section('css')
@@ -151,8 +151,8 @@
 @toastr_render
 <script>
         var botmanWidget = {
-            aboutText: 'Centro de Ayuda FJLIC',
-            introMessage: "✋ Hola!! soy tu asistente IoT-Hotspot"
+          aboutText: 'FJLIC Help Center',
+          introMessage: "✋ Hello!! I am your IoT-Hotspot assistant"
         };
 </script>
 <script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script>

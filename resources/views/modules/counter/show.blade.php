@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Hotspot|Contador')
+@section('title', 'Hotspot|Counters')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop
@@ -30,7 +30,7 @@
         <div class="col-12">
           <div class="card card-info card-outline">
             <div class="card-header">
-              <h3 class="card-title">Ver Contador</h3>
+              <h3 class="card-title">See Counter</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -41,15 +41,15 @@
                   <input type="text" class="form-control" value="{{ $counter->id }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
-                  <label for="crd_id">Crd Id</label>
+                  <label for="crd_id">Id Crd</label>
                   <input type="text" class="form-control" value="{{ $counter->crd_id }}" readonly="readonly"/>
                 </div>
                 {{-- <div class="form-group">
-                  <label for="erb_id">Erb Id</label>
+                  <label for="erb_id">Id Counter</label>
                   <input type="text" class="form-control" value="{{ $counter->erb_id }}" readonly="readonly"/>
                 </div> --}}
                 <div class="form-group">
-                  <label for="erb_id">Nfc Id</label>
+                  <label for="erb_id">Id Nfc</label>
                   <input type="text" class="form-control" value="{{ $counter->nfc_id }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
@@ -57,31 +57,31 @@
                   <input type="text" class="form-control" value="{{ $counter->num_serie }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
-                  <label for="cont_qr">Contador Qr</label>
+                  <label for="cont_qr">Counter Qr</label>
                   <input type="text" class="form-control" value="{{ $counter->cont_qr }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
-                  <label for="cont_mon">Contador Monedas</label>
+                  <label for="cont_mon">Counter Moneys</label>
                   <input type="text" class="form-control" value="{{ $counter->cont_mon }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
-                  <label for="cont_mon_2">Contador Monedas 2</label>
+                  <label for="cont_mon_2">Counter Moneys 2</label>
                   <input type="text" class="form-control" value="{{ $counter->cont_mon_2 }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
-                  <label for="cont_corte">Contador Corte</label>
+                  <label for="cont_corte">Counter Cuts</label>
                   <input type="text" class="form-control" value="{{ $counter->cont_corte }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
-                  <label for="cont_prem">Contador Premio</label>
+                  <label for="cont_prem">Prize Counter</label>
                   <input type="text" class="form-control" value="{{ $counter->cont_prem }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
-                  <label for="cost_mon">Costo Moneda</label>
+                  <label for="cost_mon">Currency Cost</label>
                   <input type="text" class="form-control" value="{{ $counter->cost_mon }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
-                  <label for="ssid">Contador ssid</label>
+                  <label for="ssid">Contador Ssid</label>
                   <input type="text" class="form-control" value="{{ $counter->ssid }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
@@ -93,11 +93,11 @@
                   <input type="text" class="form-control" value="{{ $counter->ip_server }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
-                  <label for="port">Puerto</label>
+                  <label for="port">Port</label>
                   <input type="text" class="form-control" value="{{ $counter->port }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
-                  <label for="text">Texto</label>
+                  <label for="text">Text</label>
                   <input type="text" class="form-control" value="{{ $counter->text }}" readonly="readonly"/>
                 </div>
               <!-- /.box-body -->
@@ -118,7 +118,7 @@
 @stop
 
 @section('footer') 
-<div class="pull-right hidden-xs"><b>Version</b> 2.0.1<strong>  Copyright &copy; 2021 <a href="http://hotspot.fjlic.com/home" target="_blank">Hotspot</a>.</strong>  Todo los derechos Reservados.</div> 
+<div class="pull-right hidden-xs"><b>Version</b> 2.1.1<strong>  Copyright &copy; 2022 <a href="http://hotspot.fjlic.com/home" target="_blank">Hotspot</a>.</strong>  All rights reserved.</div> 
 @stop
 
 @section('css')
@@ -131,8 +131,8 @@
 @toastr_render
 <script>
         var botmanWidget = {
-            aboutText: 'Centro de Ayuda FJLIC',
-            introMessage: "✋ Hola!! soy tu asistente IoT-Hotspot"
+          aboutText: 'FJLIC Help Center',
+          introMessage: "✋ Hello!! I am your IoT-Hotspot assistant"
         };
 </script>
 <script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script>

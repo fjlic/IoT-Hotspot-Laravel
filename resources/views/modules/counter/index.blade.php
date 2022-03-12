@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Hotspot|Contador')
+@section('title', 'Hotspot|Accountants')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop
@@ -16,12 +16,9 @@
 @endif
 
 @if ($message = Session::get('success'))
-
-<div class="alert alert-success">
-
-    <p>{{ $message }}</p>
-
-</div>
+    <div class="alert alert-success">
+      <p>{{ $message }}</p>
+    </div>
 @endif
 
  <!-- Main content -->
@@ -30,7 +27,7 @@
         <div class="col-12">
           <div class="card card-primary card-outline">
             <div class="card-header">
-              <h3 class="card-title">Tabla Contadores</h3>
+              <h3 class="card-title">Counters Table</h3>
               <a class="btn btn-xs btn-success float-right" href="{{ route('counter.create') }}" role="button"><span class="fas fa-plus"></span></a>
             </div>
             <!-- /.card-header -->
@@ -42,16 +39,16 @@
                   {{-- <th>Esp32 Id</th> --}}
                   {{-- <th>Nfc Id</th> --}}
                   <th>Num Serie</th>
-                  <th>Cont Qr</th>
-                  <th>Cont Mon</th>
-                  <th>Cont Mon2</th>
-                  <th>Cont Corte</th>
-                  <th>Cont Prem</th>
-                  <th>Cost Mon</th>
+                  <th>Count Qr</th>
+                  <th>Count Mon</th>
+                  <th>Count Mon2</th>
+                  <th>Count cut</th>
+                  <th>Count Prem</th>
+                  <th>Mon Cost</th>
                   {{-- <th>FechaCreacion</th> --}}
-                  <th>FechaMod</th>
-                  <th>Tipo</th>
-                  <th>Acciones</th>
+                  <th>ModDate</th>
+                  <th>Type</th>
+                  <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>

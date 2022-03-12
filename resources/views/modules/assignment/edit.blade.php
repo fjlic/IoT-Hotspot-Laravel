@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Hotspot|Asignacion')
+@section('title', 'Hotspot|Assignments')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop
@@ -30,7 +30,7 @@
         <div class="col-12">
             <div class="card card-warning card-outline">
             <div class="card-header">
-              <h3 class="card-title">Editar Asignacion</h3>
+              <h3 class="card-title">Edit Assignment</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -40,23 +40,23 @@
             @method('PUT')
               <div class="card-body">
                 <div class="form-group">
-                  <label for="name">Nombre de Codigo</label>
-                  <input type="text" class="form-control" name="name" id="name"  placeholder="Introduce un nombre de role para codigo" required value="{{ $role->name }}" readonly/>
+                  <label for="name">Code Name</label>
+                  <input type="text" class="form-control" name="name" id="name"  placeholder="Enter a role name for code" required value="{{ $role->name }}" readonly/>
                 </div>
                 <div class="form-group">
-                  <label for="display_name">Nombre de Vista</label>
-                  <input type="display_name" class="form-control" name="display_name" id="display_name"  placeholder="Introduce el nombre visible" required value="{{ $role->display_name }}" />
+                  <label for="display_name">View Name</label>
+                  <input type="display_name" class="form-control" name="display_name" id="display_name"  placeholder="Enter display name" required value="{{ $role->display_name }}" />
                 </div>
                 <div class="form-group">
-                  <label for="description">Descripcion</label>
-                  <input type="description" class="form-control" name="description" id="description" placeholder="Introduce descricpion del role" required value="{{ $role->description }}" />
+                  <label for="description">Description</label>
+                  <input type="description" class="form-control" name="description" id="description" placeholder="Enter role description" required value="{{ $role->description }}" />
                 </div>
               </div>
               <!-- /.card-body -->
 
               <div class="card-footer">
-                <a href="{{ route('role.index') }}" class="btn btn-default">Cancelar</a>
-                <button type="submit" class="btn btn-warning pull-right" >Enviar</button>
+                <a href="{{ route('role.index') }}" class="btn btn-default">Cancel</a>
+                <button type="submit" class="btn btn-warning pull-right" >Send</button>
               </div>
             </form>
             </div>
@@ -74,7 +74,7 @@
 @stop
 
 @section('footer') 
-<div class="pull-right hidden-xs"><b>Version</b> 2.0.1<strong>  Copyright &copy; 2021 <a href="http://hotspot.fjlic.com/home" target="_blank">Hotspot</a>.</strong>  Todo los derechos Reservados.</div> 
+<div class="pull-right hidden-xs"><b>Version</b> 2.1.1 <strong>  Copyright &copy; 2022 <a href="http://hotspot.fjlic.com/home" target="_blank">Hotspot</a>.</strong>  All rights reserved.</div> 
 @stop
 
 @section('css')
@@ -87,8 +87,8 @@
 @toastr_render
 <script>
         var botmanWidget = {
-            aboutText: 'Centro de Ayuda FJLIC',
-            introMessage: "✋ Hola!! soy tu asistente IoT-Hotspot"
+          aboutText: 'FJLIC Help Center',
+          introMessage: "✋ Hello!! I am your IoT-Hotspot assistant"
         };
 </script>
 <script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script>
