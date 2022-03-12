@@ -45,7 +45,7 @@ class StatisticalRequestController extends Controller
            sort($y);
            $statisticalrequest->standartdesviation = StandardDeviation::population($y);
         }
-        return view('module.statisticalrequest.index',compact('statisticalrequests'));
+        return view('modules.statisticalrequest.index',compact('statisticalrequests'));
     }
 
     /**
@@ -56,7 +56,7 @@ class StatisticalRequestController extends Controller
     public function create()
     {
         //
-        return view('module.statisticalrequest.create');
+        return view('modules.statisticalrequest.create');
     }
 
     /**
@@ -99,7 +99,7 @@ class StatisticalRequestController extends Controller
     public function show(StatisticalRequest $statisticalrequest)
     {
         //
-        return view('module.statisticalrequest.show', compact('statisticalrequest'));
+        return view('modules.statisticalrequest.show', compact('statisticalrequest'));
     }
 
     /**
@@ -111,7 +111,7 @@ class StatisticalRequestController extends Controller
     public function edit(StatisticalRequest $statisticalrequest)
     {
         //
-        return view('module.statisticalrequest.edit',compact('statisticalrequest'));
+        return view('modules.statisticalrequest.edit',compact('statisticalrequest'));
     }
 
     /**

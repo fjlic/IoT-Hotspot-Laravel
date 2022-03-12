@@ -32,7 +32,7 @@ class ErbController extends Controller
         foreach ($erbs as $key => $erb) {
         $erb->password = Crypt::decrypt($erb->password);
         }
-        return view('module.erb.index',compact('erbs'));
+        return view('modules.erb.index',compact('erbs'));
     }
 
     /**
@@ -44,7 +44,7 @@ class ErbController extends Controller
     {
         //
         $users = User::all();
-        return view('module.erb.create',compact('users'));
+        return view('modules.erb.create',compact('users'));
     }
 
     /**
@@ -88,7 +88,7 @@ class ErbController extends Controller
     {
         //
         $erb->password = Crypt::decrypt($erb->password);
-        return view('module.erb.show',compact('erb'));
+        return view('modules.erb.show',compact('erb'));
     }
 
     /**
@@ -102,7 +102,7 @@ class ErbController extends Controller
         //
         $users = User::all();
         $erb->password = Crypt::decrypt($erb->password);
-        return view('module.erb.edit', compact('erb','users'));
+        return view('modules.erb.edit', compact('erb','users'));
     }
 
     /**

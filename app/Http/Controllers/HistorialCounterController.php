@@ -27,7 +27,7 @@ class HistorialCounterController extends Controller
     {
         //
         $historialcounters = HistorialCounter::latest()->take(432)->get(); // before 3 days
-        return view('module.historialcounter.index',compact('historialcounters'));
+        return view('modules.historialcounter.index',compact('historialcounters'));
     }
 
     /**
@@ -39,7 +39,7 @@ class HistorialCounterController extends Controller
     {
         //
         $counters = Counter::all();
-        return view('module.historialcounter.create',compact('counters'));
+        return view('modules.historialcounter.create',compact('counters'));
     }
 
     /**
@@ -82,7 +82,7 @@ class HistorialCounterController extends Controller
     public function show(HistorialCounter $historialcounter)
     {
         //
-        return view('module.historialcounter.show', compact('historialcounter'));
+        return view('modules.historialcounter.show', compact('historialcounter'));
     }
 
     /**
@@ -95,7 +95,7 @@ class HistorialCounterController extends Controller
     {
         //
         $counters = Counter::all();
-        return view('module.historialcounter.edit',compact('historialcounter','counters'));
+        return view('modules.historialcounter.edit',compact('historialcounter','counters'));
     }
 
     /**

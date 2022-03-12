@@ -28,8 +28,8 @@ class NfcController extends Controller
     {
         //
         $nfcs = Nfc::all();
-        //return view('module.nfc.index')->with('nfs',$nfcs);
-        return view('module.nfc.index',compact('nfcs'));
+        //return view('modules.nfc.index')->with('nfs',$nfcs);
+        return view('modules.nfc.index',compact('nfcs'));
     }
 
     /**
@@ -42,7 +42,7 @@ class NfcController extends Controller
         //
         $crds = Crd::all();
         $erbs = Erb::all();
-        return view('module.nfc.create',compact('crds','erbs'));
+        return view('modules.nfc.create',compact('crds','erbs'));
     }
 
     /**
@@ -102,7 +102,7 @@ class NfcController extends Controller
     public function show(Nfc $nfc)
     {
         //
-        return view('module.nfc.show', compact('nfc'));
+        return view('modules.nfc.show', compact('nfc'));
     }
 
     /**
@@ -116,7 +116,7 @@ class NfcController extends Controller
         //
         $crds = Crd::all();
         $erbs = Erb::all();
-        return view('module.nfc.edit',compact('nfc','crds','erbs'));
+        return view('modules.nfc.edit',compact('nfc','crds','erbs'));
     }
 
     /**

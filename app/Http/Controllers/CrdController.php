@@ -39,7 +39,7 @@ class CrdController extends Controller
             $crd->status_crd = '0';
           }  
         }
-        return view('module.crd.index',compact('crds'));
+        return view('modules.crd.index',compact('crds'));
     }
 
     /**
@@ -54,7 +54,7 @@ class CrdController extends Controller
         foreach ($crds as $key => $crd) {
         $crd->password = Crypt::decrypt($crd->password);
         }
-        return view('module.crd.index',compact('crds'));
+        return view('modules.crd.index',compact('crds'));
     }
 
     /**
@@ -66,7 +66,7 @@ class CrdController extends Controller
     {
         //
         $users = User::all();
-        return view('module.crd.create',compact('users'));
+        return view('modules.crd.create',compact('users'));
     }
 
     /**
@@ -114,7 +114,7 @@ class CrdController extends Controller
         if($crd->status_video == '0')
           toastr()->warning('Crd espacio limitado');
 
-        return view('module.crd.show',compact('crd'));
+        return view('modules.crd.show',compact('crd'));
     }
 
     /**
@@ -128,7 +128,7 @@ class CrdController extends Controller
         //
         $users = User::all();
         $crd->password = Crypt::decrypt($crd->password);
-        return view('module.crd.edit', compact('crd','users'));
+        return view('modules.crd.edit', compact('crd','users'));
     }
 
     /**

@@ -145,8 +145,8 @@ class ProbeEstimatingController extends Controller
         $b40 = ($y_med-($b41*$x_med));
         $y4 = ($b40+($b41*386));
 
-        //return view('module.probeestimating.index')->with('probeestimatings');
-        return view('module.probeestimating.index',compact('probeestimatings','b11','r11','r12','b10','y1',
+        //return view('modules.probeestimating.index')->with('probeestimatings');
+        return view('modules.probeestimating.index',compact('probeestimatings','b11','r11','r12','b10','y1',
                                                                               'b21','r21','r22','b20','y22',
                                                                               'b31','r31','r32','b30','y3',
                                                                               'b41','r41','r42','b40','y4'));
@@ -160,7 +160,7 @@ class ProbeEstimatingController extends Controller
     public function create()
     {
         //
-        return view('module.probeestimating.create');
+        return view('modules.probeestimating.create');
     }
 
     /**
@@ -199,7 +199,7 @@ class ProbeEstimatingController extends Controller
     public function show(ProbeEstimating $probeestimating)
     {
         //
-        return view('module.probeestimating.show', compact('probeestimating'));
+        return view('modules.probeestimating.show', compact('probeestimating'));
     }
 
     /**
@@ -211,7 +211,7 @@ class ProbeEstimatingController extends Controller
     public function edit(ProbeEstimating $probeestimating)
     {
         //
-        return view('module.probeestimating.edit',compact('probeestimating'));
+        return view('modules.probeestimating.edit',compact('probeestimating'));
     }
 
     /**

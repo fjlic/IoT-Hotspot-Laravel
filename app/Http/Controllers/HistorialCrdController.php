@@ -32,7 +32,7 @@ class HistorialCrdController extends Controller
         foreach ($historialcrds as $key => $historialcrd) {
             $historialcrd->password = Crypt::decrypt($historialcrd->password);  
         }
-        return view('module.historialcrd.index',compact('historialcrds'));
+        return view('modules.historialcrd.index',compact('historialcrds'));
     }
 
     /**
@@ -44,7 +44,7 @@ class HistorialCrdController extends Controller
     {
         //
         $crds = Crd::all();
-        return view('module.historialcrd.create',compact('crds'));
+        return view('modules.historialcrd.create',compact('crds'));
     }
 
     /**
@@ -87,7 +87,7 @@ class HistorialCrdController extends Controller
     {
         //
         $historialcrd->password = Crypt::decrypt($historialcrd->password);  
-        return view('module.historialcrd.show',compact('historialcrd'));
+        return view('modules.historialcrd.show',compact('historialcrd'));
     }
 
     /**
@@ -101,7 +101,7 @@ class HistorialCrdController extends Controller
         //
         $crds = Crd::all();
         $historialcrd->password = Crypt::decrypt($historialcrd->password);  
-        return view('module.historialcrd.edit', compact('historialcrd','crds'));
+        return view('modules.historialcrd.edit', compact('historialcrd','crds'));
     }
 
     /**

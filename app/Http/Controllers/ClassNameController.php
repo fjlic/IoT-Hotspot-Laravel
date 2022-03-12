@@ -98,7 +98,7 @@ class ClassNameController extends Controller
         $pag_4 = exp($pag_in_l);
         $pag_5 = exp($pag_in_vl);
         //////////////////////////////////////////////////////////////////////////////////
-        return view('module.classname.index',compact('classnames','chapters','total_in','total_in2',
+        return view('modules.classname.index',compact('classnames','chapters','total_in','total_in2',
                                                      'loc_1','loc_2','loc_3','loc_4','loc_5',
                                                      'pag_1','pag_2','pag_3','pag_4','pag_5'));
     }
@@ -111,7 +111,7 @@ class ClassNameController extends Controller
     public function create()
     {
         //
-        return view('module.classname.create');
+        return view('modules.classname.create');
     }
 
     /**
@@ -148,7 +148,7 @@ class ClassNameController extends Controller
     public function show(ClassName $classname)
     {
         //
-        return view('module.classname.show', compact('classname'));
+        return view('modules.classname.show', compact('classname'));
     }
 
     /**
@@ -160,7 +160,7 @@ class ClassNameController extends Controller
     public function edit(ClassName $classname)
     {
         //
-        return view('module.classname.edit',compact('classname'));
+        return view('modules.classname.edit',compact('classname'));
     }
 
     /**

@@ -45,7 +45,7 @@ class StatisticalSensorController extends Controller
            sort($y);
            $statisticalsensor->standartdesviation = StandardDeviation::population($y);
         }
-        return view('module.statisticalsensor.index',compact('statisticalsensors'));
+        return view('modules.statisticalsensor.index',compact('statisticalsensors'));
     }
 
     /**
@@ -56,7 +56,7 @@ class StatisticalSensorController extends Controller
     public function create()
     {
         //
-        return view('module.statisticalsensor.create');
+        return view('modules.statisticalsensor.create');
     }
 
     /**
@@ -101,7 +101,7 @@ class StatisticalSensorController extends Controller
     public function show(StatisticalSensor $statisticalsensor)
     {
         //
-        return view('module.statisticalsensor.show', compact('statisticalsensor'));
+        return view('modules.statisticalsensor.show', compact('statisticalsensor'));
     }
 
     /**
@@ -113,7 +113,7 @@ class StatisticalSensorController extends Controller
     public function edit(StatisticalSensor $statisticalsensor)
     {
         //
-        return view('module.statisticalsensor.edit',compact('statisticalsensor'));
+        return view('modules.statisticalsensor.edit',compact('statisticalsensor'));
     }
 
     /**

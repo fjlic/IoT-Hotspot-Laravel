@@ -35,8 +35,8 @@ class AlertController extends Controller
         $alerts = Alert::all();
         $sensor = HistorialSensor::all();
         $sensor = $sensor->last();
-        $mkd->render('module.alert.index', compact('alerts','sensor'));
-        return view('module.alert.index', compact('alerts','sensor'));
+        $mkd->render('modules.alert.index', compact('alerts','sensor'));
+        return view('modules.alert.index', compact('alerts','sensor'));
     }
 
     /**
@@ -50,7 +50,7 @@ class AlertController extends Controller
         $types = array();
         $types[1] = 'sensor';
         $types[0] = 'otro';
-        return view('module.alert.create',compact('types'));
+        return view('modules.alert.create',compact('types'));
     }
 
     /**
@@ -95,7 +95,7 @@ class AlertController extends Controller
     public function show(Alert $alert)
     {
         //
-        return view('module.alert.show',compact('alert'));
+        return view('modules.alert.show',compact('alert'));
     }
 
     /**
@@ -125,7 +125,7 @@ class AlertController extends Controller
             $tmp_str = $tmp_mail[0];
         }
         $alert->email = $tmp_str;
-        return view('module.alert.edit', compact('alert','types'));
+        return view('modules.alert.edit', compact('alert','types'));
     }
 
     /**

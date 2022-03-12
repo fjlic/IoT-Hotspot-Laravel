@@ -30,7 +30,7 @@ class CounterController extends Controller
     {
         //
         $counters = Counter::all();
-        return view('module.counter.index',compact('counters'));
+        return view('modules.counter.index',compact('counters'));
     }
 
     /**
@@ -44,7 +44,7 @@ class CounterController extends Controller
         $erbs = Erb::all();
         $crds = Crd::all();
         $nfcs = Nfc::all();
-        return view('module.counter.create',compact('erbs', 'crds', 'nfcs'));
+        return view('modules.counter.create',compact('erbs', 'crds', 'nfcs'));
     }
 
     /**
@@ -106,7 +106,7 @@ class CounterController extends Controller
     public function show(Counter $counter)
     {
         //
-        return view('module.counter.show', compact('counter'));
+        return view('modules.counter.show', compact('counter'));
     }
 
     /**
@@ -121,7 +121,7 @@ class CounterController extends Controller
         $crds = Crd::all();
         $erbs = Erb::all();
         $nfcs = Nfc::all();
-        return view('module.counter.edit',compact('counter','crds','erbs','nfcs'));
+        return view('modules.counter.edit',compact('counter','crds','erbs','nfcs'));
     }
 
     /**

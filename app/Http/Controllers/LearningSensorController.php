@@ -28,7 +28,7 @@ class LearningSensorController extends Controller
     {
         //
         $learningsensors = LearningSensor::all();
-        return view('module.learningsensor.index',compact('learningsensors'));
+        return view('modules.learningsensor.index',compact('learningsensors'));
     }
 
     /**
@@ -39,7 +39,7 @@ class LearningSensorController extends Controller
     public function create()
     {
         //
-        return view('module.learningsensor.create');
+        return view('modules.learningsensor.create');
     }
 
     /**
@@ -87,7 +87,7 @@ class LearningSensorController extends Controller
     public function show(LearningSensor $learningsensor)
     {
         //
-        return view('module.learningsensor.show', compact('learningsensor'));
+        return view('modules.learningsensor.show', compact('learningsensor'));
     }
 
     /**
@@ -99,7 +99,7 @@ class LearningSensorController extends Controller
     public function edit(LearningSensor $learningsensor)
     {
         //
-        return view('module.learningsensor.edit',compact('learningsensor'));
+        return view('modules.learningsensor.edit',compact('learningsensor'));
     }
 
     /**
@@ -184,8 +184,8 @@ class LearningSensorController extends Controller
                                       'data' => [1, 1.5, 2.8, 3.5, 3.9, 4.2],
                                       'marker' => ['radius' => 4]
                                      ]])->display();
-    //return view('module.learningsensor.chart', ['vol1' => $vol1,]);
-    return view('module.learningsensor.chart')->with('sample_1',$sample_1)
+    //return view('modules.learningsensor.chart', ['vol1' => $vol1,]);
+    return view('modules.learningsensor.chart')->with('sample_1',$sample_1)
                                         ->with('sample_2',$sample_2)
                                         ->with('learning',$learningsensor);
     }

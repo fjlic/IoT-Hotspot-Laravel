@@ -28,7 +28,7 @@ class LearningRequestController extends Controller
     {
         //
         $learningrequests = LearningRequest::all();
-        return view('module.learningrequest.index',compact('learningrequests'));
+        return view('modules.learningrequest.index',compact('learningrequests'));
     }
 
     /**
@@ -39,7 +39,7 @@ class LearningRequestController extends Controller
     public function create()
     {
         //
-        return view('module.learningrequest.create');
+        return view('modules.learningrequest.create');
     }
 
     /**
@@ -86,7 +86,7 @@ class LearningRequestController extends Controller
     public function show(LearningRequest $learningrequest)
     {
         //
-        return view('module.learningrequest.show', compact('learningrequest'));
+        return view('modules.learningrequest.show', compact('learningrequest'));
     }
 
     /**
@@ -98,7 +98,7 @@ class LearningRequestController extends Controller
     public function edit(LearningRequest $learningrequest)
     {
         //
-        return view('module.learningrequest.edit',compact('learningrequest'));
+        return view('modules.learningrequest.edit',compact('learningrequest'));
     }
 
     /**
@@ -182,8 +182,8 @@ class LearningRequestController extends Controller
                                       'data' => [1, 1.5, 2.8, 3.5, 3.9, 4.2],
                                       'marker' => ['radius' => 4]
                                      ]])->display();
-    //return view('module.learningrequest.chart', ['vol1' => $vol1,]);
-    return view('module.learningrequest.chart')->with('sample_1',$sample_1)
+    //return view('modules.learningrequest.chart', ['vol1' => $vol1,]);
+    return view('modules.learningrequest.chart')->with('sample_1',$sample_1)
                                         ->with('sample_2',$sample_2)
                                         ->with('learning',$learningrequest);
     }

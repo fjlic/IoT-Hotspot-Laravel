@@ -32,7 +32,7 @@ class HistorialErbController extends Controller
         foreach ($historialerbs as $key => $historialerb) {
             $historialerb->password = Crypt::decrypt($historialerb->password);  
         }
-        return view('module.historialerb.index',compact('historialerbs'));
+        return view('modules.historialerb.index',compact('historialerbs'));
     }
 
     /**
@@ -44,7 +44,7 @@ class HistorialErbController extends Controller
     {
         //
         $erbs = Erb::all();
-        return view('module.historialerb.create',compact('erbs'));
+        return view('modules.historialerb.create',compact('erbs'));
     }
 
     /**
@@ -87,7 +87,7 @@ class HistorialErbController extends Controller
     {
         //
         $historialerb->password = Crypt::decrypt($historialerb->password);  
-        return view('module.historialerb.show',compact('historialerb'));
+        return view('modules.historialerb.show',compact('historialerb'));
     }
 
     /**
@@ -101,7 +101,7 @@ class HistorialErbController extends Controller
         //
         $erbs = Erb::all();
         $historialerb->password = Crypt::decrypt($historialerb->password);  
-        return view('module.historialerb.edit', compact('historialerb','erbs'));
+        return view('modules.historialerb.edit', compact('historialerb','erbs'));
     }
 
     /**

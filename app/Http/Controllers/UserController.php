@@ -61,7 +61,7 @@ class UserController extends Controller
                 $users->all();
             }
         }
-        return view('module.user.index', compact('users'));
+        return view('modules.user.index', compact('users'));
     }
 
     /**
@@ -77,7 +77,7 @@ class UserController extends Controller
             return $role->name != 'root';
         });
         $roles = Role::all();
-        return view('module.user.create',compact('roles'));
+        return view('modules.user.create',compact('roles'));
     }
 
     /**
@@ -119,7 +119,7 @@ class UserController extends Controller
              $user->name_role = $role->name;        
             }
         }
-        return view('module.user.show',compact('user'));
+        return view('modules.user.show',compact('user'));
     }
 
     /**
@@ -142,7 +142,7 @@ class UserController extends Controller
             }
         }*/
         $roles = Role::all();
-        return view('module.user.edit', compact('user','roles'));
+        return view('modules.user.edit', compact('user','roles'));
     }
 
     /**

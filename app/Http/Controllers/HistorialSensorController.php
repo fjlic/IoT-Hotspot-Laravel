@@ -28,8 +28,8 @@ class HistorialSensorController extends Controller
     {
         //
         $historialsensors = HistorialSensor::latest()->take(432)->get(); // before 3 days
-        //return view('module.historialsensor.index')->with('historialsensors',$historialsensors);
-        return view('module.historialsensor.index',compact('historialsensors'));
+        //return view('modules.historialsensor.index')->with('historialsensors',$historialsensors);
+        return view('modules.historialsensor.index',compact('historialsensors'));
     }
 
     /**
@@ -41,7 +41,7 @@ class HistorialSensorController extends Controller
     {
         //
         $sensors = Sensor::all();
-        return view('module.historialsensor.create',compact('sensors'));
+        return view('modules.historialsensor.create',compact('sensors'));
     }
 
     /**
@@ -110,7 +110,7 @@ class HistorialSensorController extends Controller
     public function show(HistorialSensor $historialsensor)
     {
         //
-        return view('module.historialsensor.show', compact('historialsensor'));
+        return view('modules.historialsensor.show', compact('historialsensor'));
     }
 
     /**
@@ -123,7 +123,7 @@ class HistorialSensorController extends Controller
     {
         //
         $sensors = Sensor::all();
-        return view('module.historialsensor.edit',compact('historialsensor','sensors'));
+        return view('modules.historialsensor.edit',compact('historialsensor','sensors'));
     }
 
     /**
@@ -445,8 +445,8 @@ class HistorialSensorController extends Controller
                                    'tooltip' => ['valueSuffix' => '-Volt/DC'],]])
                         ->display();
                        
-    //return view('module.historialsensor.chart', ['vol1' => $vol1,]);
-    return view('module.historialsensor.chart')->with('temp1',$temp1)
+    //return view('modules.historialsensor.chart', ['vol1' => $vol1,]);
+    return view('modules.historialsensor.chart')->with('temp1',$temp1)
                                           ->with('temp2',$temp2)
                                           ->with('temp3',$temp3)
                                           ->with('temp4',$temp4)

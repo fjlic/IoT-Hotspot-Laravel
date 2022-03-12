@@ -45,7 +45,7 @@ class StatisticalCounterController extends Controller
            sort($y);
            $statisticalcounter->standartdesviation = StandardDeviation::population($y);
         }
-        return view('module.statisticalcounter.index',compact('statisticalcounters'));
+        return view('modules.statisticalcounter.index',compact('statisticalcounters'));
     }
 
     /**
@@ -56,7 +56,7 @@ class StatisticalCounterController extends Controller
     public function create()
     {
         //
-        return view('module.statisticalcounter.create');
+        return view('modules.statisticalcounter.create');
     }
 
     /**
@@ -99,7 +99,7 @@ class StatisticalCounterController extends Controller
     public function show(StatisticalCounter $statisticalcounter)
     {
         //
-        return view('module.statisticalcounter.show', compact('statisticalcounter'));
+        return view('modules.statisticalcounter.show', compact('statisticalcounter'));
     }
 
     /**
@@ -111,7 +111,7 @@ class StatisticalCounterController extends Controller
     public function edit(StatisticalCounter $statisticalcounter)
     {
         //
-        return view('module.statisticalcounter.edit',compact('statisticalcounter'));
+        return view('modules.statisticalcounter.edit',compact('statisticalcounter'));
     }
 
     /**

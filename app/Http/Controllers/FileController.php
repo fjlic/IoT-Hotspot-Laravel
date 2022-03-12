@@ -36,7 +36,7 @@ class FileController extends Controller
          // }
         //}
        
-        return view('module.file.index',compact('files'));
+        return view('modules.file.index',compact('files'));
     }
 
     /**
@@ -47,7 +47,7 @@ class FileController extends Controller
     public function create()
     {
         //
-        return view('module.file.create');
+        return view('modules.file.create');
     }
 
     /**
@@ -112,7 +112,7 @@ class FileController extends Controller
     public function show(File $file)
     {
         //
-        return view('module.file.show', compact('file'));
+        return view('modules.file.show', compact('file'));
     }
 
     /**
@@ -124,7 +124,7 @@ class FileController extends Controller
     public function edit(File $file)
     {
         //
-        return view('module.file.edit', compact('file'));
+        return view('modules.file.edit', compact('file'));
     }
 
     /**

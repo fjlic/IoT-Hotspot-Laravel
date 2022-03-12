@@ -23,7 +23,7 @@ class RoleController extends Controller
     public function index()
     {
         $roles = Role::all();
-        return view('module.role.index',compact('roles'));
+        return view('modules.role.index',compact('roles'));
     }
 
     /**
@@ -34,7 +34,7 @@ class RoleController extends Controller
     public function create()
     {
         //
-        return view('module.role.create');
+        return view('modules.role.create');
     }
 
     /**
@@ -64,13 +64,13 @@ class RoleController extends Controller
     public function show(Role $role)
     {
         //
-        return view('module.role.show', compact('role'));
+        return view('modules.role.show', compact('role'));
     }
 
     public function edit($id)
     {
         $role = Role::findOrFail($id);
-        return view('module.role.edit',compact('role'));
+        return view('modules.role.edit',compact('role'));
     }
 
     /**

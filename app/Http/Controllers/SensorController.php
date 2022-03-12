@@ -27,8 +27,8 @@ class SensorController extends Controller
     {
         //
         $sensors = Sensor::all();
-        //return view('module.sensor.index')->with('sensors',$sensors);
-        return view('module.sensor.index',compact('sensors'));
+        //return view('modules.sensor.index')->with('sensors',$sensors);
+        return view('modules.sensor.index',compact('sensors'));
     }
 
     /**
@@ -40,7 +40,7 @@ class SensorController extends Controller
     {
         //
         $erbs = Erb::all();
-        return view('module.sensor.create',compact('erbs'));
+        return view('modules.sensor.create',compact('erbs'));
     }
 
     /**
@@ -109,7 +109,7 @@ class SensorController extends Controller
     public function show(Sensor $sensor)
     {
         //
-        return view('module.sensor.show', compact('sensor'));
+        return view('modules.sensor.show', compact('sensor'));
     }
 
     /**
@@ -122,7 +122,7 @@ class SensorController extends Controller
     {
         //
         $erbs = Erb::all();
-        return view('module.sensor.edit',compact('sensor','erbs'));
+        return view('modules.sensor.edit',compact('sensor','erbs'));
     }
 
     /**
@@ -444,8 +444,8 @@ class SensorController extends Controller
                                    'tooltip' => ['valueSuffix' => '-Volt/DC'],]])
                         ->display();
                        
-    //return view('module.sensor.chart', ['vol1' => $vol1,]);
-    return view('module.sensor.chart')->with('temp1',$temp1)
+    //return view('modules.sensor.chart', ['vol1' => $vol1,]);
+    return view('modules.sensor.chart')->with('temp1',$temp1)
                                           ->with('temp2',$temp2)
                                           ->with('temp3',$temp3)
                                           ->with('temp4',$temp4)

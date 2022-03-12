@@ -27,7 +27,7 @@ class HistorialQrController extends Controller
     {
         //
         $historialqrs = HistorialQr::latest()->take(432)->get(); // before 3 days
-        return view('module.historialqr.index',compact('historialqrs'));
+        return view('modules.historialqr.index',compact('historialqrs'));
     }
 
     /**
@@ -39,7 +39,7 @@ class HistorialQrController extends Controller
     {
         //
         $qrs = Qr::all();
-        return view('module.historialqr.create',compact('qrs'));
+        return view('modules.historialqr.create',compact('qrs'));
     }
 
     /**
@@ -77,7 +77,7 @@ class HistorialQrController extends Controller
     public function show(HistorialQr $historialqr)
     {
         //
-        return view('module.historialqr.show',compact('historialqr'));
+        return view('modules.historialqr.show',compact('historialqr'));
     }
 
     /**
@@ -90,7 +90,7 @@ class HistorialQrController extends Controller
     {
         //
         $qrs = Qr::all();
-        return view('module.historialqr.edit', compact('qrs','historialqr'));
+        return view('modules.historialqr.edit', compact('qrs','historialqr'));
     }
 
     /**

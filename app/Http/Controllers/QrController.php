@@ -30,8 +30,8 @@ class QrController extends Controller
         //
         //QrCode::size(500)->generate('A tutorial of QR code!');
         $qrs = Qr::all();
-        //return view('module.qr.index')->with('qrcoins',$qrs);
-        return view('module.qr.index',compact('qrs'));
+        //return view('modules.qr.index')->with('qrcoins',$qrs);
+        return view('modules.qr.index',compact('qrs'));
     }
 
     /**
@@ -44,7 +44,7 @@ class QrController extends Controller
         //
         $crds = Crd::all();
         $erbs = Erb::all();
-        return view('module.qr.create',compact('crds','erbs'));
+        return view('modules.qr.create',compact('crds','erbs'));
     }
 
     /**
@@ -85,7 +85,7 @@ class QrController extends Controller
     public function show(Qr $qr)
     {
         //
-        return view('module.qr.show', compact('qr'));
+        return view('modules.qr.show', compact('qr'));
     }
 
     /**
@@ -99,7 +99,7 @@ class QrController extends Controller
         //
         $crds = Crd::all();
         $erbs = Erb::all();
-        return view('module.qr.edit',compact('qr','crds','erbs'));
+        return view('modules.qr.edit',compact('qr','crds','erbs'));
     }
 
     /**

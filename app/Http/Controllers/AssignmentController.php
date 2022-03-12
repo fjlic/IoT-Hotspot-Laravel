@@ -79,7 +79,7 @@ class AssignmentController extends Controller
             }
             $user->assignment = $assignment;
         }
-        return view('module.assignment.index',compact('models','users'));
+        return view('modules.assignment.index',compact('models','users'));
     }
 
     /**
@@ -90,7 +90,7 @@ class AssignmentController extends Controller
     public function create()
     {
         //
-        return view('module.role.create');
+        return view('modules.role.create');
     }
 
     /**
@@ -121,13 +121,13 @@ class AssignmentController extends Controller
     {
         //
         dd($user);
-        return view('module.role.show',compact('user'));
+        return view('modules.role.show',compact('user'));
     }
 
     public function edit($id)
     {
         $role = Role::findOrFail($id);
-        return view('module.role.edit',compact('role'));
+        return view('modules.role.edit',compact('role'));
     }
 
     /**

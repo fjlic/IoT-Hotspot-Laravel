@@ -28,7 +28,7 @@ class HistorialNfcController extends Controller
         //
         $historialnfcs = HistorialNfc::latest()->take(432)->get(); // before 3 days
         $nfcs = Nfc::all();
-        return view('module.historialnfc.index',compact('historialnfcs','nfcs'));
+        return view('modules.historialnfc.index',compact('historialnfcs','nfcs'));
     }
 
     /**
@@ -40,7 +40,7 @@ class HistorialNfcController extends Controller
     {
         //
         $nfcs = Nfc::all();
-        return view('module.historialnfc.create',compact('nfcs'));
+        return view('modules.historialnfc.create',compact('nfcs'));
     }
 
     /**
@@ -97,7 +97,7 @@ class HistorialNfcController extends Controller
     public function show(HistorialNfc $historialnfc)
     {
         //
-        return view('module.historialnfc.show',compact('historialnfc'));
+        return view('modules.historialnfc.show',compact('historialnfc'));
     }
 
     /**
@@ -110,7 +110,7 @@ class HistorialNfcController extends Controller
     {
         //
         $nfcs = Nfc::all();
-        return view('module.historialnfc.edit', compact('historialnfc','nfcs'));
+        return view('modules.historialnfc.edit', compact('historialnfc','nfcs'));
     }
 
     /**
