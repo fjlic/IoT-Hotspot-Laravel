@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Hotspot|Publicidad')
+@section('title', 'Hotspot|Advertisings')
 @section('content_header')
    <!-- <h1>Menu Admin</h1>-->
 @stop
@@ -31,7 +31,7 @@
         <div class="col-12">
             <div class="card card-success card-outline">
             <div class="card-header">
-              <h3 class="card-title">Agergar Video</h3>
+              <h3 class="card-title">Create Advertising</h3>
             </div>
             <!-- /.card-header 'id', 'name_file', 'counter_lines' -->
             <div class="card-body">
@@ -41,11 +41,11 @@
               {{-- @csrf --}}
               <div class="card-body">
                 <div class="form-group">
-                  <label for="name_file">Cargar Video</label>
+                  <label for="name_file">Load Advertising</label>
                   <input type="file" class="form-control" name="name_file" id="name_file" placeholder="Introduce name file" required>
                 </div>
                 <div class="form-group">
-                  <label for="set">Conjunto</label>
+                  <label for="set">Set</label>
                   <input type="text" class="form-control" name="set" id="set"  placeholder="Introduce conjunto al que pertenece" required>
                 </div>
               </div>
@@ -59,8 +59,8 @@
               <!-- /.card-body -->
 
               <div class="card-footer">
-                <a href="{{ route('file.index') }}" class="btn btn-default">Cancelar</a>
-                <button type="submit" class="btn btn-success pull-right" >Enviar</button>
+                <a href="{{ route('file.index') }}" class="btn btn-default">Cancel</a>
+                <button type="submit" class="btn btn-success pull-right" >Send</button>
               </div>
             </form>
             </div>
@@ -78,7 +78,7 @@
 @stop
 
 @section('footer') 
-<div class="pull-right hidden-xs"><b>Version</b> 2.0.1<strong>  Copyright &copy; 2021 <a href="http://hotspot.fjlic.com/home" target="_blank">Hotspot</a>.</strong>  Todo los derechos Reservados.</div> 
+<div class="pull-right hidden-xs"><b>Version</b> 2.1.1<strong>  Copyright &copy; 2022 <a href="http://hotspot.fjlic.com/home" target="_blank">Hotspot</a>.</strong>  All rights reserved.</div> 
 @stop
 
 @section('css')
@@ -91,8 +91,8 @@
 @toastr_render
 <script>
         var botmanWidget = {
-            aboutText: 'Centro de Ayuda FJLIC',
-            introMessage: "✋ Hola!! soy tu asistente IoT-Hotspot"
+          aboutText: 'FJLIC Help Center',
+          introMessage: "✋ Hello!! I am your IoT-Hotspot assistant"
         };
 </script>
 <script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script>

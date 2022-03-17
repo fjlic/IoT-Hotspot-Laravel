@@ -103,8 +103,8 @@
 @toastr_render
 <script>
         var botmanWidget = {
-            aboutText: 'FJLIC Help Center',
-            introMessage: "✋ Hello!! I am your IoT-Hotspot assistant"
+          aboutText: 'FJLIC Help Center',
+          introMessage: "✋ Hello!! I am your IoT-Hotspot assistant"
         };
 </script>
 <script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script>

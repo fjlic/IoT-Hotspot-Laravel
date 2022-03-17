@@ -49,7 +49,7 @@
                   <input type="text" class="form-control" value="{{ $erb->num_serie }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
-                  <label for="name_machine">Noame</label>
+                  <label for="name_machine">Name</label>
                   <input type="text" class="form-control" value="{{ $erb->name_machine }}" readonly="readonly"/>
                 </div>
                 <div class="form-group">
