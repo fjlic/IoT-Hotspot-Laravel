@@ -1,23 +1,23 @@
-- ## Documentación
-    - [Inicio](/{{route}}/{{version}}/overview)
-    - [Instalación](/{{route}}/{{version}}/install)
-- ## Usuarios, Roles y Alertas
-    - [ModuloUsuario](/{{route}}/{{version}}/module-user)
-    - [ModuloRole](/{{route}}/{{version}}/module-role)
-    - [ModuloAlerta](/{{route}}/{{version}}/module-alert)
-- ## Crd Modulos
-    - [ModuloCrd](/{{route}}/{{version}}/module-crd)
-    - [ModuloNfc](/{{route}}/{{version}}/module-nfc)
-    - [ModuloQr](/{{route}}/{{version}}/module-qr)
-    - [ModuloPublicidad](/{{route}}/{{version}}/module-file)
-    - [ModuloContador](/{{route}}/{{version}}/module-counter)
-- ## Erb Modulos
-    - [ModuloErb](/{{route}}/{{version}}/module-erb)
-    - [ModuloSensor](/{{route}}/{{version}}/module-sensor)
-    - [ModuloEstadistico](/{{route}}/{{version}}/module-statistical)
-- ## API Modulos
+- ## Documentation
+    - [Welcome](/{{route}}/{{version}}/overview)
+    - [Installation](/{{route}}/{{version}}/install)
+- ## Config Modules
+    - [Users](/{{route}}/{{version}}/module-user)
+    - [Roles](/{{route}}/{{version}}/module-role)
+    - [Alerts](/{{route}}/{{version}}/module-alert)
+- ## Crd Modules
+    - [Crds](/{{route}}/{{version}}/module-crd)
+    - [Nfcs](/{{route}}/{{version}}/module-nfc)
+    - [Qrs](/{{route}}/{{version}}/module-qr)
+    - [Advertisings](/{{route}}/{{version}}/module-file)
+    - [Counters](/{{route}}/{{version}}/module-counter)
+- ## Erb Modules
+    - [Erbs](/{{route}}/{{version}}/module-erb)
+    - [Sensors](/{{route}}/{{version}}/module-sensor)
+    - [Statistical](/{{route}}/{{version}}/module-statistical)
+- ## API Modules
     - [ApiCrd](/{{route}}/{{version}}/api-crd)
     - [ApiErb](/{{route}}/{{version}}/api-erb)
-- ## Dispositivos Prototipo
+- ## Prototype Devices
     - [FirmwareCrd](/{{route}}/{{version}}/firmware-crd)
     - [FirmwareErb](/{{route}}/{{version}}/firmware-erb)
