@@ -41,7 +41,7 @@ If you like it is possible to create the MVC structure manually.
 
 Command `php artisan make:migration Alert` run in console inside project.
 
-> {info} Directorio  `database/migrations/2021_12_05_141229_create_alerts_table.php`.
+> {info} Directory  `database/migrations/2021_12_05_141229_create_alerts_table.php`.
 
 ```php
 
@@ -83,7 +83,7 @@ class CreateAlertsTable extends Migration
 
 Command `php artisan make:seeder AddAlertTableSeeder` run in console inside project.
 
-> {info} Directorio  `database/seeders/AddAlertTableSeeder.php`.
+> {info} Directory  `database/seeders/AddAlertTableSeeder.php`.
 
 ```php
 
@@ -118,7 +118,7 @@ class AddAlertTableSeeder extends Seeder
 
 Comand `php artisan make:model Alert` run in console inside project.
 
-> {info} Directorio  `app/Alert.php`.
+> {info} Directory  `app/Alert.php`.
 
 ```php
 
@@ -160,7 +160,7 @@ class Alert extends Model
 
 Command `php artisan make:controller Alert` run in console inside project.
 
-> {info} Directorio  `app/Http/Controllers/AlertController.php`.
+> {info} Directory  `app/Http/Controllers/AlertController.php`.
 
 ```php
 
