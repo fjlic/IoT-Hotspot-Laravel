@@ -98,15 +98,15 @@ class AddAlertTableSeeder extends Seeder
     {
         //
         $emails = array();
-        $emails[0] = 'franc.javier.flores@gmail.com';
-        $emails[1] = 'fjavier.flores@hotmail.com';
+        $emails[0] = 'support@fjlic.com';
+        $emails[1] = 'demo@fjlic.com';
         $alert = new Alert();
         $alert->id = 1;
         $alert->type = 'sensor';
         $alert->email = json_encode($emails);
-        $alert->title = 'Hola estimado(a) este mensage requiere de tu atencion !!';
-        $alert->body = 'Acontinuacion se describen las alertas de Sensores IoT-Hotspot';
-        $alert->footer = 'Para mas detalles visita el link: https://hotspot.fjlic.com/';
+        $alert->title = 'Hello dear, this message requires your attention !!';
+        $alert->body = 'The IoT-Hotspot Sensors alerts are described below';
+        $alert->footer = 'For more details visit the link: https://hotspot.fjlic.com/';
         $alert->save();
     }
 }
@@ -441,7 +441,7 @@ There is no command but it creates an index file for the user module `index.blad
                             <a><img src="{{ asset('storage/Images/Warning.JPG') }}" alt="" title=""  text-align="center" /></a>
                            </div>
                            <br>
-                          <p class="text-center">Eliminarás ( <b>{{$alert->type}}</b> ) are you sure?</p>
+                          <p class="text-center">Eliminarás ( <b>{{$alert->type}}</b> ) are you sure </p>
                       </div>
                       <div class="modal-footer d-flex justify-content-center">
                             <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
