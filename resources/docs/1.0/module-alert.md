@@ -30,7 +30,7 @@ If you like it is possible to create the MVC structure manually.
 - [Command MCR](#mcr)
 
 
-> {success} Manejo de Alertas por correo electrónico [`Gmail`](https://gmail.com/)
+> {success} Email Alert Management [`Gmail`](https://gmail.com/)
 
 
 ![screenshot](https://hotspot.fjlic.com/storage/Images/Alerta_2.PNG)
