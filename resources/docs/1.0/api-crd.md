@@ -1,9 +1,9 @@
-# Modulo Crd-API
+# Crd-API Module
 
 ---
 
 - [Crd API](#section-crd-api)
-- [Controlador-API](#controller-api)
+- [API-Controller](#controller-api)
 - [Test](#test)
 - [List](#list)
 - [Download](#download)
@@ -12,10 +12,10 @@
 - [Ruta](#route)
 
 <a name="section-crd-api"></a>
-## Controlador Metodos test(), list(), download(), index(), register():
+## Controller Methods test(), list(), download(), index(), register():
 
-Estructura del modulo API Crd.. 🚥
-Si gustas es posible consultar los metodos get por web.
+Crd API module structure.. 🚥
+If you like it is possible to consult the get methods by web.
 
 ---
 
@@ -28,11 +28,11 @@ Si gustas es posible consultar los metodos get por web.
 - [Ruta](#route)
 
 <a name="controller-api"></a>
-## Controlador API
+## API Controller
 
-Comando `php artisan make:controller Api/Crd` ejecutar en consola dentro del proyecto.
+Command `php artisan make:controller Api/Crd` run in console inside project.
 
-> {info} Directorio  `app/Http/Controller/Api/CrdController.php` respeta esta estructura en el controlador.
+> {info} Directory  `app/Http/Controller/Api/CrdController.php` respect this structure in the controller.
 
 ```php
 
@@ -57,9 +57,9 @@ class CrdController extends BaseController
 ```
 
 <a name="test"></a>
-## Metodo Test
+## Test Method
 
-Consulta url `https://hotspot.fjlic.com/api/cont/test{#id}` te regresara un objeto tipo JSON.
+Check url `https://hotspot.fjlic.com/api/cont/test{#id}` it will return a JSON type object.
 
 > {info} Directorio  `app/Http/Controller/Api/CounterController.php`.
 
@@ -180,11 +180,11 @@ Consulta url `https://hotspot.fjlic.com/api/cont/test{#id}` te regresara un obje
 ```
 
 <a name="list"></a>
-## Metodo List
+## List Method
 
-Consulta url `https://hotspot.fjlic.com/api/file/list` te regresara un objeto tipo JSON.
+Check url `https://hotspot.fjlic.com/api/file/list` it will return a JSON type object.
 
-> {info} Directorio  `app/Http/Controller/Api/FileController.php`.
+> {info} Directory  `app/Http/Controller/Api/FileController.php`.
 
 ```php
 
@@ -230,11 +230,11 @@ Consulta url `https://hotspot.fjlic.com/api/file/list` te regresara un objeto ti
 ```
 
 <a name="download"></a>
-## Metodo Download
+## Download Method
 
-Consulta url `https://hotspot.fjlic.com/api/file/download{#id}` te regresara un objeto tipo JSON.
+Check url `https://hotspot.fjlic.com/api/file/download{#id}` it will return a JSON type object.
 
-> {info} Directorio  `app/Http/Controller/Api/FileController.php`.
+> {info} Directory  `app/Http/Controller/Api/FileController.php`.
 
 ```php
 
@@ -292,11 +292,11 @@ Consulta url `https://hotspot.fjlic.com/api/file/download{#id}` te regresara un 
 ```
 
 <a name="index"></a>
-## Metodo Index
+## Index Method
 
-Consulta url `https://hotspot.fjlic.com/api/crd` te regresara un objeto tipo JSON.
+Check url `https://hotspot.fjlic.com/api/crd` it will return a JSON type object.
 
-> {info} Directorio  `app/Http/Controller/Api/CrdController.php`.
+> {info} Directory  `app/Http/Controller/Api/CrdController.php`.
 
 ```php
 
@@ -323,11 +323,11 @@ Consulta url `https://hotspot.fjlic.com/api/crd` te regresara un objeto tipo JSO
 ```
 
 <a name="register"></a>
-## Metodo Register
+## Register Method
 
-Consulta url `https://hotspot.fjlic.com/api/crd/register` te regresara un objeto tipo JSON.
+Check url `https://hotspot.fjlic.com/api/crd/register` it will return a JSON type object.
 
-> {info} Directorio  `app/Http/Controller/Api/CrdController.php`.
+> {info} Directory  `app/Http/Controller/Api/CrdController.php`.
 
 ```php
 
@@ -385,11 +385,11 @@ Consulta url `https://hotspot.fjlic.com/api/crd/register` te regresara un objeto
 ```
 
 <a name="route"></a>
-## Ruta API
+## API Route
 
-Se deben agregar las ruta necesario dentro de api rutas.
+The necessary route must be added within api routes.
 
-> {info} Directorio  `routes/api.php`.
+> {info} Directory  `routes/api.php`.
 
 ```php
 

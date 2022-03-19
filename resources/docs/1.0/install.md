@@ -1,45 +1,45 @@
-# Instalación IoT-Hotspot 🚀
+# IoT-Hotspot Installation 🚀
 
 ---
 
-- [Utilizando IoT-Hotspot](#section-1)
-- [Comandos de Instalación](#install-command)
-- [Soporte](#docs-command)
+- [Using IoT-Hotspot](#section-1)
+- [Installation Commands](#install-command)
+- [Support](#docs-command)
 
 <a name="section-1"></a>
-## Utilizando IoT-Hotspot 🔰
+## Using IoT-Hotspot 🔰
 
-### Antes de comenzar te damos las siguientes sugerencias.. 👀
+### Before we start we give you the following suggestions.. 👀
 
-Es importante que consideres cual será tu ambiente de trabajo, ya sea para producción o en local, te recomendamos para tu equipo ya sea físico o virtualizado cuentes con al menos 2 cores, 2 gigas en ram + unos 60 gigas de ssd de almacenamiento. Si optas por utilizar un espacio en la nube como todo un profesional 🤘, aplica de la misma forma ya que la mayoría de las compañías que ofrecen servicios de vps, cuentan con esta configuración, también te recomendamos los servicios de AWS de Amazon, Digital Ocean, IONOS 1and1 o cualquier otro.
+It is important that you consider what your work environment will be, whether for production or locally, we recommend that your team, whether physical or virtualized, have at least 2 cores, 2 gigabytes of ram + about 60 gigabytes of ssd storage. If you choose to use a space in the cloud like a professional 🤘, It applies in the same way since most companies that offer vps services have this configuration, we also recommend the AWS services of Amazon, Digital Ocean, IONOS 1and1 or any other.
 
-> {warning} Nota. Para que el proyecto inicie requiere de ciertas herramientas previas ✋
+> {warning} Note. For the project to start, it requires certain previous tools ✋
 
-1. Php en su versión 7.4 [`Php`](https://www.php.net/releases/7_4_0.php).
-2. Composer en su versión 2.1 [`Composer`](https://getcomposer.org/).
-3. Maria DB en versión 10.4 [`MariaDB`](https://mariadb.org/).
+1. Php version 7.4 [`Php`](https://www.php.net/releases/7_4_0.php).
+2. Composer version 2.1 [`Composer`](https://getcomposer.org/).
+3. Maria DB version 10.4 [`MariaDB`](https://mariadb.org/).
 4. Apache 2 [`Servidor Web`](https://httpd.apache.org/) o Nginx [`Servidor Web`](https://www.nginx.com/).
-5. Sino quieres complicarte levantando un servicio [`LEMP`](https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-20-04-es) o [`LAMP`](https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-20-04-es) mejor instala [`XAMPP`](https://www.apachefriends.org/es/index.html).
+5. If you don't want to complicate yourself raising a service [`LEMP`](https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-20-04-es) o [`LAMP`](https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-20-04-es) better install [`XAMPP`](https://www.apachefriends.org/es/index.html).
 
 
 ---
 
 <a name="install-command"></a>
-## Comandos de Instalación 😬
+## Installation Commands 😬
 
-### 1. Desarga el proyecto desde [`GitHub`](https://github.com/fjlic/IoT-Hotspot-Laravel) y descomprime el zip.
+### 1. Download the project from [`GitHub`](https://github.com/fjlic/IoT-Hotspot-Laravel) and unzip the zip.
 
 ```php
 git clone https://github.com/fjlic/IoT-Hotspot-Laravel.git
 ```
 
-### 2. Dentro de IoT-Hotspot-Laravel ejecuta dump-autoload para descargar las dependencias requeridas del proyecto.
+### 2. Inside IoT-Hotspot-Laravel run dump-autoload to download the required project dependencies.
 
 ```php
 composer dump-autoload
 ```
 
-### 3. Edita tu archivo env.example para iniciar la variable globales, despues renombralo como .env
+### 3. Edit your env.example file to initialize the globals variable, then rename it to .env
 
 ```php
 APP_NAME=IoT-Hotspot
@@ -58,21 +58,21 @@ DB_USERNAME=root
 DB_PASSWORD=
 ```
 
-### 4. Si utilizas XAMPP crea una base de datos llamada hotspot o por terminal.
+### 4. If you use XAMPP create a database called hotspot or by terminal.
 
 ```php
 CREATE DATABASE hotspot;
 ```
 
- ###5. Para construir las tablas de la base de datos seria.
+### 5. To build the database tables it would be.
 
 ```php
 php artisan migrate:fresh --seed
 ```
 
-### 6. Por ultimo te dejo estos comandos utiles.
+### 6. Finally I leave you these useful commands.
 
-#### Comandos Artisan
+#### Commands Artisan
 
 ```php
 php artisan clear
@@ -82,7 +82,7 @@ php artisan config:clear
 php artisan route:clear
 ```
 
-#### Comandos Composer
+#### Commands Composer
 
 ```php
 composer clear
@@ -93,9 +93,9 @@ composer update
 ```
 
 <a name="docs-command"></a>
-## Soporte 🔥
+## Support 🔥
 
-### Para cualquier duda visita o contacta al [soporte@fjlic.com](https://github.com/fjlic)
+### For any questions visit or contact [soporte@fjlic.com](https://github.com/fjlic)
 
 > {primary} Gracias por utilizar IoT Hotspot 😏
 

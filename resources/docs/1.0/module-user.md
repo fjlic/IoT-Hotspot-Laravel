@@ -2,37 +2,37 @@
 
 ---
 
-- [Usuario CRUD](#section-user)
-- [Migración](#migrations)
+- [CRUD User](#section-user)
+- [Migration](#migrations)
 - [Seeder](#seeds)
-- [Modelo](#models)
-- [Controlador](#controllers)
-- [RutaWeb](#routes)
-- [Vista](#views)
-- [Comando](#mcr)
+- [Model](#models)
+- [Controller](#controllers)
+- [RouteWeb](#routes)
+- [View](#views)
+- [Command](#mcr)
 
 <a name="section-user"></a>
-## Migración, Sedder, Modelo, Controlador y Vista
+## Migration, Sedder, Model, Controller y View
 
-Estructura del modulo Usuario.. 
-Si gustas es posible crear la estructura MVC de forma manual.
+User module structure.. 
+If you like it is possible to create the MVC structure manually.
 
 ---
 
-- [Migración](#migrations)
+- [Migration](#migrations)
 - [Seeder](#seeds)
-- [Modelo](#models)
-- [Controlador](#controllers)
-- [RutaWeb](#routes)
-- [Vista](#views)
-- [Comando MCR](#mcr)
+- [Model](#models)
+- [Controller](#controllers)
+- [RouteWeb](#routes)
+- [View](#views)
+- [Command MCR](#mcr)
 
 <a name="migrations"></a>
-## Migración
+## Migration
 
-Comando `php artisan make:migration User` ejecutar en consola dentro del proyecto.
+Command `php artisan make:migration User` run in console inside project.
 
-> {info} Directorio  `database/migrations/2014_10_12_000000_create_users_table.php`.
+> {info} Directory  `database/migrations/2014_10_12_000000_create_users_table.php`.
 
 ```php
 
@@ -76,9 +76,9 @@ class CreateUsersTable extends Migration
 <a name="seeds"></a>
 ## Seeder
 
-Comando `php artisan make:seeder AddUserTableSeeder` ejecutar en consola dentro del proyecto.
+Command `php artisan make:seeder AddUserTableSeeder` run in console inside project.
 
-> {info} Directorio  `database/seeders/AddUserTableSeeder.php`.
+> {info} Directory  `database/seeders/AddUserTableSeeder.php`.
 
 ```php
 
@@ -147,11 +147,11 @@ class AddUserTableSeeder extends Seeder
 ```
 
 <a name="models"></a>
-## Modelo
+## Model
 
-Comando `php artisan make:model User` ejecutar en consola dentro del proyecto.
+Command `php artisan make:model User` run in console inside projecto.
 
-> {info} Directorio  `app/User.php`.
+> {info} Directory  `app/User.php`.
 
 ```php
 
@@ -215,11 +215,11 @@ class User extends Authenticatable
 ```
 
 <a name="controllers"></a>
-## Controlador
+## Controlller
 
-Comando `php artisan make:controller User` ejecutar en consola dentro del proyecto.
+Command `php artisan make:controller User` run in console inside project.
 
-> {info} Directorio  `app/Http/Controllers/UserController.php`.
+> {info} Directory  `app/Http/Controllers/UserController.php`.
 
 ```php
 
@@ -398,11 +398,11 @@ class UserController extends Controller
 ```
 
 <a name="routes"></a>
-## Ruta Web
+## Route Web
 
-No cuenta con comando artisan para esto dispones ya de un archivo de rutas web.
+It does not have an artisan command, for this you already have a file of web routes.
 
-> {info} Directorio  `routes/web.php` agregar dentro del archivo.
+> {info} Directory  `routes/web.php` add inside file.
 
 ```php
 
@@ -428,11 +428,11 @@ Auth::routes();
 ```
 
 <a name="views"></a>
-## Vista
+## View
 
-No se cuenta con comando pero crea un archivos index para modulo de usuario `index.blade.php` y pega este codigo.
+There is no command but it creates an index file for the user module `index.blade.php` and paste this code.
 
-> {info} Directorio  `resources/views/module/user/index.blade.php`.
+> {info} Directory  `resources/views/module/user/index.blade.php`.
 
 ```php
 
@@ -442,7 +442,7 @@ No se cuenta con comando pero crea un archivos index para modulo de usuario `ind
         <div class="col-12">
             <div class="card card-primary card-outline">
             <div class="card-header">
-              <h3 class="card-title">Tabla Usuarios</h3>
+              <h3 class="card-title">User Table</h3>
               <a class="btn btn-xs btn-success float-right" href="{{ route('user.create') }}" role="button"><span class="fas fa-plus"></span></a>
             </div>
             <!-- /.card-header -->
@@ -451,10 +451,10 @@ No se cuenta con comando pero crea un archivos index para modulo de usuario `ind
                 <thead>
                 <tr>
                   <th>Id</th>
-                  <th>Nombre</th>
-                  <th>Email</th>
-                  <th>FechaMod</th>
-                  <th>Acciones</th>
+                  <th>Name</th>
+                  <th>Mail</th>
+                  <th>ModDate</th>
+                  <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -491,18 +491,18 @@ No se cuenta con comando pero crea un archivos index para modulo de usuario `ind
 ```
 
 <a name="mcr"></a>
-## Comando para crear Migración, Modelo, Controlador + Seeder
+## Command to create Migration, Model, Controller + Seeder
 
-Tu puedes crear los archivos de forma automatica y sin tanta complejidad.
+You can create the files automatically and without so much complexity.
 
-☝️ En un solo comando crearas migración, modelo, controlador con recursos.
+☝️ In a single command you will create migration, model, controller with resources.
 
 ```php
    php artisan make:model User -mcr
 
 ```
 
-✌️ Comando para crear Seeder.
+✌️ Command to create Seeder.
 
 ```php
    php artisan make:seeder AddUserTableSeeder
