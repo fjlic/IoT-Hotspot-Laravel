@@ -1,33 +1,33 @@
-# Modulo Alertas 🚨
+# Alert Moduel 🚨
 
 ---
 
-- [Alerta CRUD](#section-alert)
-- [Migración](#migrations)
+- [CRUD Alert](#section-alert)
+- [Migration](#migrations)
 - [Seeder](#seeds)
-- [Modelo](#models)
-- [Controlador](#controllers)
-- [RutaWeb](#routes)
-- [Vista](#views)
-- [Alerta](#alert)
-- [Comando](#mcr)
+- [Model](#models)
+- [Controller](#controllers)
+- [RouteWeb](#routes)
+- [View](#views)
+- [Alert](#alert)
+- [Command](#mcr)
 
 <a name="section-Alert"></a>
-## Migración, Sedder, Modelo, Controlador y Vista
+## Migration, Sedder, Model, Controller y View
 
-Estructura del modulo Alerta.. 
-Si gustas es posible crear la estructura MVC de forma manual.
+Alert module structure.. 
+If you like it is possible to create the MVC structure manually.
 
 ---
 
-- [Migración](#migrations)
+- [Migration](#migrations)
 - [Seeder](#seeds)
-- [Modelo](#models)
-- [Controlador](#controllers)
-- [RutaWeb](#routes)
-- [Vista](#views)
-- [Alerta](#alert)
-- [Comando MCR](#mcr)
+- [Model](#models)
+- [Controller](#controllers)
+- [RouteWeb](#routes)
+- [View](#views)
+- [Alert](#alert)
+- [Command MCR](#mcr)
 
 
 > {success} Manejo de Alertas por correo electrónico [`Gmail`](https://gmail.com/)
@@ -37,9 +37,9 @@ Si gustas es posible crear la estructura MVC de forma manual.
 
 
 <a name="migrations"></a>
-## Migración
+## Migration
 
-Comando `php artisan make:migration Alert` ejecutar en consola dentro del proyecto.
+Command `php artisan make:migration Alert` run in console inside project.
 
 > {info} Directorio  `database/migrations/2021_12_05_141229_create_alerts_table.php`.
 
@@ -81,7 +81,7 @@ class CreateAlertsTable extends Migration
 <a name="seeds"></a>
 ## Seeder
 
-Comando `php artisan make:seeder AddAlertTableSeeder` ejecutar en consola dentro del proyecto.
+Command `php artisan make:seeder AddAlertTableSeeder` run in console inside project.
 
 > {info} Directorio  `database/seeders/AddAlertTableSeeder.php`.
 
@@ -114,9 +114,9 @@ class AddAlertTableSeeder extends Seeder
 ```
 
 <a name="models"></a>
-## Modelo
+## Model
 
-Comando `php artisan make:model Alert` ejecutar en consola dentro del proyecto.
+Comand `php artisan make:model Alert` run in console inside project.
 
 > {info} Directorio  `app/Alert.php`.
 
@@ -156,9 +156,9 @@ class Alert extends Model
 ```
 
 <a name="controllers"></a>
-## Controlador
+## Controller
 
-Comando `php artisan make:controller Alert` ejecutar en consola dentro del proyecto.
+Command `php artisan make:controller Alert` run in console inside project.
 
 > {info} Directorio  `app/Http/Controllers/AlertController.php`.
 
@@ -329,11 +329,11 @@ class AlertController extends Controller
 ```
 
 <a name="routes"></a>
-## Ruta Web
+## Route Web
 
-No cuenta con comando artisan para esto dispones ya de un archivo de rutas web.
+It does not have an artisan command, for this you already have a file of web routes.
 
-> {info} Directorio  `routes/web.php` agregar dentro del archivo.
+> {info} Directory  `routes/web.php` add inside file.
 
 ```php
 
@@ -359,11 +359,12 @@ Auth::routes();
 ```
 
 <a name="views"></a>
-## Vista
+## View
 
-No se cuenta con comando pero crea un archivos index para modulo de alert `index.blade.php` y pega este codigo.
+There is no command but it creates an index file for the user module `index.blade.php` and paste this code.
+.
 
-> {info} Directorio  `resources/views/module/alert/index.blade.php`.
+> {info} Directory  `resources/views/module/alert/index.blade.php`.
 
 ```php
 
@@ -373,7 +374,7 @@ No se cuenta con comando pero crea un archivos index para modulo de alert `index
         <div class="col-12">
             <div class="card card-primary card-outline">
             <div class="card-header">
-              <h3 class="card-title">Tabla de Alertas</h3>
+              <h3 class="card-title"> Alert Table</h3>
               <a class="btn btn-xs btn-success float-right" href="{{ route('alert.create') }}" role="button"><span class="fas fa-plus"></span></a>
             </div>
             <!-- /.card-header -->
@@ -384,11 +385,11 @@ No se cuenta con comando pero crea un archivos index para modulo de alert `index
                   <th>Id</th>
                   <th>Tipo</th>
                   <th>Email</th>
-                  <th>Titulo</th>
-                  <th>Mensaje</th>
-                  <th>Fin Msj</th>
-                  <th>FechaMod</th>
-                  <th>Acciones</th>
+                  <th>Title</th>
+                  <th>Message</th>
+                  <th>EndMsj</th>
+                  <th>ModDate</th>
+                  <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -402,7 +403,7 @@ No se cuenta con comando pero crea un archivos index para modulo de alert `index
                       <div class="modal-dialog modal-dialog-centered" role="document">
                       <div class="modal-content">
                       <div class="modal-header d-flex justify-content-center">
-                        <h5 class="modal-title" id="exampleModalCenterTitle">Correos de la Alerta con Id ({{$alert->id}})</h5>
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Emails of the Alert with Id ({{$alert->id}})</h5>
                       </div>
                       <div class="modal-body">
                           <div class="modal-body" style="text-align: center">
@@ -410,7 +411,7 @@ No se cuenta con comando pero crea un archivos index para modulo de alert `index
                           </div>
                       </div>
                       <div class="modal-footer d-flex justify-content-center">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                       </div>
                       </div>
                       </div>
@@ -433,18 +434,18 @@ No se cuenta con comando pero crea un archivos index para modulo de alert `index
                       <div class="modal-dialog modal-dialog-centered" role="document">
                       <div class="modal-content">
                       <div class="modal-header d-flex justify-content-center">
-                        <h5 class="modal-title" id="exampleModalCenterTitle">Ten cuidado con esta acción</h5>
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Be careful with this action</h5>
                       </div>
                       <div class="modal-body">
                           <div class="modal-body" style="text-align: center">
                             <a><img src="{{ asset('storage/Images/Warning.JPG') }}" alt="" title=""  text-align="center" /></a>
                            </div>
                            <br>
-                          <p class="text-center">Eliminarás ( <b>{{$alert->type}}</b> ) seguro</p>
+                          <p class="text-center">Eliminarás ( <b>{{$alert->type}}</b> ) are you sure?</p>
                       </div>
                       <div class="modal-footer d-flex justify-content-center">
-                            <button type="button" class="btn btn-info" data-dismiss="modal">Cancelar</button>
-                            <input type="submit" class="btn btn-danger" value="Eliminar">
+                            <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
+                            <input type="submit" class="btn btn-danger" value="Delete">
                       </div>
                       </div>
                       </div>
@@ -470,11 +471,11 @@ No se cuenta con comando pero crea un archivos index para modulo de alert `index
 ```
 
 <a name="alert"></a>
-## Alerta
+## Alert
 
-No se cuenta con comando pero crea un archivo sensor.blade.php para directorio de email `sensor.blade.php` y pega este codigo.
+There is no command but it creates a sensor.blade.php file for the email directory `sensor.blade.php` and paste this code.
 
-> {info} Directorio  `resources/views/module/email/sensor.blade.php`.
+> {info} Directory  `resources/views/module/email/sensor.blade.php`.
 
 ```php
 
@@ -482,11 +483,11 @@ No se cuenta con comando pero crea un archivo sensor.blade.php para directorio d
     {{ $alert->title }} 😱
 
 @component('mail::subcopy')
-    Se detectaron alertas en la plataforma por favor da click en el boton. 🔲
+    Alerts were detected on the platform, please click on the button. 🔲
 @endcomponent
 
 @component('mail::button', ['url' => 'https://hotspot.fjlic.com/historialsensor/chart/'.$sensor->id])
-    Visita Hotspot
+    Visit Hotspot
 @endcomponent
 
 @component('mail::panel')
@@ -497,24 +498,13 @@ No se cuenta con comando pero crea un archivo sensor.blade.php para directorio d
 
 <center>
 @component('mail::table')
-| Sensor | Nombre | Estado | Descripción |
+| Sensor | Name | Status | Description |
 | --   |   --   |   --   |   --   |
 |      |        |        |        |
-| Temperatura | Fuente DC | {{$sensor->temp_1}} | @if($sensor->temp_1 <= 35) ✔️ @else ❌ @endif |
-| Temperatura | Ventilador | {{$sensor->temp_2}} | @if($sensor->temp_2 <= 35) ✔️ @else ❌ @endif |
-| Temperatura | Ambiente | {{$sensor->temp_3}} | @if($sensor->temp_3 <= 35) ✔️ @else ❌ @endif |
-| Temperatura | S/D | {{$sensor->temp_4}} | @if($sensor->temp_4 <= 35) ✔️ @else ❌ @endif |
-| Voltage | Fuente DC | {{$sensor->vol_1}} | @if($sensor->vol_1 === 'On') ✔️ @else ❌ @endif |
-| Voltage | Ventilador | {{$sensor->vol_2}} | @if($sensor->vol_2 === 'On') ✔️ @else ❌ @endif |
-| Voltage | Leds | {{$sensor->vol_3}} | @if($sensor->vol_3 === 'On') ✔️ @else ❌ @endif |
-| Puerta | Tapa | {{$sensor->door_1}} | @if($sensor->door_1 === 'On') ✔️ @else ❌ @endif |
-| Puerta | S/D | {{$sensor->door_2}} | @if($sensor->door_2 === 'On') ✔️ @else ❌ @endif |
-| Puerta | S/D | {{$sensor->door_3}} | @if($sensor->door_3 === 'On') ✔️ @else ❌ @endif |
-| Puerta | S/D | {{$sensor->door_4}} | @if($sensor->door_4 === 'On') ✔️ @else ❌ @endif |
-| Actuador | Cerradura | {{$sensor->rlay_1}} | @if($sensor->rlay_1 === 'On') ✔️ @else ❌ @endif |
-| Actuador | S/D | {{$sensor->rlay_2}} | @if($sensor->rlay_2 === 'On') ✔️ @else ❌ @endif |
-| Actuador | S/D | {{$sensor->rlay_3}} | @if($sensor->rlay_3 === 'On') ✔️ @else ❌ @endif |
-| Actuador | S/D | {{$sensor->rlay_4}} | @if($sensor->rlay_4 === 'On') ✔️ @else ❌ @endif |
+| Temperature | Tmp_1 | {{$sensor->temp_1}} | @if($sensor->temp_1 <= 35) ✔️ @else ❌ @endif |
+| Temperature | Tmp_2 | {{$sensor->temp_2}} | @if($sensor->temp_2 <= 35) ✔️ @else ❌ @endif |
+| Temperature | Tmp_3 | {{$sensor->temp_3}} | @if($sensor->temp_3 <= 35) ✔️ @else ❌ @endif |
+| Temperature | Tmp_4 | {{$sensor->temp_4}} | @if($sensor->temp_4 <= 35) ✔️ @else ❌ @endif |
 @endcomponent
 </center>
 
@@ -525,24 +515,24 @@ No se cuenta con comando pero crea un archivo sensor.blade.php para directorio d
 @endcomponent
 
 
-Gracias, Atte. {{ config('app.name') }} 👻
+Thanks, Atte. {{ config('app.name') }} 👻
 @endcomponent
 
 ```
 
 <a name="mcr"></a>
-## Comando para crear Migración, Modelo, Controlador + Seeder
+## Command to create Migration, Model, Controller + Seeder
 
-Tu puedes crear los archivos de forma automatica y sin tanta complejidad.
+You can create the files automatically and without so much complexity.
 
-☝️ En un solo comando crearas migración, modelo, controlador con recursos.
+☝️ In a single command you will create migration, model, controller with resources.
 
 ```php
    php artisan make:model Alert -mcr
 
 ```
 
-✌️ Comando para crear Seeder.
+✌️ Command to create Seederr.
 
 ```php
    php artisan make:seeder AddAlertTableSeeder

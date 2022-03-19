@@ -1,38 +1,38 @@
-# Modulo Role 👮
+# Role module 👮
 
 ---
 
-- [Role CRUD](#section-role)
-- [Migración](#migrations)
+- [CRUD Role](#section-role)
+- [Migration](#migrations)
 - [Seeder](#seeds)
-- [Modelo](#models)
-- [Controlador](#controllers)
-- [RutaWeb](#routes)
-- [Vista](#views)
-- [Comando](#mcr)
+- [Model](#models)
+- [Controller](#controllers)
+- [RouteWeb](#routes)
+- [View](#views)
+- [Command](#mcr)
 
 <a name="section-role"></a>
-## Migración, Sedder, Modelo, Controlador y Vista
+## Migration, Sedder, Model, Controller y View
 
-Estructura del modulo Role.. 
-Si gustas es posible crear la estructura MVC de forma manual.
+Structure of the Role module.. 
+If you like it is possible to create the MVC structure manually.
 
 ---
 
-- [Migración](#migrations)
+- [Migration](#migrations)
 - [Seeder](#seeds)
-- [Modelo](#models)
-- [Controlador](#controllers)
-- [RutaWeb](#routes)
-- [Vista](#views)
-- [Comando MCR](#mcr)
+- [Model](#models)
+- [Controller](#controllers)
+- [RouteWeb](#routes)
+- [View](#views)
+- [Command MCR](#mcr)
 
 <a name="migrations"></a>
-## Migración
+## Migration
 
-Comando `php artisan make:migration Role` ejecutar en consola dentro del proyecto.
+Command `php artisan make:migration Role` run in console inside project.
 
-> {info} Directorio  `vendor/santigarcor/laratrust/resources/views/migrations.blade.php`.
+> {info} Directory  `vendor/santigarcor/laratrust/resources/views/migrations.blade.php`.
 
 ```php
 
@@ -155,9 +155,9 @@ class LaratrustSetupTables extends Migration
 <a name="seeds"></a>
 ## Seeder
 
-Comando `php artisan make:seeder AddRoleGlobalTableSeeder` ejecutar en consola dentro del proyecto.
+Command `php artisan make:seeder AddRoleGlobalTableSeeder` run in console inside project.
 
-> {info} Directorio  `database/seeders/AddRoleGlobalTableSeeder.php`.
+> {info} Directory  `database/seeders/AddRoleGlobalTableSeeder.php`.
 
 ```php
 
@@ -220,11 +220,11 @@ class AddRoleGlobalTableSeeder extends Seeder
 ```
 
 <a name="models"></a>
-## Modelo
+## Model
 
-Comando `php artisan make:model Role` ejecutar en consola dentro del proyecto.
+Command `php artisan make:model Role` run in console inside project.
 
-> {info} Directorio  `app/Role.php`.
+> {info} Directory  `app/Role.php`.
 
 ```php
 
@@ -287,11 +287,11 @@ class AddRoleGlobalTableSeeder extends Seeder
 ```
 
 <a name="controllers"></a>
-## Controlador
+## Controller
 
-Comando `php artisan make:controller Role` ejecutar en consola dentro del proyecto.
+Command `php artisan make:controller Role` run in console inside project.
 
-> {info} Directorio  `app/Http/Controllers/RoleController.php`.
+> {info} Directory  `app/Http/Controllers/RoleController.php`.
 
 ```php
 
@@ -400,11 +400,11 @@ class RoleController extends Controller
 ```
 
 <a name="routes"></a>
-## Ruta Web
+## Routa Web
 
-No cuenta con comando artisan para esto dispones ya de un archivo de rutas web.
+It does not have an artisan command, for this you already have a file of web routes.
 
-> {info} Directorio  `vendor/santigarcor/laratrust/routes/web.php` agregar dentro del archivo.
+> {info} Directory  `vendor/santigarcor/laratrust/routes/web.php` add inside file.
 
 ```php
 
@@ -421,11 +421,11 @@ Route::resource('/roles-assignment', 'RolesAssignmentController', ['as' => 'lara
 ```
 
 <a name="views"></a>
-## Vista
+## View
 
-No se cuenta con comando pero crea un archivos index para modulo de usuario `index.blade.php` y pega este codigo.
+There is no command but it creates an index file for the user module `index.blade.php` and paste this code.
 
-> {info} Directorio  `resources/views/module/role/index.blade.php`.
+> {info} Directory  `resources/views/module/role/index.blade.php`.
 
 ```php
 
@@ -435,7 +435,7 @@ No se cuenta con comando pero crea un archivos index para modulo de usuario `ind
         <div class="col-12">
             <div class="card card-primary card-outline">
             <div class="card-header">
-              <h3 class="card-title">Tabla de Roles</h3>
+              <h3 class="card-title">Roles Table</h3>
               <a class="btn btn-xs btn-success float-right" href="{{ route('role.create') }}" role="button"><span class="fas fa-plus"></span></a>
             </div>
             <!-- /.card-header -->
@@ -444,11 +444,11 @@ No se cuenta con comando pero crea un archivos index para modulo de usuario `ind
                 <thead>
                 <tr>
                   <th>Id</th>
-                  <th>NomCodigo</th>
-                  <th>NomVista</th>
-                  <th>Descripcion</th>
-                  <th>FechaMod</th>
-                  <th>Acciones</th>
+                  <th>IdNam</th>
+                  <th>ViewNam</th>
+                  <th>Description</th>
+                  <th>ModDate</th>
+                  <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -471,7 +471,7 @@ No se cuenta con comando pero crea un archivos index para modulo de usuario `ind
                       <div class="modal-dialog modal-dialog-centered" role="document">
                       <div class="modal-content">
                       <div class="modal-header d-flex justify-content-center">
-                        <h5 class="modal-title" id="exampleModalCenterTitle">Ten cuidado con esta acción</h5>
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Be careful with this action</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">&times;</span>
                         </button>
@@ -481,11 +481,11 @@ No se cuenta con comando pero crea un archivos index para modulo de usuario `ind
                             <a><img src="{{ asset('storage/Images/Warning.JPG') }}" alt="" title=""  text-align="center" /></a>
                            </div>
                            <br>
-                          <p class="text-center">Eliminarás ( <b>{{$role->display_name}}</b> ) seguro</p>
+                          <p class="text-center">Delete ( <b>{{$role->display_name}}</b> ) are you sur?</p>
                       </div>
                       <div class="modal-footer d-flex justify-content-center">
-                            <button type="button" class="btn btn-info" data-dismiss="modal">Cancelar</button>
-                            <input type="submit" class="btn btn-danger" value="Eliminar">
+                            <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
+                            <input type="submit" class="btn btn-danger" value="Delete">
                       </div>
                       </div>
                       </div>
@@ -496,16 +496,6 @@ No se cuenta con comando pero crea un archivos index para modulo de usuario `ind
                 </tr>
                 @endforeach
                 </tbody>
-               <!-- <tfoot>
-                <tr>
-                  <th>Id</th>
-                  <th>NomCodigo</th>
-                  <th>NomVista</th>
-                  <th>Descripcion</th>
-                  <th>FechaMod</th>
-                  <th>Acciones</th>
-                </tr>
-                </tfoot>-->
               </table>
             </div>
             <!-- /.card-body -->
@@ -521,18 +511,18 @@ No se cuenta con comando pero crea un archivos index para modulo de usuario `ind
 ```
 
 <a name="mcr"></a>
-## Comando para crear Migración, Modelo, Controlador + Seeder
+## Command to create Migration, Model, Controller + Seeder
 
-Tu puedes crear los archivos de forma automatica y sin tanta complejidad.
+You can create the files automatically and without so much complexity.
 
-☝️ En un solo comando crearas migración, modelo, controlador con recursos.
+☝️ In a single command you will create migration, model, controller with resources.
 
 ```php
    php artisan make:model Role -mcr
 
 ```
 
-✌️ Comando para crear Seeder.
+✌️ Command to create Seeder.
 
 ```php
    php artisan make:seeder AddRoleGlobalTableSeeder

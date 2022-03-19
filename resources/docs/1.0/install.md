@@ -95,9 +95,9 @@ composer update
 <a name="docs-command"></a>
 ## Support 🔥
 
-### For any questions visit or contact [soporte@fjlic.com](https://github.com/fjlic)
+### For any questions visit or contact [support@fjlic.com](https://github.com/fjlic)
 
-> {primary} Gracias por utilizar IoT Hotspot 😏
+> {primary} Thank you for using IoT-Hotspot 😏
 
 
 

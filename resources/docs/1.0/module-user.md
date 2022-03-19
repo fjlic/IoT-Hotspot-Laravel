@@ -1,4 +1,4 @@
-# Modulo Usuario 🙈
+# User Module 🙈
 
 ---
 
@@ -149,7 +149,7 @@ class AddUserTableSeeder extends Seeder
 <a name="models"></a>
 ## Model
 
-Command `php artisan make:model User` run in console inside projecto.
+Command `php artisan make:model User` run in console inside project.
 
 > {info} Directory  `app/User.php`.
 
