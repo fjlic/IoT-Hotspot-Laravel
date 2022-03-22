@@ -52,7 +52,6 @@ Route::resource('historialqr', 'HistorialQrController')->middleware('auth');
 Route::resource('historialnfc', 'HistorialNfcController')->middleware('auth');
 Route::get('historialsensor/chart/{id}', 'HistorialSensorController@chart')->name('historialsensor.chart')->middleware('auth');
 Route::resource('historialsensor', 'HistorialSensorController')->middleware('auth');
-Route::resource('historialstatistical', 'HistorialStatisticalController')->middleware('auth');
 Route::get('email/sensor', function() {
     $mail = new AlertSensorMail;
     Mail::to('support@fjlic.com')->send($mail);
